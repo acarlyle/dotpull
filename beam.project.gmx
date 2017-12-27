@@ -8,10 +8,15 @@
   <sprites name="sprites">
     <sprites name="env">
       <sprite>sprites\spr_wall</sprite>
+      <sprite>sprites\spr_platform_cell</sprite>
     </sprites>
+    <sprite>sprites\spr_player</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\scr_applyScreenRes.gml</script>
+  </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>
     <object>objects\obj_control</object>
@@ -19,10 +24,14 @@
       <object>objects\par_wall</object>
       <object>objects\obj_wall</object>
     </objects>
+    <objects name="env">
+      <object>objects\obj_platform</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\init</room>
     <room>rooms\rm_demo</room>
+    <room>rooms\rm_cell</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

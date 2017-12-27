@@ -25,7 +25,46 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto(rm_demo);
+            <string>//init vars
+
+//game settings
+global.set_scaleRes = 1;
+global.set_phoneRes = 5;
+
+
+scr_applyScreenRes();
+
+room_goto(rm_cell);
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (instance_number(obj_player) == 0) {
+    player = instance_create(128+320, 320, obj_player);   //bottom of ahpp_sword
+    //camera = instance_create(player.x, player.y-12, obj_camera);
+    with (player) {
+        //juststarted = 100;
+    }
+}
 </string>
           </argument>
         </arguments>
