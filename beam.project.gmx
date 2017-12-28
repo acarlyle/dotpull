@@ -7,15 +7,32 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprites name="env">
+      <sprite>sprites\spr_bridge</sprite>
       <sprite>sprites\spr_wall</sprite>
       <sprite>sprites\spr_platform_cell</sprite>
     </sprites>
     <sprite>sprites\spr_player</sprite>
+    <sprite>sprites\spr_key</sprite>
+    <sprite>sprites\spr_door</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\scr_applyScreenRes.gml</script>
+    <scripts name="settings">
+      <script>scripts\scr_applyScreenRes.gml</script>
+    </scripts>
+    <script>scripts\scr_initPlayerPosition.gml</script>
+    <script>scripts\scr_getInput.gml</script>
+    <script>scripts\print.gml</script>
+    <script>scripts\scr_collisionCheck.gml</script>
+    <scripts name="Turns">
+      <script>scripts\handle_gameMove.gml</script>
+      <script>scripts\handle_playerMove.gml</script>
+    </scripts>
+    <scripts name="Helpers">
+      <script>scripts\array.gml</script>
+      <script>scripts\scr_split.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>
@@ -25,7 +42,14 @@
       <object>objects\obj_wall</object>
     </objects>
     <objects name="env">
+      <object>objects\par_platform</object>
       <object>objects\obj_platform</object>
+      <object>objects\obj_bridge</object>
+    </objects>
+    <objects name="puzzle elements">
+      <object>objects\obj_key</object>
+      <object>objects\par_pullable</object>
+      <object>objects\obj_door</object>
     </objects>
   </objects>
   <rooms name="rooms">
