@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>//init vars
+global.roomContents = ds_stack_create(); //rewindable objects
 
 //game settings
 global.set_scaleRes = 1;
@@ -34,11 +35,9 @@ global.set_phoneRes = 3; //act phone value is 5 (960 * 640)
 //player vars
 move = false;
 
-
-//player position
-global.playerX = 0;
-global.playerY = 0;
 scr_initPlayerPosition(6, 2);
+//global.playerX = 80;
+//global.playerY = 32;
 
 
 scr_applyScreenRes();

@@ -36,6 +36,9 @@ key_downright = false;
 
 //normie memory
 numKeys = 0;
+//player position
+global.oldPlayerX = 0;
+global.oldPlayerY = 0;
 //dynamic memory
 moveHistory = ds_stack_create(); //stores players last position; appends when player moves
 

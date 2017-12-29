@@ -18,6 +18,7 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
+    <script>scripts\scr_canPull.gml</script>
     <scripts name="settings">
       <script>scripts\scr_applyScreenRes.gml</script>
     </scripts>
@@ -50,6 +51,7 @@
       <object>objects\obj_key</object>
       <object>objects\par_pullable</object>
       <object>objects\obj_door</object>
+      <object>objects\par_obstacle</object>
     </objects>
   </objects>
   <rooms name="rooms">

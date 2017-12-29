@@ -24,4 +24,8 @@ if (instance_place(argument0, argument1, par_platform)){
     return false; //there's a platform here, good to take a stroll on
 }
 
+print("cannot move to ");
+print(argument0);
+print(argument1);
+
 return true; //there's probably something there anyways
