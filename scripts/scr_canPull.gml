@@ -1,9 +1,14 @@
-///scr_canPull(int objPosX, int objPosY)
+///scr_canPull(int objPosX, int objPosY, bool moveDiag)
 
 if (instance_place(argument0, argument1, obj_player)){
     print("Can't move, player in the way");
+    print(string(argument0)); print(string(argument1)); print(string(obj_player.x)); print(string(obj_player.y));
+    print(string(global.oldPlayerX)); print(string(global.oldPlayerY));
     return false; //there's a player here!!  don't move!
 }
+
+//print(string(argument0)); print(string(argument1)); print(string(obj_player.x)); print(string(obj_player.y));
+//print(string(global.oldPlayerX)); print(string(global.oldPlayerY));
 
 //checks if there's an object in between this object and the player
 //to see if the object's pull is getting blocked by that object.  if it is, return false
@@ -39,24 +44,64 @@ if (xDiff == 0){ //player is moving up/down; check for objects towards the playe
         }
     }
 }
-if (xDiff < 0 && yDiff < 0){ //upleft
-    var objX = x; var objY = y;
-    print(objX);
-    print(objY);
-    for (objX = x; objX > obj_player.x; objX += xDiff){
-        if (instance_place(x, objY+yDiff, par_obstacle)) return false; //don't pull if anything is in the way
-        objY += yDiff;    
+
+if (argument2 == true){ //diagonal movement
+    if (obj_player.y < y && obj_player.x > x){ //player is above the obj and to the right; pull object upright
+        print("pull object up right");
+        var objX = x+16; var objY = y-16;
+        print(objX);
+        print(objY);
+        for (objX = x + 16; objX < obj_player.x; objX += 16){
+            print("In that upright loop !");
+            print(objX);
+            print(objY);  
+            if (instance_place(objX, objY, par_obstacle)) return false; //don't pull if anything is in the way
+            objY -= 16;  
+        }
     }
+    if (obj_player.y < y && obj_player.x < x){ //player is above the obj and to the left; pull object upleft
+        print("pull object up left");
+        var objX = x-16; var objY = y-16;
+        print(objX);
+        print(objY);
+        for (objX = x - 16; objX > obj_player.x; objX -= 16){
+            print("In that left loop !");
+            print(objX);
+            print(objY);  
+            if (instance_place(objX, objY, par_obstacle)) return false; //don't pull if anything is in the way
+            objY -= 16;  
+        }
+    }
+    if (obj_player.y > y && obj_player.x > x){ //player is below the obj and to the right; pull object downright
+        print("pull object down right");
+        var objX = x+16; var objY = y+16;
+        print(objX);
+        print(objY);
+        for (objX = x + 16; objX < obj_player.x; objX += 16){
+            print("In that downright loop !");
+            print(objX);
+            print(objY);  
+            if (instance_place(objX, objY, par_obstacle)) return false; //don't pull if anything is in the way
+            objY += 16;  
+        }          
+    }
+    if (obj_player.y > y && obj_player.x < x){ //player is below the obj and to the left; pull object downleft
+        print("pull object down left");
+        var objX = x-16; var objY = y+16;
+        print(objX);
+        print(objY);
+        for (objX = x - 16; objX > obj_player.x; objX -= 16){
+            print("In that downleft loop !");
+            print(objX);
+            print(objY);  
+            if (instance_place(objX, objY, par_obstacle)) return false; //don't pull if anything is in the way
+            objY += 16;  
+        }    
+    }   
 }
-if (xDiff > 0 && yDiff < 0){ //upright
 
-}
-if (xDiff < 0 && yDiff > 0){ //downleft
+        
 
-}
-if (xDiff < 0 && yDiff < 0){ //downright
-
-}
 
 
 return true;
