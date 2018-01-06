@@ -5,6 +5,14 @@ var objMove = false;
 
 for (var i = 0; i < array_length_1d(global.roomContents); i++){
     with(global.roomContents[i]){
+        if (!justDeactivated){ // ACTUALLY NOT JUST DEACTIVATED !!!
+            ds_stack_push(moveHistory, string(x) + "," + string(y)); //pushing previous turn's movement
+        }
+        else{ 
+            justDeactivated = false; 
+        }
+        //print("Pushed onto object's stack !");
+        //print(x); print(y);
         if (global.oldPlayerY == y && obj_player.y == y){ //player moved left/right
             if (obj_player.x < x && scr_canPull(x - 16, y, false)) {//player on left side of object 
                 x -= 16;
@@ -53,14 +61,14 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                 newObjPosY = y + 16;
         }
         
-        print("hur-----");
-        print(obj_player.x)
-        print(obj_player.y)
+        //print("hur-----");
+        //print(obj_player.x)
+        //print(obj_player.y)
         //print(global.oldPlayerX);
         //print(global.oldPlayerY);
-        print(newObjPosX);
-        print(newObjPosY);
-        print("-----dur");
+        //print(newObjPosX);
+        //print(newObjPosY);
+        //print("-----dur");
         
         
         if (!objMove  
@@ -69,9 +77,9 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             && scr_canPull(newObjPosX, newObjPosY, true)
             && abs((obj_player.y - y) / (obj_player.x - x)) == 1){
                 
-            print("diag time baby");
-            print(obj_player.x - global.oldPlayerX);
-            print(obj_player.y - global.oldPlayerY);
+            //print("diag time baby");
+            //print(obj_player.x - global.oldPlayerX);
+            //print(obj_player.y - global.oldPlayerY);
             
             if (obj_player.y < y && obj_player.x > x){ //player is above the obj and to the right
                 x += 16;
@@ -89,9 +97,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                 x -= 16;
                 y += 16;
             }
-        }
-        if (objMove){ //append new position to obj's stack; we do this if player moves
-            ds_stack_push(moveHistory, string(x) + "," + string(y))
+            objMove = true;
         }
     }
 }

@@ -33,6 +33,7 @@ key_upleft = false;
 key_upright = false;
 key_downleft = false;
 key_downright = false;
+key_r = false;
 
 //normie memory
 numKeys = 0;
@@ -41,10 +42,12 @@ global.oldPlayerX = 0;
 global.oldPlayerY = 0;
 //dynamic memory
 moveHistory = ds_stack_create(); //stores players last position; appends when player moves
+itemHistory = ds_stack_create(); //stores players items as of last position; appends when player moves
 
 
 move = false;
 moved = false;
+undo = false;
 </string>
           </argument>
         </arguments>
@@ -67,7 +70,8 @@ moved = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ds_stack_destroy(moveHistory); //probably need to delete the arrays one by one to prevent memory leaks
+            <string>ds_stack_destroy(moveHistory);
+ds_stack_destroy(itemHistory);
 </string>
           </argument>
         </arguments>
@@ -94,6 +98,7 @@ moved = false;
 
 if (move) handle_playerMove(); //move is true if movement key is pressed
 if (moved) handle_gameMove();  //moved is true if player successfully moved
+if (undo) handle_undoMove();   //undo is true if player wants to undo their latest move
 </string>
           </argument>
         </arguments>

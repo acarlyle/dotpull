@@ -13,8 +13,10 @@
   <code>//append every rewindable object to roomContents arr
 
 var key1 = instance_create(32, 160, obj_key);
+var door1 = instance_create(48, 96, obj_door);
+var door2 = instance_create(64, 96, obj_door);
 
-global.roomContents = array(obj_key);</code>
+global.roomContents = array(obj_key, door1, door2);</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -58,9 +60,9 @@ global.roomContents = array(obj_key);</code>
     <instance objName="obj_wall" x="112" y="64" name="inst_CCEFDD56" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="112" y="16" name="inst_C4520549" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="112" y="32" name="inst_4744FD5E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_wall" x="0" y="112" name="inst_541C3503" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_wall" x="0" y="96" name="inst_0FE9AD46" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_wall" x="0" y="32" name="inst_5C2A5635" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_wall" x="0" y="32" name="inst_541C3503" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_wall" x="0" y="48" name="inst_0FE9AD46" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_wall" x="112" y="48" name="inst_5C2A5635" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="0" y="16" name="inst_743DD535" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="0" y="64" name="inst_A5B167B1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="16" y="160" name="inst_1D25352D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -125,20 +127,6 @@ global.roomContents = array(obj_key);</code>
     <instance objName="obj_wall" x="0" y="160" name="inst_D776AD10" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bridge" x="48" y="96" name="inst_99555040" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bridge" x="64" y="96" name="inst_B1A3184B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="16" y="80" name="inst_577BC2E7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="112" y="48" name="inst_E6344F05" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="16" y="96" name="inst_4CA97894" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="16" y="112" name="inst_583449CF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="32" y="80" name="inst_54BD5FEC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="32" y="96" name="inst_DC599806" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="32" y="112" name="inst_F8FE8CF6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="80" y="80" name="inst_81DC5FE4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="96" y="80" name="inst_072F57E3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="96" y="96" name="inst_69B0818E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="80" y="96" name="inst_35C99BB5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="80" y="112" name="inst_771A0E66" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="96" y="112" name="inst_96162046" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_door" x="48" y="112" name="inst_FE70A939" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

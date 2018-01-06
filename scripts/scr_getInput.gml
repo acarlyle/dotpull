@@ -12,6 +12,7 @@ key_r = keyboard_check_released(ord('R'));
 
 if (key_left || key_right || key_up || key_down ||
     key_upleft || key_upright || key_downleft || key_downright) move = true;
+if (key_r) undo = true;
 
 
 //if (vk_anykey) global.playerMoved = true; //move after player moves

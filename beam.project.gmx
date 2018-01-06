@@ -29,6 +29,7 @@
     <scripts name="Turns">
       <script>scripts\handle_gameMove.gml</script>
       <script>scripts\handle_playerMove.gml</script>
+      <script>scripts\handle_undoMove.gml</script>
     </scripts>
     <scripts name="Helpers">
       <script>scripts\array.gml</script>

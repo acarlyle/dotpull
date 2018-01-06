@@ -2,6 +2,10 @@
 
 print("handle player move");
 
+ds_stack_push(obj_player.moveHistory, string(x) + "," + string(y)); //pushing previous turn's movement
+ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys));
+print("Pushed onto player's stack !");
+
 if (key_left && !scr_collisionCheck(global.playerX - 16, global.playerY)){
     global.playerX -= 16;
     moved = true;
@@ -44,7 +48,8 @@ if (moved){
     global.oldPlayerY = y;
     x = global.playerX; 
     y = global.playerY; 
-    ds_stack_push(obj_player.moveHistory, string(x) + "," + string(y))
 }
+
+//print(obj_player.numKeys);
 
 move = false;

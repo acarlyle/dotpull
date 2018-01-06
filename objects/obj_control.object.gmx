@@ -69,8 +69,9 @@ room_goto(rm_cell);
             <string>if (instance_number(obj_player) == 0) {
     player = instance_create(global.playerX, global.playerY, obj_player);
     var initPos = string(obj_player.x) + "," + (string(obj_player.y));
-    print(initPos);
+    //print(initPos);
     ds_stack_push(obj_player.moveHistory, initPos);
+    ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys));
     //camera = instance_create(player.x, player.y-12, obj_camera);
     with (player) {
         //juststarted = 100;
