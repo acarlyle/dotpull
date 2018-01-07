@@ -12,8 +12,15 @@
       <sprite>sprites\spr_platform_cell</sprite>
     </sprites>
     <sprite>sprites\spr_player</sprite>
-    <sprite>sprites\spr_key</sprite>
-    <sprite>sprites\spr_door</sprite>
+    <sprites name="controllers">
+      <sprite>sprites\spr_gotoRoom</sprite>
+    </sprites>
+    <sprites name="elements">
+      <sprite>sprites\spr_key</sprite>
+      <sprite>sprites\spr_door</sprite>
+      <sprite>sprites\spr_block</sprite>
+      <sprite>sprites\spr_hole</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -38,7 +45,6 @@
   </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>
-    <object>objects\obj_control</object>
     <objects name="wall">
       <object>objects\par_wall</object>
       <object>objects\obj_wall</object>
@@ -50,15 +56,23 @@
     </objects>
     <objects name="puzzle elements">
       <object>objects\obj_key</object>
+      <object>objects\obj_block</object>
       <object>objects\par_pullable</object>
       <object>objects\obj_door</object>
+      <object>objects\obj_hole</object>
       <object>objects\par_obstacle</object>
+    </objects>
+    <objects name="controllers">
+      <object>objects\obj_control</object>
+      <object>objects\obj_gotoRoom</object>
     </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\init</room>
     <room>rooms\rm_demo</room>
     <room>rooms\rm_cell</room>
+    <room>rooms\rm_level1</room>
+    <room>rooms\rm_level2</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
