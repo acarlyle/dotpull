@@ -45,6 +45,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
         var newObjPosY = 0;
         
         if (obj_player.y < y && obj_player.x > x){ //player is above the obj and to the right
+                print("up and to the right");
                 newObjPosX = x + 16;
                 newObjPosY = y - 16;
         }
@@ -75,9 +76,10 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             && (obj_player.x - global.oldPlayerX != 0) 
             && (obj_player.y - global.oldPlayerY != 0) 
             && scr_canPull(newObjPosX, newObjPosY, true)
-            && abs((obj_player.y - y) / (obj_player.x - x)) == 1){
+            && abs((obj_player.y - y) / (obj_player.x - x)) == 1
+            && abs((global.oldPlayerY - y) / (global.oldPlayerX - x)) == 1){
                 
-            //print("diag time baby");
+            print("diag time baby");
             //print(obj_player.x - global.oldPlayerX);
             //print(obj_player.y - global.oldPlayerY);
             
