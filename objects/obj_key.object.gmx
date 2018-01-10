@@ -35,6 +35,7 @@ justDeactivated = false;
 deactivatedX = 0;
 deactivatedY = 0;
 canPull = true;
+canFall = true;
 </string>
           </argument>
         </arguments>

@@ -43,6 +43,10 @@ if (instance_place(argument0, argument1, obj_block)){
     print("There's a wall here");
     return true; //there's a block here
 }
+if (instance_place(argument0, argument1, obj_hole)){
+    //print("There's a hole here");
+    return true; //there's a block here
+}
 if (instance_place(argument0, argument1, par_wall)){
     return true; //there's a wall here
 }

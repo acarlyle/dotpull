@@ -101,6 +101,16 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             }
             objMove = true;
         }
+        if (!objMove && canFall && instance_place(x, y, obj_hole)){
+            print("and (this object falls down");
+            isDeactivated = true;
+            justDeactivated = true;
+            deactivatedX = x;
+            deactivatedY = y;
+            ds_stack_push(moveHistory, string(x) + "," + string(y));
+            x = 0;
+            y = 0;
+        }
     }
 }
 

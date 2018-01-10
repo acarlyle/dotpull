@@ -8,6 +8,10 @@ if (instance_place(argument0, argument1, obj_player)){
     //print(string(global.oldPlayerX)); print(string(global.oldPlayerY));
     return false; //there's a player here!!  don't move!
 }
+if (instance_place(argument0, argument1, obj_hole)){
+    //print("Can't move, hole in the way");
+    if (!canFall) return false; //there's a hole here!!  don't move unless you can go over holes!
+}
 
 if (isDeactivated == true){
     if (x != 0 && y != 0){
