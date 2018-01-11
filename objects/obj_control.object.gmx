@@ -35,14 +35,14 @@ global.set_phoneRes = 3; //act phone value is 5 (960 * 640)
 //player vars
 move = false;
 
-scr_initPlayerPosition(6, 2);
+scr_initPlayerPosition(3, 3);
 //global.playerX = 80;
 //global.playerY = 32;
 
 
 scr_applyScreenRes();
 
-room_goto(rm_level1);
+room_goto(rm_level2);
 
 </string>
           </argument>

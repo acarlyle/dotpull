@@ -18,9 +18,13 @@
     </sprites>
     <sprites name="elements">
       <sprite>sprites\spr_key</sprite>
+      <sprite>sprites\spr_keyFloating</sprite>
       <sprite>sprites\spr_door</sprite>
       <sprite>sprites\spr_block</sprite>
       <sprite>sprites\spr_trap</sprite>
+      <sprite>sprites\spr_trigger</sprite>
+      <sprite>sprites\spr_triggerDoor</sprite>
+      <sprite>sprites\spr_triggerTrail</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background"/>
@@ -61,6 +65,9 @@
       <object>objects\obj_block</object>
       <object>objects\par_pullable</object>
       <object>objects\obj_door</object>
+      <object>objects\obj_trigger</object>
+      <object>objects\obj_triggerTrail</object>
+      <object>objects\obj_triggerDoor</object>
       <object>objects\obj_trap</object>
       <object>objects\par_obstacle</object>
     </objects>
