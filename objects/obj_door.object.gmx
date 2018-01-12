@@ -37,6 +37,9 @@ justDeactivated = false;
 deactivatedX = 0;
 deactivatedY = 0;
 canFall = false;
+
+triggerDoorPtr = undefined;
+triggerPtr = undefined;
 </string>
           </argument>
         </arguments>

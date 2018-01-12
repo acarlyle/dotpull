@@ -3,7 +3,7 @@
   <spriteName>spr_block</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1</depth>
+  <depth>-10</depth>
   <persistent>0</persistent>
   <parentName>par_pullable</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -36,6 +36,9 @@ deactivatedX = 0;
 deactivatedY = 0;
 canPull = true;
 canFall = false;
+
+triggerDoorPtr = undefined;
+triggerPtr = undefined;
 </string>
           </argument>
         </arguments>

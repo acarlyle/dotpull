@@ -2,6 +2,8 @@
 
 if (!canPull) return false;
 
+//print("well at least we can pull");
+
 if (instance_place(argument0, argument1, obj_player)){
     print("Can't move, player in the way");
     //print(string(argument0)); print(string(argument1)); print(string(obj_player.x)); print(string(obj_player.y));
@@ -9,8 +11,12 @@ if (instance_place(argument0, argument1, obj_player)){
     return false; //there's a player here!!  don't move!
 }
 if (instance_place(argument0, argument1, obj_hole)){
-    //print("Can't move, hole in the way");
+    print("Can't move, hole in the way");
     if (!canFall) return false; //there's a hole here!!  don't move unless you can go over holes!
+}
+if (instance_place(argument0, argument1, obj_trigger)){
+    print("There's a trigger here.");
+    return true;
 }
 
 if (isDeactivated == true){
@@ -40,24 +46,24 @@ var yDiff = obj_player.y - y;
 
 if (yDiff == 0){ //player is moving left/right; check for objects towards the player
     if (xDiff > 0){ //player is to the right of the key
-        for (var objX = x; objX < obj_player.x; objX += 16){
+        for (var objX = x + 16; objX < obj_player.x; objX += 16){
             if (instance_place(objX, y, par_obstacle)) return false; //don't pull if anything is in the way
         }
     }
     else{ //player is to the left of the key
-        for (var objX = x; objX > obj_player.x; objX -= 16){
+        for (var objX = x - 16; objX > obj_player.x; objX -= 16){
             if (instance_place(objX, y, par_obstacle)) return false; //don't pull if anything is in the way
         }
     }
 }
 if (xDiff == 0){ //player is moving up/down; check for objects towards the player
     if (yDiff < 0){ //player is above the key
-        for (var objY = y; objY > obj_player.y; objY -= 16){
+        for (var objY = y - 16; objY > obj_player.y; objY -= 16){
             if (instance_place(x, objY, par_obstacle)) return false; //don't pull if anything is in the way
         }
     }
     else{ //player is below the key
-        for (var objY = y; objY < obj_player.y; objY += 16){
+        for (var objY = y + 16; objY < obj_player.y; objY += 16){
             if (instance_place(x, objY, par_obstacle)) return false; //don't pull if anything is in the way
         }
     }

@@ -2,7 +2,7 @@
 <room>
   <caption></caption>
   <width>128</width>
-  <height>208</height>
+  <height>192</height>
   <vsnap>16</vsnap>
   <hsnap>16</hsnap>
   <isometric>0</isometric>
@@ -129,10 +129,8 @@ global.roomContents = array(obj_key, door1, door2);</code>
     <instance objName="obj_wall" x="0" y="160" name="inst_D776AD10" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bridge" x="48" y="96" name="inst_99555040" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bridge" x="64" y="96" name="inst_B1A3184B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bridge" x="64" y="192" name="inst_FAF53B4C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bridge" x="48" y="192" name="inst_52DCA357" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_gotoRoom" x="48" y="192" name="inst_808E12CB" locked="0" code="target_x = 48;&#xA;target_y = 0;&#xA;&#xA;target_r = rm_level2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_gotoRoom" x="64" y="192" name="inst_B9DBBDFA" locked="0" code="target_x = 64;&#xA;target_y = 0;&#xA;&#xA;target_r = rm_level2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_gotoRoom" x="48" y="176" name="inst_808E12CB" locked="0" code="target_x = 48;&#xA;target_y = 0;&#xA;&#xA;target_r = rm_level2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_gotoRoom" x="64" y="176" name="inst_B9DBBDFA" locked="0" code="target_x = 64;&#xA;target_y = 0;&#xA;&#xA;target_r = rm_level2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hole" x="0" y="80" name="inst_279F37B0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hole" x="16" y="80" name="inst_92133AA8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hole" x="32" y="80" name="inst_11005418" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

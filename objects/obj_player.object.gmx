@@ -48,6 +48,7 @@ itemHistory = ds_stack_create(); //stores players items as of last position; app
 move = false;
 moved = false;
 undo = false;
+isDead = false;
 </string>
           </argument>
         </arguments>
@@ -96,9 +97,12 @@ ds_stack_destroy(itemHistory);
             <kind>1</kind>
             <string>scr_getInput();
 
+//if (!isDead){
 if (move) handle_playerMove(); //move is true if movement key is pressed
 if (moved) handle_gameMove();  //moved is true if player successfully moved
-if (undo) handle_undoMove();   //undo is true if player wants to undo their latest move
+//}
+
+if (undo) handle_undoMove(); //undo is true if player wants to undo their latest move
 </string>
           </argument>
         </arguments>

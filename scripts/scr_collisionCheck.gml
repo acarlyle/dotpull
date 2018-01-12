@@ -47,6 +47,16 @@ if (instance_place(argument0, argument1, obj_hole)){
     //print("There's a hole here");
     return true; //there's a block here
 }
+if (instance_place(argument0, argument1, obj_trigger)){
+    //print("There's a trigger here");
+    return false; //there's a block here
+}
+if (instance_place(argument0, argument1, obj_triggerDoor)){
+    //print("There's a triggerDoor here");
+    var door = instance_place(argument0, argument1, obj_triggerDoor);
+    if (!door.isDeactivated) return true; //triggerDoor will block your path
+    return false; //there's a block here
+}
 if (instance_place(argument0, argument1, par_wall)){
     return true; //there's a wall here
 }

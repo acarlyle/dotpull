@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-1</depth>
   <persistent>0</persistent>
-  <parentName>par_wall</parentName>
+  <parentName>par_obstacle</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -37,6 +37,9 @@ justDeactivated = false;
 deactivatedX = 0;
 deactivatedY = 0;
 canFall = false;
+
+triggerPtr = undefined;
+triggerDoorPtr = undefined;
 </string>
           </argument>
         </arguments>

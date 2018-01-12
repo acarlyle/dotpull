@@ -4,14 +4,15 @@ print("handle game move");
 var objMove = false;
 
 for (var i = 0; i < array_length_1d(global.roomContents); i++){
-    with(global.roomContents[i]){
+    var object = global.roomContents[i];
+    with(object){
         if (!justDeactivated){ // ACTUALLY NOT JUST DEACTIVATED !!!
             ds_stack_push(moveHistory, string(x) + "," + string(y)); //pushing previous turn's movement
         }
         else{ 
             justDeactivated = false; 
         }
-        //print("Pushed onto object's stack !");
+        print("Pushed onto object's stack !");
         //print(x); print(y);
         if (global.oldPlayerY == y && obj_player.y == y){ //player moved left/right
             if (obj_player.x < x && scr_canPull(x - 16, y, false)) {//player on left side of object 
@@ -24,9 +25,11 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             }
         }
         if (global.oldPlayerX == x && obj_player.x == x){ //player moved up/down
+            //print("let's pull this shit");
             if (obj_player.y < y && scr_canPull(x, y - 16, false)){ //player above object 
                 y -= 16;
                 objMove = true;
+                //print("pulling");
             }
             else if (obj_player.y > y && scr_canPull(x, y + 16, false)){//player below object 
                 y += 16;
@@ -45,7 +48,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
         var newObjPosY = 0;
         
         if (obj_player.y < y && obj_player.x > x){ //player is above the obj and to the right
-                print("up and to the right");
+                //print("up and to the right");
                 newObjPosX = x + 16;
                 newObjPosY = y - 16;
         }
@@ -100,6 +103,19 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                 y += 16;
             }
             objMove = true;
+        }
+        if ((instance_place(x, y, obj_block) || instance_place(x, y, obj_player)) && triggerDoorPtr != undefined){ //this is a trigger being pressed
+            object.triggerDoorPtr.image_index = 1;
+            object.triggerDoorPtr.isDeactivated = true;
+            //print("trigger pressed");
+        }
+        if ((!instance_place(x, y, obj_block) && !instance_place(x, y, obj_player)) && triggerDoorPtr != undefined){ //this is a trigger not being pressed
+            object.triggerDoorPtr.image_index = 0;
+            object.triggerDoorPtr.isDeactivated = false;
+            if (instance_place(obj_player.x, obj_player.y, obj_triggerDoor)){
+                //obj_player.isDead = true; //:(
+                //obj_player.sprite_index = spr_playerDead;
+            } 
         }
         if (!objMove && canFall && instance_place(x, y, obj_hole)){
             //print("and this object falls down");

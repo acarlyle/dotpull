@@ -13,6 +13,7 @@
       <sprite>sprites\spr_hole</sprite>
     </sprites>
     <sprite>sprites\spr_player</sprite>
+    <sprite>sprites\spr_playerDead</sprite>
     <sprites name="controllers">
       <sprite>sprites\spr_gotoRoom</sprite>
     </sprites>
@@ -63,17 +64,19 @@
     <objects name="puzzle elements">
       <object>objects\obj_key</object>
       <object>objects\obj_block</object>
-      <object>objects\par_pullable</object>
       <object>objects\obj_door</object>
       <object>objects\obj_trigger</object>
       <object>objects\obj_triggerTrail</object>
       <object>objects\obj_triggerDoor</object>
       <object>objects\obj_trap</object>
-      <object>objects\par_obstacle</object>
     </objects>
     <objects name="controllers">
       <object>objects\obj_control</object>
       <object>objects\obj_gotoRoom</object>
+    </objects>
+    <objects name="Parents">
+      <object>objects\par_obstacle</object>
+      <object>objects\par_pullable</object>
     </objects>
   </objects>
   <rooms name="rooms">
