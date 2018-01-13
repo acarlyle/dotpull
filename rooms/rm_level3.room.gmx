@@ -126,7 +126,7 @@ global.roomContents = array(block1, block2, block3, block4);
     <instance objName="obj_platform" x="96" y="160" name="inst_8B4183C5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="112" y="160" name="inst_392333B8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="16" y="160" name="inst_A6E1B832" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_gotoRoom" x="112" y="160" name="inst_B67169D5" locked="0" code="target_x = 0;&#xA;target_y = 160;&#xA;&#xA;target_r = rm_level3;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_gotoRoom" x="112" y="160" name="inst_B67169D5" locked="0" code="target_x = 0;&#xA;target_y = 160;&#xA;&#xA;target_r = rm_level4;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

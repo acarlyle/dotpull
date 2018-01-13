@@ -2,6 +2,8 @@
 
 if (!canPull) return false;
 
+if (!instance_place(argument0, argument1, par_platform)) return false;
+
 //print("well at least we can pull");
 
 if (instance_place(argument0, argument1, obj_player)){
