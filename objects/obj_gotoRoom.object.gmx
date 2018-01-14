@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>isPuzzleElement = false;
+</string>
           </argument>
         </arguments>
       </action>

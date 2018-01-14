@@ -4,6 +4,15 @@ print("handle game move");
 var objMove = false;
 
 for (var i = 0; i < array_length_1d(global.roomContents); i++){
+    print("should print out 2 times");
+    with (global.roomContents[i]){
+        print(x);
+    }
+    print("blurgh");
+}
+
+
+for (var i = 0; i < array_length_1d(global.roomContents); i++){
     var object = global.roomContents[i];
     with(object){
         if (!justDeactivated){ // ACTUALLY NOT JUST DEACTIVATED !!!

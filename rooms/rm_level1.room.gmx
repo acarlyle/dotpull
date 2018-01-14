@@ -14,11 +14,9 @@
 
 print("Entering level one");
 
-var key1 = instance_create(32, 160, obj_key);
-var door1 = instance_create(48, 96, obj_door);
-var door2 = instance_create(64, 96, obj_door);
-
-global.roomContents = array(obj_key, door1, door2);</code>
+print("initing room objects");
+global.roomContents = scr_initRoom();
+print("finished initing objects");</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -149,6 +147,9 @@ global.roomContents = array(obj_key, door1, door2);</code>
     <instance objName="obj_hole" x="80" y="112" name="inst_2D8D97FE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hole" x="96" y="112" name="inst_380C7456" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hole" x="112" y="112" name="inst_7D72B5E5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_door" x="48" y="96" name="inst_B2F89D4A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_door" x="64" y="96" name="inst_70526046" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_key" x="32" y="144" name="inst_C7E07DDF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

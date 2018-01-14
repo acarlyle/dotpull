@@ -47,7 +47,9 @@
     <scripts name="Helpers">
       <script>scripts\array.gml</script>
       <script>scripts\scr_split.gml</script>
+      <script>scripts\roomObjectArrayList.gml</script>
     </scripts>
+    <script>scripts\scr_initRoom.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>

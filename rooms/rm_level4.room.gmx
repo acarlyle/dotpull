@@ -12,7 +12,7 @@
   <showcolour>-1</showcolour>
   <code>//append every rewindable object to roomContents arr
 
-print("Entering level three");
+print("Entering level four");
 
 
 
@@ -36,11 +36,7 @@ var initPos = string(obj_player.x) + "," + (string(obj_player.y));
 ds_stack_push(obj_player.moveHistory, initPos);
 ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys));
 
-var block1 = instance_create(64, 128, obj_block);
-var door1 = instance_create(64, 144, obj_door);
-var block2 = instance_create(64, 160, obj_block);
-
-global.roomContents = array(block1, door1, block2);</code>
+global.roomContents = scr_initRoom();</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -98,6 +94,9 @@ global.roomContents = array(block1, door1, block2);</code>
     <instance objName="obj_platform" x="64" y="160" name="inst_3C24BE99" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hole" x="48" y="160" name="inst_2EEC0D8D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hole" x="48" y="128" name="inst_84134973" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="64" y="128" name="inst_DC4B9B1D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="64" y="160" name="inst_22657153" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_door" x="64" y="144" name="inst_BD332826" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

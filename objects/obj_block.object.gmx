@@ -30,6 +30,7 @@ var initPos = string(x) + "," + (string(y));
 print(initPos);
 ds_stack_push(moveHistory, initPos);
 
+isPuzzleElement = true;
 isDeactivated = false;
 justDeactivated = false;
 deactivatedX = 0;
