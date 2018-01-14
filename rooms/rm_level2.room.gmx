@@ -51,9 +51,7 @@ var triggerDoor = instance_place(32, 64, obj_triggerDoor);
 var trigger = instance_place(64, 64, obj_trigger);
 triggerDoor.triggerPtr = trigger;
 trigger.triggerDoorPtr = triggerDoor;
-trigger.image_speed = 0;
 trigger.image_index = 0;
-triggerDoor.image_speed = 0;
 triggerDoor.image_index = 1;
 print("finished initing objects");</code>
   <enableViews>0</enableViews>
@@ -140,9 +138,9 @@ print("finished initing objects");</code>
     <instance objName="obj_triggerDoor" x="32" y="64" name="inst_72E9C3EB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block" x="64" y="64" name="inst_09B1ED55" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block" x="16" y="160" name="inst_39AEEFE9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block" x="32" y="160" name="inst_54BFD25B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block" x="48" y="160" name="inst_52254062" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_trigger" x="64" y="64" name="inst_9B880059" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="32" y="160" name="inst_EBF20B03" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="48" y="160" name="inst_3098A30E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

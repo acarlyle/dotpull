@@ -3,14 +3,6 @@
 print("handle game move");
 var objMove = false;
 
-for (var i = 0; i < array_length_1d(global.roomContents); i++){
-    print("should print out 2 times");
-    with (global.roomContents[i]){
-        print(x);
-    }
-    print("blurgh");
-}
-
 
 for (var i = 0; i < array_length_1d(global.roomContents); i++){
     var object = global.roomContents[i];
@@ -21,7 +13,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
         else{ 
             justDeactivated = false; 
         }
-        print("Pushed onto object's stack !");
+        //print("Pushed onto object's stack !");
         //print(x); print(y);
         if (global.oldPlayerY == y && obj_player.y == y){ //player moved left/right
             if (obj_player.x < x && scr_canPull(x - 16, y, false)) {//player on left side of object 
@@ -116,11 +108,12 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
         if ((instance_place(x, y, obj_block) || instance_place(x, y, obj_player)) && triggerDoorPtr != undefined){ //this is a trigger being pressed
             object.triggerDoorPtr.image_index = 1;
             object.triggerDoorPtr.isDeactivated = true;
-            //print("trigger pressed");
+            print("trigger pressed; trigger door is deactivated");
         }
         if ((!instance_place(x, y, obj_block) && !instance_place(x, y, obj_player)) && triggerDoorPtr != undefined){ //this is a trigger not being pressed
             object.triggerDoorPtr.image_index = 0;
             object.triggerDoorPtr.isDeactivated = false;
+            print("WARNING!!! TRIGGER DOOR ACTIVATED");
             if (instance_place(obj_player.x, obj_player.y, obj_triggerDoor)){
                 //obj_player.isDead = true; //:(
                 //obj_player.sprite_index = spr_playerDead;

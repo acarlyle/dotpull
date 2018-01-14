@@ -44,6 +44,7 @@ ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys));
 
 print("initing room objects");
 global.roomContents = scr_initRoom();
+//global.roomContents = array(block1, block2, block3, block4);
 print("finished initing objects");
 //global.roomContents = array(block3);</code>
   <enableViews>0</enableViews>
@@ -129,10 +130,10 @@ print("finished initing objects");
     <instance objName="obj_platform" x="112" y="160" name="inst_392333B8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="16" y="160" name="inst_A6E1B832" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_gotoRoom" x="112" y="160" name="inst_B67169D5" locked="0" code="target_x = 0;&#xA;target_y = 160;&#xA;&#xA;target_r = rm_level4;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block" x="16" y="160" name="inst_15DCACA3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block" x="32" y="144" name="inst_FBF59ED5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block" x="48" y="160" name="inst_6E246CD9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block" x="32" y="176" name="inst_FCEA93EA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="32" y="176" name="inst_6009F6CF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="16" y="160" name="inst_476A9F05" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="32" y="144" name="inst_D44ABBEB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="48" y="160" name="inst_8B87F2DB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

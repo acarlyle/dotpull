@@ -5,12 +5,23 @@
 var list = ds_list_create();
 
 //print("Creating list");
+
+//EXTREMELY IMPORTANT THAT OBJ BLOCKS ARE AT THE BEGINING OF THE LIST!!!!!!!  
+//THEY ARE WITH DS_LIST_SORT IN ASCENDING ORDER!!!
 with (all) {
     if (isPuzzleElement){
-        ds_list_add(list, self);
+        if (instance_place(x, y, obj_block)){
+            ds_list_insert(list, 0, self);
+        }
+        else{
+            ds_list_add(list, self);
+        }
         //print("added this object to ds list");
     }
 }
+
+ds_list_sort(list, true);
+
 //print("finished creating list");
 
 var arr = roomObjectArrayList(list);

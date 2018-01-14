@@ -48,6 +48,7 @@
       <script>scripts\array.gml</script>
       <script>scripts\scr_split.gml</script>
       <script>scripts\roomObjectArrayList.gml</script>
+      <script>scripts\isActivated.gml</script>
     </scripts>
     <script>scripts\scr_initRoom.gml</script>
   </scripts>
@@ -91,6 +92,7 @@
     <room>rooms\rm_level4</room>
     <room>rooms\rm_level5</room>
     <room>rooms\rm_level6</room>
+    <room>rooms\rm_level7</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
