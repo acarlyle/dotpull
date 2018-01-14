@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>isPuzzleElement = false;
+isDeactivated = false;
 </string>
           </argument>
         </arguments>

@@ -130,10 +130,10 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             x = 0;
             y = 0;
         }
-        else if (!instance_place(x, y, obj_hole) && canFall){
-            sprite_index = spr_key;
-            //print("no hole");
-        }
+        //else if (!instance_place(x, y, obj_hole) && canFall){
+        //    sprite_index = spr_key;
+        //    //print("no hole");
+        //}
         else if(instance_place(x, y, obj_hole) && canFall){
             //print("HOLE");
             sprite_index = spr_keyFloating;

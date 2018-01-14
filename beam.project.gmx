@@ -26,6 +26,7 @@
       <sprite>sprites\spr_trigger</sprite>
       <sprite>sprites\spr_triggerDoor</sprite>
       <sprite>sprites\spr_triggerTrail</sprite>
+      <sprite>sprites\spr_spike</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background"/>
@@ -66,6 +67,7 @@
     </objects>
     <objects name="puzzle elements">
       <object>objects\obj_key</object>
+      <object>objects\obj_spike</object>
       <object>objects\obj_block</object>
       <object>objects\obj_door</object>
       <object>objects\obj_trigger</object>
