@@ -39,6 +39,7 @@ canPull = true;
 canFall = true;
 triggerDoorPtr = undefined;
 triggerPtr = undefined;
+isSpike = false;
 </string>
           </argument>
         </arguments>

@@ -16,6 +16,7 @@ with (all) {
         else{
             ds_list_add(list, self);
         }
+        //if (isSpike) print("is spike");
         //print("added this object to ds list");
     }
 }

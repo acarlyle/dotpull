@@ -40,6 +40,7 @@ canFall = false;
 
 triggerDoorPtr = undefined;
 triggerPtr = undefined;
+isSpike = false;
 </string>
           </argument>
         </arguments>

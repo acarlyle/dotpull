@@ -2,10 +2,10 @@
 
 print("handle_undoMove");
 
-//if (isDead){ 
-//    sprite_index = spr_player;
-//    isDead = false;
-//}
+if (isDead){ 
+    sprite_index = spr_player;
+    isDead = false;
+}
 
 if (!ds_stack_empty(obj_player.moveHistory)){
     //handle player's undo
@@ -32,6 +32,26 @@ if (!ds_stack_empty(obj_player.moveHistory)){
         with(global.roomContents[i]){
             //print("key still here");
             //var obj = global.roomContents[i];
+            //print(object_get_name(global.roomContents[i]));
+            
+            if (instance_place(x, y, obj_spike)){
+                print ("UNDOING SPIK");
+                var spikeStateArr = ds_stack_pop(stateHistory);
+                if (spikeStateArr != undefined){
+                    var stateArr = scr_split(objPosStr);
+                    var stateStr = stateArr[0];
+                    var stateDir = stateArr[1];
+                    if (stateStr == "idle"){
+                        targetLocked = false;
+                        targetDirection = "";
+                    }
+                    else if (stateStr == "active"){
+                        targetLocked = true;
+                        targetDirection = stateDir;
+                    }
+                }
+            }
+            
             var objPosStr = ds_stack_pop(moveHistory); //string e.g. "64,64"
             //print(objPosStr);
             if (objPosStr != undefined){

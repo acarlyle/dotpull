@@ -30,6 +30,12 @@ var initPos = string(x) + "," + (string(y));
 print(initPos);
 ds_stack_push(moveHistory, initPos);
 
+stateHistory = ds_stack_create();
+state = "idle"; //idle or active
+targetDirection = "N/A";
+var initState = state + "," + targetDirection;
+ds_stack_push(stateHistory, initState);
+
 isPuzzleElement = true;
 isDeactivated = false;
 justDeactivated = false;
@@ -39,6 +45,9 @@ canPull = true;
 canFall = true;
 triggerDoorPtr = undefined;
 triggerPtr = undefined;
+isSpike = true;
+targetLocked = false;
+targetDirection = "";
 </string>
           </argument>
         </arguments>
@@ -62,6 +71,7 @@ triggerPtr = undefined;
           <argument>
             <kind>1</kind>
             <string>ds_stack_destroy(moveHistory);
+ds_stack_destroy(stateHistory);
 
 print("DESTROYED key");
 </string>

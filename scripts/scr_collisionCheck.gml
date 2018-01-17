@@ -1,5 +1,12 @@
 ///scr_collisionCheck(int posX, int posY)
 
+if (instance_place(argument0, argument1, obj_spike)){
+    print("ded player");
+    obj_player.isDead = true;
+    obj_player.sprite_index = spr_playerDead;
+    return true;
+}
+
 //print("numkeys");
 //print(obj_player.numKeys);
 if (instance_place(argument0, argument1, obj_door)){

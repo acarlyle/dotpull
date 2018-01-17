@@ -23,7 +23,7 @@ if (isDeactivated == true){
     }
 }
 
-if (instance_place(argument0, argument1, obj_player)){
+if (instance_place(argument0, argument1, obj_player) && !isSpike){
     print("Can't move, player in the way");
     //print(string(argument0)); print(string(argument1)); print(string(obj_player.x)); print(string(obj_player.y));
     //print(string(global.oldPlayerX)); print(string(global.oldPlayerY));

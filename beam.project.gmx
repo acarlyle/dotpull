@@ -27,6 +27,7 @@
       <sprite>sprites\spr_triggerDoor</sprite>
       <sprite>sprites\spr_triggerTrail</sprite>
       <sprite>sprites\spr_spike</sprite>
+      <sprite>sprites\spr_spikeActive</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background"/>

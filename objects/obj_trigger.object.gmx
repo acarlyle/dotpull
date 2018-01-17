@@ -42,6 +42,7 @@ deactivatedY = 0;
 canFall = false;
 
 triggerDoorPtr = undefined;
+isSpike = false;
 </string>
           </argument>
         </arguments>
