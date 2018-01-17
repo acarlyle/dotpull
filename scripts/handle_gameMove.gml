@@ -10,9 +10,10 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
         if (!justDeactivated){ // ACTUALLY NOT JUST DEACTIVATED !!!
             ds_stack_push(moveHistory, string(x) + "," + string(y)); //pushing previous turn's movement
             //print("pushed");
-            if (instance_place(x, y, obj_spike)){
-                ds_stack_push(stateHistory, state);
-                print("pushed state");
+            if (isSpike){
+                ds_stack_push(stateHistory, state + "," + targetDirection);
+                print("pushed stateHistory");
+                print(state+","+targetDirection);
             }
         }
         else{ 
@@ -35,7 +36,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                         else{
                             sprite_index = spr_spike;
                             targetLocked = false;
-                            targetDirection = "";
+                            targetDirection = "idling";
                         }
                         break;
                     case "down": 
@@ -46,7 +47,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                         else{
                             sprite_index = spr_spike;
                             targetLocked = false;
-                            targetDirection = "";
+                            targetDirection = "idling";
                         }
                         break;
                     case "left": 
@@ -57,7 +58,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                         else{
                             sprite_index = spr_spike;
                             targetLocked = false;
-                            targetDirection = "";
+                            targetDirection = "idling";
                         }
                         break;
                     case "right": 
@@ -68,7 +69,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                         else{
                             sprite_index = spr_spike;
                             targetLocked = false;
-                            targetDirection = "";
+                            targetDirection = "idling";
                         }
                         break;
                     case "upright": 
@@ -80,7 +81,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                         else{
                             sprite_index = spr_spike;
                             targetLocked = false;
-                            targetDirection = "";
+                            targetDirection = "idling";
                         }
                         break;
                     case "upleft": 
@@ -92,7 +93,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                         else{
                             sprite_index = spr_spike;
                             targetLocked = false;
-                            targetDirection = "";
+                            targetDirection = "idling";
                         }
                         break;
                     case "downright": 
@@ -104,7 +105,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                         else{
                             sprite_index = spr_spike;
                             targetLocked = false;
-                            targetDirection = "";
+                            targetDirection = "idling";
                         }
                         break;
                     case "downleft": 
@@ -116,7 +117,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                         else{
                             sprite_index = spr_spike;
                             targetLocked = false;
-                            targetDirection = "";
+                            targetDirection = "idling";
                         }
                         break;
                 }
@@ -126,11 +127,13 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                 print("check for player lock");
                 if (obj_player.y == y){
                     if (obj_player.x < x && scr_canPull(x - 16, y, false)) {
+                        state = "active";
                         targetDirection = "left"; 
                         targetLocked = true;
                         sprite_index = spr_spikeActive;
                     }
                     else if (obj_player.x > x && scr_canPull(x + 16, y, false)) {
+                        state = "active";
                         targetDirection = "right"; 
                         targetLocked = true;
                         sprite_index = spr_spikeActive;
@@ -138,11 +141,13 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                 }
                 else if (obj_player.x == x){
                     if (obj_player.y < y && scr_canPull(x, y - 16, false)) {
+                        state = "active";
                         targetDirection = "up"; 
                         targetLocked = true;
                         sprite_index = spr_spikeActive;
                     }
                     else if (obj_player.y > y && scr_canPull(x, y + 16, false)) {
+                        state = "active";
                         targetDirection = "down"; 
                         targetLocked = true;
                         sprite_index = spr_spikeActive;
@@ -182,6 +187,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                     if (obj_player.y < y && obj_player.x > x){ //player is above the obj and to the right
                         //x += 16;
                         //y -= 16;
+                        state = "active";
                         targetDirection = "upright"; 
                         targetLocked = true;
                         sprite_index = spr_spikeActive;
@@ -189,6 +195,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                     if (obj_player.y < y && obj_player.x < x){ //player is above the obj and to the left
                         //x -= 16;
                         //y -= 16; 
+                        state = "active";
                         targetDirection = "upleft"; 
                         targetLocked = true;
                         sprite_index = spr_spikeActive;
@@ -196,6 +203,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                     if (obj_player.y > y && obj_player.x > x){ //player is below the obj and to the right
                         //x += 16;
                         //y += 16; 
+                        state = "active";
                         targetDirection = "downright"; 
                         targetLocked = true;
                         sprite_index = spr_spikeActive;
@@ -203,6 +211,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                     if (obj_player.y > y && obj_player.x < x){ //player is below the obj and to the left
                         //x -= 16;
                         //y += 16;
+                        state = "active";
                         targetDirection = "downleft"; 
                         targetLocked = true;
                         sprite_index = spr_spikeActive;

@@ -51,6 +51,7 @@
       <script>scripts\scr_split.gml</script>
       <script>scripts\roomObjectArrayList.gml</script>
       <script>scripts\isActivated.gml</script>
+      <script>scripts\stringSplit.gml</script>
     </scripts>
     <script>scripts\scr_initRoom.gml</script>
   </scripts>

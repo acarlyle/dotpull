@@ -34,20 +34,27 @@ if (!ds_stack_empty(obj_player.moveHistory)){
             //var obj = global.roomContents[i];
             //print(object_get_name(global.roomContents[i]));
             
-            if (instance_place(x, y, obj_spike)){
-                print ("UNDOING SPIK");
-                var spikeStateArr = ds_stack_pop(stateHistory);
-                if (spikeStateArr != undefined){
-                    var stateArr = scr_split(objPosStr);
+            if (isSpike){
+                var spikeStateStr = ds_stack_pop(stateHistory);
+                if (spikeStateStr != undefined){
+                    print ("UNDOING SPIK");
+                    print(spikeStateStr);
+                    var stateArr = scr_split(spikeStateStr);
                     var stateStr = stateArr[0];
                     var stateDir = stateArr[1];
+                    print(stateStr);
+                    print(stateDir);
                     if (stateStr == "idle"){
                         targetLocked = false;
-                        targetDirection = "";
+                        state = "idle";
+                        targetDirection = "idling";
+                        sprite_index = spr_spike;
                     }
                     else if (stateStr == "active"){
                         targetLocked = true;
+                        state = "active";
                         targetDirection = stateDir;
+                        sprite_index = spr_spikeActive;
                     }
                 }
             }

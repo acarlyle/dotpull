@@ -32,8 +32,10 @@ ds_stack_push(moveHistory, initPos);
 
 stateHistory = ds_stack_create();
 state = "idle"; //idle or active
-targetDirection = "N/A";
+targetDirection = "idling";
 var initState = state + "," + targetDirection;
+print("init state: ");
+print(initState);
 ds_stack_push(stateHistory, initState);
 
 isPuzzleElement = true;
@@ -47,7 +49,6 @@ triggerDoorPtr = undefined;
 triggerPtr = undefined;
 isSpike = true;
 targetLocked = false;
-targetDirection = "";
 </string>
           </argument>
         </arguments>
