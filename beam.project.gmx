@@ -22,6 +22,7 @@
       <sprite>sprites\spr_keyFloating</sprite>
       <sprite>sprites\spr_door</sprite>
       <sprite>sprites\spr_block</sprite>
+      <sprite>sprites\spr_blockPush</sprite>
       <sprite>sprites\spr_trap</sprite>
       <sprite>sprites\spr_trigger</sprite>
       <sprite>sprites\spr_triggerDoor</sprite>
@@ -71,6 +72,7 @@
       <object>objects\obj_key</object>
       <object>objects\obj_spike</object>
       <object>objects\obj_block</object>
+      <object>objects\obj_blockPush</object>
       <object>objects\obj_door</object>
       <object>objects\obj_trigger</object>
       <object>objects\obj_triggerTrail</object>
@@ -95,6 +97,7 @@
     <room>rooms\rm_level3</room>
     <room>rooms\rm_level4</room>
     <room>rooms\rm_level5</room>
+    <room>rooms\rm_level8</room>
     <room>rooms\rm_level6</room>
     <room>rooms\rm_level7</room>
   </rooms>

@@ -2,6 +2,9 @@
 
 if (!canPull) return false;
 
+print(argument0);
+print(argument1);
+
 if (instance_place(x, y, obj_triggerDoor) && !instance_place(argument0, argument1, obj_wall)){
     print("obj trapped above");
     return false; //can't move if above
@@ -24,9 +27,26 @@ if (isDeactivated == true){
 }
 
 if (instance_place(argument0, argument1, obj_spike)){
+    print("Spike in the way!");
     return false;
 }
 if (instance_place(argument0, argument1, obj_block)){
+    print("Block in the way!");
+    return false;
+}
+if (instance_place(argument0, argument1, obj_key)){
+    print("Key in the way!");
+    return false;
+}
+
+if (instance_place(argument0, argument1, obj_trigger)){
+    print("There's a trigger here.");
+    return true;
+}
+if (instance_place(argument0, argument1, obj_triggerDoor)){
+    print("There's a triggerDoor here.");
+    var triggerDoor = instance_place(argument0, argument1, obj_triggerDoor);
+    if (triggerDoor.isDeactivated) return true;
     return false;
 }
 
@@ -44,67 +64,60 @@ if (instance_place(argument0, argument1, obj_hole)){
 var xDiff = obj_player.x - x;
 var yDiff = obj_player.y - y;
 
-if (yDiff == 0){ //player is moving left/right; check for objects towards the player
-    if (xDiff > 0){ //player is to the right of the obj
-        for (var objX = x + 16; objX < obj_player.x; objX += 16){
-            if (instance_place(objX, y, par_obstacle)){
-                var obs = instance_place(objX, y, par_obstacle);
-                if (isActivated(obs)){
-                    return false; //don't pull if anything is in the way
-                }
-            }
-        }
-    }
-    else{ //player is to the left of the obj
-        for (var objX = x - 16; objX > obj_player.x; objX -= 16){
-            if (instance_place(objX, y, par_obstacle)){
-                var obs = instance_place(objX, y, par_obstacle);
-                if (isActivated(obs)){
-                    return false; //don't pull if anything is in the way
-                }
-            }
-        }
-    }
-}
-if (xDiff == 0){ //player is moving up/down; check for objects towards the player
-    if (yDiff < 0){ //player is above the obj
-        for (var objY = y - 16; objY > obj_player.y; objY -= 16){
-            if (instance_place(x, objY, par_obstacle)){
-                var obs = instance_place(x, objY, par_obstacle);
-                print("isDeactived?");
-                if (isActivated(obs)){
-                    return false; //don't pull if anything is in the way
-                }
-            }
-        }
-    }
-    else{ //player is below the obj
-        for (var objY = y + 16; objY < obj_player.y; objY += 16){
-            if (instance_place(x, objY, par_obstacle)){
-                var obs = instance_place(x, objY, par_obstacle);
-                print(obs.isDeactivated);
-                if (!obs.isDeactivated){
-                    print("oh no it is activated");
-                    return false; //don't pull if anything is in the way
-                }
-            }
-        }
-    }
-}
+if (!argument2){ //this checks left/right only
 
-if (instance_place(argument0, argument1, obj_trigger)){
-    print("There's a trigger here.");
-    return true;
-}
-if (instance_place(argument0, argument1, obj_triggerDoor)){
-    print("There's a triggerDoor here.");
-    var triggerDoor = instance_place(argument0, argument1, obj_triggerDoor);
-    if (triggerDoor.isDeactivated) return true;
-    return false;
+    if (yDiff == 0){ //player is moving left/right; check for objects towards the player
+        if (xDiff > 0){ //player is to the right of the obj
+            for (var objX = x + 16; objX < obj_player.x; objX += 16){
+                if (instance_place(objX, y, par_obstacle)){
+                    var obs = instance_place(objX, y, par_obstacle);
+                    if (isActivated(obs)){
+                        return false; //don't pull if anything is in the way
+                    }
+                }
+            }
+        }
+        else{ //player is to the left of the obj
+            for (var objX = x - 16; objX > obj_player.x; objX -= 16){
+                if (instance_place(objX, y, par_obstacle)){
+                    var obs = instance_place(objX, y, par_obstacle);
+                    if (isActivated(obs)){
+                        return false; //don't pull if anything is in the way
+                    }
+                }
+            }
+        }
+    }
+    if (xDiff == 0){ //player is moving up/down; check for objects towards the player
+        if (yDiff < 0){ //player is above the obj
+            for (var objY = y - 16; objY > obj_player.y; objY -= 16){
+                if (instance_place(x, objY, par_obstacle)){
+                    var obs = instance_place(x, objY, par_obstacle);
+                    print("isDeactived?");
+                    if (isActivated(obs)){
+                        return false; //don't pull if anything is in the way
+                    }
+                }
+            }
+        }
+        else{ //player is below the obj
+            for (var objY = y + 16; objY < obj_player.y; objY += 16){
+                if (instance_place(x, objY, par_obstacle)){
+                    var obs = instance_place(x, objY, par_obstacle);
+                    print(obs.isDeactivated);
+                    if (!obs.isDeactivated){
+                        print("oh no it is activated");
+                        return false; //don't pull if anything is in the way
+                    }
+                }
+            }
+        }
+    }
 }
 
 //diagonal movement
 if (argument2 == true){
+    print("Diag checking in scr_canPull");
     if (obj_player.y < y && obj_player.x > x){ //player is above the obj and to the right; pull object upright
         //print("pull object up right");
         var objX = x+16; var objY = y-16;
