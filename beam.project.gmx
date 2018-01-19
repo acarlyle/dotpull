@@ -23,7 +23,7 @@
       <sprite>sprites\spr_door</sprite>
       <sprite>sprites\spr_block</sprite>
       <sprite>sprites\spr_blockPush</sprite>
-      <sprite>sprites\spr_trap</sprite>
+      <sprite>sprites\spr_snare</sprite>
       <sprite>sprites\spr_trigger</sprite>
       <sprite>sprites\spr_triggerDoor</sprite>
       <sprite>sprites\spr_triggerTrail</sprite>
@@ -78,7 +78,7 @@
       <object>objects\obj_trigger</object>
       <object>objects\obj_triggerTrail</object>
       <object>objects\obj_triggerDoor</object>
-      <object>objects\obj_trap</object>
+      <object>objects\obj_snare</object>
     </objects>
     <objects name="controllers">
       <object>objects\obj_control</object>

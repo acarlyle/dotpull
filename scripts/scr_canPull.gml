@@ -15,7 +15,11 @@ if (!instance_place(argument0, argument1, par_platform)){
     return false;
 }
 
-if (isDeactivated == true){
+if instance_place(x, y, obj_snare){
+    isDeactivated = true;
+}
+
+if (isDeactivated == true && (canPull || canPush)){
     if (x != 0 && y != 0){
         print("Not deactivated anymore");
         isDeactivated = false;
