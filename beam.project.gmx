@@ -101,6 +101,12 @@
     <room>rooms\rm_level8</room>
     <room>rooms\rm_level6</room>
     <room>rooms\rm_level7</room>
+    <rooms name="ian levels">
+      <room>rooms\rm_level_Ian_1</room>
+      <room>rooms\rm_level_Ian_2</room>
+      <room>rooms\rm_level_Ian_3</room>
+      <room>rooms\rm_level_Ian_4</room>
+    </rooms>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

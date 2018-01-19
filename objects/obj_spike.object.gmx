@@ -44,6 +44,7 @@ justDeactivated = false;
 deactivatedX = 0;
 deactivatedY = 0;
 canPull = true;
+canPush = false;
 canFall = true;
 triggerDoorPtr = undefined;
 triggerPtr = undefined;

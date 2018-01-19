@@ -44,7 +44,7 @@ scr_initPlayerPosition(3, 3);
 
 scr_applyScreenRes();
 
-room_goto(rm_level1);
+room_goto(rm_level_Ian_4);
 
 </string>
           </argument>
