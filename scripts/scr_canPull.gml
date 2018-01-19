@@ -6,12 +6,12 @@ print(argument0);
 print(argument1);
 
 if (instance_place(x, y, obj_triggerDoor) && !instance_place(argument0, argument1, obj_wall)){
-    print("obj trapped above");
+    //print("obj trapped above");
     return false; //can't move if above
 }
 
 if (!instance_place(argument0, argument1, par_platform)){
-    print("No platform to pull/push to");
+    //print("No platform to pull/push to");
     return false;
 }
 

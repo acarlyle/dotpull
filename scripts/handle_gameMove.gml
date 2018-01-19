@@ -20,6 +20,21 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             justDeactivated = false; 
         }
         
+        if ((instance_place(x, y, par_pullable) || instance_place(x, y, obj_player)) && triggerDoorPtr != undefined){ //this is a trigger being pressed
+            object.triggerDoorPtr.image_index = 1;
+            object.triggerDoorPtr.isDeactivated = true;
+            //print("trigger pressed; trigger door is deactivated");
+        }
+        if ((!instance_place(x, y, par_pullable) && !instance_place(x, y, obj_player)) && triggerDoorPtr != undefined){ //this is a trigger not being pressed
+            object.triggerDoorPtr.image_index = 0;
+            object.triggerDoorPtr.isDeactivated = false;
+            print("WARNING!!! TRIGGER DOOR ACTIVATED");
+            if (instance_place(obj_player.x, obj_player.y, obj_triggerDoor)){
+                //obj_player.isDead = true; //:(
+                //obj_player.sprite_index = spr_playerDead;
+            } 
+        }
+        
 // DIFFERENT TYPES OF MOVEMENT BEGIN
         
         //handle movement for spike object
@@ -333,20 +348,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                 }
                 objMove = true;
             }
-            if ((instance_place(x, y, obj_block) || instance_place(x, y, obj_player)) && triggerDoorPtr != undefined){ //this is a trigger being pressed
-                object.triggerDoorPtr.image_index = 1;
-                object.triggerDoorPtr.isDeactivated = true;
-                //print("trigger pressed; trigger door is deactivated");
-            }
-            if ((!instance_place(x, y, obj_block) && !instance_place(x, y, obj_player)) && triggerDoorPtr != undefined){ //this is a trigger not being pressed
-                object.triggerDoorPtr.image_index = 0;
-                object.triggerDoorPtr.isDeactivated = false;
-                print("WARNING!!! TRIGGER DOOR ACTIVATED");
-                if (instance_place(obj_player.x, obj_player.y, obj_triggerDoor)){
-                    //obj_player.isDead = true; //:(
-                    //obj_player.sprite_index = spr_playerDead;
-                } 
-            }
+            
             if (!objMove && canFall && instance_place(x, y, obj_hole)){
                 //print("and this object falls down");
                 sprite_index = spr_key;
