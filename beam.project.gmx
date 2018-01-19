@@ -35,6 +35,7 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_canPull.gml</script>
+    <script>scripts\scr_canPush.gml</script>
     <scripts name="settings">
       <script>scripts\scr_applyScreenRes.gml</script>
     </scripts>

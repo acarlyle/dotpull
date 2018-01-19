@@ -33,6 +33,7 @@ ds_stack_push(moveHistory, initPos);
 isPuzzleElement = true;
 isLocked = true;
 canPull = false;
+canPush = false;
 isDeactivated = false;
 justDeactivated = false;
 deactivatedX = 0;

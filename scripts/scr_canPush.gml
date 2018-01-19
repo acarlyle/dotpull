@@ -1,6 +1,6 @@
-///scr_canPull(int objPosX, int objPosY, bool moveDiag)
+///scr_canPush(int objPosX, int objPosY, bool moveDiag)
 
-if (!(canPull || canPush)) return false;
+if (!canPush) return false;
 
 print(argument0);
 print(argument1);
@@ -10,10 +10,9 @@ if (instance_place(x, y, obj_triggerDoor) && !instance_place(argument0, argument
     return false; //can't move if above
 }
 
-if (!instance_place(argument0, argument1, par_platform)){
-    print("No platform to pull/push to");
-    return false;
-}
+if (!instance_place(argument0, argument1, par_platform)) return false;
+
+//print("well at least we can pull");
 
 if (isDeactivated == true){
     if (x != 0 && y != 0){
@@ -62,12 +61,12 @@ if (instance_place(argument0, argument1, obj_hole)){
     if (!canFall) return false; //there's a hole here!!  don't move unless you can go over holes!
 }
 
-print("this far...");
-
 var xDiff = obj_player.x - x;
 var yDiff = obj_player.y - y;
 
-if (!argument2 && canPull && !canPush){ //this checks left/right only
+if (!argument2){ //this checks left/right only
+
+    print("checking left/right in canPush");
 
     if (yDiff == 0){ //player is moving left/right; check for objects towards the player
         if (xDiff > 0){ //player is to the right of the obj
@@ -119,7 +118,7 @@ if (!argument2 && canPull && !canPush){ //this checks left/right only
 }
 
 //diagonal movement
-if (argument2 == true && canPull && !canPush){
+if (argument2 == true){
     print("Diag checking in scr_canPull");
     if (obj_player.y < y && obj_player.x > x){ //player is above the obj and to the right; pull object upright
         //print("pull object up right");
