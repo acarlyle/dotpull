@@ -65,11 +65,13 @@ if (instance_place(argument0, argument1, obj_hole)){
 }
 
 if (isSpike){
-    if (instance_place(argument0, argument1, par_obstacle)){
-        print("SPIKE STOPPED BY OBSTACLE!!!!");
-        return false;
+    if (targetLocked){
+        if (instance_place(argument0, argument1, par_obstacle)){
+            print("SPIKE STOPPED BY OBSTACLE!!!!");
+            return false;
+        }
+        else return true;
     }
-    else return true;
 }
 
 //print("this far...");

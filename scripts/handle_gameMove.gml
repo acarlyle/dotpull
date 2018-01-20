@@ -163,6 +163,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                         targetDirection = "left"; 
                         targetLocked = true;
                         sprite_index = spr_spikeActive;
+                        print("target just locked");
                     }
                     else if (obj_player.x > x && scr_canPullPush(x + global.TILE_SIZE, y, false)) {
                         state = "active";
