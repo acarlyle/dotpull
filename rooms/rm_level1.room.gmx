@@ -14,9 +14,27 @@
 
 print("Entering level one");
 
-print("initing room objects");
-global.roomContents = scr_initRoom();
-print("finished initing objects");</code>
+if (instance_number(obj_player) == 0) { //spawning in directly from this level
+    global.playerX = 32; //set player x and y position
+    global.playerY = 48; 
+    
+    player = instance_create(global.playerX, global.playerY, obj_player);
+    var initPos = string(obj_player.x) + "," + (string(obj_player.y));
+    //print(initPos);
+    ds_stack_push(obj_player.moveHistory, initPos);
+    ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys));
+}
+else{
+    obj_player.x = global.playerX;
+    obj_player.y = global.playerY;
+}
+
+
+var initPos = string(obj_player.x) + "," + (string(obj_player.y));
+ds_stack_push(obj_player.moveHistory, initPos);
+ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys));
+
+global.roomContents = scr_initRoom();</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

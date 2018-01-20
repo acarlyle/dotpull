@@ -10,18 +10,21 @@ var list = ds_list_create();
 //THEY ARE WITH DS_LIST_SORT IN ASCENDING ORDER!!!
 with (all) {
     if (isPuzzleElement){
-        if (instance_place(x, y, obj_block)){
+        //if (instance_place(x, y, obj_block)){
+        if (isMovePriority){ 
             ds_list_insert(list, 0, self);
+            print(object_index);
         }
         else{
             ds_list_add(list, self);
+            print(object_index);
         }
         //if (isSpike) print("is spike");
         //print("added this object to ds list");
     }
 }
 
-ds_list_sort(list, true);
+ds_list_sort(list, false);
 
 //print("finished creating list");
 

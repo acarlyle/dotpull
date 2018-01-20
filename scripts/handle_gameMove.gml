@@ -7,6 +7,7 @@ var objMove = false;
 for (var i = 0; i < array_length_1d(global.roomContents); i++){
     var object = global.roomContents[i];
     with(object){
+        print("Handling " + object_get_name(object));
         if (!justDeactivated){ // ACTUALLY NOT JUST DEACTIVATED !!!
             ds_stack_push(moveHistory, string(x) + "," + string(y)); //pushing previous turn's movement
             //print("pushed");

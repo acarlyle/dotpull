@@ -50,6 +50,7 @@ triggerDoorPtr = undefined;
 triggerPtr = undefined;
 isSpike = true;
 targetLocked = false;
+isMovePriority = true;
 </string>
           </argument>
         </arguments>

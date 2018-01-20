@@ -17,7 +17,7 @@ print("Entering level five");
 
 
 if (instance_number(obj_player) == 0) { //spawning in directly from this level
-    global.playerX = 32; //set player x and y position
+    global.playerX = 48; //set player x and y position
     global.playerY = 0; 
     
     player = instance_create(global.playerX, global.playerY, obj_player);
@@ -42,21 +42,21 @@ var trigger = instance_place(80, 32, obj_trigger);
 triggerDoor.triggerPtr = trigger;
 trigger.triggerDoorPtr = triggerDoor;
 trigger.image_index = 0;
-triggerDoor.image_index = 0;
+triggerDoor.image_index = 1;
 
 var triggerDoor2 = instance_place(48, 112, obj_triggerDoor);
 var trigger2 = instance_place(32, 64, obj_trigger);
-triggerDoor2.triggerPtr = trigger;
-trigger2.triggerDoorPtr = triggerDoor;
+triggerDoor2.triggerPtr = trigger2;
+trigger2.triggerDoorPtr = triggerDoor2;
 trigger2.image_index = 0;
-triggerDoor2.image_index = 0;
+triggerDoor2.image_index = 1;
 
 var triggerDoor3 = instance_place(48, 128, obj_triggerDoor);
 var trigger3 = instance_place(96, 80, obj_trigger);
-triggerDoor3.triggerPtr = trigger;
-trigger3.triggerDoorPtr = triggerDoor;
+triggerDoor3.triggerPtr = trigger3;
+trigger3.triggerDoorPtr = triggerDoor3;
 trigger3.image_index = 0;
-triggerDoor3.image_index = 0;</code>
+triggerDoor3.image_index = 1;</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
