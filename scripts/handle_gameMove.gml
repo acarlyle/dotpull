@@ -7,7 +7,7 @@ var objMove = false;
 for (var i = 0; i < array_length_1d(global.roomContents); i++){
     var object = global.roomContents[i];
     with(object){
-        print("Handling " + object_get_name(object));
+        print("Handling " + object_get_name(object.object_index));
         if (!justDeactivated){ // ACTUALLY NOT JUST DEACTIVATED !!!
             ds_stack_push(moveHistory, string(x) + "," + string(y)); //pushing previous turn's movement
             //print("pushed");
@@ -47,7 +47,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
         //handle movement for spike object
         if (object.isSpike){
             if (targetLocked){
-                //print("TARGET IS LOCKED");
+                print("TARGET IS LOCKED");
                 state = "active";
                 switch (targetDirection){
                     case "up": 
@@ -59,6 +59,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                             sprite_index = spr_spike;
                             targetLocked = false;
                             targetDirection = "idling";
+                            state = "idle";
                         }
                         break;
                     case "down": 
@@ -70,6 +71,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                             sprite_index = spr_spike;
                             targetLocked = false;
                             targetDirection = "idling";
+                            state = "idle";
                         }
                         break;
                     case "left": 
@@ -81,6 +83,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                             sprite_index = spr_spike;
                             targetLocked = false;
                             targetDirection = "idling";
+                            state = "idle";
                         }
                         break;
                     case "right": 
@@ -92,6 +95,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                             sprite_index = spr_spike;
                             targetLocked = false;
                             targetDirection = "idling";
+                            state = "idle";
                         }
                         break;
                     case "upright": 
@@ -104,6 +108,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                             sprite_index = spr_spike;
                             targetLocked = false;
                             targetDirection = "idling";
+                            state = "idle";
                         }
                         break;
                     case "upleft": 
@@ -117,6 +122,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                             sprite_index = spr_spike;
                             targetLocked = false;
                             targetDirection = "idling";
+                            state = "idle";
                         }
                         break;
                     case "downright": 
@@ -129,6 +135,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                             sprite_index = spr_spike;
                             targetLocked = false;
                             targetDirection = "idling";
+                            state = "idle";
                         }
                         break;
                     case "downleft": 
@@ -141,11 +148,13 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                             sprite_index = spr_spike;
                             targetLocked = false;
                             targetDirection = "idling";
+                            state = "idle";
                         }
                         break;
                 }
             }
             else{ //check if player in line for target lock
+                print("checking for player lock");
                 state = "idle";
                 //print("check for player lock");
                 if (obj_player.y == y){

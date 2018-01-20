@@ -64,6 +64,14 @@ if (instance_place(argument0, argument1, obj_hole)){
     if (!canFall) return false; //there's a hole here!!  don't move unless you can go over holes!
 }
 
+if (isSpike){
+    if (instance_place(argument0, argument1, par_obstacle)){
+        print("SPIKE STOPPED BY OBSTACLE!!!!");
+        return false;
+    }
+    else return true;
+}
+
 //print("this far...");
 
 var xDiff = obj_player.x - x;

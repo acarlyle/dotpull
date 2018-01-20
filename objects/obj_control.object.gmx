@@ -38,8 +38,8 @@ global.set_phoneRes = 3; //act phone value is 5 (960 * 640)
 move = false;
 
 global.TILE_SIZE = 16;
-global.windowWidth = 128;
-global.windowHeight = 192;
+global.WINDOW_WIDTH = 128;
+global.WINDOW_HEIGHT = 192;
 
 scr_initPlayerPosition(3, 3);
 //global.playerX = 80;
@@ -49,7 +49,7 @@ scr_initPlayerPosition(3, 3);
 scr_applyScreenRes();
 
 room_goto(rm_level_Ian_6);
-//room_goto(rm_level1);
+room_goto(rm_level1);
 
 </string>
           </argument>
