@@ -12,8 +12,8 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             //print("pushed");
             if (isSpike){
                 ds_stack_push(stateHistory, state + "," + targetDirection);
-                //print("pushed stateHistory");
-                //print(state+","+targetDirection);
+                print("pushed stateHistory");
+                print(state+","+targetDirection);
             }
         }
         else{ 
@@ -33,6 +33,12 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                 //obj_player.isDead = true; //:(
                 //obj_player.sprite_index = spr_playerDead;
             } 
+        }
+        if (instance_place(x, y, obj_snare)) {
+            //isDeactivated = true;
+            print("Obj has been deactivated (snared)");
+            print(isSpike);
+            continue;
         }
         
 // DIFFERENT TYPES OF MOVEMENT BEGIN
@@ -249,7 +255,11 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             
         } //end spike logic
         
+        
+        
+        
         //handle movement for normal pull behavior
+        
         else if (canPull || canPush){
             //print("Pushed onto object's stack !");
             //print(x); print(y);

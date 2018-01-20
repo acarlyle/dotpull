@@ -58,15 +58,11 @@
   </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>
-    <objects name="wall">
-      <object>objects\par_wall</object>
-      <object>objects\obj_wall</object>
-    </objects>
     <objects name="env">
-      <object>objects\par_platform</object>
       <object>objects\obj_platform</object>
       <object>objects\obj_bridge</object>
       <object>objects\obj_hole</object>
+      <object>objects\obj_wall</object>
     </objects>
     <objects name="puzzle elements">
       <object>objects\obj_key</object>
@@ -86,6 +82,8 @@
     <objects name="Parents">
       <object>objects\par_obstacle</object>
       <object>objects\par_pullable</object>
+      <object>objects\par_wall</object>
+      <object>objects\par_platform</object>
     </objects>
   </objects>
   <rooms name="rooms">

@@ -1,9 +1,10 @@
 ///scr_canPullPush(int objPosX, int objPosY, bool moveDiag)
 
 if (!(canPull || canPush)) return false;
+if (isDeactivated) return false;
 
-print(argument0);
-print(argument1);
+//print(argument0);
+//print(argument1);
 
 if (instance_place(x, y, obj_triggerDoor) && !instance_place(argument0, argument1, obj_wall)){
     //print("obj trapped above");
@@ -15,11 +16,8 @@ if (!instance_place(argument0, argument1, par_platform)){
     return false;
 }
 
-if instance_place(x, y, obj_snare){
-    isDeactivated = true;
-}
-
-if (isDeactivated == true && (canPull || canPush)){
+//key parsing
+/*if (isDeactivated == true && (canPull || canPush)){
     if (x != 0 && y != 0){
         print("Not deactivated anymore");
         isDeactivated = false;
@@ -29,27 +27,27 @@ if (isDeactivated == true && (canPull || canPush)){
         print("Obj deactivated"); 
         return false; //do not pull this object
     }
-}
+}*/
 
 if (instance_place(argument0, argument1, obj_spike)){
-    print("Spike in the way!");
+    //print("Spike in the way!");
     return false;
 }
 if (instance_place(argument0, argument1, obj_block)){
-    print("Block in the way!");
+    //print("Block in the way!");
     return false;
 }
 if (instance_place(argument0, argument1, obj_key)){
-    print("Key in the way!");
+    //print("Key in the way!");
     return false;
 }
 
 if (instance_place(argument0, argument1, obj_trigger)){
-    print("There's a trigger here.");
+    //print("There's a trigger here.");
     return true;
 }
 if (instance_place(argument0, argument1, obj_triggerDoor)){
-    print("There's a triggerDoor here.");
+    //print("There's a triggerDoor here.");
     var triggerDoor = instance_place(argument0, argument1, obj_triggerDoor);
     if (triggerDoor.isDeactivated) return true;
     return false;
@@ -62,11 +60,11 @@ if (instance_place(argument0, argument1, obj_player) && !isSpike){
     return false; //there's a player here!!  don't move!
 }
 if (instance_place(argument0, argument1, obj_hole)){
-    print("Can't move, hole in the way");
+    //print("Can't move, hole in the way");
     if (!canFall) return false; //there's a hole here!!  don't move unless you can go over holes!
 }
 
-print("this far...");
+//print("this far...");
 
 var xDiff = obj_player.x - x;
 var yDiff = obj_player.y - y;
@@ -88,7 +86,10 @@ if (!argument2 && canPull && !canPush){ //this checks left/right only
             for (var objX = x - global.TILE_SIZE; objX > obj_player.x; objX -= global.TILE_SIZE){
                 if (instance_place(objX, y, par_obstacle)){
                     var obs = instance_place(objX, y, par_obstacle);
-                    if (isActivated(obs)){
+                    if (isActivated(obs) && !instance_place(objX, y, obj_snare)){
+                        print(objX);
+                        print("something i nthe way");
+                        print(isDeactivated);
                         return false; //don't pull if anything is in the way
                     }
                 }
@@ -100,7 +101,7 @@ if (!argument2 && canPull && !canPush){ //this checks left/right only
             for (var objY = y - global.TILE_SIZE; objY > obj_player.y; objY -= global.TILE_SIZE){
                 if (instance_place(x, objY, par_obstacle)){
                     var obs = instance_place(x, objY, par_obstacle);
-                    print("isDeactived?");
+                    //print("isDeactived?");
                     if (isActivated(obs)){
                         return false; //don't pull if anything is in the way
                     }
@@ -111,7 +112,7 @@ if (!argument2 && canPull && !canPush){ //this checks left/right only
             for (var objY = y + global.TILE_SIZE; objY < obj_player.y; objY += global.TILE_SIZE){
                 if (instance_place(x, objY, par_obstacle)){
                     var obs = instance_place(x, objY, par_obstacle);
-                    print(obs.isDeactivated);
+                    //print(obs.isDeactivated);
                     if (!obs.isDeactivated){
                         print("oh no it is activated");
                         return false; //don't pull if anything is in the way
