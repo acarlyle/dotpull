@@ -65,11 +65,11 @@ if (!ds_stack_empty(obj_player.moveHistory)){
                 var objCoordArr = scr_split(objPosStr);
                 x = objCoordArr[0];
                 y = objCoordArr[1];
-                if ((instance_place(x, y, obj_block) || instance_place(x, y, obj_player)) && triggerDoorPtr != undefined){ //this is a trigger being pressed
+                if ((instance_place(x, y, par_pullable) || instance_place(x, y, obj_player)) && triggerDoorPtr != undefined){ //this is a trigger being pressed
                     self.triggerDoorPtr.image_index = 1;
                     self.triggerDoorPtr.isDeactivated = true;
                 }
-                if ((!instance_place(x, y, obj_block) && !instance_place(x, y, obj_player)) && triggerDoorPtr != undefined){ //this is a trigger not being pressed
+                if ((!instance_place(x, y, par_pullable) && !instance_place(x, y, obj_player)) && triggerDoorPtr != undefined){ //this is a trigger not being pressed
                     self.triggerDoorPtr.image_index = 0;
                     self.triggerDoorPtr.isDeactivated = false;
                 }
