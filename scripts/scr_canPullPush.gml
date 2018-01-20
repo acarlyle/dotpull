@@ -1,4 +1,4 @@
-///scr_canPull(int objPosX, int objPosY, bool moveDiag)
+///scr_canPullPush(int objPosX, int objPosY, bool moveDiag)
 
 if (!(canPull || canPush)) return false;
 
@@ -75,7 +75,7 @@ if (!argument2 && canPull && !canPush){ //this checks left/right only
 
     if (yDiff == 0){ //player is moving left/right; check for objects towards the player
         if (xDiff > 0){ //player is to the right of the obj
-            for (var objX = x + 16; objX < obj_player.x; objX += 16){
+            for (var objX = x + global.TILE_SIZE; objX < obj_player.x; objX += global.TILE_SIZE){
                 if (instance_place(objX, y, par_obstacle)){
                     var obs = instance_place(objX, y, par_obstacle);
                     if (isActivated(obs)){
@@ -85,7 +85,7 @@ if (!argument2 && canPull && !canPush){ //this checks left/right only
             }
         }
         else{ //player is to the left of the obj
-            for (var objX = x - 16; objX > obj_player.x; objX -= 16){
+            for (var objX = x - global.TILE_SIZE; objX > obj_player.x; objX -= global.TILE_SIZE){
                 if (instance_place(objX, y, par_obstacle)){
                     var obs = instance_place(objX, y, par_obstacle);
                     if (isActivated(obs)){
@@ -97,7 +97,7 @@ if (!argument2 && canPull && !canPush){ //this checks left/right only
     }
     if (xDiff == 0){ //player is moving up/down; check for objects towards the player
         if (yDiff < 0){ //player is above the obj
-            for (var objY = y - 16; objY > obj_player.y; objY -= 16){
+            for (var objY = y - global.TILE_SIZE; objY > obj_player.y; objY -= global.TILE_SIZE){
                 if (instance_place(x, objY, par_obstacle)){
                     var obs = instance_place(x, objY, par_obstacle);
                     print("isDeactived?");
@@ -108,7 +108,7 @@ if (!argument2 && canPull && !canPush){ //this checks left/right only
             }
         }
         else{ //player is below the obj
-            for (var objY = y + 16; objY < obj_player.y; objY += 16){
+            for (var objY = y + global.TILE_SIZE; objY < obj_player.y; objY += global.TILE_SIZE){
                 if (instance_place(x, objY, par_obstacle)){
                     var obs = instance_place(x, objY, par_obstacle);
                     print(obs.isDeactivated);
@@ -127,54 +127,54 @@ if (argument2 == true && canPull && !canPush){
     print("Diag checking in scr_canPull");
     if (obj_player.y < y && obj_player.x > x){ //player is above the obj and to the right; pull object upright
         //print("pull object up right");
-        var objX = x+16; var objY = y-16;
+        var objX = x+global.TILE_SIZE; var objY = y-global.TILE_SIZE;
         //print(objX);
         //print(objY);
-        for (objX = x + 16; objX < obj_player.x; objX += 16){
+        for (objX = x + global.TILE_SIZE; objX < obj_player.x; objX += global.TILE_SIZE){
             //print("In that upright loop !");
             //print(objX);
             //print(objY);  
             if (instance_place(objX, objY, par_obstacle)) return false; //don't pull if anything is in the way
-            objY -= 16;  
+            objY -= global.TILE_SIZE;  
         }
     }
     if (obj_player.y < y && obj_player.x < x){ //player is above the obj and to the left; pull object upleft
         //print("pull object up left");
-        var objX = x-16; var objY = y-16;
+        var objX = x-global.TILE_SIZE; var objY = y-global.TILE_SIZE;
         //print(objX);
         //print(objY);
-        for (objX = x - 16; objX > obj_player.x; objX -= 16){
+        for (objX = x - global.TILE_SIZE; objX > obj_player.x; objX -= global.TILE_SIZE){
             //print("In that left loop !");
             //print(objX);
             //print(objY);  
             if (instance_place(objX, objY, par_obstacle)) return false; //don't pull if anything is in the way
-            objY -= 16;  
+            objY -= global.TILE_SIZE;  
         }
     }
     if (obj_player.y > y && obj_player.x > x){ //player is below the obj and to the right; pull object downright
         //print("pull object down right");
-        var objX = x+16; var objY = y+16;
+        var objX = x + global.TILE_SIZE; var objY = y + global.TILE_SIZE;
         //print(objX);
         //print(objY);
-        for (objX = x + 16; objX < obj_player.x; objX += 16){
+        for (objX = x + global.TILE_SIZE; objX < obj_player.x; objX += global.TILE_SIZE){
             //print("In that downright loop !");
             //print(objX);
             //print(objY);  
             if (instance_place(objX, objY, par_obstacle)) return false; //don't pull if anything is in the way
-            objY += 16;  
+            objY += global.TILE_SIZE;  
         }          
     }
     if (obj_player.y > y && obj_player.x < x){ //player is below the obj and to the left; pull object downleft
         //print("pull object down left");
-        var objX = x-16; var objY = y+16;
+        var objX = x-global.TILE_SIZE; var objY = y+ global.TILE_SIZE;
         //print(objX);
         //print(objY);
-        for (objX = x - 16; objX > obj_player.x; objX -= 16){
+        for (objX = x - global.TILE_SIZE; objX > obj_player.x; objX -= global.TILE_SIZE){
             //print("In that downleft loop !");
             //print(objX);
             //print(objY);  
             if (instance_place(objX, objY, par_obstacle)) return false; //don't pull if anything is in the way
-            objY += 16;  
+            objY += global.TILE_SIZE;  
         }    
     }   
 }

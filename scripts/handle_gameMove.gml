@@ -45,8 +45,8 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                 switch (targetDirection){
                     case "up": 
                         print("up"); 
-                        if (scr_canPull(x, y-16, false)){
-                            y-=16;
+                        if (scr_canPullPush(x, y-global.TILE_SIZE, false)){
+                            y-=global.TILE_SIZE;
                         }
                         else{
                             sprite_index = spr_spike;
@@ -56,8 +56,8 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                         break;
                     case "down": 
                         print("down"); 
-                        if (scr_canPull(x, y+16, false)){
-                            y+=16;
+                        if (scr_canPullPush(x, y+global.TILE_SIZE, false)){
+                            y+=global.TILE_SIZE;
                         }
                         else{
                             sprite_index = spr_spike;
@@ -67,8 +67,8 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                         break;
                     case "left": 
                         print("left"); 
-                        if (scr_canPull(x-16, y, false)){
-                            x-=16;
+                        if (scr_canPullPush(x-global.TILE_SIZE, y, false)){
+                            x-=global.TILE_SIZE;
                         }
                         else{
                             sprite_index = spr_spike;
@@ -78,8 +78,8 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                         break;
                     case "right": 
                         print("right"); 
-                        if (scr_canPull(x+16, y, false)){
-                            x+=16;
+                        if (scr_canPullPush(x+global.TILE_SIZE, y, false)){
+                            x+=global.TILE_SIZE;
                         }
                         else{
                             sprite_index = spr_spike;
@@ -89,9 +89,9 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                         break;
                     case "upright": 
                         print("upright"); 
-                        if (scr_canPull(x+16, y-16, true)){
-                            x+=16;
-                            y-=16;
+                        if (scr_canPullPush(x+global.TILE_SIZE, y-global.TILE_SIZE, true)){
+                            x+=global.TILE_SIZE;
+                            y-=global.TILE_SIZE;
                         }
                         else{
                             sprite_index = spr_spike;
@@ -101,9 +101,9 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                         break;
                     case "upleft": 
                         print("upleft"); 
-                        if (scr_canPull(x-16, y-16, true)){
-                            x-=16;
-                            y-=16;
+                        if (scr_canPullPush(x-global.TILE_SIZE, y-global.TILE_SIZE, true)){
+                            x-=global.TILE_SIZE;
+                            y-=global.TILE_SIZE;
                         }
                         else{
                             print("could not upleft pull");
@@ -114,9 +114,9 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                         break;
                     case "downright": 
                         print("downright"); 
-                        if (scr_canPull(x+16, y+16, true)){
-                            x+=16;
-                            y+=16;
+                        if (scr_canPullPush(x+global.TILE_SIZE, y+global.TILE_SIZE, true)){
+                            x+=global.TILE_SIZE;
+                            y+=global.TILE_SIZE;
                         }
                         else{
                             sprite_index = spr_spike;
@@ -126,9 +126,9 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                         break;
                     case "downleft": 
                         print("downleft"); 
-                        if (scr_canPull(x-16, y+16, true)){
-                            x-=16;
-                            y+=16;
+                        if (scr_canPullPush(x-global.TILE_SIZE, y+global.TILE_SIZE, true)){
+                            x-=global.TILE_SIZE;
+                            y+=global.TILE_SIZE;
                         }
                         else{
                             sprite_index = spr_spike;
@@ -142,13 +142,13 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                 state = "idle";
                 //print("check for player lock");
                 if (obj_player.y == y){
-                    if (obj_player.x < x && scr_canPull(x - 16, y, false)) {
+                    if (obj_player.x < x && scr_canPullPush(x - global.TILE_SIZE, y, false)) {
                         state = "active";
                         targetDirection = "left"; 
                         targetLocked = true;
                         sprite_index = spr_spikeActive;
                     }
-                    else if (obj_player.x > x && scr_canPull(x + 16, y, false)) {
+                    else if (obj_player.x > x && scr_canPullPush(x + global.TILE_SIZE, y, false)) {
                         state = "active";
                         targetDirection = "right"; 
                         targetLocked = true;
@@ -156,13 +156,13 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                     }
                 }
                 else if (obj_player.x == x){
-                    if (obj_player.y < y && scr_canPull(x, y - 16, false)) {
+                    if (obj_player.y < y && scr_canPullPush(x, y - global.TILE_SIZE, false)) {
                         state = "active";
                         targetDirection = "up"; 
                         targetLocked = true;
                         sprite_index = spr_spikeActive;
                     }
-                    else if (obj_player.y > y && scr_canPull(x, y + 16, false)) {
+                    else if (obj_player.y > y && scr_canPullPush(x, y + global.TILE_SIZE, false)) {
                         state = "active";
                         targetDirection = "down"; 
                         targetLocked = true;
@@ -180,23 +180,23 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                     if (obj_player.x > x) objRelXPos *= -1;
                     
                     if (obj_player.y < y && obj_player.x < x){
-                        newObjPosX = x - 16;
-                        newObjPosY = y - 16;
+                        newObjPosX = x - global.TILE_SIZE;
+                        newObjPosY = y - global.TILE_SIZE;
                     }
                     if (obj_player.y > y && obj_player.x < x){
-                        newObjPosX = x - 16;
-                        newObjPosY = y + 16;
+                        newObjPosX = x - global.TILE_SIZE;
+                        newObjPosY = y + global.TILE_SIZE;
                     }
                     if (obj_player.y > y && obj_player.x > x){
-                        newObjPosX = x + 16;
-                        newObjPosY = y + 16;
+                        newObjPosX = x + global.TILE_SIZE;
+                        newObjPosY = y + global.TILE_SIZE;
                     }
                     if (obj_player.y < y && obj_player.x > x){
-                        newObjPosX = x + 16;
-                        newObjPosY = y - 16;
+                        newObjPosX = x + global.TILE_SIZE;
+                        newObjPosY = y - global.TILE_SIZE;
                     }
                 
-                    if (scr_canPull(newObjPosX, newObjPosY, true)
+                    if (scr_canPullPush(newObjPosX, newObjPosY, true)
                     && abs((obj_player.y - y) / (obj_player.x - x)) == 1){
                         
                         print("diag lockon baby");
@@ -204,32 +204,32 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                         //print(obj_player.y - global.oldPlayerY);
                     
                         if (obj_player.y < y && obj_player.x > x){ //player is above the obj and to the right
-                            //x += 16;
-                            //y -= 16;
+                            //x += global.TILE_SIZE;
+                            //y -= global.TILE_SIZE;
                             state = "active";
                             targetDirection = "upright"; 
                             targetLocked = true;
                             sprite_index = spr_spikeActive;
                         }
                         if (obj_player.y < y && obj_player.x < x){ //player is above the obj and to the left
-                            //x -= 16;
-                            //y -= 16; 
+                            //x -= global.TILE_SIZE;
+                            //y -= global.TILE_SIZE; 
                             state = "active";
                             targetDirection = "upleft"; 
                             targetLocked = true;
                             sprite_index = spr_spikeActive;
                         }
                         if (obj_player.y > y && obj_player.x > x){ //player is below the obj and to the right
-                            //x += 16;
-                            //y += 16; 
+                            //x += global.TILE_SIZE;
+                            //y += global.TILE_SIZE; 
                             state = "active";
                             targetDirection = "downright"; 
                             targetLocked = true;
                             sprite_index = spr_spikeActive;
                         }
                         if (obj_player.y > y && obj_player.x < x){ //player is below the obj and to the left
-                            //x -= 16;
-                            //y += 16;
+                            //x -= global.TILE_SIZE;
+                            //y += global.TILE_SIZE;
                             state = "active";
                             targetDirection = "downleft"; 
                             targetLocked = true;
@@ -257,26 +257,26 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             if (canPush) pushPull *= -1;
             if (global.oldPlayerY == y && obj_player.y == y){ //player moved left/right
                 print("push/pull left/right");
-                print(x - (16*pushPull));
-                if (obj_player.x < x && scr_canPull(x - (16*pushPull), y, false)) {//player on left side of object 
-                    x -= (16*pushPull);
+                print(x - (global.TILE_SIZE*pushPull));
+                if (obj_player.x < x && scr_canPullPush(x - (global.TILE_SIZE*pushPull), y, false)) {//player on left side of object 
+                    x -= (global.TILE_SIZE*pushPull);
                     objMove = true;
                     print("Move is true");
                 }
-                else if (obj_player.x > x && scr_canPull(x + (16*pushPull), y, false)){//player on right side of object
-                    x += (16*pushPull);
+                else if (obj_player.x > x && scr_canPullPush(x + (global.TILE_SIZE*pushPull), y, false)){//player on right side of object
+                    x += (global.TILE_SIZE*pushPull);
                     objMove = true;
                 }
             }
             if (global.oldPlayerX == x && obj_player.x == x){ //player moved up/down
                 //print("let's pull this shit");
-                if (obj_player.y < y && scr_canPull(x, y - (16*pushPull), false)){ //player above object 
-                    y -= (16*pushPull);
+                if (obj_player.y < y && scr_canPullPush(x, y - (global.TILE_SIZE*pushPull), false)){ //player above object 
+                    y -= (global.TILE_SIZE*pushPull);
                     objMove = true;
                     //print("pulling");
                 }
-                else if (obj_player.y > y && scr_canPull(x, y + (16*pushPull), false)){//player below object 
-                    y += (16*pushPull);
+                else if (obj_player.y > y && scr_canPullPush(x, y + (global.TILE_SIZE*pushPull), false)){//player below object 
+                    y += (global.TILE_SIZE*pushPull);
                     objMove = true;
                 }
             }
@@ -293,20 +293,20 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             
             if (obj_player.y < y && obj_player.x > x){ //player is above the obj and to the right
                     //print("up and to the right");
-                    newObjPosX = x + (16 * pushPull);
-                    newObjPosY = y - (16 * pushPull);
+                    newObjPosX = x + (global.TILE_SIZE * pushPull);
+                    newObjPosY = y - (global.TILE_SIZE * pushPull);
             }
             if (obj_player.y < y && obj_player.x < x){ //player is above the obj and to the left
-                    newObjPosX = x - (16 * pushPull);
-                    newObjPosY = y - (16 * pushPull);
+                    newObjPosX = x - (global.TILE_SIZE * pushPull);
+                    newObjPosY = y - (global.TILE_SIZE * pushPull);
             }
             if (obj_player.y > y && obj_player.x > x){ //player is below the obj and to the right
-                    newObjPosX = x + (16 * pushPull);
-                    newObjPosY = y + (16 * pushPull);
+                    newObjPosX = x + (global.TILE_SIZE * pushPull);
+                    newObjPosY = y + (global.TILE_SIZE * pushPull);
             }
             if (obj_player.y > y && obj_player.x < x){ //player is below the obj and to the left
-                    newObjPosX = x - (16 * pushPull);
-                    newObjPosY = y + (16 * pushPull);
+                    newObjPosX = x - (global.TILE_SIZE * pushPull);
+                    newObjPosY = y + (global.TILE_SIZE * pushPull);
             }
             
             //print("hur-----");
@@ -322,7 +322,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             if (!objMove  
                 && (obj_player.x - global.oldPlayerX != 0) 
                 && (obj_player.y - global.oldPlayerY != 0) 
-                && scr_canPull(newObjPosX, newObjPosY, true)
+                && scr_canPullPush(newObjPosX, newObjPosY, true)
                 && abs((obj_player.y - y) / (obj_player.x - x)) == 1
                 && abs((global.oldPlayerY - y) / (global.oldPlayerX - x)) == 1){
                     
@@ -331,20 +331,20 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                 //print(obj_player.y - global.oldPlayerY);
                 
                 if (obj_player.y < y && obj_player.x > x){ //player is above the obj and to the right
-                    x += (16 * pushPull);
-                    y -= (16 * pushPull);
+                    x += (global.TILE_SIZE * pushPull);
+                    y -= (global.TILE_SIZE * pushPull);
                 }
                 if (obj_player.y < y && obj_player.x < x){ //player is above the obj and to the left
-                    x -= (16 * pushPull);
-                    y -= (16 * pushPull); 
+                    x -= (global.TILE_SIZE * pushPull);
+                    y -= (global.TILE_SIZE * pushPull); 
                 }
                 if (obj_player.y > y && obj_player.x > x){ //player is below the obj and to the right
-                    x += (16 * pushPull);
-                    y += (16 * pushPull); 
+                    x += (global.TILE_SIZE * pushPull);
+                    y += (global.TILE_SIZE * pushPull); 
                 }
                 if (obj_player.y > y && obj_player.x < x){ //player is below the obj and to the left
-                    x -= (16 * pushPull);
-                    y += (16 * pushPull);
+                    x -= (global.TILE_SIZE * pushPull);
+                    y += (global.TILE_SIZE * pushPull);
                 }
                 objMove = true;
             }

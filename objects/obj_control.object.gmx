@@ -37,6 +37,10 @@ global.set_phoneRes = 3; //act phone value is 5 (960 * 640)
 //player vars
 move = false;
 
+global.TILE_SIZE = 16;
+global.windowWidth = 128;
+global.windowHeight = 192;
+
 scr_initPlayerPosition(3, 3);
 //global.playerX = 80;
 //global.playerY = 32;
@@ -44,8 +48,8 @@ scr_initPlayerPosition(3, 3);
 
 scr_applyScreenRes();
 
-room_goto(rm_level_Ian_5);
-//room_goto(rm_level2);
+//room_goto(rm_level_Ian_5);
+room_goto(rm_level1);
 
 </string>
           </argument>
