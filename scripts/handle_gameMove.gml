@@ -1,8 +1,12 @@
 ///handle_gameMove();
 
-print("handle game move");
+print("HANDLE GAME MOVE");
 var objMove = false;
 
+//for (var i = 0; i < array_length_1d(global.roomContents); i++){
+//    var object = global.roomContents[i];
+//    print(object_get_name(object.object_index));
+//}
 
 for (var i = 0; i < array_length_1d(global.roomContents); i++){
     var object = global.roomContents[i];
@@ -13,8 +17,8 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             //print("pushed");
             if (isSpike){
                 ds_stack_push(stateHistory, state + "," + targetDirection);
-                print("pushed stateHistory");
-                print(state+","+targetDirection);
+                //print("pushed stateHistory");
+                //print(state+","+targetDirection);
             }
         }
         else{ 
@@ -154,7 +158,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                 }
             }
             else{ //check if player in line for target lock
-                print("checking for player lock");
+                //print("checking for player lock");
                 state = "idle";
                 //print("check for player lock");
                 if (obj_player.y == y){
@@ -347,7 +351,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                 && abs((obj_player.y - y) / (obj_player.x - x)) == 1
                 && abs((global.oldPlayerY - y) / (global.oldPlayerX - x)) == 1){
                     
-                print("diag time baby");
+                //print("diag time baby");
                 //print(obj_player.x - global.oldPlayerX);
                 //print(obj_player.y - global.oldPlayerY);
                 

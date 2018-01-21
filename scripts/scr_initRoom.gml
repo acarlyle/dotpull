@@ -24,7 +24,7 @@ with (all) {
     }
 }
 
-ds_list_sort(list, false);
+//ds_list_sort(list, true);
 
 //print("finished creating list");
 

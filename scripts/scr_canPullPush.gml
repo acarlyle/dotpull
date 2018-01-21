@@ -42,7 +42,9 @@ if (instance_place(argument0, argument1, obj_key)){
     return false;
 }
 
-if (instance_place(argument0, argument1, obj_trigger)){
+if (instance_place(argument0, argument1, obj_trigger) && 
+   !instance_place(argument0, argument1, par_obstacle) &&
+   !instance_place(argument0, argument1, obj_player)){
     //print("There's a trigger here.");
     return true;
 }
@@ -135,7 +137,7 @@ if (!argument2 && canPull && !canPush){ //this checks left/right only
 
 //diagonal movement
 if (argument2 == true && canPull && !canPush){
-    print("Diag checking in scr_canPull");
+    //print("Diag checking in scr_canPull");
     if (obj_player.y < y && obj_player.x > x){ //player is above the obj and to the right; pull object upright
         //print("pull object up right");
         var objX = x+global.TILE_SIZE; var objY = y-global.TILE_SIZE;
