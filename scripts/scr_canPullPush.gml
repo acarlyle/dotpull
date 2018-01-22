@@ -3,12 +3,14 @@
 if (!(canPull || canPush)) return false;
 if (isDeactivated) return false;
 
-//print(argument0);
-//print(argument1);
+print(argument0);
+print(argument1);
 
 if (instance_place(x, y, obj_triggerDoor) && !instance_place(argument0, argument1, obj_wall)){
-    //print("obj trapped above");
-    return false; //can't move if above
+    if (!isActivated(instance_place(x, y, obj_triggerDoor))){
+        print("obj trapped above");
+        return false; //can't move if above    
+    }
 }
 
 if (!instance_place(argument0, argument1, par_platform)){

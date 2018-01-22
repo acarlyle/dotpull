@@ -17,8 +17,10 @@ print("Entering level five");
 
 
 if (instance_number(obj_player) == 0) { //spawning in directly from this level
-    global.playerX = 48; //set player x and y position
-    global.playerY = 0; 
+    //global.playerX = 48; //set player x and y position
+    //global.playerY = 0; 
+    global.playerX = 16; //set player x and y position
+    global.playerY = 128; 
     
     player = instance_create(global.playerX, global.playerY, obj_player);
     var initPos = string(obj_player.x) + "," + (string(obj_player.y));
@@ -41,8 +43,9 @@ var triggerDoor = instance_place(0, 144, obj_triggerDoor);
 var trigger = instance_place(48, 48, obj_trigger);
 triggerDoor.triggerPtr = trigger;
 trigger.triggerDoorPtr = triggerDoor;
-trigger.image_index = 0;
-triggerDoor.image_index = 1;</code>
+//trigger.image_index = 0;
+triggerDoor.image_index = 1;
+triggerDoor.isDeactivated = true;</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -135,7 +138,7 @@ triggerDoor.image_index = 1;</code>
     <instance objName="obj_door" x="48" y="176" name="inst_8221C951" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="48" y="64" name="inst_99EA36E9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="16" y="144" name="inst_6CD4533D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_key" x="48" y="96" name="inst_EC8AD2A6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_key" x="48" y="48" name="inst_EC8AD2A6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_spike" x="96" y="160" name="inst_C23EEBBF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_trigger" x="48" y="48" name="inst_B8573A07" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_triggerDoor" x="0" y="144" name="inst_B24C75C4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

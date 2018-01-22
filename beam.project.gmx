@@ -65,15 +65,25 @@
       <object>objects\obj_wall</object>
     </objects>
     <objects name="puzzle elements">
-      <object>objects\obj_key</object>
-      <object>objects\obj_spike</object>
-      <object>objects\obj_block</object>
-      <object>objects\obj_blockPush</object>
-      <object>objects\obj_door</object>
-      <object>objects\obj_trigger</object>
-      <object>objects\obj_triggerTrail</object>
-      <object>objects\obj_triggerDoor</object>
-      <object>objects\obj_snare</object>
+      <objects name="par_platform">
+        <object>objects\obj_snare</object>
+        <object>objects\obj_trigger</object>
+      </objects>
+      <objects name="par_pullable">
+        <object>objects\obj_spike</object>
+        <object>objects\obj_key</object>
+        <object>objects\obj_blockPush</object>
+        <object>objects\obj_block</object>
+      </objects>
+      <objects name="par_wall">
+        <object>objects\obj_door</object>
+      </objects>
+      <objects name="par_obstacle">
+        <object>objects\obj_triggerDoor</object>
+      </objects>
+      <objects name="not_even_fucking_used">
+        <object>objects\obj_triggerTrail</object>
+      </objects>
     </objects>
     <objects name="controllers">
       <object>objects\obj_control</object>
