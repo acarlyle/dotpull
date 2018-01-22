@@ -23,6 +23,7 @@
       <sprite>sprites\spr_door</sprite>
       <sprite>sprites\spr_block</sprite>
       <sprite>sprites\spr_blockPush</sprite>
+      <sprite>sprites\spr_blockPushPull</sprite>
       <sprite>sprites\spr_snare</sprite>
       <sprite>sprites\spr_trigger</sprite>
       <sprite>sprites\spr_triggerDoor</sprite>
@@ -74,6 +75,7 @@
         <object>objects\obj_key</object>
         <object>objects\obj_blockPush</object>
         <object>objects\obj_block</object>
+        <object>objects\obj_blockPushPull</object>
       </objects>
       <objects name="par_wall">
         <object>objects\obj_door</object>

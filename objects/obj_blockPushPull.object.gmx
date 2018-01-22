@@ -36,12 +36,13 @@ justDeactivated = false;
 deactivatedX = 0;
 deactivatedY = 0;
 canPull = true;
-canPush = false;
+canPush = true;
 canFall = false;
 
 triggerDoorPtr = undefined;
 triggerPtr = undefined;
 isSpike = false;
+isMovePriority = true;
 </string>
           </argument>
         </arguments>

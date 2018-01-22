@@ -46,7 +46,9 @@ if (instance_place(argument0, argument1, obj_key)){
     }
     return false;
 }
-if (instance_place(argument0, argument1, obj_block) || instance_place(argument0, argument1, obj_blockPush)){
+if (instance_place(argument0, argument1, obj_block) || 
+    instance_place(argument0, argument1, obj_blockPush) ||
+    instance_place(argument0, argument1, obj_blockPushPull)){
     print("There's a block here");
     return true; //there's a block here
 }

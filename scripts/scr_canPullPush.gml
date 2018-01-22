@@ -35,7 +35,9 @@ if (instance_place(argument0, argument1, obj_spike)){
     //print("Spike in the way!");
     return false;
 }
-if (instance_place(argument0, argument1, obj_block)){
+if (instance_place(argument0, argument1, obj_block) ||
+    instance_place(argument0, argument1, obj_blockPush) ||
+    instance_place(argument0, argument1, obj_blockPushPull)){
     //print("Block in the way!");
     return false;
 }
