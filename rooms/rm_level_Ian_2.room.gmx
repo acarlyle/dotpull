@@ -95,7 +95,7 @@ global.roomContents = scr_initRoom();</code>
     <instance objName="obj_wall" x="112" y="176" name="inst_0F8DFFCF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="64" y="112" name="inst_2CBBAC01" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="32" y="112" name="inst_5CB6E48C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_key" x="96" y="160" name="inst_D703F59F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_key" x="16" y="176" name="inst_D703F59F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hole" x="64" y="160" name="inst_CA6E7E45" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hole" x="80" y="128" name="inst_3C055ECA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hole" x="80" y="144" name="inst_8D38F0F0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -185,6 +185,8 @@ global.roomContents = scr_initRoom();</code>
     <instance objName="obj_platform" x="16" y="128" name="inst_FA99B45C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="0" y="144" name="inst_BD9557A6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="48" y="0" name="inst_EA8AC6B3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="48" y="112" name="inst_EFEE9EB9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_gotoRoom" x="0" y="144" name="inst_C7DCBD03" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
