@@ -31,7 +31,7 @@ print(initPos);
 ds_stack_push(moveHistory, initPos);
 
 stateHistory = ds_stack_create();
-stepsLeft = 3; //idle or active
+stepsLeft = 1; //idle or active
 print("init state: ");
 print(stepsLeft);
 ds_stack_push(stateHistory, stepsLeft);
