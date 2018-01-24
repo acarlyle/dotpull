@@ -52,6 +52,7 @@ isSpike = true;
 targetLocked = false;
 isMovePriority = true;
 isFallingPlatform = false;
+isEviscerator = false;
 </string>
           </argument>
         </arguments>

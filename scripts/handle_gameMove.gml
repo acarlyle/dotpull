@@ -41,6 +41,16 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             }
         }
         
+        //eviscerator check
+        if (instance_place(x, y, par_robot) && isEviscerator){
+            print("ded player");
+            obj_player.isDead = true;
+            obj_player.sprite_index = spr_playerDead;
+        }
+        else{
+            print("not ded playewr");
+        }
+        
         //this is a trigger being pressed
         if ((instance_place(x, y, par_pullable) || instance_place(x, y, obj_player)) && triggerDoorPtr != undefined){
             object.triggerDoorPtr.image_index = 1;
@@ -280,7 +290,8 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                 }
             } //end targetlock check
             
-            if (instance_place(x, y, obj_player) && isSpike){
+            //dead check
+            if (instance_place(x, y, par_robot) && isSpike){
                 print("ded player");
                 obj_player.isDead = true;
                 obj_player.sprite_index = spr_playerDead;

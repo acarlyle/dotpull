@@ -31,6 +31,7 @@
       <sprite>sprites\spr_spike</sprite>
       <sprite>sprites\spr_spikeActive</sprite>
       <sprite>sprites\spr_fallingPlatform</sprite>
+      <sprite>sprites\spr_eviscerator</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background"/>
@@ -84,6 +85,7 @@
       </objects>
       <objects name="par_obstacle">
         <object>objects\obj_triggerDoor</object>
+        <object>objects\obj_eviscerator</object>
       </objects>
       <objects name="not_even_fucking_used">
         <object>objects\obj_triggerTrail</object>
@@ -95,6 +97,7 @@
     </objects>
     <objects name="Parents">
       <object>objects\par_obstacle</object>
+      <object>objects\par_robot</object>
       <object>objects\par_pullable</object>
       <object>objects\par_wall</object>
       <object>objects\par_platform</object>

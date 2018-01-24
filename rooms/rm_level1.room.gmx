@@ -172,6 +172,7 @@ global.roomContents = scr_initRoom();</code>
     <instance objName="obj_fallingPlatform" x="48" y="96" name="inst_3C045F8C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_fallingPlatform" x="64" y="96" name="inst_CBE342CF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_fallingPlatform" x="64" y="112" name="inst_D6E06A0D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_eviscerator" x="48" y="112" name="inst_3BEF02C4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

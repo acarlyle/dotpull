@@ -44,6 +44,7 @@ triggerPtr = undefined;
 isSpike = false;
 isMovePriority = true;
 isFallingPlatform = false;
+isEviscerator = false;
 </string>
           </argument>
         </arguments>
