@@ -24,6 +24,22 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
         else{ 
             justDeactivated = false; 
         }
+        //handle falling platforms
+        if (isFallingPlatform){
+            print("in falling plat");
+            print(global.oldPlayerX);
+            print(global.oldPlayerY);
+            ds_stack_push(stateHistory, stepsLeft);
+            if (global.oldPlayerX == x && global.oldPlayerY == y){
+                print(stepsLeft);
+                stepsLeft--;
+                image_index++;
+                print(stepsLeft);
+                if (stepsLeft == 0){
+                    isDeactivated = true;
+                }
+            }
+        }
         
         //this is a trigger being pressed
         if ((instance_place(x, y, par_pullable) || instance_place(x, y, obj_player)) && triggerDoorPtr != undefined){

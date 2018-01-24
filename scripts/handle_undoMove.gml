@@ -58,6 +58,19 @@ if (!ds_stack_empty(obj_player.moveHistory)){
                     }
                 }
             }
+            if (isFallingPlatform){
+                var fallingPlatformStr = ds_stack_pop(stateHistory);
+                if (fallingPlatformStr != undefined){
+                    print ("UNDOING FALLING PLATFORM");
+                    if ((stepsLeft < fallingPlatformStr)){
+                        stepsLeft++;
+                        image_index--;
+                        if (stepsLeft != 0){
+                            isDeactivated = false;
+                        }
+                    }
+                }
+            }
             
             var objPosStr = ds_stack_pop(moveHistory); //string e.g. "64,64"
             //print(objPosStr);

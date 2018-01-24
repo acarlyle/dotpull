@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>isPuzzleElement = false;
+isFallingPlatform = false;
 </string>
           </argument>
         </arguments>

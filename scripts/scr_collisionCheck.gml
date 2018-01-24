@@ -70,11 +70,26 @@ if (instance_place(argument0, argument1, par_wall)){
     return true; //there's a wall here
 }
 if (instance_place(argument0, argument1, par_platform)){
+    var platform = instance_place(argument0, argument1, par_platform);
+    if (platform.isFallingPlatform){
+        if (platform.stepsLeft <= 0){
+            return true; //you can't walk here, the platform has fallen and the city is lost
+        }
+    }
     return false; //there's a platform here, good to take a stroll on
 }
+if (instance_place(argument0, argument1, obj_fallingPlatform)){
+    var platform = instance_place(argument0, argument1, obj_fallingPlatform);
+    if (platform.stepsLeft <= 0){
+        return true; //you can't walk here, the platform has fallen and the city is lost
+    }
+    if (platform.isDeactivated){
+        return false;
+    }
+}
 
-//print("cannot move to ");
-//print(argument0);
-//print(argument1);
+print("cannot move to ");
+print(argument0);
+print(argument1);
 
 return true; //there's probably something there anyways

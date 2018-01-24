@@ -30,6 +30,7 @@
       <sprite>sprites\spr_triggerTrail</sprite>
       <sprite>sprites\spr_spike</sprite>
       <sprite>sprites\spr_spikeActive</sprite>
+      <sprite>sprites\spr_fallingPlatform</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background"/>
@@ -41,7 +42,6 @@
     </scripts>
     <script>scripts\scr_initPlayerPosition.gml</script>
     <script>scripts\scr_getInput.gml</script>
-    <script>scripts\print.gml</script>
     <script>scripts\scr_collisionCheck.gml</script>
     <scripts name="Turns">
       <script>scripts\handle_gameMove.gml</script>
@@ -52,6 +52,7 @@
       <script>scripts\array.gml</script>
       <script>scripts\scr_split.gml</script>
       <script>scripts\roomObjectArrayList.gml</script>
+      <script>scripts\print.gml</script>
       <script>scripts\isActivated.gml</script>
       <script>scripts\stringSplit.gml</script>
     </scripts>
@@ -68,6 +69,7 @@
     <objects name="puzzle elements">
       <objects name="par_platform">
         <object>objects\obj_snare</object>
+        <object>objects\obj_fallingPlatform</object>
         <object>objects\obj_trigger</object>
       </objects>
       <objects name="par_pullable">
@@ -107,9 +109,9 @@
     <room>rooms\rm_level3</room>
     <room>rooms\rm_level4</room>
     <room>rooms\rm_level5</room>
-    <room>rooms\rm_level8</room>
     <room>rooms\rm_level6</room>
     <room>rooms\rm_level7</room>
+    <room>rooms\rm_level8</room>
     <rooms name="ian levels">
       <room>rooms\rm_level_Ian_1</room>
       <room>rooms\rm_level_Ian_2</room>

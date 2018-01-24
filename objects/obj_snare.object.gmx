@@ -43,6 +43,7 @@ triggerDoorPtr = undefined;
 triggerPtr = undefined;
 isSpike = false;
 isMovePriority = false;
+isFallingPlatform = false;
 </string>
           </argument>
         </arguments>
