@@ -48,6 +48,7 @@ isSpike = false;
 isMovePriority = false;
 isFallingPlatform = false;
 isEviscerator = true;
+isArrow = false;
 </string>
           </argument>
         </arguments>

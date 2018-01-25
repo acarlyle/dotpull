@@ -71,6 +71,25 @@ if (!ds_stack_empty(obj_player.moveHistory)){
                     }
                 }
             }
+            if (isArrow){
+                if (isRotating){
+                    switch(dir){
+                        case "up":
+                            dir = "left";
+                            break;
+                        case "right":
+                            dir = "up";
+                            break;
+                        case "down":
+                            dir = "right";
+                            break;
+                        case "left":
+                            dir = "down";
+                            break;
+                    }
+                    sprite_index = asset_get_index("spr_arrow_" + dir);
+                }
+            }
             
             var objPosStr = ds_stack_pop(moveHistory); //string e.g. "64,64"
             //print(objPosStr);

@@ -26,9 +26,9 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
         }
         //handle falling platforms
         if (isFallingPlatform){
-            print("in falling plat");
-            print(global.oldPlayerX);
-            print(global.oldPlayerY);
+            //print("in falling plat");
+            //print(global.oldPlayerX);
+            //print(global.oldPlayerY);
             ds_stack_push(stateHistory, stepsLeft);
             if (global.oldPlayerX == x && global.oldPlayerY == y){
                 print(stepsLeft);
@@ -40,15 +40,32 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                 }
             }
         }
+        if (isArrow){
+            if (isRotating){
+                switch(dir){
+                    case "up":
+                        dir = "right";
+                        break;
+                    case "right":
+                        dir = "down";
+                        break;
+                    case "down":
+                        dir = "left";
+                        break;
+                    case "left":
+                        dir = "up";
+                        break;
+                }
+                sprite_index = asset_get_index("spr_arrow_" + dir);
+                print("done rotate");
+            }
+        }
         
         //eviscerator check
         if (instance_place(x, y, par_robot) && isEviscerator){
             print("ded player");
             obj_player.isDead = true;
             obj_player.sprite_index = spr_playerDead;
-        }
-        else{
-            print("not ded playewr");
         }
         
         //this is a trigger being pressed

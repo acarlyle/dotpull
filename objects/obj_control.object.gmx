@@ -48,8 +48,8 @@ scr_initPlayerPosition(3, 3);
 
 scr_applyScreenRes();
 
-room_goto(rm_level_Ian_10);
-//room_goto(rm_level1);
+//room_goto(rm_level_Ian_10);
+room_goto(rm_level1);
 
 </string>
           </argument>

@@ -25,6 +25,10 @@
       <sprite>sprites\spr_blockPush</sprite>
       <sprite>sprites\spr_blockPushPull</sprite>
       <sprite>sprites\spr_snare</sprite>
+      <sprite>sprites\spr_arrow_up</sprite>
+      <sprite>sprites\spr_arrow_left</sprite>
+      <sprite>sprites\spr_arrow_right</sprite>
+      <sprite>sprites\spr_arrow_down</sprite>
       <sprite>sprites\spr_trigger</sprite>
       <sprite>sprites\spr_triggerDoor</sprite>
       <sprite>sprites\spr_triggerTrail</sprite>
@@ -72,6 +76,16 @@
         <object>objects\obj_snare</object>
         <object>objects\obj_fallingPlatform</object>
         <object>objects\obj_trigger</object>
+        <objects name="arrows">
+          <object>objects\obj_arrow_down_rotate</object>
+          <object>objects\obj_arrow_up_rotate</object>
+          <object>objects\obj_arrow_left_rotate</object>
+          <object>objects\obj_arrow_right_rotate</object>
+          <object>objects\obj_arrow_up_static</object>
+          <object>objects\obj_arrow_down_static</object>
+          <object>objects\obj_arrow_left_static</object>
+          <object>objects\obj_arrow_right_static</object>
+        </objects>
       </objects>
       <objects name="par_pullable">
         <object>objects\obj_spike</object>
@@ -101,6 +115,7 @@
       <object>objects\par_pullable</object>
       <object>objects\par_wall</object>
       <object>objects\par_platform</object>
+      <object>objects\par_arrow</object>
     </objects>
   </objects>
   <rooms name="rooms">
