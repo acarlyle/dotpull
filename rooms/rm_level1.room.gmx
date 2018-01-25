@@ -166,13 +166,9 @@ global.roomContents = scr_initRoom();</code>
     <instance objName="obj_hole" x="96" y="112" name="inst_380C7456" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hole" x="112" y="112" name="inst_7D72B5E5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_blockPushPull" x="32" y="64" name="inst_2329CF71" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_fallingPlatform" x="48" y="80" name="inst_7446230F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_fallingPlatform" x="64" y="80" name="inst_9E8300E6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_fallingPlatform" x="48" y="112" name="inst_C33731FA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_fallingPlatform" x="48" y="96" name="inst_3C045F8C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_fallingPlatform" x="64" y="96" name="inst_CBE342CF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_fallingPlatform" x="64" y="112" name="inst_D6E06A0D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_eviscerator" x="48" y="112" name="inst_3BEF02C4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_fallingPlatform_1Step" x="48" y="112" name="inst_C33731FA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_fallingPlatform_1Step" x="64" y="112" name="inst_D6E06A0D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_eviscerator" x="32" y="144" name="inst_3BEF02C4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_arrow_up_rotate" x="64" y="32" name="inst_22F70CCD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_arrow_right_rotate" x="48" y="32" name="inst_8EC53FD2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_arrow_down_rotate" x="96" y="32" name="inst_1A8790D9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -181,6 +177,10 @@ global.roomContents = scr_initRoom();</code>
     <instance objName="obj_arrow_down_static" x="96" y="144" name="inst_395D9286" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_arrow_left_static" x="96" y="160" name="inst_103DED97" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_arrow_right_static" x="80" y="144" name="inst_444AF5F3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_fallingPlatform_2Step" x="48" y="96" name="inst_53D0C899" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_fallingPlatform_2Step" x="64" y="96" name="inst_190FAF6A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_fallingPlatform_3Step" x="48" y="80" name="inst_07FC7B32" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_fallingPlatform_3Step" x="64" y="80" name="inst_40777FAD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

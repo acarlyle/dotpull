@@ -34,7 +34,9 @@
       <sprite>sprites\spr_triggerTrail</sprite>
       <sprite>sprites\spr_spike</sprite>
       <sprite>sprites\spr_spikeActive</sprite>
-      <sprite>sprites\spr_fallingPlatform</sprite>
+      <sprite>sprites\spr_fallingPlatform_1Step</sprite>
+      <sprite>sprites\spr_fallingPlatform_2Step</sprite>
+      <sprite>sprites\spr_fallingPlatform_3Step</sprite>
       <sprite>sprites\spr_eviscerator</sprite>
     </sprites>
   </sprites>
@@ -65,27 +67,21 @@
   </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>
-    <objects name="env">
-      <object>objects\obj_platform</object>
-      <object>objects\obj_bridge</object>
-      <object>objects\obj_hole</object>
-      <object>objects\obj_wall</object>
-    </objects>
     <objects name="puzzle elements">
       <objects name="par_platform">
         <object>objects\obj_snare</object>
-        <object>objects\obj_fallingPlatform</object>
         <object>objects\obj_trigger</object>
-        <objects name="arrows">
-          <object>objects\obj_arrow_down_rotate</object>
-          <object>objects\obj_arrow_up_rotate</object>
-          <object>objects\obj_arrow_left_rotate</object>
-          <object>objects\obj_arrow_right_rotate</object>
-          <object>objects\obj_arrow_up_static</object>
-          <object>objects\obj_arrow_down_static</object>
-          <object>objects\obj_arrow_left_static</object>
-          <object>objects\obj_arrow_right_static</object>
-        </objects>
+        <object>objects\obj_fallingPlatform_1Step</object>
+        <object>objects\obj_fallingPlatform_2Step</object>
+        <object>objects\obj_fallingPlatform_3Step</object>
+        <object>objects\obj_arrow_down_rotate</object>
+        <object>objects\obj_arrow_up_rotate</object>
+        <object>objects\obj_arrow_left_rotate</object>
+        <object>objects\obj_arrow_right_rotate</object>
+        <object>objects\obj_arrow_up_static</object>
+        <object>objects\obj_arrow_down_static</object>
+        <object>objects\obj_arrow_left_static</object>
+        <object>objects\obj_arrow_right_static</object>
       </objects>
       <objects name="par_pullable">
         <object>objects\obj_spike</object>
@@ -105,6 +101,12 @@
         <object>objects\obj_triggerTrail</object>
       </objects>
     </objects>
+    <objects name="env">
+      <object>objects\obj_platform</object>
+      <object>objects\obj_bridge</object>
+      <object>objects\obj_hole</object>
+      <object>objects\obj_wall</object>
+    </objects>
     <objects name="controllers">
       <object>objects\obj_control</object>
       <object>objects\obj_gotoRoom</object>
@@ -112,6 +114,7 @@
     <objects name="Parents">
       <object>objects\par_obstacle</object>
       <object>objects\par_robot</object>
+      <object>objects\par_fallingPlatform</object>
       <object>objects\par_pullable</object>
       <object>objects\par_wall</object>
       <object>objects\par_platform</object>

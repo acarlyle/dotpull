@@ -17,8 +17,8 @@ if (!instance_place(argument0, argument1, par_platform)){
     //print("No platform to pull/push to");
     return false;
 }
-if (instance_place(argument0, argument1, obj_fallingPlatform)){
-    var fallingPlat = instance_place(argument0, argument1, obj_fallingPlatform);
+if (instance_place(argument0, argument1, par_fallingPlatform)){
+    var fallingPlat = instance_place(argument0, argument1, par_fallingPlatform);
     if (fallingPlat.isDeactivated){
         print("Falling platform is deactivated; can't pull");
         return false;
