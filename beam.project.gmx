@@ -115,6 +115,7 @@
       <object>objects\par_obstacle</object>
       <object>objects\par_robot</object>
       <object>objects\par_fallingPlatform</object>
+      <object>objects\par_block</object>
       <object>objects\par_pullable</object>
       <object>objects\par_wall</object>
       <object>objects\par_platform</object>
