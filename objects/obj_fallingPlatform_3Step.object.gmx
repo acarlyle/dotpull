@@ -49,7 +49,7 @@ deactivatedY = 0;
 triggerDoorPtr = undefined;
 triggerPtr = undefined;
 isSpike = false;
-isMovePriority = false;
+isMovePriority = true;
 isEviscerator = false;
 isArrow = false;
 

@@ -319,7 +319,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
         } //end spike logic
         
         //handle pushPull blocks
-        if (canPull || canPush){
+        else if ((canPull || canPush)){
             //print("Pushed onto object's stack !");
             //print(x); print(y);
             var pushPull = 1;

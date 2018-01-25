@@ -4,10 +4,11 @@
 
 var list = ds_list_create();
 
+var 
+
 //print("Creating list");
 
-//EXTREMELY IMPORTANT THAT OBJ BLOCKS ARE AT THE BEGINING OF THE LIST!!!!!!!  
-//THEY ARE WITH DS_LIST_SORT IN ASCENDING ORDER!!!
+//EXTREMELY IMPORTANT THAT OBJ BLOCKS ARE AT THE BEGINING OF THE LIST!!!!!!!  SAME WITH FALLING PLATS!!!
 with (all) {
     if (isPuzzleElement){
         //if (instance_place(x, y, obj_block)){
@@ -23,6 +24,16 @@ with (all) {
         //print("added this object to ds list");
     }
 }
+
+for (var i = 0; i < ds_list_size(list); i++){
+    var inst = ds_list_find_value(list, i);
+    if (inst.isFallingPlatform){
+        print("moving falling platform up the priority list");
+        ds_list_delete(list, i);
+        ds_list_insert(list, 0, inst);
+    }
+}
+
 
 //ds_list_sort(list, true);
 
