@@ -76,8 +76,8 @@ if (instance_place(argument0, argument1, par_platform)){
     }
     return false; //there's a platform here, good to take a stroll on
 }
-if (instance_place(argument0, argument1, obj_fallingPlatform)){
-    var platform = instance_place(argument0, argument1, obj_fallingPlatform);
+if (instance_place(argument0, argument1, par_fallingPlatform)){
+    var platform = instance_place(argument0, argument1, par_fallingPlatform);
     if (platform.stepsLeft <= 0){
         return true; //you can't walk here, the platform has fallen and the city is lost
     }

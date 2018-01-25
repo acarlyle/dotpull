@@ -145,8 +145,8 @@ global.roomContents = scr_initRoom();</code>
     <instance objName="obj_wall" x="0" y="160" name="inst_D776AD10" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bridge" x="0" y="112" name="inst_99555040" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bridge" x="96" y="96" name="inst_B1A3184B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_gotoRoom" x="48" y="176" name="inst_808E12CB" locked="0" code="target_x = 48;&#xA;target_y = 0;&#xA;&#xA;target_r = rm_level2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_gotoRoom" x="64" y="176" name="inst_B9DBBDFA" locked="0" code="target_x = 64;&#xA;target_y = 0;&#xA;&#xA;target_r = rm_level2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_gotoRoom" x="48" y="176" name="inst_808E12CB" locked="0" code="target_x = 48;&#xA;target_y = 0;&#xA;&#xA;target_r = rm_level2;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_gotoRoom" x="64" y="176" name="inst_B9DBBDFA" locked="0" code="target_x = 64;&#xA;target_y = 0;&#xA;&#xA;target_r = rm_level2;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hole" x="0" y="80" name="inst_279F37B0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hole" x="16" y="80" name="inst_92133AA8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hole" x="32" y="80" name="inst_11005418" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

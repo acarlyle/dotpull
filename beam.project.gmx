@@ -50,10 +50,12 @@
     <script>scripts\scr_initPlayerPosition.gml</script>
     <script>scripts\scr_getInput.gml</script>
     <script>scripts\scr_collisionCheck.gml</script>
-    <scripts name="Turns">
+    <scripts name="Game Handles">
       <script>scripts\handle_gameMove.gml</script>
       <script>scripts\handle_playerMove.gml</script>
       <script>scripts\handle_undoMove.gml</script>
+      <script>scripts\handle_restartLevel.gml</script>
+      <script>scripts\handle_freeRoomMemory.gml</script>
     </scripts>
     <scripts name="Helpers">
       <script>scripts\array.gml</script>

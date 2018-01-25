@@ -32,6 +32,7 @@ ds_stack_push(moveHistory, initPos);
 
 image_speed = 0;
 
+stateHistory = undefined;
 isPuzzleElement = true;
 isLocked = true;
 canPull = false;

@@ -14,11 +14,11 @@ with (all) {
         //if (instance_place(x, y, obj_block)){
         if (isMovePriority){ 
             ds_list_insert(list, 0, self);
-            print(object_index);
+            //print(object_index);
         }
         else{
             ds_list_add(list, self);
-            print(object_index);
+            //print(object_index);
         }
         //if (isSpike) print("is spike");
         //print("added this object to ds list");
@@ -28,7 +28,7 @@ with (all) {
 for (var i = 0; i < ds_list_size(list); i++){
     var inst = ds_list_find_value(list, i);
     if (inst.isFallingPlatform){
-        print("moving falling platform up the priority list");
+        //print("moving falling platform up to the tippy top of the priority list");
         ds_list_delete(list, i);
         ds_list_insert(list, 0, inst);
     }

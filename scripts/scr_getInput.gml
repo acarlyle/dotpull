@@ -9,11 +9,16 @@ key_upright = keyboard_check_released(ord('E')) || keyboard_check_released(ord("
 key_downleft = keyboard_check_released(ord('Z')) || keyboard_check_released(ord("1")) || keyboard_check_released(vk_end) || keyboard_check_released(vk_numpad1);
 key_downright = keyboard_check_released(ord('C')) || keyboard_check_released(ord("3")) || keyboard_check_released(vk_pagedown) || keyboard_check_released(vk_numpad3);
 key_r = keyboard_check_released(ord('R'));
+key_esc = keyboard_check_released(vk_escape);
 
-if (key_left || key_right || key_up || key_down ||
-    key_upleft || key_upright || key_downleft || key_downright) move = true;
-if (key_r) undo = true;
-
+if (key_esc){
+    handle_restartLevel();
+}
+else{
+    if (key_left || key_right || key_up || key_down ||
+        key_upleft || key_upright || key_downleft || key_downright) move = true;
+    if (key_r) undo = true;
+}
 //print(key_right);
 
 //if (vk_anykey) global.playerMoved = true; //move after player moves

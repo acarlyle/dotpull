@@ -31,10 +31,10 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             //print(global.oldPlayerY);
             ds_stack_push(stateHistory, stepsLeft);
             if (global.oldPlayerX == x && global.oldPlayerY == y){
-                print(stepsLeft);
+                //print(stepsLeft);
                 stepsLeft--;
                 image_index++;
-                print(stepsLeft);
+                //print(stepsLeft);
                 if (stepsLeft == 0){
                     isDeactivated = true;
                 }
@@ -343,11 +343,11 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             else if (canPush) pushPull *= -1;
             if (global.oldPlayerY == y && obj_player.y == y){ //player moved left/right
                 print("push/pull left/right");
-                print(x - (global.TILE_SIZE*pushPull));
+                //print(x - (global.TILE_SIZE*pushPull));
                 if (obj_player.x < x && scr_canPullPush(x - (global.TILE_SIZE*pushPull), y, false)) {//player on left side of object 
                     x -= (global.TILE_SIZE*pushPull);
                     objMove = true;
-                    print("Move is true");
+                    //print("Move is true");
                 }
                 else if (obj_player.x > x && scr_canPullPush(x + (global.TILE_SIZE*pushPull), y, false)){//player on right side of object
                     x += (global.TILE_SIZE*pushPull);
@@ -411,14 +411,14 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                 newObjPosY = y + (global.TILE_SIZE * pushPull);
             }
             
-            print("hur-----");
+            //print("hur-----");
             //print(obj_player.x)
             //print(obj_player.y)
             //print(global.oldPlayerX);
             //print(global.oldPlayerY);
-            print(newObjPosX);
-            print(newObjPosY);
-            print("-----dur");
+            //print(newObjPosX);
+            //print(newObjPosY);
+            //print("-----dur");
             
             
             if (!objMove  

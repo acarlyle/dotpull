@@ -29,8 +29,8 @@ if (instance_place(x, y, par_arrow)){
     }
 }
 
-print("noMove:");
-print(noMove);
+//print("noMove:");
+//print(noMove);
 
 if (!noMove){
     if (key_left && !scr_collisionCheck(global.playerX - global.TILE_SIZE, global.playerY)){
@@ -68,6 +68,14 @@ if (!noMove){
         global.playerX += global.TILE_SIZE;
         global.playerY += global.TILE_SIZE;
         moved = true;
+    }
+    
+    //GOTO ROOM
+    if (instance_place(global.playerX, global.playerY, obj_gotoRoom)){
+        x = global.playerX;
+        y = global.playerY;
+        moved = false;
+        handle_freeRoomMemory();
     }
     
     if (moved){ 

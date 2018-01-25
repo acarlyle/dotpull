@@ -30,6 +30,7 @@ var initPos = string(x) + "," + (string(y));
 print(initPos);
 ds_stack_push(moveHistory, initPos);
 
+stateHistory = undefined;
 image_speed = 0;
 
 isPuzzleElement = true;
