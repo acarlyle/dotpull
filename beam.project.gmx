@@ -13,6 +13,7 @@
       <sprite>sprites\spr_hole</sprite>
     </sprites>
     <sprite>sprites\spr_player</sprite>
+    <sprite>sprites\spr_roberta</sprite>
     <sprite>sprites\spr_playerDead</sprite>
     <sprites name="controllers">
       <sprite>sprites\spr_gotoRoom</sprite>
@@ -102,6 +103,9 @@
       <objects name="not_even_fucking_used">
         <object>objects\obj_triggerTrail</object>
       </objects>
+      <objects name="par_robot">
+        <object>objects\obj_roberta</object>
+      </objects>
     </objects>
     <objects name="env">
       <object>objects\obj_platform</object>
@@ -136,6 +140,7 @@
     <room>rooms\rm_level6</room>
     <room>rooms\rm_level7</room>
     <room>rooms\rm_level8</room>
+    <room>rooms\rm_level9</room>
     <rooms name="ian levels">
       <room>rooms\rm_level_Ian_1</room>
       <room>rooms\rm_level_Ian_2</room>
