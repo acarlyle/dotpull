@@ -19,32 +19,12 @@ if (!ds_stack_empty(obj_player.moveHistory)){
         //print(objCoordArr[1]);
         obj_player.x = objCoordArr[0];
         obj_player.y = objCoordArr[1];
-        playerX = obj_player.x;
-        playerY = obj_player.y;
+        global.playerX = obj_player.x;
+        global.playerY = obj_player.y;
     }
     //handle player's items on undo
     var items = ds_stack_pop(obj_player.itemHistory);
     obj_player.numKeys = items[0];
-    
-    if instance_exists(obj_roberta){
-        //handle roberta's undo
-        print("Handle roberta undo");
-        var objPosStr = ds_stack_pop(obj_roberta.moveHistory); //string e.g. "64,64"
-        print(objPosStr);
-        //print(obj_player.x);
-        //print(obj_player.y);
-        if (objPosStr != undefined){
-            var objCoordArr = scr_split(objPosStr);
-            //print(objCoordArr[0]);
-            //print(objCoordArr[1]);
-            obj_roberta.x = objCoordArr[0];
-            obj_roberta.y = objCoordArr[1];
-            obj_roberta.playerX = obj_roberta.x;
-            obj_roberta.playerY = obj_roberta.y;
-        }
-        //handle roberta's items on undo
-        var items = ds_stack_pop(obj_roberta.itemHistory);
-    }
     
     //handle every element's 
     for (var i = 0; i < array_length_1d(global.roomContents); i++){

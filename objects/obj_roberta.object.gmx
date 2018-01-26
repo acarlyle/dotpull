@@ -27,25 +27,14 @@
             <kind>1</kind>
             <string>isPuzzleElement = false;
 
-key_left = false;
-key_right = false;
-key_up = false;
-key_down = false;
-key_upleft = false;
-key_upright = false;
-key_downleft = false;
-key_downright = false;
-key_r = false;
-
-//normie memory
-numKeys = 0;
-//player position
 oldPlayerX = 0;
 oldPlayerY = 0;
+playerX = 0;
+playerY = 0;
 //dynamic memory
 moveHistory = ds_stack_create(); //stores players last position; appends when player moves
 itemHistory = ds_stack_create(); //stores players items as of last position; appends when player moves
-
+numKeys = 0;
 
 move = false;
 moved = false;

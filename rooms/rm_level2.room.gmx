@@ -16,36 +16,28 @@ print("Entering level two");
 
 
 
+var initPos = "0,0";
+
 if (instance_number(obj_player) == 0) { //spawning in directly from this level
-    global.playerX = 48; //set player x and y position
-    global.playerY = 0; 
+    playerX = 48; //set player x and y position
+    playerY = 0; 
     
-    player = instance_create(global.playerX, global.playerY, obj_player);
-    var initPos = string(obj_player.x) + "," + (string(obj_player.y));
-    //print(initPos);
-    ds_stack_push(obj_player.moveHistory, initPos);
-    ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys));
+    player = instance_create(playerX, playerY, obj_player);
+    obj_player.playerX = playerX;
+    obj_player.playerY = playerY;
+    initPos = string(obj_player.x) + "," + (string(obj_player.y));
 }
 else{
-    obj_player.x = global.playerX;
-    obj_player.y = global.playerY;
+    obj_player.x = obj_player.playerX;
+    obj_player.y = obj_player.playerY;
 }
 
 
 var initPos = string(obj_player.x) + "," + (string(obj_player.y));
 ds_stack_push(obj_player.moveHistory, initPos);
 ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys));
+print("initPos:" + initPos);
 
-//var triggerDoor1 = instance_create(32, 64, obj_triggerDoor);
-//triggerDoor1.image_speed = 0;
-//triggerDoor1.image_index = 1;
-//var trigger1 = instance_create(64, 64, obj_trigger);
-//trigger1.image_speed = 0;
-//trigger1.image_index = 0;
-//triggerDoor1.triggerPtr = trigger1;
-//trigger1.triggerDoorPtr = triggerDoor1;
-
-print("initing room objects");
 global.roomContents = scr_initRoom();
 var triggerDoor = instance_place(32, 64, obj_triggerDoor);
 var trigger = instance_place(64, 64, obj_trigger);

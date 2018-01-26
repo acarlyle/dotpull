@@ -55,6 +55,9 @@
       <script>scripts\handle_gameMove.gml</script>
       <script>scripts\handle_playerMove.gml</script>
       <script>scripts\handle_undoMove.gml</script>
+      <script>scripts\handle_gameMove_bkp.gml</script>
+      <script>scripts\handle_playerMove_bkp.gml</script>
+      <script>scripts\handle_undoMove_bkp.gml</script>
       <script>scripts\handle_restartLevel.gml</script>
       <script>scripts\handle_freeRoomMemory.gml</script>
     </scripts>

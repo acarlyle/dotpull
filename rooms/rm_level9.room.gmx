@@ -12,29 +12,33 @@
   <showcolour>-1</showcolour>
   <code>//append every rewindable object to roomContents arr
 
-print("Entering level five");
+print("Entering level nine");
 
 
+
+var initPos = "0,0";
 
 if (instance_number(obj_player) == 0) { //spawning in directly from this level
-    global.playerX = 48; //set player x and y position
-    global.playerY = 176; 
+    playerX = 64; //set player x and y position
+    playerY = 176; 
     
-    player = instance_create(global.playerX, global.playerY, obj_player);
-    var initPos = string(obj_player.x) + "," + (string(obj_player.y));
-    //print(initPos);
-    ds_stack_push(obj_player.moveHistory, initPos);
-    ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys));
+    player = instance_create(playerX, playerY, obj_player);
+    obj_player.playerX = playerX;
+    obj_player.playerY = playerY;
+    initPos = string(obj_player.x) + "," + (string(obj_player.y));
 }
 else{
-    obj_player.x = global.playerX;
-    obj_player.y = global.playerY;
+    obj_player.x = obj_player.playerX;
+    obj_player.y = obj_player.playerY;
 }
 
 
 var initPos = string(obj_player.x) + "," + (string(obj_player.y));
 ds_stack_push(obj_player.moveHistory, initPos);
 ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys));
+print("initPos:" + initPos);
+
+roberta = instance_create(64, 64, obj_roberta);
 
 global.roomContents = scr_initRoom();</code>
   <enableViews>0</enableViews>
@@ -135,9 +139,12 @@ global.roomContents = scr_initRoom();</code>
     <instance objName="obj_platform" x="64" y="48" name="inst_E78B2BF6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="48" y="64" name="inst_9D12ADB9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="64" y="64" name="inst_52B47B57" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_eviscerator" x="48" y="96" name="inst_2CAF9D78" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_eviscerator" x="64" y="96" name="inst_17BA5589" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_roberta" x="48" y="48" name="inst_D41F1A28" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_eviscerator" x="0" y="96" name="inst_2CAF9D78" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_eviscerator" x="112" y="96" name="inst_17BA5589" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="0" y="16" name="inst_12A40217" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="112" y="16" name="inst_A0610A87" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="48" y="16" name="inst_2F444FF1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="64" y="16" name="inst_04E43C3B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

@@ -16,37 +16,29 @@ print("Entering level three");
 
 
 
+var initPos = "0,0";
+
 if (instance_number(obj_player) == 0) { //spawning in directly from this level
-    global.playerX = 16; //set player x and y position
-    global.playerY = 0; 
+    playerX = 16; //set player x and y position
+    playerY = 0; 
     
-    player = instance_create(global.playerX, global.playerY, obj_player);
-    var initPos = string(obj_player.x) + "," + (string(obj_player.y));
-    //print(initPos);
-    ds_stack_push(obj_player.moveHistory, initPos);
-    ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys));
+    player = instance_create(playerX, playerY, obj_player);
+    obj_player.playerX = playerX;
+    obj_player.playerY = playerY;
+    initPos = string(obj_player.x) + "," + (string(obj_player.y));
 }
 else{
-    obj_player.x = global.playerX;
-    obj_player.y = global.playerY;
+    obj_player.x = obj_player.playerX;
+    obj_player.y = obj_player.playerY;
 }
 
 
 var initPos = string(obj_player.x) + "," + (string(obj_player.y));
 ds_stack_push(obj_player.moveHistory, initPos);
 ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys));
+print("initPos:" + initPos);
 
-//var block1 = instance_create(32, 176, obj_block);
-//var block2 = instance_create(48, 160, obj_block);
-//var block3 = instance_create(16, 160, obj_block);
-//var block4 = instance_create(32, 144, obj_block);
-//var hole1 = instance_create(32, 144, obj_hole);
-
-print("initing room objects");
-global.roomContents = scr_initRoom();
-//global.roomContents = array(block1, block2, block3, block4);
-print("finished initing objects");
-//global.roomContents = array(block3);</code>
+global.roomContents = scr_initRoom();</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -129,11 +121,11 @@ print("finished initing objects");
     <instance objName="obj_platform" x="96" y="160" name="inst_8B4183C5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="112" y="160" name="inst_392333B8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="16" y="160" name="inst_A6E1B832" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_gotoRoom" x="112" y="160" name="inst_B67169D5" locked="0" code="target_x = 0;&#xA;target_y = 160;&#xA;&#xA;target_r = rm_level4;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block" x="32" y="176" name="inst_6009F6CF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_gotoRoom" x="112" y="160" name="inst_B67169D5" locked="0" code="target_x = 0;&#xA;target_y = 144;&#xA;&#xA;target_r = rm_level4;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="48" y="32" name="inst_6009F6CF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block" x="16" y="160" name="inst_476A9F05" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block" x="32" y="144" name="inst_D44ABBEB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block" x="48" y="160" name="inst_8B87F2DB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="48" y="128" name="inst_D44ABBEB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="48" y="80" name="inst_8B87F2DB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

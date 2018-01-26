@@ -1,6 +1,8 @@
-///handle_playerMove
+///handle_playerMove(par_robot robot);
 
-print("handle player move");
+var robot = argument0;
+
+print("handle player move for " + object_get_name(robot.object_index));
 
 //ds_stack_push(obj_player.moveHistory, string(x) + "," + string(y)); //pushing previous turn's movement
 //ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys));
@@ -14,16 +16,16 @@ if (instance_place(x, y, par_arrow)){
     with (arrow){
         switch(dir){
             case "up":
-                if (!obj_player.key_up && !obj_player.key_upleft && !obj_player.key_upright) noMove = true;
+                if (!global.key_up && !global.key_upleft && !global.key_upright) noMove = true;
                 break; 
             case "right":
-                if (!obj_player.key_right && !obj_player.key_upright && !obj_player.key_downright) noMove = true;
+                if (!global.key_right && !global.key_upright && !global.key_downright) noMove = true;
                 break; 
             case "left":
-                if (!obj_player.key_left && !obj_player.key_upleft && !obj_player.key_downleft) noMove = true;
+                if (!global.key_left && !global.key_upleft && !global.key_downleft) noMove = true;
                 break; 
             case "down":
-                if (!obj_player.key_down && !obj_player.key_downleft && !obj_player.key_downright) noMove = true;
+                if (!global.key_down && !global.key_downleft && !global.key_downright) noMove = true;
                 break; 
         }
     }
@@ -32,63 +34,74 @@ if (instance_place(x, y, par_arrow)){
 //print("noMove:");
 //print(noMove);
 
+print(robot.playerX);
+print(robot.playerY);
+
 if (!noMove){
-    if (key_left && !scr_collisionCheck(global.playerX - global.TILE_SIZE, global.playerY)){
-        global.playerX -= global.TILE_SIZE;
-        moved = true;
+    if (global.key_left && !scr_collisionCheck(robot.playerX - global.TILE_SIZE, robot.playerY)){
+        robot.playerX -= global.TILE_SIZE;
+        robot.moved = true;
     }
-    if (key_right && !scr_collisionCheck(global.playerX + global.TILE_SIZE, global.playerY)){
-        global.playerX += global.TILE_SIZE;
-        moved = true;
+    if (global.key_right && !scr_collisionCheck(robot.playerX + global.TILE_SIZE, robot.playerY)){
+        robot.playerX += global.TILE_SIZE;
+        robot.moved = true;
     }
-    if (key_up && !scr_collisionCheck(global.playerX, global.playerY - global.TILE_SIZE)){
-        global.playerY -= global.TILE_SIZE;
-        moved = true;
+    if (global.key_up && !scr_collisionCheck(robot.playerX, robot.playerY - global.TILE_SIZE)){
+        print("you moved!");
+        robot.playerY -= global.TILE_SIZE;
+        robot.moved = true;
     }
-    if (key_down && !scr_collisionCheck(global.playerX, global.playerY + global.TILE_SIZE)){
-        global.playerY += global.TILE_SIZE;
-        moved = true;
+    if (global.key_down && !scr_collisionCheck(robot.playerX, robot.playerY + global.TILE_SIZE)){
+        robot.playerY += global.TILE_SIZE;
+        robot.moved = true;
     }
-    if (key_upleft && !scr_collisionCheck(global.playerX - global.TILE_SIZE, global.playerY - global.TILE_SIZE)){
-        global.playerX -= global.TILE_SIZE;
-        global.playerY -= global.TILE_SIZE;
-        moved = true;
+    if (global.key_upleft && !scr_collisionCheck(robot.playerX - global.TILE_SIZE, robot.playerY - global.TILE_SIZE)){
+        robot.playerX -= global.TILE_SIZE;
+        robot.playerY -= global.TILE_SIZE;
+        robot.moved = true;
     }
-    if (key_upright && !scr_collisionCheck(global.playerX + global.TILE_SIZE, global.playerY - global.TILE_SIZE)){
-        global.playerX += global.TILE_SIZE;
-        global.playerY -= global.TILE_SIZE;
-        moved = true;
+    if (global.key_upright && !scr_collisionCheck(robot.playerX + global.TILE_SIZE, robot.playerY - global.TILE_SIZE)){
+        robot.playerX += global.TILE_SIZE;
+        robot.playerY -= global.TILE_SIZE;
+        robot.moved = true;
     }
-    if (key_downleft && !scr_collisionCheck(global.playerX - global.TILE_SIZE, global.playerY + global.TILE_SIZE)){
-        global.playerX -= global.TILE_SIZE;
-        global.playerY += global.TILE_SIZE;
-        moved = true;
+    if (global.key_downleft && !scr_collisionCheck(robot.playerX - global.TILE_SIZE, robot.playerY + global.TILE_SIZE)){
+        robot.playerX -= global.TILE_SIZE;
+        robot.playerY += global.TILE_SIZE;
+        robot.moved = true;
     }
-    if (key_downright && !scr_collisionCheck(global.playerX + global.TILE_SIZE, global.playerY + global.TILE_SIZE)){
-        global.playerX += global.TILE_SIZE;
-        global.playerY += global.TILE_SIZE;
-        moved = true;
+    if (global.key_downright && !scr_collisionCheck(robot.playerX + global.TILE_SIZE, robot.playerY + global.TILE_SIZE)){
+        robot.playerX += global.TILE_SIZE;
+        robot.playerY += global.TILE_SIZE;
+        robot.moved = true;
     }
     
+    
     //GOTO ROOM
-    if (instance_place(global.playerX, global.playerY, obj_gotoRoom)){
-        x = global.playerX;
-        y = global.playerY;
-        moved = false;
+    if (instance_place(robot.playerX, robot.playerY, obj_gotoRoom)){
+        robot.x = robot.playerX;
+        robot.y = robot.playerY;
+        robot.moved = false;
         handle_freeRoomMemory();
     }
     
-    if (moved){ 
-        ds_stack_push(obj_player.moveHistory, string(x) + "," + string(y)); //pushing previous turn's movement
-        ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys));
-        print("Pushed onto player's stack !");
-        global.oldPlayerX = x;
-        global.oldPlayerY = y;
-        x = global.playerX; 
-        y = global.playerY; 
+    if (object_get_name(robot.object_index) == "obj_player" && robot.moved){
+        global.playerMoved = true;
+        print("PLAYER MOVED");
+    }
+    
+    if (global.playerMoved){ 
+        print("pushed: " + string(robot.x) + "," + string(robot.y));
+        ds_stack_push(robot.moveHistory, string(robot.x) + "," + string(robot.y)); //pushing previous turn's movement
+        ds_stack_push(robot.itemHistory, array(robot.numKeys));
+        print("Pushed onto robots's stack: " + string(robot.x) + " " + string(robot.y));
+        robot.oldPlayerX = x;
+        robot.oldPlayerY = y;
+        robot.x = robot.playerX; 
+        robot.y = robot.playerY; 
     }
 }
 
 //print(obj_player.numKeys);
 
-move = false;
+robot.move = false;

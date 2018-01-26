@@ -2,6 +2,21 @@
 
 //var block1 = instance_create(112, 0, obj_block);
 
+with(obj_roberta){
+    print("init roberta");
+    playerX = 64; //set player x and y position
+    playerY = 48; 
+    
+    //robot = instance_create(playerX, playerY, obj_roberta);
+    x = playerX;
+    y = playerY;
+    var initPos = string(x) + "," + (string(y));
+    print("initPos:" + initPos);
+    ds_stack_push(moveHistory, initPos);
+    ds_stack_push(itemHistory, array(numKeys));
+    
+}
+
 var list = ds_list_create();
 
 var 

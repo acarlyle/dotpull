@@ -73,8 +73,8 @@ room_goto(rm_level9);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (instance_number(obj_player) == 0) {
-    player = instance_create(global.playerX, global.playerY, obj_player);
+            <string>/*if (instance_number(obj_player) == 0) {
+    player = instance_create(0, 0, obj_player);
     var initPos = string(obj_player.x) + "," + (string(obj_player.y));
     //print(initPos);
     ds_stack_push(obj_player.moveHistory, initPos);
@@ -83,7 +83,7 @@ room_goto(rm_level9);
     with (player) {
         //juststarted = 100;
     }
-}
+}*/
 </string>
           </argument>
         </arguments>

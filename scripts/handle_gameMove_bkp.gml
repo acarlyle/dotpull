@@ -1,6 +1,4 @@
-///handle_gameMove(par_robot robot);
-
-var robot = argument0;
+///handle_gameMove();
 
 print("HANDLE GAME MOVE");
 var objMove = false;
@@ -13,7 +11,6 @@ var objMove = false;
 for (var i = 0; i < array_length_1d(global.roomContents); i++){
     var object = global.roomContents[i];
     with(object){
-        
         print("Handling " + object_get_name(object.object_index));
         if (!justDeactivated){ // ACTUALLY NOT JUST DEACTIVATED !!!
             ds_stack_push(moveHistory, string(x) + "," + string(y)); //pushing previous turn's movement
@@ -30,10 +27,10 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
         //handle falling platforms
         if (isFallingPlatform){
             //print("in falling plat");
-            //print(robot.oldPlayerX);
-            //print(robot.oldPlayerY);
+            //print(global.oldPlayerX);
+            //print(global.oldPlayerY);
             ds_stack_push(stateHistory, stepsLeft);
-            if (robot.oldPlayerX == x && robot.oldPlayerY == y){
+            if (global.oldPlayerX == x && global.oldPlayerY == y){
                 //print(stepsLeft);
                 stepsLeft--;
                 image_index++;
@@ -271,8 +268,8 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                     && abs((obj_player.y - y) / (obj_player.x - x)) == 1){
                         
                         print("diag lockon baby");
-                        //print(obj_player.x - robot.oldPlayerX);
-                        //print(obj_player.y - robot.oldPlayerY);
+                        //print(obj_player.x - global.oldPlayerX);
+                        //print(obj_player.y - global.oldPlayerY);
                     
                         if (obj_player.y < y && obj_player.x > x){ //player is above the obj and to the right
                             //x += global.TILE_SIZE;
@@ -329,22 +326,22 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             
             //figure out which way to push/pull
             if (canPush && canPull){
-                if (obj_player.y - robot.oldPlayerY > 0){ //player moved down
+                if (obj_player.y - global.oldPlayerY > 0){ //player moved down
                     if (y > obj_player.y) pushPull *=-1;
                 }
-                if (obj_player.x - robot.oldPlayerX > 0){ //player moved right
+                if (obj_player.x - global.oldPlayerX > 0){ //player moved right
                     if (x > obj_player.x) pushPull *=-1;
                 }
-                if (obj_player.x - robot.oldPlayerX < 0){ //player moved left
+                if (obj_player.x - global.oldPlayerX < 0){ //player moved left
                     if (x < obj_player.x) pushPull *=-1;
                 }
-                if (obj_player.y - robot.oldPlayerY < 0){ //player moved up
+                if (obj_player.y - global.oldPlayerY < 0){ //player moved up
                     if (y < obj_player.y) pushPull *=-1;
                 }
             }
             //push only
             else if (canPush) pushPull *= -1;
-            if (robot.oldPlayerY == y && obj_player.y == y){ //player moved left/right
+            if (global.oldPlayerY == y && obj_player.y == y){ //player moved left/right
                 print("push/pull left/right");
                 //print(x - (global.TILE_SIZE*pushPull));
                 if (obj_player.x < x && scr_canPullPush(x - (global.TILE_SIZE*pushPull), y, false)) {//player on left side of object 
@@ -357,7 +354,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                     objMove = true;
                 }
             }
-            if (robot.oldPlayerX == x && obj_player.x == x){ //player moved up/down
+            if (global.oldPlayerX == x && obj_player.x == x){ //player moved up/down
                 //print("let's pull this shit");
                 if (obj_player.y < y && scr_canPullPush(x, y - (global.TILE_SIZE*pushPull), false)){ //player above object 
                     y -= (global.TILE_SIZE*pushPull);
@@ -375,8 +372,8 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             if (obj_player.x > x) objRelXPos *= -1;
             //print(objRelXPos)
             
-            var xDiff = obj_player.x - robot.oldPlayerX;
-            var yDiff = obj_player.y - robot.oldPlayerY;
+            var xDiff = obj_player.x - global.oldPlayerX;
+            var yDiff = obj_player.y - global.oldPlayerY;
             var newObjPosX = 0; 
             var newObjPosY = 0;
             
@@ -417,23 +414,23 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             //print("hur-----");
             //print(obj_player.x)
             //print(obj_player.y)
-            //print(robot.oldPlayerX);
-            //print(robot.oldPlayerY);
+            //print(global.oldPlayerX);
+            //print(global.oldPlayerY);
             //print(newObjPosX);
             //print(newObjPosY);
             //print("-----dur");
             
             
             if (!objMove  
-                && (obj_player.x - robot.oldPlayerX != 0) 
-                && (obj_player.y - robot.oldPlayerY != 0) 
+                && (obj_player.x - global.oldPlayerX != 0) 
+                && (obj_player.y - global.oldPlayerY != 0) 
                 && scr_canPullPush(newObjPosX, newObjPosY, true)
                 && abs((obj_player.y - y) / (obj_player.x - x)) == 1
-                && abs((robot.oldPlayerY - y) / (robot.oldPlayerX - x)) == 1){
+                && abs((global.oldPlayerY - y) / (global.oldPlayerX - x)) == 1){
                     
                 //print("diag time baby");
-                //print(obj_player.x - robot.oldPlayerX);
-                //print(obj_player.y - robot.oldPlayerY);
+                //print(obj_player.x - global.oldPlayerX);
+                //print(obj_player.y - global.oldPlayerY);
                 
                 if (obj_player.y < y && obj_player.x > x){ //player is above the obj and to the right
                     x += (global.TILE_SIZE * pushPull);

@@ -48,9 +48,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.playerX = target_x;
-global.playerY = target_y;
-print("Going to");
+            <string>obj_player.playerX = target_x;
+obj_player.playerY = target_y;
+print("Going to new rum");
 //print(obj_player.x);
 //print(obj_player.y);
 room_goto(target_r);
