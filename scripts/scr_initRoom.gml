@@ -4,8 +4,8 @@
 
 with(obj_roberta){
     print("init roberta");
-    playerX = 64; //set player x and y position
-    playerY = 48; 
+    playerX = x; //set player x and y position
+    playerY = y; 
     
     //robot = instance_create(playerX, playerY, obj_roberta);
     x = playerX;

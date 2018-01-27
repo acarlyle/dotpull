@@ -1,5 +1,5 @@
 ///handle_undoMove
-
+/**
 print("handle_undoMove");
 
 if (isDead){ 
@@ -110,4 +110,4 @@ if (!ds_stack_empty(obj_player.moveHistory)){
     }
 }
 
-undo = false;
+undo = false; */

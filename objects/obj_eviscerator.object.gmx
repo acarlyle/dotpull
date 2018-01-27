@@ -3,9 +3,9 @@
   <spriteName>spr_eviscerator</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-10</depth>
+  <depth>-1</depth>
   <persistent>0</persistent>
-  <parentName>par_obstacle</parentName>
+  <parentName>par_platform</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">

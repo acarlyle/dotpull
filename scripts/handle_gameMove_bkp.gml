@@ -1,5 +1,5 @@
 ///handle_gameMove();
-
+/*
 print("HANDLE GAME MOVE");
 var objMove = false;
 
@@ -476,3 +476,4 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
 }
 
 moved = false;
+*/

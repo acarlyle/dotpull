@@ -1,4 +1,6 @@
-///handle_undoMove
+///handle_undoMove(par_robot robot)
+
+var robot = argument0;
 
 print("handle_undoMove");
 
@@ -7,9 +9,9 @@ if (isDead){
     isDead = false;
 }
 
-if (!ds_stack_empty(obj_player.moveHistory)){
+if (!ds_stack_empty(robot.moveHistory)){
     //handle player's undo
-    var objPosStr = ds_stack_pop(obj_player.moveHistory); //string e.g. "64,64"
+    var objPosStr = ds_stack_pop(robot.moveHistory); //string e.g. "64,64"
     print(objPosStr);
     //print(obj_player.x);
     //print(obj_player.y);
@@ -17,15 +19,15 @@ if (!ds_stack_empty(obj_player.moveHistory)){
         var objCoordArr = scr_split(objPosStr);
         //print(objCoordArr[0]);
         //print(objCoordArr[1]);
-        obj_player.x = objCoordArr[0];
-        obj_player.y = objCoordArr[1];
-        playerX = obj_player.x;
-        playerY = obj_player.y;
+        robot.x = objCoordArr[0];
+        robot.y = objCoordArr[1];
+        robot.playerX = robot.x;
+        robot.playerY = robot.y;
     }
     //handle player's items on undo
-    var items = ds_stack_pop(obj_player.itemHistory);
-    obj_player.numKeys = items[0];
-    
+    var items = ds_stack_pop(robot.itemHistory);
+    //robot.numKeys = items[0];
+    /*
     if instance_exists(obj_roberta){
         //handle roberta's undo
         print("Handle roberta undo");
@@ -44,7 +46,7 @@ if (!ds_stack_empty(obj_player.moveHistory)){
         }
         //handle roberta's items on undo
         var items = ds_stack_pop(obj_roberta.itemHistory);
-    }
+    }*/
     
     //handle every element's 
     for (var i = 0; i < array_length_1d(global.roomContents); i++){
@@ -117,11 +119,11 @@ if (!ds_stack_empty(obj_player.moveHistory)){
                 var objCoordArr = scr_split(objPosStr);
                 x = objCoordArr[0];
                 y = objCoordArr[1];
-                if ((instance_place(x, y, par_pullable) || instance_place(x, y, obj_player)) && triggerDoorPtr != undefined){ //this is a trigger being pressed
+                if ((instance_place(x, y, par_pullable) || instance_place(x, y, par_robot)) && triggerDoorPtr != undefined){ //this is a trigger being pressed
                     self.triggerDoorPtr.image_index = 1;
                     self.triggerDoorPtr.isDeactivated = true;
                 }
-                if ((!instance_place(x, y, par_pullable) && !instance_place(x, y, obj_player)) && triggerDoorPtr != undefined){ //this is a trigger not being pressed
+                if ((!instance_place(x, y, par_pullable) && !instance_place(x, y, par_robot)) && triggerDoorPtr != undefined){ //this is a trigger not being pressed
                     self.triggerDoorPtr.image_index = 0;
                     self.triggerDoorPtr.isDeactivated = false;
                 }

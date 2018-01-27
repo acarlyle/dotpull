@@ -88,6 +88,7 @@
         <object>objects\obj_arrow_down_static</object>
         <object>objects\obj_arrow_left_static</object>
         <object>objects\obj_arrow_right_static</object>
+        <object>objects\obj_eviscerator</object>
       </objects>
       <objects name="par_pullable">
         <object>objects\obj_spike</object>
@@ -101,7 +102,6 @@
       </objects>
       <objects name="par_obstacle">
         <object>objects\obj_triggerDoor</object>
-        <object>objects\obj_eviscerator</object>
       </objects>
       <objects name="not_even_fucking_used">
         <object>objects\obj_triggerTrail</object>
