@@ -14,6 +14,12 @@ if (instance_place(x, y, obj_triggerDoor) && !instance_place(argument0, argument
         return false; //can't move if above    
     }
 }
+if (instance_place(argument0, argument1, obj_block) ||
+    instance_place(argument0, argument1, obj_blockPush) ||
+    instance_place(argument0, argument1, obj_blockPushPull)){
+    //print("Block in the way!");
+    return false;
+}
 
 if (!instance_place(argument0, argument1, par_platform)){
     //print("No platform to pull/push to");
@@ -47,12 +53,6 @@ if (instance_place(argument0, argument1, par_fallingPlatform)){
 
 if (instance_place(argument0, argument1, obj_spike)){
     //print("Spike in the way!");
-    return false;
-}
-if (instance_place(argument0, argument1, obj_block) ||
-    instance_place(argument0, argument1, obj_blockPush) ||
-    instance_place(argument0, argument1, obj_blockPushPull)){
-    //print("Block in the way!");
     return false;
 }
 if (instance_place(argument0, argument1, obj_key)){
@@ -210,6 +210,124 @@ if (argument2 == true && canPull && !canPush){
     }   
 }
 
+
+if (canPull && canPush){
+    print("obj can be pushed and pulled");
+    
+    var xDiff = robot.x - x;
+    var yDiff = robot.y - y;
+    
+    if (!argument2){ //this checks left/right only
+    
+        if (yDiff == 0){ //player is moving left/right; check for objects towards the player
+            if (xDiff > 0){ //player is to the right of the obj
+                for (var objX = x + global.TILE_SIZE; objX < robot.x; objX += global.TILE_SIZE){
+                    if (instance_place(objX, y, par_obstacle)){
+                        var obs = instance_place(objX, y, par_obstacle);
+                        if (isActivated(obs)){
+                            return false; //don't pull if anything is in the way
+                        }
+                    }
+                }
+            }
+            else{ //player is to the left of the obj
+                for (var objX = x - global.TILE_SIZE; objX > robot.x; objX -= global.TILE_SIZE){
+                    if (instance_place(objX, y, par_obstacle)){
+                        var obs = instance_place(objX, y, par_obstacle);
+                        if (isActivated(obs) && !instance_place(objX, y, obj_snare)){
+                            print(objX);
+                            print("something i nthe way");
+                            print(isDeactivated);
+                            return false; //don't pull if anything is in the way
+                        }
+                    }
+                }
+            }
+        }
+        if (xDiff == 0){ //player is moving up/down; check for objects towards the player
+            if (yDiff < 0){ //player is above the obj
+                for (var objY = y - global.TILE_SIZE; objY > robot.y; objY -= global.TILE_SIZE){
+                    if (instance_place(x, objY, par_obstacle)){
+                        var obs = instance_place(x, objY, par_obstacle);
+                        //print("isDeactived?");
+                        if (isActivated(obs)){
+                            return false; //don't pull if anything is in the way
+                        }
+                    }
+                }
+            }
+            else{ //player is below the obj
+                for (var objY = y + global.TILE_SIZE; objY < robot.y; objY += global.TILE_SIZE){
+                    if (instance_place(x, objY, par_obstacle)){
+                        var obs = instance_place(x, objY, par_obstacle);
+                        //print(obs.isDeactivated);
+                        if (!obs.isDeactivated){
+                            print("oh no it is activated");
+                            return false; //don't pull if anything is in the way
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    //diagonal movement
+    if (argument2 == true){
+        //print("Diag checking in scr_canPull");
+        if (robot.y < y && robot.x > x){ //player is above the obj and to the right; pull object upright
+            //print("pull object up right");
+            var objX = x+global.TILE_SIZE; var objY = y-global.TILE_SIZE;
+            //print(objX);
+            //print(objY);
+            for (objX = x + global.TILE_SIZE; objX < robot.x; objX += global.TILE_SIZE){
+                //print("In that upright loop !");
+                //print(objX);
+                //print(objY);  
+                if (instance_place(objX, objY, par_obstacle)) return false; //don't pull if anything is in the way
+                objY -= global.TILE_SIZE;  
+            }
+        }
+        if (robot.y < y && robot.x < x){ //player is above the obj and to the left; pull object upleft
+            //print("pull object up left");
+            var objX = x-global.TILE_SIZE; var objY = y-global.TILE_SIZE;
+            //print(objX);
+            //print(objY);
+            for (objX = x - global.TILE_SIZE; objX > robot.x; objX -= global.TILE_SIZE){
+                //print("In that left loop !");
+                //print(objX);
+                //print(objY);  
+                if (instance_place(objX, objY, par_obstacle)) return false; //don't pull if anything is in the way
+                objY -= global.TILE_SIZE;  
+            }
+        }
+        if (robot.y > y && robot.x > x){ //player is below the obj and to the right; pull object downright
+            //print("pull object down right");
+            var objX = x + global.TILE_SIZE; var objY = y + global.TILE_SIZE;
+            //print(objX);
+            //print(objY);
+            for (objX = x + global.TILE_SIZE; objX < robot.x; objX += global.TILE_SIZE){
+                //print("In that downright loop !");
+                //print(objX);
+                //print(objY);  
+                if (instance_place(objX, objY, par_obstacle)) return false; //don't pull if anything is in the way
+                objY += global.TILE_SIZE;  
+            }          
+        }
+        if (robot.y > y && robot.x < x){ //player is below the obj and to the left; pull object downleft
+            //print("pull object down left");
+            var objX = x-global.TILE_SIZE; var objY = y+ global.TILE_SIZE;
+            //print(objX);
+            //print(objY);
+            for (objX = x - global.TILE_SIZE; objX > robot.x; objX -= global.TILE_SIZE){
+                //print("In that downleft loop !");
+                //print(objX);
+                //print(objY);  
+                if (instance_place(objX, objY, par_obstacle)) return false; //don't pull if anything is in the way
+                objY += global.TILE_SIZE;  
+            }    
+        }   
+    }
+}
 
 
         

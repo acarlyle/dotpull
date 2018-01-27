@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-1</depth>
   <persistent>0</persistent>
-  <parentName>par_wall</parentName>
+  <parentName>par_obstacle</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -47,6 +47,7 @@ isSpike = false;
 isMovePriority = false;
 isArrow = false;
 isFallingPlatform = false;
+isEviscerator = false;
 </string>
           </argument>
         </arguments>

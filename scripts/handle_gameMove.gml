@@ -343,8 +343,6 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             
         } //end spike logic
         
-        else object_get_name(object.object_index)
-        
         //handle pushPull blocks
         if ((canPull || canPush) && !isSpike){
             //print("Pushed onto object's stack !");
