@@ -110,7 +110,7 @@ ds_stack_destroy(itemHistory);
 
 global.playerMoved = false;
 
-with (par_robot){
+/**with (par_robot){
     scr_getInput();
     if (!isDead){
         if (move){
@@ -119,11 +119,29 @@ with (par_robot){
             }
         }
         if (moved) handle_gameMove(self);  //moved is true if player successfully moved
-        if (undo){
-            print("undo");
-            handle_undoMove(self); //undo is true if player wants to undo their latest move}
+    }
+    if (undo){
+        print("undo");
+        handle_undoMove(self); //undo is true if player wants to undo their latest move}
+    }
+}*/
+
+with (par_robot){
+    scr_getInput();
+    if (!isDead){
+        if (move){
+            if (global.playerMoved || object_get_name(object_index) == "obj_player"){
+                handle_playerMove(self); //move is true if movement key is pressed
+            }
         }
     }
+    if (undo){
+        print("undo");
+        handle_undoMove(self); //undo is true if player wants to undo their latest move}
+    }
+}
+with (par_robot){
+    if (moved) handle_gameMove(self);  //moved is true if player successfully moved
 }
 </string>
           </argument>
