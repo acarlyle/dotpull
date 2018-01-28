@@ -72,6 +72,7 @@
       <script>scripts\handle_freeRoomMemory.gml</script>
       <script>scripts\handle_gameSave.gml</script>
       <script>scripts\handle_gameLoad.gml</script>
+      <script>scripts\handle_prioritizeItems.gml</script>
     </scripts>
     <scripts name="Helpers">
       <script>scripts\array.gml</script>
