@@ -70,6 +70,8 @@
       <script>scripts\handle_undoMove_bkp.gml</script>
       <script>scripts\handle_restartLevel.gml</script>
       <script>scripts\handle_freeRoomMemory.gml</script>
+      <script>scripts\handle_gameSave.gml</script>
+      <script>scripts\handle_gameLoad.gml</script>
     </scripts>
     <scripts name="Helpers">
       <script>scripts\array.gml</script>
@@ -148,6 +150,7 @@
       <object>objects\obj_exitGame</object>
       <object>objects\obj_menuRob</object>
       <object>objects\obj_menuRoberta</object>
+      <object>objects\obj_menuCursor</object>
     </objects>
   </objects>
   <rooms name="rooms">

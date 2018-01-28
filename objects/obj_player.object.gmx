@@ -143,6 +143,11 @@ with (par_robot){
 with (par_robot){
     if (moved) handle_gameMove(self);  //moved is true if player successfully moved
 }
+
+//save state
+if (global.playerMoved){
+    handle_gameSave();
+}
 </string>
           </argument>
         </arguments>

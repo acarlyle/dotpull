@@ -40,7 +40,7 @@ move = false;
 
 global.TILE_SIZE = 16;
 
-scr_initPlayerPosition(3, 3);
+//scr_initPlayerPosition(3, 3);
 //global.playerX = 80;
 //global.playerY = 32;
 
@@ -48,7 +48,10 @@ scr_initPlayerPosition(3, 3);
 scr_applyScreenRes();
 
 //room_goto(rm_level_Ian_4);
-room_goto(rm_level1);
+//if (!global.saveRoomLoaded) room_goto(rm_level1);
+//else{
+//    room_goto(global.saveRoomLoaded);
+//}
 
 </string>
           </argument>
