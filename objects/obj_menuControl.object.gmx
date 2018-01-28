@@ -78,7 +78,8 @@ if (key_up){
     switch(object_get_name(selectedOption)){
         case "obj_newAdventure":
             selectedOption.image_index = 0;
-            selectedOption = obj_exitGame;
+            //selectedOption = obj_exitGame;
+            selectedOption = obj_continueAdventure;
             selectedOption.image_index = 1; 
             break;
         case "obj_continueAdventure":
@@ -86,11 +87,11 @@ if (key_up){
             selectedOption = obj_newAdventure;
             selectedOption.image_index = 1; 
             break;
-        case "obj_exitGame":
+        /*case "obj_exitGame":
             selectedOption.image_index = 0;
             selectedOption = obj_continueAdventure;
             selectedOption.image_index = 1; 
-            break;
+            break;*/
               
     }
 }
@@ -104,14 +105,15 @@ else if (key_down){
             break;
         case "obj_continueAdventure":
             selectedOption.image_index = 0;
-            selectedOption = obj_exitGame;
-            selectedOption.image_index = 1; 
-            break;
-        case "obj_exitGame":
-            selectedOption.image_index = 0;
+            //selectedOption = obj_exitGame;
             selectedOption = obj_newAdventure;
             selectedOption.image_index = 1; 
             break;
+        /*case "obj_exitGame":
+            selectedOption.image_index = 0;
+            selectedOption = obj_newAdventure;
+            selectedOption.image_index = 1; 
+            break;*/
               
     }
 
@@ -125,8 +127,9 @@ else if (key_enter){
             break;
         case "obj_continueAdventure":
             break;
-        case "obj_exitGame":
-            break;
+        //case "obj_exitGame":
+        //    game_end();
+        //    break;
     }
 }
 </string>
