@@ -35,6 +35,7 @@ global.WINDOW_HEIGHT = 192;
 //scr_applyScreenRes();
 global.saveRoomLoaded = undefined;
 
+//selectedOption = obj_continueAdventure;
 selectedOption = obj_newAdventure;
 selectedOption.isSelected = true;
 selectedOption.image_index++;
@@ -124,7 +125,7 @@ else if (key_enter){
     audio_play_sound(snd_menuSelect, 10, false);
     switch(object_get_name(selectedOption)){
         case "obj_newAdventure":
-            room_goto(rm_level1);
+            room_goto(rm_level6);
             break;
         case "obj_continueAdventure":
             handle_gameLoad();

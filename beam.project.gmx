@@ -109,10 +109,8 @@
         <object>objects\obj_block</object>
         <object>objects\obj_blockPushPull</object>
       </objects>
-      <objects name="par_wall">
-        <object>objects\obj_door</object>
-      </objects>
       <objects name="par_obstacle">
+        <object>objects\obj_door</object>
         <object>objects\obj_triggerDoor</object>
       </objects>
       <objects name="not_even_fucking_used">
@@ -157,6 +155,7 @@
     <room>rooms\rm_menu</room>
     <room>rooms\init</room>
     <room>rooms\rm_baseRoom</room>
+    <room>rooms\rm_level10</room>
     <room>rooms\rm_demo</room>
     <room>rooms\rm_cell</room>
     <room>rooms\rm_level1</room>
