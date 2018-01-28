@@ -33,13 +33,12 @@ global.roomContents = ds_stack_create(); //rewindable objects
 //game settings
 global.set_scaleRes = 1;
 global.set_phoneRes = 3; //act phone value is 5 (960 * 640)
-
+global.WINDOW_WIDTH = 128;
+global.WINDOW_HEIGHT = 192;
 //player vars
 move = false;
 
 global.TILE_SIZE = 16;
-global.WINDOW_WIDTH = 128;
-global.WINDOW_HEIGHT = 192;
 
 scr_initPlayerPosition(3, 3);
 //global.playerX = 80;

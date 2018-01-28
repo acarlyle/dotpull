@@ -4,7 +4,11 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sounds name="Menu">
+      <sound>sound\snd_menuSelect</sound>
+    </sounds>
+  </sounds>
   <sprites name="sprites">
     <sprites name="env">
       <sprite>sprites\spr_bridge</sprite>
@@ -14,6 +18,7 @@
     </sprites>
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_roberta</sprite>
+    <sprite>sprites\spr_robertaMenu</sprite>
     <sprite>sprites\spr_playerDead</sprite>
     <sprites name="controllers">
       <sprite>sprites\spr_gotoRoom</sprite>
@@ -39,6 +44,11 @@
       <sprite>sprites\spr_fallingPlatform_2Step</sprite>
       <sprite>sprites\spr_fallingPlatform_3Step</sprite>
       <sprite>sprites\spr_eviscerator</sprite>
+    </sprites>
+    <sprites name="Menu">
+      <sprite>sprites\spr_newAdventure</sprite>
+      <sprite>sprites\spr_continueAdventure</sprite>
+      <sprite>sprites\spr_exit</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background"/>
@@ -118,6 +128,7 @@
     </objects>
     <objects name="controllers">
       <object>objects\obj_control</object>
+      <object>objects\obj_menuControl</object>
       <object>objects\obj_gotoRoom</object>
     </objects>
     <objects name="Parents">
@@ -127,12 +138,22 @@
       <object>objects\par_block</object>
       <object>objects\par_pullable</object>
       <object>objects\par_wall</object>
+      <object>objects\par_menu</object>
       <object>objects\par_platform</object>
       <object>objects\par_arrow</object>
     </objects>
+    <objects name="Menu">
+      <object>objects\obj_newAdventure</object>
+      <object>objects\obj_continueAdventure</object>
+      <object>objects\obj_exitGame</object>
+      <object>objects\obj_menuRob</object>
+      <object>objects\obj_menuRoberta</object>
+    </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_menu</room>
     <room>rooms\init</room>
+    <room>rooms\rm_baseRoom</room>
     <room>rooms\rm_demo</room>
     <room>rooms\rm_cell</room>
     <room>rooms\rm_level1</room>
