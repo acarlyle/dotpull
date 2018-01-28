@@ -137,6 +137,15 @@ if (!ds_stack_empty(robot.moveHistory)){
                     self.triggerDoorPtr.image_index = 0;
                     self.triggerDoorPtr.isDeactivated = false;
                 }
+                if (object_get_name(object_index) == "obj_key"){
+                    if (deactivatedX != undefined || deactivatedY != undefined){
+                        //obj_player.numKeys--;
+                        isDeactivated = false;
+                        print("Key deactivated");
+                        deactivatedX = undefined;
+                        deactivatedY = undefined;
+                    }
+                }
             }
         }
     }

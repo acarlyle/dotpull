@@ -147,6 +147,9 @@ if (!argument2 && canPull && !canPush){ //this checks left/right only
                         print("oh no it is activated");
                         return false; //don't pull if anything is in the way
                     }
+                    else{
+                        print("it is not activated");
+                    }
                 }
             }
         }
