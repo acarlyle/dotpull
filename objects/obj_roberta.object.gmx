@@ -40,6 +40,8 @@ move = false;
 moved = false;
 undo = false;
 isDead = false;
+
+isDeactivated = false;
 </string>
           </argument>
         </arguments>

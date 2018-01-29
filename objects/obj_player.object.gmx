@@ -49,6 +49,7 @@ oldPlayerX = 0;
 oldPlayerY = 0;
 playerX = 0;
 playerY = 0;
+isDeactivated = false;
 
 
 //dynamic memory

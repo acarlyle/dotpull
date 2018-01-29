@@ -99,7 +99,7 @@ if (isSpike){
 var xDiff = robot.x - x;
 var yDiff = robot.y - y;
 
-if (!argument2 && canPull && !canPush){ //this checks left/right only
+if (!argument2 && (canPull || canPush) && !(canPull && canPush)){ //this checks left/right only
 
     if (yDiff == 0){ //player is moving left/right; check for objects towards the player
         if (xDiff > 0){ //player is to the right of the obj
@@ -157,7 +157,7 @@ if (!argument2 && canPull && !canPush){ //this checks left/right only
 }
 
 //diagonal movement
-if (argument2 == true && canPull && !canPush){
+if (argument2 == true && (canPull || canPush) && !(canPull && canPush)){
     //print("Diag checking in scr_canPull");
     if (robot.y < y && robot.x > x){ //player is above the obj and to the right; pull object upright
         //print("pull object up right");
