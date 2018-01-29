@@ -158,6 +158,7 @@
     <room>rooms\rm_menu</room>
     <room>rooms\init</room>
     <room>rooms\rm_baseRoom</room>
+    <room>rooms\rm_spikeInterlude</room>
     <room>rooms\rm_demo</room>
     <room>rooms\rm_cell</room>
     <room>rooms\rm_level1</room>
