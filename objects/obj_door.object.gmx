@@ -30,6 +30,8 @@ var initPos = string(x) + "," + (string(y));
 print(initPos);
 ds_stack_push(moveHistory, initPos);
 
+image_speed = 0;
+
 stateHistory = undefined;
 isPuzzleElement = true;
 isLocked = true;
@@ -37,8 +39,8 @@ canPull = false;
 canPush = false;
 isDeactivated = false;
 justDeactivated = false;
-deactivatedX = 0;
-deactivatedY = 0;
+deactivatedX = undefined;
+deactivatedY = undefined;
 canFall = false;
 
 triggerDoorPtr = undefined;

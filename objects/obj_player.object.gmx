@@ -149,6 +149,9 @@ with (par_robot){
 if (global.playerMoved){
     handle_gameSave();
 }
+
+//print(obj_player.numKeys);
+//print(ds_stack_size(obj_player.itemHistory));
 </string>
           </argument>
         </arguments>

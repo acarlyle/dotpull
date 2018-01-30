@@ -26,6 +26,9 @@ if (instance_place(argument0, argument1, obj_door)){
         }
         return false;
     }
+    else{
+        return true;
+    }
 }
 //print("numnkeys end");
 if (instance_place(argument0, argument1, obj_key)){
@@ -39,13 +42,15 @@ if (instance_place(argument0, argument1, obj_key)){
         deactivatedX = x;
         deactivatedY = y;
         ds_stack_push(moveHistory, string(x) + "," + string(y));
-        x = 0;
-        y = 0;
+        //x = 0;
+        //y = 0;
+        image_index = 1;
         //ds_stack_pop(moveHistory);
         //ds_stack_pop(moveHistory);
     }
     return false;
 }
+print("numkeys: " + string(obj_player.numKeys));
 if (instance_place(argument0, argument1, par_block)){
     print("There's a block here");
     return true; //there's a block here

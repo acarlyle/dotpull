@@ -36,27 +36,7 @@ if (!ds_stack_empty(robot.moveHistory)){
     }
     //handle player's items on undo
     var items = ds_stack_pop(robot.itemHistory);
-    //robot.numKeys = items[0];
-    /*
-    if instance_exists(obj_roberta){
-        //handle roberta's undo
-        print("Handle roberta undo");
-        var objPosStr = ds_stack_pop(obj_roberta.moveHistory); //string e.g. "64,64"
-        print(objPosStr);
-        //print(obj_player.x);
-        //print(obj_player.y);
-        if (objPosStr != undefined){
-            var objCoordArr = scr_split(objPosStr);
-            //print(objCoordArr[0]);
-            //print(objCoordArr[1]);
-            obj_roberta.x = objCoordArr[0];
-            obj_roberta.y = objCoordArr[1];
-            obj_roberta.playerX = obj_roberta.x;
-            obj_roberta.playerY = obj_roberta.y;
-        }
-        //handle roberta's items on undo
-        var items = ds_stack_pop(obj_roberta.itemHistory);
-    }*/
+    robot.numKeys = items[0];
     
     //handle every element's 
     for (var i = 0; i < array_length_1d(global.roomContents); i++){
@@ -138,12 +118,15 @@ if (!ds_stack_empty(robot.moveHistory)){
                     self.triggerDoorPtr.isDeactivated = false;
                 }
                 if (object_get_name(object_index) == "obj_key"){
-                    if (deactivatedX != undefined || deactivatedY != undefined){
+                    if (deactivatedX != 0 || deactivatedY != 0){
                         //obj_player.numKeys--;
                         isDeactivated = false;
                         print("Key deactivated");
                         deactivatedX = undefined;
                         deactivatedY = undefined;
+                    }
+                    if (obj_key.x != 0 && obj_key.y !=0){
+                        obj_key.image_index = 0;
                     }
                 }
             }

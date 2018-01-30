@@ -372,11 +372,12 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                 if (robot.x < x && scr_canPullPush(x - (global.TILE_SIZE*pushPull), y, false, robot)) {//player on left side of object 
                     x -= (global.TILE_SIZE*pushPull);
                     objMove = true;
-                    //print("Move is true");
+                    print("Move is true left");
                 }
                 else if (robot.x > x && scr_canPullPush(x + (global.TILE_SIZE*pushPull), y, false, robot)){//player on right side of object
                     x += (global.TILE_SIZE*pushPull);
                     objMove = true;
+                    print("Move is true right");
                 }
             }
             if (robot.oldPlayerX == x && robot.x == x){ //player moved up/down

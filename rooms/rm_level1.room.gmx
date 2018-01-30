@@ -17,8 +17,8 @@ print("Entering level one");
 var initPos = "0,0";
 
 if (instance_number(obj_player) == 0) { //spawning in directly from this level
-    playerX = 80; //set player x and y position
-    playerY = 32; 
+    playerX = 16; //set player x and y position
+    playerY = 160; 
     
     player = instance_create(playerX, playerY, obj_player);
     obj_player.playerX = playerX;
@@ -36,7 +36,17 @@ ds_stack_push(obj_player.moveHistory, initPos);
 ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys));
 print("initPos:" + initPos);
 
-global.roomContents = scr_initRoom();</code>
+global.roomContents = scr_initRoom();
+
+var triggerDoor = instance_place(48, 32, obj_triggerDoor);
+var trigger = instance_place(80, 48, obj_trigger);
+triggerDoor.triggerPtr = trigger;
+trigger.triggerDoorPtr = triggerDoor;
+
+var triggerDoor2 = instance_place(48, 144, obj_triggerDoor);
+var trigger2 = instance_place(80, 160, obj_trigger);
+triggerDoor2.triggerPtr = trigger2;
+trigger2.triggerDoorPtr = triggerDoor2;</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -77,18 +87,49 @@ global.roomContents = scr_initRoom();</code>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="obj_gotoRoom" x="112" y="16" name="inst_808E12CB" locked="0" code="target_x = 48;&#xA;target_y = 0;&#xA;&#xA;target_r = rm_level2;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_gotoRoom" x="112" y="32" name="inst_B9DBBDFA" locked="0" code="target_x = 64;&#xA;target_y = 0;&#xA;&#xA;target_r = rm_level2;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="16" y="160" name="inst_4AC85344" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="32" y="160" name="inst_6DD90905" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_gotoRoom" x="80" y="0" name="inst_B9DBBDFA" locked="0" code="target_x = 64;&#xA;target_y = 0;&#xA;&#xA;target_r = rm_level2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="32" y="160" name="inst_4AC85344" locked="0" code="target_x = 64;&#xA;target_y = 0;&#xA;&#xA;target_r = rm_level2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="32" y="144" name="inst_B07F58CF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="16" y="144" name="inst_EC7FF15D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="16" y="128" name="inst_866CA7F4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="32" y="128" name="inst_989BE689" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="96" y="160" name="inst_379E54AA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="112" y="160" name="inst_C1D39375" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="par_block" x="112" y="160" name="inst_3D809C56" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_trigger" x="96" y="160" name="inst_D7893693" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="80" y="160" name="inst_379E54AA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="96" y="160" name="inst_C1D39375" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_trigger" x="80" y="160" name="inst_D7893693" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="32" y="48" name="inst_56540A37" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="16" y="48" name="inst_3A1C63F6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="32" y="32" name="inst_E9C46404" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="16" y="32" name="inst_BC49CF37" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="32" y="16" name="inst_41BA9609" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="16" y="16" name="inst_46EE2EFE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="32" y="96" name="inst_0E085DA9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="32" y="80" name="inst_6000EB8D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="80" y="144" name="inst_D16EE359" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="80" y="128" name="inst_01606FCF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="80" y="112" name="inst_91E2FA63" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="80" y="96" name="inst_FF040147" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="80" y="80" name="inst_8FA610EB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="80" y="64" name="inst_BD1ED15A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="80" y="32" name="inst_08BF19E5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="80" y="16" name="inst_E449C4DA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bridge" x="80" y="0" name="inst_39CAC89B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="80" y="48" name="inst_98ADC4FA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_trigger" x="80" y="48" name="inst_CBEFF1C8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="96" y="48" name="inst_5BB0C179" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_triggerDoor" x="48" y="32" name="inst_80927844" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_triggerDoor" x="48" y="144" name="inst_FCEFC6A4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_key" x="16" y="32" name="inst_3C9842BA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_door" x="80" y="16" name="inst_BE0FEFB1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="16" y="80" name="inst_669666CA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="16" y="96" name="inst_09026A72" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="16" y="128" name="inst_FD671D2F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="16" y="144" name="inst_2398ACBA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="16" y="160" name="inst_B4696357" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="64" y="32" name="inst_7539B1DA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="64" y="144" name="inst_71BEDD8D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="48" y="144" name="inst_4CA96629" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="48" y="32" name="inst_48544164" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="96" y="160" name="inst_A58675CE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="96" y="48" name="inst_8CF25103" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_snare" x="16" y="32" name="inst_D9174C4F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
