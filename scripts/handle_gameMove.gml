@@ -23,6 +23,18 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                 //print("pushed stateHistory");
                 //print(state+","+targetDirection);
             }
+            if (object_get_name(object_index) == "obj_key" || 
+                object_get_name(object_index) == "obj_door"){
+                ds_stack_push(stateHistory, currentState);
+                
+                if (object_get_name(object_index) == "obj_door") && instance_place(x, y, obj_player){
+                    currentState = "unlocked";
+                }
+                
+                if (object_get_name(object_index) == "obj_key") && instance_place(x, y, obj_player){
+                    currentState = "inventory";
+                }
+            }
         }
         else{ 
             justDeactivated = false; 

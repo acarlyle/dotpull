@@ -138,7 +138,9 @@ with (par_robot){
     }
     if (undo){
         print("undo");
+        print("numKeys pre undo: " + string(obj_player.numKeys));
         handle_undoMove(self); //undo is true if player wants to undo their latest move}
+        print("numKeys after undo: " + string(obj_player.numKeys));
     }
 }
 with (par_robot){
@@ -152,6 +154,9 @@ if (global.playerMoved){
 
 //print(obj_player.numKeys);
 //print(ds_stack_size(obj_player.itemHistory));
+//print(ds_stack_size(obj_player.moveHistory));
+//print(ds_stack_size(obj_key.stateHistory));
+//print(ds_stack_size(obj_door.stateHistory));
 </string>
           </argument>
         </arguments>

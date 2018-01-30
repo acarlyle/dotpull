@@ -17,16 +17,17 @@ if (instance_place(argument0, argument1, obj_door)){
             obj_player.numKeys--;
             //print(obj_player.numKeys);
             isDeactivated = true;
-            justDeactivated = true;
             deactivatedX = x;
             deactivatedY = y;
             ds_stack_push(moveHistory, string(x) + "," + string(y));
-            x = 0;
-            y = 0;
+            image_index = 1;
         }
         return false;
     }
     else{
+        currentState = "locked";
+        image_index = 0;
+        print("No keys: " + string(obj_player.numKeys));
         return true;
     }
 }
@@ -35,13 +36,14 @@ if (instance_place(argument0, argument1, obj_key)){
     key = instance_place(argument0, argument1, obj_key);
     with (key){
         obj_player.numKeys++;
+        currentState = "ground";
         //instance_destroy();
         //instance_deactivate_object(self); //deactivate key because you have it now :)
         isDeactivated = true;
-        justDeactivated = true;
         deactivatedX = x;
         deactivatedY = y;
         ds_stack_push(moveHistory, string(x) + "," + string(y));
+        //ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys - 1));
         //x = 0;
         //y = 0;
         image_index = 1;

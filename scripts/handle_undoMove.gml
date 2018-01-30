@@ -118,16 +118,50 @@ if (!ds_stack_empty(robot.moveHistory)){
                     self.triggerDoorPtr.isDeactivated = false;
                 }
                 if (object_get_name(object_index) == "obj_key"){
-                    if (deactivatedX != 0 || deactivatedY != 0){
-                        //obj_player.numKeys--;
+                    var state = ds_stack_pop(stateHistory);
+                    if (state == "ground" && currentState == "ground"){
                         isDeactivated = false;
+                        currentState = "ground";
+                        image_index = 0;
+                    }
+                    else if (state == "ground" && currentState == "inventory"){
+                        currentState = "ground";
+                        obj_player.numKeys--;
+                        isDeactivated = true;
                         print("Key deactivated");
-                        deactivatedX = undefined;
-                        deactivatedY = undefined;
+                        image_index = 0;
                     }
-                    if (obj_key.x != 0 && obj_key.y !=0){
-                        obj_key.image_index = 0;
+                    else if (state == "inventory" && currentState == "inventory"){
+                        image_index = 1;
+                        currentState = "inventory";
                     }
+                    
+                    print("Key current state: " + currentState)
+                    print("Key popped state: " + state);
+            
+                }
+                if (object_get_name(object_index) == "obj_door"){
+                    var state = ds_stack_pop(stateHistory);
+                    if (state == "locked" && currentState == "locked"){
+                        isDeactivated = false;
+                        currentState = "locked";
+                        image_index = 0;
+                    }
+                    else if (state == "locked" && currentState == "unlocked"){
+                        currentState = "locked";
+                        obj_player.numKeys++;
+                        isDeactivated = false;
+                        print("Door deactivated");
+                        image_index = 0;
+                    }
+                    else if (state == "unlocked" && currentState == "unlocked"){
+                        image_index = 1;
+                        currentState = "unlocked";
+                    }
+                    
+                    print("Door current state: " + currentState)
+                    print("Door popped state: " + state);
+            
                 }
             }
         }

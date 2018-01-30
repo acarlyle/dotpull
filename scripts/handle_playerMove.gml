@@ -95,6 +95,7 @@ if (!noMove){
         ds_stack_push(robot.moveHistory, string(robot.x) + "," + string(robot.y)); //pushing previous turn's movement
         ds_stack_push(robot.itemHistory, array(robot.numKeys));
         print("Pushed onto robots's stack: " + string(robot.x) + " " + string(robot.y));
+        print("Pushed numKeys onto robots's stack: " + string(obj_player.numKeys));
         robot.oldPlayerX = x;
         robot.oldPlayerY = y;
         robot.x = robot.playerX; 

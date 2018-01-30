@@ -55,13 +55,12 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
+    <script>scripts\scr_collisionCheck.gml</script>
     <script>scripts\scr_canPullPush.gml</script>
     <scripts name="settings">
       <script>scripts\scr_applyScreenRes.gml</script>
     </scripts>
     <script>scripts\scr_initPlayerPosition.gml</script>
-    <script>scripts\scr_getInput.gml</script>
-    <script>scripts\scr_collisionCheck.gml</script>
     <scripts name="Game Handles">
       <script>scripts\handle_playerMove.gml</script>
       <script>scripts\handle_gameMove.gml</script>
@@ -82,6 +81,7 @@
       <script>scripts\print.gml</script>
       <script>scripts\isActivated.gml</script>
       <script>scripts\stringSplit.gml</script>
+      <script>scripts\scr_getInput.gml</script>
     </scripts>
     <script>scripts\scr_initRoom.gml</script>
   </scripts>
