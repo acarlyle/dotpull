@@ -78,7 +78,7 @@ if (!ds_stack_empty(robot.moveHistory)){
                         stepsLeft++;
                         image_index--;
                         if (stepsLeft != 0){
-                            activated = true;
+                            isDeactivated = false;
                         }
                     }
                 }
@@ -111,23 +111,23 @@ if (!ds_stack_empty(robot.moveHistory)){
                 y = objCoordArr[1];
                 if ((instance_place(x, y, par_pullable) || instance_place(x, y, par_robot)) && triggerDoorPtr != undefined){ //this is a trigger being pressed
                     self.triggerDoorPtr.image_index = 1;
-                    self.triggerDoorPtr.activated = true;
+                    self.triggerDoorPtr.isDeactivated = true;
                 }
                 if ((!instance_place(x, y, par_pullable) && !instance_place(x, y, par_robot)) && triggerDoorPtr != undefined){ //this is a trigger not being pressed
                     self.triggerDoorPtr.image_index = 0;
-                    self.triggerDoorPtr.activated = false;
+                    self.triggerDoorPtr.isDeactivated = false;
                 }
                 if (object_get_name(object_index) == "obj_key"){
                     var state = ds_stack_pop(stateHistory);
                     if (state == "ground" && currentState == "ground"){
-                        activated = true;
+                        isDeactivated = false;
                         currentState = "ground";
                         image_index = 0;
                     }
                     else if (state == "ground" && currentState == "inventory"){
                         currentState = "ground";
                         obj_player.numKeys--;
-                        activated = false;
+                        isDeactivated = true;
                         print("Key deactivated");
                         image_index = 0;
                     }
@@ -143,14 +143,14 @@ if (!ds_stack_empty(robot.moveHistory)){
                 if (object_get_name(object_index) == "obj_door"){
                     var state = ds_stack_pop(stateHistory);
                     if (state == "locked" && currentState == "locked"){
-                        activated = true;
+                        isDeactivated = false;
                         currentState = "locked";
                         image_index = 0;
                     }
                     else if (state == "locked" && currentState == "unlocked"){
                         currentState = "locked";
                         obj_player.numKeys++;
-                        activated = true;
+                        isDeactivated = false;
                         print("Door deactivated");
                         image_index = 0;
                     }

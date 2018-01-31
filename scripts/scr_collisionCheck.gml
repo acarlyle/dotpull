@@ -10,13 +10,13 @@ if (instance_place(argument0, argument1, obj_spike)){
 //print("numkeys");
 //print(obj_player.numKeys);
 if (instance_place(argument0, argument1, obj_door)){
-    var door = instance_place(argument0, argument1, obj_door);
-    if (numKeys > 0){
+    if (numKeys > 0){ //there's a DOOR here, try to unlock
+        door = instance_place(argument0, argument1, obj_door);
         with (door){
             //instance_destroy(); //unlock door by removing it woah
             obj_player.numKeys--;
             //print(obj_player.numKeys);
-            activated = false;
+            isDeactivated = true;
             deactivatedX = x;
             deactivatedY = y;
             ds_stack_push(moveHistory, string(x) + "," + string(y));
@@ -25,9 +25,6 @@ if (instance_place(argument0, argument1, obj_door)){
         return false;
     }
     else{
-        if (door.activated){
-            return true;
-        }
         currentState = "locked";
         image_index = 0;
         print("No keys: " + string(obj_player.numKeys));
@@ -42,7 +39,7 @@ if (instance_place(argument0, argument1, obj_key)){
         currentState = "ground";
         //instance_destroy();
         //instance_deactivate_object(self); //deactivate key because you have it now :)
-        activated = false;
+        isDeactivated = true;
         deactivatedX = x;
         deactivatedY = y;
         ds_stack_push(moveHistory, string(x) + "," + string(y));
@@ -71,7 +68,7 @@ if (instance_place(argument0, argument1, obj_trigger)){
 if (instance_place(argument0, argument1, obj_triggerDoor)){
     //print("There's a triggerDoor here");
     var door = instance_place(argument0, argument1, obj_triggerDoor);
-    if (door.activated) return true; //triggerDoor will block your path
+    if (!door.isDeactivated) return true; //triggerDoor will block your path
     return false; //there's a block here
 }
 if (instance_place(argument0, argument1, par_wall)){
@@ -95,7 +92,7 @@ if (instance_place(argument0, argument1, par_fallingPlatform)){
     if (platform.stepsLeft <= 0){
         return true; //you can't walk here, the platform has fallen and the city is lost
     }
-    if (platform.activated){
+    if (platform.isDeactivated){
         return false;
     }
 }

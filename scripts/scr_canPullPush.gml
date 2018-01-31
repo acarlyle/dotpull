@@ -3,24 +3,19 @@
 var robot = argument3;
 
 if (!(canPull || canPush)) return false;
-if (!activated) return false;
+if (isDeactivated) return false;
 
 print(argument0);
 print(argument1);
 
 if (isSpike){
     if (targetLocked){
-        if (instance_place(argument0, argument1, par_obstacle) || !instance_place(argument0, argument1, par_platform)){
-            print("SPIKE STOPPED BY OBSTACLE OR LACK OF GROUND!!!!");
+        if (instance_place(argument0, argument1, par_obstacle)){
+            print("SPIKE STOPPED BY OBSTACLE!!!!");
             return false;
         }
         else return true;
     }
-}
-
-if (!instance_place(argument0, argument1, par_platform)){
-    //print("No platform to pull/push to");
-    return false;
 }
 
 //print("this far...");
@@ -49,7 +44,7 @@ if (!argument2 && (canPull || canPush) && !(canPull && canPush)){ //this checks 
                     if (isActivated(obs) && !instance_place(objX, y, obj_snare)){
                         print(objX);
                         print("something i nthe way");
-                        print(activated);
+                        print(isDeactivated);
                         return false; //don't pull if anything is in the way
                     }
                     else{
@@ -63,9 +58,8 @@ if (!argument2 && (canPull || canPush) && !(canPull && canPush)){ //this checks 
             for (var objY = y - global.TILE_SIZE; objY > robot.y; objY -= global.TILE_SIZE){
                 if (instance_place(x, objY, par_obstacle)){
                     var obs = instance_place(x, objY, par_obstacle);
-                    print("isDeactived?");
+                    //print("isDeactived?");
                     if (isActivated(obs)){
-                        print("oh no it is activated!! :(");
                         return false; //don't pull if anything is in the way
                     }
                 }
@@ -76,7 +70,7 @@ if (!argument2 && (canPull || canPush) && !(canPull && canPush)){ //this checks 
                 if (instance_place(x, objY, par_obstacle)){
                     var obs = instance_place(x, objY, par_obstacle);
                     //print(obs.isDeactivated);
-                    if (isActivated(obs)){
+                    if (!obs.isDeactivated){
                         print("oh no it is activated");
                         return false; //don't pull if anything is in the way
                     }
@@ -173,7 +167,7 @@ if (canPull && canPush){
                         if (isActivated(obs) && !instance_place(objX, y, obj_snare)){
                             print(objX);
                             print("something i nthe way");
-                            print(activated);
+                            print(isDeactivated);
                             return false; //don't pull if anything is in the way
                         }
                     }
@@ -197,7 +191,7 @@ if (canPull && canPush){
                     if (instance_place(x, objY, par_obstacle)){
                         var obs = instance_place(x, objY, par_obstacle);
                         //print(obs.isDeactivated);
-                        if (obs.activated){
+                        if (!obs.isDeactivated){
                             print("oh no it is activated");
                             return false; //don't pull if anything is in the way
                         }
@@ -266,7 +260,7 @@ if (canPull && canPush){
 }
 
 if (instance_place(x, y, obj_triggerDoor) && !instance_place(argument0, argument1, obj_wall)){
-    if (isActivated(instance_place(x, y, obj_triggerDoor))){
+    if (!isActivated(instance_place(x, y, obj_triggerDoor))){
         print("obj trapped above");
         return false; //can't move if above    
     }
@@ -278,15 +272,19 @@ if (instance_place(argument0, argument1, obj_block) ||
     return false;
 }
 
+if (!instance_place(argument0, argument1, par_platform)){
+    //print("No platform to pull/push to");
+    return false;
+}
 if (instance_place(argument0, argument1, par_fallingPlatform)){
     var fallingPlat = instance_place(argument0, argument1, par_fallingPlatform);
-    if (!fallingPlat.activated){
+    if (fallingPlat.isDeactivated){
         print("Falling platform is deactivated; can't pull");
         return false;
     }
     else{
         print("yeah it's deactivated i guess");
-        print(!fallingPlat.activated);
+        print(fallingPlat.isDeactivated);
         return true;
     }
 }
@@ -322,7 +320,7 @@ if (instance_place(argument0, argument1, obj_trigger) &&
 if (instance_place(argument0, argument1, obj_triggerDoor)){
     //print("There's a triggerDoor here.");
     var triggerDoor = instance_place(argument0, argument1, obj_triggerDoor);
-    if (triggerDoor.activated) return true;
+    if (triggerDoor.isDeactivated) return true;
     return false;
 }
 
