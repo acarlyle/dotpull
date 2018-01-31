@@ -41,7 +41,7 @@ ds_stack_push(stateHistory, initState);
 spikeMoved = false;
 
 isPuzzleElement = true;
-isDeactivated = false;
+activated = true;
 justDeactivated = false;
 deactivatedX = 0;
 deactivatedY = 0;

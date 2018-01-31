@@ -38,7 +38,7 @@ currentState = "ground";
 image_speed = 0;
 
 isPuzzleElement = true;
-isDeactivated = false;
+activated = true;
 justDeactivated = false;
 deactivatedX = undefined;
 deactivatedY = undefined;

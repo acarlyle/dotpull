@@ -49,7 +49,7 @@ oldPlayerX = 0;
 oldPlayerY = 0;
 playerX = 0;
 playerY = 0;
-isDeactivated = false;
+activated = true;
 
 
 //dynamic memory
@@ -152,11 +152,14 @@ if (global.playerMoved){
     handle_gameSave();
 }
 
+//print(obj_key.activated);
+
 //print(obj_player.numKeys);
 //print(ds_stack_size(obj_player.itemHistory));
-//print(ds_stack_size(obj_player.moveHistory));
-//print(ds_stack_size(obj_key.stateHistory));
-//print(ds_stack_size(obj_door.stateHistory));
+
+//print("player move " + string(ds_stack_size(obj_player.moveHistory)));
+//print("key state " + string(ds_stack_size(obj_key.stateHistory)));
+//print("door state " + string(ds_stack_size(obj_door.stateHistory)));
 </string>
           </argument>
         </arguments>

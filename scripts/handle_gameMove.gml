@@ -51,7 +51,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                 image_index++;
                 //print(stepsLeft);
                 if (stepsLeft == 0){
-                    isDeactivated = true;
+                    activated = false;
                 }
             }
         }
@@ -86,14 +86,14 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
         //this is a trigger being pressed
         if ((instance_place(x, y, par_pullable) || instance_place(x, y, par_robot)) && triggerDoorPtr != undefined){
             object.triggerDoorPtr.image_index = 1;
-            object.triggerDoorPtr.isDeactivated = true;
+            object.triggerDoorPtr.activated = false;
             //print("trigger pressed; trigger door is deactivated");
         }
         
         //this is a trigger not being pressed
         if ((!instance_place(x, y, par_pullable) && !instance_place(x, y, par_robot)) && triggerDoorPtr != undefined){
             object.triggerDoorPtr.image_index = 0;
-            object.triggerDoorPtr.isDeactivated = false;
+            object.triggerDoorPtr.activated = true;
             //print("WARNING!!! TRIGGER DOOR ACTIVATED");
             if (instance_place(robot.x, robot.y, obj_triggerDoor)){
                 //obj_player.isDead = true; //:(
@@ -102,7 +102,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
         }
         
         if (instance_place(x, y, obj_snare)) {
-            //isDeactivated = true;
+            //isActivated = true;
             print("Obj has been deactivated (snared)");
             print(isSpike);
             continue;
@@ -493,7 +493,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             if (!objMove && canFall && instance_place(x, y, obj_hole)){
                 //print("and this object falls down");
                 sprite_index = spr_key;
-                isDeactivated = true;
+                activated = false;
                 justDeactivated = true;
                 deactivatedX = x;
                 deactivatedY = y;

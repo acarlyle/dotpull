@@ -1,4 +1,4 @@
 ///isActivated(inst obj)
 
-if (isDeactivated) return false;
-else return true;
+if (activated) return true;
+else return false;

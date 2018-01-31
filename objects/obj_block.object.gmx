@@ -32,7 +32,7 @@ ds_stack_push(moveHistory, initPos);
 
 stateHistory = undefined;
 isPuzzleElement = true;
-isDeactivated = false;
+activated = true;
 justDeactivated = false;
 deactivatedX = 0;
 deactivatedY = 0;
