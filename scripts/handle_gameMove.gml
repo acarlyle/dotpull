@@ -27,12 +27,14 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                 object_get_name(object_index) == "obj_door"){
                 ds_stack_push(stateHistory, currentState);
                 
-                if (object_get_name(object_index) == "obj_door") && instance_place(x, y, obj_player){
+                if (object_get_name(object_index) == "obj_door") && (x == global.DEACTIVATED_X) && (y == global.DEACTIVATED_Y){
                     currentState = "unlocked";
+                    print("state now " + string(currentState));
                 }
                 
-                if (object_get_name(object_index) == "obj_key") && instance_place(x, y, obj_player){
+                if (object_get_name(object_index) == "obj_key" && (x == global.DEACTIVATED_X) && (y == global.DEACTIVATED_Y))  {
                     currentState = "inventory";
+                    print("state now " + string(currentState));
                 }
             }
         }
@@ -490,7 +492,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                 objMove = true;
             }
             
-            if (!objMove && canFall && instance_place(x, y, obj_hole)){
+            /*if (!objMove && canFall && instance_place(x, y, obj_hole)){
                 //print("and this object falls down");
                 sprite_index = spr_key;
                 isDeactivated = true;
@@ -500,7 +502,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                 ds_stack_push(moveHistory, string(x) + "," + string(y));
                 x = 0;
                 y = 0;
-            }
+            }*/
             //else if (!instance_place(x, y, obj_hole) && canFall){
             //    sprite_index = spr_key;
             //    //print("no hole");

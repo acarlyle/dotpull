@@ -39,6 +39,8 @@ global.WINDOW_HEIGHT = 192;
 move = false;
 
 global.TILE_SIZE = 16;
+global.DEACTIVATED_X = -16;
+global.DEACTIVATED_Y = -16;
 
 //scr_initPlayerPosition(3, 3);
 //global.playerX = 80;

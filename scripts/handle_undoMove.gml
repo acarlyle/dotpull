@@ -104,6 +104,8 @@ if (!ds_stack_empty(robot.moveHistory)){
             }
             
             var objPosStr = ds_stack_pop(moveHistory); //string e.g. "64,64"
+            print(objPosStr);
+            //var objPosStr = ds_stack_pop(moveHistory); //string e.g. "64,64"
             //print(objPosStr);
             if (objPosStr != undefined){
                 var objCoordArr = scr_split(objPosStr);
@@ -119,25 +121,27 @@ if (!ds_stack_empty(robot.moveHistory)){
                 }
                 if (object_get_name(object_index) == "obj_key"){
                     var state = ds_stack_pop(stateHistory);
+                    print("Key current state (1): " + currentState)
+                    print("Key popped state (1): " + state);
                     if (state == "ground" && currentState == "ground"){
                         isDeactivated = false;
                         currentState = "ground";
-                        image_index = 0;
+                        //image_index = 0;
                     }
                     else if (state == "ground" && currentState == "inventory"){
                         currentState = "ground";
                         obj_player.numKeys--;
                         isDeactivated = true;
                         print("Key deactivated");
-                        image_index = 0;
+                        //image_index = 0;
                     }
                     else if (state == "inventory" && currentState == "inventory"){
-                        image_index = 1;
+                        //image_index = 1;
                         currentState = "inventory";
                     }
                     
-                    print("Key current state: " + currentState)
-                    print("Key popped state: " + state);
+                    print("Key current state (2): " + currentState)
+                    print("Key popped state (2): " + state);
             
                 }
                 if (object_get_name(object_index) == "obj_door"){
@@ -145,17 +149,14 @@ if (!ds_stack_empty(robot.moveHistory)){
                     if (state == "locked" && currentState == "locked"){
                         isDeactivated = false;
                         currentState = "locked";
-                        image_index = 0;
                     }
                     else if (state == "locked" && currentState == "unlocked"){
                         currentState = "locked";
                         obj_player.numKeys++;
                         isDeactivated = false;
                         print("Door deactivated");
-                        image_index = 0;
                     }
                     else if (state == "unlocked" && currentState == "unlocked"){
-                        image_index = 1;
                         currentState = "unlocked";
                     }
                     
