@@ -128,16 +128,19 @@ if (!ds_stack_empty(robot.moveHistory)){
                 }
                 //this is a trigger not being pressed
                 if ((!instance_place(x, y, par_pullable) && !instance_place(x, y, par_robot)) && triggerDoorPtr != undefined){ 
-                    self.triggerDoorPtr.image_index = 0;
-                    self.triggerDoorPtr.isDeactivated = false;
                     if (triggerDoorPtr.x == global.DEACTIVATED_X && 
                         triggerDoorPtr.y == global.DEACTIVATED_Y)
                     {
+                        print("where we should be");
                         triggerDoorPtr.x = triggerDoorPtr.deactivatedX;
                         triggerDoorPtr.y = triggerDoorPtr.deactivatedY;
                         triggerDoorPtr.deactivatedX = undefined;
                         triggerDoorPtr.deactivatedY = undefined;
+                        print("x value: " + string(triggerDoorPtr.x))
+                        print("y value: " + string(triggerDoorPtr.y))
                     }
+                    triggerDoorPtr.image_index = 0;
+                    triggerDoorPtr.isDeactivated = false;
                 }
                 if (object_get_name(object_index) == "obj_key"){
                     var state = ds_stack_pop(stateHistory);

@@ -8,18 +8,17 @@ if (isDeactivated) return false;
 print(argument0);
 print(argument1);
 
-if (!instance_place(argument0, argument1, par_platform)){
-    print("No platform to pull/push to");
-    return false;
-}
-
 if (isSpike){
     if (targetLocked){
         if (instance_place(argument0, argument1, par_obstacle)){
             print("SPIKE STOPPED BY OBSTACLE!!!!");
             return false;
         }
-        else return true;
+        else if (!instance_place(argument0, argument1, par_platform)){
+            print("No platform to push spike to");
+            return false;
+        }
+        return true;
     }
 }
 
@@ -144,6 +143,8 @@ if (argument2 == true && (canPull || canPush) && !(canPull && canPush)){
         }    
     }   
 }
+
+print("wow it's here ok");
 
 
 if (canPull && canPush){
@@ -336,8 +337,17 @@ if (instance_place(argument0, argument1, obj_hole)){
     if (!canFall) return false; //there's a hole here!!  don't move unless you can go over holes!
 }
 
-        
+with(instance_place(argument0, argument1, par_obstacle)){
+    if (isActivated(self)) {
+        print("Oh no an obstacle is here and it's activated !!!");
+        return false;    
+    }
+}
 
+if (!instance_place(argument0, argument1, par_platform)){
+    print("No platform to push/pull to");
+    return false;
+}
 
 
 return true;

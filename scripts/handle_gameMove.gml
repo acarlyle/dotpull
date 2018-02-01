@@ -130,8 +130,12 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             continue;
         }
         
+        
+        
 // DIFFERENT TYPES OF MOVEMENT BEGIN
         
+
+
         //handle movement for spike object
         if (object.isSpike){
             //check if spike has already during player's turn and not roberta's
@@ -376,6 +380,8 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             }
             
         } //end spike logic
+        
+        
         
         //handle pushPull blocks
         if ((canPull || canPush) && !isSpike){
