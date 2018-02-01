@@ -15,9 +15,15 @@ if (global.key_esc){
     handle_restartLevel();
 }
 else{
-    if (global.key_left || global.key_right || global.key_up || global.key_down ||
+    //disable multiple turns in one move
+    if (global.key_left + global.key_right + global.key_up + global.key_down +
+        global.key_upleft + global.key_upright + global.key_downleft + global.key_downright >= 2){
+        
+        move = false;
+    }
+    else if (global.key_left || global.key_right || global.key_up || global.key_down ||
         global.key_upleft || global.key_upright || global.key_downleft || global.key_downright) move = true;
-    if (global.key_r) undo = true;
+    else if (global.key_r) undo = true;
 }
 //print(key_right);
 
