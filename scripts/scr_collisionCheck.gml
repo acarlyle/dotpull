@@ -22,8 +22,8 @@ if (instance_place(argument0, argument1, obj_door)){
             deactivatedY = y;
             ds_stack_push(moveHistory, string(x) + "," + string(y));
             ds_stack_push(stateHistory, "locked");
-            x = -16;
-            y = -16;
+            x = global.DEACTIVATED_X;
+            y = global.DEACTIVATED_Y;
             currentState = "unlocked";
         }
         return false;
@@ -47,8 +47,8 @@ if (instance_place(argument0, argument1, obj_key)){
         ds_stack_push(moveHistory, string(x) + "," + string(y));
         ds_stack_push(stateHistory, "ground");
         //ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys - 1));
-        x = -16;
-        y = -16;
+        x = global.DEACTIVATED_X;
+        y = global.DEACTIVATED_Y;
         //image_index = 1;
         //ds_stack_pop(moveHistory);
         //ds_stack_pop(moveHistory);

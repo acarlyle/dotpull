@@ -87,20 +87,40 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
         
         //this is a trigger being pressed
         if ((instance_place(x, y, par_pullable) || instance_place(x, y, par_robot)) && triggerDoorPtr != undefined){
-            object.triggerDoorPtr.image_index = 1;
+            //object.triggerDoorPtr.image_index = 1;
+            if (object.triggerDoorPtr.deactivatedX == undefined &&
+                object.triggerDoorPtr.deactivatedY == undefined)
+            {
+                print("Yeah it's undefined duh");
+                object.triggerDoorPtr.deactivatedX = object.triggerDoorPtr.x;
+                object.triggerDoorPtr.deactivatedY = object.triggerDoorPtr.y;
+                object.triggerDoorPtr.x = global.DEACTIVATED_X;
+                object.triggerDoorPtr.y = global.DEACTIVATED_Y;
+            } 
+            
             object.triggerDoorPtr.isDeactivated = true;
-            //print("trigger pressed; trigger door is deactivated");
+            print("trigger pressed; trigger door is deactivated");
+            
+            object.triggerDoorPtr.image_index = 1;
         }
         
         //this is a trigger not being pressed
         if ((!instance_place(x, y, par_pullable) && !instance_place(x, y, par_robot)) && triggerDoorPtr != undefined){
-            object.triggerDoorPtr.image_index = 0;
             object.triggerDoorPtr.isDeactivated = false;
+            if (object.triggerDoorPtr.x == global.DEACTIVATED_X && 
+                object.triggerDoorPtr.y == global.DEACTIVATED_Y)
+            {
+                object.triggerDoorPtr.x = object.triggerDoorPtr.deactivatedX;
+                object.triggerDoorPtr.y = object.triggerDoorPtr.deactivatedY;
+                object.triggerDoorPtr.deactivatedX = undefined;
+                object.triggerDoorPtr.deactivatedY = undefined;
+            }
             //print("WARNING!!! TRIGGER DOOR ACTIVATED");
             if (instance_place(robot.x, robot.y, obj_triggerDoor)){
                 //obj_player.isDead = true; //:(
                 //obj_player.sprite_index = spr_playerDead;
             } 
+            object.triggerDoorPtr.image_index = 0;
         }
         
         if (instance_place(x, y, obj_snare)) {

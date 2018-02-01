@@ -39,8 +39,8 @@ canPull = false;
 canPush = false;
 isDeactivated = false;
 justDeactivated = false;
-deactivatedX = 0;
-deactivatedY = 0;
+deactivatedX = undefined;
+deactivatedY = undefined;
 canFall = false;
 
 triggerPtr = undefined;
