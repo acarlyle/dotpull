@@ -8,6 +8,11 @@ if (isDeactivated) return false;
 print(argument0);
 print(argument1);
 
+if (!instance_place(argument0, argument1, par_platform)){
+    print("No platform to pull/push to");
+    return false;
+}
+
 if (isSpike){
     if (targetLocked){
         if (instance_place(argument0, argument1, par_obstacle)){
@@ -272,10 +277,6 @@ if (instance_place(argument0, argument1, obj_block) ||
     return false;
 }
 
-if (!instance_place(argument0, argument1, par_platform)){
-    //print("No platform to pull/push to");
-    return false;
-}
 if (instance_place(argument0, argument1, par_fallingPlatform)){
     var fallingPlat = instance_place(argument0, argument1, par_fallingPlatform);
     if (fallingPlat.isDeactivated){

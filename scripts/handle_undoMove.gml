@@ -111,13 +111,33 @@ if (!ds_stack_empty(robot.moveHistory)){
                 var objCoordArr = scr_split(objPosStr);
                 x = objCoordArr[0];
                 y = objCoordArr[1];
-                if ((instance_place(x, y, par_pullable) || instance_place(x, y, par_robot)) && triggerDoorPtr != undefined){ //this is a trigger being pressed
+                //this is a trigger being pressed
+                if ((instance_place(x, y, par_pullable) || instance_place(x, y, par_robot)) && triggerDoorPtr != undefined){
                     self.triggerDoorPtr.image_index = 1;
                     self.triggerDoorPtr.isDeactivated = true;
+                    
+                    if (triggerDoorPtr.deactivatedX == undefined &&
+                        triggerDoorPtr.deactivatedY == undefined)
+                    {
+                        print("Yeah it's undefined duh");
+                        triggerDoorPtr.deactivatedX = triggerDoorPtr.x;
+                        triggerDoorPtr.deactivatedY = triggerDoorPtr.y;
+                        triggerDoorPtr.x = global.DEACTIVATED_X;
+                        triggerDoorPtr.y = global.DEACTIVATED_Y;
+                    }
                 }
-                if ((!instance_place(x, y, par_pullable) && !instance_place(x, y, par_robot)) && triggerDoorPtr != undefined){ //this is a trigger not being pressed
+                //this is a trigger not being pressed
+                if ((!instance_place(x, y, par_pullable) && !instance_place(x, y, par_robot)) && triggerDoorPtr != undefined){ 
                     self.triggerDoorPtr.image_index = 0;
                     self.triggerDoorPtr.isDeactivated = false;
+                    if (triggerDoorPtr.x == global.DEACTIVATED_X && 
+                        triggerDoorPtr.y == global.DEACTIVATED_Y)
+                    {
+                        triggerDoorPtr.x = triggerDoorPtr.deactivatedX;
+                        triggerDoorPtr.y = triggerDoorPtr.deactivatedY;
+                        triggerDoorPtr.deactivatedX = undefined;
+                        triggerDoorPtr.deactivatedY = undefined;
+                    }
                 }
                 if (object_get_name(object_index) == "obj_key"){
                     var state = ds_stack_pop(stateHistory);
