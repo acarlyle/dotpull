@@ -22,6 +22,13 @@ if (isSpike){
     }
 }
 
+if (instance_place(argument0, argument1, par_robot) && !isSpike){
+    print("Can't move, player in the way");
+    //print(string(argument0)); print(string(argument1)); print(string(obj_player.x)); print(string(obj_player.y));
+    //print(string(global.oldPlayerX)); print(string(global.oldPlayerY));
+    return false; //there's a player here!!  don't move!
+}
+
 //print("this far...");
 
 var xDiff = robot.x - x;
@@ -326,12 +333,6 @@ if (instance_place(argument0, argument1, obj_triggerDoor)){
     return false;
 }
 
-if (instance_place(argument0, argument1, par_robot) && !isSpike){
-    print("Can't move, player in the way");
-    //print(string(argument0)); print(string(argument1)); print(string(obj_player.x)); print(string(obj_player.y));
-    //print(string(global.oldPlayerX)); print(string(global.oldPlayerY));
-    return false; //there's a player here!!  don't move!
-}
 if (instance_place(argument0, argument1, obj_hole)){
     //print("Can't move, hole in the way");
     if (!canFall) return false; //there's a hole here!!  don't move unless you can go over holes!

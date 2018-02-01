@@ -158,21 +158,24 @@
     <room>rooms\rm_menu</room>
     <room>rooms\init</room>
     <room>rooms\rm_baseRoom</room>
+    <rooms name="block.Pull">
+      <room>rooms\rm_level1</room>
+      <room>rooms\rm_level2</room>
+      <room>rooms\rm_level3</room>
+      <room>rooms\rm_level5</room>
+      <room>rooms\rm_level6</room>
+      <room>rooms\rm_level7</room>
+      <room>rooms\rm_level8</room>
+      <room>rooms\rm_level9</room>
+      <room>rooms\rm_level10</room>
+    </rooms>
     <room>rooms\rm_spikeInterlude</room>
     <room>rooms\rm_demo</room>
     <room>rooms\rm_cell</room>
-    <room>rooms\rm_level1</room>
-    <room>rooms\rm_level1pt5</room>
-    <room>rooms\rm_level2</room>
-    <room>rooms\rm_level3</room>
-    <room>rooms\rm_level4</room>
-    <room>rooms\rm_level5</room>
-    <room>rooms\rm_level6</room>
-    <room>rooms\rm_level7</room>
-    <room>rooms\rm_level8</room>
-    <room>rooms\rm_level9</room>
-    <room>rooms\rm_level10</room>
-    <room>rooms\rm_level11</room>
+    <room>rooms\rm_level5Unused</room>
+    <room>rooms\rm_level7unsued</room>
+    <room>rooms\rm_level8unsued</room>
+    <room>rooms\rm_robertaInto</room>
     <rooms name="ian levels">
       <room>rooms\rm_level_Ian_1</room>
       <room>rooms\rm_level_Ian_2</room>
