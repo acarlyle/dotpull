@@ -1,4 +1,6 @@
 ///isActivated(inst obj)
 
-if (isDeactivated) return false;
+var obj = argument0;
+
+if (obj.isDeactivated) return false;
 else return true;

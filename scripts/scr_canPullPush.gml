@@ -11,8 +11,12 @@ print(argument1);
 if (isSpike){
     if (targetLocked){
         if (instance_place(argument0, argument1, par_obstacle)){
-            print("SPIKE STOPPED BY OBSTACLE!!!!");
-            return false;
+            var obs = instance_place(argument0, argument1, par_obstacle);
+            print(obs.isDeactivated);
+            if (isActivated(obs)){
+                print("SPIKE STOPPED BY OBSTACLE!!!!");
+                return false;
+            }
         }
         else if (!instance_place(argument0, argument1, par_platform)){
             print("No platform to push spike to");
@@ -151,7 +155,7 @@ if (argument2 == true && (canPull || canPush) && !(canPull && canPush)){
     }   
 }
 
-print("wow it's here ok");
+//print("wow it's here ok");
 
 
 if (canPull && canPush){
@@ -273,7 +277,7 @@ if (canPull && canPush){
 }
 
 if (instance_place(x, y, obj_triggerDoor) && !instance_place(argument0, argument1, obj_wall)){
-    if (!isActivated(instance_place(x, y, obj_triggerDoor))){
+    if (isActivated(instance_place(x, y, obj_triggerDoor))){
         print("obj trapped above");
         return false; //can't move if above    
     }
@@ -338,9 +342,11 @@ if (instance_place(argument0, argument1, obj_hole)){
     if (!canFall) return false; //there's a hole here!!  don't move unless you can go over holes!
 }
 
-with(instance_place(argument0, argument1, par_obstacle)){
-    if (isActivated(self)) {
+if(instance_place(argument0, argument1, par_obstacle)){
+    var obs = instance_place(argument0, argument1, par_obstacle);
+    if (isActivated(obs)) {
         print("Oh no an obstacle is here and it's activated !!!");
+        print("pls be a spike" + string(isSpike));
         return false;    
     }
 }

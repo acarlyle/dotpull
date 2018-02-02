@@ -19,8 +19,8 @@ print("Entering level four");
 var initPos = "0,0";
 
 if (instance_number(obj_player) == 0) { //spawning in directly from this level
-    playerX = 0; //set player x and y position
-    playerY = 144; 
+    playerX = 96; //set player x and y position
+    playerY = 64; 
     
     player = instance_create(playerX, playerY, obj_player);
     obj_player.playerX = playerX;

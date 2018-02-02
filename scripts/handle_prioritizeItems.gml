@@ -13,12 +13,15 @@ for (var i = 0; i < ds_list_size(list); i++){
     var inst = ds_list_find_value(list, i);
     if (inst.isSpike){
         if (inst.targetLocked){
-            print("target locked, shuffling list");
+            //print("target locked, shuffling list");
             print(inst.state);
             print(inst.targetDirection);
             ds_list_insert(list, 0, inst);
             ds_list_delete(list, i);
         }
+        //else{
+        //    print("target not locked, not prioritized");
+        //}
     }
 }
 

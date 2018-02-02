@@ -98,7 +98,8 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             } 
             
             object.triggerDoorPtr.isDeactivated = true;
-            //print("trigger pressed; trigger door is deactivated");
+            //print("TRIGGERDOOR IS DEACTIVATED VALUE: " + string(object.triggerDoorPtr.isDeactivated));
+            print("trigger pressed; trigger door is deactivated");
             
             object.triggerDoorPtr.image_index = 1;
         }
@@ -106,6 +107,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
         //this is a trigger not being pressed
         if ((!instance_place(x, y, par_pullable) && !instance_place(x, y, par_robot)) && triggerDoorPtr != undefined){
             object.triggerDoorPtr.isDeactivated = false;
+            print("TRIGGERDOOR IS DEACTIVATED VALUE: " + string(object.triggerDoorPtr.isDeactivated));
             if (object.triggerDoorPtr.x == global.DEACTIVATED_X && 
                 object.triggerDoorPtr.y == global.DEACTIVATED_Y)
             {
@@ -114,11 +116,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                 object.triggerDoorPtr.deactivatedX = undefined;
                 object.triggerDoorPtr.deactivatedY = undefined;
             }
-            //print("WARNING!!! TRIGGER DOOR ACTIVATED");
-            if (instance_place(robot.x, robot.y, obj_triggerDoor)){
-                //obj_player.isDead = true; //:(
-                //obj_player.sprite_index = spr_playerDead;
-            } 
+            print("TRIGGER DOOR NOT BEING PRESSED,  TRIGGER DOOR ACTIVATED");
             object.triggerDoorPtr.image_index = 0;
         }
         
