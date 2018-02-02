@@ -2,7 +2,7 @@
 
 var robot = argument0;
 
-print("#HANDLE GAME MOVE");
+print("HANDLE GAME MOVE");
 var objMove = false;
 
 //for (var i = 0; i < array_length_1d(global.roomContents); i++){
@@ -20,8 +20,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             //print("pushed");
             if (isSpike){
                 ds_stack_push(stateHistory, state + "," + targetDirection);
-                print("pushed stateHistory");
-                print(state+","+targetDirection);
+                //print("pushed spike stateHistory: " + string(state) + "," + string(targetDirection));
             }
             if (object_get_name(object_index) == "obj_key" || 
                 object_get_name(object_index) == "obj_door"){
@@ -29,12 +28,12 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                 
                 if (object_get_name(object_index) == "obj_door") && (x == global.DEACTIVATED_X) && (y == global.DEACTIVATED_Y){
                     currentState = "unlocked";
-                    print("state now " + string(currentState));
+                    //print("state now " + string(currentState));
                 }
                 
                 if (object_get_name(object_index) == "obj_key" && (x == global.DEACTIVATED_X) && (y == global.DEACTIVATED_Y))  {
                     currentState = "inventory";
-                    print("state now " + string(currentState));
+                    //print("state now " + string(currentState));
                 }
             }
         }
@@ -91,7 +90,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             if (object.triggerDoorPtr.deactivatedX == undefined &&
                 object.triggerDoorPtr.deactivatedY == undefined)
             {
-                print("Yeah it's undefined duh");
+                //print("Yeah it's undefined duh");
                 object.triggerDoorPtr.deactivatedX = object.triggerDoorPtr.x;
                 object.triggerDoorPtr.deactivatedY = object.triggerDoorPtr.y;
                 object.triggerDoorPtr.x = global.DEACTIVATED_X;
@@ -99,7 +98,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             } 
             
             object.triggerDoorPtr.isDeactivated = true;
-            print("trigger pressed; trigger door is deactivated");
+            //print("trigger pressed; trigger door is deactivated");
             
             object.triggerDoorPtr.image_index = 1;
         }
@@ -125,8 +124,8 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
         
         if (instance_place(x, y, obj_snare)) {
             //isDeactivated = true;
-            print("Obj has been deactivated (snared)");
-            print(isSpike);
+            //print("Obj has been deactivated (snared)");
+            //print(isSpike);
             continue;
         }
         
@@ -141,7 +140,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             //check if spike has already during player's turn and not roberta's
             if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                 if (targetLocked){
-                    print("TARGET IS LOCKED AT " + string(targetDirection));
+                    //print("TARGET IS LOCKED AT " + string(targetDirection));
                     state = "active";
                     switch (targetDirection){
                         case "up": 
@@ -258,7 +257,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                 else{ //check if player in line for target lock
                     //print("checking for player lock");
                     state = "idle";
-                    print("check for player lock");
+                    //print("check for player lock");
                     if (robot.y == y){
                         if (robot.x < x && scr_canPullPush(x - global.TILE_SIZE, y, false, robot)) {
                             state = "active";
@@ -266,7 +265,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                             targetLocked = true;
                             sprite_index = spr_spikeActive;
                             object.spikeMoved = true;
-                            print("target just locked");
+                            //print("target just locked");
                         }
                         else if (robot.x > x && scr_canPullPush(x + global.TILE_SIZE, y, false, robot)) {
                             state = "active";

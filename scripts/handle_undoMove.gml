@@ -3,9 +3,6 @@
 var robot = argument0;
 
 print("#HANDLE UNDO MOVE");
-print(obj_spike.state);
-print(obj_spike.targetDirection);
-print(obj_spike.targetLocked);
 
 if (isDead){ 
     switch(string(object_get_name(robot.object_index))){
@@ -57,12 +54,9 @@ if (!ds_stack_empty(robot.moveHistory)){
                     var stateArr = scr_split(spikeStateStr);
                     var stateStr = stateArr[0];
                     var stateDir = stateArr[1];
-                    print(stateStr);
-                    print(stateDir);
                     if (stateStr == "idle"){
-                        print("Statestr was idle, as it should be ");
                         targetLocked = false;
-                        state = "idle";
+                        self.state = stateStr;
                         targetDirection = "idling";
                         sprite_index = spr_spike;
                     }
@@ -74,15 +68,8 @@ if (!ds_stack_empty(robot.moveHistory)){
                         sprite_index = spr_spikeActive;
                     }
                 }
-                print("After spikeState undo: " + string(state));
-                print("After spikeTargetDir undo: " + string(targetDirection));
-                print(obj_spike.state);
-                print(obj_spike.targetDirection);
-                print(obj_spike.targetLocked);
+                print(self.state);
             }
-                print(obj_spike.state);
-                print(obj_spike.targetDirection);
-                print(obj_spike.targetLocked);
             if (isFallingPlatform){
                 var fallingPlatformStr = ds_stack_pop(stateHistory);
                 if (fallingPlatformStr != undefined){
@@ -213,16 +200,9 @@ if (!ds_stack_empty(robot.moveHistory)){
                     print("Door popped state: " + state);
             
                 }
-                print(obj_spike.state);
-                print(obj_spike.targetDirection);
-                print(obj_spike.targetLocked);
             }
         }
     }
 }
-
-print(obj_spike.state);
-print(obj_spike.targetDirection);
-print(obj_spike.targetLocked);
 
 undo = false;
