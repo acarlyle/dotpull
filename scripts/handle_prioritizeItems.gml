@@ -16,8 +16,8 @@ for (var i = 0; i < ds_list_size(list); i++){
             //print("target locked, shuffling list");
             print(inst.state);
             print(inst.targetDirection);
-            ds_list_insert(list, 0, inst);
             ds_list_delete(list, i);
+            ds_list_insert(list, 0, inst);
         }
         //else{
         //    print("target not locked, not prioritized");
