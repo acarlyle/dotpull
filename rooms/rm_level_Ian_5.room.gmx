@@ -17,32 +17,32 @@ print("Entering level five");
 
 
 if (instance_number(obj_player) == 0) { //spawning in directly from this level
-    global.playerX = 32; //set player x and y position
-    global.playerY = 0; 
+    playerX = 32; //set player x and y position
+    playerY = 0; 
     
-    player = instance_create(global.playerX, global.playerY, obj_player);
-    var initPos = string(obj_player.x) + "," + (string(obj_player.y));
-    //print(initPos);
-    ds_stack_push(obj_player.moveHistory, initPos);
-    ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys));
+    player = instance_create(playerX, playerY, obj_player);
+    obj_player.playerX = playerX;
+    obj_player.playerY = playerY;
+    initPos = string(obj_player.x) + "," + (string(obj_player.y));
 }
 else{
-    obj_player.x = global.playerX;
-    obj_player.y = global.playerY;
+    obj_player.x = obj_player.playerX;
+    obj_player.y = obj_player.playerY;
 }
 
 
 var initPos = string(obj_player.x) + "," + (string(obj_player.y));
 ds_stack_push(obj_player.moveHistory, initPos);
 ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys));
+print("initPos:" + initPos);
 
 global.roomContents = scr_initRoom();
+
+//triggers
 var triggerDoor = instance_place(96, 128, obj_triggerDoor);
 var trigger = instance_place(80, 160, obj_trigger);
 triggerDoor.triggerPtr = trigger;
-trigger.triggerDoorPtr = triggerDoor;
-trigger.image_index = 0;
-triggerDoor.image_index = 0;</code>
+trigger.triggerDoorPtr = triggerDoor;</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -131,11 +131,9 @@ triggerDoor.image_index = 0;</code>
     <instance objName="obj_wall" x="32" y="48" name="inst_A375158E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_spike" x="0" y="160" name="inst_2334B873" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_spike" x="0" y="16" name="inst_DE8B1C27" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="32" y="0" name="inst_48A635DC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="48" y="128" name="inst_6F977324" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="48" y="144" name="inst_C103749C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="80" y="160" name="inst_EE695FC1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="112" y="128" name="inst_9B39A600" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="96" y="128" name="inst_D0782EDA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="80" y="144" name="inst_ACBAF4CC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_trigger" x="80" y="160" name="inst_A7E0937A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -161,6 +159,14 @@ triggerDoor.image_index = 0;</code>
     <instance objName="obj_wall" x="80" y="112" name="inst_62FE8E43" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="96" y="112" name="inst_6233C025" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="112" y="112" name="inst_72C50DD0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="0" y="64" name="inst_E53D8208" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="0" y="48" name="inst_954FBA15" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="16" y="48" name="inst_7FC53B00" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="16" y="64" name="inst_CBD61907" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="80" y="64" name="inst_6AB0ECC8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="80" y="48" name="inst_90C5CDB9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bridge" x="32" y="0" name="inst_4A6BBD35" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bridge" x="112" y="128" name="inst_B74BB566" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
