@@ -52,7 +52,9 @@ trigger2.triggerDoorPtr = triggerDoor2;
 trigger.image_index = 0;
 triggerDoor.image_index = 1;
 trigger2.image_index = 0;
-triggerDoor2.image_index = 1;</code>
+triggerDoor2.image_index = 1;
+
+handle_restartLevel(); //fully pop the fresh stacks</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

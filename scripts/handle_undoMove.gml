@@ -44,7 +44,7 @@ if (!ds_stack_empty(robot.moveHistory)){
         with(global.roomContents[i]){
             //print("key still here");
             //var obj = global.roomContents[i];
-            //print(object_get_name(global.roomContents[i]));
+            print("Handling " + string(object_get_name(global.roomContents[i].object_index)));
             
             if (isSpike){
                 var spikeStateStr = ds_stack_pop(stateHistory);
@@ -73,7 +73,7 @@ if (!ds_stack_empty(robot.moveHistory)){
             if (isFallingPlatform){
                 var fallingPlatformStr = ds_stack_pop(stateHistory);
                 if (fallingPlatformStr != undefined){
-                    print ("UNDOING FALLING PLATFORM");
+                    //print ("UNDOING FALLING PLATFORM");
                     if ((stepsLeft < fallingPlatformStr)){
                         stepsLeft++;
                         image_index--;
@@ -104,9 +104,9 @@ if (!ds_stack_empty(robot.moveHistory)){
             }
             
             var objPosStr = ds_stack_pop(moveHistory); //string e.g. "64,64"
-            print(objPosStr);
-            //var objPosStr = ds_stack_pop(moveHistory); //string e.g. "64,64"
             //print(objPosStr);
+            //var objPosStr = ds_stack_pop(moveHistory); //string e.g. "64,64"
+            print(objPosStr);
             if (objPosStr != undefined){
                 var objCoordArr = scr_split(objPosStr);
                 x = objCoordArr[0];
@@ -132,15 +132,28 @@ if (!ds_stack_empty(robot.moveHistory)){
                         triggerDoorPtr.y == global.DEACTIVATED_Y)
                     {
                         print("where we should be");
-                        triggerDoorPtr.x = triggerDoorPtr.deactivatedX;
-                        triggerDoorPtr.y = triggerDoorPtr.deactivatedY;
-                        triggerDoorPtr.deactivatedX = undefined;
-                        triggerDoorPtr.deactivatedY = undefined;
+                        //triggerDoorPtr.x = triggerDoorPtr.deactivatedX;
+                        //triggerDoorPtr.y = triggerDoorPtr.deactivatedY;
+                        //triggerDoorPtr.deactivatedX = undefined;
+                        //triggerDoorPtr.deactivatedY = undefined;
                         print("x value: " + string(triggerDoorPtr.x))
                         print("y value: " + string(triggerDoorPtr.y))
                     }
                     triggerDoorPtr.image_index = 0;
                     triggerDoorPtr.isDeactivated = false;
+                }
+                if (object_get_name(object_index) == "obj_triggerDoor"){
+                    // if door is deactivated and nothing is on the trigger, activate door
+                    if (x == global.DEACTIVATED_X && y == global.DEACTIVATED_Y && 
+                       !instance_place(x, y, par_pullable) && 
+                       !instance_place(deactivatedX, deactivatedY, par_robot)){
+                       
+                        x = deactivatedX;
+                        y = deactivatedY;
+                        deactivatedX = undefined;
+                        deactivatedY = undefined;
+                        print("setting deactivated door back to undefined");
+                    }
                 }
                 if (object_get_name(object_index) == "obj_key"){
                     var state = ds_stack_pop(stateHistory);

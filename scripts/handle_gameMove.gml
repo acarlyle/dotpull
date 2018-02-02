@@ -141,7 +141,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             //check if spike has already during player's turn and not roberta's
             if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                 if (targetLocked){
-                    print("TARGET IS LOCKED");
+                    print("TARGET IS LOCKED AT " + string(targetDirection));
                     state = "active";
                     switch (targetDirection){
                         case "up": 

@@ -126,7 +126,7 @@ global.roomContents = scr_initRoom();</code>
     <instance objName="obj_platform" x="112" y="80" name="inst_68C530BE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_door" x="112" y="64" name="inst_F956B1E6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_door" x="112" y="32" name="inst_A15DA11F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_gotoRoom" x="112" y="0" name="inst_DDA1E568" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_gotoRoom" x="112" y="0" name="inst_DDA1E568" locked="0" code="target_x = 0;&#xA;target_y = 0;&#xA;&#xA;target_r = rm_level4;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_snare" x="112" y="160" name="inst_43726193" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>

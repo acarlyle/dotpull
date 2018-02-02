@@ -140,10 +140,10 @@ if (global.playerCanMove){
             }
         }
         if (undo){
-            print("undo");
-            print("numKeys pre undo: " + string(obj_player.numKeys));
+            //print("undo");
+            //print("numKeys pre undo: " + string(obj_player.numKeys));
             handle_undoMove(self); //undo is true if player wants to undo their latest move}
-            print("numKeys after undo: " + string(obj_player.numKeys));
+            //print("numKeys after undo: " + string(obj_player.numKeys));
         }
     }
     with (par_robot){
@@ -161,6 +161,9 @@ if (global.playerCanMove){
     //print("key state: " + string(ds_stack_size(obj_key.stateHistory)));
     //print("key move: " + string(ds_stack_size(obj_key.moveHistory)));
     //print("door state: " + string(ds_stack_size(obj_door.stateHistory)));
+    //print("triggerDoor move: " + string(ds_stack_size(obj_triggerDoor.moveHistory)));
+    //print("Spike state: " + string(ds_stack_size(obj_spike.stateHistory)));
+    //print("Spike move: " + string(ds_stack_size(obj_spike.moveHistory)));
 }
 </string>
           </argument>
