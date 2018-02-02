@@ -178,6 +178,7 @@
       <room>rooms\rm_level8</room>
       <room>rooms\rm_level9</room>
       <room>rooms\rm_level10</room>
+      <room>rooms\rm_level11</room>
       <room>rooms\rm_end</room>
     </rooms>
     <rooms name="unsued">
@@ -188,6 +189,7 @@
       <room>rooms\rm_level8unsued</room>
       <room>rooms\rm_robertaInto</room>
       <room>rooms\rm_cell</room>
+      <room>rooms\rm_level9Old</room>
     </rooms>
     <rooms name="ian levels">
       <room>rooms\rm_level_Ian_1</room>

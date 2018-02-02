@@ -8,8 +8,16 @@ if (isDeactivated) return false;
 print(argument0);
 print(argument1);
 
+//Handle active angry spike charge
 if (isSpike){
     if (targetLocked){
+        if (instance_place(argument0, argument1, par_fallingPlatform)){
+            var fallingPlat = instance_place(argument0, argument1, par_fallingPlatform);
+            if (fallingPlat.isDeactivated){
+                print("Falling platform is deactivated; can't pull");
+                return false;
+            }
+        }
         if (instance_place(argument0, argument1, par_obstacle)){
             var obs = instance_place(argument0, argument1, par_obstacle);
             print(obs.isDeactivated);

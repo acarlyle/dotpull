@@ -125,8 +125,7 @@ else if (key_enter){
     audio_play_sound(snd_menuSelect, 10, false);
     switch(object_get_name(selectedOption)){
         case "obj_newAdventure":
-            //room_goto(rm_level6);
-            room_goto(rm_level_Ian_5);
+            room_goto(rm_level7);
             break;
         case "obj_continueAdventure":
             handle_gameLoad();

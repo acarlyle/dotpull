@@ -3,7 +3,7 @@
   <spriteName>spr_arrow_up</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1001</depth>
+  <depth>-999</depth>
   <persistent>0</persistent>
   <parentName>par_arrow</parentName>
   <maskName>&lt;undefined&gt;</maskName>
