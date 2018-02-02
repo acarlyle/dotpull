@@ -56,6 +56,7 @@ isDeactivated = false;
 moveHistory = ds_stack_create(); //stores players last position; appends when player moves
 itemHistory = ds_stack_create(); //stores players items as of last position; appends when player moves
 
+image_speed = 0;
 
 move = false;
 moved = false;
@@ -127,37 +128,40 @@ global.playerMoved = false;
     }
 }*/
 
-with (par_robot){
-    scr_getInput();
-    if (!isDead){
-        if (move){
-            if (global.playerMoved || object_get_name(object_index) == "obj_player"){
-                handle_playerMove(self); //move is true if movement key is pressed
+//used for cutscene triggers
+if (global.playerCanMove){
+    with (par_robot){
+        scr_getInput();
+        if (!isDead){
+            if (move){
+                if (global.playerMoved || object_get_name(object_index) == "obj_player"){
+                    handle_playerMove(self); //move is true if movement key is pressed
+                }
             }
         }
+        if (undo){
+            print("undo");
+            print("numKeys pre undo: " + string(obj_player.numKeys));
+            handle_undoMove(self); //undo is true if player wants to undo their latest move}
+            print("numKeys after undo: " + string(obj_player.numKeys));
+        }
     }
-    if (undo){
-        print("undo");
-        print("numKeys pre undo: " + string(obj_player.numKeys));
-        handle_undoMove(self); //undo is true if player wants to undo their latest move}
-        print("numKeys after undo: " + string(obj_player.numKeys));
+    with (par_robot){
+        if (moved) handle_gameMove(self);  //moved is true if player successfully moved
     }
+    
+    //save state
+    if (global.playerMoved){
+        handle_gameSave();
+    }
+    
+    //print(obj_player.numKeys);
+    //print(ds_stack_size(obj_player.itemHistory));
+    //print("player move: " + string(ds_stack_size(obj_player.moveHistory)));
+    //print("key state: " + string(ds_stack_size(obj_key.stateHistory)));
+    //print("key move: " + string(ds_stack_size(obj_key.moveHistory)));
+    //print("door state: " + string(ds_stack_size(obj_door.stateHistory)));
 }
-with (par_robot){
-    if (moved) handle_gameMove(self);  //moved is true if player successfully moved
-}
-
-//save state
-if (global.playerMoved){
-    handle_gameSave();
-}
-
-//print(obj_player.numKeys);
-//print(ds_stack_size(obj_player.itemHistory));
-//print("player move: " + string(ds_stack_size(obj_player.moveHistory)));
-//print("key state: " + string(ds_stack_size(obj_key.stateHistory)));
-//print("key move: " + string(ds_stack_size(obj_key.moveHistory)));
-//print("door state: " + string(ds_stack_size(obj_door.stateHistory)));
 </string>
           </argument>
         </arguments>

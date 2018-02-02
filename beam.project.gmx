@@ -15,10 +15,12 @@
       <sprite>sprites\spr_wall</sprite>
       <sprite>sprites\spr_platform_cell</sprite>
       <sprite>sprites\spr_hole</sprite>
+      <sprite>sprites\spr_blackTile</sprite>
     </sprites>
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_roberta</sprite>
     <sprite>sprites\spr_robertaMenu</sprite>
+    <sprite>sprites\spr_robertaEnd</sprite>
     <sprite>sprites\spr_playerDead</sprite>
     <sprites name="controllers">
       <sprite>sprites\spr_gotoRoom</sprite>
@@ -132,6 +134,7 @@
       <object>objects\obj_control</object>
       <object>objects\obj_menuControl</object>
       <object>objects\obj_gotoRoom</object>
+      <object>objects\obj_cutsceneTrigger</object>
       <object>objects\obj_dialogueTrigger</object>
     </objects>
     <objects name="Parents">
@@ -151,7 +154,9 @@
       <object>objects\obj_exitGame</object>
       <object>objects\obj_menuRob</object>
       <object>objects\obj_menuRoberta</object>
+      <object>objects\obj_robertaEnd</object>
       <object>objects\obj_menuCursor</object>
+      <object>objects\obj_blackTile</object>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -168,6 +173,7 @@
       <room>rooms\rm_level8</room>
       <room>rooms\rm_level9</room>
       <room>rooms\rm_level10</room>
+      <room>rooms\rm_end</room>
     </rooms>
     <room>rooms\rm_spikeInterlude</room>
     <room>rooms\rm_demo</room>

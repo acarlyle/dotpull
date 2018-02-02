@@ -133,12 +133,12 @@ trigger3.triggerDoorPtr = triggerDoor3;</code>
     <instance objName="obj_trigger" x="80" y="144" name="inst_E43BE477" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="96" y="32" name="inst_A5BD6F91" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="80" y="32" name="inst_89C121A6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bridge" x="112" y="32" name="inst_D8D4E5C7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_triggerDoor" x="80" y="32" name="inst_951D4AF0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_triggerDoor" x="96" y="32" name="inst_A4DA3F28" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_triggerDoor" x="64" y="32" name="inst_4DD282C9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_trigger" x="32" y="16" name="inst_31C52782" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_gotoRoom" x="112" y="32" name="inst_A9D2B4D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="112" y="32" name="inst_08531733" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
