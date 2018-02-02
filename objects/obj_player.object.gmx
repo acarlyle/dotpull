@@ -142,12 +142,28 @@ if (global.playerCanMove){
         if (undo){
             //print("undo");
             //print("numKeys pre undo: " + string(obj_player.numKeys));
+            print("pre undo: ");
+            print(obj_spike.state);
+            print(obj_spike.targetDirection);
+            print(obj_spike.targetLocked);
             handle_undoMove(self); //undo is true if player wants to undo their latest move}
+            print("right after undo: ");
+            print(obj_spike.state);
+            print(obj_spike.targetDirection);
+            print(obj_spike.targetLocked);
             //print("numKeys after undo: " + string(obj_player.numKeys));
         }
     }
     with (par_robot){
-        if (moved) handle_gameMove(self);  //moved is true if player successfully moved
+        if (moved) {
+            print(obj_spike.state);
+            print(obj_spike.targetDirection);
+            print(obj_spike.targetLocked);
+            handle_gameMove(self);  //moved is true if player successfully moved
+            print(obj_spike.state);
+            print(obj_spike.targetDirection);
+            print(obj_spike.targetLocked);
+        }
     }
     
     //save state
@@ -164,6 +180,9 @@ if (global.playerCanMove){
     //print("triggerDoor move: " + string(ds_stack_size(obj_triggerDoor.moveHistory)));
     //print("Spike state: " + string(ds_stack_size(obj_spike.stateHistory)));
     //print("Spike move: " + string(ds_stack_size(obj_spike.moveHistory)));
+    //print(obj_spike.state);
+    //print(obj_spike.targetDirection);
+    //print(obj_spike.targetLocked);
 }
 </string>
           </argument>

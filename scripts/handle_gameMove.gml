@@ -2,7 +2,7 @@
 
 var robot = argument0;
 
-print("HANDLE GAME MOVE");
+print("#HANDLE GAME MOVE");
 var objMove = false;
 
 //for (var i = 0; i < array_length_1d(global.roomContents); i++){
@@ -20,8 +20,8 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             //print("pushed");
             if (isSpike){
                 ds_stack_push(stateHistory, state + "," + targetDirection);
-                //print("pushed stateHistory");
-                //print(state+","+targetDirection);
+                print("pushed stateHistory");
+                print(state+","+targetDirection);
             }
             if (object_get_name(object_index) == "obj_key" || 
                 object_get_name(object_index) == "obj_door"){
@@ -258,7 +258,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                 else{ //check if player in line for target lock
                     //print("checking for player lock");
                     state = "idle";
-                    //print("check for player lock");
+                    print("check for player lock");
                     if (robot.y == y){
                         if (robot.x < x && scr_canPullPush(x - global.TILE_SIZE, y, false, robot)) {
                             state = "active";

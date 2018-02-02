@@ -2,7 +2,10 @@
 
 var robot = argument0;
 
-print("handle_undoMove");
+print("#HANDLE UNDO MOVE");
+print(obj_spike.state);
+print(obj_spike.targetDirection);
+print(obj_spike.targetLocked);
 
 if (isDead){ 
     switch(string(object_get_name(robot.object_index))){
@@ -57,19 +60,29 @@ if (!ds_stack_empty(robot.moveHistory)){
                     print(stateStr);
                     print(stateDir);
                     if (stateStr == "idle"){
+                        print("Statestr was idle, as it should be ");
                         targetLocked = false;
                         state = "idle";
                         targetDirection = "idling";
                         sprite_index = spr_spike;
                     }
                     else if (stateStr == "active"){
+                        print("Statestr was active ... ??");
                         targetLocked = true;
                         state = "active";
                         targetDirection = stateDir;
                         sprite_index = spr_spikeActive;
                     }
                 }
+                print("After spikeState undo: " + string(state));
+                print("After spikeTargetDir undo: " + string(targetDirection));
+                print(obj_spike.state);
+                print(obj_spike.targetDirection);
+                print(obj_spike.targetLocked);
             }
+                print(obj_spike.state);
+                print(obj_spike.targetDirection);
+                print(obj_spike.targetLocked);
             if (isFallingPlatform){
                 var fallingPlatformStr = ds_stack_pop(stateHistory);
                 if (fallingPlatformStr != undefined){
@@ -200,9 +213,16 @@ if (!ds_stack_empty(robot.moveHistory)){
                     print("Door popped state: " + state);
             
                 }
+                print(obj_spike.state);
+                print(obj_spike.targetDirection);
+                print(obj_spike.targetLocked);
             }
         }
     }
 }
+
+print(obj_spike.state);
+print(obj_spike.targetDirection);
+print(obj_spike.targetLocked);
 
 undo = false;
