@@ -144,15 +144,19 @@ if (!ds_stack_empty(robot.moveHistory)){
                 }
                 if (object_get_name(object_index) == "obj_triggerDoor"){
                     // if door is deactivated and nothing is on the trigger, activate door
-                    if (x == global.DEACTIVATED_X && y == global.DEACTIVATED_Y && 
-                       !instance_place(x, y, par_pullable) && 
-                       !instance_place(deactivatedX, deactivatedY, par_robot)){
-                       
-                        x = deactivatedX;
-                        y = deactivatedY;
-                        deactivatedX = undefined;
-                        deactivatedY = undefined;
-                        print("setting deactivated door back to undefined");
+                    //print(deactivatedX);
+                    //print(deactivatedY);
+                    if (deactivatedX != undefined && deactivatedY != undefined){
+                        if (x == global.DEACTIVATED_X && y == global.DEACTIVATED_Y && 
+                           !instance_place(x, y, par_pullable) && 
+                           !instance_place(deactivatedX, deactivatedY, par_robot)){
+                           
+                            x = deactivatedX;
+                            y = deactivatedY;
+                            deactivatedX = undefined;
+                            deactivatedY = undefined;
+                            print("setting deactivated door back to undefined");
+                        }
                     }
                 }
                 if (object_get_name(object_index) == "obj_key"){
