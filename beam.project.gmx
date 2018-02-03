@@ -5,8 +5,15 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound">
+    <sounds name="Sound Effects">
+      <sound>sound\snd_keyPickup</sound>
+      <sound>sound\snd_blockDrag</sound>
+    </sounds>
     <sounds name="Menu">
       <sound>sound\snd_menuSelect</sound>
+    </sounds>
+    <sounds name="OST">
+      <sound>sound\song_terrorTram</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">

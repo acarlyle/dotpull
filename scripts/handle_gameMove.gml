@@ -539,6 +539,10 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
     }
 }
 
+if (objMove){
+    audio_play_sound(snd_blockDrag, 10, false);
+}
+
 handle_prioritizeItems();
 
 moved = false;

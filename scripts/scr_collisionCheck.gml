@@ -38,6 +38,7 @@ if (instance_place(argument0, argument1, obj_door)){
 if (instance_place(argument0, argument1, obj_key)){
     key = instance_place(argument0, argument1, obj_key);
     with (key){
+        audio_play_sound(snd_keyPickup, 10, false);
         obj_player.numKeys++;
         currentState = "inventory";
         isDeactivated = true;

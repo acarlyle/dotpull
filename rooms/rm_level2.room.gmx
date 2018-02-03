@@ -149,7 +149,7 @@ handle_restartLevel(); //fully pop the fresh stacks</code>
     <instance objName="obj_fallingPlatform_3Step" x="0" y="16" name="inst_402D36D6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_fallingPlatform_3Step" x="112" y="32" name="inst_52F92AC3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_fallingPlatform_3Step" x="112" y="16" name="inst_A942F3A5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bridge" x="112" y="48" name="inst_9D9EC507" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bridge" x="112" y="0" name="inst_9D9EC507" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bridge" x="0" y="0" name="inst_98C58850" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_gotoRoom" x="16" y="176" name="inst_C5DBD938" locked="0" code="target_x = 112;&#xA;target_y = 160;&#xA;&#xA;target_r = rm_level3;&#xA;&#xA;image_angle = 180;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block" x="112" y="32" name="inst_71CA7CA9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

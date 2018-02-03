@@ -36,7 +36,7 @@ global.WINDOW_HEIGHT = 192;
 global.saveRoomLoaded = undefined;
 
 //selectedOption = obj_continueAdventure;
-selectedOption = obj_newAdventure;
+selectedOption = obj_continueAdventure;
 selectedOption.isSelected = true;
 selectedOption.image_index++;
 //draw_sprite(spr_player, 0, selectedOption.x + 10, selectedOption.y);
@@ -123,9 +123,10 @@ else if (key_down){
 //choose selected option
 else if (key_enter){
     audio_play_sound(snd_menuSelect, 10, false);
+    audio_play_sound(song_terrorTram, 10, true);
     switch(object_get_name(selectedOption)){
         case "obj_newAdventure":
-            room_goto(rm_level11);
+            room_goto(rm_level1);
             //room_goto(rm_level_Ian_12);
             break;
         case "obj_continueAdventure":
