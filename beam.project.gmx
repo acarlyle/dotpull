@@ -212,6 +212,9 @@
       <room>rooms\rm_level_Ian_11</room>
       <room>rooms\rm_level_Ian_12</room>
     </rooms>
+    <rooms name="cool levels for cool people">
+      <room>rooms\rm_youShallNotPass</room>
+    </rooms>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

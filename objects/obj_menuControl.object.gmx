@@ -130,7 +130,10 @@ else if (key_enter){
             //room_goto(rm_level_Ian_12);
             break;
         case "obj_continueAdventure":
-            handle_gameLoad();
+            //room_goto(rm_level_Ian_12);
+            //room_goto(rm_level10);
+            room_goto(rm_youShallNotPass);
+            //handle_gameLoad();
             break;
         //case "obj_exitGame":
         //    game_end();
