@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>isPuzzleElement = false;
+
+audio_stop_sound(song_terrorTram);
 </string>
           </argument>
         </arguments>

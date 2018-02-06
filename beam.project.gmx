@@ -213,7 +213,8 @@
       <room>rooms\rm_level_Ian_12</room>
     </rooms>
     <rooms name="cool levels for cool people">
-      <room>rooms\rm_youShallNotPass</room>
+      <room>rooms\rm_x1</room>
+      <room>rooms\rm_x2</room>
     </rooms>
   </rooms>
   <help>

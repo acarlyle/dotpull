@@ -41,7 +41,8 @@ if (!ds_stack_empty(robot.moveHistory)){
     //handle every element's 
     for (var i = 0; i < array_length_1d(global.roomContents); i++){
         //print("in loop");
-        with(global.roomContents[i]){
+        var obj = global.roomContents[i];
+        with(obj){
             //print("key still here");
             //var obj = global.roomContents[i];
             print("Handling " + string(object_get_name(global.roomContents[i].object_index)));
@@ -63,12 +64,15 @@ if (!ds_stack_empty(robot.moveHistory)){
                     else if (stateStr == "active"){
                         print("Statestr was active ... ??");
                         targetLocked = true;
-                        state = "active";
+                        self.state = "active";
                         targetDirection = stateDir;
                         sprite_index = spr_spikeActive;
                     }
                 }
-                print(self.state);
+                //print("self state: " + string(self.state));
+                //print("obj state: " + string(obj.state));
+                //print("self direction: " + string(self.targetDirection));
+                //print("obj direction: " + string(obj.targetDirection));
             }
             if (isFallingPlatform){
                 var fallingPlatformStr = ds_stack_pop(stateHistory);
@@ -161,8 +165,8 @@ if (!ds_stack_empty(robot.moveHistory)){
                 }
                 if (object_get_name(object_index) == "obj_key"){
                     var state = ds_stack_pop(stateHistory);
-                    print("Key current state (1): " + currentState)
-                    print("Key popped state (1): " + state);
+                    //print("Key current state (1): " + currentState)
+                    //print("Key popped state (1): " + state);
                     if (state == "ground" && currentState == "ground"){
                         isDeactivated = false;
                         currentState = "ground";
@@ -180,8 +184,8 @@ if (!ds_stack_empty(robot.moveHistory)){
                         currentState = "inventory";
                     }
                     
-                    print("Key current state (2): " + currentState)
-                    print("Key popped state (2): " + state);
+                    //print("Key current state (2): " + currentState)
+                    //print("Key popped state (2): " + state);
             
                 }
                 if (object_get_name(object_index) == "obj_door"){
@@ -194,14 +198,14 @@ if (!ds_stack_empty(robot.moveHistory)){
                         currentState = "locked";
                         obj_player.numKeys++;
                         isDeactivated = false;
-                        print("Door deactivated");
+                        //print("Door deactivated");
                     }
                     else if (state == "unlocked" && currentState == "unlocked"){
                         currentState = "unlocked";
                     }
                     
-                    print("Door current state: " + currentState)
-                    print("Door popped state: " + state);
+                    //print("Door current state: " + currentState)
+                    //print("Door popped state: " + state);
             
                 }
             }

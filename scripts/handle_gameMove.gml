@@ -20,7 +20,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             //print("pushed");
             if (isSpike){
                 ds_stack_push(stateHistory, state + "," + targetDirection);
-                //print("pushed spike stateHistory: " + string(state) + "," + string(targetDirection));
+                print("pushed spike stateHistory: " + string(state) + "," + string(targetDirection));
             }
             if (object_get_name(object_index) == "obj_key" || 
                 object_get_name(object_index) == "obj_door"){
@@ -362,6 +362,10 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                         }
                     }
                 } //end targetlock check
+                print(obj_spike.targetDirection);
+                print(obj_spike.targetLocked);
+                print(obj_spike.state);
+                print("hereweGO");
                 
                 //dead check
                 if (instance_place(x, y, par_robot) && isSpike){
@@ -543,6 +547,6 @@ if (objMove){
     audio_play_sound(snd_blockDrag, 10, false);
 }
 
-handle_prioritizeItems();
+//handle_prioritizeItems();
 
 moved = false;
