@@ -189,7 +189,7 @@
       <room>rooms\rm_end</room>
     </rooms>
     <rooms name="block.Pull MasterQuest">
-      <room>rooms\rm_level3MQ</room>
+      <room>rooms\mq_level3</room>
     </rooms>
     <rooms name="unsued">
       <room>rooms\rm_spikeInterlude</room>

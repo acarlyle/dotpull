@@ -175,13 +175,14 @@ if (!ds_stack_empty(robot.moveHistory)){
                     else if (state == "ground" && currentState == "inventory"){
                         currentState = "ground";
                         obj_player.numKeys--;
-                        isDeactivated = true;
-                        print("Key deactivated");
+                        isDeactivated = false;
+                        print("Key is activated");
                         //image_index = 0;
                     }
                     else if (state == "inventory" && currentState == "inventory"){
                         //image_index = 1;
                         currentState = "inventory";
+                        isDeactivated = true;
                     }
                     
                     //print("Key current state (2): " + currentState)

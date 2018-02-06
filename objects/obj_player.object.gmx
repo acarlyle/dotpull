@@ -169,6 +169,7 @@ if (global.playerCanMove){
     //print(obj_spike.state);
     //print(obj_spike.targetDirection);
     //print(obj_spike.targetLocked);
+    //print(obj_key.isDeactivated);
 }
 </string>
           </argument>
