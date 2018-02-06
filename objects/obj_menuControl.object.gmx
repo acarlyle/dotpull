@@ -127,12 +127,11 @@ else if (key_enter){
     switch(object_get_name(selectedOption)){
         case "obj_newAdventure":
             room_goto(rm_level1);
-            //room_goto(rm_level_Ian_12);
             break;
         case "obj_continueAdventure":
-            //room_goto(rm_level_Ian_12);
-            room_goto(rm_level10);
-            //room_goto(rm_x2);
+            //room_goto(rm_level_Ian_12); //Ian levels
+            room_goto(rm_level3MQ); //ffs18 levels
+            //room_goto(rm_x2); //x levels
             //handle_gameLoad();
             break;
         //case "obj_exitGame":
