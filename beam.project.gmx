@@ -73,6 +73,13 @@
       <script>scripts\handle_gameSave.gml</script>
       <script>scripts\handle_gameLoad.gml</script>
       <script>scripts\handle_prioritizeItems.gml</script>
+      <scripts name="move_object">
+        <script>scripts\move_spike.gml</script>
+        <script>scripts\move_pullPushables.gml</script>
+        <script>scripts\move_arrow.gml</script>
+        <script>scripts\move_fallingPlatform.gml</script>
+        <script>scripts\move_eviscerator.gml</script>
+      </scripts>
     </scripts>
     <scripts name="Movement">
       <script>scripts\scr_collisionCheck.gml</script>
