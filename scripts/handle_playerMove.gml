@@ -2,7 +2,7 @@
 
 var robot = argument0;
 
-print("#HANDLE PLAYER MOVE FOR " + object_get_name(robot.object_index));
+print("HANDLE PLAYER MOVE FOR " + object_get_name(robot.object_index));
 
 //ds_stack_push(obj_player.moveHistory, string(x) + "," + string(y)); //pushing previous turn's movement
 //ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys));

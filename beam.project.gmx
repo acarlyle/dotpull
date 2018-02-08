@@ -64,31 +64,48 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
+    <scripts name="Backups / Unused">
+      <script>scripts\handle_gameMove_bkp.gml</script>
+      <script>scripts\handle_undoMove_bkp.gml</script>
+      <script>scripts\handle_playerMove_bkp.gml</script>
+    </scripts>
     <scripts name="Game Handles">
       <script>scripts\handle_playerMove.gml</script>
       <script>scripts\handle_gameMove.gml</script>
       <script>scripts\handle_undoMove.gml</script>
-      <script>scripts\handle_restartLevel.gml</script>
-      <script>scripts\handle_freeRoomMemory.gml</script>
-      <script>scripts\handle_gameSave.gml</script>
-      <script>scripts\handle_gameLoad.gml</script>
-      <script>scripts\handle_prioritizeItems.gml</script>
-      <scripts name="move_object">
+      <scripts name="Move Object">
         <script>scripts\move_spike.gml</script>
         <script>scripts\move_pullPushables.gml</script>
         <script>scripts\move_arrow.gml</script>
         <script>scripts\move_fallingPlatform.gml</script>
         <script>scripts\move_eviscerator.gml</script>
+        <script>scripts\move_trigger.gml</script>
+      </scripts>
+      <scripts name="Undo Object">
+        <script>scripts\undo_robot.gml</script>
+        <script>scripts\undo_spike.gml</script>
+        <script>scripts\undo_arrow.gml</script>
+        <script>scripts\undo_door.gml</script>
+        <script>scripts\undo_triggerDoor.gml</script>
+        <script>scripts\undo_trigger.gml</script>
+        <script>scripts\undo_key.gml</script>
+        <script>scripts\undo_fallingPlatform.gml</script>
+        <script>scripts\undo_robotDeath.gml</script>
       </scripts>
     </scripts>
     <scripts name="Movement">
       <script>scripts\scr_collisionCheck.gml</script>
       <script>scripts\scr_canPullPush.gml</script>
     </scripts>
-    <scripts name="Backups / Unused">
-      <script>scripts\handle_gameMove_bkp.gml</script>
-      <script>scripts\handle_undoMove_bkp.gml</script>
-      <script>scripts\handle_playerMove_bkp.gml</script>
+    <scripts name="Game State Controllers">
+      <script>scripts\handle_gameSave.gml</script>
+      <script>scripts\handle_gameLoad.gml</script>
+      <script>scripts\handle_restartLevel.gml</script>
+      <script>scripts\handle_freeRoomMemory.gml</script>
+    </scripts>
+    <scripts name="Stack">
+      <script>scripts\handle_prioritizeItems.gml</script>
+      <script>scripts\handle_pushOntoStack.gml</script>
     </scripts>
     <scripts name="settings">
       <script>scripts\scr_applyScreenRes.gml</script>
