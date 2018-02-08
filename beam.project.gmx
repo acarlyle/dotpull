@@ -41,6 +41,7 @@
       <sprite>sprites\spr_blockPush</sprite>
       <sprite>sprites\spr_blockPushPull</sprite>
       <sprite>sprites\spr_snare</sprite>
+      <sprite>sprites\spr_magneticSnare</sprite>
       <sprite>sprites\spr_arrow_up</sprite>
       <sprite>sprites\spr_arrow_left</sprite>
       <sprite>sprites\spr_arrow_right</sprite>
@@ -127,6 +128,7 @@
     <objects name="puzzle elements">
       <objects name="par_platform">
         <object>objects\obj_snare</object>
+        <object>objects\obj_magneticSnare</object>
         <object>objects\obj_trigger</object>
         <object>objects\obj_fallingPlatform_1Step</object>
         <object>objects\obj_fallingPlatform_2Step</object>
@@ -177,6 +179,7 @@
       <object>objects\par_robot</object>
       <object>objects\par_fallingPlatform</object>
       <object>objects\par_block</object>
+      <object>objects\par_snare</object>
       <object>objects\par_pullable</object>
       <object>objects\par_wall</object>
       <object>objects\par_menu</object>
@@ -198,6 +201,9 @@
     <room>rooms\rm_menu</room>
     <room>rooms\init</room>
     <room>rooms\rm_baseRoom</room>
+    <rooms name="tests for puzzle elements">
+      <room>rooms\rm_magneticSnare</room>
+    </rooms>
     <rooms name="block.Pull">
       <room>rooms\rm_level1</room>
       <room>rooms\rm_level2</room>

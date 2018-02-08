@@ -24,6 +24,14 @@ for (var i = 0; i < ds_list_size(list); i++){
         //}
     }
 }
+//Magnetic Snares super important too
+for (var i = 0; i < ds_list_size(list); i++){
+    var inst = ds_list_find_value(list, i);
+    if (object_get_name(inst.object_index) == "obj_magneticSnare"){
+        ds_list_delete(list, i);
+        ds_list_insert(list, 0, inst);
+    }
+}
 
 //falling platforms are still tiptop priority
 for (var i = 0; i < ds_list_size(list); i++){

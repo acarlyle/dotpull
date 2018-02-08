@@ -26,35 +26,34 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
         
         /*
             HANDLE DIFFERENT TYPES OF OBJECT MOVEMENTS
-        */
-
-
+        */ 
+        
         //If object is on top of a snare, don't do anything with it
-        if (instance_place(x, y, obj_snare)) {
+        if (instance_place(x, y, par_snare)) {
             continue;
         }
         //Handles: obj_trigger, obj_triggerDoor
-        if (triggerDoorPtr != undefined){
+        else if (triggerDoorPtr != undefined){
             move_trigger(object, robot);
         }
         //Handles: obj_eviscerator
-        if (isEviscerator){
+        else if (isEviscerator){
             move_eviscerator(object, robot);
         }
         //Handles: par_arrow
-        if (isArrow){
+        else if (isArrow){
             move_arrow(object);
         }
         //Handles: par_fallingPlatform
-        if (isFallingPlatform){
+        else if (isFallingPlatform){
             move_fallingPlatform(object, robot);
         }
         //Handles: obj_spike
-        if (object.isSpike){
+        else if (object.isSpike){
             move_spike(object, robot);
         }
         //Handles: par_block, obj_key
-        if ((canPull || canPush) && !isSpike){
+        else if ((canPull || canPush)){
             move_pullPushables(object, robot);
         }
     }

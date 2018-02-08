@@ -131,8 +131,9 @@ else if (key_enter){
         case "obj_continueAdventure":
             //room_goto(rm_level11);      //ffs18 levels
             //room_goto(mq_level3);       //ffs18 mq levels
-            room_goto(rm_level_Ian_13); //Ian levels
-            //room_goto(rm_x2);             //x levels
+            //room_goto(rm_level_Ian_13); //Ian levels
+            //room_goto(rm_x2);           //x levels
+            room_goto(rm_magneticSnare)   //element test levels
             
             //handle_gameLoad();
             break;
