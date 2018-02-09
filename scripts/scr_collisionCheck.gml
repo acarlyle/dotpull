@@ -76,7 +76,13 @@ if (instance_place(argument0, argument1, obj_triggerDoor)){
     return false; //there's a block here
 }
 if (instance_place(argument0, argument1, par_wall)){
-    return true; //there's a wall here
+    wall = instance_place(argument0, argument1, par_wall);
+    if (wall.isDeactivated){
+        return false; //there's a wall here but it's deactivated, you may walk
+    }
+    else{
+        return true; //there's a wall here
+    }
 }
 if (instance_place(argument0, argument1, par_platform)){
     var platform = instance_place(argument0, argument1, par_platform);

@@ -21,6 +21,9 @@ if (!ds_stack_empty(robot.moveHistory)){
             if (isSpike){
                 undo_spike(object);
             }
+            if (parentOf(object) == "par_breakableWall"){
+               undo_breakableWall(object);
+            }
             if (isFallingPlatform){
                undo_fallingPlatform(object);
             }

@@ -26,6 +26,7 @@
     </sprites>
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_roberta</sprite>
+    <sprite>sprites\spr_baby</sprite>
     <sprite>sprites\spr_robertaMenu</sprite>
     <sprite>sprites\spr_robertaEnd</sprite>
     <sprite>sprites\spr_playerDead</sprite>
@@ -55,6 +56,9 @@
       <sprite>sprites\spr_fallingPlatform_2Step</sprite>
       <sprite>sprites\spr_fallingPlatform_3Step</sprite>
       <sprite>sprites\spr_eviscerator</sprite>
+      <sprite>sprites\spr_breakableWall_3Hit</sprite>
+      <sprite>sprites\spr_breakableWall_2Hit</sprite>
+      <sprite>sprites\spr_breakableWall_1Hit</sprite>
     </sprites>
     <sprites name="Menu">
       <sprite>sprites\spr_newAdventure</sprite>
@@ -79,6 +83,7 @@
         <script>scripts\move_pullPushables.gml</script>
         <script>scripts\move_arrow.gml</script>
         <script>scripts\move_fallingPlatform.gml</script>
+        <script>scripts\move_breakableWall.gml</script>
         <script>scripts\move_eviscerator.gml</script>
         <script>scripts\move_trigger.gml</script>
       </scripts>
@@ -91,6 +96,7 @@
         <script>scripts\undo_trigger.gml</script>
         <script>scripts\undo_key.gml</script>
         <script>scripts\undo_fallingPlatform.gml</script>
+        <script>scripts\undo_breakableWall.gml</script>
         <script>scripts\undo_robotDeath.gml</script>
       </scripts>
     </scripts>
@@ -121,6 +127,10 @@
       <script>scripts\isActivated.gml</script>
       <script>scripts\stringSplit.gml</script>
       <script>scripts\scr_getInput.gml</script>
+      <script>scripts\parentOf.gml</script>
+    </scripts>
+    <scripts name="Element Affects">
+      <script>scripts\e_damageBreakableWall.gml</script>
     </scripts>
   </scripts>
   <objects name="objects">
@@ -152,6 +162,9 @@
       </objects>
       <objects name="par_obstacle">
         <object>objects\obj_door</object>
+        <object>objects\obj_breakableWall_3Hit</object>
+        <object>objects\obj_breakableWall_2Hit</object>
+        <object>objects\obj_breakableWall_1Hit</object>
         <object>objects\obj_triggerDoor</object>
       </objects>
       <objects name="not_even_fucking_used">
@@ -177,6 +190,7 @@
     <objects name="Parents">
       <object>objects\par_obstacle</object>
       <object>objects\par_robot</object>
+      <object>objects\par_breakableWall</object>
       <object>objects\par_fallingPlatform</object>
       <object>objects\par_block</object>
       <object>objects\par_snare</object>

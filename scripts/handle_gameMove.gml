@@ -32,6 +32,10 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
         if (instance_place(x, y, par_snare)) {
             continue;
         }
+        //Handles: par_breakableWall
+        else if (parentOf(object) == "par_breakableWall"){
+            move_breakableWall(object);
+        }
         //Handles: obj_trigger, obj_triggerDoor
         else if (triggerDoorPtr != undefined){
             move_trigger(object, robot);

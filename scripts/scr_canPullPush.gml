@@ -18,6 +18,13 @@ if (isSpike){
                 return false;
             }
         }
+        if (instance_place(argument0, argument1, par_breakableWall)){
+            breakableWall = instance_place(argument0, argument1, par_breakableWall);
+            e_damageBreakableWall(breakableWall);
+            if (breakableWall.isDeactivated){
+                return true;
+            }
+        }
         if (instance_place(argument0, argument1, par_obstacle)){
             var obs = instance_place(argument0, argument1, par_obstacle);
             print(obs.isDeactivated);
