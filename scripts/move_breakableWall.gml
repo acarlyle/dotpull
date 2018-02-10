@@ -10,4 +10,4 @@
 
 //print("Moving breakableWall");
 breakableWall = argument0;
-ds_stack_push(breakableWall.stateHistory, breakableWall.hitsLeft);
+//ds_stack_push(breakableWall.stateHistory, breakableWall.hitsLeft);

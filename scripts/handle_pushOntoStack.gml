@@ -23,3 +23,6 @@ if (object_get_name(object_index) == "obj_key" ||
         //print("state now " + string(currentState));
     }
 }
+if (parentOf(object) == "par_breakableWall"){
+    ds_stack_push(object.stateHistory, object.hitsLeft);
+}
