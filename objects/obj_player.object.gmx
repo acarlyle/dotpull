@@ -148,6 +148,7 @@ if (global.playerCanMove){
     }
     with (par_robot){
         if (moved) {
+            handle_pushOntoStack(self); //push previous turn's items onto stack before moving them
             handle_gameMove(self);  //moved is true if player successfully moved
         }
     }

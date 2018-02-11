@@ -9,6 +9,11 @@
 cannon = argument0;
 robot = argument1;
 
+print(object.state);
+print(object.shotDirection);
+ds_stack_push(object.stateHistory, object.state + "," + object.shotDirection);
+print("pushed cannon stateHistory: " + string(object.state) + "," + string(object.shotDirection));
+
 var xDiff = -1;
 var yDiff = -1;
 

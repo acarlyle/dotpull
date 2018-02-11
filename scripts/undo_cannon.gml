@@ -19,7 +19,7 @@ if (cannonStateStr != undefined){
             cannon.state = "idling";
             break;
         case "charging":
-            cannon.state = "charging";
+            cannon.state = "idling";
             break;
         case "firing":
             cannon.state = "charging";
