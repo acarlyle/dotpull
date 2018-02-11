@@ -1,5 +1,7 @@
 ///handle_undoMove(par_robot robot)
 
+handle_cleanUpElementEffects();
+
 var robot = argument0;
 
 print("HANDLE UNDO MOVE");
@@ -55,6 +57,9 @@ if (!ds_stack_empty(robot.moveHistory)){
                 }
                 if (object_get_name(object_index) == "obj_door"){
                     undo_door(object);
+                }
+                if (parentOf(object) == "par_cannon"){
+                    undo_cannon(object);
                 }
             }
         }

@@ -59,6 +59,11 @@
       <sprite>sprites\spr_breakableWall_3Hit</sprite>
       <sprite>sprites\spr_breakableWall_2Hit</sprite>
       <sprite>sprites\spr_breakableWall_1Hit</sprite>
+      <sprite>sprites\spr_cannon_vert</sprite>
+      <sprite>sprites\spr_cannon_horz</sprite>
+    </sprites>
+    <sprites name="element affects">
+      <sprite>sprites\spr_cannonEnergy</sprite>
     </sprites>
     <sprites name="Menu">
       <sprite>sprites\spr_newAdventure</sprite>
@@ -77,6 +82,7 @@
     <scripts name="Game Handles">
       <script>scripts\handle_playerMove.gml</script>
       <script>scripts\handle_gameMove.gml</script>
+      <script>scripts\handle_cleanUpElementEffects.gml</script>
       <script>scripts\handle_undoMove.gml</script>
       <scripts name="Move Object">
         <script>scripts\move_spike.gml</script>
@@ -85,12 +91,14 @@
         <script>scripts\move_fallingPlatform.gml</script>
         <script>scripts\move_breakableWall.gml</script>
         <script>scripts\move_eviscerator.gml</script>
+        <script>scripts\move_cannon.gml</script>
         <script>scripts\move_trigger.gml</script>
       </scripts>
       <scripts name="Undo Object">
         <script>scripts\undo_robot.gml</script>
         <script>scripts\undo_spike.gml</script>
         <script>scripts\undo_arrow.gml</script>
+        <script>scripts\undo_cannon.gml</script>
         <script>scripts\undo_door.gml</script>
         <script>scripts\undo_triggerDoor.gml</script>
         <script>scripts\undo_trigger.gml</script>
@@ -101,6 +109,7 @@
       </scripts>
     </scripts>
     <scripts name="Movement">
+      <script>scripts\scr_canBlastRobot.gml</script>
       <script>scripts\scr_collisionCheck.gml</script>
       <script>scripts\scr_canPullPush.gml</script>
     </scripts>
@@ -130,12 +139,16 @@
       <script>scripts\parentOf.gml</script>
     </scripts>
     <scripts name="Element Affects">
+      <script>scripts\e_fireCannon.gml</script>
       <script>scripts\e_damageBreakableWall.gml</script>
     </scripts>
   </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>
-    <objects name="puzzle elements">
+    <objects name="Element Effects">
+      <object>objects\obj_cannonEnergy</object>
+    </objects>
+    <objects name="Puzzle Elements">
       <objects name="par_platform">
         <object>objects\obj_snare</object>
         <object>objects\obj_magneticSnare</object>
@@ -161,6 +174,8 @@
         <object>objects\obj_blockPushPull</object>
       </objects>
       <objects name="par_obstacle">
+        <object>objects\obj_cannon_vert</object>
+        <object>objects\obj_cannon_horz</object>
         <object>objects\obj_door</object>
         <object>objects\obj_breakableWall_3Hit</object>
         <object>objects\obj_breakableWall_2Hit</object>
@@ -197,6 +212,7 @@
       <object>objects\par_pullable</object>
       <object>objects\par_wall</object>
       <object>objects\par_menu</object>
+      <object>objects\par_cannon</object>
       <object>objects\par_platform</object>
       <object>objects\par_arrow</object>
     </objects>
@@ -241,7 +257,7 @@
       <room>rooms\rm_demo</room>
       <room>rooms\rm_level7unsued</room>
       <room>rooms\rm_level8unsued</room>
-      <room>rooms\rm_robertaInto</room>
+      <room>rooms\rm_robertaIntro</room>
       <room>rooms\rm_cell</room>
       <room>rooms\rm_level9Old</room>
     </rooms>

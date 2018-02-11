@@ -9,6 +9,8 @@ print("HANDLE GAME MOVE");
 //    print(object_get_name(object.object_index));
 //}
 
+handle_cleanUpElementEffects();
+
 for (var i = 0; i < array_length_1d(global.roomContents); i++){
     var object = global.roomContents[i];
     with(object){
@@ -24,6 +26,12 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
         } 
         
         
+        //Handles: par_cannon
+        if (parentOf(object) == "par_cannon"){
+            print("handling cannon move");
+            move_cannon(object, robot);
+        }
+        
         /*
             HANDLE DIFFERENT TYPES OF OBJECT MOVEMENTS
         */ 
@@ -31,10 +39,6 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
         //If object is on top of a snare, don't do anything with it
         if (instance_place(x, y, par_snare)) {
             continue;
-        }
-        //Handles: par_breakableWall
-        else if (parentOf(object) == "par_breakableWall"){
-            move_breakableWall(object);
         }
         //Handles: obj_trigger, obj_triggerDoor
         else if (triggerDoorPtr != undefined){

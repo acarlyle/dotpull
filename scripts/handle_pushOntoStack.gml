@@ -26,3 +26,9 @@ if (object_get_name(object_index) == "obj_key" ||
 if (parentOf(object) == "par_breakableWall"){
     ds_stack_push(object.stateHistory, object.hitsLeft);
 }
+if (parentOf(object) == "par_cannon"){
+    print(object.state);
+    print(object.shotDirection);
+    ds_stack_push(object.stateHistory, object.state + "," + object.shotDirection);
+    print("pushed cannon stateHistory: " + string(object.state) + "," + string(object.shotDirection));
+}
