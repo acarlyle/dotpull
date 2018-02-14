@@ -56,6 +56,15 @@ for (var i = 0; i < ds_list_size(list); i++){
         ds_list_insert(list, 0, inst);
     }
 }
+//Cannon objects need to be pushed nexgt because they can break walls
+for (var i = 0; i < ds_list_size(list); i++){
+    var inst = ds_list_find_value(list, i);
+    if (parentOf(inst) == "par_cannon"){
+        //print("moving breakableWall up to the tippy top of the priority list");
+        ds_list_delete(list, i);
+        ds_list_insert(list, 0, inst);
+    }
+}
 for (var i = 0; i < ds_list_size(list); i++){
     var inst = ds_list_find_value(list, i);
     if (inst.isFallingPlatform){

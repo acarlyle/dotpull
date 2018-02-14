@@ -9,10 +9,16 @@
 cannon = argument0;
 robot = argument1;
 
-print(object.state);
-print(object.shotDirection);
-ds_stack_push(object.stateHistory, object.state + "," + object.shotDirection);
-print("pushed cannon stateHistory: " + string(object.state) + "," + string(object.shotDirection));
+//switch(cannon.state){
+    
+//}
+
+print("CANNON_MOVE: " + string(cannon.state));
+
+print(cannon.state);
+print(cannon.shotDirection);
+ds_stack_push(cannon.stateHistory, cannon.state + "," + cannon.shotDirection);
+print("pushed cannon stateHistory: " + string(cannon.state) + "," + string(cannon.shotDirection));
 
 var xDiff = -1;
 var yDiff = -1;
@@ -37,19 +43,28 @@ else if (object_get_name(cannon.object_index) == "obj_cannon_horz"){
     print("isHorz");
 }
 
-switch (state){
+if (cannon.state == "fired") cannon.state = "idling";
+
+switch (cannon.state){
+    case "fired":
+        cannon.state = "idling";
+        break;
+
     case "firing":
         print("firing away");
         e_fireCannon(cannon, isVert, isHorz);
-        cannon.state = "idling";
+        cannon.state = "fired";
+        print("CANNON state now: " + string(cannon.state));
         break;
+        
     case "charging":
-        print("state charging");
+        print("cannon is now in firing state");
         cannon.state = "firing";
         break;
         
     case "idling":
         //check if player is in up down line for a blasting
+        print("state is idling, checking for player");
         if (isVert){
             if ((robot.x == cannon.x) && scr_canBlastRobot(cannon, robot)){
                 cannon.state = "charging";
@@ -61,7 +76,7 @@ switch (state){
                     cannon.shotDirection = "up";
                     print("up");
                 }
-                print("blast that little shitter");
+                print("cannon is now charging: blast that little shitter");
             } 
         }
         if (isHorz){

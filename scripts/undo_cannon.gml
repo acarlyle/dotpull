@@ -27,6 +27,13 @@ if (cannonStateStr != undefined){
     }*/
     cannon.state = stateStr;
     cannon.shotDirection = stateDir;
+    /*if (cannon.state == "fired"){
+        cannon.state = "idling";
+        print("CANNON: Fired -> idling");
+    }
+    else{
+        print("cannon isn't fired, it's actually: " + string(cannon.state));
+    }*/
     var isVert = false;
     var isHorz = false;
     if (cannon.shotDirection == "up" || cannon.shotDirection == "down"){
@@ -37,7 +44,7 @@ if (cannonStateStr != undefined){
         isHorz = true;
         isVert = false;
     }
-    if (cannon.state == "firing"){
+    if (cannon.state == "fired"){
         e_fireCannon(cannon, isVert, isHorz); 
     }
 }
