@@ -32,6 +32,7 @@ ds_stack_push(moveHistory, initPos);
 
 stateHistory = ds_stack_create();
 hitsLeft = 1; //idle or active
+numFrames = 2;
 ds_stack_push(stateHistory, hitsLeft);
 
 isPuzzleElement = true;

@@ -7,6 +7,11 @@ if (instance_place(argument0, argument1, obj_spike)){
     return true;
 }
 
+if (instance_place(argument0, argument1, par_obstacle)){
+    var obstacle = instance_place(argument0, argument1, par_obstacle);
+    if (!obstacle.isDeactivated) return true; //obstacle will block your path
+}
+
 //print("numkeys");
 //print(obj_player.numKeys);
 if (instance_place(argument0, argument1, obj_door)){

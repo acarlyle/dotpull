@@ -171,7 +171,7 @@ if (global.playerCanMove){
     //print(obj_spike.targetDirection);
     //print(obj_spike.targetLocked);
     //print(obj_key.isDeactivated);
-    //print(obj_breakableWall_1Hit.hitsLeft);
+    //print(par_breakableWall.hitsLeft);
     //print("breakable wall state: " + string(ds_stack_size(obj_breakableWall_1Hit.stateHistory)));
 }
 </string>
