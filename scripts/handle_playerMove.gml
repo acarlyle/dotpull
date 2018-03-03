@@ -38,39 +38,39 @@ print(robot.playerX);
 print(robot.playerY);
 
 if (!noMove){
-    if (global.key_left && !scr_collisionCheck(robot.playerX - global.TILE_SIZE, robot.playerY)){
+    if (global.key_left && !scr_collisionCheck(robot.playerX - global.TILE_SIZE, robot.playerY, robot)){
         robot.playerX -= global.TILE_SIZE;
         robot.moved = true;
     }
-    if (global.key_right && !scr_collisionCheck(robot.playerX + global.TILE_SIZE, robot.playerY)){
+    if (global.key_right && !scr_collisionCheck(robot.playerX + global.TILE_SIZE, robot.playerY, robot)){
         robot.playerX += global.TILE_SIZE;
         robot.moved = true;
     }
-    if (global.key_up && !scr_collisionCheck(robot.playerX, robot.playerY - global.TILE_SIZE)){
+    if (global.key_up && !scr_collisionCheck(robot.playerX, robot.playerY - global.TILE_SIZE, robot)){
         print("you moved!");
         robot.playerY -= global.TILE_SIZE;
         robot.moved = true;
     }
-    if (global.key_down && !scr_collisionCheck(robot.playerX, robot.playerY + global.TILE_SIZE)){
+    if (global.key_down && !scr_collisionCheck(robot.playerX, robot.playerY + global.TILE_SIZE, robot)){
         robot.playerY += global.TILE_SIZE;
         robot.moved = true;
     }
-    if (global.key_upleft && !scr_collisionCheck(robot.playerX - global.TILE_SIZE, robot.playerY - global.TILE_SIZE)){
+    if (global.key_upleft && !scr_collisionCheck(robot.playerX - global.TILE_SIZE, robot.playerY - global.TILE_SIZE, robot)){
         robot.playerX -= global.TILE_SIZE;
         robot.playerY -= global.TILE_SIZE;
         robot.moved = true;
     }
-    if (global.key_upright && !scr_collisionCheck(robot.playerX + global.TILE_SIZE, robot.playerY - global.TILE_SIZE)){
+    if (global.key_upright && !scr_collisionCheck(robot.playerX + global.TILE_SIZE, robot.playerY - global.TILE_SIZE, robot)){
         robot.playerX += global.TILE_SIZE;
         robot.playerY -= global.TILE_SIZE;
         robot.moved = true;
     }
-    if (global.key_downleft && !scr_collisionCheck(robot.playerX - global.TILE_SIZE, robot.playerY + global.TILE_SIZE)){
+    if (global.key_downleft && !scr_collisionCheck(robot.playerX - global.TILE_SIZE, robot.playerY + global.TILE_SIZE, robot)){
         robot.playerX -= global.TILE_SIZE;
         robot.playerY += global.TILE_SIZE;
         robot.moved = true;
     }
-    if (global.key_downright && !scr_collisionCheck(robot.playerX + global.TILE_SIZE, robot.playerY + global.TILE_SIZE)){
+    if (global.key_downright && !scr_collisionCheck(robot.playerX + global.TILE_SIZE, robot.playerY + global.TILE_SIZE, robot)){
         robot.playerX += global.TILE_SIZE;
         robot.playerY += global.TILE_SIZE;
         robot.moved = true;
@@ -99,7 +99,8 @@ if (!noMove){
         robot.oldPlayerX = x;
         robot.oldPlayerY = y;
         robot.x = robot.playerX; 
-        robot.y = robot.playerY; 
+        robot.y = robot.playerY;
+        print("new robo x: " + string(robot.x)); 
     }
 }
 

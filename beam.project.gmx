@@ -24,7 +24,7 @@
       <sprite>sprites\spr_hole</sprite>
       <sprite>sprites\spr_blackTile</sprite>
     </sprites>
-    <sprite>sprites\spr_player</sprite>
+    <sprite>sprites\spr_playerOld</sprite>
     <sprite>sprites\spr_roberta</sprite>
     <sprite>sprites\spr_baby</sprite>
     <sprite>sprites\spr_robertaMenu</sprite>
@@ -61,6 +61,7 @@
       <sprite>sprites\spr_breakableWall_1Hit</sprite>
       <sprite>sprites\spr_cannon_vert</sprite>
       <sprite>sprites\spr_cannon_horz</sprite>
+      <sprite>sprites\spr_mirptr</sprite>
     </sprites>
     <sprites name="element affects">
       <sprite>sprites\spr_cannonEnergy</sprite>
@@ -70,6 +71,7 @@
       <sprite>sprites\spr_continueAdventure</sprite>
       <sprite>sprites\spr_exit</sprite>
     </sprites>
+    <sprite>sprites\spr_player</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -187,6 +189,9 @@
       </objects>
       <objects name="par_robot">
         <object>objects\obj_roberta</object>
+      </objects>
+      <objects name="par_redirect">
+        <object>objects\obj_mirptr</object>
       </objects>
     </objects>
     <objects name="env">

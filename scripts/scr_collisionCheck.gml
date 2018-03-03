@@ -1,10 +1,33 @@
-///scr_collisionCheck(int posX, int posY)
+///scr_collisionCheck(int posX, int posY, par_robot robot)
+
+robot = argument2;
 
 if (instance_place(argument0, argument1, obj_spike)){
     print("ded player");
     obj_player.isDead = true;
     obj_player.sprite_index = spr_playerDead;
     return true;
+}
+
+if (instance_place(argument0, argument1, obj_mirptr)){
+    var mirptr = instance_place(argument0, argument1, obj_mirptr);
+    print("old robo x: " + string(robot.x));
+    var roboXDiff = argument0 - robot.playerX; 
+    var roboYDiff = argument1 - robot.playerY; 
+    if !scr_collisionCheck(mirptr.mirptrPtr.x + roboXDiff, mirptr.mirptrPtr.y + roboYDiff, robot){
+        robot.x += mirptr.mirptrPtr.x + roboXDiff;
+        robot.y += mirptr.mirptrPtr.y + roboYDiff;
+        print("recursion worked like magic");
+    }
+    else{
+        return true;
+    }
+    
+    
+    robot.playerX = mirptr.mirptrPtr.x;
+    robot.playerY = mirptr.mirptrPtr.y;
+    print("mirptr collision in player move");
+    print(mirptr.mirptrPtr.x);
 }
 
 if (instance_place(argument0, argument1, par_obstacle)){
@@ -61,6 +84,7 @@ if (instance_place(argument0, argument1, obj_key)){
     }
     return false;
 }
+
 print("numkeys: " + string(obj_player.numKeys));
 if (instance_place(argument0, argument1, par_block)){
     print("There's a block here");
