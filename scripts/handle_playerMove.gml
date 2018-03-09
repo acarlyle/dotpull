@@ -37,6 +37,9 @@ if (instance_place(x, y, par_arrow)){
 print(robot.playerX);
 print(robot.playerY);
 
+var pushXOntoStack = robot.playerX;
+var pushYOntoStack = robot.playerY;
+
 if (!noMove){
     if (global.key_left && !scr_collisionCheck(robot.playerX - global.TILE_SIZE, robot.playerY, robot)){
         robot.playerX -= global.TILE_SIZE;
@@ -92,7 +95,7 @@ if (!noMove){
     
     if (global.playerMoved){ 
         print("pushed: " + string(robot.x) + "," + string(robot.y));
-        ds_stack_push(robot.moveHistory, string(robot.x) + "," + string(robot.y)); //pushing previous turn's movement
+        ds_stack_push(robot.moveHistory, string(pushXOntoStack) + "," + string(pushYOntoStack)); //pushing previous turn's movement
         ds_stack_push(robot.itemHistory, array(robot.numKeys));
         print("Pushed onto robots's stack: " + string(robot.x) + " " + string(robot.y));
         print("Pushed numKeys onto robots's stack: " + string(obj_player.numKeys));

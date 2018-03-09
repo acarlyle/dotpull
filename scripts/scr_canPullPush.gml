@@ -1,6 +1,7 @@
-///scr_canPullPush(int objPosX, int objPosY, bool moveDiag, par_robot robot)
+///scr_canPullPush(int objPosX, int objPosY, bool moveDiag, par_robot robot, bool mirptrExt)
 
 var robot = argument3;
+var mirptrExt = argument4
 
 if (!(canPull || canPush)) return false;
 if (isDeactivated) return false;

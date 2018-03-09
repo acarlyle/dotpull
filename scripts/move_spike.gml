@@ -8,6 +8,8 @@
 object = argument0;
 robot = argument1;
 
+var mirptrExt = false; //TODO
+
 //check if spike has already during player's turn and not roberta's
 if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
     if (targetLocked){
@@ -16,7 +18,7 @@ if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
         switch (targetDirection){
             case "up": 
                 print("up"); 
-                if (scr_canPullPush(x, y-global.TILE_SIZE, false, robot)){
+                if (scr_canPullPush(x, y-global.TILE_SIZE, false, robot, mirptrExt)){
                     y-=global.TILE_SIZE;
                 }
                 else{
@@ -29,7 +31,7 @@ if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                 break;
             case "down": 
                 print("down"); 
-                if (scr_canPullPush(x, y+global.TILE_SIZE, false, robot)){
+                if (scr_canPullPush(x, y+global.TILE_SIZE, false, robot, mirptrExt)){
                     y+=global.TILE_SIZE;
                 }
                 else{
@@ -42,7 +44,7 @@ if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                 break;
             case "left": 
                 print("left"); 
-                if (scr_canPullPush(x-global.TILE_SIZE, y, false, robot)){
+                if (scr_canPullPush(x-global.TILE_SIZE, y, false, robot, mirptrExt)){
                     x-=global.TILE_SIZE;
                 }
                 else{
@@ -55,7 +57,7 @@ if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                 break;
             case "right": 
                 print("right"); 
-                if (scr_canPullPush(x+global.TILE_SIZE, y, false, robot)){
+                if (scr_canPullPush(x+global.TILE_SIZE, y, false, robot, mirptrExt)){
                     x+=global.TILE_SIZE;
                 }
                 else{
@@ -68,7 +70,7 @@ if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                 break;
             case "upright": 
                 print("upright"); 
-                if (scr_canPullPush(x+global.TILE_SIZE, y-global.TILE_SIZE, true, robot)){
+                if (scr_canPullPush(x+global.TILE_SIZE, y-global.TILE_SIZE, true, robot, mirptrExt)){
                     x+=global.TILE_SIZE;
                     y-=global.TILE_SIZE;
                 }
@@ -82,7 +84,7 @@ if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                 break;
             case "upleft": 
                 print("upleft"); 
-                if (scr_canPullPush(x-global.TILE_SIZE, y-global.TILE_SIZE, true, robot)){
+                if (scr_canPullPush(x-global.TILE_SIZE, y-global.TILE_SIZE, true, robot, mirptrExt)){
                     x-=global.TILE_SIZE;
                     y-=global.TILE_SIZE;
                 }
@@ -97,7 +99,7 @@ if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                 break;
             case "downright": 
                 print("downright"); 
-                if (scr_canPullPush(x+global.TILE_SIZE, y+global.TILE_SIZE, true, robot)){
+                if (scr_canPullPush(x+global.TILE_SIZE, y+global.TILE_SIZE, true, robot, mirptrExt)){
                     x+=global.TILE_SIZE;
                     y+=global.TILE_SIZE;
                 }
@@ -111,7 +113,7 @@ if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                 break;
             case "downleft": 
                 print("downleft"); 
-                if (scr_canPullPush(x-global.TILE_SIZE, y+global.TILE_SIZE, true, robot)){
+                if (scr_canPullPush(x-global.TILE_SIZE, y+global.TILE_SIZE, true, robot, mirptrExt)){
                     x-=global.TILE_SIZE;
                     y+=global.TILE_SIZE;
                 }
@@ -130,7 +132,7 @@ if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
         state = "idle";
         //print("check for player lock");
         if (robot.y == y){
-            if (robot.x < x && scr_canPullPush(x - global.TILE_SIZE, y, false, robot)) {
+            if (robot.x < x && scr_canPullPush(x - global.TILE_SIZE, y, false, robot, mirptrExt)) {
                 state = "active";
                 targetDirection = "left"; 
                 targetLocked = true;
@@ -138,7 +140,7 @@ if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                 object.spikeMoved = true;
                 //print("target just locked");
             }
-            else if (robot.x > x && scr_canPullPush(x + global.TILE_SIZE, y, false, robot)) {
+            else if (robot.x > x && scr_canPullPush(x + global.TILE_SIZE, y, false, robot, mirptrExt)) {
                 state = "active";
                 targetDirection = "right"; 
                 targetLocked = true;
@@ -147,14 +149,14 @@ if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
             }
         }
         else if (robot.x == x){
-            if (robot.y < y && scr_canPullPush(x, y - global.TILE_SIZE, false, robot)) {
+            if (robot.y < y && scr_canPullPush(x, y - global.TILE_SIZE, false, robot, mirptrExt)) {
                 state = "active";
                 targetDirection = "up"; 
                 targetLocked = true;
                 object.spikeMoved = true;
                 sprite_index = spr_spikeActive;
             }
-            else if (robot.y > y && scr_canPullPush(x, y + global.TILE_SIZE, false, robot)) {
+            else if (robot.y > y && scr_canPullPush(x, y + global.TILE_SIZE, false, robot, mirptrExt)) {
                 state = "active";
                 targetDirection = "down"; 
                 targetLocked = true;
@@ -189,7 +191,7 @@ if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                 newObjPosY = y - global.TILE_SIZE;
             }
         
-            if (scr_canPullPush(newObjPosX, newObjPosY, true, robot)
+            if (scr_canPullPush(newObjPosX, newObjPosY, true, robot, mirptrExt)
             && abs((robot.y - y) / (robot.x - x)) == 1){
                 
                 print("diag lockon baby");
