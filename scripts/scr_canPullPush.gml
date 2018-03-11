@@ -8,33 +8,35 @@ if (isDeactivated) return false;
 
 print(argument0);
 print(argument1);
+var posX = argument0;
+var posY = argument1;
 
 //Handle active angry spike charge
 if (isSpike){
     if (targetLocked){
-        if (instance_place(argument0, argument1, par_fallingPlatform)){
-            var fallingPlat = instance_place(argument0, argument1, par_fallingPlatform);
+        if (instance_place(posX, posY, par_fallingPlatform)){
+            var fallingPlat = instance_place(posX, posY, par_fallingPlatform);
             if (fallingPlat.isDeactivated){
                 print("Falling platform is deactivated; can't pull");
                 return false;
             }
         }
-        if (instance_place(argument0, argument1, par_breakableWall)){
-            breakableWall = instance_place(argument0, argument1, par_breakableWall);
+        if (instance_place(posX, posY, par_breakableWall)){
+            breakableWall = instance_place(posX, posY, par_breakableWall);
             e_damageBreakableWall(breakableWall);
             if (breakableWall.isDeactivated){
                 return true;
             }
         }
-        if (instance_place(argument0, argument1, par_obstacle)){
-            var obs = instance_place(argument0, argument1, par_obstacle);
+        if (instance_place(posX, posY, par_obstacle)){
+            var obs = instance_place(posX, posY, par_obstacle);
             print(obs.isDeactivated);
             if (isActivated(obs)){
                 print("SPIKE STOPPED BY OBSTACLE!!!!");
                 return false;
             }
         }
-        else if (!instance_place(argument0, argument1, par_platform)){
+        else if (!instance_place(posX, posY, par_platform)){
             print("No platform to push spike to");
             return false;
         }
@@ -42,9 +44,9 @@ if (isSpike){
     }
 }
 
-if (instance_place(argument0, argument1, par_robot) && !isSpike){
+if (instance_place(posX, posY, par_robot) && !isSpike){
     print("Can't move, player in the way");
-    //print(string(argument0)); print(string(argument1)); print(string(obj_player.x)); print(string(obj_player.y));
+    //print(string(posX)); print(string(posY)); print(string(obj_player.x)); print(string(obj_player.y));
     //print(string(global.oldPlayerX)); print(string(global.oldPlayerY));
     return false; //there's a player here!!  don't move!
 }
@@ -292,21 +294,21 @@ if (canPull && canPush){
     }
 }
 
-if (instance_place(x, y, obj_triggerDoor) && !instance_place(argument0, argument1, obj_wall)){
+if (instance_place(x, y, obj_triggerDoor) && !instance_place(posX, posY, obj_wall)){
     if (isActivated(instance_place(x, y, obj_triggerDoor))){
         print("obj trapped above");
         return false; //can't move if above    
     }
 }
-if (instance_place(argument0, argument1, obj_block) ||
-    instance_place(argument0, argument1, obj_blockPush) ||
-    instance_place(argument0, argument1, obj_blockPushPull)){
+if (instance_place(posX, posY, obj_block) ||
+    instance_place(posX, posY, obj_blockPush) ||
+    instance_place(posX, posY, obj_blockPushPull)){
     //print("Block in the way!");
     return false;
 }
 
-if (instance_place(argument0, argument1, par_fallingPlatform)){
-    var fallingPlat = instance_place(argument0, argument1, par_fallingPlatform);
+if (instance_place(posX, posY, par_fallingPlatform)){
+    var fallingPlat = instance_place(posX, posY, par_fallingPlatform);
     if (fallingPlat.isDeactivated){
         print("Falling platform is deactivated; can't pull");
         return false;
@@ -331,35 +333,35 @@ if (instance_place(argument0, argument1, par_fallingPlatform)){
     }
 }*/
 
-if (instance_place(argument0, argument1, obj_spike)){
+if (instance_place(posX, posY, obj_spike)){
     //print("Spike in the way!");
     return false;
 }
-if (instance_place(argument0, argument1, obj_key)){
+if (instance_place(posX, posY, obj_key)){
     //print("Key in the way!");
     return false;
 }
 
-if (instance_place(argument0, argument1, obj_trigger) && 
-   !instance_place(argument0, argument1, par_obstacle) &&
-   !instance_place(argument0, argument1, robot)){
+if (instance_place(posX, posY, obj_trigger) && 
+   !instance_place(posX, posY, par_obstacle) &&
+   !instance_place(posX, posY, robot)){
     //print("There's a trigger here.");
     return true;
 }
-if (instance_place(argument0, argument1, obj_triggerDoor)){
+if (instance_place(posX, posY, obj_triggerDoor)){
     //print("There's a triggerDoor here.");
-    var triggerDoor = instance_place(argument0, argument1, obj_triggerDoor);
+    var triggerDoor = instance_place(posX, posY, obj_triggerDoor);
     if (triggerDoor.isDeactivated) return true;
     return false;
 }
 
-if (instance_place(argument0, argument1, obj_hole)){
+if (instance_place(posX, posY, obj_hole)){
     //print("Can't move, hole in the way");
     if (!canFall) return false; //there's a hole here!!  don't move unless you can go over holes!
 }
 
-if(instance_place(argument0, argument1, par_obstacle)){
-    var obs = instance_place(argument0, argument1, par_obstacle);
+if(instance_place(posX, posY, par_obstacle)){
+    var obs = instance_place(posX, posY, par_obstacle);
     if (isActivated(obs)) {
         print("Oh no an obstacle is here and it's activated !!!");
         print("pls be a spike" + string(isSpike));
@@ -367,7 +369,7 @@ if(instance_place(argument0, argument1, par_obstacle)){
     }
 }
 
-if (!instance_place(argument0, argument1, par_platform)){
+if (!instance_place(posX, posY, par_platform)){
     print("No platform to push/pull to");
     return false;
 }
