@@ -1,15 +1,30 @@
-///scr_canPullPush(int objPosX, int objPosY, bool moveDiag, par_robot robot, bool mirptrExt)
+///scr_canPullPush(int objPosX, int objPosY, bool moveDiag, par_object object, par_robot robot, bool mirptrExt)
 
-var robot = argument3;
-var mirptrExt = argument4
+print("-> scr_canPullPush(" + string(argument0) + ", " + string(argument1) + ")")
+
+var mirptrHz = false;
+var mirptrVt = false;
+var object = argument3;
+var robot = argument4;
+var mirptrExt = argument5;
+if (mirptrExt){
+    if (object.x == mirptr.x) mirptrHz = true;
+    if (object.y == mirptr.y) mirptrVt = true;
+}
+
 
 if (!(canPull || canPush)) return false;
 if (isDeactivated) return false;
 
-print(argument0);
-print(argument1);
 var posX = argument0;
 var posY = argument1;
+
+if (mirptrVt == true){
+    posX = mirptrPtr.x; 
+}
+if (mirptrHz){
+    posY = mirptrPtr.y; 
+}
 
 //Handle active angry spike charge
 if (isSpike){

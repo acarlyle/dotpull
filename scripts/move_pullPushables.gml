@@ -60,12 +60,12 @@ else if (canPush) pushPull *= -1;
 if (robot.oldPlayerY == objPosY && robot.y == objPosY){ //player moved left/right
     print("push/pull left/right");
     //print(x - (global.TILE_SIZE*pushPull));
-    if (robot.x < objPosX && scr_canPullPush(objPosX - (global.TILE_SIZE*pushPull), objPosY, false, robot, mirptrExt)) {//player on left side of object 
+    if (robot.x < objPosX && scr_canPullPush(objPosX - (global.TILE_SIZE*pushPull), objPosY, false, object, robot, mirptrExt)) {//player on left side of object 
         x -= (global.TILE_SIZE*pushPull);
         objMove = true;
         print("Move is true left");
     }
-    else if (robot.x > objPosX && scr_canPullPush(objPosX + (global.TILE_SIZE*pushPull), objPosY, false, robot, mirptrExt)){//player on right side of object
+    else if (robot.x > objPosX && scr_canPullPush(objPosX + (global.TILE_SIZE*pushPull), objPosY, false, object, robot, mirptrExt)){//player on right side of object
         x += (global.TILE_SIZE*pushPull);
         objMove = true;
         print("Move is true right");
@@ -73,12 +73,12 @@ if (robot.oldPlayerY == objPosY && robot.y == objPosY){ //player moved left/righ
 }
 if (robot.oldPlayerX == objPosX && robot.x == objPosX){ //player moved up/down
     print("push/pull up/down");
-    if (robot.y < objPosY && scr_canPullPush(objPosX, objPosY - (global.TILE_SIZE*pushPull), false, robot, mirptrExt)){ //player above object 
+    if (robot.y < objPosY && scr_canPullPush(objPosX, objPosY - (global.TILE_SIZE*pushPull), false, object, robot, mirptrExt)){ //player above object 
         y -= (global.TILE_SIZE*pushPull);
         objMove = true;
         print("pulling");
     }
-    else if (robot.y > objPosY && scr_canPullPush(objPosX, objPosY + (global.TILE_SIZE*pushPull), false, robot, mirptrExt)){//player below object 
+    else if (robot.y > objPosY && scr_canPullPush(objPosX, objPosY + (global.TILE_SIZE*pushPull), false, object, robot, mirptrExt)){//player below object 
         print("push/pull updown");
         y += (global.TILE_SIZE*pushPull);
         objMove = true;
@@ -132,7 +132,7 @@ if (robot.y > objPosY && robot.x < objPosX){ //player is below the obj and to th
 if (!objMove  
     && (robot.x - robot.oldPlayerX != 0) 
     && (robot.y - robot.oldPlayerY != 0) 
-    && scr_canPullPush(newObjPosX, newObjPosY, true, robot, mirptrExt)
+    && scr_canPullPush(newObjPosX, newObjPosY, true, object, robot, mirptrExt)
     && abs((robot.y - objPosY) / (robot.x - objPosX)) == 1
     && abs((robot.oldPlayerY - objPosY) / (robot.oldPlayerX - objPosX)) == 1){
     
