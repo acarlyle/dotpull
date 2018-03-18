@@ -29,13 +29,15 @@ with (obj_mirptr){
         (mirptrPtr.x == object.x && robot.x == mirptr.x)){
         print("NSYNC!!!! VT");
         objPosX = mirptrPtr.x;
-        mirptrExt = true;
+        //mirptrExt = true;
+        mirptrExt = mirptr;
     }
     if ((mirptr.y == object.y && robot.y == mirptrPtr.y) ||
         (mirptrPtr.y == object.y && robot.y == mirptr.y)){
         print("NSYNC!!!! HZ");
         objPosY = mirptrPtr.y;
-        mirptrExt = true;
+        //mirptrExt = true;
+        mirptrExt = mirptr;
     }
 }
 

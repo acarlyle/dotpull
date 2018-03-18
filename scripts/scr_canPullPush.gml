@@ -1,15 +1,16 @@
 ///scr_canPullPush(int objPosX, int objPosY, bool moveDiag, par_object object, par_robot robot, bool mirptrExt)
 
-print("-> scr_canPullPush(" + string(argument0) + ", " + string(argument1) + ")")
+print("-> scr_canPullPush(" + string(argument0) + ", " + string(argument1) + ")");
 
 var mirptrHz = false;
 var mirptrVt = false;
 var object = argument3;
 var robot = argument4;
-var mirptrExt = argument5;
-if (mirptrExt){
-    if (object.x == mirptr.x) mirptrHz = true;
-    if (object.y == mirptr.y) mirptrVt = true;
+var mirptr = argument5;
+
+if (mirptr){
+    if (object.x == mirptr.x) mirptrVt = true;
+    if (object.y == mirptr.y) mirptrHz = true;
 }
 
 
@@ -18,13 +19,6 @@ if (isDeactivated) return false;
 
 var posX = argument0;
 var posY = argument1;
-
-if (mirptrVt == true){
-    posX = mirptrPtr.x; 
-}
-if (mirptrHz){
-    posY = mirptrPtr.y; 
-}
 
 //Handle active angry spike charge
 if (isSpike){
@@ -68,8 +62,19 @@ if (instance_place(posX, posY, par_robot) && !isSpike){
 
 //print("this far...");
 
-var xDiff = robot.x - x;
-var yDiff = robot.y - y;
+var xDiff = robot.x - posX;
+var yDiff = robot.y - posY;
+
+if (mirptrVt){
+    print("vt true");
+    posX = mirptr.x; 
+}
+if (mirptrHz){
+    posY = mirptr.y; 
+    print("Hz true");
+}
+
+print("pull push: posX: " + string(posX) + " " + string(posY));
 
 if (!argument2 && (canPull || canPush) && !(canPull && canPush)){ //this checks left/right only
     //print("do not print");
@@ -114,10 +119,13 @@ if (!argument2 && (canPull || canPush) && !(canPull && canPush)){ //this checks 
             }
         }
         else{ //player is below the obj
+            print("below object");
             for (var objY = y + global.TILE_SIZE; objY < robot.y; objY += global.TILE_SIZE){
+                print("y: " + string(objY));
                 if (instance_place(x, objY, par_obstacle)){
                     var obs = instance_place(x, objY, par_obstacle);
-                    //print(obs.isDeactivated);
+                    if (object_get_name(obs) == "obj_mirptr") print("it is a mirPTR");
+                    //print("below object");
                     if (!obs.isDeactivated){
                         print("oh no it is activated");
                         return false; //don't pull if anything is in the way
