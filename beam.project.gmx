@@ -139,6 +139,9 @@
       <script>scripts\stringSplit.gml</script>
       <script>scripts\scr_getInput.gml</script>
       <script>scripts\parentOf.gml</script>
+      <scripts name="Movement">
+        <script>scripts\scr_mirptrTele.gml</script>
+      </scripts>
     </scripts>
     <scripts name="Element Affects">
       <script>scripts\e_fireCannon.gml</script>

@@ -2,6 +2,7 @@
 
 var robot = argument0;
 
+print("");
 print("HANDLE GAME MOVE");
 
 //for (var i = 0; i < array_length_1d(global.roomContents); i++){

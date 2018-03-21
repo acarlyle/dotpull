@@ -19,27 +19,29 @@ var objPosY = object.y;
 
 var mirptrExt = false; // if a mirptr is in the objects push/pull path
 
+print("oldPlayerX: " + string(robot.oldPlayerX));
+
 with (obj_mirptr){
     
     var mirptr = self;
     var mirptrPtr = self.mirptrPtr;
     print("mirptrPTr x: " + string(mirptrPtr.x));
     //up/down sync
-    if ((mirptr.x == object.x && robot.x == mirptrPtr.x) ||
-        (mirptrPtr.x == object.x && robot.x == mirptr.x)){
+    if ((mirptr.x == object.x && robot.x == mirptrPtr.x) && (robot.y != object.y)){
         print("NSYNC!!!! VT");
         objPosX = mirptrPtr.x;
         //mirptrExt = true;
         mirptrExt = mirptr;
     }
-    if ((mirptr.y == object.y && robot.y == mirptrPtr.y) ||
-        (mirptrPtr.y == object.y && robot.y == mirptr.y)){
+    if ((mirptr.y == object.y && robot.y == mirptrPtr.y) && (robot.x != object.x)){
         print("NSYNC!!!! HZ");
         objPosY = mirptrPtr.y;
         //mirptrExt = true;
         mirptrExt = mirptr;
     }
 }
+
+print("move_pullPushables objPosX/Y: " + string(objPosX) + ", " + string(objPosY));
 
 
 //figure out which way to push/pull
@@ -64,26 +66,50 @@ if (robot.oldPlayerY == objPosY && robot.y == objPosY){ //player moved left/righ
     //print(x - (global.TILE_SIZE*pushPull));
     if (robot.x < objPosX && scr_canPullPush(objPosX - (global.TILE_SIZE*pushPull), objPosY, false, object, robot, mirptrExt)) {//player on left side of object 
         x -= (global.TILE_SIZE*pushPull);
-        objMove = true;
-        print("Move is true left");
+        print("push/pull left");
+        if (scr_mirptrTele(object, robot, pushPull, objPosX, objPosY)){
+            print("Moved to: " + string(x) + " " + string(y));
+            objMove = true;
+        }
+        else{
+            x += (global.TILE_SIZE*pushPull);    
+        }
     }
     else if (robot.x > objPosX && scr_canPullPush(objPosX + (global.TILE_SIZE*pushPull), objPosY, false, object, robot, mirptrExt)){//player on right side of object
         x += (global.TILE_SIZE*pushPull);
-        objMove = true;
-        print("Move is true right");
+        print("push/pull right");
+        if (scr_mirptrTele(object, robot, pushPull, objPosX, objPosY)){
+            print("Moved to: " + string(x) + " " + string(y));
+            objMove = true;
+        }
+        else{
+            x -= (global.TILE_SIZE*pushPull);    
+        }
     }
 }
+print("OldplYaerX: " + string(robot.oldPlayerX) + "; Robot.x: " + string(robot.x) + "; objPosX: " + string(objPosX));
 if (robot.oldPlayerX == objPosX && robot.x == objPosX){ //player moved up/down
     print("push/pull up/down");
     if (robot.y < objPosY && scr_canPullPush(objPosX, objPosY - (global.TILE_SIZE*pushPull), false, object, robot, mirptrExt)){ //player above object 
         y -= (global.TILE_SIZE*pushPull);
-        objMove = true;
-        print("pulling");
+        if (scr_mirptrTele(object, robot, pushPull, objPosX, objPosY)){
+            print("Moved to: " + string(x) + " " + string(y));
+            objMove = true;
+        }
+        else{
+            y += (global.TILE_SIZE*pushPull);    
+        }
     }
     else if (robot.y > objPosY && scr_canPullPush(objPosX, objPosY + (global.TILE_SIZE*pushPull), false, object, robot, mirptrExt)){//player below object 
         print("push/pull updown");
         y += (global.TILE_SIZE*pushPull);
-        objMove = true;
+        if (scr_mirptrTele(object, robot, pushPull, objPosX, objPosY)){
+            print("Moved to: " + string(x) + " " + string(y));
+            objMove = true;
+        }
+        else{
+            y -= (global.TILE_SIZE*pushPull);
+        }
     }
 }
 var objRelYPos = 1;

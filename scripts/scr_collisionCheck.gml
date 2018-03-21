@@ -15,9 +15,9 @@ if (instance_place(argument0, argument1, obj_mirptr)){
     var roboXDiff = argument0 - robot.playerX; 
     var roboYDiff = argument1 - robot.playerY; 
     if !scr_collisionCheck(mirptr.mirptrPtr.x + roboXDiff, mirptr.mirptrPtr.y + roboYDiff, robot){
-        robot.x += mirptr.mirptrPtr.x + roboXDiff;
-        robot.y += mirptr.mirptrPtr.y + roboYDiff;
-        print("recursion worked like magic");
+        robot.x += (mirptr.mirptrPtr.x + roboXDiff) - mirptr.x;
+        robot.y += (mirptr.mirptrPtr.y + roboYDiff) - mirptr.y;
+        print("PROBLEM: Recursive call, new robot x, y: " + string(robot.x) + " " + string(robot.y));
     }
     else{
         return true;

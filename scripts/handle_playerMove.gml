@@ -1,8 +1,9 @@
 ///handle_playerMove(par_robot robot);
 
 var robot = argument0;
-
+print("");
 print("HANDLE PLAYER MOVE FOR " + object_get_name(robot.object_index));
+
 
 //ds_stack_push(obj_player.moveHistory, string(x) + "," + string(y)); //pushing previous turn's movement
 //ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys));
