@@ -168,60 +168,32 @@ if (!argument2 && (canPull || canPush) && !(canPull && canPush)){ //this checks 
                 return false;
             }
         }
-        /*else{ //player is below the obj
+        else{
             print("below object");
             var objX = object.x;
+            var objY = y + global.TILE_SIZE;
             //print("objY: " + string(objY));
-            for (var objY = y + global.TILE_SIZE; (objY < endPosY) || (objY < robot.y); objY += global.TILE_SIZE){
+            //for (var objY = y + global.TILE_SIZE; (objY < endPosY) || (objY < robot.y); objY += global.TILE_SIZE){
+            while(!scr_tileContains(objX, objY, badArgList)){
                 print("player below: x, y: " + string(objX) + ", " + string(objY));
-                if (instance_place(objX, objY + global.TILE_SIZE, obj_mirptr)){
+                //var yakuza = "ya";
+                //get_string(yakuza, yakuza);
+                if (instance_place(objX, objY, obj_mirptr)){
                     //objY += global.TILE_SIZE;
                     endPosY = robot.y;
-                    mp = instance_place(objX, objY + global.TILE_SIZE, obj_mirptr);
+                    mp = instance_place(objX, objY, obj_mirptr);
                     objX = mp.mirptrPtr.x;
                     objY = mp.mirptrPtr.y;
                     //objY += global.TILE_SIZE;
                     print("mp is a real boy; new objX, objY: " + string(objX) + "," + string(objY));
                 }
-                if (instance_place(objX, objY, par_obstacle)){
-                    var obs = instance_place(objX, objY, par_obstacle);
-                    //print("below object");
-                    if (!obs.isDeactivated){
-                        print("oh no it is activated");
-                        return false; //don't pull if anything is in the way
-                    }
-                }
+                objY += global.TILE_SIZE;
             }
             if (!instance_place(objX, objY, par_robot)){
                 print("No robot here! :(" + " " + string(objX) + " " + string(objY));
                 print("Robot at: " + string(robot.x) + " " + string(robot.y));
                 return false;
             }
-        }*/
-        print("below object");
-        var objX = object.x;
-        var objY = y + global.TILE_SIZE;
-        //print("objY: " + string(objY));
-        //for (var objY = y + global.TILE_SIZE; (objY < endPosY) || (objY < robot.y); objY += global.TILE_SIZE){
-        while(!scr_tileContains(objX, objY, badArgList)){
-            print("player below: x, y: " + string(objX) + ", " + string(objY));
-            //var yakuza = "ya";
-            //get_string(yakuza, yakuza);
-            if (instance_place(objX, objY, obj_mirptr)){
-                //objY += global.TILE_SIZE;
-                endPosY = robot.y;
-                mp = instance_place(objX, objY, obj_mirptr);
-                objX = mp.mirptrPtr.x;
-                objY = mp.mirptrPtr.y;
-                //objY += global.TILE_SIZE;
-                print("mp is a real boy; new objX, objY: " + string(objX) + "," + string(objY));
-            }
-            objY += global.TILE_SIZE;
-        }
-        if (!instance_place(objX, objY, par_robot)){
-            print("No robot here! :(" + " " + string(objX) + " " + string(objY));
-            print("Robot at: " + string(robot.x) + " " + string(robot.y));
-            return false;
         }
     }
 }

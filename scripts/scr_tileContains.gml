@@ -28,7 +28,7 @@ for (var i = 0; i < array_length_1d(objectList); i++){
 }
 
 if ((objPosY > 1000 || objPosY < -1000) || (objPosX > 1000 || objPosX < -1000)){
-    print("WARNING WAY OUT OF WHILE LOOP BOUNDS in scr_tileContains");
+    print("WARNING WAY THE FUCK OUT OF WHILE LOOP BOUNDS in scr_tileContains");
     return true; //hardcoded to prevent infinite loop
 }
 
