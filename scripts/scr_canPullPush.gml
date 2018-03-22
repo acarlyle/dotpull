@@ -10,11 +10,12 @@ var mirptr = argument5;
 
 var mirptrHz = false;
 var mirptrVt = false;
-var endPosX = robot.x;
-var endPosY = robot.y;
+var xDiff = robot.x - posX;
+var yDiff = robot.y - posY;
 var badArgList = array(par_robot, par_obstacle);
 
-//if there's a mirptr in the path of the object
+//if there's a mirptr in the path of the object, reset object position back to where it should be
+// +/- diff to spot to pull to
 if (mirptr){
     if (object.x == mirptr.x){
         mirptrVt = true;
@@ -22,9 +23,20 @@ if (mirptr){
     }
     if (object.y == mirptr.y){ 
         mirptrHz = true;
-        endPosX = mirptr.x;
+    }
+    posX = object.x + (posX - mirptr.x);
+    posY = object.y + (posY - mirptr.y);
+    //posX = object.x; 
+    //posY = object.y;
+    xDiff = robot.oldPlayerX - posX;
+    yDiff = robot.oldPlayerY - posY; 
+    if (xDiff == 0 && yDiff == 0){
+        xDiff = robot.x - posX;
+        yDiff = robot.y - posY;
     }
 }
+
+print("UPDATED scr_canPullPush posX, posY: " + string(posX) + ", " + string(posY));
 
 
 if (!(canPull || canPush)) return false;
@@ -70,12 +82,6 @@ if (isSpike){
     return false; //there's a player here!!  don't move!
 }*/ 
 
-//print("this far...");
-
-var xDiff = robot.x - posX;
-var yDiff = robot.y - posY;
-
-
 /*if (mirptrVt){
     print("vt true");
     posX = mirptr.x; 
@@ -87,54 +93,46 @@ if (mirptrHz){
     print("Hz true");
 }*/
 
-print("pull push: posX: " + string(posX) + " " + string(posY));
+print("pull_push: posX, posY: " + string(posX) + ", " + string(posY));
+print("pull_push: xDiff, yDiff: " + string(xDiff) + ", " + string(yDiff));
+print("pull_push: oldRobotX, oldRobotY: " + string(robot.oldPlayerX) + ", " + string(robot.oldPlayerY));
 
 if (!argument2 && (canPull || canPush) && !(canPull && canPush)){ //this checks left/right only
-    //print("do not print");
-
-    if (yDiff == 0){ //player is moving left/right; check for objects towards the player
+    print("do not print");
+    if (yDiff == 0 || (!mirptrVt && mirptrHz)){ //player is moving left/right; check for objects towards the player
+        print("Robot moving left/right");
         if (xDiff > 0){ //player is to the right of the obj
+            var objX = object.x + global.TILE_SIZE;
             var objY = object.y;
-            for (var objX = x + global.TILE_SIZE; objX < endPosX; objX += global.TILE_SIZE){
+            while(!scr_tileContains(objX, objY, badArgList)){
                 print("player right: x, y: " + string(objX) + ", " + string(objY));
-                if (instance_place(objX + global.TILE_SIZE, objY, obj_mirptr)){
-                    objX += global.TILE_SIZE;
-                    endPosX = robot.x;
+                if (instance_place(objX, objY, obj_mirptr)){
+                    //objX += global.TILE_SIZE;
                     mp = instance_place(objX, objY, obj_mirptr);
-                    //objX -= global.TILE_SIZE;
+                    objX = mp.mirptrPtr.x;
                     objY = mp.mirptrPtr.y;
                     print("mp is a real boy; new objY: " + string(objY));
                 }
-                if (instance_place(objX, y, par_obstacle)){
-                    var obs = instance_place(objX, y, par_obstacle);
-                    if (isActivated(obs)){
-                        return false; //don't pull if anything is in the way
-                    }
-                }
+                objX += global.TILE_SIZE;
             }
             if (!instance_place(objX, objY, par_robot)){
-                print("No ! :(" + " " + string(objX) + " " + string(objY));
+                print("No robot here! :(" + " " + string(objX) + " " + string(objY));
                 return false;
             }
         }
         else{ //player is to the left of the obj
+            var objX = object.x - global.TILE_SIZE;
             var objY = object.y;
-            for (var objX = x - global.TILE_SIZE; objX > endPosX; objX -= global.TILE_SIZE){
+            while(!scr_tileContains(objX, objY, badArgList)){
                 print("player left: x, y: " + string(objX) + ", " + string(objY));
-                if (instance_place(objX - global.TILE_SIZE, objY, obj_mirptr)){
-                    objX -= global.TILE_SIZE;
-                    endPosX = robot.x;
-                    mp = instance_place(objX, objY, obj_mirptr);
+                if (instance_place(objX, objY, obj_mirptr)){
                     //objX -= global.TILE_SIZE;
+                    mp = instance_place(objX, objY, obj_mirptr);
+                    objX = mp.mirptrPtr.x;
                     objY = mp.mirptrPtr.y;
                     print("mp is a real boy; new objY: " + string(objY));
                 }
-                if (instance_place(objX, y, par_obstacle)){
-                    var obs = instance_place(objX, y, par_obstacle);
-                    if (isActivated(obs) && !instance_place(objX, y, obj_snare)){
-                        return false; //don't pull if anything is in the way
-                    }
-                }
+                objX -= global.TILE_SIZE;
             }
             if (!instance_place(objX, objY, par_robot)){
                 print("No robot here! :(" + " " + string(objX) + " " + string(objY));
@@ -142,10 +140,15 @@ if (!argument2 && (canPull || canPush) && !(canPull && canPush)){ //this checks 
             }
         }
     }
-    if (xDiff == 0){ //player is moving up/down; check for objects towards the player
+    print("xDIFF: " + string(xDiff));
+    print("yDIFF: " + string(yDiff));
+    if (xDiff == 0 || (!mirptrHz && mirptrVt)){ //player is moving up/down; check for objects towards the player
+        print("Robot moving up/down, moveDir: " + string(robot.movedDir));
         if (yDiff < 0){ //player is above the obj
             var objX = object.x;
-            for (var objY = y - global.TILE_SIZE; (objY > endPosY) || (objY > robot.y); objY -= global.TILE_SIZE){
+            var objY = y - global.TILE_SIZE
+            //for (var objY = y - global.TILE_SIZE; (objY > endPosY) || (objY > robot.y); objY -= global.TILE_SIZE){
+            while(!scr_tileContains(objX, objY, badArgList)){
                 print("player above: x, y: " + string(objX) + ", " + string(objY));
                 if (instance_place(objX, objY, obj_mirptr)){
                     //objY -= global.TILE_SIZE;
@@ -155,13 +158,7 @@ if (!argument2 && (canPull || canPush) && !(canPull && canPush)){ //this checks 
                     objY = mp.mirptrPtr.y;
                     print("mp is a real boy; new objX: " + string(objY));
                 }
-                if (instance_place(objX, objY, par_obstacle)){
-                    var obs = instance_place(x, objY, par_obstacle);
-                    //print("isDeactived?");
-                    if (isActivated(obs)){
-                        return false; //don't pull if anything is in the way
-                    }
-                }
+                objY -= global.TILE_SIZE;
             }
             if (!instance_place(objX, objY, par_robot)){
                 print("No robot here! :(" + " " + string(objX) + " " + string(objY));

@@ -10,7 +10,7 @@ var objPosX = argument0;
 var objPosY = argument1;
 var objectList = argument2; //contains par_robot, par_obstacle
 
-print("-> scr_tileContains(" + string(objPosX) + ", " + string(objPosY) + ")"); 
+//print("-> scr_tileContains(" + string(objPosX) + ", " + string(objPosY) + ")"); 
 
 for (var i = 0; i < array_length_1d(objectList); i++){
     var object = objectList[i];
@@ -27,7 +27,7 @@ for (var i = 0; i < array_length_1d(objectList); i++){
     }
 }
 
-if ((objPosY > 1000 || objPosY < -1000) || (objPosX > 1000 || objPosX < -1000)){
+if ((objPosY > 200 || objPosY < -200) || (objPosX > 200 || objPosX < -200)){
     print("WARNING WAY THE FUCK OUT OF WHILE LOOP BOUNDS in scr_tileContains");
     return true; //hardcoded to prevent infinite loop
 }

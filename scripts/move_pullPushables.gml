@@ -1,4 +1,4 @@
-///move_pullPushables(obj object, par_robot robot)
+ ///move_pullPushables(obj object, par_robot robot)
 
 /*
     This function handles:
@@ -18,6 +18,8 @@ var objPosX = object.x;
 var objPosY = object.y;
 
 var mirptrExt = false; // if a mirptr is in the objects push/pull path
+var mirptrVt = false;
+var mirptrHz = false;
 
 print("oldPlayerX: " + string(robot.oldPlayerX));
 
@@ -27,19 +29,25 @@ with (obj_mirptr){
     var mirptrPtr = self.mirptrPtr;
     print("mirptrPTr x: " + string(mirptrPtr.x));
     //up/down sync
-    if (mirptr.x == object.x && robot.x == mirptrPtr.x){
+    //if ((mirptr.x == object.x && robot.x == mirptrPtr.x) &&
+    if ((mirptr.x == object.x && (robot.oldPlayerX == mirptrPtr.x || robot.x == mirptrPtr.x)) &&
+        (robot.y - robot.oldPlayerY != 0)){ //checks to see if player actually moved up/down
         print("NSYNC!!!! VT");
         objPosX = mirptrPtr.x;
         objPosY = mirptrPtr.y;
         //mirptrExt = true;
         mirptrExt = mirptr;
+        mirptrVt = true;
     }
-    if (mirptr.y == object.y && robot.y == mirptrPtr.y){
+    //if ((mirptr.y == object.y && robot.y == mirptrPtr.y) &&
+    if ((mirptr.y == object.y && (robot.oldPlayerY == mirptrPtr.y || robot.y == mirptrPtr.y)) &&
+        (robot.x - robot.oldPlayerX != 0)){ //checks to see if player actually moved left/right
         print("NSYNC!!!! HZ");
         objPosX = mirptrPtr.x;
         objPosY = mirptrPtr.y;
         //mirptrExt = true;
         mirptrExt = mirptr;
+        mirptrHz = true;
     }
 }
 
@@ -63,7 +71,7 @@ if (canPush && canPull){
 }
 //push only
 else if (canPush) pushPull *= -1;
-if (robot.oldPlayerY == objPosY && robot.y == objPosY){ //player moved left/right
+if ((robot.oldPlayerY == objPosY && robot.y == objPosY) || (!mirptrVt && mirptrHz)){ //player moved left/right
     print("push/pull left/right");
     //print(x - (global.TILE_SIZE*pushPull));
     if (robot.x < objPosX && scr_canPullPush(objPosX - (global.TILE_SIZE*pushPull), objPosY, false, object, robot, mirptrExt)) {//player on left side of object 
@@ -90,7 +98,7 @@ if (robot.oldPlayerY == objPosY && robot.y == objPosY){ //player moved left/righ
     }
 }
 print("OldplYaerX: " + string(robot.oldPlayerX) + "; Robot.x: " + string(robot.x) + "; objPosX: " + string(objPosX));
-if (robot.oldPlayerX == objPosX && robot.x == objPosX){ //player moved up/down
+if ((robot.oldPlayerX == objPosX && robot.x == objPosX) || (mirptrVt && !mirptrHz)){ //player moved up/down
     print("push/pull up/down");
     if (robot.y < objPosY && scr_canPullPush(objPosX, objPosY - (global.TILE_SIZE*pushPull), false, object, robot, mirptrExt)){ //player above object 
         y -= (global.TILE_SIZE*pushPull);

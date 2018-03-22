@@ -1,6 +1,8 @@
 ///handle_playerMove(par_robot robot);
 
 var robot = argument0;
+
+robot.movedDir = "";
 print("");
 print("HANDLE PLAYER MOVE FOR " + object_get_name(robot.object_index));
 
@@ -44,39 +46,46 @@ var pushYOntoStack = robot.playerY;
 if (!noMove){
     if (global.key_left && !scr_collisionCheck(robot.playerX - global.TILE_SIZE, robot.playerY, robot)){
         robot.playerX -= global.TILE_SIZE;
+        robot.movedDir = "left";
         robot.moved = true;
     }
     if (global.key_right && !scr_collisionCheck(robot.playerX + global.TILE_SIZE, robot.playerY, robot)){
         robot.playerX += global.TILE_SIZE;
+        robot.movedDir = "right";
         robot.moved = true;
     }
     if (global.key_up && !scr_collisionCheck(robot.playerX, robot.playerY - global.TILE_SIZE, robot)){
-        print("you moved!");
         robot.playerY -= global.TILE_SIZE;
+        robot.movedDir = "up";
         robot.moved = true;
     }
     if (global.key_down && !scr_collisionCheck(robot.playerX, robot.playerY + global.TILE_SIZE, robot)){
         robot.playerY += global.TILE_SIZE;
+        robot.movedDir = "down";
         robot.moved = true;
     }
     if (global.key_upleft && !scr_collisionCheck(robot.playerX - global.TILE_SIZE, robot.playerY - global.TILE_SIZE, robot)){
         robot.playerX -= global.TILE_SIZE;
         robot.playerY -= global.TILE_SIZE;
+        robot.movedDir = "upleft";
         robot.moved = true;
     }
     if (global.key_upright && !scr_collisionCheck(robot.playerX + global.TILE_SIZE, robot.playerY - global.TILE_SIZE, robot)){
         robot.playerX += global.TILE_SIZE;
         robot.playerY -= global.TILE_SIZE;
+        robot.movedDir = "upright";
         robot.moved = true;
     }
     if (global.key_downleft && !scr_collisionCheck(robot.playerX - global.TILE_SIZE, robot.playerY + global.TILE_SIZE, robot)){
         robot.playerX -= global.TILE_SIZE;
         robot.playerY += global.TILE_SIZE;
+        robot.movedDir = "downleft";
         robot.moved = true;
     }
     if (global.key_downright && !scr_collisionCheck(robot.playerX + global.TILE_SIZE, robot.playerY + global.TILE_SIZE, robot)){
         robot.playerX += global.TILE_SIZE;
         robot.playerY += global.TILE_SIZE;
+        robot.movedDir = "downright";
         robot.moved = true;
     }
     
@@ -85,6 +94,7 @@ if (!noMove){
     if (instance_place(robot.playerX, robot.playerY, obj_gotoRoom)){
         robot.x = robot.playerX;
         robot.y = robot.playerY;
+        robot.movedDir = "";
         robot.moved = false;
         handle_freeRoomMemory();
     }
@@ -102,6 +112,8 @@ if (!noMove){
         print("Pushed numKeys onto robots's stack: " + string(obj_player.numKeys));
         robot.oldPlayerX = x;
         robot.oldPlayerY = y;
+        print("robot oldPlayerX set to " + string(robot.oldPlayerX));
+        print("robot oldPlayerY set to " + string(robot.oldPlayerY));
         robot.x = robot.playerX; 
         robot.y = robot.playerY;
         print("new robo x: " + string(robot.x)); 

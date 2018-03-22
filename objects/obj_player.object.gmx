@@ -50,6 +50,7 @@ oldPlayerY = 0;
 playerX = 0;
 playerY = 0;
 isDeactivated = false;
+movedDir = "";
 
 
 //dynamic memory

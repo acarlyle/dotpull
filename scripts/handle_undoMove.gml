@@ -24,10 +24,10 @@ if (!ds_stack_empty(robot.moveHistory)){
                 undo_spike(object);
             }
             if (parentOf(object) == "par_breakableWall"){
-               undo_breakableWall(object);
+                undo_breakableWall(object);
             }
             if (isFallingPlatform){
-               undo_fallingPlatform(object);
+                undo_fallingPlatform(object);
             }
             if (isArrow){
                 undo_arrow(object);
