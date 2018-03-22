@@ -12,7 +12,6 @@ var mirptrHz = false;
 var mirptrVt = false;
 var endPosX = robot.x;
 var endPosY = robot.y;
-var badArgList = array(par_robot, par_obstacle);
 
 //if there's a mirptr in the path of the object
 if (mirptr){
@@ -168,7 +167,7 @@ if (!argument2 && (canPull || canPush) && !(canPull && canPush)){ //this checks 
                 return false;
             }
         }
-        /*else{ //player is below the obj
+        else{ //player is below the obj
             print("below object");
             var objX = object.x;
             //print("objY: " + string(objY));
@@ -197,36 +196,6 @@ if (!argument2 && (canPull || canPush) && !(canPull && canPush)){ //this checks 
                 print("Robot at: " + string(robot.x) + " " + string(robot.y));
                 return false;
             }
-        }*/
-        print("below object");
-        var objX = object.x;
-        var objY = y + global.TILE_SIZE;
-        //print("objY: " + string(objY));
-        //for (var objY = y + global.TILE_SIZE; (objY < endPosY) || (objY < robot.y); objY += global.TILE_SIZE){
-        while(!scr_tileContains(objX, objY, badArgList)){
-            print("player below: x, y: " + string(objX) + ", " + string(objY));
-            if (instance_place(objX, objY + global.TILE_SIZE, obj_mirptr)){
-                //objY += global.TILE_SIZE;
-                endPosY = robot.y;
-                mp = instance_place(objX, objY + global.TILE_SIZE, obj_mirptr);
-                objX = mp.mirptrPtr.x;
-                objY = mp.mirptrPtr.y;
-                //objY += global.TILE_SIZE;
-                print("mp is a real boy; new objX, objY: " + string(objX) + "," + string(objY));
-            }
-            if (instance_place(objX, objY, par_obstacle)){
-                var obs = instance_place(objX, objY, par_obstacle);
-                //print("below object");
-                if (!obs.isDeactivated){
-                    print("oh no it is activated");
-                    return false; //don't pull if anything is in the way
-                }
-            }
-        }
-        if (!instance_place(objX, objY, par_robot)){
-            print("No robot here! :(" + " " + string(objX) + " " + string(objY));
-            print("Robot at: " + string(robot.x) + " " + string(robot.y));
-            return false;
         }
     }
 }

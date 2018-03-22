@@ -27,14 +27,16 @@ with (obj_mirptr){
     var mirptrPtr = self.mirptrPtr;
     print("mirptrPTr x: " + string(mirptrPtr.x));
     //up/down sync
-    if ((mirptr.x == object.x && robot.x == mirptrPtr.x) && (robot.y != object.y)){
+    if (mirptr.x == object.x && robot.x == mirptrPtr.x){
         print("NSYNC!!!! VT");
         objPosX = mirptrPtr.x;
+        objPosY = mirptrPtr.y;
         //mirptrExt = true;
         mirptrExt = mirptr;
     }
-    if ((mirptr.y == object.y && robot.y == mirptrPtr.y) && (robot.x != object.x)){
+    if (mirptr.y == object.y && robot.y == mirptrPtr.y){
         print("NSYNC!!!! HZ");
+        objPosX = mirptrPtr.x;
         objPosY = mirptrPtr.y;
         //mirptrExt = true;
         mirptrExt = mirptr;

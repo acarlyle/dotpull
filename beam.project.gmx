@@ -113,6 +113,7 @@
     <scripts name="Movement">
       <script>scripts\scr_canBlastRobot.gml</script>
       <script>scripts\scr_collisionCheck.gml</script>
+      <script>scripts\scr_canPullPush_bkp.gml</script>
       <script>scripts\scr_canPullPush.gml</script>
     </scripts>
     <scripts name="Game State Controllers">
@@ -141,6 +142,9 @@
       <script>scripts\parentOf.gml</script>
       <scripts name="Movement">
         <script>scripts\scr_mirptrTele.gml</script>
+      </scripts>
+      <scripts name="Pull/Push">
+        <script>scripts\scr_tileContains.gml</script>
       </scripts>
     </scripts>
     <scripts name="Element Affects">

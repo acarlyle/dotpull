@@ -15,6 +15,7 @@ print("-> scr_mirptrTele(" + string(objPosX) + ", " + string(objPosY) + ")");
 if (instance_place(object.x, object.y, obj_mirptr)){ 
     var mirptr = instance_place(object.x, object.y, obj_mirptr);
     if (robot.oldPlayerY == objPosY && robot.y == objPosY){ //player moved left/right
+        object.x = mirptr.mirptrPtr.x;
         object.y = mirptr.mirptrPtr.y;
         if (robot.x < objPosX) {//player on left side of object 
             if (robot.x != object.x - (global.TILE_SIZE*pushPull)){ 
@@ -39,6 +40,7 @@ if (instance_place(object.x, object.y, obj_mirptr)){
     }
     if (robot.oldPlayerX == objPosX && robot.x == objPosX){ //player moved up/down
         object.x = mirptr.mirptrPtr.x;
+        object.y = mirptr.mirptrPtr.y;
         if (robot.y < objPosY){ //player above object
             if (robot.y != object.y - (global.TILE_SIZE*pushPull)){ 
                 y -= (global.TILE_SIZE*pushPull);
