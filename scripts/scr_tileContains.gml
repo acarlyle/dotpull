@@ -14,11 +14,22 @@ print("-> scr_tileContains(" + string(objPosX) + ", " + string(objPosY) + ")");
 
 for (var i = 0; i < array_length_1d(objectList); i++){
     var object = objectList[i];
-    if (instance_place(objPosX, objPosY, object)){
-        print("Tile contains: " + object_get_name(self));
+        if (instance_place(objPosX, objPosY, object)){
+            if (instance_place(objPosX, objPosY, par_obstacle)){
+                var obs = instance_place(objPosX, objPosY, par_obstacle);
+                if (isActivated(obs)){
+                    print("Tile contains an activated: " + object_get_name(obs));
+                    return true;
+                }
+        }
+        print("Tile contains: " + object_get_name(object));
         return true;
     }
 }
 
+if ((objPosY > 1000 || objPosY < -1000) || (objPosX > 1000 || objPosX < -1000)){
+    print("WARNING WAY OUT OF WHILE LOOP BOUNDS in scr_tileContains");
+    return true; //hardcoded to prevent infinite loop
+}
 
-return true;
+return false;

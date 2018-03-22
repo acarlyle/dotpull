@@ -205,23 +205,18 @@ if (!argument2 && (canPull || canPush) && !(canPull && canPush)){ //this checks 
         //for (var objY = y + global.TILE_SIZE; (objY < endPosY) || (objY < robot.y); objY += global.TILE_SIZE){
         while(!scr_tileContains(objX, objY, badArgList)){
             print("player below: x, y: " + string(objX) + ", " + string(objY));
-            if (instance_place(objX, objY + global.TILE_SIZE, obj_mirptr)){
+            //var yakuza = "ya";
+            //get_string(yakuza, yakuza);
+            if (instance_place(objX, objY, obj_mirptr)){
                 //objY += global.TILE_SIZE;
                 endPosY = robot.y;
-                mp = instance_place(objX, objY + global.TILE_SIZE, obj_mirptr);
+                mp = instance_place(objX, objY, obj_mirptr);
                 objX = mp.mirptrPtr.x;
                 objY = mp.mirptrPtr.y;
                 //objY += global.TILE_SIZE;
                 print("mp is a real boy; new objX, objY: " + string(objX) + "," + string(objY));
             }
-            if (instance_place(objX, objY, par_obstacle)){
-                var obs = instance_place(objX, objY, par_obstacle);
-                //print("below object");
-                if (!obs.isDeactivated){
-                    print("oh no it is activated");
-                    return false; //don't pull if anything is in the way
-                }
-            }
+            objY += global.TILE_SIZE;
         }
         if (!instance_place(objX, objY, par_robot)){
             print("No robot here! :(" + " " + string(objX) + " " + string(objY));
