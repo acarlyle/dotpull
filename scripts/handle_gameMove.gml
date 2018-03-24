@@ -61,7 +61,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
         else if (object.isSpike){
             move_spike(object, robot);
         }
-        //Handles: par_block, obj_key
+        //Handles: par_block, obj_key, obj_magneticSnare
         else if ((canPull || canPush)){
             move_pullPushables(object, robot);
         }

@@ -41,45 +41,45 @@ var pushXOntoStack = robot.playerX;
 var pushYOntoStack = robot.playerY;
 
 if (!noMove){
-    if ((global.key_left || robot.movedDir == "left") && !scr_collisionCheck(robot.playerX - global.TILE_SIZE, robot.playerY, robot)){
+    if ((global.key_left || (!robot.canMove && robot.movedDir == "left")) && !scr_collisionCheck(robot.playerX - global.TILE_SIZE, robot.playerY, robot)){
         robot.playerX -= global.TILE_SIZE;
         robot.movedDir = "left";
         robot.moved = true;
     }
-    if ((global.key_right || robot.movedDir == "right") && !scr_collisionCheck(robot.playerX + global.TILE_SIZE, robot.playerY, robot)){
+    if ((global.key_right || (!robot.canMove && robot.movedDir == "right")) && !scr_collisionCheck(robot.playerX + global.TILE_SIZE, robot.playerY, robot)){
         robot.playerX += global.TILE_SIZE;
         robot.movedDir = "right";
         robot.moved = true;
     }
-    if ((global.key_up || robot.movedDir == "up") && !scr_collisionCheck(robot.playerX, robot.playerY - global.TILE_SIZE, robot)){
+    if ((global.key_up || (!robot.canMove && robot.movedDir == "up")) && !scr_collisionCheck(robot.playerX, robot.playerY - global.TILE_SIZE, robot)){
         robot.playerY -= global.TILE_SIZE;
         robot.movedDir = "up";
         robot.moved = true;
     }
-    if ((global.key_down || robot.movedDir == "down") && !scr_collisionCheck(robot.playerX, robot.playerY + global.TILE_SIZE, robot)){
+    if ((global.key_down || (!robot.canMove && robot.movedDir == "down")) && !scr_collisionCheck(robot.playerX, robot.playerY + global.TILE_SIZE, robot)){
         robot.playerY += global.TILE_SIZE;
         robot.movedDir = "down";
         robot.moved = true;
     }
-    if ((global.key_upleft || robot.movedDir == "upleft") && !scr_collisionCheck(robot.playerX - global.TILE_SIZE, robot.playerY - global.TILE_SIZE, robot)){
+    if ((global.key_upleft || (!robot.canMove && robot.movedDir == "upleft")) && !scr_collisionCheck(robot.playerX - global.TILE_SIZE, robot.playerY - global.TILE_SIZE, robot)){
         robot.playerX -= global.TILE_SIZE;
         robot.playerY -= global.TILE_SIZE;
         robot.movedDir = "upleft";
         robot.moved = true;
     }
-    if ((global.key_upright || robot.movedDir == "upright") && !scr_collisionCheck(robot.playerX + global.TILE_SIZE, robot.playerY - global.TILE_SIZE, robot)){
+    if ((global.key_upright || (!robot.canMove && robot.movedDir == "upright")) && !scr_collisionCheck(robot.playerX + global.TILE_SIZE, robot.playerY - global.TILE_SIZE, robot)){
         robot.playerX += global.TILE_SIZE;
         robot.playerY -= global.TILE_SIZE;
         robot.movedDir = "upright";
         robot.moved = true;
     }
-    if ((global.key_downleft || robot.movedDir == "downleft") && !scr_collisionCheck(robot.playerX - global.TILE_SIZE, robot.playerY + global.TILE_SIZE, robot)){
+    if ((global.key_downleft || (!robot.canMove && robot.movedDir == "downleft")) && !scr_collisionCheck(robot.playerX - global.TILE_SIZE, robot.playerY + global.TILE_SIZE, robot)){
         robot.playerX -= global.TILE_SIZE;
         robot.playerY += global.TILE_SIZE;
         robot.movedDir = "downleft";
         robot.moved = true;
     }
-    if ((global.key_downright || robot.movedDir == "downright") && !scr_collisionCheck(robot.playerX + global.TILE_SIZE, robot.playerY + global.TILE_SIZE, robot)){
+    if ((global.key_downright || (!robot.canMove && robot.movedDir == "downright")) && !scr_collisionCheck(robot.playerX + global.TILE_SIZE, robot.playerY + global.TILE_SIZE, robot)){
         robot.playerX += global.TILE_SIZE;
         robot.playerY += global.TILE_SIZE;
         robot.movedDir = "downright";

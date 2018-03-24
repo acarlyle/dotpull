@@ -31,7 +31,7 @@ print(initPos);
 ds_stack_push(moveHistory, initPos);
 
 stateHistory = undefined;
-isPuzzleElement = true;
+isPuzzleElement = false;
 canPull = false;
 canPush = false;
 isDeactivated = true;
