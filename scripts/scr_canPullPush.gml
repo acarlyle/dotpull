@@ -19,7 +19,6 @@ var badArgList = array(par_robot, par_obstacle);
 if (mirptr){
     if (object.x == mirptr.x){
         mirptrVt = true;
-        endPosY = mirptr.y;
     }
     if (object.y == mirptr.y){ 
         mirptrHz = true;
@@ -152,7 +151,6 @@ if (!argument2 && (canPull || canPush) && !(canPull && canPush)){ //this checks 
                 print("player above: x, y: " + string(objX) + ", " + string(objY));
                 if (instance_place(objX, objY, obj_mirptr)){
                     //objY -= global.TILE_SIZE;
-                    endPosY = robot.y;
                     mp = instance_place(objX, objY, obj_mirptr);
                     objX = mp.mirptrPtr.x;
                     objY = mp.mirptrPtr.y;
@@ -177,7 +175,6 @@ if (!argument2 && (canPull || canPush) && !(canPull && canPush)){ //this checks 
                 //get_string(yakuza, yakuza);
                 if (instance_place(objX, objY, obj_mirptr)){
                     //objY += global.TILE_SIZE;
-                    endPosY = robot.y;
                     mp = instance_place(objX, objY, obj_mirptr);
                     objX = mp.mirptrPtr.x;
                     objY = mp.mirptrPtr.y;

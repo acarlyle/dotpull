@@ -42,9 +42,7 @@ global.playerMoved = false;
 
 //normie memory
 numKeys = 0;
-//player position
-//global.oldPlayerX = 0;
-//global.oldPlayerY = 0;
+canMove = true;
 oldPlayerX = 0;
 oldPlayerY = 0;
 playerX = 0;

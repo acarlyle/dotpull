@@ -62,6 +62,8 @@
       <sprite>sprites\spr_cannon_vert</sprite>
       <sprite>sprites\spr_cannon_horz</sprite>
       <sprite>sprites\spr_mirptr</sprite>
+      <sprite>sprites\sprite_slideTile</sprite>
+      <sprite>sprites\spr_blackHole</sprite>
     </sprites>
     <sprites name="element affects">
       <sprite>sprites\spr_cannonEnergy</sprite>
@@ -115,6 +117,7 @@
       <script>scripts\scr_collisionCheck.gml</script>
       <script>scripts\scr_canPullPush_bkp.gml</script>
       <script>scripts\scr_canPullPush.gml</script>
+      <script>scripts\handle_slideStateRobot.gml</script>
     </scripts>
     <scripts name="Game State Controllers">
       <script>scripts\handle_gameSave.gml</script>
@@ -142,6 +145,7 @@
       <script>scripts\parentOf.gml</script>
       <scripts name="Movement">
         <script>scripts\scr_mirptrTele.gml</script>
+        <script>scripts\scr_disableMovementKeys.gml</script>
       </scripts>
       <scripts name="Pull/Push">
         <script>scripts\scr_tileContains.gml</script>
@@ -160,6 +164,9 @@
     <objects name="Puzzle Elements">
       <objects name="par_platform">
         <object>objects\obj_snare</object>
+        <object>objects\obj_slideTile</object>
+        <object>objects\obj_blackHole</object>
+        <object>objects\obj_mirptr</object>
         <object>objects\obj_magneticSnare</object>
         <object>objects\obj_trigger</object>
         <object>objects\obj_fallingPlatform_1Step</object>
@@ -196,9 +203,6 @@
       </objects>
       <objects name="par_robot">
         <object>objects\obj_roberta</object>
-      </objects>
-      <objects name="par_redirect">
-        <object>objects\obj_mirptr</object>
       </objects>
     </objects>
     <objects name="env">

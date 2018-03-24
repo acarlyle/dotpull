@@ -2,40 +2,37 @@
 
 var robot = argument0;
 
-robot.movedDir = "";
 print("");
 print("HANDLE PLAYER MOVE FOR " + object_get_name(robot.object_index));
 
-
-//ds_stack_push(obj_player.moveHistory, string(x) + "," + string(y)); //pushing previous turn's movement
-//ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys));
-//print("Pushed onto player's stack !");
+//if on a slideTile, disable player input keys
+if (instance_place(robot.x, robot.y, obj_slideTile)){
+    scr_disableMovementKeys();
+    robot.canMove = false;
+}
 
 //handle arrow logic
 var noMove = false;
-if (instance_place(x, y, par_arrow)){
-    var arrow = instance_place(x, y, par_arrow);
-    //if arrow.isArrow
-    with (arrow){
-        switch(dir){
-            case "up":
-                if (!global.key_up && !global.key_upleft && !global.key_upright) noMove = true;
-                break; 
-            case "right":
-                if (!global.key_right && !global.key_upright && !global.key_downright) noMove = true;
-                break; 
-            case "left":
-                if (!global.key_left && !global.key_upleft && !global.key_downleft) noMove = true;
-                break; 
-            case "down":
-                if (!global.key_down && !global.key_downleft && !global.key_downright) noMove = true;
-                break; 
+    if (instance_place(x, y, par_arrow)){
+        var arrow = instance_place(x, y, par_arrow);
+        //if arrow.isArrow
+        with (arrow){
+            switch(dir){
+                case "up":
+                    if (!global.key_up && !global.key_upleft && !global.key_upright) noMove = true;
+                    break; 
+                case "right":
+                    if (!global.key_right && !global.key_upright && !global.key_downright) noMove = true;
+                    break; 
+                case "left":
+                    if (!global.key_left && !global.key_upleft && !global.key_downleft) noMove = true;
+                    break; 
+                case "down":
+                    if (!global.key_down && !global.key_downleft && !global.key_downright) noMove = true;
+                    break; 
+            }
         }
     }
-}
-
-//print("noMove:");
-//print(noMove);
 
 print(robot.playerX);
 print(robot.playerY);
@@ -44,45 +41,45 @@ var pushXOntoStack = robot.playerX;
 var pushYOntoStack = robot.playerY;
 
 if (!noMove){
-    if (global.key_left && !scr_collisionCheck(robot.playerX - global.TILE_SIZE, robot.playerY, robot)){
+    if ((global.key_left || robot.movedDir == "left") && !scr_collisionCheck(robot.playerX - global.TILE_SIZE, robot.playerY, robot)){
         robot.playerX -= global.TILE_SIZE;
         robot.movedDir = "left";
         robot.moved = true;
     }
-    if (global.key_right && !scr_collisionCheck(robot.playerX + global.TILE_SIZE, robot.playerY, robot)){
+    if ((global.key_right || robot.movedDir == "right") && !scr_collisionCheck(robot.playerX + global.TILE_SIZE, robot.playerY, robot)){
         robot.playerX += global.TILE_SIZE;
         robot.movedDir = "right";
         robot.moved = true;
     }
-    if (global.key_up && !scr_collisionCheck(robot.playerX, robot.playerY - global.TILE_SIZE, robot)){
+    if ((global.key_up || robot.movedDir == "up") && !scr_collisionCheck(robot.playerX, robot.playerY - global.TILE_SIZE, robot)){
         robot.playerY -= global.TILE_SIZE;
         robot.movedDir = "up";
         robot.moved = true;
     }
-    if (global.key_down && !scr_collisionCheck(robot.playerX, robot.playerY + global.TILE_SIZE, robot)){
+    if ((global.key_down || robot.movedDir == "down") && !scr_collisionCheck(robot.playerX, robot.playerY + global.TILE_SIZE, robot)){
         robot.playerY += global.TILE_SIZE;
         robot.movedDir = "down";
         robot.moved = true;
     }
-    if (global.key_upleft && !scr_collisionCheck(robot.playerX - global.TILE_SIZE, robot.playerY - global.TILE_SIZE, robot)){
+    if ((global.key_upleft || robot.movedDir == "upleft") && !scr_collisionCheck(robot.playerX - global.TILE_SIZE, robot.playerY - global.TILE_SIZE, robot)){
         robot.playerX -= global.TILE_SIZE;
         robot.playerY -= global.TILE_SIZE;
         robot.movedDir = "upleft";
         robot.moved = true;
     }
-    if (global.key_upright && !scr_collisionCheck(robot.playerX + global.TILE_SIZE, robot.playerY - global.TILE_SIZE, robot)){
+    if ((global.key_upright || robot.movedDir == "upright") && !scr_collisionCheck(robot.playerX + global.TILE_SIZE, robot.playerY - global.TILE_SIZE, robot)){
         robot.playerX += global.TILE_SIZE;
         robot.playerY -= global.TILE_SIZE;
         robot.movedDir = "upright";
         robot.moved = true;
     }
-    if (global.key_downleft && !scr_collisionCheck(robot.playerX - global.TILE_SIZE, robot.playerY + global.TILE_SIZE, robot)){
+    if ((global.key_downleft || robot.movedDir == "downleft") && !scr_collisionCheck(robot.playerX - global.TILE_SIZE, robot.playerY + global.TILE_SIZE, robot)){
         robot.playerX -= global.TILE_SIZE;
         robot.playerY += global.TILE_SIZE;
         robot.movedDir = "downleft";
         robot.moved = true;
     }
-    if (global.key_downright && !scr_collisionCheck(robot.playerX + global.TILE_SIZE, robot.playerY + global.TILE_SIZE, robot)){
+    if ((global.key_downright || robot.movedDir == "downright") && !scr_collisionCheck(robot.playerX + global.TILE_SIZE, robot.playerY + global.TILE_SIZE, robot)){
         robot.playerX += global.TILE_SIZE;
         robot.playerY += global.TILE_SIZE;
         robot.movedDir = "downright";
@@ -117,9 +114,13 @@ if (!noMove){
         robot.x = robot.playerX; 
         robot.y = robot.playerY;
         print("new robo x: " + string(robot.x)); 
+        if (instance_place(robot.x, robot.y, obj_slideTile)){
+            robot.canMove = false;
+        }
+    }
+    else{
+        robot.movedDir = "";
     }
 }
-
-//print(obj_player.numKeys);
-
 robot.move = false;
+robot.canMove = true;
