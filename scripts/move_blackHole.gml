@@ -56,7 +56,8 @@ with(par_object){
             else{ //maybe if all else fails, check if there's a mirptr pathBetween and go to it ?
                 print("Mirptr time ?");
             }
-            
+            //robot needs his current pos local variables updated to his new position
+            if (parentOf(self) == "par_robot") scr_updateCurRobotPos(self);
         }
         else{
             print("PATH does not exist for " + string(object_get_name(self.object_index)))
