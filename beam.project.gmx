@@ -96,6 +96,7 @@
         <script>scripts\move_breakableWall.gml</script>
         <script>scripts\move_eviscerator.gml</script>
         <script>scripts\move_cannon.gml</script>
+        <script>scripts\move_blackHole.gml</script>
         <script>scripts\move_trigger.gml</script>
       </scripts>
       <scripts name="Undo Object">
@@ -146,6 +147,7 @@
       <scripts name="Movement">
         <script>scripts\scr_mirptrTele.gml</script>
         <script>scripts\scr_disableMovementKeys.gml</script>
+        <script>scripts\scr_pathBetween.gml</script>
       </scripts>
       <scripts name="Pull/Push">
         <script>scripts\scr_tileContains.gml</script>
@@ -231,6 +233,7 @@
       <object>objects\par_cannon</object>
       <object>objects\par_platform</object>
       <object>objects\par_arrow</object>
+      <object>objects\par_object</object>
     </objects>
     <objects name="Menu">
       <object>objects\obj_newAdventure</object>

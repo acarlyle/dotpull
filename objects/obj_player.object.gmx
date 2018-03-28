@@ -49,6 +49,7 @@ playerX = 0;
 playerY = 0;
 isDeactivated = false;
 movedDir = "";
+canPull = true;
 
 
 //dynamic memory

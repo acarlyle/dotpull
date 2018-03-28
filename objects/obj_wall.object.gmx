@@ -28,6 +28,7 @@
             <string>isPuzzleElement = false;
 isDeactivated = false;
 isFallingPlatform = false;
+canPull = false;
 </string>
           </argument>
         </arguments>

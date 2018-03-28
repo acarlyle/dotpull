@@ -3,9 +3,9 @@
   <spriteName>spr_blackHole</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1</depth>
+  <depth>-999</depth>
   <persistent>0</persistent>
-  <parentName>par_platform</parentName>
+  <parentName>par_obstacle</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -47,7 +47,7 @@ triggerDoorPtr = undefined;
 isSpike = false;
 isMovePriority = false;
 isFallingPlatform = false;
-isEviscerator = true;
+isEviscerator = false;
 isArrow = false;
 </string>
           </argument>
