@@ -18,15 +18,6 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
         
         print("Handling " + object_get_name(object.object_index));
         
-        /*//push this objects previous position onto its stack
-        if (!justDeactivated){
-            handle_pushOntoStack(object);
-        }
-        else{ 
-            object.justDeactivated = false; 
-        }*/ 
-        
-        
         //Handles: par_cannon
         if (parentOf(object) == "par_cannon"){
             print("handling cannon move");

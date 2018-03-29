@@ -24,6 +24,7 @@ with(par_object){
             if (self.x == blackHole.x){
                 if (self.y < blackHole.y){
                     self.y += global.TILE_SIZE;
+                    print("Moved down to: " + string(self.y));
                 }
                 else{
                     self.y -= global.TILE_SIZE;
@@ -62,10 +63,15 @@ with(par_object){
         else{
             print("PATH does not exist for " + string(object_get_name(self.object_index)))
         }
-        if(scr_tileContains(blackHole.x, blackHole.y, array(self))){
-            self.isDeactivated = true;
-        }
         
+        print("here!");
+        
+        print(string(self.x) + ", " + string(self.y));
+        
+        if(scr_tileContains(blackHole.x, blackHole.y, array(self))){
+            print("should disable obj");
+            scr_disableObj(self);
+        }
         
     }
 }
