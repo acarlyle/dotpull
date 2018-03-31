@@ -54,7 +54,7 @@ for (var i = 0; i < array_length_1d(objectList); i++){
 
 if ((objPosY > 200 || objPosY < -200) || (objPosX > 200 || objPosX < -200)){
     print("WARNING WAY THE FUCK OUT OF WHILE LOOP BOUNDS in (par script, now in scr_tileContains)");
-    return false; //hardcoded to prevent infinite loop
+    return true; //hardcoded to prevent infinite loop
 }
 
 return false;
