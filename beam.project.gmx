@@ -99,6 +99,7 @@
         <script>scripts\move_cannon.gml</script>
         <script>scripts\move_blackHole.gml</script>
         <script>scripts\move_trigger.gml</script>
+        <script>scripts\move_key.gml</script>
       </scripts>
       <scripts name="Undo Object">
         <script>scripts\undo_robot.gml</script>
@@ -118,6 +119,10 @@
       <scripts name="Robot">
         <script>scripts\handle_robotMove_tile_one.gml</script>
         <script>scripts\handle_robotMove_tile_slide.gml</script>
+      </scripts>
+      <scripts name="Objects">
+        <script>scripts\move_pullPushables_tile_one.gml</script>
+        <script>scripts\move_pullPushables_tile_slide.gml</script>
       </scripts>
       <script>scripts\scr_canBlastRobot.gml</script>
       <script>scripts\scr_collisionCheck.gml</script>
@@ -140,6 +145,7 @@
     </scripts>
     <scripts name="Helpers">
       <script>scripts\array.gml</script>
+      <script>scripts\scr_tileIsOpen.gml</script>
       <script>scripts\scr_split.gml</script>
       <script>scripts\roomObjectArrayList.gml</script>
       <script>scripts\print.gml</script>

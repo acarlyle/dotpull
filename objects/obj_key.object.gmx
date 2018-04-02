@@ -33,7 +33,12 @@ ds_stack_push(moveHistory, initPos);
 //either inventory or ground
 stateHistory = ds_stack_create();
 ds_stack_push(stateHistory, "ground");
-currentState = "ground";
+//currentState = "ground";
+
+movedDirHistory = ds_stack_create();
+movedDir = "";
+moved = false;
+state = "tile_one";
 
 image_speed = 0;
 

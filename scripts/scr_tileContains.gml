@@ -10,7 +10,7 @@ var objPosX = argument0;
 var objPosY = argument1;
 var objectList = argument2; //contains par_robot, par_obstacle
 
-print("-> scr_tileContains(" + string(objPosX) + ", " + string(objPosY) + ")"); 
+//print("-> scr_tileContains(" + string(objPosX) + ", " + string(objPosY) + ")"); 
 
 //asset_get_index(object_get_name(object))
 
@@ -36,17 +36,17 @@ print("-> scr_tileContains(" + string(objPosX) + ", " + string(objPosY) + ")");
 for (var i = 0; i < array_length_1d(objectList); i++){
     var object = objectList[i];
     with(instance_place(objPosX, objPosY, par_platform)){
-        print("here1");
-        print("object: " + string(object_get_name(object.object_index)));
-        print("assetIndexName: " + string(object_get_name(asset_get_index(object_get_name(object)).object_index)));
+        //print("here1");
+        //print("object: " + string(object_get_name(object.object_index)));
+        //print("assetIndexName: " + string(object_get_name(asset_get_index(object_get_name(object)).object_index)));
         //print(instance_place(objPosX, objPosY, object).object_index);
         
-        print(object);
-        print(object.id);
-        print(object.object_index);
-        print(obj_block);
+        //print(object);
+        //print(object.id);
+        //print(object.object_index);
+        //print(obj_block);
         if (place_meeting(objPosX, objPosY, object)){
-            print(string(object_get_name(object.object_index)) + " contaiend in this tile !! "); 
+            //print(string(object_get_name(object.object_index)) + " contaiend in this tile !! "); 
             return true;
         }
     }

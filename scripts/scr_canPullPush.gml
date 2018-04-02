@@ -97,7 +97,6 @@ print("pull_push: xDiff, yDiff: " + string(xDiff) + ", " + string(yDiff));
 print("pull_push: oldRobotX, oldRobotY: " + string(robot.oldPlayerX) + ", " + string(robot.oldPlayerY));
 
 if (!argument2 && (canPull || canPush) && !(canPull && canPush)){ //this checks left/right only
-    print("do not print");
     if (yDiff == 0 || (!mirptrVt && mirptrHz)){ //player is moving left/right; check for objects towards the player
         print("Robot moving left/right");
         if (xDiff > 0){ //player is to the right of the obj
@@ -139,8 +138,8 @@ if (!argument2 && (canPull || canPush) && !(canPull && canPush)){ //this checks 
             }
         }
     }
-    print("xDIFF: " + string(xDiff));
-    print("yDIFF: " + string(yDiff));
+    //print("xDIFF: " + string(xDiff));
+    //print("yDIFF: " + string(yDiff));
     if (xDiff == 0 || (!mirptrHz && mirptrVt)){ //player is moving up/down; check for objects towards the player
         print("Robot moving up/down, moveDir: " + string(robot.movedDir));
         if (yDiff < 0){ //player is above the obj

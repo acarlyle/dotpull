@@ -61,6 +61,8 @@ if (!ds_stack_empty(robot.moveHistory)){
                 if (parentOf(object) == "par_cannon"){
                     undo_cannon(object);
                 }
+                
+                movedDir = ds_stack_pop(object.movedDirHistory); //object last moved in this dir
             }
         }
     }

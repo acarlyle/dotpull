@@ -35,19 +35,14 @@ if (robot.moved){
     }
     
     if (global.playerMoved){ 
-        //print("pushed: " + string(robot.x) + "," + string(robot.y));
+        //print("pushed: " + string(pushXOntoStack) + "," + string(pushYOntoStack));
         ds_stack_push(robot.moveHistory, string(pushXOntoStack) + "," + string(pushYOntoStack)); //pushing previous turn's movement
         ds_stack_push(robot.itemHistory, array(robot.numKeys));
         ds_stack_push(robot.movedDirHistory, robot.movedDir);
-        //print("Pushed onto robots's stack: " + string(robot.x) + " " + string(robot.y));
-        //print("Pushed numKeys onto robots's stack: " + string(obj_player.numKeys));
         robot.oldPlayerX = x;
         robot.oldPlayerY = y;
-        //print("robot oldPlayerX set to " + string(robot.oldPlayerX));
-        //print("robot oldPlayerY set to " + string(robot.oldPlayerY));
         robot.x = robot.playerX; 
         robot.y = robot.playerY;
-        //print("new robo x: " + string(robot.x)); 
         if (instance_place(robot.x, robot.y, obj_slideTile)){
             robot.canMove = false;
         }

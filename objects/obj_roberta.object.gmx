@@ -36,12 +36,14 @@ playerY = 0;
 //dynamic memory
 moveHistory = ds_stack_create(); //stores players last position; appends when player moves
 itemHistory = ds_stack_create(); //stores players items as of last position; appends when player moves
+movedDirHistory = ds_stack_create();
 numKeys = 0;
 
 move = false;
 moved = false;
 undo = false;
 isDead = false;
+movedDir = "";
 
 isDeactivated = false;
 </string>

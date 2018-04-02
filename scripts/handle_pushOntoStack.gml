@@ -14,7 +14,6 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             object.justDeactivated = false; 
         } 
         ds_stack_push(object.moveHistory, string(object.x) + "," + string(object.y)); //pushing previous turn's movement
-        //print("pushed");
         
         if (object.isSpike){
             ds_stack_push(object.stateHistory, object.state + "," + object.targetDirection);
@@ -37,11 +36,9 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
         if (parentOf(object) == "par_breakableWall"){
             ds_stack_push(object.stateHistory, object.hitsLeft);
         }
-        /*if (parentOf(object) == "par_cannon"){
-            print(object.state);
-            print(object.shotDirection);
-            ds_stack_push(object.stateHistory, object.state + "," + object.shotDirection);
-            print("pushed cannon stateHistory: " + string(object.state) + "," + string(object.shotDirection));
-        }*/
+        
+        if (object.canPull || object.canPush){
+            ds_stack_push(object.movedDirHistory, object.movedDir);
+        }
     }
 }
