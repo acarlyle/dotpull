@@ -2,91 +2,24 @@
 
 var robot = argument0;
 
-print("");
-print("HANDLE PLAYER MOVE FOR " + object_get_name(robot.object_index));
-
 //if on a slideTile, disable player input keys
 if (instance_place(robot.x, robot.y, obj_slideTile)){
-    scr_disableMovementKeys();
-    robot.canMove = false;
+    robot.state = "tile_slide";
 }
-
-//handle arrow logic
-var noMove = false;
-    if (instance_place(x, y, par_arrow)){
-        var arrow = instance_place(x, y, par_arrow);
-        //if arrow.isArrow
-        with (arrow){
-            switch(dir){
-                case "up":
-                    if (!global.key_up && !global.key_upleft && !global.key_upright) noMove = true;
-                    break; 
-                case "right":
-                    if (!global.key_right && !global.key_upright && !global.key_downright) noMove = true;
-                    break; 
-                case "left":
-                    if (!global.key_left && !global.key_upleft && !global.key_downleft) noMove = true;
-                    break; 
-                case "down":
-                    if (!global.key_down && !global.key_downleft && !global.key_downright) noMove = true;
-                    break; 
-            }
-        }
-    }
-
-print(robot.playerX);
-print(robot.playerY);
 
 var pushXOntoStack = robot.playerX;
 var pushYOntoStack = robot.playerY;
 
-if (!noMove){
-    if ((global.key_left || (!robot.canMove && robot.movedDir == "left")) && !scr_collisionCheck(robot.playerX - global.TILE_SIZE, robot.playerY, robot)){
-        robot.playerX -= global.TILE_SIZE;
-        robot.movedDir = "left";
-        robot.moved = true;
-    }
-    if ((global.key_right || (!robot.canMove && robot.movedDir == "right")) && !scr_collisionCheck(robot.playerX + global.TILE_SIZE, robot.playerY, robot)){
-        robot.playerX += global.TILE_SIZE;
-        robot.movedDir = "right";
-        robot.moved = true;
-    }
-    if ((global.key_up || (!robot.canMove && robot.movedDir == "up")) && !scr_collisionCheck(robot.playerX, robot.playerY - global.TILE_SIZE, robot)){
-        robot.playerY -= global.TILE_SIZE;
-        robot.movedDir = "up";
-        robot.moved = true;
-    }
-    if ((global.key_down || (!robot.canMove && robot.movedDir == "down")) && !scr_collisionCheck(robot.playerX, robot.playerY + global.TILE_SIZE, robot)){
-        robot.playerY += global.TILE_SIZE;
-        robot.movedDir = "down";
-        robot.moved = true;
-    }
-    if ((global.key_upleft || (!robot.canMove && robot.movedDir == "upleft")) && !scr_collisionCheck(robot.playerX - global.TILE_SIZE, robot.playerY - global.TILE_SIZE, robot)){
-        robot.playerX -= global.TILE_SIZE;
-        robot.playerY -= global.TILE_SIZE;
-        robot.movedDir = "upleft";
-        robot.moved = true;
-    }
-    if ((global.key_upright || (!robot.canMove && robot.movedDir == "upright")) && !scr_collisionCheck(robot.playerX + global.TILE_SIZE, robot.playerY - global.TILE_SIZE, robot)){
-        robot.playerX += global.TILE_SIZE;
-        robot.playerY -= global.TILE_SIZE;
-        robot.movedDir = "upright";
-        robot.moved = true;
-    }
-    if ((global.key_downleft || (!robot.canMove && robot.movedDir == "downleft")) && !scr_collisionCheck(robot.playerX - global.TILE_SIZE, robot.playerY + global.TILE_SIZE, robot)){
-        robot.playerX -= global.TILE_SIZE;
-        robot.playerY += global.TILE_SIZE;
-        robot.movedDir = "downleft";
-        robot.moved = true;
-    }
-    if ((global.key_downright || (!robot.canMove && robot.movedDir == "downright")) && !scr_collisionCheck(robot.playerX + global.TILE_SIZE, robot.playerY + global.TILE_SIZE, robot)){
-        robot.playerX += global.TILE_SIZE;
-        robot.playerY += global.TILE_SIZE;
-        robot.movedDir = "downright";
-        robot.moved = true;
-    }
-    
-    
+switch(robot.state){
+    case "tile_one": //normal state; robot moves one tile at a time
+        handle_robotMove_tile_one(robot);
+        break;
+    case "tile_slide": //robot is sliding across some ice, cannot control direction
+        handle_robotMove_tile_slide(robot);
+        break;
+}
+
+if (robot.moved){
     //GOTO ROOM
     if (instance_place(robot.playerX, robot.playerY, obj_gotoRoom)){
         robot.x = robot.playerX;
@@ -102,18 +35,19 @@ if (!noMove){
     }
     
     if (global.playerMoved){ 
-        print("pushed: " + string(robot.x) + "," + string(robot.y));
+        //print("pushed: " + string(robot.x) + "," + string(robot.y));
         ds_stack_push(robot.moveHistory, string(pushXOntoStack) + "," + string(pushYOntoStack)); //pushing previous turn's movement
         ds_stack_push(robot.itemHistory, array(robot.numKeys));
-        print("Pushed onto robots's stack: " + string(robot.x) + " " + string(robot.y));
-        print("Pushed numKeys onto robots's stack: " + string(obj_player.numKeys));
+        ds_stack_push(robot.movedDirHistory, robot.movedDir);
+        //print("Pushed onto robots's stack: " + string(robot.x) + " " + string(robot.y));
+        //print("Pushed numKeys onto robots's stack: " + string(obj_player.numKeys));
         robot.oldPlayerX = x;
         robot.oldPlayerY = y;
-        print("robot oldPlayerX set to " + string(robot.oldPlayerX));
-        print("robot oldPlayerY set to " + string(robot.oldPlayerY));
+        //print("robot oldPlayerX set to " + string(robot.oldPlayerX));
+        //print("robot oldPlayerY set to " + string(robot.oldPlayerY));
         robot.x = robot.playerX; 
         robot.y = robot.playerY;
-        print("new robo x: " + string(robot.x)); 
+        //print("new robo x: " + string(robot.x)); 
         if (instance_place(robot.x, robot.y, obj_slideTile)){
             robot.canMove = false;
         }
@@ -124,3 +58,4 @@ if (!noMove){
 }
 robot.move = false;
 robot.canMove = true;
+robot.state = "tile_one"; //reset state to default movement 

@@ -79,13 +79,14 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <scripts name="Backups / Unused">
+      <script>scripts\scr_canPullPush_bkp.gml</script>
       <script>scripts\handle_gameMove_bkp.gml</script>
       <script>scripts\handle_undoMove_bkp.gml</script>
       <script>scripts\handle_playerMove_bkp.gml</script>
     </scripts>
     <scripts name="Game Handles">
-      <script>scripts\handle_playerMove.gml</script>
       <script>scripts\handle_gameMove.gml</script>
+      <script>scripts\handle_playerMove.gml</script>
       <script>scripts\handle_cleanUpElementEffects.gml</script>
       <script>scripts\handle_undoMove.gml</script>
       <scripts name="Move Object">
@@ -114,11 +115,13 @@
       </scripts>
     </scripts>
     <scripts name="Movement">
+      <scripts name="Robot">
+        <script>scripts\handle_robotMove_tile_one.gml</script>
+        <script>scripts\handle_robotMove_tile_slide.gml</script>
+      </scripts>
       <script>scripts\scr_canBlastRobot.gml</script>
       <script>scripts\scr_collisionCheck.gml</script>
-      <script>scripts\scr_canPullPush_bkp.gml</script>
       <script>scripts\scr_canPullPush.gml</script>
-      <script>scripts\handle_slideStateRobot.gml</script>
     </scripts>
     <scripts name="Game State Controllers">
       <script>scripts\handle_gameSave.gml</script>

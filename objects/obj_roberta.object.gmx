@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>isPuzzleElement = false;
 
+state = "tile_one";
+
 oldPlayerX = 0;
 oldPlayerY = 0;
 playerX = 0;
