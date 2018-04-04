@@ -10,6 +10,7 @@ if (instance_place(robot.x, robot.y, obj_slideTile)){
 var pushXOntoStack = robot.playerX;
 var pushYOntoStack = robot.playerY;
 
+
 switch(robot.state){
     case "tile_one": //normal state; robot moves one tile at a time
         handle_robotMove_tile_one(robot);

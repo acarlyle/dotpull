@@ -9,6 +9,10 @@ if (instance_place(argument0, argument1, obj_spike)){
     return true;
 }
 
+if (instance_place(argument0, argument1, par_pusher)){
+    move_pusher(robot, instance_place(argument0, argument1, par_pusher));
+}
+
 if (instance_place(argument0, argument1, obj_mirptr)){
     var mirptr = instance_place(argument0, argument1, obj_mirptr);
     print("old robo x: " + string(robot.x));

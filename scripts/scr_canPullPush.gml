@@ -74,24 +74,6 @@ if (isSpike){
     }
 }
 
-/*if (instance_place(posX, posY, par_robot) && !isSpike){
-    print("Can't move, player in the way");
-    //print(string(posX)); print(string(posY)); print(string(obj_player.x)); print(string(obj_player.y));
-    //print(string(global.oldPlayerX)); print(string(global.oldPlayerY));
-    return false; //there's a player here!!  don't move!
-}*/ 
-
-/*if (mirptrVt){
-    print("vt true");
-    posX = mirptr.x; 
-    posY = mirptr.y;
-}
-if (mirptrHz){
-    posX = mirptr.x;
-    posY = mirptr.y; 
-    print("Hz true");
-}*/
-
 print("pull_push: posX, posY: " + string(posX) + ", " + string(posY));
 print("pull_push: xDiff, yDiff: " + string(xDiff) + ", " + string(yDiff));
 print("pull_push: oldRobotX, oldRobotY: " + string(robot.oldPlayerX) + ", " + string(robot.oldPlayerY));

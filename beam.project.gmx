@@ -64,6 +64,7 @@
       <sprite>sprites\spr_mirptr</sprite>
       <sprite>sprites\sprite_slideTile</sprite>
       <sprite>sprites\spr_blackHole</sprite>
+      <sprite>sprites\spr_objPusher</sprite>
     </sprites>
     <sprites name="element affects">
       <sprite>sprites\spr_cannonEnergy</sprite>
@@ -100,6 +101,7 @@
         <script>scripts\move_blackHole.gml</script>
         <script>scripts\move_trigger.gml</script>
         <script>scripts\move_key.gml</script>
+        <script>scripts\move_pusher.gml</script>
       </scripts>
       <scripts name="Undo Object">
         <script>scripts\undo_robot.gml</script>
@@ -127,6 +129,7 @@
       <script>scripts\scr_canBlastRobot.gml</script>
       <script>scripts\scr_collisionCheck.gml</script>
       <script>scripts\scr_canPullPush.gml</script>
+      <script>scripts\tile_hasMovablePlatform.gml</script>
     </scripts>
     <scripts name="Game State Controllers">
       <script>scripts\handle_gameSave.gml</script>
@@ -218,6 +221,9 @@
       <objects name="par_robot">
         <object>objects\obj_roberta</object>
       </objects>
+      <objects name="par_pusher">
+        <object>objects\obj_objPush</object>
+      </objects>
     </objects>
     <objects name="env">
       <object>objects\obj_platform</object>
@@ -235,6 +241,7 @@
     <objects name="Parents">
       <object>objects\par_obstacle</object>
       <object>objects\par_robot</object>
+      <object>objects\par_pusher</object>
       <object>objects\par_breakableWall</object>
       <object>objects\par_fallingPlatform</object>
       <object>objects\par_block</object>
@@ -264,6 +271,8 @@
     <room>rooms\rm_baseRoom</room>
     <rooms name="tests for puzzle elements">
       <room>rooms\rm_magneticSnare</room>
+      <room>rooms\rm_objPusher</room>
+      <room>rooms\DEFAULT_ROOM</room>
     </rooms>
     <rooms name="block.Pull">
       <room>rooms\rm_level1</room>
