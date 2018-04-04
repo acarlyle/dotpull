@@ -33,6 +33,8 @@
     <sprites name="controllers">
       <sprite>sprites\spr_gotoRoom</sprite>
       <sprite>sprites\spr_dialogueTrigger</sprite>
+      <sprite>sprites\spr_stairsDesc</sprite>
+      <sprite>sprites\spr_stairsAsc</sprite>
     </sprites>
     <sprites name="elements">
       <sprite>sprites\spr_key</sprite>
@@ -235,6 +237,8 @@
       <object>objects\obj_control</object>
       <object>objects\obj_menuControl</object>
       <object>objects\obj_gotoRoom</object>
+      <object>objects\obj_stairsDesc</object>
+      <object>objects\obj_stairsAsc</object>
       <object>objects\obj_cutsceneTrigger</object>
       <object>objects\obj_dialogueTrigger</object>
     </objects>
@@ -253,6 +257,7 @@
       <object>objects\par_platform</object>
       <object>objects\par_arrow</object>
       <object>objects\par_object</object>
+      <object>objects\par_stairs</object>
     </objects>
     <objects name="Menu">
       <object>objects\obj_newAdventure</object>
@@ -273,6 +278,8 @@
       <room>rooms\rm_magneticSnare</room>
       <room>rooms\rm_objPusher</room>
       <room>rooms\DEFAULT_ROOM</room>
+      <room>rooms\rm_stairs_lvl1</room>
+      <room>rooms\rm_stairs_lvl2</room>
     </rooms>
     <rooms name="block.Pull">
       <room>rooms\rm_level1</room>

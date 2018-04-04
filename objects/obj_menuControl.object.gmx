@@ -133,7 +133,7 @@ else if (key_enter){
             //room_goto(mq_level3);       //ffs18 mq levels
             //room_goto(rm_level_Ian_13); //Ian levels
             //room_goto(rm_x2);           //x levels
-            room_goto(rm_objPusher)   //element test levels
+            room_goto(rm_stairs_lvl1)   //element test levels
             //room_goto(rm_robertaIntro);
             
             //handle_gameLoad();
