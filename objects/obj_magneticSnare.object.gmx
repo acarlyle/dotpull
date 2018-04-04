@@ -35,6 +35,9 @@ movedDir = "";
 moved = false;
 state = "tile_one";
 
+oldPosX = x;
+oldPosY = y;
+
 stateHistory = undefined;
 isPuzzleElement = true;
 isLocked = true;

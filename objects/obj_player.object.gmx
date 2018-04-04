@@ -146,7 +146,8 @@ if (global.playerCanMove){
     
     //print(obj_player.numKeys);
     //print(ds_stack_size(obj_player.itemHistory));
-    //print("player move: " + string(ds_stack_size(obj_player.moveHistory)));
+    //print("player move stackSize: " + string(ds_stack_size(obj_player.moveHistory)));
+    //print("obj pusher stack size: " + string(ds_stack_size(obj_objPush.moveHistory)));
     //print("key state: " + string(ds_stack_size(obj_key.stateHistory)));
     //print("key move: " + string(ds_stack_size(obj_key.moveHistory)));
     //print("door state: " + string(ds_stack_size(obj_door.stateHistory)));

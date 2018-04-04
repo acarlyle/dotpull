@@ -32,6 +32,9 @@ var initPos = string(x) + "," + (string(y));
 print(initPos);
 ds_stack_push(moveHistory, initPos);
 
+oldPosX = x;
+oldPosY = y;
+
 image_speed = 0;
 
 stateHistory = undefined;

@@ -42,9 +42,20 @@ if (!ds_stack_empty(robot.moveHistory)){
             print(objPosStr);
             if (objPosStr != undefined){
                 var objCoordArr = scr_split(objPosStr);
-                x = objCoordArr[0];
-                y = objCoordArr[1];
+                object.x = objCoordArr[0];
+                object.y = objCoordArr[1];
                 
+                // set old object pos (this is the val pushed to the obj's stack)
+                var oldObjPosStr = ds_stack_top(moveHistory);
+                if (oldObjPosStr != undefined){
+                    var oldObjPosArr = scr_split(oldObjPosStr);
+                    object.oldPosX = oldObjPosArr[0];
+                    object.oldPosY = oldObjPosArr[1];
+                }
+                else{
+                    object.oldPosX = object.x;
+                    object.oldPosY = object.y;
+                }
                 //undo trigger
                 if (triggerDoorPtr != undefined){
                     undo_trigger(object);
@@ -62,7 +73,9 @@ if (!ds_stack_empty(robot.moveHistory)){
                     undo_cannon(object);
                 }
                 
-                movedDir = ds_stack_pop(object.movedDirHistory); //object last moved in this dir
+                if (object.movedDir != ""){
+                    movedDir = ds_stack_pop(object.movedDirHistory); //object last moved in this dir
+                }
             }
         }
     }

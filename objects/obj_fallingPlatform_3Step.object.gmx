@@ -36,6 +36,9 @@ print("init state: ");
 print(stepsLeft);
 ds_stack_push(stateHistory, stepsLeft);
 
+oldPosX = x;
+oldPosY = y;
+
 isPuzzleElement = true;
 isFallingPlatform = true;
 isLocked = true;

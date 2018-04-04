@@ -18,6 +18,9 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
         
         print("Handling " + object_get_name(object.object_index));
         
+        object.oldPosX = object.x;
+        object.oldPosY = object.y;
+        
         //Handles: par_cannon
         if (parentOf(object) == "par_cannon"){
             print("handling cannon move");

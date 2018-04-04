@@ -1,52 +1,59 @@
-///move_pusher(par_robot robot, par_pusher pusher)
+///move_pusher(par_robot robot, par_object object)
+
+/*
+    Initial object passed to this function is a pusher.
+    After this, it's every object lined up to be pushed with the pusher. 
+*/
 
 print("-> movePusher(");
 
 var robot = argument0;
-var pusher = argument1;
+var object = argument1;
 
-var posX = 0;
-var posY = 0;
+var posX = object.x;
+var posY = object.y;
 
 if (global.key_left){
-    posX = -global.TILE_SIZE;
+    posX = posX - global.TILE_SIZE;
 }
 else if (global.key_right){
-    posX = global.TILE_SIZE;
+    posX = posX + global.TILE_SIZE;
 }
 else if (global.key_up){
-    posY = -global.TILE_SIZE;
+    posY = posY - global.TILE_SIZE;
 }
 else if (global.key_down){
-    posY = global.TILE_SIZE;
+    posY = posY + global.TILE_SIZE;
 }
 else if (global.key_upleft){
-    posX = -global.TILE_SIZE;
-    posY = -global.TILE_SIZE;
+    posX = posX - global.TILE_SIZE;
+    posY = posY - global.TILE_SIZE;
 }
 else if (global.key_downleft){
-    posX = -global.TILE_SIZE;
-    posY = global.TILE_SIZE;
+    posX = posX - global.TILE_SIZE;
+    posY = posY + global.TILE_SIZE;
 }
 else if (global.key_upright){
-    posX = global.TILE_SIZE;
-    posY = -global.TILE_SIZE;
+    posX = posX + global.TILE_SIZE;
+    posY = posY - global.TILE_SIZE;
 }
 else if (global.key_downright){
-    posX = global.TILE_SIZE;
-    posY = global.TILE_SIZE;
+    posX = posX + global.TILE_SIZE;
+    posY = posY + global.TILE_SIZE;
 }
 
-print("PosX, PosY: " + string(posX) + ", " + string(posY));
+//print("PosX, PosY: " + string(posX) + ", " + string(posY));
 
 if (scr_tileContains(posX, posY, array(par_obstacle))){
     var obs = instance_place(posX, posY, par_obstacle);
     if (obs){
         if (obs.canPull || obs.canPush){
-            if (move_pusher(robot, pusher)){
-                obs = instance_place(posX, posY, par_obstacle);
+            if (move_pusher(robot, obs)){
+                obs = object;
                 obs.x = posX;
                 obs.y = posY;
+                //print("1: " + string(object_get_name(obs.object_index) + " now at: " + string(posX) + " " + string(posY)));
+                return true;
             }
             else{
                 return false;
@@ -56,10 +63,13 @@ if (scr_tileContains(posX, posY, array(par_obstacle))){
            return false; 
         }
     }
-    else if (tile_hasMovablePlatform(posX, posY)){
+    else if (scr_platformIsWalkable(posX, posY)){
         return true;
     }
 }
-else if (tile_hasMovablePlatform(posX, posY)){
+else if (scr_platformIsWalkable(posX, posY)){
+    object.x = posX;
+    object.y = posY;
+    //print("2: " + string(object_get_name(object.object_index) + " now at: " + string(posX) + " " + string(posY)));
     return true;
 }

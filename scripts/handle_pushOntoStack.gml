@@ -13,7 +13,8 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
         else{ 
             object.justDeactivated = false; 
         } 
-        ds_stack_push(object.moveHistory, string(object.x) + "," + string(object.y)); //pushing previous turn's movement
+        //ds_stack_push(object.moveHistory, string(object.x) + "," + string(object.y)); //pushing previous turn's movement
+        ds_stack_push(object.moveHistory, string(object.oldPosX) + "," + string(object.oldPosY)); //pushing previous turn's movement
         
         if (object.isSpike){
             ds_stack_push(object.stateHistory, object.state + "," + object.targetDirection);

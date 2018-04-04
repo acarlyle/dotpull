@@ -33,6 +33,9 @@ ds_stack_push(moveHistory, initPos);
 movedDirHistory = ds_stack_create(); //not used
 movedDir = ""; //not used
 
+oldPosX = x;
+oldPosY = y;
+
 stateHistory = undefined;
 isPuzzleElement = true;
 isLocked = true;
