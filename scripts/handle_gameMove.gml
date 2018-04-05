@@ -62,6 +62,9 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
         else if (object_get_name(object.object_index) == "obj_blackHole"){
             move_blackHole(object);
         }  
+        else if (object_get_name(object.object_index) == "obj_baby"){
+            move_baby(object, robot);
+        } 
     }
 }
 

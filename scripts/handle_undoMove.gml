@@ -66,6 +66,9 @@ if (!ds_stack_empty(robot.moveHistory)){
                 if (object_get_name(object_index) == "obj_key"){
                     undo_key(object);
                 }
+                if (object_get_name(object_index) == "obj_baby"){
+                    undo_baby(object);
+                }
                 if (object_get_name(object_index) == "obj_door"){
                     undo_door(object);
                 }

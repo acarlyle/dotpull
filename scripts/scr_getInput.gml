@@ -10,6 +10,7 @@ global.key_downleft = keyboard_check_released(ord('Z')) || keyboard_check_releas
 global.key_downright = keyboard_check_released(ord('C')) || keyboard_check_released(ord("3")) || keyboard_check_released(vk_pagedown) || keyboard_check_released(vk_numpad3);
 global.key_r = keyboard_check_released(ord('R'));
 global.key_esc = keyboard_check_released(vk_escape);
+global.key_space = keyboard_check_released(vk_space);
 
 if (global.key_esc){
     handle_restartLevel();
@@ -17,14 +18,13 @@ if (global.key_esc){
 else{
     //disable multiple turns in one move
     if (global.key_left + global.key_right + global.key_up + global.key_down +
-        global.key_upleft + global.key_upright + global.key_downleft + global.key_downright >= 2){
+        global.key_upleft + global.key_upright + global.key_downleft + 
+        global.key_downright + global.key_space >= 2){
         
         move = false;
     }
     else if (global.key_left || global.key_right || global.key_up || global.key_down ||
-        global.key_upleft || global.key_upright || global.key_downleft || global.key_downright) move = true;
+        global.key_upleft || global.key_upright || global.key_downleft || global.key_downright ||
+        global.key_space) move = true;
     else if (global.key_r) undo = true;
 }
-//print(key_right);
-
-//if (vk_anykey) global.playerMoved = true; //move after player moves

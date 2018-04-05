@@ -23,4 +23,5 @@ if (objPosStr != undefined){
 //handle this robot's items on undo
 var items = ds_stack_pop(robot.itemHistory);
 robot.numKeys = items[0];
+robot.hasBaby = items[1];
 robot.movedDir = ds_stack_pop(robot.movedDirHistory);

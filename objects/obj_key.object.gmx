@@ -36,7 +36,7 @@ oldPosY = y;
 //either inventory or ground
 stateHistory = ds_stack_create();
 ds_stack_push(stateHistory, "ground");
-//currentState = "ground";
+currentState = "ground";
 
 movedDirHistory = ds_stack_create();
 movedDir = "";

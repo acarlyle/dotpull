@@ -33,6 +33,8 @@ ds_stack_push(moveHistory, initPos);
 oldPosX = x;
 oldPosY = y;
 
+movedDir = "";
+
 stateHistory = ds_stack_create();
 state = "idling"; //idling, charging, firing
 shotDirection = "none";

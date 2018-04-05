@@ -4,8 +4,8 @@ cannon = argument0;
 var isVert = argument1;
 var isHorz = argument2;
 
-var xDiff = robot.x - cannon.x;
-var yDiff = robot.y - cannon.y;
+//var xDiff = robot.x - cannon.x;
+//var yDiff = robot.y - cannon.y;
 
 var endOfTheLine = false;
 var createEnergy = false;
@@ -22,7 +22,7 @@ switch(cannon.shotDirection){
 
 print("dir: " + string(cannon.shotDirection) + " " + string(CANNON_DIRECTION));
 
-if (isHorz){ //robot is moving up/down; check for objects towards the player
+if (isHorz){ //robot is moving left/right; check for objects towards the player
     var objX = cannon.x;
     while(!endOfTheLine){
         objX += global.TILE_SIZE * CANNON_DIRECTION;

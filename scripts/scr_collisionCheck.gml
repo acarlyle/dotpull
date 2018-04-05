@@ -1,16 +1,22 @@
 ///scr_collisionCheck(int posX, int posY, par_robot robot)
 
-robot = argument2;
+var posX = argument0;
+var posY = argument1;
+var robot = argument2; 
 
-if (instance_place(argument0, argument1, obj_spike)){
+if (instance_place(posX, posY, obj_spike)){
     print("ded player");
     obj_player.isDead = true;
     obj_player.sprite_index = spr_playerDead;
     return true;
 }
 
-if (instance_place(argument0, argument1, par_pusher)){
+if (instance_place(posX, posY, par_pusher)){
     move_pusher(robot, instance_place(argument0, argument1, par_pusher));
+}
+
+if (instance_place(posX, posY, par_pickupable)){
+    scr_pickupObject(instance_place(posX, posY, par_pickupable));
 }
 
 if (instance_place(argument0, argument1, obj_mirptr)){

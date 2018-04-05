@@ -8,8 +8,6 @@
 eviscerator = argument0;
 robot = argument1;
 
-if (instance_place(eviscerator.x, eviscerator.y, par_robot)){
-    print("ded player");
-    obj_player.isDead = true;
-    obj_player.sprite_index = spr_playerDead;           
+if (instance_place(eviscerator.x, eviscerator.y, robot)){
+    scr_killRobot(robot);          
 }

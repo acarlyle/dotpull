@@ -58,7 +58,8 @@ if (isSpike){
                 return true;
             }
         }
-        if (instance_place(posX, posY, par_obstacle)){
+        if (instance_place(posX, posY, par_obstacle) &&
+           !instance_place(posX, posY, obj_baby)){
             var obs = instance_place(posX, posY, par_obstacle);
             print(obs.isDeactivated);
             if (isActivated(obs)){

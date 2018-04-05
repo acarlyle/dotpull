@@ -26,7 +26,6 @@
     </sprites>
     <sprite>sprites\spr_playerOld</sprite>
     <sprite>sprites\spr_roberta</sprite>
-    <sprite>sprites\spr_baby</sprite>
     <sprite>sprites\spr_robertaMenu</sprite>
     <sprite>sprites\spr_robertaEnd</sprite>
     <sprite>sprites\spr_playerDead</sprite>
@@ -41,6 +40,7 @@
       <sprite>sprites\spr_keyFloating</sprite>
       <sprite>sprites\spr_door</sprite>
       <sprite>sprites\spr_block</sprite>
+      <sprite>sprites\spr_baby</sprite>
       <sprite>sprites\spr_blockPush</sprite>
       <sprite>sprites\spr_blockPushPull</sprite>
       <sprite>sprites\spr_snare</sprite>
@@ -91,6 +91,7 @@
       <script>scripts\handle_gameMove.gml</script>
       <script>scripts\handle_playerMove.gml</script>
       <script>scripts\handle_cleanUpElementEffects.gml</script>
+      <script>scripts\handle_deployBaby.gml</script>
       <script>scripts\handle_undoMove.gml</script>
       <scripts name="Move Object">
         <script>scripts\move_spike.gml</script>
@@ -99,6 +100,7 @@
         <script>scripts\move_fallingPlatform.gml</script>
         <script>scripts\move_breakableWall.gml</script>
         <script>scripts\move_eviscerator.gml</script>
+        <script>scripts\move_baby.gml</script>
         <script>scripts\move_cannon.gml</script>
         <script>scripts\move_blackHole.gml</script>
         <script>scripts\move_trigger.gml</script>
@@ -114,6 +116,7 @@
         <script>scripts\undo_triggerDoor.gml</script>
         <script>scripts\undo_trigger.gml</script>
         <script>scripts\undo_key.gml</script>
+        <script>scripts\undo_baby.gml</script>
         <script>scripts\undo_fallingPlatform.gml</script>
         <script>scripts\undo_breakableWall.gml</script>
         <script>scripts\undo_robotDeath.gml</script>
@@ -173,6 +176,7 @@
     <scripts name="Robot Affects">
       <script>scripts\scr_updateCurRobotPos.gml</script>
       <script>scripts\scr_killRobot.gml</script>
+      <script>scripts\scr_pickupObject.gml</script>
     </scripts>
   </scripts>
   <objects name="objects">
@@ -216,6 +220,7 @@
         <object>objects\obj_breakableWall_2Hit</object>
         <object>objects\obj_breakableWall_1Hit</object>
         <object>objects\obj_triggerDoor</object>
+        <object>objects\obj_baby</object>
       </objects>
       <objects name="not_even_fucking_used">
         <object>objects\obj_triggerTrail</object>
@@ -248,6 +253,7 @@
       <object>objects\par_pusher</object>
       <object>objects\par_breakableWall</object>
       <object>objects\par_fallingPlatform</object>
+      <object>objects\par_pickupable</object>
       <object>objects\par_block</object>
       <object>objects\par_snare</object>
       <object>objects\par_pullable</object>
@@ -278,6 +284,7 @@
       <room>rooms\rm_magneticSnare</room>
       <room>rooms\rm_objPusher</room>
       <room>rooms\DEFAULT_ROOM</room>
+      <room>rooms\rm_baby</room>
       <room>rooms\rm_stairs_lvl1</room>
       <room>rooms\rm_stairs_lvl2</room>
     </rooms>

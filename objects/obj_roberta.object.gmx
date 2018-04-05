@@ -29,6 +29,8 @@
 
 state = "tile_one";
 
+
+hasBaby = false;
 oldPlayerX = 0;
 oldPlayerY = 0;
 playerX = 0;

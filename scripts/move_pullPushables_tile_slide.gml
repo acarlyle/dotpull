@@ -14,28 +14,28 @@ var newObjPosX, newObjPosY;
 print("move_pullPushables_tile_slide objPosX/Y: " + string(objPosX) + ", " + string(objPosY));
 
 if ((object.movedDir == "left") && 
-    (scr_tileIsOpen(objPosX - (global.TILE_SIZE*pushPull), objPosY, object))){ 
+    (scr_tileIsOpen(objPosX - (global.TILE_SIZE*pushPull), objPosY))){ 
     object.movedDir = "left";
     object.moved = true;
     object.x = objPosX - (global.TILE_SIZE*pushPull);
     //print("mv'd left");
 }
 if ((object.movedDir == "right") && 
-    scr_tileIsOpen(objPosX + (global.TILE_SIZE*pushPull), objPosY, object)){
+    scr_tileIsOpen(objPosX + (global.TILE_SIZE*pushPull), objPosY)){
     object.movedDir = "right";
     object.moved = true;
     object.x = objPosX + (global.TILE_SIZE*pushPull);
     //print("mv'd right");
 }
 if ((object.movedDir == "up") && 
-    scr_tileIsOpen(objPosX, objPosY - (global.TILE_SIZE*pushPull), object)){
+    scr_tileIsOpen(objPosX, objPosY - (global.TILE_SIZE*pushPull))){
     object.movedDir = "up";
     object.moved = true;
     object.y = objPosY - (global.TILE_SIZE*pushPull);
     //print("mv'd up");
 }
 if ((object.movedDir == "down") && 
-    scr_tileIsOpen(objPosX, objPosY + (global.TILE_SIZE*pushPull), object)){
+    scr_tileIsOpen(objPosX, objPosY + (global.TILE_SIZE*pushPull))){
     object.movedDir = "down";
     object.moved = true;
     object.y = objPosY + (global.TILE_SIZE*pushPull);
@@ -62,7 +62,7 @@ if (!object.moved){
             newObjPosY = objPosY + (global.TILE_SIZE * pushPull);
             break;
     }
-    if (scr_tileIsOpen(newObjPosX, newObjPosY, object)){
+    if (scr_tileIsOpen(newObjPosX, newObjPosY)){
         
         if ((object.movedDir == "upleft") ){
             object.movedDir = "upleft";
