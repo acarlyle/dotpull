@@ -41,14 +41,14 @@ if (!ds_stack_empty(robot.moveHistory)){
             //var objPosStr = ds_stack_pop(moveHistory); //string e.g. "64,64"
             print(objPosStr);
             if (objPosStr != undefined){
-                var objCoordArr = scr_split(objPosStr);
+                var objCoordArr = scr_split(objPosStr, ",");
                 object.x = objCoordArr[0];
                 object.y = objCoordArr[1];
                 
                 // set old object pos (this is the val pushed to the obj's stack)
                 var oldObjPosStr = ds_stack_top(moveHistory);
                 if (oldObjPosStr != undefined){
-                    var oldObjPosArr = scr_split(oldObjPosStr);
+                    var oldObjPosArr = scr_split(oldObjPosStr, ",");
                     object.oldPosX = oldObjPosArr[0];
                     object.oldPosY = oldObjPosArr[1];
                 }

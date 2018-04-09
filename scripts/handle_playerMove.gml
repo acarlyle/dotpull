@@ -2,7 +2,7 @@
 
 var robot = argument0;
 
-handle_deployBaby(robot);  //this handles baby placement if player pressed space and has a baby
+handle_deployBaby(robot);  //this handles baby placement if player pressed space and has a Baby on Board
 
 //if on a slideTile, disable player input keys
 if (instance_place(robot.x, robot.y, obj_slideTile)){
@@ -23,14 +23,8 @@ switch(robot.state){
 }
 
 if (robot.moved){
-    //GOTO ROOM
-    if (instance_place(robot.playerX, robot.playerY, obj_gotoRoom)){
-        robot.x = robot.playerX;
-        robot.y = robot.playerY;
-        robot.movedDir = "";
-        robot.moved = false;
-        handle_freeRoomMemory();
-    }
+    
+    handle_checkForRoomTransition(robot);
     
     if (object_get_name(robot.object_index) == "obj_player" && robot.moved){
         global.playerMoved = true;

@@ -10,7 +10,7 @@ var cannonStateStr = ds_stack_pop(cannon.stateHistory);
 if (cannonStateStr != undefined){
     print ("UNDOING CANNON");
     print(cannonStateStr);
-    var stateArr = scr_split(cannonStateStr);
+    var stateArr = scr_split(cannonStateStr, ",");
     var stateStr = stateArr[0];
     var stateDir = stateArr[1];
     

@@ -91,6 +91,7 @@
       <script>scripts\handle_gameMove.gml</script>
       <script>scripts\handle_playerMove.gml</script>
       <script>scripts\handle_cleanUpElementEffects.gml</script>
+      <script>scripts\handle_checkForRoomTransition.gml</script>
       <script>scripts\handle_deployBaby.gml</script>
       <script>scripts\handle_undoMove.gml</script>
       <scripts name="Move Object">
@@ -158,7 +159,6 @@
       <script>scripts\roomObjectArrayList.gml</script>
       <script>scripts\print.gml</script>
       <script>scripts\isActivated.gml</script>
-      <script>scripts\stringSplit.gml</script>
       <script>scripts\scr_getInput.gml</script>
       <script>scripts\scr_tileContains.gml</script>
       <script>scripts\scr_disableObj.gml</script>
@@ -285,8 +285,10 @@
       <room>rooms\rm_objPusher</room>
       <room>rooms\DEFAULT_ROOM</room>
       <room>rooms\rm_baby</room>
-      <room>rooms\rm_stairs_lvl1</room>
-      <room>rooms\rm_stairs_lvl2</room>
+      <rooms name="rm_stairs">
+        <room>rooms\rm_stairs_f1</room>
+        <room>rooms\rm_stairs_b1</room>
+      </rooms>
     </rooms>
     <rooms name="block.Pull">
       <room>rooms\rm_level1</room>

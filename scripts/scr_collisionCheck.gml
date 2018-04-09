@@ -11,6 +11,8 @@ if (instance_place(posX, posY, obj_spike)){
     return true;
 }
 
+if (instance_place(posX, posY, par_stairs)){ return false; }
+
 if (instance_place(posX, posY, par_pusher)){
     move_pusher(robot, instance_place(argument0, argument1, par_pusher));
 }

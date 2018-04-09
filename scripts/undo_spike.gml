@@ -10,7 +10,7 @@ var spikeStateStr = ds_stack_pop(spike.stateHistory);
 if (spikeStateStr != undefined){
     print ("UNDOING SPIK");
     print(spikeStateStr);
-    var stateArr = scr_split(spikeStateStr);
+    var stateArr = scr_split(spikeStateStr, ",");
     var stateStr = stateArr[0];
     var stateDir = stateArr[1];
     if (stateStr == "idle"){

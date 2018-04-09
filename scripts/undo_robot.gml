@@ -12,7 +12,7 @@ print(objPosStr);
 //print(obj_player.x);
 //print(obj_player.y);
 if (objPosStr != undefined){
-    var objCoordArr = scr_split(objPosStr);
+    var objCoordArr = scr_split(objPosStr, ",");
     //print(objCoordArr[0]);
     //print(objCoordArr[1]);
     robot.x = objCoordArr[0];
