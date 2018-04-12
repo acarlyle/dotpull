@@ -286,8 +286,8 @@
       <room>rooms\DEFAULT_ROOM</room>
       <room>rooms\rm_baby</room>
       <rooms name="rm_stairs">
-        <room>rooms\rm_stairs_f1</room>
-        <room>rooms\rm_stairs_b1</room>
+        <room>rooms\rm_stairs_f_1</room>
+        <room>rooms\rm_stairs_b_1</room>
       </rooms>
     </rooms>
     <rooms name="block.Pull">
