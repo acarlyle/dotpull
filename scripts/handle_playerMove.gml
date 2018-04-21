@@ -33,7 +33,7 @@ if (robot.moved){
     
     if (global.playerMoved){ 
         //print("pushed: " + string(pushXOntoStack) + "," + string(pushYOntoStack));
-        ds_stack_push(robot.moveHistory, string(pushXOntoStack) + "," + string(pushYOntoStack)); //pushing previous turn's movement
+        ds_stack_push(robot.moveHistory, string(room_get_name(room)) + ";" + string(pushXOntoStack) + "," + string(pushYOntoStack)); //pushing previous turn's movement
         ds_stack_push(robot.itemHistory, array(robot.numKeys, robot.hasBaby));
         ds_stack_push(robot.movedDirHistory, robot.movedDir);
         robot.oldPlayerX = x;
@@ -47,6 +47,9 @@ if (robot.moved){
     else{
         robot.movedDir = "";
     }
+}
+else{ //if we didn't move
+    handle_checkForStairs(robot);
 }
 robot.move = false;
 robot.canMove = true;

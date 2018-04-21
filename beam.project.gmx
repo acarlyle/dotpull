@@ -92,6 +92,7 @@
       <script>scripts\handle_playerMove.gml</script>
       <script>scripts\handle_cleanUpElementEffects.gml</script>
       <script>scripts\handle_checkForRoomTransition.gml</script>
+      <script>scripts\handle_checkForStairs.gml</script>
       <script>scripts\handle_deployBaby.gml</script>
       <script>scripts\handle_undoMove.gml</script>
       <scripts name="Move Object">
@@ -139,6 +140,7 @@
     </scripts>
     <scripts name="Game State Controllers">
       <script>scripts\handle_gameSave.gml</script>
+      <script>scripts\handle_roomSave.gml</script>
       <script>scripts\handle_gameLoad.gml</script>
       <script>scripts\handle_restartLevel.gml</script>
       <script>scripts\handle_freeRoomMemory.gml</script>
