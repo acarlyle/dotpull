@@ -180,6 +180,9 @@
       <script>scripts\scr_killRobot.gml</script>
       <script>scripts\scr_pickupObject.gml</script>
     </scripts>
+    <scripts name="Virtual Mapping">
+      <script>scripts\scr_createMapForRoom.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>

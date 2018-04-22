@@ -15,8 +15,11 @@ print(movementStr);
 
 //handle this robot's items on undo
 var items = ds_stack_pop(robot.itemHistory);
-robot.numKeys = items[0];
-robot.hasBaby = items[1];
+if (items != undefined){
+    robot.numKeys = items[0];
+    robot.hasBaby = items[1];
+}
+    
 robot.movedDir = ds_stack_pop(robot.movedDirHistory);
 if (movementStr != undefined){
     var moveArrComponents = scr_split(movementStr, ";");

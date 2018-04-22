@@ -8,6 +8,9 @@ var robot = argument0;
     This shit saves the room's current object positions along with all of the dynamic 
     memory used by it into a file so that it can be returned to normal when a player comes
     back and not reinitialized.  
+    
+    Save file default path is C:\Users\UserName\AppData\Local\beam
+    
     FILE FORMAT
     
     *****

@@ -57,6 +57,7 @@ isMovePriority = false;
 isArrow = false;
 isFallingPlatform = false;
 isEviscerator = false;
+movedDir = "";
 </string>
           </argument>
         </arguments>

@@ -34,8 +34,8 @@ else{
 
 
 var initPos = string(obj_player.x) + "," + (string(obj_player.y));
-ds_stack_push(obj_player.moveHistory, initPos);
-ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys));
+//ds_stack_push(obj_player.moveHistory, initPos);
+//ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys));
 print("initPos:" + initPos);
 
 global.roomContents = scr_initRoom();</code>
