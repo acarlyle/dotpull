@@ -289,6 +289,7 @@
       <room>rooms\rm_magneticSnare</room>
       <room>rooms\rm_objPusher</room>
       <room>rooms\DEFAULT_ROOM</room>
+      <room>rooms\rm_everyElement</room>
       <room>rooms\rm_baby</room>
       <rooms name="rm_stairs">
         <room>rooms\rm_stairs_f_1</room>

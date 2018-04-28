@@ -1,6 +1,6 @@
-///handle_roomSave()
+///handle_roomSave(par_robot robot)
 
-print("-> handle_roomSave()");
+print("-> handle_roomSave(par_robot robot)");
 
 var robot = argument0;
 
@@ -35,3 +35,6 @@ file_text_close(roomSaveFile);
 
 print(ds_stack_top(something));  
 print("Room saved!");
+
+scr_createMapForRoom();
+

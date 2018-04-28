@@ -142,7 +142,7 @@ if (global.playerCanMove){
     
     //save state
     if (global.playerMoved){
-        handle_gameSave();
+        handle_gameSave(obj_player);
     }
     
     //print(obj_player.numKeys);
