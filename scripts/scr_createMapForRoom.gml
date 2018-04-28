@@ -19,10 +19,13 @@ for (yPos = 0; yPos < room_height; yPos += global.TILE_SIZE){
     for (xPos = 0; xPos < room_width; xPos += global.TILE_SIZE){  
         posStr = " ";   
         with (all){ 
-            if instance_place(xPos, yPos, self.object_index){ 
+            //print(object_get_name(object_index));
+            if scr_tileContains(xPos, yPos, array(object_index)){ 
                 objName = object_get_name(self.object_index);
-                if (objName) posStr += (objName + ",");
-                print(objName);
+                if (string_pos(objName, posStr) == 0){ //returns 0 if substr not found
+                    posStr += (objName + ",");
+                    //print(objName);
+                }
             }
         }
         arrMap[xPos, yPos] = posStr;
