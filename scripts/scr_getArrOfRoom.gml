@@ -1,12 +1,21 @@
-///scr_createMapForRoom()
+///scr_getArrOfRoom(str roomName)
+
+
 
 /*
+    *** NOTE ***
+
+    Currently, this is not storing objects in the global.deactivated tile.  
+    Returns a 2d array containing the object positions of this room.
+        
+    *** END NOTE ***
+    
     " "            - nothing 
-    "_"            - platform
-    "o_block"      - obj_block 
 */
 
-print(" -> scr_createMapForRoom()");
+var roomStr = argument0;
+
+print(" -> scr_getArrOfRoom(" + string(roomStr) + ")");
 
 var xPos = 0;
 var yPos = 0;
@@ -30,19 +39,26 @@ for (yPos = 0; yPos < room_height; yPos += global.TILE_SIZE){
                 }
             }
         }
-        posStr = trim(posStr); //trim last comma if strlen is > 0
-        arrMap[xPos, yPos] = posStr;
+        if (strlen(posStr) > 0){
+            posStr = trim(posStr); //trim last char (comma) if strlen is > 0
+            posStr += " |";
+        }
+        else posStr = " |"; //nothing is there, not even a platform
+        arrMap[yPos / global.TILE_SIZE, xPos / global.TILE_SIZE] = posStr;
     }
 }
 
-for (yPos = 0; yPos < room_height; yPos += global.TILE_SIZE){
-    for (xPos = 0; xPos < room_width; xPos += global.TILE_SIZE){
+// BROKEN -- will crash; was only for testing
+/*for (yPos = 0; yPos < room_height; yPos++){
+    for (xPos = 0; xPos < room_width; xPos ++){
         if (arrMap[xPos, yPos] != "") {
             print(arrMap[xPos, yPos]);
             //var splitArr = scr_split(arrMap[xPos, yPos], ",");
             //print(splitArr[0]);
         }
     }
-}
+}*/
 
-print("end createMap");
+print("end getArrOfRoom");
+
+return arrMap;
