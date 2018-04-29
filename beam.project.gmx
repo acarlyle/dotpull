@@ -157,7 +157,6 @@
     <scripts name="Helpers">
       <script>scripts\array.gml</script>
       <script>scripts\scr_tileIsOpen.gml</script>
-      <script>scripts\scr_split.gml</script>
       <script>scripts\roomObjectArrayList.gml</script>
       <script>scripts\print.gml</script>
       <script>scripts\isActivated.gml</script>
@@ -169,6 +168,11 @@
         <script>scripts\scr_mirptrTele.gml</script>
         <script>scripts\scr_disableMovementKeys.gml</script>
         <script>scripts\scr_pathBetween.gml</script>
+      </scripts>
+      <scripts name="Strings">
+        <script>scripts\scr_split.gml</script>
+        <script>scripts\trim.gml</script>
+        <script>scripts\strlen.gml</script>
       </scripts>
     </scripts>
     <scripts name="Element Affects">
