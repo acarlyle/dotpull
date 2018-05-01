@@ -36,9 +36,9 @@ for (yPos = 0; yPos < room_height; yPos += global.TILE_SIZE){
                     posStr += objName;
                     if (isPuzzleElement){ //only puzzle elements have stacks
                         posStr += ":";
-                        if (moveHistory)     posStr += (ds_stack_write(moveHistory) + ",");
-                        if (movedDirHistory) posStr += (ds_stack_write(movedDirHistory) + ",");
-                        if (stateHistory)    posStr += (ds_stack_write(stateHistory) + ",");
+                        if (moveHistory)     posStr += ("moveHistory_" + (ds_stack_write(moveHistory) + ","));
+                        if (movedDirHistory) posStr += ("movedDirHistory_" + (ds_stack_write(movedDirHistory) + ","));
+                        if (stateHistory)    posStr += ("stateHistory_" + (ds_stack_write(stateHistory) + ","));
                         
                         //aStack = ds_stack_create();
                         //ds_stack_read(aStack, ds_stack_write(stateHistory));
@@ -52,7 +52,7 @@ for (yPos = 0; yPos < room_height; yPos += global.TILE_SIZE){
             }
         }
         if (strlen(posStr) > 0){
-            posStr = trim(posStr); //trim last char (comma) if strlen is > 0
+            //posStr = trim(posStr); //trim last char (comma) if strlen is > 0
             posStr += "|";
         }
         else posStr = " |"; //nothing is there, not even a platform

@@ -31,6 +31,7 @@ print(initPos);
 ds_stack_push(moveHistory, initPos);
 
 movedDir = "";
+movedDirHistory = undefined;
 
 stateHistory = undefined;
 image_speed = 0;

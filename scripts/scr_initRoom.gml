@@ -1,6 +1,12 @@
 ///scr_initRoom
 
-//var block1 = instance_create(112, 0, obj_block);
+/*
+    Called in every room's creation code  
+*/
+
+if (file_exists(room_get_name(room) + ".sav")){
+    scr_initRoomFromFile(room_get_name(room));
+}
 
 with(obj_roberta){
     print("init roberta");
@@ -19,9 +25,6 @@ with(obj_roberta){
 
 var list = ds_list_create();
 
-var 
-
-//print("Creating list");
 
 //EXTREMELY IMPORTANT THAT OBJ BLOCKS ARE AT THE BEGINING OF THE LIST!!!!!!!  SAME WITH FALLING PLATS!!!
 with (all) {

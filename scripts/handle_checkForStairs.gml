@@ -50,5 +50,5 @@ if (instance_place(robot.playerX, robot.playerY, par_stairs)){
     
     handle_roomSave(robot);   
     
-    room_goto(asset_get_index(newRoomName));   
+    handle_gotoRoom(asset_get_index(newRoomName));   
 }

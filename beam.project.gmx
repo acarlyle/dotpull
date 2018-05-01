@@ -89,6 +89,7 @@
     </scripts>
     <scripts name="Game Handles">
       <script>scripts\handle_gameMove.gml</script>
+      <script>scripts\handle_gotoRoom.gml</script>
       <script>scripts\handle_playerMove.gml</script>
       <script>scripts\handle_cleanUpElementEffects.gml</script>
       <script>scripts\handle_checkForRoomTransition.gml</script>
@@ -153,6 +154,7 @@
       <script>scripts\scr_applyScreenRes.gml</script>
       <script>scripts\scr_initPlayerPosition.gml</script>
       <script>scripts\scr_initRoom.gml</script>
+      <script>scripts\scr_initRoomFromFile.gml</script>
     </scripts>
     <scripts name="Helpers">
       <script>scripts\array.gml</script>
@@ -173,6 +175,7 @@
         <script>scripts\scr_split.gml</script>
         <script>scripts\trim.gml</script>
         <script>scripts\strlen.gml</script>
+        <script>scripts\strcontains.gml</script>
       </scripts>
     </scripts>
     <scripts name="Element Affects">

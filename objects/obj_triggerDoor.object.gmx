@@ -30,6 +30,8 @@ var initPos = string(x) + "," + (string(y));
 print(initPos);
 ds_stack_push(moveHistory, initPos);
 
+movedDirHistory = undefined;
+
 movedDir = "";
 
 oldPosX = x;
