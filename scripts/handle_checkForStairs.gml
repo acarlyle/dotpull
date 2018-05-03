@@ -46,9 +46,7 @@ if (instance_place(robot.playerX, robot.playerY, par_stairs)){
                     + string(floorType) + "_" 
                     + string(floorNumber);
                     
-    print("newRoomName: " + string(newRoomName));
-    
-    handle_roomSave(robot);   
+    print("newRoomName: " + string(newRoomName));   
     
     handle_gotoRoom(asset_get_index(newRoomName));   
 }

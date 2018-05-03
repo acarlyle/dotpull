@@ -4,9 +4,10 @@
     Called in every room's creation code  
 */
 
-if (file_exists(room_get_name(room) + ".sav")){
-    scr_initRoomFromFile(room_get_name(room));
+if (scr_hasVisitedRoom(obj_player, room_get_name(room))){  
+    if (file_exists(room_get_name(room) + ".sav")){ scr_initRoomFromFile(room_get_name(room));}
 }
+else ds_list_add(obj_player.roomsVisited, room_get_name(room));
 
 with(obj_roberta){
     print("init roberta");

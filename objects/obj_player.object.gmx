@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>isPuzzleElement = false;
 
+roomsVisited = ds_list_create();
+
 global.key_left = false;
 global.key_right = false;
 global.key_up = false;

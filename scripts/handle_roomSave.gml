@@ -1,8 +1,6 @@
-///handle_roomSave(par_robot robot)
+///handle_roomSave()
 
-print("-> handle_roomSave(par_robot robot)");
-
-var robot = argument0;
+print("-> handle_roomSave()");
 
 var xPos = 0;
 var yPos = 0;

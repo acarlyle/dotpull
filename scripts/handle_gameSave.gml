@@ -8,6 +8,6 @@ file_text_write_real(saveFile, saveRoom);
 
 file_text_close(saveFile); 
 
-handle_roomSave(argument0);
+handle_roomSave();
 
 print("Game saved!");

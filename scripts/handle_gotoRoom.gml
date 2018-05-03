@@ -11,6 +11,9 @@ var saveFileName = string(rm) + ".sav";
 //    with(all) instance_destroy(self);
 //}
 
+with (par_robot) handle_pushOntoStack(self); //push final state of room
+handle_roomSave(); //TODO - rm arg/replace obj_player arg
+
 room_goto(rm);
 
 //print("we went to room !");

@@ -32,7 +32,7 @@ for (yPos = 0; yPos < room_height; yPos += global.TILE_SIZE){
                 scr_tileContains(xPos, yPos, array(object_index))){ //this checks for objects on a tile
                 
                 objName = object_get_name(self.object_index);
-                if (string_pos(objName, posStr) == 0){ //returns 0 if substr not found (do we already have obj chk)
+                if (string_pos(objName, posStr) == 0){ //returns 0 if substr not found (do we already have this obj check)
                     posStr += objName;
                     if (isPuzzleElement){ //only puzzle elements have stacks
                         posStr += ":";
@@ -44,7 +44,7 @@ for (yPos = 0; yPos < room_height; yPos += global.TILE_SIZE){
                         //ds_stack_read(aStack, ds_stack_write(stateHistory));
                         //print(ds_stack_pop(aStack));
                         
-                        posStr = trim(posStr);
+                        //posStr = trim(posStr);
                     }
                     posStr += ";";
                     //print(posStr)
