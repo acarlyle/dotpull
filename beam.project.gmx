@@ -149,6 +149,7 @@
     <scripts name="Stack">
       <script>scripts\handle_prioritizeItems.gml</script>
       <script>scripts\handle_pushOntoStack.gml</script>
+      <script>scripts\handle_destroyThisObjectStacks.gml</script>
     </scripts>
     <scripts name="settings">
       <script>scripts\scr_applyScreenRes.gml</script>

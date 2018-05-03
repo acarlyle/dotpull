@@ -70,9 +70,7 @@ isDeactivated = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ds_stack_destroy(moveHistory);
-
-print("DESTROYED key");
+            <string>//handle_destroyThisObjectStacks(self);
 </string>
           </argument>
         </arguments>
