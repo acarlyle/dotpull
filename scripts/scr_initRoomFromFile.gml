@@ -56,6 +56,7 @@ while(!strcontains(curLine, "---")){
                             ds_stack_destroy(objRef.moveHistory); //clear deactivated position
                             objRef.moveHistory = ds_stack_create();
                             ds_stack_read(objRef.moveHistory, stackNameAndStackHashArr[1]);
+                            //print("obj stack size: " + string(ds_stack_size(objRef.moveHistory)));
                             var string_objPos = ds_stack_pop(objRef.moveHistory);
                             print("objPos from stack: " + string(string_objPos));  
                             var array_objArr = scr_split(string_objPos, ",");

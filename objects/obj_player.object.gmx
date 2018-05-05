@@ -137,7 +137,7 @@ if (global.playerCanMove){
     }
     with (par_robot){
         if (moved) {
-            handle_pushOntoStack(self); //push previous turn's items onto stack before moving them
+            handle_pushOntoStack(self, false); //push previous turn's items onto stack before moving them
             handle_gameMove(self);  //moved is true if player successfully moved
         }
     }
@@ -148,7 +148,7 @@ if (global.playerCanMove){
     }
     
     //print(obj_player.numKeys);
-    //print(ds_stack_size(obj_player.itemHistory));
+    //if (instance_exists(obj_block)) print(ds_stack_size(obj_block.moveHistory));
     //print("player move stackSize: " + string(ds_stack_size(obj_player.moveHistory)));
     //print("obj baby stack size: " + string(ds_stack_size(obj_baby.stateHistory)));
     //print("key state: " + string(ds_stack_size(obj_key.stateHistory)));

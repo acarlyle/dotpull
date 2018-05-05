@@ -1,20 +1,27 @@
-///handle_pushOntoStack(object obj)
+///handle_pushOntoStack(var robot, bool pushCurPos)
+
+var robot = argument0; //could be player or other character 
+var pushCurPos = argument1;  //whether to push the cur obj pos or the old one
+var pushX = 0;
+var pushY = 0;
 
 for (var i = 0; i < array_length_1d(global.roomContents); i++){
     var object = global.roomContents[i];
     with(object){
         
         print("Handling push for " + object_get_name(object.object_index));
-        //print(string(object.justDeactivated));
         
         //push this objects previous position onto its stack
-        //This is true if an object has been moved to the DEACITVATED_X/Y Zone off screen and was pushed already
+        //This is true if an object has been moved to the DEACTIVATED_X/Y Zone off screen and was pushed already
         if (object.justDeactivated){
             object.justDeactivated = false; 
             continue;
         }
-        //ds_stack_push(object.moveHistory, string(object.x) + "," + string(object.y)); //pushing previous turn's movement
-        ds_stack_push(object.moveHistory, string(object.oldPosX) + "," + string(object.oldPosY)); //pushing previous turn's movement
+        
+        if (pushCurPos){ pushX = object.x; pushY = object.y;}
+        else{ pushX = object.oldPosX; pushY = object.oldPosY;}
+        
+        ds_stack_push(object.moveHistory, string(pushX) + "," + string(pushY)); //pushing previous turn's movement
         
         if (object.isSpike){
             ds_stack_push(object.stateHistory, object.state + "," + object.targetDirection);

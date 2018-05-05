@@ -95,6 +95,7 @@
       <script>scripts\handle_checkForRoomTransition.gml</script>
       <script>scripts\handle_checkForStairs.gml</script>
       <script>scripts\handle_deployBaby.gml</script>
+      <script>scripts\handle_freeMemory.gml</script>
       <script>scripts\handle_undoMove.gml</script>
       <scripts name="Move Object">
         <script>scripts\move_spike.gml</script>
