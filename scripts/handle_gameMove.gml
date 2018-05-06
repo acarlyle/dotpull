@@ -17,12 +17,13 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
     with(object){
         
         print("Handling " + object_get_name(object.object_index));
-        
-        if objectIs(object) == "obj_block" print("oldx, oldy: " + string(object.oldPosX) + ", " + string(object.oldPosY));
+        //object.oldPosX = object.x;
+        //object.oldPosY = object.y; 
+        //if objectIs(object) == "obj_block" print("_OLD POS oldx, oldy: " + string(object.oldPosX) + ", " + string(object.oldPosY));
         
         //Handles: par_cannon
         if (parentOf(object) == "par_cannon"){
-            print("handling cannon move");
+            //print("handling cannon move");
             move_cannon(object, robot);
         }
         
@@ -63,7 +64,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
         }  
         else if (object_get_name(object.object_index) == "obj_baby"){
             move_baby(object, robot);
-        } 
+        }
     }
 }
 

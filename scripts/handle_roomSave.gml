@@ -45,8 +45,8 @@ file_text_writeln(roomSaveFile);
 
 // write room's object positions
 var curRoomMap = scr_saveRoomState(roomName); 
-print("arr height: " + string(array_height_2d(curRoomMap)));
-print("arr length: " + string(array_length_2d(curRoomMap, 0)));
+//print("arr height: " + string(array_height_2d(curRoomMap)));
+//print("arr length: " + string(array_length_2d(curRoomMap, 0)));
 for (yPos = 0; yPos < array_height_2d(curRoomMap); yPos++){
     for (xPos = 0; xPos < array_length_2d(curRoomMap, yPos); xPos++){
         file_text_write_string(roomSaveFile, curRoomMap[yPos, xPos]);
@@ -71,5 +71,5 @@ file_text_close(roomSaveFile);
 //file_text_close(roomSaveFile);
 
 //print(ds_stack_top(something));  
-print("Room saved!");
+//print("Room saved!");
 

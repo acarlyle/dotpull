@@ -30,7 +30,7 @@ with (obj_mirptr){
     var mirptrPtr = self.mirptrPtr;
     if ((mirptr.x == object.x && (robot.oldPlayerX == mirptrPtr.x || robot.x == mirptrPtr.x)) &&
         (robot.y - robot.oldPlayerY != 0)){ //checks to see if player actually moved up/down
-        print("NSYNC!!!! VT");
+        //print("NSYNC!!!! VT");
         objPosX = mirptrPtr.x;
         objPosY = mirptrPtr.y;
         //mirptrExt = true;
@@ -39,7 +39,7 @@ with (obj_mirptr){
     }
     if ((mirptr.y == object.y && (robot.oldPlayerY == mirptrPtr.y || robot.y == mirptrPtr.y)) &&
         (robot.x - robot.oldPlayerX != 0)){ //checks to see if player actually moved left/right
-        print("NSYNC!!!! HZ");
+        //print("NSYNC!!!! HZ");
         objPosX = mirptrPtr.x;
         objPosY = mirptrPtr.y;
         //mirptrExt = true;

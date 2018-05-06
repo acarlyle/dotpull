@@ -29,6 +29,7 @@
 
 //cutscene trigger, logic in player step
 global.playerCanMove = true;
+global.switchRooms = false;
 
 //init vars
 global.roomContents = ds_stack_create(); //rewindable objects

@@ -115,7 +115,7 @@ ds_stack_destroy(itemHistory);
             <kind>1</kind>
             <string>//scr_getInput();
 
-global.playerMoved = false;
+scr_clearStepGlobals();
 
 //used for cutscene triggers
 if (global.playerCanMove){
@@ -137,15 +137,16 @@ if (global.playerCanMove){
     }
     with (par_robot){
         if (moved) {
+            print("player moved totes");
             handle_pushOntoStack(self, false); //push previous turn's items onto stack before moving them
             handle_gameMove(self);  //moved is true if player successfully moved
         }
     }
     
     //save state
-    if (global.playerMoved){
-        handle_gameSave(obj_player);
-    }
+    if global.playerMoved handle_gameSave(obj_player);
+    //cleanup memory before switch rooms
+    if global.switchRooms handle_freeMemory();
     
     //print(obj_player.numKeys);
     //if (instance_exists(obj_block)) print(ds_stack_size(obj_block.moveHistory));

@@ -10,6 +10,9 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
     with(object){
         
         print("Handling push for " + object_get_name(object.object_index));
+        object.oldPosX = object.x;
+        object.oldPosY = object.y; 
+        //if objectIs(object) == "obj_block" print("_OLD POS oldx, oldy: " + string(object.oldPosX) + ", " + string(object.oldPosY));
         
         //push this objects previous position onto its stack
         //This is true if an object has been moved to the DEACTIVATED_X/Y Zone off screen and was pushed already
@@ -18,16 +21,16 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             continue;
         }
         
-        if (pushCurPos){ pushX = object.x; pushY = object.y;}
-        else{ pushX = object.oldPosX; pushY = object.oldPosY;}
+        if (pushCurPos){ pushX = object.x; pushY = object.y; }
+        else{ pushX = object.oldPosX; pushY = object.oldPosY; }
         
-        if (objectIs(object) == "obj_block") print("x, y: " + string(pushX) + ", " + string(pushY));
+        //if (objectIs(object) == "obj_block") print("_PUSHING x, y: " + string(pushX) + ", " + string(pushY));
         
         ds_stack_push(object.moveHistory, string(pushX) + "," + string(pushY)); //pushing previous turn's movement
         
         if (object.isSpike){
             ds_stack_push(object.stateHistory, object.state + "," + object.targetDirection);
-            print("pushed spike stateHistory: " + string(object.state) + "," + string(object.targetDirection));
+            //print("pushed spike stateHistory: " + string(object.state) + "," + string(object.targetDirection));
         }
         if (object_get_name(object_index) == "obj_key" || 
             object_get_name(object_index) == "obj_door" ||

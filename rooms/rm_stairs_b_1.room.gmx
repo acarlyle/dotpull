@@ -91,8 +91,6 @@ triggerDoor.image_index++;*/</code>
     <instance objName="obj_platform" x="32" y="96" name="inst_5792D612" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="48" y="112" name="inst_E35ED244" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block" x="80" y="96" name="inst_697E83F6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_trigger" x="80" y="96" name="inst_DD22D3CF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_triggerDoor" x="48" y="48" name="inst_08596833" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="32" y="112" name="inst_383908F7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="64" y="112" name="inst_F2940306" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="48" y="48" name="inst_A228D02B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

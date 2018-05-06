@@ -37,6 +37,9 @@ if (!ds_stack_empty(robot.moveHistory)){
                 /*
                     X, Y Position-sensitive objects
                 */
+                
+                if (objectIs(self) == "obj_block") print("_BLOCK stksize befoee pop!: " + string(ds_stack_size(moveHistory)));
+                
                 var objPosStr = ds_stack_pop(moveHistory); //string e.g. "64,64"
                 //print(objPosStr);
                 //var objPosStr = ds_stack_pop(moveHistory); //string e.g. "64,64"

@@ -48,5 +48,8 @@ if (instance_place(robot.playerX, robot.playerY, par_stairs)){
                     
     print("newRoomName: " + string(newRoomName));   
     
-    handle_gotoRoom(scr_roomFromString(newRoomName), "gotoRoom");   
+    if handle_gotoRoom(scr_roomFromString(newRoomName), "gotoRoom"){ 
+        //robot.moved = true; //this allows for objects to move before the room transitions
+        global.switchRooms = true;
+    }
 }

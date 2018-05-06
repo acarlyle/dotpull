@@ -11,7 +11,7 @@ robot = argument0;
 
 //handle this robot's undo
 var movementStr = ds_stack_pop(robot.moveHistory); //string e.g. "64,64"
-print(movementStr);
+//print(movementStr);
 
 //handle this robot's items on undo
 var items = ds_stack_pop(robot.itemHistory);
@@ -25,7 +25,7 @@ if (movementStr != undefined){
     var moveArrComponents = scr_split(movementStr, ";");
     var objPosArr = scr_split(moveArrComponents[1], ",");
     var rmName = moveArrComponents[0];
-    print("NAME!!!!: " + string(rmName));
+    //print("NAME!!!!: " + string(rmName));
     if rmName != room_get_name(room){
         handle_gotoRoom(scr_roomFromString(rmName), "undoRoom");
         return false; //switch to other room 

@@ -171,6 +171,7 @@
       <script>scripts\scr_getInput.gml</script>
       <script>scripts\scr_tileContains.gml</script>
       <script>scripts\scr_disableObj.gml</script>
+      <script>scripts\scr_clearStepGlobals.gml</script>
       <script>scripts\parentOf.gml</script>
       <scripts name="Movement">
         <script>scripts\scr_mirptrTele.gml</script>

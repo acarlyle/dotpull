@@ -15,7 +15,7 @@ curLine = file_text_readln(saveFile); // ---
 curLine = file_text_readln(saveFile); // ((roomName))
 curLine = file_text_readln(saveFile); // ---
 
-print(curLine);
+//print(curLine);
 
 /*
     !!! Split Breakdown Showdown !!!
@@ -38,21 +38,21 @@ while(!strcontains(curLine, "---")){
         var objsArr = scr_split(tileArr[tile], ";");
         for (var obj = 0; obj < array_length_1d(objsArr); obj++){
             if (strcontains(objsArr[obj], ":")){ //contains stacks
-                print(objsArr[obj]);
+                //print(objsArr[obj]);
                 thisObjAndStacks = scr_split(objsArr[obj], ":"); 
                 var objName = thisObjAndStacks[0];
                 var objRef = instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, asset_get_index(objName));
-                print(object_get_name(objRef.object_index));
+                //print(object_get_name(objRef.object_index));
                 //print(thisObjAndStacks[1]);
                 var arrayOfStacks = scr_split(thisObjAndStacks[1], ",");
                 
                 for (var stack = 0; stack < array_length_1d(arrayOfStacks); stack++){
-                    print(arrayOfStacks[stack]);
+                    //print(arrayOfStacks[stack]);
                     var stackNameAndStackHashArr = scr_split(arrayOfStacks[stack], "_");
                     
                     switch (stackNameAndStackHashArr[0]){
                         case "moveHistory":
-                            print(string(objName) + ", " + string(stackNameAndStackHashArr[0]) + string(stackNameAndStackHashArr[1]));
+                            //print(string(objName) + ", " + string(stackNameAndStackHashArr[0]) + string(stackNameAndStackHashArr[1]));
                             ds_stack_destroy(objRef.moveHistory); //clear deactivated position
                             objRef.moveHistory = ds_stack_create();
                             ds_stack_read(objRef.moveHistory, stackNameAndStackHashArr[1]);
@@ -61,9 +61,10 @@ while(!strcontains(curLine, "---")){
                             print("objPos from stack: " + string(string_objPos));  
                             var array_objArr = scr_split(string_objPos, ",");
                             objRef.x = array_objArr[0]; 
-                            objRef.y = array_objArr[1]; 
-                            print("X SET TO " + string(objRef.x));
-                            print("Y SET TO " + string(objRef.y));
+                            objRef.y = array_objArr[1];
+                            print(string(ds_stack_size(objRef.moveHistory))); 
+                            //print("X SET TO " + string(objRef.x));
+                            //print("Y SET TO " + string(objRef.y));
                             break;
                         case "movedDirHistory":
                             ds_stack_clear(objRef.movedDirHistory);
