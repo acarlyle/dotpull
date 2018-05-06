@@ -24,9 +24,16 @@ robot.movedDir = ds_stack_pop(robot.movedDirHistory);
 if (movementStr != undefined){
     var moveArrComponents = scr_split(movementStr, ";");
     var objPosArr = scr_split(moveArrComponents[1], ",");
-    var curRoom = moveArrComponents[0];
+    var rmName = moveArrComponents[0];
+    print("NAME!!!!: " + string(rmName));
+    if rmName != room_get_name(room){
+        handle_gotoRoom(scr_roomFromString(rmName), "undoRoom");
+        return false; //switch to other room 
+    }
+    
     robot.x = objPosArr[0];
     robot.y = objPosArr[1];
     robot.playerX = robot.x;
     robot.playerY = robot.y;
 }
+return true; //continue to undo objects

@@ -48,5 +48,5 @@ if (instance_place(robot.playerX, robot.playerY, par_stairs)){
                     
     print("newRoomName: " + string(newRoomName));   
     
-    handle_gotoRoom(asset_get_index(newRoomName));   
+    handle_gotoRoom(scr_roomFromString(newRoomName), "gotoRoom");   
 }

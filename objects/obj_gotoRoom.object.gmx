@@ -53,7 +53,7 @@ obj_player.playerY = target_y;
 print("Going to new rum");
 //print(obj_player.x);
 //print(obj_player.y);
-handle_gotoRoom(target_r);
+handle_gotoRoom(target_r, "gotoRoom");
 //print("Oh we went there");
 </string>
           </argument>

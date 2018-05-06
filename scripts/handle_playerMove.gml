@@ -32,17 +32,7 @@ if (robot.moved){
     }
     
     if (global.playerMoved){ 
-        //print("pushed: " + string(pushXOntoStack) + "," + string(pushYOntoStack));
-        ds_stack_push(robot.moveHistory, string(room_get_name(room)) + ";" + string(pushXOntoStack) + "," + string(pushYOntoStack)); //pushing previous turn's movement
-        ds_stack_push(robot.itemHistory, array(robot.numKeys, robot.hasBaby));
-        ds_stack_push(robot.movedDirHistory, robot.movedDir);
-        robot.oldPlayerX = x;
-        robot.oldPlayerY = y;
-        robot.x = robot.playerX; 
-        robot.y = robot.playerY;
-        if (instance_place(robot.x, robot.y, obj_slideTile)){
-            robot.canMove = false;
-        }
+        push_robotState(robot, false, pushXOntoStack, pushYOntoStack);
     }
     else{
         robot.movedDir = "";
