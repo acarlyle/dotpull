@@ -13,7 +13,7 @@ global.key_esc = keyboard_check_released(vk_escape);
 global.key_space = keyboard_check_released(vk_space);
 
 if (global.key_esc){
-    handle_restartLevel();
+    handle_restartRoom();
 }
 else{
     //disable multiple turns in one move

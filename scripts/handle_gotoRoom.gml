@@ -7,14 +7,14 @@ print("handle_gotoRoom(" + string(rm) + ", " + string(state) + ");");
 
 var saveFileName = string(rm) + ".sav";
 
-if state == "gotoRoom" { // push curPositions of robots/objects
-    with (par_robot) push_robotState(self, true, 0, 0); //0, 0 because we're only pushing the current pos
+if state == "gotoRoom" { with (par_robot) push_robotState(self, true, 0, 0); } //0, 0 because we're only pushing the current pos
+if (state == "undoRoom" || state == "gotoRoom"){    
     with (par_robot) {
         handle_pushOntoStack(self, true); //push final state of room, cur obj positions
         handle_pushOntoStack(self, true); //push final state of room, cur obj positions
     }
 }
-
+    
 handle_roomSave(); //TODO - rm arg/replace obj_player arg
 
 room_goto(rm);

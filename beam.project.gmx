@@ -144,7 +144,7 @@
       <script>scripts\handle_gameSave.gml</script>
       <script>scripts\handle_roomSave.gml</script>
       <script>scripts\handle_gameLoad.gml</script>
-      <script>scripts\handle_restartLevel.gml</script>
+      <script>scripts\handle_restartRoom.gml</script>
       <script>scripts\handle_freeRoomMemory.gml</script>
     </scripts>
     <scripts name="Stack">

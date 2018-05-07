@@ -12,8 +12,7 @@
   <showcolour>-1</showcolour>
   <code>//append every rewindable object to roomContents arr
 
-print("Entering level five");
-
+print("Entering " + room_get_name(room));
 
 
 var initPos = "0,0";

@@ -13,7 +13,7 @@ if (robot.isDead){
 
 if (!ds_stack_empty(robot.moveHistory)){
     var continueUndo = undo_robot(robot); //don't undo these objects if we're switching rooms
-    
+    if (!continueUndo) handle_pushOntoStack(robot, true); //push every objects' state, even if undoing
     if (continueUndo){
         //handle every puzzle element's stack in this room
         for (var i = 0; i < array_length_1d(global.roomContents); i++){

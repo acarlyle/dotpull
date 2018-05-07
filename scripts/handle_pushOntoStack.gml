@@ -1,5 +1,7 @@
 ///handle_pushOntoStack(var robot, bool pushCurPos)
 
+print(" -> handle_pushOntoStack ");
+
 var robot = argument0; //could be player or other character 
 var pushCurPos = argument1;  //whether to push the cur obj pos or the old one
 var pushX = 0;
