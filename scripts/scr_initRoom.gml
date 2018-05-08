@@ -4,6 +4,8 @@
     Called in every room's creation code  
 */
 
+print (" -> scr_initRoom()");
+
 if (scr_hasVisitedRoom(obj_player, room_get_name(room))){  
     if (file_exists(room_get_name(room) + ".sav")){ scr_initRoomFromFile(room_get_name(room));}
 }
@@ -78,12 +80,9 @@ for (var i = 0; i < ds_list_size(list); i++){
     }
 }
 
-
-//ds_list_sort(list, true);
-
-//print("finished creating list");
-
 var arr = roomObjectArrayList(list);
+
+handle_activeRooms();
 
 //print("checking array x values");
 

@@ -88,15 +88,16 @@
       <script>scripts\handle_playerMove_bkp.gml</script>
     </scripts>
     <scripts name="Game Handles">
-      <script>scripts\handle_gameMove.gml</script>
-      <script>scripts\handle_gotoRoom.gml</script>
       <script>scripts\handle_playerMove.gml</script>
-      <script>scripts\handle_cleanUpElementEffects.gml</script>
+      <script>scripts\handle_gameMove.gml</script>
+      <script>scripts\handle_undoMove.gml</script>
+      <script>scripts\handle_gotoRoom.gml</script>
+      <script>scripts\handle_activeRooms.gml</script>
       <script>scripts\handle_checkForRoomTransition.gml</script>
       <script>scripts\handle_checkForStairs.gml</script>
       <script>scripts\handle_deployBaby.gml</script>
       <script>scripts\handle_freeMemory.gml</script>
-      <script>scripts\handle_undoMove.gml</script>
+      <script>scripts\handle_cleanUpElementEffects.gml</script>
       <scripts name="Move Object">
         <script>scripts\move_spike.gml</script>
         <script>scripts\move_pullPushables.gml</script>
@@ -165,6 +166,7 @@
       <script>scripts\scr_tileIsOpen.gml</script>
       <script>scripts\roomObjectArrayList.gml</script>
       <script>scripts\print.gml</script>
+      <script>scripts\print2dArray.gml</script>
       <script>scripts\scr_roomFromString.gml</script>
       <script>scripts\isActivated.gml</script>
       <script>scripts\objectIs.gml</script>
@@ -197,6 +199,11 @@
     <scripts name="Virtual Mapping">
       <script>scripts\scr_getArrOfRoom.gml</script>
       <script>scripts\scr_saveRoomState.gml</script>
+      <script>scripts\draw_lowerLevels.gml</script>
+    </scripts>
+    <scripts name="Getters">
+      <script>scripts\get_lowerRoomName.gml</script>
+      <script>scripts\get_arrayOfRoomFromFile.gml</script>
     </scripts>
   </scripts>
   <objects name="objects">
