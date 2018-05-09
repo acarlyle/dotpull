@@ -44,7 +44,7 @@ for (yPos = 0; yPos < room_height; yPos += global.TILE_SIZE){
                         //ds_stack_read(aStack, ds_stack_write(stateHistory));
                         //print(ds_stack_pop(aStack));
                         
-                        //posStr = trim(posStr);
+                        posStr = trim(posStr); //cut the last comma
                     }
                     posStr += ";";
                     //print(posStr)
@@ -59,17 +59,6 @@ for (yPos = 0; yPos < room_height; yPos += global.TILE_SIZE){
         arrMap[yPos / global.TILE_SIZE, xPos / global.TILE_SIZE] = posStr;
     }
 }
-
-// BROKEN -- will crash; was only for testing
-/*for (yPos = 0; yPos < room_height; yPos++){
-    for (xPos = 0; xPos < room_width; xPos ++){
-        if (arrMap[xPos, yPos] != "") {
-            print(arrMap[xPos, yPos]);
-            //var splitArr = scr_split(arrMap[xPos, yPos], ",");
-            //print(splitArr[0]);
-        }
-    }
-}*/
 
 print("end saveRoomState");
 

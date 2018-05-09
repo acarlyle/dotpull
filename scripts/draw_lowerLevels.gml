@@ -10,4 +10,5 @@ if (lowerRoomName != undefined){
     var fileName = lowerRoomName + ".sav";
     print("Filename: " + fileName);
     var lowerRoomArray = get_arrayOfRoomFromFile(fileName);
+    print2dArray(lowerRoomArray);
 }
