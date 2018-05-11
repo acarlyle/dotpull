@@ -14,6 +14,8 @@ if (lowerRoomName != undefined){
     //print2dArray(lowerRoomArray);
     //print2dArray(upperRoomArray);
     
+    if (lowerRoomArray == false || upperRoomArray == false) return (lowerRoomArray && upperRoomArray);
+    
     //iterate through lower floor array and compare it to the one above it
     for (var yPos = 0; yPos < array_height_2d(lowerRoomArray); yPos++;){
         for (var xPos = 0; xPos < array_length_2d(lowerRoomArray, yPos); xPos++;){

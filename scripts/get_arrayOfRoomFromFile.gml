@@ -4,6 +4,8 @@ var fileName = argument0;
 
 print(" -> get_arrayOfRoomFromFile(" + string(fileName) + ")");
 
+if (!file_exists(fileName)) return false;
+
 saveFile = file_text_open_read(fileName);
 var curLine = "";
 var arr;
