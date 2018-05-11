@@ -2,6 +2,8 @@
 
 var fileName = argument0;
 
+print(" -> get_arrayOfRoomFromFile(" + string(fileName) + ")");
+
 saveFile = file_text_open_read(fileName);
 var curLine = "";
 var arr;

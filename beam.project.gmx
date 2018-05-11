@@ -20,7 +20,7 @@
     <sprites name="env">
       <sprite>sprites\spr_bridge</sprite>
       <sprite>sprites\spr_wall</sprite>
-      <sprite>sprites\spr_platform_cell</sprite>
+      <sprite>sprites\spr_platform</sprite>
       <sprite>sprites\spr_hole</sprite>
       <sprite>sprites\spr_blackTile</sprite>
     </sprites>
@@ -200,10 +200,12 @@
       <script>scripts\scr_getArrOfRoom.gml</script>
       <script>scripts\scr_saveRoomState.gml</script>
       <script>scripts\draw_lowerLevels.gml</script>
+      <script>scripts\scr_arrTileContains.gml</script>
     </scripts>
     <scripts name="Getters">
       <script>scripts\get_lowerRoomName.gml</script>
       <script>scripts\get_arrayOfRoomFromFile.gml</script>
+      <script>scripts\get_spriteFromObjStr.gml</script>
     </scripts>
   </scripts>
   <objects name="objects">
