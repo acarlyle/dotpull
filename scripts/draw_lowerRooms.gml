@@ -1,5 +1,9 @@
 ///draw_lowerRooms(var m_surf)
 
+/*
+    Draws the rooms lower than your to 
+*/
+
 var m_surface = argument0;
 
 var curRoomName = room_get_name(room);
@@ -7,6 +11,11 @@ var curRoomName = room_get_name(room);
 
 if (!surface_exists(m_surface)){ m_surface = surface_create(room_width, room_height); }
 if (surface_exists(m_surface)){ 
+
+    //clear surface
+    surface_set_target(m_surface);
+    draw_clear_alpha(c_black, 0);
+    surface_reset_target();
     
     // get below room's name
     var lowerRoomName = get_lowerRoomName(curRoomName);
@@ -43,5 +52,6 @@ if (surface_exists(m_surface)){
         }   
     }
 }
+
 
 return m_surface;

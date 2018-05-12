@@ -103,7 +103,8 @@ instance_destroy();
             <string>///Draw this surface
 
 if (surface_exists(m_surface)){
-    draw_surface(m_surface, 0, 0);
+    //draw_surface(m_surface, 0, 0);
+    draw_surface_ext(m_surface, 0, 0, 1, 1, 0, c_white, .5/2);
 }
 else { m_surface = draw_lowerRooms(m_surface); }
 </string>
