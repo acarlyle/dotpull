@@ -124,7 +124,7 @@ scr_applyScreenRes();
         draw_surface(global.surf_lowerRooms, 0, 0);
     }
     else{
-        draw_lowerLevels();
+        draw_lowerRooms();
     }
 }
 </string>

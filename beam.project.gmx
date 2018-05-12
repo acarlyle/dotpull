@@ -199,7 +199,7 @@
     <scripts name="Virtual Mapping">
       <script>scripts\scr_getArrOfRoom.gml</script>
       <script>scripts\scr_saveRoomState.gml</script>
-      <script>scripts\draw_lowerLevels.gml</script>
+      <script>scripts\draw_lowerRooms.gml</script>
       <script>scripts\scr_arrTileContains.gml</script>
     </scripts>
     <scripts name="Getters">

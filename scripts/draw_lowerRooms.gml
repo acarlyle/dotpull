@@ -1,4 +1,4 @@
-///draw_lowerLevels()
+///draw_lowerRooms()
 
 var curRoomName = room_get_name(room);
 //print(curRoomName);
