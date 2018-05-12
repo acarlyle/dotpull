@@ -5,7 +5,7 @@ var fileName = string(roomName) + ".sav";
 
 print(" -> initRoomFromFile");
 
-with (all){ if isPuzzleElement instance_destroy(); }
+handle_freeMemory();
 
 saveFile = file_text_open_read(fileName);
 var curLine = "";

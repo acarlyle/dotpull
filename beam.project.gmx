@@ -207,6 +207,9 @@
       <script>scripts\get_arrayOfRoomFromFile.gml</script>
       <script>scripts\get_spriteFromObjStr.gml</script>
     </scripts>
+    <scripts name="Surfaces">
+      <script>scripts\scr_surfaceActive.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>
@@ -261,13 +264,13 @@
         <object>objects\obj_objPush</object>
       </objects>
     </objects>
-    <objects name="env">
+    <objects name="Environment">
       <object>objects\obj_platform</object>
       <object>objects\obj_bridge</object>
       <object>objects\obj_hole</object>
       <object>objects\obj_wall</object>
     </objects>
-    <objects name="controllers">
+    <objects name="Controllers">
       <object>objects\obj_control</object>
       <object>objects\obj_menuControl</object>
       <object>objects\obj_gotoRoom</object>
@@ -293,6 +296,7 @@
       <object>objects\par_arrow</object>
       <object>objects\par_object</object>
       <object>objects\par_stairs</object>
+      <object>objects\par_surface</object>
     </objects>
     <objects name="Menu">
       <object>objects\obj_newAdventure</object>
@@ -303,6 +307,9 @@
       <object>objects\obj_robertaEnd</object>
       <object>objects\obj_menuCursor</object>
       <object>objects\obj_blackTile</object>
+    </objects>
+    <objects name="Surfaces">
+      <object>objects\surf_lowerRooms</object>
     </objects>
   </objects>
   <rooms name="rooms">

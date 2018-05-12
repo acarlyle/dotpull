@@ -4,8 +4,8 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>-1</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <persistent>0</persistent>
+  <parentName>par_surface</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,48 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>isPuzzleElement = false;
-
-//cutscene trigger, logic in player step
-global.playerCanMove = true;
-global.switchRooms = false;
-
-//init vars
-global.roomContents = ds_stack_create(); //rewindable objects
-
-//game settings
-global.set_scaleRes = 1;
-global.set_phoneRes = 3; //act phone value is 5 (960 * 640)
-global.WINDOW_WIDTH = 128;
-global.WINDOW_HEIGHT = 192;
-//player vars
-move = false;
-
-global.TILE_SIZE = 16;
-global.DEACTIVATED_X = -16;
-global.DEACTIVATED_Y = -16;
-//global.DEACTIVATED_X = 0;
-//global.DEACTIVATED_Y = 0;
-
-//scr_initPlayerPosition(3, 3);
-//global.playerX = 80;
-//global.playerY = 32;
-
-
-scr_applyScreenRes();
-
-//room_goto(rm_level_Ian_4);
-//if (!global.saveRoomLoaded) room_goto(rm_level1);
-//else{
-//    room_goto(global.saveRoomLoaded);
-//}
-
+            <string>m_surface = noone;
+isPuzzleElement = false;
+//print("________________SURFING SURFACE");
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="1" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -83,17 +50,34 @@ scr_applyScreenRes();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*if (instance_number(obj_player) == 0) {
-    player = instance_create(0, 0, obj_player);
-    var initPos = string(obj_player.x) + "," + (string(obj_player.y));
-    //print(initPos);
-    ds_stack_push(obj_player.moveHistory, initPos);
-    ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys));
-    //camera = instance_create(player.x, player.y-12, obj_camera);
-    with (player) {
-        //juststarted = 100;
-    }
-}*/
+            <string>if (surface_exists(m_surface)) surface_free(m_surface);
+
+print("DESTROYED " + string(object_get_name(object_index)) + "'s surfaces");
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///free surface memory
+
+instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -116,14 +100,12 @@ scr_applyScreenRes();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*if (global.surf_lowerRooms){
-    if (surface_exists(global.surf_lowerRooms)){
-        draw_surface(global.surf_lowerRooms, 0, 0);
-    }
-    else{
-        draw_lowerRooms();
-    }
-}*/
+            <string>///Draw this surface
+
+if (surface_exists(m_surface)){
+    draw_surface(m_surface, 0, 0);
+}
+else { m_surface = draw_lowerRooms(m_surface); }
 </string>
           </argument>
         </arguments>
