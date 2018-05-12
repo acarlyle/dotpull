@@ -119,14 +119,14 @@ scr_applyScreenRes();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*if (global.surf_lowerRooms){
+            <string>if (global.surf_lowerRooms){
     if (surface_exists(global.surf_lowerRooms)){
         draw_surface(global.surf_lowerRooms, 0, 0);
     }
     else{
         draw_lowerLevels();
     }
-}*/
+}
 </string>
           </argument>
         </arguments>

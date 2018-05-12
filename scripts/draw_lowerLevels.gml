@@ -36,12 +36,12 @@ if (lowerRoomName != undefined){
                     global.surf_lowerRooms = surface_create(room_width, room_height);
                     surface_set_target(global.surf_lowerRooms);
                     print("surfCreated_drawing: " + string(objName) + " at " + string(xPos * global.TILE_SIZE) + ", " + string(yPos * global.TILE_SIZE));
-                    //draw_sprite(get_spriteFromObjStr(objName), 0, xPos * global.TILE_SIZE, yPos * global.TILE_SIZE);
+                    draw_sprite(get_spriteFromObjStr(objName), 0, xPos * global.TILE_SIZE, yPos * global.TILE_SIZE);
                 }
                 else{
                     surface_set_target(global.surf_lowerRooms);
                     print("surExisted_drawing: " + string(objName) + " at " + string(xPos * global.TILE_SIZE) + ", " + string(yPos * global.TILE_SIZE));
-                    //draw_sprite(get_spriteFromObjStr(objName), 0, xPos * global.TILE_SIZE, yPos * global.TILE_SIZE);
+                    draw_sprite(get_spriteFromObjStr(objName), 0, xPos * global.TILE_SIZE, yPos * global.TILE_SIZE);
                 }
                 surface_reset_target();
             }
