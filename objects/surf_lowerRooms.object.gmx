@@ -25,9 +25,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>m_surface = noone;
+            <string>/*
+    These instance variables are used to draw the surface in this
+    object's draw event
+*/
+
+m_surface = noone;
+m_room = noone;
+m_xPos = 0;
+m_yPos = 0;
+m_xScale = 1;
+m_yScale = 1;
+m_rot = 0;
+m_color = c_white;
+m_alpha = .5;
 isPuzzleElement = false;
-//print("________________SURFING SURFACE");
 </string>
           </argument>
         </arguments>
@@ -103,10 +115,9 @@ instance_destroy();
             <string>///Draw this surface
 
 if (surface_exists(m_surface)){
-    //draw_surface(m_surface, 0, 0);
-    draw_surface_ext(m_surface, 0, 0, 1, 1, 0, c_white, .5/2);
+    draw_surface_ext(m_surface, m_xPos, m_yPos, m_xScale, m_yScale, m_rot, m_color, m_alpha);
 }
-else { m_surface = draw_lowerRooms(m_surface); }
+else { m_surface = draw_lowerRooms(m_surface, m_room); }
 </string>
           </argument>
         </arguments>

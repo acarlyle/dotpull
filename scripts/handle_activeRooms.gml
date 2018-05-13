@@ -7,8 +7,14 @@
 
 print(" -> handle_activeRooms() ");  
 
-//draw_lowerRooms();
-if (room_get_name(room) == "rm_stairs_f_1"){ //TODO - hardcoded room
-    if (!instance_exists(surf_lowerRooms)) instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, surf_lowerRooms);
-    else { print("how the fuck do you not exist"); }
+var curRoomName = room_get_name(room);
+var lowerRoomName = "";
+var alphaVal = 1; //halved each lower surface
+
+while (get_lowerRoomName(curRoomName) != undefined){
+    alphaVal /= 2;       
+    scr_createSurface(surf_lowerRooms, curRoomName, 0, 0, 1, 1, 0, c_white, alphaVal);
+    lowerRoomName = get_lowerRoomName(curRoomName); 
+    curRoomName = lowerRoomName;
+    //print("alphaVal: " + string(alphaVal));
 }

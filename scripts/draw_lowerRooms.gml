@@ -1,16 +1,20 @@
-///draw_lowerRooms(var m_surf)
+///draw_lowerRooms(var m_surf, var upperRoomName)
 
 /*
-    Draws the rooms lower than your to 
+    Draws the rooms lower than the passed upperRoom.
 */
 
 var m_surface = argument0;
+var upperRoomName = argument1;
+//print(upperRoomName);
 
-var curRoomName = room_get_name(room);
-//print(curRoomName);
+print(" -> draw_lowerRooms(" + string(m_surface) + ", " + string(upperRoomName));
 
 if (!surface_exists(m_surface)){ m_surface = surface_create(room_width, room_height); }
 if (surface_exists(m_surface)){ 
+
+    //print("surfe exists now");
+    //print(upperRoomName);
 
     //clear surface
     surface_set_target(m_surface);
@@ -18,13 +22,14 @@ if (surface_exists(m_surface)){
     surface_reset_target();
     
     // get below room's name
-    var lowerRoomName = get_lowerRoomName(curRoomName);
+    var lowerRoomName = get_lowerRoomName(upperRoomName);
+    //print(lowerRoomName);
     if (lowerRoomName != undefined){
         //print("lowerRoomName: " + string(lowerRoomName));
         var fileName = lowerRoomName + ".sav";
-        print("Filename: " + fileName);
+        //print("Filename: " + fileName);
         var lowerRoomArray = get_arrayOfRoomFromFile(fileName);
-        var upperRoomArray = get_arrayOfRoomFromFile(curRoomName + ".sav");
+        var upperRoomArray = get_arrayOfRoomFromFile(upperRoomName + ".sav");
         //print2dArray(lowerRoomArray);
         //print2dArray(upperRoomArray);
         
@@ -43,7 +48,7 @@ if (surface_exists(m_surface)){
                         var objAndStacks = scr_split(objName, ":"); //get rid of stacks
                         objName = objAndStacks[0];
                     }
-                    print("surExisted_drawing: " + string(objName) + " at " + string(xPos * global.TILE_SIZE) + ", " + string(yPos * global.TILE_SIZE));
+                    //print("surExisted_drawing: " + string(objName) + " at " + string(xPos * global.TILE_SIZE) + ", " + string(yPos * global.TILE_SIZE));
                     surface_set_target(m_surface);
                     draw_sprite(get_spriteFromObjStr(objName), 0, xPos * global.TILE_SIZE, yPos * global.TILE_SIZE);
                     surface_reset_target();

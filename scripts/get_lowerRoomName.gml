@@ -8,6 +8,9 @@
 
 var upperRoomName = argument0;
 
+//print(upperRoomName);
+if upperRoomName == noone return undefined;
+
 thisRoomNameArr = scr_split(upperRoomName, "_");
     
 var roomPrefix = thisRoomNameArr[0];
@@ -30,6 +33,6 @@ var newRoomName = roomPrefix + "_"
                 + string(floorType) + "_" 
                 + string(floorNumber);
                 
-print("newRoomName: " + string(newRoomName)); 
+//print("newRoomName: " + string(newRoomName)); 
 if (room_exists(scr_roomFromString(newRoomName))) return newRoomName;
 else return undefined;  

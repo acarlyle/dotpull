@@ -201,6 +201,7 @@
       <script>scripts\scr_saveRoomState.gml</script>
       <script>scripts\draw_lowerRooms.gml</script>
       <script>scripts\scr_arrTileContains.gml</script>
+      <script>scripts\script95.gml</script>
     </scripts>
     <scripts name="Getters">
       <script>scripts\get_lowerRoomName.gml</script>
@@ -209,6 +210,7 @@
     </scripts>
     <scripts name="Surfaces">
       <script>scripts\scr_surfaceActive.gml</script>
+      <script>scripts\scr_createSurface.gml</script>
     </scripts>
   </scripts>
   <objects name="objects">
@@ -325,6 +327,7 @@
       <rooms name="rm_stairs">
         <room>rooms\rm_stairs_f_1</room>
         <room>rooms\rm_stairs_b_1</room>
+        <room>rooms\rm_stairs_b_2</room>
       </rooms>
     </rooms>
     <rooms name="block.Pull">
