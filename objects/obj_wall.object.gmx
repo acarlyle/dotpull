@@ -29,6 +29,7 @@
 isDeactivated = false;
 isFallingPlatform = false;
 canPull = false;
+isSteppingStone = true;
 </string>
           </argument>
         </arguments>

@@ -48,6 +48,7 @@ deactivatedY = 0;
 canPull = true;
 canPush = false;
 canFall = false;
+isSteppingStone = true;
 
 triggerDoorPtr = undefined;
 triggerPtr = undefined;

@@ -22,6 +22,13 @@ switch(robot.state){
         break;
 }
 
+if (!robot.moved){ //if we didn't move
+    handle_checkForStairs(robot);
+    if (!global.switchRooms) { //we aren'r switching rooms
+        handle_checkLowerRoom(robot);
+    }
+}
+
 if (robot.moved){
     
     handle_checkForRoomTransition(robot);
@@ -29,6 +36,7 @@ if (robot.moved){
     if (object_get_name(robot.object_index) == "obj_player" && robot.moved){
         global.playerMoved = true;
         print("PLAYER MOVED");
+        print("Robot at " + string(robot.x) + "," + string(robot.y));
     }
     
     if (global.playerMoved){ 
@@ -38,9 +46,7 @@ if (robot.moved){
         robot.movedDir = "";
     }
 }
-else{ //if we didn't move
-    handle_checkForStairs(robot);
-}
+
 robot.move = false;
 robot.canMove = true;
 robot.state = "tile_one"; //reset state to default movement 

@@ -131,6 +131,8 @@
       <scripts name="Robot">
         <script>scripts\handle_robotMove_tile_one.gml</script>
         <script>scripts\handle_robotMove_tile_slide.gml</script>
+        <script>scripts\handle_checkLowerRoom.gml</script>
+        <script>scripts\scr_steppingStoneBelow.gml</script>
       </scripts>
       <scripts name="Objects">
         <script>scripts\move_pullPushables_tile_one.gml</script>
@@ -201,12 +203,13 @@
       <script>scripts\scr_saveRoomState.gml</script>
       <script>scripts\draw_lowerRooms.gml</script>
       <script>scripts\scr_arrTileContains.gml</script>
-      <script>scripts\script95.gml</script>
     </scripts>
     <scripts name="Getters">
       <script>scripts\get_lowerRoomName.gml</script>
       <script>scripts\get_arrayOfRoomFromFile.gml</script>
       <script>scripts\get_spriteFromObjStr.gml</script>
+      <script>scripts\get_objectsFromRoomArrayTile.gml</script>
+      <script>scripts\get_objectFromString.gml</script>
     </scripts>
     <scripts name="Surfaces">
       <script>scripts\scr_surfaceActive.gml</script>
