@@ -25,8 +25,33 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>isPuzzleElement = false;
-state = "tile_one";
+            <string>event_inherited(); //call's parent's create code
+
+//overwritten variables
+
+    //stacks
+    moveHistory = ds_stack_create(); //stores players last position; appends when player moves
+    itemHistory = ds_stack_create(); //stores players items as of last position; appends when player moves
+    movedDirHistory = ds_stack_create(); //stores the last moved robot direction
+
+    //member variables
+    isSteppingStone = true;
+    state = "tile_one";
+
+//local variables
+    
+    //member variables
+    numKeys = 0;
+    hasBaby = false;
+    canMove = true;
+    oldPlayerX = 0;
+    oldPlayerY = 0;
+    playerX = 0;
+    playerY = 0;
+    canPull = true;
+    move = false;
+    undo = false;
+    isDead = false;
 </string>
           </argument>
         </arguments>

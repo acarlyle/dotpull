@@ -25,10 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>isPuzzleElement = false;
+            <string>event_inherited();
+
 isFallingPlatform = false;
-isSteppingStone = false;
-canPull = false;
 </string>
           </argument>
         </arguments>

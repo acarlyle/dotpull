@@ -1,4 +1,4 @@
-///objectIs(var objRef)
+///objectStr(var objRef)
 
 var objRef = argument0;
 

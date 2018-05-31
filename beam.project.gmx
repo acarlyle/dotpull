@@ -81,37 +81,7 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
-    <scripts name="Backups / Unused">
-      <script>scripts\scr_canPullPush_bkp.gml</script>
-      <script>scripts\handle_gameMove_bkp.gml</script>
-      <script>scripts\handle_undoMove_bkp.gml</script>
-      <script>scripts\handle_playerMove_bkp.gml</script>
-    </scripts>
     <scripts name="Game Handles">
-      <script>scripts\handle_playerMove.gml</script>
-      <script>scripts\handle_gameMove.gml</script>
-      <script>scripts\handle_undoMove.gml</script>
-      <script>scripts\handle_gotoRoom.gml</script>
-      <script>scripts\handle_activeRooms.gml</script>
-      <script>scripts\handle_checkForRoomTransition.gml</script>
-      <script>scripts\handle_checkForStairs.gml</script>
-      <script>scripts\handle_deployBaby.gml</script>
-      <script>scripts\handle_freeMemory.gml</script>
-      <script>scripts\handle_cleanUpElementEffects.gml</script>
-      <scripts name="Move Object">
-        <script>scripts\move_spike.gml</script>
-        <script>scripts\move_pullPushables.gml</script>
-        <script>scripts\move_arrow.gml</script>
-        <script>scripts\move_fallingPlatform.gml</script>
-        <script>scripts\move_breakableWall.gml</script>
-        <script>scripts\move_eviscerator.gml</script>
-        <script>scripts\move_baby.gml</script>
-        <script>scripts\move_cannon.gml</script>
-        <script>scripts\move_blackHole.gml</script>
-        <script>scripts\move_trigger.gml</script>
-        <script>scripts\move_key.gml</script>
-        <script>scripts\move_pusher.gml</script>
-      </scripts>
       <scripts name="Undo Object">
         <script>scripts\undo_robot.gml</script>
         <script>scripts\undo_spike.gml</script>
@@ -126,6 +96,30 @@
         <script>scripts\undo_breakableWall.gml</script>
         <script>scripts\undo_robotDeath.gml</script>
       </scripts>
+      <scripts name="Move Object">
+        <script>scripts\move_spike.gml</script>
+        <script>scripts\move_pullPushables.gml</script>
+        <script>scripts\move_arrow.gml</script>
+        <script>scripts\move_fallingPlatform.gml</script>
+        <script>scripts\move_breakableWall.gml</script>
+        <script>scripts\move_eviscerator.gml</script>
+        <script>scripts\move_baby.gml</script>
+        <script>scripts\move_cannon.gml</script>
+        <script>scripts\move_blackHole.gml</script>
+        <script>scripts\move_trigger.gml</script>
+        <script>scripts\move_key.gml</script>
+        <script>scripts\move_pusher.gml</script>
+      </scripts>
+      <script>scripts\handle_gameMove.gml</script>
+      <script>scripts\handle_playerMove.gml</script>
+      <script>scripts\handle_undoMove.gml</script>
+      <script>scripts\handle_gotoRoom.gml</script>
+      <script>scripts\handle_activeRooms.gml</script>
+      <script>scripts\handle_checkForRoomTransition.gml</script>
+      <script>scripts\handle_checkForStairs.gml</script>
+      <script>scripts\handle_deployBaby.gml</script>
+      <script>scripts\handle_freeMemory.gml</script>
+      <script>scripts\handle_cleanUpElementEffects.gml</script>
     </scripts>
     <scripts name="Movement">
       <scripts name="Robot">
@@ -171,7 +165,7 @@
       <script>scripts\print2dArray.gml</script>
       <script>scripts\scr_roomFromString.gml</script>
       <script>scripts\isActivated.gml</script>
-      <script>scripts\objectIs.gml</script>
+      <script>scripts\objectStr.gml</script>
       <script>scripts\scr_getInput.gml</script>
       <script>scripts\scr_tileContains.gml</script>
       <script>scripts\scr_disableObj.gml</script>
@@ -217,7 +211,25 @@
     </scripts>
   </scripts>
   <objects name="objects">
-    <object>objects\obj_player</object>
+    <objects name="Parents">
+      <object>objects\par_obstacle</object>
+      <object>objects\par_robot</object>
+      <object>objects\par_pusher</object>
+      <object>objects\par_breakableWall</object>
+      <object>objects\par_fallingPlatform</object>
+      <object>objects\par_pickupable</object>
+      <object>objects\par_block</object>
+      <object>objects\par_snare</object>
+      <object>objects\par_pullable</object>
+      <object>objects\par_wall</object>
+      <object>objects\par_menu</object>
+      <object>objects\par_cannon</object>
+      <object>objects\par_platform</object>
+      <object>objects\par_arrow</object>
+      <object>objects\par_object</object>
+      <object>objects\par_stairs</object>
+      <object>objects\par_surface</object>
+    </objects>
     <objects name="Element Effects">
       <object>objects\obj_cannonEnergy</object>
     </objects>
@@ -259,14 +271,15 @@
         <object>objects\obj_triggerDoor</object>
         <object>objects\obj_baby</object>
       </objects>
-      <objects name="not_even_fucking_used">
-        <object>objects\obj_triggerTrail</object>
-      </objects>
-      <objects name="par_robot">
-        <object>objects\obj_roberta</object>
-      </objects>
       <objects name="par_pusher">
         <object>objects\obj_objPush</object>
+      </objects>
+      <objects name="par_robot">
+        <object>objects\obj_player</object>
+        <object>objects\obj_roberta</object>
+      </objects>
+      <objects name="not_even_fucking_used">
+        <object>objects\obj_triggerTrail</object>
       </objects>
     </objects>
     <objects name="Environment">
@@ -283,25 +296,6 @@
       <object>objects\obj_stairsAsc</object>
       <object>objects\obj_cutsceneTrigger</object>
       <object>objects\obj_dialogueTrigger</object>
-    </objects>
-    <objects name="Parents">
-      <object>objects\par_obstacle</object>
-      <object>objects\par_robot</object>
-      <object>objects\par_pusher</object>
-      <object>objects\par_breakableWall</object>
-      <object>objects\par_fallingPlatform</object>
-      <object>objects\par_pickupable</object>
-      <object>objects\par_block</object>
-      <object>objects\par_snare</object>
-      <object>objects\par_pullable</object>
-      <object>objects\par_wall</object>
-      <object>objects\par_menu</object>
-      <object>objects\par_cannon</object>
-      <object>objects\par_platform</object>
-      <object>objects\par_arrow</object>
-      <object>objects\par_object</object>
-      <object>objects\par_stairs</object>
-      <object>objects\par_surface</object>
     </objects>
     <objects name="Menu">
       <object>objects\obj_newAdventure</object>

@@ -25,36 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>moveHistory = ds_stack_create();
-var initPos = string(x) + "," + (string(y));
-print(initPos);
-ds_stack_push(moveHistory, initPos);
+            <string>event_inherited();
 
-stateHistory = ds_stack_create();
-state = "idling"; //idling, charging, firing
-shotDirection = "none";
-var initState = state + "," + shotDirection;
-print("init state: ");
-print(initState);
-ds_stack_push(stateHistory, initState);
+//overwritten par vars
 
-stateHistory = undefined;
-isPuzzleElement = true;
-isLocked = true;
-canPull = false;
-canPush = false;
-isDeactivated = false;
-justDeactivated = false;
-deactivatedX = 0;
-deactivatedY = 0;
+    //stack
+    moveHistory = ds_stack_create();
+    var initPos = string(x) + "," + (string(y));
+    print(initPos);
+    ds_stack_push(moveHistory, initPos);
+    stateHistory = ds_stack_create();
+    state = "idling"; //idling, charging, firing
+    shotDirection = "none"; //local
+    var initState = state + "," + shotDirection;
+    print("init state: ");
+    print(initState);
+    ds_stack_push(stateHistory, initState);
 
-triggerDoorPtr = undefined;
-triggerPtr = undefined;
-isSpike = false;
-isMovePriority = false;
-isFallingPlatform = false;
-isEviscerator = false;
-isArrow = false;
+    //member vars
+    isPuzzleElement = true;
 </string>
           </argument>
         </arguments>

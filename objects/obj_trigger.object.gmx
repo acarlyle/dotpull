@@ -25,36 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>moveHistory = ds_stack_create();
-var initPos = string(x) + "," + (string(y));
-print(initPos);
-ds_stack_push(moveHistory, initPos);
+            <string>event_inherited(); //calls parent's create code
 
-movedDir = "";
-movedDirHistory = undefined;
+//overwritten par vars
 
-stateHistory = undefined;
-image_speed = 0;
+    //stack
+    moveHistory = ds_stack_create();
+    var initPos = string(x) + "," + (string(y));
+    print(initPos);
+    ds_stack_push(moveHistory, initPos);
 
-oldPosX = x;
-oldPosY = y;
+    //member vars
+    isPuzzleElement = true;
+    
+//local vars
 
-isPuzzleElement = true;
-isLocked = true;
-canPull = false;
-canPush = false;
-isDeactivated = false;
-justDeactivated = false;
-deactivatedX = 0;
-deactivatedY = 0;
-canFall = false;
+    //member vars    
+    triggerPtr = undefined;
+    triggerDoorPtr = undefined;
 
-triggerDoorPtr = undefined;
-isSpike = false;
-isMovePriority = false;
-isFallingPlatform = false;
-isEviscerator = false;
-isArrow = false;
 </string>
           </argument>
         </arguments>

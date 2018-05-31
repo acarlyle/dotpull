@@ -234,7 +234,7 @@ if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
     print("hereweGO");
     
     //dead check
-    if (scr_tileContains(x, y, array(par_robot)) && isSpike){
+    if (scr_tileContains(x, y, array(par_robot)) && objectStr(self) == "obj_spike"){
         print("ded player");
         robot.isDead = true;
         robot.sprite_index = spr_playerDead;

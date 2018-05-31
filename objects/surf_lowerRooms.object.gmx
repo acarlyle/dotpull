@@ -30,8 +30,8 @@
     object's draw event
 */
 
-m_surface = noone;
-m_room = noone;
+event_inherited();
+
 m_xPos = 0;
 m_yPos = 0;
 m_xScale = 1;

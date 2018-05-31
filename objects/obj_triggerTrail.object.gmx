@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>moveHistory = ds_stack_create();
+            <string>event_inherited(); //calls parent's create code
+
+moveHistory = ds_stack_create();
 var initPos = string(x) + "," + (string(y));
 print(initPos);
 ds_stack_push(moveHistory, initPos);

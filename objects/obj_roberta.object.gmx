@@ -25,29 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>isPuzzleElement = false;
-
-state = "tile_one";
-
-
-hasBaby = false;
-oldPlayerX = 0;
-oldPlayerY = 0;
-playerX = 0;
-playerY = 0;
-//dynamic memory
-moveHistory = ds_stack_create(); //stores players last position; appends when player moves
-itemHistory = ds_stack_create(); //stores players items as of last position; appends when player moves
-movedDirHistory = ds_stack_create();
-numKeys = 0;
-
-move = false;
-moved = false;
-undo = false;
-isDead = false;
-movedDir = "";
-
-isDeactivated = false;
+            <string>event_inherited(); //calls parent's create code
 </string>
           </argument>
         </arguments>

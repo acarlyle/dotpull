@@ -25,36 +25,24 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>mirptrPtr = undefined;
+            <string>event_inherited(); //calls parent's create code
 
-moveHistory = ds_stack_create();
-var initPos = string(x) + "," + (string(y));
-print(initPos);
-ds_stack_push(moveHistory, initPos);
 
-oldPosX = x;
-oldPosY = y;
+//overwritten par vars
 
-image_speed = 0;
+    //stack
+    moveHistory = ds_stack_create();
+    var initPos = string(x) + "," + (string(y));
+    print(initPos);
+    ds_stack_push(moveHistory, initPos);
 
-stateHistory = undefined;
-isPuzzleElement = true;
-isLocked = false;
-canPull = false;
-canPush = false;
-isDeactivated = false;
-justDeactivated = false;
-deactivatedX = 0;
-deactivatedY = 0;
-canFall = false;
+    //member vars
+    isPuzzleElement = true;
 
-triggerPtr = undefined;
-triggerDoorPtr = undefined;
-isSpike = false;
-isMovePriority = false;
-isFallingPlatform = false;
-isEviscerator = false;
-isArrow = false;
+//local vars
+
+    //member vars
+    mirptrPtr = undefined;
 </string>
           </argument>
         </arguments>

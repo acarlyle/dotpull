@@ -41,7 +41,6 @@ with (all) {
             ds_list_add(list, self);
             //print(object_index);
         }
-        //if (isSpike) print("is spike");
         //print("added this object to ds list");
     }
 }
@@ -73,7 +72,7 @@ for (var i = 0; i < ds_list_size(list); i++){
 }
 for (var i = 0; i < ds_list_size(list); i++){
     var inst = ds_list_find_value(list, i);
-    if (inst.isFallingPlatform){
+    if (parentOf(inst) == "par_fallingPlatform"){
         //print("moving falling platform up to the tippy top of the priority list");
         ds_list_delete(list, i);
         ds_list_insert(list, 0, inst);

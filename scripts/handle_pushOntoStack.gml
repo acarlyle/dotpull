@@ -30,7 +30,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
         
         ds_stack_push(object.moveHistory, string(pushX) + "," + string(pushY)); //pushing previous turn's movement
         
-        if (object.isSpike){
+        if (objectStr(object) == "obj_spike"){
             ds_stack_push(object.stateHistory, object.state + "," + object.targetDirection);
             //print("pushed spike stateHistory: " + string(object.state) + "," + string(object.targetDirection));
         }

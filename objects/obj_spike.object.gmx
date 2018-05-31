@@ -25,43 +25,26 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>moveHistory = ds_stack_create();
-var initPos = string(x) + "," + (string(y));
-print(initPos);
-ds_stack_push(moveHistory, initPos);
+            <string>event_inherited(); //calls parent's create code
 
-movedDirHistory = ds_stack_create();
+//overwritten par vars
 
-oldPosX = x;
-oldPosY = y;
-movedDir = "";
+    //stack
+    stateHistory = ds_stack_create();
+    state = "idle"; //idle or active
+    targetDirection = "idling";
+    var initState = state + "," + targetDirection;
+    print("init state: ");
+    print(initState);
+    ds_stack_push(stateHistory, initState);
 
-stateHistory = ds_stack_create();
-state = "idle"; //idle or active
-targetDirection = "idling";
-var initState = state + "," + targetDirection;
-print("init state: ");
-print(initState);
-ds_stack_push(stateHistory, initState);
+    //member vars
+    canPull = true;
 
-spikeMoved = false;
+//local vars
 
-isPuzzleElement = true;
-isDeactivated = false;
-justDeactivated = false;
-deactivatedX = 0;
-deactivatedY = 0;
-canPull = true;
-canPush = false;
-canFall = true;
-triggerDoorPtr = undefined;
-triggerPtr = undefined;
-isSpike = true;
-targetLocked = false;
-isMovePriority = true;
-isFallingPlatform = false;
-isEviscerator = false;
-isArrow = false;
+    //member vars
+    spikeMoved = false;
 </string>
           </argument>
         </arguments>

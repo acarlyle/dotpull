@@ -42,7 +42,7 @@ if (!(canPull || canPush)) return false;
 if (isDeactivated) return false;
 
 //Handle active angry spike charge
-if (isSpike){
+if (objectStr(self) == "obj_spike"){
     if (targetLocked){
         if (instance_place(posX, posY, par_fallingPlatform)){
             var fallingPlat = instance_place(posX, posY, par_fallingPlatform);
@@ -498,7 +498,6 @@ if(instance_place(posX, posY, par_obstacle)){
     var obs = instance_place(posX, posY, par_obstacle);
     if (isActivated(obs)) {
         print("Oh no an obstacle is here and it's activated !!!");
-        print("pls be a spike" + string(isSpike));
         return false;    
     }
 }

@@ -25,10 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>isPuzzleElement = false;
+            <string>event_inherited();
 
 roomsVisited = ds_list_create();
 
+//defining controls
 global.key_left = false;
 global.key_right = false;
 global.key_up = false;
@@ -41,33 +42,6 @@ global.key_r = false;
 global.key_esc = false;
 
 global.playerMoved = false;
-
-//normie memory
-numKeys = 0;
-hasBaby = false;
-canMove = true;
-oldPlayerX = 0;
-oldPlayerY = 0;
-playerX = 0;
-playerY = 0;
-isDeactivated = false;
-isSteppingStone = false;
-movedDir = "";
-canPull = true;
-state = "tile_one";
-
-
-//dynamic memory
-moveHistory = ds_stack_create(); //stores players last position; appends when player moves
-itemHistory = ds_stack_create(); //stores players items as of last position; appends when player moves
-movedDirHistory = ds_stack_create(); //stores the last moved robot direction
-
-image_speed = 0;
-
-move = false;
-moved = false;
-undo = false;
-isDead = false;
 </string>
           </argument>
         </arguments>

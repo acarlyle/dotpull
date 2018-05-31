@@ -11,7 +11,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
 //if we have active spikes, we need them to move before idle ones
 for (var i = 0; i < ds_list_size(list); i++){
     var inst = ds_list_find_value(list, i);
-    if (inst.isSpike){
+    if (objectStr(inst) == "obj_spike"){
         if (inst.targetLocked){
             //print("target locked, shuffling list");
             print(inst.state);
@@ -53,7 +53,7 @@ for (var i = 0; i < ds_list_size(list); i++){
 //falling platforms are still tiptop priority
 for (var i = 0; i < ds_list_size(list); i++){
     var inst = ds_list_find_value(list, i);
-    if (inst.isFallingPlatform){
+    if (parentOf(inst) == "par_fallingPlatform"){
         ds_list_delete(list, i);
         ds_list_insert(list, 0, inst);
     }

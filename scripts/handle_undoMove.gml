@@ -21,16 +21,16 @@ if (!ds_stack_empty(robot.moveHistory)){
             with(object){
                 print("Handling undo for " + string(object_get_name(global.roomContents[i].object_index)));
                 
-                if (isSpike){
+                if (objectStr(object) == "obj_spike"){
                     undo_spike(object);
                 }
                 if (parentOf(object) == "par_breakableWall"){
                     undo_breakableWall(object);
                 }
-                if (isFallingPlatform){
+                if (parentOf(object) == "par_fallingPlatform"){
                     undo_fallingPlatform(object);
                 }
-                if (isArrow){
+                if (parentOf(object) == "par_arrow"){
                     undo_arrow(object);
                 }
                 
@@ -38,7 +38,7 @@ if (!ds_stack_empty(robot.moveHistory)){
                     X, Y Position-sensitive objects
                 */
                 
-                if (objectIs(self) == "obj_block") print("_BLOCK stksize befoee pop!: " + string(ds_stack_size(moveHistory)));
+                if (objectStr(self) == "obj_block") print("_BLOCK stksize befoee pop!: " + string(ds_stack_size(moveHistory)));
                 
                 var objPosStr = ds_stack_pop(moveHistory); //string e.g. "64,64"
                 //print(objPosStr);
@@ -61,7 +61,7 @@ if (!ds_stack_empty(robot.moveHistory)){
                         object.oldPosY = object.y;
                     }
                     //undo trigger
-                    if (triggerDoorPtr != undefined){
+                    if (objectStr(object) == "obj_trigger" || objectStr == "obj_triggerDoor"){
                         undo_trigger(object);
                     }
                     if (object_get_name(object_index) == "obj_triggerDoor"){

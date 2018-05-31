@@ -25,7 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>isPuzzleElement = false;
+            <string>event_inherited();
+
+//overwritten par vars
+
+    //stack
+    moveHistory = ds_stack_create();
+    var initPos = string(x) + "," + (string(y));
+    print(initPos);
+    ds_stack_push(moveHistory, initPos);
+    
+    movedDirHistory = ds_stack_create();
+
+    //member vars
+    state = "tile_one";
+    isPuzzleElement = true;
+    isMovePriority = true;
 </string>
           </argument>
         </arguments>

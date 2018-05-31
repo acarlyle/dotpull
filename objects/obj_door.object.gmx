@@ -25,41 +25,26 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>moveHistory = ds_stack_create();
-var initPos = string(x) + "," + (string(y));
-print(initPos);
-ds_stack_push(moveHistory, initPos);
+            <string>event_inherited(); //calls parent's create code
 
-movedDirHistory = undefined;
+//overwrriten par vars
 
-oldPosX = x;
-oldPosY = y;
+    //stacks
+    moveHistory = ds_stack_create();
+    var initPos = string(x) + "," + (string(y));
+    print(initPos);
+    ds_stack_push(moveHistory, initPos);
+    stateHistory = ds_stack_create(); //either locked or unlocked
+    ds_stack_push(stateHistory, "locked");
 
-//either locked or unlocked
-stateHistory = ds_stack_create();
-ds_stack_push(stateHistory, "locked");
-currentState = "locked";
+    //member vars
+    isPuzzleElement = true;
 
-image_speed = 0;
+//local vars
 
-isPuzzleElement = true;
-isLocked = true;
-canPull = false;
-canPush = false;
-isDeactivated = false;
-justDeactivated = false;
-deactivatedX = undefined;
-deactivatedY = undefined;
-canFall = false;
-
-triggerDoorPtr = undefined;
-triggerPtr = undefined;
-isSpike = false;
-isMovePriority = false;
-isArrow = false;
-isFallingPlatform = false;
-isEviscerator = false;
-movedDir = "";
+    //member vars
+    currentState = "locked";
+    isLocked = true;
 </string>
           </argument>
         </arguments>

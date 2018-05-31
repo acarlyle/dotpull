@@ -36,33 +36,33 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
             continue;
         }
         //Handles: obj_trigger, obj_triggerDoor
-        else if (triggerDoorPtr != undefined){
+        else if (objectStr(object) == "obj_trigger" || objectStr == "obj_triggerDoor"){
             move_trigger(object, robot);
         }
         //Handles: obj_eviscerator
-        else if (isEviscerator){
+        else if (objectStr(object) == "obj_eviscerator"){
             move_eviscerator(object, robot);
         }
         //Handles: par_arrow
-        else if (isArrow){
+        else if (parentOf(object) == "par_arrow"){
             move_arrow(object);
         }
         //Handles: par_fallingPlatform
-        else if (isFallingPlatform){
+        else if (parentOf(object) == "par_fallingPlatform"){
             move_fallingPlatform(object, robot);
         }
         //Handles: obj_spike
-        else if (object.isSpike){
+        else if (objectStr(object) == "obj_spike"){
             move_spike(object, robot);
         }
         //Handles: par_block, obj_key, obj_magneticSnare
         else if ((canPull || canPush)){
             move_pullPushables(object, robot);
         }
-        else if (object_get_name(object.object_index) == "obj_blackHole"){
+        else if (objectStr(object) == "obj_blackHole"){
             move_blackHole(object);
         }  
-        else if (object_get_name(object.object_index) == "obj_baby"){
+        else if (objectStr(object) == "obj_baby"){
             move_baby(object, robot);
         }
     }
