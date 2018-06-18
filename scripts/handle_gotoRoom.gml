@@ -15,7 +15,7 @@ if (state == "undoRoom" || state == "gotoRoom"){
     }
 }
     
-handle_roomSave(); //TODO - rm arg/replace obj_player arg
+handle_roomSave();
 
 room_goto(rm);
 

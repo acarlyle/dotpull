@@ -1,4 +1,4 @@
-///scr_saveRoomState(str roomName)
+///get_activeRoomObjects(str roomName)
 
 
 
@@ -14,7 +14,7 @@
 
 var roomStr = argument0;
 
-print(" -> scr_saveRoomState(" + string(roomStr) + ")");
+print(" -> get_activeRoomObjects(" + string(roomStr) + ")");
 
 var xPos = 0;
 var yPos = 0;
@@ -22,6 +22,8 @@ var arrMap;
 var posStr;
 var objInst;
 var objName;
+
+//Save active objects
 
 for (yPos = 0; yPos < room_height; yPos += global.TILE_SIZE){
     for (xPos = 0; xPos < room_width; xPos += global.TILE_SIZE){  
@@ -59,6 +61,8 @@ for (yPos = 0; yPos < room_height; yPos += global.TILE_SIZE){
         arrMap[yPos / global.TILE_SIZE, xPos / global.TILE_SIZE] = posStr;
     }
 }
+
+//Save deactivated objects
 
 print("end saveRoomState");
 

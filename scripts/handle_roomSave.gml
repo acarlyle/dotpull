@@ -29,7 +29,7 @@ var yPos = 0;
 
 // set save file for this room
 var roomName = room_get_name(room);
-var roomSaveFileName = roomName + ".sav"; //should have a bkp file in case of failure to save/load
+var roomSaveFileName = roomName + ".sav"; // TODO -> should have a bkp file in case of failure to save/load
 if (file_exists(roomSaveFileName)) file_delete(roomSaveFileName);
 
 // write file header
@@ -43,17 +43,21 @@ file_text_writeln(roomSaveFile);
 file_text_write_string(roomSaveFile, "---");
 file_text_writeln(roomSaveFile);
 
-// write room's object positions
-var curRoomMap = scr_saveRoomState(roomName); 
-//print("arr height: " + string(array_height_2d(curRoomMap)));
-//print("arr length: " + string(array_length_2d(curRoomMap, 0)));
-for (yPos = 0; yPos < array_height_2d(curRoomMap); yPos++){
-    for (xPos = 0; xPos < array_length_2d(curRoomMap, yPos); xPos++){
-        file_text_write_string(roomSaveFile, curRoomMap[yPos, xPos]);
+// write room's active object positions
+var activeRoomObjectsArr = get_activeRoomObjects(roomName); 
+//print("arr height: " + string(array_height_2d(activeRoomObjectsArr)));
+//print("arr length: " + string(array_length_2d(activeRoomObjectsArr, 0)));
+for (yPos = 0; yPos < array_height_2d(activeRoomObjectsArr); yPos++){
+    for (xPos = 0; xPos < array_length_2d(activeRoomObjectsArr, yPos); xPos++){
+        file_text_write_string(roomSaveFile, activeRoomObjectsArr[yPos, xPos]);
     }
     file_text_writeln(roomSaveFile);
 }
 file_text_write_string(roomSaveFile, "---");
+
+// write room's deactivated object positions
+var deactivatedRoomObjectsArr = get_deactivatedRoomObjects(roomName);
+
 file_text_writeln(roomSaveFile);
 
 

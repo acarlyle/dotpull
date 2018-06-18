@@ -194,12 +194,13 @@
     </scripts>
     <scripts name="Virtual Mapping">
       <script>scripts\scr_getArrOfRoom.gml</script>
-      <script>scripts\scr_saveRoomState.gml</script>
       <script>scripts\draw_lowerRooms.gml</script>
       <script>scripts\scr_arrTileContains.gml</script>
     </scripts>
     <scripts name="Getters">
       <script>scripts\get_lowerRoomName.gml</script>
+      <script>scripts\get_activeRoomObjects.gml</script>
+      <script>scripts\get_deactivatedRoomObjects.gml</script>
       <script>scripts\get_arrayOfRoomFromFile.gml</script>
       <script>scripts\get_spriteFromObjStr.gml</script>
       <script>scripts\get_objectsFromRoomArrayTile.gml</script>

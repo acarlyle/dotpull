@@ -24,7 +24,7 @@ if (surface_exists(m_surface)){
     // get below room's name
     var lowerRoomName = get_lowerRoomName(upperRoomName);
     //print(lowerRoomName);
-    if (lowerRoomName != undefined){
+    if (lowerRoomName != undefined && room_exists(lowerRoomName)){
         //print("lowerRoomName: " + string(lowerRoomName));
         var fileName = lowerRoomName + ".sav";
         //print("Filename: " + fileName);
@@ -33,6 +33,8 @@ if (surface_exists(m_surface)){
         //print2dArray(lowerRoomArray);
         //print2dArray(upperRoomArray);
         
+        //TODO -> This logic will be spammed until the floor is drawn, if the room exists.
+        //Need to implement a way out in the surface object that is calling this function.
         if (lowerRoomArray == false || upperRoomArray == false) return false;
         
         //iterate through lower floor array and compare it to the one above it
