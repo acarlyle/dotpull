@@ -26,8 +26,6 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
         if (pushCurPos){ pushX = object.x; pushY = object.y; }
         else{ pushX = object.oldPosX; pushY = object.oldPosY; }
         
-        //if (objectIs(object) == "obj_block") print("_PUSHING x, y: " + string(pushX) + ", " + string(pushY));
-        
         ds_stack_push(object.moveHistory, string(pushX) + "," + string(pushY)); //pushing previous turn's movement
         
         if (objectStr(object) == "obj_spike"){

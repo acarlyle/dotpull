@@ -43,7 +43,6 @@
     //member vars    
     triggerPtr = undefined;
     triggerDoorPtr = undefined;
-
 </string>
           </argument>
         </arguments>

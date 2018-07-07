@@ -23,7 +23,10 @@ var posStr;
 var objInst;
 var objName;
 
-//Save active objects
+/*
+    * Save active objects
+    * objAtTile(1,0):moveHistory_<stackHash>[localVar:value,localVar2:number];|   <- typical obj. line
+*/
 
 for (yPos = 0; yPos < room_height; yPos += global.TILE_SIZE){
     for (xPos = 0; xPos < room_width; xPos += global.TILE_SIZE){  

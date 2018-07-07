@@ -8,12 +8,12 @@ var yPos = 0;
 /*
     This shit saves the room's current object positions along with all of the dynamic 
     memory used by it into a file so that it can be returned to normal when a player comes
-    back and not reinitialized.  
+    back.  This is so the room isn't reinitialized.  
     
     Save file default path is C:\Users\UserName\AppData\Local\beam
     
     *** TODO NOTE ***
-        This will need to be hashed to prevent cheat cheat fuckorinos.
+        This will need to be hashed to prevent notepad SMEs!!!!.
     *** END TODO NOTE ***
     
     
@@ -23,7 +23,9 @@ var yPos = 0;
     ---
     var fileName
     ---
-    
+    objAtTile(0,0):moveHistory_<stackHash>...;obj2AtTile(0,0):moveHis....;|obj2AtTile(0,1):...;|
+    objAtTile(1,0):moveHistory_<stackHash>[localVar:value,localVar2:number];|
+    ---
     *****
 */
 
@@ -56,7 +58,7 @@ for (yPos = 0; yPos < array_height_2d(activeRoomObjectsArr); yPos++){
 file_text_write_string(roomSaveFile, "---");
 
 // write room's deactivated object positions
-var deactivatedRoomObjectsArr = get_deactivatedRoomObjects(roomName);
+var deactivatedRoomObjectsArr = get_deactivatedRoomObjects(roomName); // TODO ?  maybe
 
 file_text_writeln(roomSaveFile);
 
