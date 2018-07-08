@@ -45,12 +45,9 @@ for (yPos = 0; yPos < room_height; yPos += global.TILE_SIZE){
                         if (movedDirHistory) posStr += ("movedDirHistory_" + (ds_stack_write(movedDirHistory) + ","));
                         if (stateHistory)    posStr += ("stateHistory_" + (ds_stack_write(stateHistory) + ","));
                         
-                        //aStack = ds_stack_create();
-                        //ds_stack_read(aStack, ds_stack_write(stateHistory));
-                        //print(ds_stack_pop(aStack));
-                        
                         posStr = trim(posStr); //cut the last comma
                     }
+                    posStr += get_objectLocalVarsStr(self.object_index);
                     posStr += ";";
                     //print(posStr)
                 }

@@ -150,7 +150,7 @@
       <script>scripts\handle_destroyThisObjectStacks.gml</script>
       <script>scripts\push_robotState.gml</script>
     </scripts>
-    <scripts name="settings">
+    <scripts name="Settings">
       <script>scripts\scr_applyScreenRes.gml</script>
       <script>scripts\scr_initPlayerPosition.gml</script>
       <script>scripts\scr_initRoom.gml</script>
@@ -205,6 +205,7 @@
       <script>scripts\get_spriteFromObjStr.gml</script>
       <script>scripts\get_objectsFromRoomArrayTile.gml</script>
       <script>scripts\get_objectFromString.gml</script>
+      <script>scripts\get_objectLocalVarsStr.gml</script>
     </scripts>
     <scripts name="Surfaces">
       <script>scripts\scr_surfaceActive.gml</script>
