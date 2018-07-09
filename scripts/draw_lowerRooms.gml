@@ -49,6 +49,11 @@ if (surface_exists(m_surface)){
                     if strcontains(objName, ":") {
                         var objAndStacks = scr_split(objName, ":"); //get rid of stacks
                         objName = objAndStacks[0];
+                        //objName contains local variables
+                        if (strcontains(objName, "[")){
+                            var objNameAndVars = scr_split(objName, "[");
+                            objName = objNameAndVars[0];
+                        }
                     }
                     //print("surExisted_drawing: " + string(objName) + " at " + string(xPos * global.TILE_SIZE) + ", " + string(yPos * global.TILE_SIZE));
                     surface_set_target(m_surface);

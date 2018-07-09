@@ -25,7 +25,7 @@ var objName;
 
 /*
     * Save active objects
-    * objAtTile(1,0):moveHistory_<stackHash>[localVar:value,localVar2:number];|   <- typical obj. line
+    * objAtTile(1,0)[localVar=value/localVar2=number]:moveHistory_<stackHash>;|   <- typical obj. line
 */
 
 for (yPos = 0; yPos < room_height; yPos += global.TILE_SIZE){
@@ -38,7 +38,7 @@ for (yPos = 0; yPos < room_height; yPos += global.TILE_SIZE){
                 
                 objName = object_get_name(self.object_index);
                 if (string_pos(objName, posStr) == 0){ //returns 0 if substr not found (do we already have this obj check)
-                    posStr += objName;
+                    posStr += (objName + get_objectLocalVarsStr(self.object_index));
                     if (isPuzzleElement){ //only puzzle elements have stacks
                         posStr += ":";
                         if (moveHistory)     posStr += ("moveHistory_" + (ds_stack_write(moveHistory) + ","));
@@ -47,9 +47,8 @@ for (yPos = 0; yPos < room_height; yPos += global.TILE_SIZE){
                         
                         posStr = trim(posStr); //cut the last comma
                     }
-                    posStr += get_objectLocalVarsStr(self.object_index);
                     posStr += ";";
-                    //print(posStr)
+                    //print("POSSTR: " + string(posStr))
                 }
             }
         }

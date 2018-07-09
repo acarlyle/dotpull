@@ -24,7 +24,7 @@ var yPos = 0;
     var fileName
     ---
     objAtTile(0,0):moveHistory_<stackHash>...;obj2AtTile(0,0):moveHis....;|obj2AtTile(0,1):...;|
-    objAtTile(1,0):moveHistory_<stackHash>[localVar:value,localVar2:number];|
+    objAtTile(1,0)[localVar=value/localVar2=number]:moveHistory_<stackHash>;|
     ---
     *****
 */

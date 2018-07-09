@@ -5,9 +5,9 @@
     local var in this object.  The purpose is to capture Heap memory that the objects use not stores
     in the ds_stacks.  String follows this naming convention:
     
-    objAtTile(1,0):moveHistory_<stackHash>[localVar:value,localVar2:number];|   <- typical obj. line
+    objAtTile(1,0)[localVar=value/localVar2=number]:moveHistory_<stackHash>;|   <- typical obj. line
     
-    [localVar:value,localVar2:number] <- this is the relevant bit returned from this function
+    [localVar=value/localVar2=number] <- this is the relevant bit returned from this function
 
 */
 
@@ -23,9 +23,10 @@ switch (object_get_name(object)){
             doorX = triggerDoor.deactivatedX;
             doorY = triggerDoor.deactivatedY;
         }
-        rtnStr = "[triggerDoorPtr_posX:" + string(doorX) + ",triggerDoorPtr_posY:" + string(doorY)+"]";
+        rtnStr = "[triggerDoorPtr_posX=" + string(doorX) + "/triggerDoorPtr_posY=" + string(doorY)+"]";
                                              
         //print("triggerDoorPtr: " + string(object.triggerDoorPtr));
+        break;
 }
 
 return rtnStr;

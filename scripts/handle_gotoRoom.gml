@@ -14,14 +14,12 @@ if (state == "undoRoom" || state == "gotoRoom"){
         handle_pushOntoStack(self, true); //push final state of room, cur obj positions
     }
 }
-    
-handle_roomSave();
-
 room_goto(rm);
 
-print("");
-print("----------------------------------------------");
+print("---------------------------");
 print("----------ROOM TRANSITION------------");
+handle_roomSave();
+    
 print("----------------------------------------------");
 print("");
 

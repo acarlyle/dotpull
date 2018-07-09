@@ -211,6 +211,9 @@
       <script>scripts\scr_surfaceActive.gml</script>
       <script>scripts\scr_createSurface.gml</script>
     </scripts>
+    <scripts name="Setters">
+      <script>scripts\set_objectLocalVars.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <objects name="Parents">
