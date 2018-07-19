@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>isPuzzleElement = false;
+            <string>/*
+    Constants are defined in GameMaker as "macros".  
+*/
+
+isPuzzleElement = false;
 
 //cutscene trigger, logic in player step
 global.playerCanMove = true;
@@ -45,13 +49,6 @@ move = false;
 global.TILE_SIZE = 16;
 global.DEACTIVATED_X = -16;
 global.DEACTIVATED_Y = -16;
-//global.DEACTIVATED_X = 0;
-//global.DEACTIVATED_Y = 0;
-
-//scr_initPlayerPosition(3, 3);
-//global.playerX = 80;
-//global.playerY = 32;
-
 
 scr_applyScreenRes();
 

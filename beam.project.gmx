@@ -213,8 +213,12 @@
     </scripts>
     <scripts name="Setters">
       <script>scripts\set_objectLocalVars.gml</script>
+      <script>scripts\set_objectState.gml</script>
     </scripts>
   </scripts>
+  <shaders name="shaders">
+    <shader type="GLSLES">shaders\shader0.shader</shader>
+  </shaders>
   <objects name="objects">
     <objects name="Parents">
       <object>objects\par_obstacle</object>
@@ -379,6 +383,10 @@
       <room>rooms\rm_x2</room>
     </rooms>
   </rooms>
+  <constants number="2">
+    <constant name="TRIGGER_NOT_PRESSED">0</constant>
+    <constant name="TRIGGER_PRESSED">1</constant>
+  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>

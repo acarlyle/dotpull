@@ -22,7 +22,8 @@ switch (object_get_name(object.object_index)){
     //check if the triggerDoor tied to this trigger exists; the x and y position were stored in the file
     case "obj_trigger":
         var localVarAndValueArr = scr_split(localVarsArr[0], "=");
-        var doorPosX = real(localVarAndValueArr[0]);
+        var doorPosX = real(localVarAndValueArr[1]);
+        print("DoorPosX: " + string(doorPosX));
         localVarAndValueArr = scr_split(localVarsArr[1], "=");
         var doorPosY = real(localVarAndValueArr[1]);
         if (!instance_place(doorPosX, doorPosY, obj_triggerDoor)){

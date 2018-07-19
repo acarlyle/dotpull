@@ -83,7 +83,11 @@ var arr = roomObjectArrayList(list);
 
 handle_activeRooms();
 
-//print("checking array x values");
+//set the state of the object in the list
+for (var i = 0; i < ds_list_size(list); i++){
+    var inst = ds_list_find_value(list, i);
+    set_objectState(inst);
+}
 
 ds_list_destroy(list);
 return arr;
