@@ -7,20 +7,20 @@
 
 //print("move_spike");
 
-object = argument0;
+spike = argument0;
 robot = argument1;
 
 var mirptrExt = false; //TODO
 
 //check if spike has already during player's turn and not roberta's
-if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
+if (!spike.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
     if (targetLocked){
         //print("TARGET IS LOCKED AT " + string(targetDirection));
         state = "active";
         switch (targetDirection){
             case "up": 
                 print("up"); 
-                if (scr_canPullPush(x, y-global.TILE_SIZE, false, object, robot, mirptrExt)){
+                if (scr_canPullPush(x, y-global.TILE_SIZE, false, spike, robot, mirptrExt)){
                     y-=global.TILE_SIZE;
                 }
                 else{
@@ -29,11 +29,11 @@ if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                     targetDirection = "idling";
                     state = "idle";
                 }
-                object.spikeMoved = true;
+                spike.spikeMoved = true;
                 break;
             case "down": 
                 print("down"); 
-                if (scr_canPullPush(x, y+global.TILE_SIZE, false, object, robot, mirptrExt)){
+                if (scr_canPullPush(x, y+global.TILE_SIZE, false, spike, robot, mirptrExt)){
                     y+=global.TILE_SIZE;
                 }
                 else{
@@ -42,11 +42,11 @@ if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                     targetDirection = "idling";
                     state = "idle";
                 }
-                object.spikeMoved = true;
+                spike.spikeMoved = true;
                 break;
             case "left": 
                 print("left"); 
-                if (scr_canPullPush(x-global.TILE_SIZE, y, false, object, robot, mirptrExt)){
+                if (scr_canPullPush(x-global.TILE_SIZE, y, false, spike, robot, mirptrExt)){
                     x-=global.TILE_SIZE;
                 }
                 else{
@@ -55,11 +55,11 @@ if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                     targetDirection = "idling";
                     state = "idle";
                 }
-                object.spikeMoved = true;
+                spike.spikeMoved = true;
                 break;
             case "right": 
                 print("right"); 
-                if (scr_canPullPush(x+global.TILE_SIZE, y, false, object, robot, mirptrExt)){
+                if (scr_canPullPush(x+global.TILE_SIZE, y, false, spike, robot, mirptrExt)){
                     x+=global.TILE_SIZE;
                 }
                 else{
@@ -68,11 +68,11 @@ if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                     targetDirection = "idling";
                     state = "idle";
                 }
-                object.spikeMoved = true;
+                spike.spikeMoved = true;
                 break;
             case "upright": 
                 print("upright"); 
-                if (scr_canPullPush(x+global.TILE_SIZE, y-global.TILE_SIZE, true, object, robot, mirptrExt)){
+                if (scr_canPullPush(x+global.TILE_SIZE, y-global.TILE_SIZE, true, spike, robot, mirptrExt)){
                     x+=global.TILE_SIZE;
                     y-=global.TILE_SIZE;
                 }
@@ -82,11 +82,11 @@ if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                     targetDirection = "idling";
                     state = "idle";
                 }
-                object.spikeMoved = true;
+                spike.spikeMoved = true;
                 break;
             case "upleft": 
                 print("upleft"); 
-                if (scr_canPullPush(x-global.TILE_SIZE, y-global.TILE_SIZE, true, object, robot, mirptrExt)){
+                if (scr_canPullPush(x-global.TILE_SIZE, y-global.TILE_SIZE, true, spike, robot, mirptrExt)){
                     x-=global.TILE_SIZE;
                     y-=global.TILE_SIZE;
                 }
@@ -97,11 +97,11 @@ if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                     targetDirection = "idling";
                     state = "idle";
                 }
-                object.spikeMoved = true;
+                spike.spikeMoved = true;
                 break;
             case "downright": 
                 print("downright"); 
-                if (scr_canPullPush(x+global.TILE_SIZE, y+global.TILE_SIZE, true, object, robot, mirptrExt)){
+                if (scr_canPullPush(x+global.TILE_SIZE, y+global.TILE_SIZE, true, spike, robot, mirptrExt)){
                     x+=global.TILE_SIZE;
                     y+=global.TILE_SIZE;
                 }
@@ -111,11 +111,11 @@ if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                     targetDirection = "idling";
                     state = "idle";
                 }
-                object.spikeMoved = true;
+                spike.spikeMoved = true;
                 break;
             case "downleft": 
                 print("downleft"); 
-                if (scr_canPullPush(x-global.TILE_SIZE, y+global.TILE_SIZE, true, object, robot, mirptrExt)){
+                if (scr_canPullPush(x-global.TILE_SIZE, y+global.TILE_SIZE, true, spike, robot, mirptrExt)){
                     x-=global.TILE_SIZE;
                     y+=global.TILE_SIZE;
                 }
@@ -125,7 +125,7 @@ if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                     targetDirection = "idling";
                     state = "idle";
                 }
-                object.spikeMoved = true;
+                spike.spikeMoved = true;
                 break;
         }
     }
@@ -134,35 +134,39 @@ if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
         state = "idle";
         print("check for player lock");
         if (robot.y == y){
-            if (robot.x < x && scr_canPullPush(x - global.TILE_SIZE, y, false, object, robot, mirptrExt)) {
+            if (robot.x < x && (scr_canPullPush(x - global.TILE_SIZE, y, false, spike, robot, mirptrExt)
+                             || scr_objectsAdjacent(robot, spike))) {
                 state = "active";
                 targetDirection = "left"; 
                 targetLocked = true;
                 sprite_index = spr_spikeActive;
-                object.spikeMoved = true;
+                spike.spikeMoved = true;
                 //print("target just locked");
             }
-            else if (robot.x > x && scr_canPullPush(x + global.TILE_SIZE, y, false, object, robot, mirptrExt)) {
+            else if (robot.x > x && (scr_canPullPush(x + global.TILE_SIZE, y, false, spike, robot, mirptrExt)
+                                  || scr_objectsAdjacent(robot, spike))) {
                 state = "active";
                 targetDirection = "right"; 
                 targetLocked = true;
-                object.spikeMoved = true;
+                spike.spikeMoved = true;
                 sprite_index = spr_spikeActive;
             }
         }
         else if (robot.x == x){
-            if (robot.y < y && scr_canPullPush(x, y - global.TILE_SIZE, false, object, robot, mirptrExt)) {
+            if (robot.y < y && (scr_canPullPush(x, y - global.TILE_SIZE, false, spike, robot, mirptrExt)
+                             || scr_objectsAdjacent(robot, spike))) {
                 state = "active";
                 targetDirection = "up"; 
                 targetLocked = true;
-                object.spikeMoved = true;
+                spike.spikeMoved = true;
                 sprite_index = spr_spikeActive;
             }
-            else if (robot.y > y && scr_canPullPush(x, y + global.TILE_SIZE, false, object, robot, mirptrExt)) {
+            else if (robot.y > y && (scr_canPullPush(x, y + global.TILE_SIZE, false, spike, robot, mirptrExt)
+                                  || scr_objectsAdjacent(robot, spike))) {
                 state = "active";
                 targetDirection = "down"; 
                 targetLocked = true;
-                object.spikeMoved = true;
+                spike.spikeMoved = true;
                 sprite_index = spr_spikeActive;
             }
         }
@@ -193,7 +197,7 @@ if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                 newObjPosY = y - global.TILE_SIZE;
             }
         
-            if (scr_canPullPush(newObjPosX, newObjPosY, true, object, robot, mirptrExt)
+            if (scr_canPullPush(newObjPosX, newObjPosY, true, spike, robot, mirptrExt)
             && abs((robot.y - y) / (robot.x - x)) == 1){
                 
                 print("diag lockon baby");
@@ -203,28 +207,28 @@ if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                     state = "active";
                     targetDirection = "upright"; 
                     targetLocked = true;
-                    object.spikeMoved = true;
+                    spike.spikeMoved = true;
                     sprite_index = spr_spikeActive;
                 }
                 if (robot.y < y && robot.x < x){ //player is above the obj and to the left
                     state = "active";
                     targetDirection = "upleft"; 
                     targetLocked = true;
-                    object.spikeMoved = true;
+                    spike.spikeMoved = true;
                     sprite_index = spr_spikeActive;
                 }
                 if (robot.y > y && robot.x > x){ //player is below the obj and to the right
                     state = "active";
                     targetDirection = "downright"; 
                     targetLocked = true;
-                    object.spikeMoved = true;
+                    spike.spikeMoved = true;
                     sprite_index = spr_spikeActive;
                 }
                 if (robot.y > y && robot.x < x){ //player is below the obj and to the left
                     state = "active";
                     targetDirection = "downleft"; 
                     targetLocked = true;
-                    object.spikeMoved = true;
+                    spike.spikeMoved = true;
                     sprite_index = spr_spikeActive;
                 }
             }
@@ -244,5 +248,5 @@ if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
     if !targetLocked sprite_index = spr_spike;
 }
 else{
-    object.spikeMoved = false; //allow spike to move next handle_gameMove
+    spike.spikeMoved = false; //allow spike to move next handle_gameMove
 }

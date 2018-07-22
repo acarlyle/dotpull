@@ -87,6 +87,16 @@ print("scr_canPullPush: posX, posY: " + string(posX) + ", " + string(posY));
 print("scr_canPullPush: xDiff, yDiff: " + string(xDiff) + ", " + string(yDiff));
 print("scr_canPullPush: oldRobotX, oldRobotY: " + string(robot.oldPlayerX) + ", " + string(robot.oldPlayerY));
 
+/*
+    TODO
+    
+    This xDiff + yDiff logic doesn't apply when an object that can move into robots is right next to a
+    robot.  E.G. -> a spike that is one tile to the right of Rob has an xDiff of zero (Rob.x - posToPullTo).
+    Therefore, the logic results in the second else being checked after xDiff fails.  This isn't right because
+    xDiff is zero regardless.  The logic doesn't catch this edge case.  The result of this bobo is fine
+    but there might be a time when it's a problem.    
+*/
+
 if (!diagonalMovement && (canPull || canPush) && !(canPull && canPush)){ //this checks left/right only
     if (yDiff == 0 || (!mirptrVt && mirptrHz)){ //player is moving left/right; check for objects towards the player
         print("scr_canPullPush: Robot moving left/right");
@@ -104,6 +114,10 @@ if (!diagonalMovement && (canPull || canPush) && !(canPull && canPush)){ //this 
                 }
                 objX += global.TILE_SIZE;
             }
+            // checking for this specific robot at this position; we don't want to move it for rob + roberta
+            // if she's next to Rob 
+            if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+            
             if (!instance_place(objX, objY, par_robot)){
                 print("scr_canPullPush: No robot here! :(" + " " + string(objX) + " " + string(objY));
                 return false;
@@ -123,6 +137,11 @@ if (!diagonalMovement && (canPull || canPush) && !(canPull && canPush)){ //this 
                 }
                 objX -= global.TILE_SIZE;
             }
+            
+            // checking for this specific robot at this position; we don't want to move it for rob + roberta
+            // if she's next to Rob 
+            if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+            
             if (!instance_place(objX, objY, par_robot)){
                 print("scr_canPullPush: No robot here! :(" + " " + string(objX) + " " + string(objY));
                 return false;
@@ -148,6 +167,11 @@ if (!diagonalMovement && (canPull || canPush) && !(canPull && canPush)){ //this 
                 }
                 objY -= global.TILE_SIZE;
             }
+            
+            // checking for this specific robot at this position; we don't want to move it for rob + roberta
+            // if she's next to Rob 
+            if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+            
             if (!instance_place(objX, objY, par_robot)){
                 print("No robot here! :(" + " " + string(objX) + " " + string(objY));
                 return false;
@@ -173,6 +197,11 @@ if (!diagonalMovement && (canPull || canPush) && !(canPull && canPush)){ //this 
                 }
                 objY += global.TILE_SIZE;
             }
+            
+            // checking for this specific robot at this position; we don't want to move it for rob + roberta
+            // if she's next to Rob 
+            if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+            
             if (!instance_place(objX, objY, par_robot)){
                 print("No robot here! :(" + " " + string(objX) + " " + string(objY));
                 print("Robot at: " + string(robot.x) + " " + string(robot.y));
@@ -199,6 +228,11 @@ if (diagonalMovement == true && (canPull || canPush) && !(canPull && canPush)){
             objX += global.TILE_SIZE;
             objY -= global.TILE_SIZE;  
         }
+        
+        // checking for this specific robot at this position; we don't want to move it for rob + roberta
+        // if she's next to Rob 
+        if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+            
         if (!instance_place(objX, objY, par_robot)){
             print("scr_canPullPush: No robot here! :(" + " " + string(objX) + " " + string(objY));
             return false;
@@ -218,6 +252,11 @@ if (diagonalMovement == true && (canPull || canPush) && !(canPull && canPush)){
             objX -= global.TILE_SIZE;
             objY -= global.TILE_SIZE;  
         }
+        
+        // checking for this specific robot at this position; we don't want to move it for rob + roberta
+        // if she's next to Rob 
+        if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+        
         if (!instance_place(objX, objY, par_robot)){
             print("scr_canPullPush: No robot here! :(" + " " + string(objX) + " " + string(objY));
             return false;
@@ -237,6 +276,11 @@ if (diagonalMovement == true && (canPull || canPush) && !(canPull && canPush)){
             objX += global.TILE_SIZE;
             objY += global.TILE_SIZE;  
         }   
+        
+        // checking for this specific robot at this position; we don't want to move it for rob + roberta
+        // if she's next to Rob 
+        if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+        
         if (!instance_place(objX, objY, par_robot)){
             print("scr_canPullPush: No robot here! :(" + " " + string(objX) + " " + string(objY));
             return false;
@@ -256,6 +300,11 @@ if (diagonalMovement == true && (canPull || canPush) && !(canPull && canPush)){
             objX -= global.TILE_SIZE;
             objY += global.TILE_SIZE;  
         }
+        
+        // checking for this specific robot at this position; we don't want to move it for rob + roberta
+        // if she's next to Rob 
+        if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+        
         if (!instance_place(objX, objY, par_robot)){
             print("scr_canPullPush: No robot here! :(" + " " + string(objX) + " " + string(objY));
             return false;
@@ -285,6 +334,11 @@ if (canPull && canPush){
                     } 
                     objX += global.TILE_SIZE;
                 }
+                
+                // checking for this specific robot at this position; we don't want to move it for rob + roberta
+                // if she's next to Rob 
+                if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+        
                 if (!instance_place(objX, objY, par_robot)){
                     print("No robot here! :(" + " " + string(objX) + " " + string(objY));
                     return false;
@@ -304,6 +358,11 @@ if (canPull && canPush){
                     } 
                     objX -= global.TILE_SIZE;
                 }
+                
+                // checking for this specific robot at this position; we don't want to move it for rob + roberta
+                // if she's next to Rob 
+                if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+                
                 if (!instance_place(objX, objY, par_robot)){
                     print("No robot here! :(" + " " + string(objX) + " " + string(objY));
                     return false;
@@ -324,6 +383,11 @@ if (canPull && canPush){
                     }
                     objY -= global.TILE_SIZE; 
                 }
+                
+                // checking for this specific robot at this position; we don't want to move it for rob + roberta
+                // if she's next to Rob 
+                if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+                
                 if (!instance_place(objX, objY, par_robot)){
                     print("No robot here! :(" + " " + string(objX) + " " + string(objY));
                     return false;
@@ -342,6 +406,11 @@ if (canPull && canPush){
                     } 
                     objY += global.TILE_SIZE;
                 }
+                
+                // checking for this specific robot at this position; we don't want to move it for rob + roberta
+                // if she's next to Rob 
+                if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+                
                 if (!instance_place(objX, objY, par_robot)){
                     print("No robot here! :(" + " " + string(objX) + " " + string(objY));
                     return false;
@@ -368,6 +437,11 @@ if (canPull && canPush){
                 objX += global.TILE_SIZE;
                 objY -= global.TILE_SIZE;  
             }
+            
+            // checking for this specific robot at this position; we don't want to move it for rob + roberta
+            // if she's next to Rob 
+            if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+                
             if (!instance_place(objX, objY, par_robot)){
                 print("No robot here! :(" + " " + string(objX) + " " + string(objY));
                 return false;
@@ -388,6 +462,11 @@ if (canPull && canPush){
                 objX -= global.TILE_SIZE;
                 objY -= global.TILE_SIZE;  
             }
+            
+            // checking for this specific robot at this position; we don't want to move it for rob + roberta
+            // if she's next to Rob 
+            if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+            
             if (!instance_place(objX, objY, par_robot)){
                 print("No robot here! :(" + " " + string(objX) + " " + string(objY));
                 return false;
@@ -408,6 +487,11 @@ if (canPull && canPush){
                 objX += global.TILE_SIZE;
                 objY += global.TILE_SIZE;  
             }  
+            
+            // checking for this specific robot at this position; we don't want to move it for rob + roberta
+            // if she's next to Rob 
+            if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+            
             if (!instance_place(objX, objY, par_robot)){
                 print("No robot here! :(" + " " + string(objX) + " " + string(objY));
                 return false;
@@ -428,6 +512,11 @@ if (canPull && canPush){
                 objX -= global.TILE_SIZE;
                 objY += global.TILE_SIZE;  
             }  
+            
+            // checking for this specific robot at this position; we don't want to move it for rob + roberta
+            // if she's next to Rob 
+            if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+            
             if (!instance_place(objX, objY, par_robot)){
                 print("No robot here! :(" + " " + string(objX) + " " + string(objY));
                 return false;
@@ -442,6 +531,7 @@ if (instance_place(x, y, obj_triggerDoor) && !instance_place(posX, posY, obj_wal
         return false; //can't move if above    
     }
 }
+//TODO -> outdated code.  update to use par_pullable, at least
 if (instance_place(posX, posY, obj_block) ||
     instance_place(posX, posY, obj_blockPush) ||
     instance_place(posX, posY, obj_blockPushPull)){
