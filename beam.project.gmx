@@ -335,6 +335,10 @@
         <room>rooms\rm_stairs_b_1</room>
         <room>rooms\rm_stairs_b_2</room>
       </rooms>
+      <rooms name="rm_spikestairs">
+        <room>rooms\rm_spikestairs_b_1</room>
+        <room>rooms\rm_spikestairs_f_1</room>
+      </rooms>
     </rooms>
     <rooms name="block.Pull">
       <room>rooms\rm_level1</room>

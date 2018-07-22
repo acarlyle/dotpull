@@ -40,6 +40,7 @@
 
     //member vars
     canPull = true;
+    canMoveIntoRobot = true;
 
 //local vars
 

@@ -41,6 +41,7 @@
     state = "tile_one";
     isPuzzleElement = true;
     isMovePriority = true;
+    canMoveIntoRobot = false;
 </string>
           </argument>
         </arguments>

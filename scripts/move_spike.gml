@@ -5,6 +5,8 @@
     obj_spike
 */
 
+//print("move_spike");
+
 object = argument0;
 robot = argument1;
 
@@ -130,7 +132,7 @@ if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
     else{ //check if player in line for target lock
         //print("checking for player lock");
         state = "idle";
-        //print("check for player lock");
+        print("check for player lock");
         if (robot.y == y){
             if (robot.x < x && scr_canPullPush(x - global.TILE_SIZE, y, false, object, robot, mirptrExt)) {
                 state = "active";
@@ -228,10 +230,9 @@ if (!object.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
             }
         }
     } //end targetlock check
-    print(obj_spike.targetDirection);
-    print(obj_spike.targetLocked);
-    print(obj_spike.state);
-    print("hereweGO");
+    print("spike_targetDir: " + string(obj_spike.targetDirection));
+    print("spike_targetLocked: " + string(obj_spike.targetLocked));
+    print("spike_state: " + string(obj_spike.state));
     
     //dead check
     if (scr_tileContains(x, y, array(par_robot)) && objectStr(self) == "obj_spike"){

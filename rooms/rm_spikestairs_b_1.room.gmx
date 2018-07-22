@@ -37,14 +37,7 @@ var initPos = string(obj_player.x) + "," + (string(obj_player.y));
 //ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys));
 print("initPos:" + initPos);
 
-global.roomContents = scr_initRoom();
-
-var triggerDoor = instance_place(64, 48, obj_triggerDoor);
-var trigger = instance_place(80, 96, obj_trigger);
-//if (triggerDoor &amp;&amp; trigger) {
-    triggerDoor.triggerPtr = trigger;
-    trigger.triggerDoorPtr = triggerDoor;
-//}</code>
+global.roomContents = scr_initRoom();</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -93,9 +86,6 @@ var trigger = instance_place(80, 96, obj_trigger);
     <instance objName="obj_platform" x="96" y="112" name="inst_2417ACB2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="48" y="128" name="inst_65237E0A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="80" y="96" name="inst_3B045009" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_trigger" x="80" y="96" name="inst_F73D3B94" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_triggerDoor" x="64" y="48" name="inst_CEEF265F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block" x="80" y="96" name="inst_A911B1B0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="64" y="112" name="inst_7ECEF06B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="80" y="112" name="inst_1532011F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="80" y="112" name="inst_54DA586A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
