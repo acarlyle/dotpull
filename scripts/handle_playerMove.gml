@@ -22,7 +22,7 @@ switch(robot.state){
         break;
 }
 
-if (!robot.moved){ //if we didn't move
+if (!robot.moved && !robot.isDead){ //if we didn't move and we aren't dead
     handle_checkForStairs(robot);
     if (!global.switchRooms) { //we aren'r switching rooms
         handle_checkLowerRoom(robot);
