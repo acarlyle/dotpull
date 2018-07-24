@@ -5,173 +5,160 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound">
-    <sounds name="Sound Effects">
-      <sound>sound\snd_keyPickup</sound>
-      <sound>sound\snd_blockDrag</sound>
-    </sounds>
     <sounds name="Menu">
       <sound>sound\snd_menuSelect</sound>
     </sounds>
     <sounds name="OST">
       <sound>sound\song_terrorTram</sound>
     </sounds>
+    <sounds name="Sound Effects">
+      <sound>sound\snd_blockDrag</sound>
+      <sound>sound\snd_keyPickup</sound>
+    </sounds>
   </sounds>
   <sprites name="sprites">
-    <sprites name="env">
-      <sprite>sprites\spr_bridge</sprite>
-      <sprite>sprites\spr_wall</sprite>
-      <sprite>sprites\spr_platform</sprite>
-      <sprite>sprites\spr_hole</sprite>
-      <sprite>sprites\spr_blackTile</sprite>
+    <sprites name="Characters">
+      <sprite>sprites\spr_player</sprite>
+      <sprite>sprites\spr_playerDead</sprite>
+      <sprite>sprites\spr_playerOld</sprite>
+      <sprite>sprites\spr_roberta</sprite>
+      <sprite>sprites\spr_robertaEnd</sprite>
+      <sprite>sprites\spr_robertaMenu</sprite>
     </sprites>
-    <sprite>sprites\spr_playerOld</sprite>
-    <sprite>sprites\spr_roberta</sprite>
-    <sprite>sprites\spr_robertaMenu</sprite>
-    <sprite>sprites\spr_robertaEnd</sprite>
-    <sprite>sprites\spr_playerDead</sprite>
-    <sprites name="controllers">
-      <sprite>sprites\spr_gotoRoom</sprite>
+    <sprites name="Controllers">
       <sprite>sprites\spr_dialogueTrigger</sprite>
-      <sprite>sprites\spr_stairsDesc</sprite>
+      <sprite>sprites\spr_gotoRoom</sprite>
       <sprite>sprites\spr_stairsAsc</sprite>
+      <sprite>sprites\spr_stairsDesc</sprite>
     </sprites>
-    <sprites name="elements">
-      <sprite>sprites\spr_key</sprite>
-      <sprite>sprites\spr_keyFloating</sprite>
-      <sprite>sprites\spr_door</sprite>
-      <sprite>sprites\spr_block</sprite>
-      <sprite>sprites\spr_baby</sprite>
-      <sprite>sprites\spr_blockPush</sprite>
-      <sprite>sprites\spr_blockPushPull</sprite>
-      <sprite>sprites\spr_snare</sprite>
-      <sprite>sprites\spr_magneticSnare</sprite>
-      <sprite>sprites\spr_arrow_up</sprite>
+    <sprites name="Element Effects">
+      <sprite>sprites\spr_cannonEnergy</sprite>
+    </sprites>
+    <sprites name="Elements">
+      <sprite>sprites\spr_arrow_down</sprite>
       <sprite>sprites\spr_arrow_left</sprite>
       <sprite>sprites\spr_arrow_right</sprite>
-      <sprite>sprites\spr_arrow_down</sprite>
-      <sprite>sprites\spr_trigger</sprite>
-      <sprite>sprites\spr_triggerDoor</sprite>
-      <sprite>sprites\spr_triggerTrail</sprite>
-      <sprite>sprites\spr_spike</sprite>
-      <sprite>sprites\spr_spikeActive</sprite>
+      <sprite>sprites\spr_arrow_up</sprite>
+      <sprite>sprites\spr_baby</sprite>
+      <sprite>sprites\spr_blackHole</sprite>
+      <sprite>sprites\spr_block</sprite>
+      <sprite>sprites\spr_blockPush</sprite>
+      <sprite>sprites\spr_blockPushPull</sprite>
+      <sprite>sprites\spr_breakableWall_1Hit</sprite>
+      <sprite>sprites\spr_breakableWall_2Hit</sprite>
+      <sprite>sprites\spr_breakableWall_3Hit</sprite>
+      <sprite>sprites\spr_cannon_horz</sprite>
+      <sprite>sprites\spr_cannon_vert</sprite>
+      <sprite>sprites\spr_door</sprite>
+      <sprite>sprites\spr_eviscerator</sprite>
       <sprite>sprites\spr_fallingPlatform_1Step</sprite>
       <sprite>sprites\spr_fallingPlatform_2Step</sprite>
       <sprite>sprites\spr_fallingPlatform_3Step</sprite>
-      <sprite>sprites\spr_eviscerator</sprite>
-      <sprite>sprites\spr_breakableWall_3Hit</sprite>
-      <sprite>sprites\spr_breakableWall_2Hit</sprite>
-      <sprite>sprites\spr_breakableWall_1Hit</sprite>
-      <sprite>sprites\spr_cannon_vert</sprite>
-      <sprite>sprites\spr_cannon_horz</sprite>
+      <sprite>sprites\spr_key</sprite>
+      <sprite>sprites\spr_keyFloating</sprite>
+      <sprite>sprites\spr_magneticSnare</sprite>
       <sprite>sprites\spr_mirptr</sprite>
-      <sprite>sprites\sprite_slideTile</sprite>
-      <sprite>sprites\spr_blackHole</sprite>
       <sprite>sprites\spr_objPusher</sprite>
+      <sprite>sprites\spr_slideTile</sprite>
+      <sprite>sprites\spr_snare</sprite>
+      <sprite>sprites\spr_spike</sprite>
+      <sprite>sprites\spr_spikeActive</sprite>
+      <sprite>sprites\spr_trigger</sprite>
+      <sprite>sprites\spr_triggerDoor</sprite>
+      <sprite>sprites\spr_triggerTrail</sprite>
     </sprites>
-    <sprites name="element affects">
-      <sprite>sprites\spr_cannonEnergy</sprite>
+    <sprites name="Env">
+      <sprite>sprites\spr_blackTile</sprite>
+      <sprite>sprites\spr_bridge</sprite>
+      <sprite>sprites\spr_hole</sprite>
+      <sprite>sprites\spr_platform</sprite>
+      <sprite>sprites\spr_wall</sprite>
     </sprites>
     <sprites name="Menu">
-      <sprite>sprites\spr_newAdventure</sprite>
       <sprite>sprites\spr_continueAdventure</sprite>
       <sprite>sprites\spr_exit</sprite>
+      <sprite>sprites\spr_newAdventure</sprite>
     </sprites>
-    <sprite>sprites\spr_player</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
+    <scripts name="Element Effects">
+      <script>scripts\e_damageBreakableWall.gml</script>
+      <script>scripts\e_fireCannon.gml</script>
+    </scripts>
     <scripts name="Game Handles">
+      <scripts name="Move Object">
+        <script>scripts\move_arrow.gml</script>
+        <script>scripts\move_baby.gml</script>
+        <script>scripts\move_blackHole.gml</script>
+        <script>scripts\move_breakableWall.gml</script>
+        <script>scripts\move_cannon.gml</script>
+        <script>scripts\move_eviscerator.gml</script>
+        <script>scripts\move_fallingPlatform.gml</script>
+        <script>scripts\move_key.gml</script>
+        <script>scripts\move_pullPushables.gml</script>
+        <script>scripts\move_pusher.gml</script>
+        <script>scripts\move_spike.gml</script>
+        <script>scripts\move_trigger.gml</script>
+      </scripts>
       <scripts name="Undo Object">
-        <script>scripts\undo_robot.gml</script>
-        <script>scripts\undo_spike.gml</script>
         <script>scripts\undo_arrow.gml</script>
+        <script>scripts\undo_baby.gml</script>
+        <script>scripts\undo_breakableWall.gml</script>
         <script>scripts\undo_cannon.gml</script>
         <script>scripts\undo_door.gml</script>
-        <script>scripts\undo_triggerDoor.gml</script>
-        <script>scripts\undo_trigger.gml</script>
-        <script>scripts\undo_key.gml</script>
-        <script>scripts\undo_baby.gml</script>
         <script>scripts\undo_fallingPlatform.gml</script>
-        <script>scripts\undo_breakableWall.gml</script>
+        <script>scripts\undo_key.gml</script>
+        <script>scripts\undo_robot.gml</script>
         <script>scripts\undo_robotDeath.gml</script>
+        <script>scripts\undo_spike.gml</script>
+        <script>scripts\undo_trigger.gml</script>
+        <script>scripts\undo_triggerDoor.gml</script>
       </scripts>
-      <scripts name="Move Object">
-        <script>scripts\move_spike.gml</script>
-        <script>scripts\move_pullPushables.gml</script>
-        <script>scripts\move_arrow.gml</script>
-        <script>scripts\move_fallingPlatform.gml</script>
-        <script>scripts\move_breakableWall.gml</script>
-        <script>scripts\move_eviscerator.gml</script>
-        <script>scripts\move_baby.gml</script>
-        <script>scripts\move_cannon.gml</script>
-        <script>scripts\move_blackHole.gml</script>
-        <script>scripts\move_trigger.gml</script>
-        <script>scripts\move_key.gml</script>
-        <script>scripts\move_pusher.gml</script>
-      </scripts>
-      <script>scripts\handle_gameMove.gml</script>
-      <script>scripts\handle_playerMove.gml</script>
-      <script>scripts\handle_undoMove.gml</script>
-      <script>scripts\handle_gotoRoom.gml</script>
       <script>scripts\handle_activeRooms.gml</script>
       <script>scripts\handle_checkForRoomTransition.gml</script>
       <script>scripts\handle_checkForStairs.gml</script>
+      <script>scripts\handle_cleanUpElementEffects.gml</script>
       <script>scripts\handle_deployBaby.gml</script>
       <script>scripts\handle_freeMemory.gml</script>
-      <script>scripts\handle_cleanUpElementEffects.gml</script>
-    </scripts>
-    <scripts name="Movement">
-      <scripts name="Robot">
-        <script>scripts\handle_robotMove_tile_one.gml</script>
-        <script>scripts\handle_robotMove_tile_slide.gml</script>
-        <script>scripts\handle_checkLowerRoom.gml</script>
-        <script>scripts\scr_steppingStoneBelow.gml</script>
-      </scripts>
-      <scripts name="Objects">
-        <script>scripts\move_pullPushables_tile_one.gml</script>
-        <script>scripts\move_pullPushables_tile_slide.gml</script>
-      </scripts>
-      <script>scripts\scr_canBlastRobot.gml</script>
-      <script>scripts\scr_collisionCheck.gml</script>
-      <script>scripts\scr_canPullPush.gml</script>
-      <script>scripts\scr_platformIsWalkable.gml</script>
+      <script>scripts\handle_gameMove.gml</script>
+      <script>scripts\handle_gotoRoom.gml</script>
+      <script>scripts\handle_playerMove.gml</script>
+      <script>scripts\handle_undoMove.gml</script>
     </scripts>
     <scripts name="Game State Controllers">
-      <script>scripts\handle_gameSave.gml</script>
-      <script>scripts\handle_roomSave.gml</script>
-      <script>scripts\handle_gameLoad.gml</script>
-      <script>scripts\handle_restartRoom.gml</script>
       <script>scripts\handle_freeRoomMemory.gml</script>
+      <script>scripts\handle_gameLoad.gml</script>
+      <script>scripts\handle_gameSave.gml</script>
+      <script>scripts\handle_restartRoom.gml</script>
+      <script>scripts\handle_roomSave.gml</script>
     </scripts>
-    <scripts name="Stack">
-      <script>scripts\handle_prioritizeItems.gml</script>
-      <script>scripts\handle_pushOntoStack.gml</script>
-      <script>scripts\handle_destroyThisObjectStacks.gml</script>
-      <script>scripts\push_robotState.gml</script>
-    </scripts>
-    <scripts name="Settings">
-      <script>scripts\scr_applyScreenRes.gml</script>
-      <script>scripts\scr_initPlayerPosition.gml</script>
-      <script>scripts\scr_initRoom.gml</script>
-      <script>scripts\scr_initRoomFromFile.gml</script>
-      <script>scripts\scr_hasVisitedRoom.gml</script>
+    <scripts name="Getters">
+      <script>scripts\get_activeRoomObjects.gml</script>
+      <script>scripts\get_arrayOfRoomFromFile.gml</script>
+      <script>scripts\get_deactivatedRoomObjects.gml</script>
+      <script>scripts\get_lowerRoomName.gml</script>
+      <script>scripts\get_objectFromString.gml</script>
+      <script>scripts\get_objectLocalVarsStr.gml</script>
+      <script>scripts\get_objectsFromRoomArrayTile.gml</script>
+      <script>scripts\get_spriteFromObjStr.gml</script>
     </scripts>
     <scripts name="Helpers">
       <script>scripts\array.gml</script>
-      <script>scripts\scr_tileIsOpen.gml</script>
-      <script>scripts\roomObjectArrayList.gml</script>
-      <script>scripts\print.gml</script>
-      <script>scripts\scr_objectsAdjacent.gml</script>
-      <script>scripts\print2dArray.gml</script>
-      <script>scripts\scr_roomFromString.gml</script>
       <script>scripts\isActivated.gml</script>
       <script>scripts\objectStr.gml</script>
-      <script>scripts\scr_getInput.gml</script>
-      <script>scripts\scr_tileContains.gml</script>
-      <script>scripts\scr_disableObj.gml</script>
-      <script>scripts\scr_clearStepGlobals.gml</script>
       <script>scripts\parentOf.gml</script>
+      <script>scripts\print.gml</script>
+      <script>scripts\print2dArray.gml</script>
+      <script>scripts\roomObjectArrayList.gml</script>
+      <script>scripts\scr_clearStepGlobals.gml</script>
+      <script>scripts\scr_disableObj.gml</script>
+      <script>scripts\scr_getInput.gml</script>
+      <script>scripts\scr_objectsAdjacent.gml</script>
+      <script>scripts\scr_roomFromString.gml</script>
+      <script>scripts\scr_tileContains.gml</script>
+      <script>scripts\scr_tileIsOpen.gml</script>
       <scripts name="Movement">
         <script>scripts\scr_mirptrTele.gml</script>
         <script>scripts\scr_disableMovementKeys.gml</script>
@@ -184,37 +171,52 @@
         <script>scripts\strcontains.gml</script>
       </scripts>
     </scripts>
-    <scripts name="Element Affects">
-      <script>scripts\e_fireCannon.gml</script>
-      <script>scripts\e_damageBreakableWall.gml</script>
+    <scripts name="Movement">
+      <scripts name="Objects">
+        <script>scripts\move_pullPushables_tile_one.gml</script>
+        <script>scripts\move_pullPushables_tile_slide.gml</script>
+      </scripts>
+      <scripts name="Robot">
+        <script>scripts\handle_checkLowerRoom.gml</script>
+        <script>scripts\handle_robotMove_tile_one.gml</script>
+        <script>scripts\handle_robotMove_tile_slide.gml</script>
+        <script>scripts\scr_steppingStoneBelow.gml</script>
+      </scripts>
+      <script>scripts\scr_canBlastRobot.gml</script>
+      <script>scripts\scr_canPullPush.gml</script>
+      <script>scripts\scr_collisionCheck.gml</script>
+      <script>scripts\scr_platformIsWalkable.gml</script>
     </scripts>
-    <scripts name="Robot Affects">
-      <script>scripts\scr_updateCurRobotPos.gml</script>
+    <scripts name="Robot Effects">
       <script>scripts\scr_killRobot.gml</script>
       <script>scripts\scr_pickupObject.gml</script>
-    </scripts>
-    <scripts name="Virtual Mapping">
-      <script>scripts\scr_getArrOfRoom.gml</script>
-      <script>scripts\draw_lowerRooms.gml</script>
-      <script>scripts\scr_arrTileContains.gml</script>
-    </scripts>
-    <scripts name="Getters">
-      <script>scripts\get_lowerRoomName.gml</script>
-      <script>scripts\get_activeRoomObjects.gml</script>
-      <script>scripts\get_deactivatedRoomObjects.gml</script>
-      <script>scripts\get_arrayOfRoomFromFile.gml</script>
-      <script>scripts\get_spriteFromObjStr.gml</script>
-      <script>scripts\get_objectsFromRoomArrayTile.gml</script>
-      <script>scripts\get_objectFromString.gml</script>
-      <script>scripts\get_objectLocalVarsStr.gml</script>
-    </scripts>
-    <scripts name="Surfaces">
-      <script>scripts\scr_surfaceActive.gml</script>
-      <script>scripts\scr_createSurface.gml</script>
+      <script>scripts\scr_updateCurRobotPos.gml</script>
     </scripts>
     <scripts name="Setters">
       <script>scripts\set_objectLocalVars.gml</script>
       <script>scripts\set_objectState.gml</script>
+    </scripts>
+    <scripts name="Settings">
+      <script>scripts\scr_applyScreenRes.gml</script>
+      <script>scripts\scr_hasVisitedRoom.gml</script>
+      <script>scripts\scr_initPlayerPosition.gml</script>
+      <script>scripts\scr_initRoom.gml</script>
+      <script>scripts\scr_initRoomFromFile.gml</script>
+    </scripts>
+    <scripts name="Stack">
+      <script>scripts\handle_destroyThisObjectStacks.gml</script>
+      <script>scripts\handle_prioritizeItems.gml</script>
+      <script>scripts\handle_pushOntoStack.gml</script>
+      <script>scripts\push_robotState.gml</script>
+    </scripts>
+    <scripts name="Surfaces">
+      <script>scripts\scr_createSurface.gml</script>
+      <script>scripts\scr_surfaceActive.gml</script>
+    </scripts>
+    <scripts name="Virtual Mapping">
+      <script>scripts\draw_lowerRooms.gml</script>
+      <script>scripts\scr_arrTileContains.gml</script>
+      <script>scripts\scr_getArrOfRoom.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -244,42 +246,45 @@
       <object>objects\obj_cannonEnergy</object>
     </objects>
     <objects name="Puzzle Elements">
+      <objects name="not_even_fucking_used">
+        <object>objects\obj_triggerTrail</object>
+      </objects>
+      <objects name="par_obstacle">
+        <object>objects\obj_baby</object>
+        <object>objects\obj_breakableWall_1Hit</object>
+        <object>objects\obj_breakableWall_2Hit</object>
+        <object>objects\obj_breakableWall_3Hit</object>
+        <object>objects\obj_cannon_horz</object>
+        <object>objects\obj_cannon_vert</object>
+        <object>objects\obj_door</object>
+        <object>objects\obj_triggerDoor</object>
+      </objects>
       <objects name="par_platform">
-        <object>objects\obj_snare</object>
-        <object>objects\obj_slideTile</object>
+        <object>objects\obj_arrow_down_rotate</object>
+        <object>objects\obj_arrow_down_static</object>
+        <object>objects\obj_arrow_left_rotate</object>
+        <object>objects\obj_arrow_left_static</object>
+        <object>objects\obj_arrow_right_rotate</object>
+        <object>objects\obj_arrow_right_static</object>
+        <object>objects\obj_arrow_up_rotate</object>
+        <object>objects\obj_arrow_up_static</object>
         <object>objects\obj_blackHole</object>
-        <object>objects\obj_mirptr</object>
-        <object>objects\obj_magneticSnare</object>
-        <object>objects\obj_trigger</object>
+        <object>objects\obj_eviscerator</object>
         <object>objects\obj_fallingPlatform_1Step</object>
         <object>objects\obj_fallingPlatform_2Step</object>
         <object>objects\obj_fallingPlatform_3Step</object>
-        <object>objects\obj_arrow_down_rotate</object>
-        <object>objects\obj_arrow_up_rotate</object>
-        <object>objects\obj_arrow_left_rotate</object>
-        <object>objects\obj_arrow_right_rotate</object>
-        <object>objects\obj_arrow_up_static</object>
-        <object>objects\obj_arrow_down_static</object>
-        <object>objects\obj_arrow_left_static</object>
-        <object>objects\obj_arrow_right_static</object>
-        <object>objects\obj_eviscerator</object>
+        <object>objects\obj_magneticSnare</object>
+        <object>objects\obj_mirptr</object>
+        <object>objects\obj_slideTile</object>
+        <object>objects\obj_snare</object>
+        <object>objects\obj_trigger</object>
       </objects>
       <objects name="par_pullable">
-        <object>objects\obj_spike</object>
-        <object>objects\obj_key</object>
-        <object>objects\obj_blockPush</object>
         <object>objects\obj_block</object>
+        <object>objects\obj_blockPush</object>
         <object>objects\obj_blockPushPull</object>
-      </objects>
-      <objects name="par_obstacle">
-        <object>objects\obj_cannon_vert</object>
-        <object>objects\obj_cannon_horz</object>
-        <object>objects\obj_door</object>
-        <object>objects\obj_breakableWall_3Hit</object>
-        <object>objects\obj_breakableWall_2Hit</object>
-        <object>objects\obj_breakableWall_1Hit</object>
-        <object>objects\obj_triggerDoor</object>
-        <object>objects\obj_baby</object>
+        <object>objects\obj_key</object>
+        <object>objects\obj_spike</object>
       </objects>
       <objects name="par_pusher">
         <object>objects\obj_objPush</object>
@@ -288,34 +293,31 @@
         <object>objects\obj_player</object>
         <object>objects\obj_roberta</object>
       </objects>
-      <objects name="not_even_fucking_used">
-        <object>objects\obj_triggerTrail</object>
-      </objects>
     </objects>
     <objects name="Environment">
-      <object>objects\obj_platform</object>
       <object>objects\obj_bridge</object>
       <object>objects\obj_hole</object>
+      <object>objects\obj_platform</object>
       <object>objects\obj_wall</object>
     </objects>
     <objects name="Controllers">
       <object>objects\obj_control</object>
-      <object>objects\obj_menuControl</object>
-      <object>objects\obj_gotoRoom</object>
-      <object>objects\obj_stairsDesc</object>
-      <object>objects\obj_stairsAsc</object>
       <object>objects\obj_cutsceneTrigger</object>
       <object>objects\obj_dialogueTrigger</object>
+      <object>objects\obj_gotoRoom</object>
+      <object>objects\obj_menuControl</object>
+      <object>objects\obj_stairsAsc</object>
+      <object>objects\obj_stairsDesc</object>
     </objects>
     <objects name="Menu">
-      <object>objects\obj_newAdventure</object>
+      <object>objects\obj_blackTile</object>
       <object>objects\obj_continueAdventure</object>
       <object>objects\obj_exitGame</object>
+      <object>objects\obj_menuCursor</object>
       <object>objects\obj_menuRob</object>
       <object>objects\obj_menuRoberta</object>
+      <object>objects\obj_newAdventure</object>
       <object>objects\obj_robertaEnd</object>
-      <object>objects\obj_menuCursor</object>
-      <object>objects\obj_blackTile</object>
     </objects>
     <objects name="Surfaces">
       <object>objects\surf_lowerRooms</object>
@@ -325,22 +327,6 @@
     <room>rooms\rm_menu</room>
     <room>rooms\init</room>
     <room>rooms\rm_baseRoom</room>
-    <rooms name="tests for puzzle elements">
-      <room>rooms\rm_magneticSnare</room>
-      <room>rooms\rm_objPusher</room>
-      <room>rooms\DEFAULT_ROOM</room>
-      <room>rooms\rm_everyElement</room>
-      <room>rooms\rm_baby</room>
-      <rooms name="rm_stairs">
-        <room>rooms\rm_stairs_f_1</room>
-        <room>rooms\rm_stairs_b_1</room>
-        <room>rooms\rm_stairs_b_2</room>
-      </rooms>
-      <rooms name="rm_spikestairs">
-        <room>rooms\rm_spikestairs_b_1</room>
-        <room>rooms\rm_spikestairs_f_1</room>
-      </rooms>
-    </rooms>
     <rooms name="block.Pull">
       <room>rooms\rm_level1</room>
       <room>rooms\rm_level2</room>
@@ -358,17 +344,11 @@
     <rooms name="block.Pull MasterQuest">
       <room>rooms\mq_level3</room>
     </rooms>
-    <rooms name="unsued">
-      <room>rooms\rm_spikeInterlude</room>
-      <room>rooms\rm_level5Unused</room>
-      <room>rooms\rm_demo</room>
-      <room>rooms\rm_level7unsued</room>
-      <room>rooms\rm_level8unsued</room>
-      <room>rooms\rm_robertaIntro</room>
-      <room>rooms\rm_cell</room>
-      <room>rooms\rm_level9Old</room>
+    <rooms name="Cool Levels for Cool People">
+      <room>rooms\rm_x1</room>
+      <room>rooms\rm_x2</room>
     </rooms>
-    <rooms name="ian levels">
+    <rooms name="Ian Levels">
       <room>rooms\rm_level_Ian_1</room>
       <room>rooms\rm_level_Ian_2</room>
       <room>rooms\rm_level_Ian_3</room>
@@ -383,9 +363,31 @@
       <room>rooms\rm_level_Ian_12</room>
       <room>rooms\rm_level_Ian_13</room>
     </rooms>
-    <rooms name="cool levels for cool people">
-      <room>rooms\rm_x1</room>
-      <room>rooms\rm_x2</room>
+    <rooms name="Puzzle Element Tests">
+      <room>rooms\rm_magneticSnare</room>
+      <room>rooms\rm_objPusher</room>
+      <room>rooms\DEFAULT_ROOM</room>
+      <room>rooms\rm_everyElement</room>
+      <room>rooms\rm_baby</room>
+      <rooms name="rm_stairs">
+        <room>rooms\rm_stairs_f_1</room>
+        <room>rooms\rm_stairs_b_1</room>
+        <room>rooms\rm_stairs_b_2</room>
+      </rooms>
+      <rooms name="rm_spikestairs">
+        <room>rooms\rm_spikestairs_b_1</room>
+        <room>rooms\rm_spikestairs_f_1</room>
+      </rooms>
+    </rooms>
+    <rooms name="Unused">
+      <room>rooms\rm_cell</room>
+      <room>rooms\rm_demo</room>
+      <room>rooms\rm_level5Unused</room>
+      <room>rooms\rm_level7unsued</room>
+      <room>rooms\rm_level8unsued</room>
+      <room>rooms\rm_level9Old</room>
+      <room>rooms\rm_robertaIntro</room>
+      <room>rooms\rm_spikeInterlude</room>
     </rooms>
   </rooms>
   <constants number="2">
