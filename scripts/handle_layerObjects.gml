@@ -1,9 +1,9 @@
-///handle_gameMove(par_robot robot);
+///handle_layerObjects(par_robot robot);
 
 var robot = argument0;
 
 print("");
-print("HANDLE GAME MOVE");
+print("handle_layerObjects");
 
 //for (var i = 0; i < array_length_1d(global.roomContents); i++){
 //    var object = global.roomContents[i];

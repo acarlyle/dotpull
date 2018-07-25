@@ -1,4 +1,4 @@
-///handle_playerMove(par_robot robot);
+///handle_layerRobots(par_robot robot);
 
 var robot = argument0;
 
@@ -24,7 +24,7 @@ switch(robot.state){
 
 if (!robot.moved && !robot.isDead){ //if we didn't move and we aren't dead
     handle_checkForStairs(robot);
-    if (!global.switchRooms) { //we aren'r switching rooms
+    if (!global.switchRooms) { //we aren't switching rooms
         handle_checkLowerRoom(robot);
     }
 }

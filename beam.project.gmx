@@ -28,6 +28,7 @@
     <sprites name="Controllers">
       <sprite>sprites\spr_dialogueTrigger</sprite>
       <sprite>sprites\spr_gotoRoom</sprite>
+      <sprite>sprites\spr_layer</sprite>
       <sprite>sprites\spr_stairsAsc</sprite>
       <sprite>sprites\spr_stairsDesc</sprite>
     </sprites>
@@ -83,6 +84,10 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
+    <scripts name="Constructors">
+      <script>scripts\scr_createSurface.gml</script>
+      <script>scripts\scr_createLayer.gml</script>
+    </scripts>
     <scripts name="Element Effects">
       <script>scripts\e_damageBreakableWall.gml</script>
       <script>scripts\e_fireCannon.gml</script>
@@ -122,9 +127,9 @@
       <script>scripts\handle_cleanUpElementEffects.gml</script>
       <script>scripts\handle_deployBaby.gml</script>
       <script>scripts\handle_freeMemory.gml</script>
-      <script>scripts\handle_gameMove.gml</script>
       <script>scripts\handle_gotoRoom.gml</script>
-      <script>scripts\handle_playerMove.gml</script>
+      <script>scripts\handle_layerObjects.gml</script>
+      <script>scripts\handle_layerRobots.gml</script>
       <script>scripts\handle_undoMove.gml</script>
     </scripts>
     <scripts name="Game State Controllers">
@@ -136,6 +141,7 @@
     </scripts>
     <scripts name="Getters">
       <script>scripts\get_activeRoomObjects.gml</script>
+      <script>scripts\get_arrayOfRoom.gml</script>
       <script>scripts\get_arrayOfRoomFromFile.gml</script>
       <script>scripts\get_deactivatedRoomObjects.gml</script>
       <script>scripts\get_lowerRoomName.gml</script>
@@ -170,6 +176,9 @@
         <script>scripts\strlen.gml</script>
         <script>scripts\strcontains.gml</script>
       </scripts>
+    </scripts>
+    <scripts name="Legacy">
+      <script>scripts\scr_canPullPush_instancePlaceVersion.gml</script>
     </scripts>
     <scripts name="Movement">
       <scripts name="Objects">
@@ -210,7 +219,6 @@
       <script>scripts\push_robotState.gml</script>
     </scripts>
     <scripts name="Surfaces">
-      <script>scripts\scr_createSurface.gml</script>
       <script>scripts\scr_surfaceActive.gml</script>
     </scripts>
     <scripts name="Virtual Mapping">
@@ -305,6 +313,7 @@
       <object>objects\obj_cutsceneTrigger</object>
       <object>objects\obj_dialogueTrigger</object>
       <object>objects\obj_gotoRoom</object>
+      <object>objects\obj_layer</object>
       <object>objects\obj_menuControl</object>
       <object>objects\obj_stairsAsc</object>
       <object>objects\obj_stairsDesc</object>

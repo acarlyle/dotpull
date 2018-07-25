@@ -4,6 +4,8 @@
     Called in every room's creation code  
 */
 
+var layer = scr_createLayer(room_get_name(room));
+
 print (" -> scr_initRoom()");
 
 if (scr_hasVisitedRoom(obj_player, room_get_name(room))){  
