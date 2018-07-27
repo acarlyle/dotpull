@@ -85,8 +85,10 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <scripts name="Constructors">
-      <script>scripts\scr_createSurface.gml</script>
-      <script>scripts\scr_createLayer.gml</script>
+      <script>scripts\con_layer.gml</script>
+      <script>scripts\con_priorityObjPosMap.gml</script>
+      <script>scripts\con_roomObjectArrList.gml</script>
+      <script>scripts\con_surface.gml</script>
     </scripts>
     <scripts name="Element Effects">
       <script>scripts\e_damageBreakableWall.gml</script>
@@ -144,6 +146,7 @@
       <script>scripts\get_arrayOfRoom.gml</script>
       <script>scripts\get_arrayOfRoomFromFile.gml</script>
       <script>scripts\get_deactivatedRoomObjects.gml</script>
+      <script>scripts\get_input.gml</script>
       <script>scripts\get_lowerRoomName.gml</script>
       <script>scripts\get_objectFromString.gml</script>
       <script>scripts\get_objectLocalVarsStr.gml</script>
@@ -157,10 +160,8 @@
       <script>scripts\parentOf.gml</script>
       <script>scripts\print.gml</script>
       <script>scripts\print2dArray.gml</script>
-      <script>scripts\roomObjectArrayList.gml</script>
       <script>scripts\scr_clearStepGlobals.gml</script>
       <script>scripts\scr_disableObj.gml</script>
-      <script>scripts\scr_getInput.gml</script>
       <script>scripts\scr_objectsAdjacent.gml</script>
       <script>scripts\scr_roomFromString.gml</script>
       <script>scripts\scr_tileContains.gml</script>
@@ -373,19 +374,19 @@
       <room>rooms\rm_level_Ian_13</room>
     </rooms>
     <rooms name="Puzzle Element Tests">
-      <room>rooms\rm_magneticSnare</room>
-      <room>rooms\rm_objPusher</room>
+      <room>rooms\rm_baby</room>
       <room>rooms\DEFAULT_ROOM</room>
       <room>rooms\rm_everyElement</room>
-      <room>rooms\rm_baby</room>
+      <room>rooms\rm_magneticSnare</room>
+      <room>rooms\rm_objPusher</room>
+      <rooms name="rm_spikestairs">
+        <room>rooms\rm_spikestairs_b_1</room>
+        <room>rooms\rm_spikestairs_f_1</room>
+      </rooms>
       <rooms name="rm_stairs">
         <room>rooms\rm_stairs_f_1</room>
         <room>rooms\rm_stairs_b_1</room>
         <room>rooms\rm_stairs_b_2</room>
-      </rooms>
-      <rooms name="rm_spikestairs">
-        <room>rooms\rm_spikestairs_b_1</room>
-        <room>rooms\rm_spikestairs_f_1</room>
       </rooms>
     </rooms>
     <rooms name="Unused">

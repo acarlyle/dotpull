@@ -30,9 +30,9 @@
 isPuzzleElement = false;
 
 m_roomName = "";
-m_arrMap = undefined;
-
-
+m_roomMapArr = undefined; //2d array of each tile for move_object logic
+m_objPosToNameMap = undefined; //maps x.y -&gt; "objName" for each puzzle element in the room
+m_mapKeyPriorityQueue = undefined; //priority queue of the keys from the objPosToNameMap sorted by parsing order
 </string>
           </argument>
         </arguments>
@@ -55,14 +55,14 @@ m_arrMap = undefined;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//scr_getInput();
+            <string>scr_clearStepGlobals();
 
-scr_clearStepGlobals();
+print("Ya know, ya know !");
 
 //used for cutscene triggers
 if (global.playerCanMove){
     with (par_robot){
-        scr_getInput();
+        get_input();
         if (!isDead){
             if (move){
                 if (global.playerMoved || object_get_name(object_index) == "obj_player"){

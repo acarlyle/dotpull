@@ -1,4 +1,4 @@
-///objectStr(var objRef)
+///objectStr(var objRef) //not the object_index..
 
 var objRef = argument0;
 

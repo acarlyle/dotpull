@@ -4,8 +4,6 @@
     Called in every room's creation code  
 */
 
-var layer = scr_createLayer(room_get_name(room));
-
 print (" -> scr_initRoom()");
 
 if (scr_hasVisitedRoom(obj_player, room_get_name(room))){  
@@ -63,7 +61,7 @@ for (var i = 0; i < ds_list_size(list); i++){
         ds_list_insert(list, 0, inst);
     }
 }
-//Cannon objects need to be pushed nexgt because they can break walls
+//Cannon objects need to be pushed next because they can break walls
 for (var i = 0; i < ds_list_size(list); i++){
     var inst = ds_list_find_value(list, i);
     if (parentOf(inst) == "par_cannon"){
@@ -81,15 +79,20 @@ for (var i = 0; i < ds_list_size(list); i++){
     }
 }
 
-var arr = roomObjectArrayList(list);
+//old way of doing this was ds_list -> 
+//var sortedObjArrList = con_roomObjectArrList(list);
 
 handle_activeRooms();
 
-//set the state of the object in the list
+var layer = con_layer(room_get_name(room), list);
+ds_list_destroy(list);
+
+/*//set the state of the object in the list
 for (var i = 0; i < ds_list_size(list); i++){
     var inst = ds_list_find_value(list, i);
     set_objectState(inst);
 }
 
-ds_list_destroy(list);
-return arr;
+ds_list_destroy(list);*/
+
+return layer;

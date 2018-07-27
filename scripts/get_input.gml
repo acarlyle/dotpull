@@ -1,4 +1,4 @@
-///scr_getInput
+///get_input
 
 global.key_left = keyboard_check_released(vk_left) || keyboard_check_released(ord('A')) || keyboard_check_released(vk_numpad4);
 global.key_right = keyboard_check_released(vk_right) || keyboard_check_released(ord('D')) || keyboard_check_released(ord('6')) || keyboard_check_released(vk_numpad6);

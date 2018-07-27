@@ -1,4 +1,4 @@
-///roomObjectArrList(ds_list list)
+///con_roomObjectArrList(ds_list list)
 
 var arr = undefined;
 //print(ds_list_size(argument0));

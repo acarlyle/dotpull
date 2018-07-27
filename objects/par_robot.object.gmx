@@ -74,7 +74,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*scr_getInput();
+            <string>/*get_input();
 
 if (!isDead){
     if (move) handle_playerMove(); //move is true if movement key is pressed

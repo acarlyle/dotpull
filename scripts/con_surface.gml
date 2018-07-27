@@ -1,4 +1,4 @@
-///scr_createSurface(var surface, var m_room, var m_xPos = 0, var m_yPos = 0, var m_xScale = 1, var m_yScale = 1, var m_rot = 0, var m_color = c_white, var m_alpha = .5)
+///con_surface(var surface, var m_room, var m_xPos = 0, var m_yPos = 0, var m_xScale = 1, var m_yScale = 1, var m_rot = 0, var m_color = c_white, var m_alpha = .5)
 
 var surface = argument0;
 var m_room = argument1;
@@ -10,7 +10,7 @@ var m_rot = argument6;
 var m_color = argument7;
 var m_alpha = argument8;
 
-//print(" -> scr_createSurface of " + string(m_room));
+//print(" -> con_surface of " + string(m_room));
 
 var surfaceInf = instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, surface);
 surfaceInf.m_room = m_room;
