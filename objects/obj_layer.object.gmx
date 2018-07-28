@@ -32,7 +32,7 @@ isPuzzleElement = false;
 m_roomName = "";
 m_roomMapArr = undefined; //2d array of each tile for move_object logic
 m_objPosToNameMap = undefined; //maps x.y -&gt; "objName" for each puzzle element in the room
-m_mapKeyPriorityQueue = undefined; //priority queue of the keys from the objPosToNameMap sorted by parsing order
+m_mapKeyPriorityList = undefined; //priority queue of the keys from the objPosToNameMap sorted by parsing order
 </string>
           </argument>
         </arguments>
@@ -57,7 +57,9 @@ m_mapKeyPriorityQueue = undefined; //priority queue of the keys from the objPosT
             <kind>1</kind>
             <string>scr_clearStepGlobals();
 
-print("Ya know, ya know !");
+//print("Ya know, ya know !");
+
+var layer = self;
 
 //used for cutscene triggers
 if (global.playerCanMove){
@@ -82,7 +84,7 @@ if (global.playerCanMove){
             print("player moved totes");
             //print("Robot at " + string(obj_player.x) + "," + string(obj_player.y));
             handle_pushOntoStack(self, false); //push previous turn's items onto stack before moving them
-            handle_layerObjects(self);  //moved is true if player successfully moved
+            handle_layerObjects(self, layer);  //moved is true if player successfully moved
         }
     }
     //save state

@@ -1,6 +1,7 @@
 ///handle_layerObjects(par_robot robot);
 
 var robot = argument0;
+var layer = argument1;
 
 print("");
 print("handle_layerObjects");
@@ -12,8 +13,8 @@ print("handle_layerObjects");
 
 handle_cleanUpElementEffects();
 
-for (var i = 0; i < array_length_1d(global.roomContents); i++){
-    var object = global.roomContents[i];
+for (var i = 0; i < array_length_1d(layer.m_mapKeyPriorityList); i++){
+    var object = layer.m_objPosToNameMap[layer.m_mapKeyPriorityList[i]];
     with(object){
         
         print("Handling " + object_get_name(object.object_index));
