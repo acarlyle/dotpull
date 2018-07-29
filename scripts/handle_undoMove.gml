@@ -24,13 +24,13 @@ if (!ds_stack_empty(robot.moveHistory)){
                 if (objectStr(object) == "obj_spike"){
                     undo_spike(object);
                 }
-                if (parentOf(object) == "par_breakableWall"){
+                if (get_parent(object) == "par_breakableWall"){
                     undo_breakableWall(object);
                 }
-                if (parentOf(object) == "par_fallingPlatform"){
+                if (get_parent(object) == "par_fallingPlatform"){
                     undo_fallingPlatform(object);
                 }
-                if (parentOf(object) == "par_arrow"){
+                if (get_parent(object) == "par_arrow"){
                     undo_arrow(object);
                 }
                 
@@ -76,7 +76,7 @@ if (!ds_stack_empty(robot.moveHistory)){
                     if (object_get_name(object_index) == "obj_door"){
                         undo_door(object);
                     }
-                    if (parentOf(object) == "par_cannon"){
+                    if (get_parent(object) == "par_cannon"){
                         undo_cannon(object);
                     }
                     

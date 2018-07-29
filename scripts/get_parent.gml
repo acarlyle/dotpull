@@ -1,4 +1,4 @@
-///parentOf(object)
+///get_parent(object)
 
 //returns string of the passed argument object's parent
 

@@ -31,7 +31,7 @@ if (isHorz){ //robot is moving left/right; check for objects towards the player
             var obs = instance_place(objX, cannon.y, par_obstacle);
             //print(obs.isDeactivated);
             if (!obs.isDeactivated){
-                if (parentOf(obs) == "par_breakableWall"){
+                if (get_parent(obs) == "par_breakableWall"){
                     e_damageBreakableWall(obs);
                     createEnergy = true;
                 }
@@ -67,7 +67,7 @@ if (isVert){ //robot is moving up/down; check for objects towards the player
             var obs = instance_place(cannon.x, objY, par_obstacle);
             //print(obs.isDeactivated);
             if (!obs.isDeactivated){
-                if (parentOf(obs) == "par_breakableWall"){
+                if (get_parent(obs) == "par_breakableWall"){
                     e_damageBreakableWall(obs);
                     createEnergy = true;
                 }

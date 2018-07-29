@@ -15,9 +15,11 @@ var sortedObjPriorityList = argument1;
 var objInst = undefined;
 var priorityListValue = undefined;
 var mapValue = "";
+var objAt = 0; //for keeping track of which obj at that position was added in the ds_map in the priorityList
+var curObjStr = "";
 
-layer.m_objPosToNameMap = ds_map_create();
-layer.m_mapKeyPriorityList = ds_list_create();
+layer.objPosToNameMap = ds_map_create();
+layer.mapKeyPriorityList = ds_list_create();
 
 /*
     Loop through ds_list of ordered-by-move-priority puzzle elements in this layer object.  
@@ -27,16 +29,19 @@ layer.m_mapKeyPriorityList = ds_list_create();
 */
 for (var i = 0; i < ds_list_size(sortedObjPriorityList); i++){
     objInst = ds_list_find_value(sortedObjPriorityList, i);
+    objAt = 0;
     priorityListValue = ds_stack_top(objInst.moveHistory); //obj posstr like "x,y"
     print("priorityQueueKey: " + string(priorityListValue));
     print("objStr: " + string(objectStr(objInst)));
     //if the key already exists in the map, append obj to the same position as that key
-    if (ds_map_find_value(layer.m_objPosToNameMap, priorityListValue)){
-        mapValue = string(ds_map_find_value(layer.m_objPosToNameMap, priorityListValue)) + objectStr(objInst) + ";";
-        ds_map_replace(layer.m_objPosToNameMap, priorityListValue, mapValue);
+    if (ds_map_find_value(layer.objPosToNameMap, priorityListValue)){
+        curObjStr = string(ds_map_find_value(layer.objPosToNameMap, priorityListValue));
+        objAt = string_count(";", curObjStr); //if 0 ';'s then this objAt will be one and the obj will be added after the zeroth ';'
+        mapValue = curObjStr + objectStr(objInst) + ";";
+        ds_map_replace(layer.objPosToNameMap, priorityListValue, mapValue);
     }
     else{
-        ds_map_add(layer.m_objPosToNameMap, priorityListValue, objectStr(objInst) + ";"); 
+        ds_map_add(layer.objPosToNameMap, priorityListValue, objectStr(objInst) + ";"); 
     }
-    ds_list_add(layer.m_mapKeyPriorityList, priorityListValue);
+    ds_list_add(layer.mapKeyPriorityList, string(objAt) + ":" + string(priorityListValue));
 }

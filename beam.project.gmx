@@ -151,13 +151,13 @@
       <script>scripts\get_objectFromString.gml</script>
       <script>scripts\get_objectLocalVarsStr.gml</script>
       <script>scripts\get_objectsFromRoomArrayTile.gml</script>
+      <script>scripts\get_parent.gml</script>
       <script>scripts\get_spriteFromObjStr.gml</script>
     </scripts>
     <scripts name="Helpers">
       <script>scripts\array.gml</script>
       <script>scripts\isActivated.gml</script>
       <script>scripts\objectStr.gml</script>
-      <script>scripts\parentOf.gml</script>
       <script>scripts\print.gml</script>
       <script>scripts\print2dArray.gml</script>
       <script>scripts\scr_clearStepGlobals.gml</script>
@@ -224,6 +224,7 @@
     </scripts>
     <scripts name="Virtual Mapping">
       <script>scripts\draw_lowerRooms.gml</script>
+      <script>scripts\map_place.gml</script>
       <script>scripts\scr_arrTileContains.gml</script>
       <script>scripts\scr_getArrOfRoom.gml</script>
     </scripts>

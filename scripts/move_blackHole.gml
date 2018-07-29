@@ -58,7 +58,7 @@ with(par_object){
                 print("Mirptr time ?");
             }
             //robot needs his current pos local variables updated to his new position
-            if (parentOf(self) == "par_robot") scr_updateCurRobotPos(self);
+            if (get_parent(self) == "par_robot") scr_updateCurRobotPos(self);
         }
         else{
             print("PATH does not exist for " + string(object_get_name(self.object_index)))

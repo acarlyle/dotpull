@@ -47,7 +47,7 @@ for (var i = 0; i < array_length_1d(global.roomContents); i++){
                 //print("state now " + string(currentState));
             }
         }
-        if (parentOf(object) == "par_breakableWall"){
+        if (get_parent(object) == "par_breakableWall"){
             ds_stack_push(object.stateHistory, object.hitsLeft);
         }
         

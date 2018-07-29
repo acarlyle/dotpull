@@ -29,10 +29,10 @@
 
 isPuzzleElement = false;
 
-m_roomName = "";
-m_roomMapArr = undefined; //2d array of each tile for move_object logic
-m_objPosToNameMap = undefined; //maps x.y -&gt; "objName" for each puzzle element in the room
-m_mapKeyPriorityList = undefined; //priority queue of the keys from the objPosToNameMap sorted by parsing order
+roomName = "";
+roomMapArr = undefined; //2d array of each tile for move_object logic
+objPosToNameMap = undefined; //maps x.y -&gt; "objName" for each puzzle element in the room
+mapKeyPriorityList = undefined; //priority queue of the keys from the objPosToNameMap sorted by parsing order
 </string>
           </argument>
         </arguments>

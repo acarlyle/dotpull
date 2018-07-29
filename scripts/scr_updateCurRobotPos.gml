@@ -8,7 +8,7 @@ var obj = argument0;
 
 print(" -> scr_updateCurRobotPos(" + string(object_get_name(obj.object_index) + ")"));
 
-if (parentOf(obj) == "par_robot"){
+if (get_parent(obj) == "par_robot"){
     obj.oldPlayerX = x;
     obj.oldPlayerY = y;
     obj.playerX = x;

@@ -1,16 +1,16 @@
-///move_spike(obj_spike spike, par_robot robot)
+///move_spike(2D_array roomMape, obj_spike spike, int spike_posX, int spike_posY)
 
 /*
     This function handles:
     obj_spike
 */
 
-//print("move_spike");
+roomMap = argument0;
+spike = argument1;
+spike_posX = argument2;
+spike_posY = argument3;
 
-spike = argument0;
-robot = argument1;
-
-var mirptrExt = false; //TODO
+var mirptrExt = false; //TODO -> haven't implemented spike logic w/ mirptrs yet
 
 //check if spike has already during player's turn and not roberta's
 if (!spike.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
