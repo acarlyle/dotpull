@@ -1,4 +1,4 @@
- ///move_pullPushables(obj_layer thisLayer, obj_spike spike, int spike_posX, int spike_posY)
+ ///move_pullPushables(obj_layer thisLayer, obj_enum)
 
 /*
     This function handles:
@@ -9,19 +9,20 @@
     obj_magneticSnare
 */
 
-thisLayer = argument0;
-object = argument1;
-object_posX = argument2;
-object_posY = argument3;
+var thisLayer = argument0;
+var object = argument1;
 
 var pushPull = 1;
 
 var mirptrExt = false; // if a mirptr is in the objects push/pull path
 var mirptrVt = false;
 var mirptrHz = false;
+var object_state = "tile_one"; //default movement, should read from file
 
-object.moved = false; 
-object.state = "tile_one";
+//if (scr_roomContains(
+
+//object.moved = false; 
+//object.state = "tile_one";
 
 //TODO -> Mirraporter logic w/ 2d array
 /*with (obj_mirptr){
@@ -48,16 +49,16 @@ object.state = "tile_one";
     }
 }*/
 
-if (map_place(thisLayer, obj_slideTile, object_posX, object_posY)){
-    object.state = "tile_slide";
+if (map_place(thisLayer, obj_slideTile, object[| OBJECT.X], object[| OBJECT.Y])){
+    object_state = "tile_slide";
 }
 
-switch(object.state){
+switch(object_state){
     case "tile_one":
-        move_pullPushables_tile_one(object, robot, object_posX, object_posY, mirptrExt, mirptrHz, mirptrVt, pushPull); //default one tile grid movement
+        move_pullPushables_tile_one(thisLayer, object, mirptrExt, mirptrHz, mirptrVt, pushPull); //default one tile grid movement
         break;
     case "tile_slide":
-        move_pullPushables_tile_slide(object, robot, object_posX, object_posY, mirptrExt, mirptrHz, mirptrVt, pushPull); //if an object is sliding (on ice or something)
+        move_pullPushables_tile_slide(thisLayer, object, mirptrExt, mirptrHz, mirptrVt, pushPull); //if an object is sliding (on ice or something)
         break;
 }
 

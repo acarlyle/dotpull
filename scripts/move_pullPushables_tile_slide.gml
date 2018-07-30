@@ -1,13 +1,11 @@
-///move_pullPushables_tile_slide(par_object object, par_robot robot, var objPosX, var objPosY, obj_mirptr mirptrExt, bool mirptrHz, bool mirptrVt, var pushPull)
+///move_pullPushables_tile_slide(obj_layer thisLayer, par_object object, var objPosX, var objPosY, obj_mirptr mirptrExt, bool mirptrHz, bool mirptrVt, var pushPull)
 
-var object = argument0;
-var robot = argument1;
-var objPosX = argument2;
-var objPosY = argument3;
-var mirptrExt = argument4;
-var mirptrHz = argument5;
-var mirptrVt = argument6;
-var pushPull = argument7;
+var thisLayer = argument0;
+var object = argument1;
+var mirptrExt = argument2;
+var mirptrHz = argument3;
+var mirptrVt = argument4;
+var pushPull = argument5;
 
 var newObjPosX, newObjPosY;
 

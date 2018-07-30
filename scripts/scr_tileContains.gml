@@ -10,12 +10,13 @@ var objPosX = argument0;
 var objPosY = argument1;
 var objectList = argument2; //contains par_robot, par_obstacle
 
-//print("-> scr_tileContains(" + string(objPosX) + ", " + string(objPosY) + ")"); 
-
 //asset_get_index(object_get_name(object))
 
 /*for (var i = 0; i < array_length_1d(objectList); i++){
     var object = objectList[i];
+
+//print("-> scr_tileContains(" + string(objPosX) + ", " + string(objPosY) + ")"); 
+
     with(object){
         print("here1");
         print("object: " + string(object_get_name(object.object_index)));

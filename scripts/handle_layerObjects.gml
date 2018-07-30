@@ -23,6 +23,8 @@ for (var i = 0; i < ds_list_size(thisLayer.mapKeyPriorityList); i++){
     
     var objPosX = objPosStrArr[0];
     var objPosY = objPosStrArr[1];
+    
+    var objEnum = con_objectEnum(objectString, objPosX, objPosY);
      
     print("Handling " + object_get_name(object.object_index));
     
@@ -66,8 +68,9 @@ for (var i = 0; i < ds_list_size(thisLayer.mapKeyPriorityList); i++){
         move_spike(thisLayer, object, objPosX, objPosY);
     }
     //Handles: par_block, obj_key, obj_magneticSnare
-    else if ((canPull || canPush)){
-        move_pullPushables(thisLayer, object, objPosX, objPosY);
+    else if ((objEnum[| OBJECT.CANPUSH] || objEnum[| OBJECT.CANPULL])){
+        print("ok nao: " + string(objEnum[| OBJECT.CANPULL]));
+        move_pullPushables(thisLayer, objEnum);
     }
     else if (objectStr(object) == "obj_blackHole"){
         move_blackHole(object);

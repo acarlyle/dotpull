@@ -50,6 +50,29 @@ global.TILE_SIZE = 16;
 global.DEACTIVATED_X = -16;
 global.DEACTIVATED_Y = -16;
 
+/*
+    ENUMS
+    
+    Can be used w/ accessors in ds_lists like so:
+    
+    var _item = ds_list_create();
+    _item[| ITEM.NAME] = "Super Sword";
+    _item[| ITEM.ID] = 124;
+    
+    Where NAME and ID are defined in the ENUM ITEM.  
+*/
+
+enum OBJECT { //default vals 0, 1, 2...
+    NAME = 0, 
+    X = 1,    
+    Y = 2,
+    MOVED = 3,
+    MOVED_DIR = 4,
+    STATE = 5,
+    CANPULL = 6,
+    CANPUSH = 7   
+}
+
 scr_applyScreenRes();
 
 //room_goto(rm_level_Ian_4);

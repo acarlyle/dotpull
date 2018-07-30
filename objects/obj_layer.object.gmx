@@ -33,6 +33,7 @@ roomName = "";
 roomMapArr = undefined; //2d array of each tile for move_object logic
 objPosToNameMap = undefined; //maps x.y -&gt; "objName" for each puzzle element in the room
 mapKeyPriorityList = undefined; //priority queue of the keys from the objPosToNameMap sorted by parsing order
+robot = undefined; //if there's an object in this layer, keep track of its type
 </string>
           </argument>
         </arguments>

@@ -12,7 +12,7 @@
 */
 
 var object = argument0;
-var rtnStr = "";
+var rtnStr = "[state=" + string(object.state); // tile_slide, static, etc
 
 switch (object_get_name(object)){
     case "obj_trigger":
@@ -23,10 +23,12 @@ switch (object_get_name(object)){
             doorX = triggerDoor.deactivatedX;
             doorY = triggerDoor.deactivatedY;
         }
-        rtnStr = "[triggerDoorPtr_posX=" + string(doorX) + "/triggerDoorPtr_posY=" + string(doorY)+"]";
+        rtnStr = rtnStr + "/triggerDoorPtr_posX=" + string(doorX) + "/triggerDoorPtr_posY=" + string(doorY);
                                              
         //print("triggerDoorPtr: " + string(object.triggerDoorPtr));
         break;
 }
+
+rtnStr = rtnStr + "]";
 
 return rtnStr;

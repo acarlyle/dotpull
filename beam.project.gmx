@@ -86,9 +86,13 @@
   <scripts name="scripts">
     <scripts name="Constructors">
       <script>scripts\con_layer.gml</script>
+      <script>scripts\con_objectEnum.gml</script>
       <script>scripts\con_priorityObjPosMap.gml</script>
       <script>scripts\con_roomObjectArrList.gml</script>
       <script>scripts\con_surface.gml</script>
+    </scripts>
+    <scripts name="Destructors">
+      <script>scripts\des_enum.gml</script>
     </scripts>
     <scripts name="Element Effects">
       <script>scripts\e_damageBreakableWall.gml</script>
@@ -105,6 +109,8 @@
         <script>scripts\move_fallingPlatform.gml</script>
         <script>scripts\move_key.gml</script>
         <script>scripts\move_pullPushables.gml</script>
+        <script>scripts\move_pullPushables_tile_one.gml</script>
+        <script>scripts\move_pullPushables_tile_slide.gml</script>
         <script>scripts\move_pusher.gml</script>
         <script>scripts\move_spike.gml</script>
         <script>scripts\move_trigger.gml</script>
@@ -182,10 +188,6 @@
       <script>scripts\scr_canPullPush_instancePlaceVersion.gml</script>
     </scripts>
     <scripts name="Movement">
-      <scripts name="Objects">
-        <script>scripts\move_pullPushables_tile_one.gml</script>
-        <script>scripts\move_pullPushables_tile_slide.gml</script>
-      </scripts>
       <scripts name="Robot">
         <script>scripts\handle_checkLowerRoom.gml</script>
         <script>scripts\handle_robotMove_tile_one.gml</script>
