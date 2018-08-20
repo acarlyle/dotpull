@@ -90,7 +90,7 @@ global.roomContents = scr_initRoom();</code>
     <instance objName="obj_platform" x="80" y="112" name="inst_1532011F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="80" y="112" name="inst_54DA586A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="112" y="112" name="inst_0B45819B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block" x="96" y="112" name="inst_CF7341BB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="112" y="112" name="inst_CF7341BB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

@@ -46,15 +46,17 @@ if (surface_exists(m_surface)){
                 var objsHere = scr_split(lowerRoomArray[yPos, xPos], ";");
                 for (obj = 0; obj < array_length_1d(objsHere); obj++){
                     var objName = objsHere[obj];
-                    if strcontains(objName, ":") {
-                        var objAndStacks = scr_split(objName, ":"); //get rid of stacks
+                    //if strcontains(objName, ":") {
+                    if (strcontains(objName, "[")){
+                        var objAndStacks = scr_split(objName, "["); //get rid of stacks
                         objName = objAndStacks[0];
                         //objName contains local variables
-                        if (strcontains(objName, "[")){
-                            var objNameAndVars = scr_split(objName, "[");
-                            objName = objNameAndVars[0];
+                        //if (strcontains(objName, "[")){
+                            //var objNameAndVars = scr_split(objName, "[");
+                            //objName = objNameAndVars[0];
+                            print("New obj name: " + string(objName));
                         }
-                    }
+                    //}
                     //print("surExisted_drawing: " + string(objName) + " at " + string(xPos * global.TILE_SIZE) + ", " + string(yPos * global.TILE_SIZE));
                     surface_set_target(m_surface);
                     draw_sprite(get_spriteFromObjStr(objName), 0, xPos * global.TILE_SIZE, yPos * global.TILE_SIZE);

@@ -3,7 +3,7 @@
 /*
     Goal is to create a priority map by populating 2 data structures.  Since a map
     in GameMaker adds elements in a semi-random way, we need a way to maintain the 
-    priority-move-order of puzzle elements.  This is solved by eimultaneously populating
+    priority-move-order of puzzle elements.  This is solved by simultaneously populating
     a ds_list tied to a ds_map.     
 */
 

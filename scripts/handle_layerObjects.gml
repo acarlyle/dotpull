@@ -1,10 +1,10 @@
-///handle_layerObjects(par_robot robot);
+///handle_layerObjects(par_robot robot, obj_layer layer);
 
 var robot = argument0;
 var thisLayer = argument1;
 
 print("");
-print("handle_thisLayerObjects");
+print("handle_layerObjects");
 
 handle_cleanUpElementEffects();
 
@@ -78,6 +78,8 @@ for (var i = 0; i < ds_list_size(thisLayer.mapKeyPriorityList); i++){
     else if (objectStr(object) == "obj_baby"){
         move_baby(object, robot);
     }
+    
+    ds_list_destroy(objEnum); //destroys enum (it's really a list..)
 }
 
 handle_prioritizeItems();

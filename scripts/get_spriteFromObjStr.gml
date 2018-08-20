@@ -2,6 +2,8 @@
 
 var objStr = argument0;
 
+print("draw_spriteFromObjStr(" + string(objStr) + ")");
+
 var objStrSplitBy_ = scr_split(objStr, "_");
 var spriteStr = "spr_" + string(objStrSplitBy_[1]);
 //print(spriteStr);
