@@ -67,7 +67,7 @@ enum OBJECT { //default vals 0, 1, 2...
     X = 1,    
     Y = 2,
     MOVED = 3,
-    MOVED_DIR = 4,
+    MOVEDDIR = 4,
     STATE = 5,
     CANPULL = 6,
     CANPUSH = 7   

@@ -44,9 +44,8 @@ for (var i = 0; i < ds_list_size(thisLayer.mapKeyPriorityList); i++){
     }
     
     //If object is on top of a snare, don't do anything with it
-    if (instance_place(x, y, par_snare)) {
-        continue;
-    }
+    if (map_place(thisLayer, par_snare, objPosX, objPosY)) { continue; }
+    
     //Handles: obj_trigger, obj_triggerDoor
     else if (objectStr(object) == "obj_trigger" || objectStr == "obj_triggerDoor"){
         move_trigger(object, robot);
@@ -65,7 +64,7 @@ for (var i = 0; i < ds_list_size(thisLayer.mapKeyPriorityList); i++){
     }
     //Handles: obj_spike
     else if (objectStr(object) == "obj_spike"){
-        move_spike(thisLayer, object, objPosX, objPosY);
+        move_spike(thisLayer, object);
     }
     //Handles: par_block, obj_key, obj_magneticSnare
     else if ((objEnum[| OBJECT.CANPUSH] || objEnum[| OBJECT.CANPULL])){

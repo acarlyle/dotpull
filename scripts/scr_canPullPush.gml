@@ -1,13 +1,14 @@
-///scr_canPullPush(int objPosX, int objPosY, bool moveDiag, par_object object, par_robot robot, bool mirptrExt)
+///scr_canPullPush(int objPosX, int objPosY, bool moveDiag, enum objEnum, par_robot robot, bool mirptrExt, par_layer layer)
 
 print("-> scr_canPullPush(" + string(argument0) + ", " + string(argument1) + ")");
 
 var posX = argument0;
 var posY = argument1;
 var diagonalMovement = argument2; //boolean
-var object = argument3;
+var object = argument3; //objEnum
 var robot = argument4;
 var mirptr = argument5;
+var thisLayer = argument6;
 
 var badArgList = undefined;
 var mirptrHz = false;
@@ -17,24 +18,19 @@ var yDiff = robot.y - posY;
 
 if (diagonalMovement) print("scr_canPullPush diag checking");
 
-// spikes don't care if there's a robot in the way
-//if (objectStr(object) == "obj_spike") { badArgList = array(par_obstacle) }
-//else { badArgList = array(par_robot, par_obstacle); }
-badArgList = array(par_robot, par_obstacle);
+var badArgList = array(par_robot, par_obstacle);
 
 //if there's a mirptr in the path of the object, reset object position back to where it should be
 // +/- diff to spot to pull to
 if (mirptr){
-    if (object.x == mirptr.x){
+    if (object[| OBJECT.X] == mirptr.x){
         mirptrVt = true;
     }
-    if (object.y == mirptr.y){ 
+    if (object[| OBJECT.Y] == mirptr.y){ 
         mirptrHz = true;
     }
-    posX = object.x + (posX - mirptr.x);
-    posY = object.y + (posY - mirptr.y);
-    //posX = object.x; 
-    //posY = object.y;
+    posX = object[| OBJECT.X] + (posX - mirptr.x);
+    posY = object[| OBJECT.Y] + (posY - mirptr.y);
     xDiff = robot.oldPlayerX - posX;
     yDiff = robot.oldPlayerY - posY; 
     if (xDiff == 0 && yDiff == 0){
@@ -50,32 +46,32 @@ if (!(canPull || canPush)) return false;
 if (isDeactivated) return false;
 
 //Handle state change from active, targetLocked spike
-if (objectStr(self) == "obj_spike"){
+if (object[| OBJECT.NAME] == "obj_spike"){
     if (targetLocked){
-        if (instance_place(posX, posY, par_fallingPlatform)){
-            var fallingPlat = instance_place(posX, posY, par_fallingPlatform);
+        if (map_place(thisLayer, par_fallingPlatform, posX, posY)){
+            var fallingPlat = map_place(thisLayer, thisLayer, posX, posY, par_fallingPlatform);
             if (fallingPlat.isDeactivated){
                 print("Falling platform is deactivated; can't pull");
                 return false;
             }
         }
-        if (instance_place(posX, posY, par_breakableWall)){
-            breakableWall = instance_place(posX, posY, par_breakableWall);
+        if (map_place(thisLayer, par_breakableWall, posX, posY)){
+            breakableWall = map_place(thisLayer, par_breakableWall, posX, posY);
             e_damageBreakableWall(breakableWall);
             if (breakableWall.isDeactivated){
                 return true;
             }
         }
-        if (instance_place(posX, posY, par_obstacle) &&
-           !instance_place(posX, posY, obj_baby)){
-            var obs = instance_place(posX, posY, par_obstacle);
+        if (map_place(thisLayer, par_obstacle, posX, posY) &&
+           !map_place(thisLayer, obj_baby, posX, posY)){
+            var obs = map_place(thisLayer, par_obstacle, posX, posY);
             print(obs.isDeactivated);
             if (isActivated(obs)){
                 print("SPIKE STOPPED BY OBSTACLE!!!!");
                 return false;
             }
         }
-        else if (!instance_place(posX, posY, par_platform)){
+        else if (!map_place(thisLayer, par_platform, posX, posY)){
             print("No platform to push spike to");
             return false;
         }
@@ -101,13 +97,13 @@ if (!diagonalMovement && (canPull || canPush) && !(canPull && canPush)){ //this 
     if (yDiff == 0 || (!mirptrVt && mirptrHz)){ //player is moving left/right; check for objects towards the player
         print("scr_canPullPush: Robot moving left/right");
         if (xDiff > 0){ //player is to the right of the obj
-            var objX = object.x + global.TILE_SIZE;
-            var objY = object.y;
+            var objX = object[| OBJECT.X] + global.TILE_SIZE;
+            var objY = object[| OBJECT.Y];
             while(!scr_tileContains(objX, objY, badArgList)){
                 print("scr_canPullPush: player right: x, y: " + string(objX) + ", " + string(objY));
-                if (instance_place(objX, objY, obj_mirptr)){
+                if (map_place(thisLayer, obj_mirptr, objX, objY)){
                     //objX += global.TILE_SIZE;
-                    mp = instance_place(objX, objY, obj_mirptr);
+                    mp = map_place(thisLayer, obj_mirptr, objX, objY);
                     objX = mp.mirptrPtr.x;
                     objY = mp.mirptrPtr.y;
                     print("scr_canPullPush: mp is a real boy; new objY: " + string(objY));
@@ -116,21 +112,21 @@ if (!diagonalMovement && (canPull || canPush) && !(canPull && canPush)){ //this 
             }
             // checking for this specific robot at this position; we don't want to move it for rob + roberta
             // if she's next to Rob 
-            if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+            if (map_place(thisLayer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
             
-            if (!instance_place(objX, objY, par_robot)){
+            if (!map_place(thisLayer, par_robot, objX, objY)){
                 print("scr_canPullPush: No robot here! :(" + " " + string(objX) + " " + string(objY));
                 return false;
             }
         }
         else{ //player is to the left of the obj
-            var objX = object.x - global.TILE_SIZE;
-            var objY = object.y;
+            var objX = object[| OBJECT.X] - global.TILE_SIZE;
+            var objY = object[| OBJECT.Y];
             while(!scr_tileContains(objX, objY, badArgList)){
                 print("scr_canPullPush: player left: x, y: " + string(objX) + ", " + string(objY));
-                if (instance_place(objX, objY, obj_mirptr)){
+                if (map_place(thisLayer, obj_mirptr, objX, objY)){
                     //objX -= global.TILE_SIZE;
-                    mp = instance_place(objX, objY, obj_mirptr);
+                    mp = map_place(thisLayer, obj_mirptr, objX, objY);
                     objX = mp.mirptrPtr.x;
                     objY = mp.mirptrPtr.y;
                     print("scr_canPullPush: mp is a real boy; new objY: " + string(objY));
@@ -140,9 +136,9 @@ if (!diagonalMovement && (canPull || canPush) && !(canPull && canPush)){ //this 
             
             // checking for this specific robot at this position; we don't want to move it for rob + roberta
             // if she's next to Rob 
-            if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+            if (map_place(thisLayer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
             
-            if (!instance_place(objX, objY, par_robot)){
+            if (!map_place(thisLayer, par_robot, objX, objY)){
                 print("scr_canPullPush: No robot here! :(" + " " + string(objX) + " " + string(objY));
                 return false;
             }
@@ -153,14 +149,14 @@ if (!diagonalMovement && (canPull || canPush) && !(canPull && canPush)){ //this 
     if (xDiff == 0 || (!mirptrHz && mirptrVt)){ //player is moving up/down; check for objects towards the player
         print("scr_canPullPush: Robot moving up/down, moveDir: " + string(robot.movedDir));
         if (yDiff < 0){ //player is above the obj
-            var objX = object.x;
+            var objX = object[| OBJECT.X];
             var objY = y - global.TILE_SIZE
             //for (var objY = y - global.TILE_SIZE; (objY > endPosY) || (objY > robot.y); objY -= global.TILE_SIZE){
             while(!scr_tileContains(objX, objY, badArgList)){
                 print("player above: x, y: " + string(objX) + ", " + string(objY));
-                if (instance_place(objX, objY, obj_mirptr)){
+                if (map_place(thisLayer, obj_mirptr, objX, objY)){
                     //objY -= global.TILE_SIZE;
-                    mp = instance_place(objX, objY, obj_mirptr);
+                    mp = map_place(thisLayer, obj_mirptr, objX, objY);
                     objX = mp.mirptrPtr.x;
                     objY = mp.mirptrPtr.y;
                     print("mp is a real boy; new objX: " + string(objY));
@@ -170,16 +166,16 @@ if (!diagonalMovement && (canPull || canPush) && !(canPull && canPush)){ //this 
             
             // checking for this specific robot at this position; we don't want to move it for rob + roberta
             // if she's next to Rob 
-            if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+            if (map_place(thisLayer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
             
-            if (!instance_place(objX, objY, par_robot)){
+            if (!map_place(thisLayer, par_robot, objX, objY)){
                 print("No robot here! :(" + " " + string(objX) + " " + string(objY));
                 return false;
             }
         }
         else{
             print("below object");
-            var objX = object.x;
+            var objX = object[| OBJECT.X];
             var objY = y + global.TILE_SIZE;
             //print("objY: " + string(objY));
             //for (var objY = y + global.TILE_SIZE; (objY < endPosY) || (objY < robot.y); objY += global.TILE_SIZE){
@@ -187,9 +183,9 @@ if (!diagonalMovement && (canPull || canPush) && !(canPull && canPush)){ //this 
                 print("player below: x, y: " + string(objX) + ", " + string(objY));
                 //var yakuza = "ya";
                 //get_string(yakuza, yakuza);
-                if (instance_place(objX, objY, obj_mirptr)){
+                if (map_place(thisLayer, obj_mirptr, objX, objY)){
                     //objY += global.TILE_SIZE;
-                    mp = instance_place(objX, objY, obj_mirptr);
+                    mp = map_place(thisLayer, obj_mirptr, objX, objY);
                     objX = mp.mirptrPtr.x;
                     objY = mp.mirptrPtr.y;
                     //objY += global.TILE_SIZE;
@@ -200,9 +196,9 @@ if (!diagonalMovement && (canPull || canPush) && !(canPull && canPush)){ //this 
             
             // checking for this specific robot at this position; we don't want to move it for rob + roberta
             // if she's next to Rob 
-            if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+            if (map_place(thisLayer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
             
-            if (!instance_place(objX, objY, par_robot)){
+            if (!map_place(thisLayer, par_robot, objX, objY)){
                 print("No robot here! :(" + " " + string(objX) + " " + string(objY));
                 print("Robot at: " + string(robot.x) + " " + string(robot.y));
                 return false;
@@ -218,8 +214,8 @@ if (diagonalMovement == true && (canPull || canPush) && !(canPull && canPush)){
         var objX = x+global.TILE_SIZE; var objY = y-global.TILE_SIZE;
         while(!scr_tileContains(objX, objY, badArgList)){
             print("scr_canPullPush: robot upright: x, y: " + string(objX) + ", " + string(objY));
-            if (instance_place(objX, objY, obj_mirptr)){
-                mp = instance_place(objX, objY, obj_mirptr);
+            if (map_place(thisLayer, obj_mirptr, objX, objY)){
+                mp = map_place(thisLayer, obj_mirptr, objX, objY);
                 objX = mp.mirptrPtr.x;
                 objY = mp.mirptrPtr.y;
                 print("scr_canPullPush: mp is a real boy; new objX: " + string(objX));
@@ -231,9 +227,9 @@ if (diagonalMovement == true && (canPull || canPush) && !(canPull && canPush)){
         
         // checking for this specific robot at this position; we don't want to move it for rob + roberta
         // if she's next to Rob 
-        if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+        if (map_place(thisLayer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
             
-        if (!instance_place(objX, objY, par_robot)){
+        if (!map_place(thisLayer, par_robot, objX, objY)){
             print("scr_canPullPush: No robot here! :(" + " " + string(objX) + " " + string(objY));
             return false;
         }
@@ -242,8 +238,8 @@ if (diagonalMovement == true && (canPull || canPush) && !(canPull && canPush)){
         var objX = x-global.TILE_SIZE; var objY = y-global.TILE_SIZE;
         while(!scr_tileContains(objX, objY, badArgList)){
             print("scr_canPullPush: robot upleft: x, y: " + string(objX) + ", " + string(objY));
-            if (instance_place(objX, objY, obj_mirptr)){
-                mp = instance_place(objX, objY, obj_mirptr);
+            if (map_place(thisLayer, obj_mirptr, objX, objY)){
+                mp = map_place(thisLayer, obj_mirptr, objX, objY);
                 objX = mp.mirptrPtr.x;
                 objY = mp.mirptrPtr.y;
                 print("scr_canPullPush: mp is a real boy; new objX: " + string(objX));
@@ -255,9 +251,9 @@ if (diagonalMovement == true && (canPull || canPush) && !(canPull && canPush)){
         
         // checking for this specific robot at this position; we don't want to move it for rob + roberta
         // if she's next to Rob 
-        if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+        if (map_place(thisLayer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
         
-        if (!instance_place(objX, objY, par_robot)){
+        if (!map_place(thisLayer, par_robot, objX, objY)){
             print("scr_canPullPush: No robot here! :(" + " " + string(objX) + " " + string(objY));
             return false;
         }
@@ -266,8 +262,8 @@ if (diagonalMovement == true && (canPull || canPush) && !(canPull && canPush)){
         var objX = x + global.TILE_SIZE; var objY = y + global.TILE_SIZE;
         while(!scr_tileContains(objX, objY, badArgList)){
             print("scr_canPullPush: robot downright: x, y: " + string(objX) + ", " + string(objY));
-            if (instance_place(objX, objY, obj_mirptr)){
-                mp = instance_place(objX, objY, obj_mirptr);
+            if (map_place(thisLayer, obj_mirptr, objX, objY)){
+                mp = map_place(thisLayer, obj_mirptr, objX, objY);
                 objX = mp.mirptrPtr.x;
                 objY = mp.mirptrPtr.y;
                 print("scr_canPullPush: mp is a real boy; new objX: " + string(objX));
@@ -279,9 +275,9 @@ if (diagonalMovement == true && (canPull || canPush) && !(canPull && canPush)){
         
         // checking for this specific robot at this position; we don't want to move it for rob + roberta
         // if she's next to Rob 
-        if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+        if (map_place(thisLayer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
         
-        if (!instance_place(objX, objY, par_robot)){
+        if (!map_place(thisLayer, par_robot, objX, objY)){
             print("scr_canPullPush: No robot here! :(" + " " + string(objX) + " " + string(objY));
             return false;
         }       
@@ -290,8 +286,8 @@ if (diagonalMovement == true && (canPull || canPush) && !(canPull && canPush)){
         var objX = x-global.TILE_SIZE; var objY = y+ global.TILE_SIZE;
         while(!scr_tileContains(objX, objY, badArgList)){
             print("scr_canPullPush: robot downleft: x, y: " + string(objX) + ", " + string(objY));
-            if (instance_place(objX, objY, obj_mirptr)){
-                mp = instance_place(objX, objY, obj_mirptr);
+            if (map_place(thisLayer, obj_mirptr, objX, objY)){
+                mp = map_place(thisLayer, obj_mirptr, objX, objY);
                 objX = mp.mirptrPtr.x;
                 objY = mp.mirptrPtr.y;
                 print("scr_canPullPush: mp is a real boy; new objX: " + string(objX));
@@ -303,9 +299,9 @@ if (diagonalMovement == true && (canPull || canPush) && !(canPull && canPush)){
         
         // checking for this specific robot at this position; we don't want to move it for rob + roberta
         // if she's next to Rob 
-        if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+        if (map_place(thisLayer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
         
-        if (!instance_place(objX, objY, par_robot)){
+        if (!map_place(thisLayer, par_robot, objX, objY)){
             print("scr_canPullPush: No robot here! :(" + " " + string(objX) + " " + string(objY));
             return false;
         }    
@@ -325,8 +321,8 @@ if (canPull && canPush){
                 //for (var objX = x + global.TILE_SIZE; objX < endPosX; objX += global.TILE_SIZE){
                 while(!scr_tileContains(objX, objY, badArgList)){
                     print("robot right pull&push: x, y: " + string(objX) + ", " + string(objY));
-                    if (instance_place(objX, objY, obj_mirptr)){
-                        mp = instance_place(objX, objY, obj_mirptr);
+                    if (map_place(thisLayer, obj_mirptr, objX, objY)){
+                        mp = map_place(thisLayer, obj_mirptr, objX, objY);
                         objX = mp.mirptrPtr.x;
                         objY = mp.mirptrPtr.y;
                         print("mp is a real boy; new objX: " + string(objX));
@@ -337,9 +333,9 @@ if (canPull && canPush){
                 
                 // checking for this specific robot at this position; we don't want to move it for rob + roberta
                 // if she's next to Rob 
-                if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+                if (map_place(thisLayer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
         
-                if (!instance_place(objX, objY, par_robot)){
+                if (!map_place(thisLayer, par_robot, objX, objY)){
                     print("No robot here! :(" + " " + string(objX) + " " + string(objY));
                     return false;
                 }
@@ -349,8 +345,8 @@ if (canPull && canPush){
                 //for (var objX = x - global.TILE_SIZE; objX > endPosX; objX -= global.TILE_SIZE){
                 while(!scr_tileContains(objX, objY, badArgList)){
                     print("robot left pull&push: x, y: " + string(objX) + ", " + string(objY));
-                    if (instance_place(objX, objY, obj_mirptr)){
-                        mp = instance_place(objX, objY, obj_mirptr);
+                    if (map_place(thisLayer, obj_mirptr, objX, objY)){
+                        mp = map_place(thisLayer, obj_mirptr, objX, objY);
                         objX = mp.mirptrPtr.x;
                         objY = mp.mirptrPtr.y;
                         print("mp is a real boy; new objX: " + string(objX));
@@ -361,9 +357,9 @@ if (canPull && canPush){
                 
                 // checking for this specific robot at this position; we don't want to move it for rob + roberta
                 // if she's next to Rob 
-                if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+                if (map_place(thisLayer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
                 
-                if (!instance_place(objX, objY, par_robot)){
+                if (!map_place(thisLayer, par_robot, objX, objY)){
                     print("No robot here! :(" + " " + string(objX) + " " + string(objY));
                     return false;
                 }
@@ -374,8 +370,8 @@ if (canPull && canPush){
                 //for (var objY = y - global.TILE_SIZE; objY > endPosY; objY -= global.TILE_SIZE){
                 while(!scr_tileContains(objX, objY, badArgList)){
                     print("robot above pull&push: x, y: " + string(objX) + ", " + string(objY));
-                    if (instance_place(objX, objY, obj_mirptr)){
-                        mp = instance_place(objX, objY, obj_mirptr);
+                    if (map_place(thisLayer, obj_mirptr, objX, objY)){
+                        mp = map_place(thisLayer, obj_mirptr, objX, objY);
                         objX = mp.mirptrPtr.x;
                         objY = mp.mirptrPtr.y;
                         print("mp is a real boy; new objX: " + string(objX));
@@ -386,9 +382,9 @@ if (canPull && canPush){
                 
                 // checking for this specific robot at this position; we don't want to move it for rob + roberta
                 // if she's next to Rob 
-                if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+                if (map_place(thisLayer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
                 
-                if (!instance_place(objX, objY, par_robot)){
+                if (!map_place(thisLayer, par_robot, objX, objY)){
                     print("No robot here! :(" + " " + string(objX) + " " + string(objY));
                     return false;
                 }
@@ -397,8 +393,8 @@ if (canPull && canPush){
                 //for (var objY = y + global.TILE_SIZE; objY < endPosY; objY += global.TILE_SIZE){
                 while(!scr_tileContains(objX, objY, badArgList)){
                     print("robot below pull&push: x, y: " + string(objX) + ", " + string(objY));
-                    if (instance_place(objX, objY, obj_mirptr)){
-                        mp = instance_place(objX, objY, obj_mirptr);
+                    if (map_place(thisLayer, obj_mirptr, objX, objY)){
+                        mp = map_place(thisLayer, obj_mirptr, objX, objY);
                         objX = mp.mirptrPtr.x;
                         objY = mp.mirptrPtr.y;
                         print("mp is a real boy; new objX: " + string(objX));
@@ -409,9 +405,9 @@ if (canPull && canPush){
                 
                 // checking for this specific robot at this position; we don't want to move it for rob + roberta
                 // if she's next to Rob 
-                if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+                if (map_place(thisLayer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
                 
-                if (!instance_place(objX, objY, par_robot)){
+                if (!map_place(thisLayer, par_robot, objX, objY)){
                     print("No robot here! :(" + " " + string(objX) + " " + string(objY));
                     return false;
                 }
@@ -427,8 +423,8 @@ if (canPull && canPush){
             var objX = x+global.TILE_SIZE; var objY = y-global.TILE_SIZE;
             while(!scr_tileContains(objX, objY, badArgList)){
                 print("robot upright pull&push: x, y: " + string(objX) + ", " + string(objY));
-                if (instance_place(objX, objY, obj_mirptr)){
-                    mp = instance_place(objX, objY, obj_mirptr);
+                if (map_place(thisLayer, obj_mirptr, objX, objY)){
+                    mp = map_place(thisLayer, obj_mirptr, objX, objY);
                     objX = mp.mirptrPtr.x;
                     objY = mp.mirptrPtr.y;
                     print("mp is a real boy; new objX: " + string(objX));
@@ -440,9 +436,9 @@ if (canPull && canPush){
             
             // checking for this specific robot at this position; we don't want to move it for rob + roberta
             // if she's next to Rob 
-            if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+            if (map_place(thisLayer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
                 
-            if (!instance_place(objX, objY, par_robot)){
+            if (!map_place(thisLayer, par_robot, objX, objY)){
                 print("No robot here! :(" + " " + string(objX) + " " + string(objY));
                 return false;
             }
@@ -452,8 +448,8 @@ if (canPull && canPush){
             //for (objX = x - global.TILE_SIZE; objX > endPosX; objX -= global.TILE_SIZE){
             while(!scr_tileContains(objX, objY, badArgList)){
                 print("robot upleft pull&push: x, y: " + string(objX) + ", " + string(objY));
-                if (instance_place(objX, objY, obj_mirptr)){
-                    mp = instance_place(objX, objY, obj_mirptr);
+                if (map_place(thisLayer, obj_mirptr, objX, objY)){
+                    mp = map_place(thisLayer, obj_mirptr, objX, objY);
                     objX = mp.mirptrPtr.x;
                     objY = mp.mirptrPtr.y;
                     print("mp is a real boy; new objX: " + string(objX));
@@ -465,9 +461,9 @@ if (canPull && canPush){
             
             // checking for this specific robot at this position; we don't want to move it for rob + roberta
             // if she's next to Rob 
-            if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+            if (map_place(thisLayer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
             
-            if (!instance_place(objX, objY, par_robot)){
+            if (!map_place(thisLayer, par_robot, objX, objY)){
                 print("No robot here! :(" + " " + string(objX) + " " + string(objY));
                 return false;
             }
@@ -477,8 +473,8 @@ if (canPull && canPush){
             //for (objX = x + global.TILE_SIZE; objX < endPosX; objX += global.TILE_SIZE){
             while(!scr_tileContains(objX, objY, badArgList)){
                 print("robot downright pull&push: x, y: " + string(objX) + ", " + string(objY));
-                if (instance_place(objX, objY, obj_mirptr)){
-                    mp = instance_place(objX, objY, obj_mirptr);
+                if (map_place(thisLayer, obj_mirptr, objX, objY)){
+                    mp = map_place(thisLayer, obj_mirptr, objX, objY);
                     objX = mp.mirptrPtr.x;
                     objY = mp.mirptrPtr.y;
                     print("mp is a real boy; new objX: " + string(objX));
@@ -490,9 +486,9 @@ if (canPull && canPush){
             
             // checking for this specific robot at this position; we don't want to move it for rob + roberta
             // if she's next to Rob 
-            if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+            if (map_place(thisLayer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
             
-            if (!instance_place(objX, objY, par_robot)){
+            if (!map_place(thisLayer, par_robot, objX, objY)){
                 print("No robot here! :(" + " " + string(objX) + " " + string(objY));
                 return false;
             }        
@@ -502,8 +498,8 @@ if (canPull && canPush){
             //for (objX = x - global.TILE_SIZE; objX > endPosX; objX -= global.TILE_SIZE){
             while(!scr_tileContains(objX, objY, badArgList)){
                 print("robot downleft pull&push: x, y: " + string(objX) + ", " + string(objY));
-                if (instance_place(objX, objY, obj_mirptr)){
-                    mp = instance_place(objX, objY, obj_mirptr);
+                if (map_place(thisLayer, obj_mirptr, objX, objY)){
+                    mp = map_place(thisLayer, obj_mirptr, objX, objY);
                     objX = mp.mirptrPtr.x;
                     objY = mp.mirptrPtr.y;
                     print("mp is a real boy; new objX: " + string(objX));
@@ -515,9 +511,9 @@ if (canPull && canPush){
             
             // checking for this specific robot at this position; we don't want to move it for rob + roberta
             // if she's next to Rob 
-            if (instance_place(objX, objY, par_robot) == robot && canMoveIntoRobot){ return true; }
+            if (map_place(thisLayer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
             
-            if (!instance_place(objX, objY, par_robot)){
+            if (!map_place(thisLayer, par_robot, objX, objY)){
                 print("No robot here! :(" + " " + string(objX) + " " + string(objY));
                 return false;
             }  
@@ -525,22 +521,19 @@ if (canPull && canPush){
     }
 }
 
-if (instance_place(x, y, obj_triggerDoor) && !instance_place(posX, posY, obj_wall)){
-    if (isActivated(instance_place(x, y, obj_triggerDoor))){
+if (map_place(thisLayer, x, y, obj_triggerDoor) && !map_place(thisLayer, obj_wall, posX, posY)){
+    if (isActivated(map_place(thisLayer, obj_triggerDoor, objX, objY))){
         print("scr_canPullPush: obj trapped above");
         return false; //can't move if above    
     }
 }
-//TODO -> outdated code.  update to use par_pullable, at least
-if (instance_place(posX, posY, obj_block) ||
-    instance_place(posX, posY, obj_blockPush) ||
-    instance_place(posX, posY, obj_blockPushPull)){
-    //print("Block in the way!");
+
+if (map_place(thisLayer, par_pullable, posX, posY)){
     return false;
 }
 
-if (instance_place(posX, posY, par_fallingPlatform)){
-    var fallingPlat = instance_place(posX, posY, par_fallingPlatform);
+if (map_place(thisLayer, par_fallingPlatform, posX, posY)){
+    var fallingPlat = map_place(thisLayer, par_fallingPlatform, posX, posY);
     if (fallingPlat.isDeactivated){
         print("scr_canPullPush: Falling platform is deactivated; can't pull");
         return false;
@@ -552,55 +545,22 @@ if (instance_place(posX, posY, par_fallingPlatform)){
     }
 }
 
-//key parsing
-/*if (isDeactivated == true && (canPull || canPush)){
-    if (x != 0 && y != 0){
-        print("Not deactivated anymore");
-        isDeactivated = false;
-        //obj_player.numKeys--;
-    }
-    else{
-        print("Obj deactivated"); 
-        return false; //do not pull this object
-    }
-}*/
-
-if (instance_place(posX, posY, obj_spike)){
-    //print("Spike in the way!");
-    return false;
-}
-if (instance_place(posX, posY, obj_key)){
-    //print("Key in the way!");
-    return false;
-}
-
-if (instance_place(posX, posY, obj_trigger) && 
-   !instance_place(posX, posY, par_obstacle) &&
-   !instance_place(posX, posY, robot)){
-    //print("There's a trigger here.");
-    return true;
-}
-if (instance_place(posX, posY, obj_triggerDoor)){
+if (map_place(thisLayer, obj_triggerDoor, posX, posY)){
     //print("There's a triggerDoor here.");
-    var triggerDoor = instance_place(posX, posY, obj_triggerDoor);
+    var triggerDoor = map_place(thisLayer, obj_triggerDoor, posX, posY);
     if (triggerDoor.isDeactivated) return true;
     return false;
 }
 
-if (instance_place(posX, posY, obj_hole)){
-    //print("Can't move, hole in the way");
-    if (!canFall) return false; //there's a hole here!!  don't move unless you can go over holes!
-}
-
-if(instance_place(posX, posY, par_obstacle)){
-    var obs = instance_place(posX, posY, par_obstacle);
+if(map_place(thisLayer, par_obstacle, posX, posY)){
+    var obs = map_place(thisLayer, par_obstacle, posX, posY);
     if (isActivated(obs)) {
         print("scr_canPullPush: Oh no an obstacle is here and it's activated !!!");
         return false;    
     }
 }
 
-if (!instance_place(posX, posY, par_platform)){
+if (!map_place(thisLayer, par_platform, posX, posY)){
     print("scr_canPullPush: No platform to push/pull to");
     return false;
 }

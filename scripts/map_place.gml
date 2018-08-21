@@ -10,4 +10,5 @@ object = argument1;
 posX = argument2;
 posY = argument3;
 
-if (string_count(asset_get_index(object), thisLayer.roomMapArr[(real(posY))/global.TILE_SIZE, (real(posX))/global.TILE_SIZE])) return true;
+if (string_count(asset_get_index(object), 
+                 thisLayer.roomMapArr[(real(posY))/global.TILE_SIZE, (real(posX))/global.TILE_SIZE])) return true;

@@ -17,7 +17,7 @@ var pushPull = 1;
 var mirptrExt = false; // if a mirptr is in the objects push/pull path
 var mirptrVt = false;
 var mirptrHz = false;
-var object_state = "tile_one"; //default movement, should read from file
+var object_state = "tile_one"; //default movement, TODO should read from file
 
 //if (scr_roomContains(
 
