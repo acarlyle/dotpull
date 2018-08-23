@@ -49,7 +49,7 @@ if (isDeactivated) return false;
 if (object[| OBJECT.NAME] == "obj_spike"){
     if (targetLocked){
         if (map_place(thisLayer, par_fallingPlatform, posX, posY)){
-            var fallingPlat = map_place(thisLayer, thisLayer, posX, posY, par_fallingPlatform);
+            var fallingPlat = map_place(thisLayer, par_fallingPlatform, posX, posY);
             if (fallingPlat.isDeactivated){
                 print("Falling platform is deactivated; can't pull");
                 return false;
@@ -139,7 +139,8 @@ if (!diagonalMovement && (canPull || canPush) && !(canPull && canPush)){ //this 
             if (map_place(thisLayer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
             
             if (!map_place(thisLayer, par_robot, objX, objY)){
-                print("scr_canPullPush: No robot here! :(" + " " + string(objX) + " " + string(objY));
+                print("x,y: " + string (objX) + "," + string(objY));
+                print("HERE scr_canPullPush: No robot here! :(" + " " + string(objX) + " " + string(objY));
                 return false;
             }
         }

@@ -60,6 +60,8 @@ robot = undefined; //if there's an object in this layer, keep track of its type
 
 //print("Ya know, ya know !");
 
+//if (get_objectFromString((objectStr(obj_player))).id == par_robot.id) print("tydadasasd");
+
 var layer = self;
 
 //used for cutscene triggers
