@@ -34,6 +34,14 @@ roomMapArr = undefined; //2d array of each tile for move_object logic
 objPosToNameMap = undefined; //maps x.y -&gt; "objName" for each puzzle element in the room
 mapKeyPriorityList = undefined; //priority queue of the keys from the objPosToNameMap sorted by parsing order
 robot = undefined; //if there's an object in this layer, keep track of its type
+
+
+
+
+
+/*
+    
+*/
 </string>
           </argument>
         </arguments>
@@ -86,7 +94,7 @@ if (global.playerCanMove){
         if (moved) {
             print("player moved totes");
             //print("Robot at " + string(obj_player.x) + "," + string(obj_player.y));
-            handle_pushOntoStack(self, false); //push previous turn's items onto stack before moving them
+            //handle_pushOntoStack(self, false); //push previous turn's items onto stack before moving them
             handle_layerObjects(self, layer);  //moved is true if player successfully moved
         }
     }

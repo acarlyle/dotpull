@@ -27,6 +27,7 @@ layer.mapKeyPriorityList = ds_list_create();
     If the key already has a puzzle element in that position, it is appended after a ';'.  
     Finally, this position is added to m_mapKeyPriorityList to keep the prioritized element order.  
 */
+
 for (var i = 0; i < ds_list_size(sortedObjPriorityList); i++){
     objInst = ds_list_find_value(sortedObjPriorityList, i);
     objAt = 0;

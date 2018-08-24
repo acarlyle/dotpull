@@ -10,7 +10,7 @@ handle_cleanUpElementEffects();
 
 for (var i = 0; i < ds_list_size(thisLayer.mapKeyPriorityList); i++){
     var mapKey = ds_list_find_value(thisLayer.mapKeyPriorityList, i);
-    var mapKeyArr = scr_split(mapKey, ":"); // str looks like "mapPos(int):x,y"
+    var mapKeyArr = scr_split(mapKey, ":"); // "mapPos(int):x,y"
     var objPosAt = mapKeyArr[0]; // "mapPos(int)"
     var objPosStr = mapKeyArr[1]; // "x,y" -> functions as the key for the priorityMap 
     var objectString = ds_map_find_value(thisLayer.objPosToNameMap, objPosStr);
@@ -77,6 +77,15 @@ for (var i = 0; i < ds_list_size(thisLayer.mapKeyPriorityList); i++){
     else if (objectStr(object) == "obj_baby"){
         move_baby(object, robot);
     }
+    
+    /*  
+        Object's variables have been updated.
+        Now we need to update the Layer's object position data based
+        on the ObjectEnum.    
+    */
+    
+    //update 
+    
     
     ds_list_destroy(objEnum); //destroys enum (it's really a list..)
 }
