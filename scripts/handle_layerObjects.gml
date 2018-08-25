@@ -9,7 +9,7 @@ for (var enumI = 0; enumI < ds_list_size(thisLayer.list_objEnums); enumI++)
 {
     var object = thisLayer.list_objEnums[| enumI];
      
-    print(" -> handle_layerObjects: Handling " + object[| OBJECT.NAME]);
+    print(" -> handle_layerObjects: Handling  " + object[| OBJECT.NAME]);
     
     /*
         HANDLE DIFFERENT TYPES OF OBJECT MOVEMENTS
