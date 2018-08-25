@@ -3,30 +3,13 @@
 var robot = argument0;
 var thisLayer = argument1;
 
-print("");
-print("handle_layerObjects");
-
 handle_cleanUpElementEffects();
 
-for (var i = 0; i < ds_list_size(thisLayer.mapKeyPriorityList); i++){
-    var mapKey = ds_list_find_value(thisLayer.mapKeyPriorityList, i);
-    var mapKeyArr = scr_split(mapKey, ":"); // "mapPos(int):x,y"
-    var objPosAt = mapKeyArr[0]; // "mapPos(int)"
-    var objPosStr = mapKeyArr[1]; // "x,y" -> functions as the key for the priorityMap 
-    var objectString = ds_map_find_value(thisLayer.objPosToNameMap, objPosStr);
-    //we can have multiple objects stored at each position in the map, so split them
-    var objectArr = scr_split(objectString, ";");
-    var objectString = objectArr[objPosAt]; //we want the ith item at this index....
-    var object = get_objectFromString(objectString);
-    
-    var objPosStrArr = scr_split(objPosStr, ",");
-    
-    var objPosX = objPosStrArr[0];
-    var objPosY = objPosStrArr[1];
-    
-    var objEnum = con_objectEnum(objectString, objPosX, objPosY);
+for (var enumI = 0; enumI < ds_list_size(thisLayer.list_objEnums); enumI++)
+{
+    var object = thisLayer.list_objEnums[| enumI];
      
-    print("Handling " + object_get_name(object.object_index));
+    print(" -> handle_layerObjects: Handling " + object[| OBJECT.NAME]);
     
     /*
         HANDLE DIFFERENT TYPES OF OBJECT MOVEMENTS
@@ -38,43 +21,42 @@ for (var i = 0; i < ds_list_size(thisLayer.mapKeyPriorityList); i++){
     */ 
     
     //Handles: par_cannon
-    if (get_parent(object) == "par_cannon"){
+    if (get_parent(get_objectFromString(object[| OBJECT.NAME])) == "par_cannon"){
         //print("handling cannon move");
         move_cannon(object, robot);
     }
     
     //If object is on top of a snare, don't do anything with it
-    if (map_place(thisLayer, par_snare, objPosX, objPosY)) { continue; }
+    if (map_place(thisLayer, par_snare, object[| OBJECT.X], objPosY)) { continue; }
     
     //Handles: obj_trigger, obj_triggerDoor
-    else if (objectStr(object) == "obj_trigger" || objectStr == "obj_triggerDoor"){
+    else if (object[| OBJECT.NAME] == "obj_trigger" || object[| OBJECT.NAME] == "obj_triggerDoor"){
         move_trigger(object, robot);
     }
     //Handles: obj_eviscerator
-    else if (objectStr(object) == "obj_eviscerator"){
+    else if (object[| OBJECT.NAME] == "obj_eviscerator"){
         move_eviscerator(object, robot);
     }
     //Handles: par_arrow
-    else if (get_parent(object) == "par_arrow"){
+    else if (get_parent(get_objectFromString(object[| OBJECT.NAME])) == "par_arrow"){
         move_arrow(object);
     }
     //Handles: par_fallingPlatform
-    else if (get_parent(object) == "par_fallingPlatform"){
+    else if (get_parent(get_objectFromString(object[| OBJECT.NAME])) == "par_fallingPlatform"){
         move_fallingPlatform(object, robot);
     }
     //Handles: obj_spike
-    else if (objectStr(object) == "obj_spike"){
+    else if (object[| OBJECT.NAME] == "obj_spike"){
         move_spike(thisLayer, object);
     }
     //Handles: par_block, obj_key, obj_magneticSnare
-    else if ((objEnum[| OBJECT.CANPUSH] || objEnum[| OBJECT.CANPULL])){
-        print("ok nao: " + string(objEnum[| OBJECT.CANPULL]));
-        move_pullPushables(thisLayer, objEnum);
+    else if ((object[| OBJECT.CANPUSH] || object[| OBJECT.CANPULL])){
+        move_pullPushables(thisLayer, object);
     }
-    else if (objectStr(object) == "obj_blackHole"){
+    else if (object[| OBJECT.NAME] == "obj_blackHole"){
         move_blackHole(object);
     }  
-    else if (objectStr(object) == "obj_baby"){
+    else if (object[| OBJECT.NAME] == "obj_baby"){
         move_baby(object, robot);
     }
     
@@ -85,9 +67,6 @@ for (var i = 0; i < ds_list_size(thisLayer.mapKeyPriorityList); i++){
     */
     
     //update 
-    
-    
-    ds_list_destroy(objEnum); //destroys enum (it's really a list..)
 }
 
 handle_prioritizeItems();

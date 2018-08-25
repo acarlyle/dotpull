@@ -35,6 +35,7 @@ objPosToNameMap = undefined; //maps x.y -&gt; "objName" for each puzzle element 
 mapKeyPriorityList = undefined; //priority queue of the keys from the objPosToNameMap sorted by parsing order
 robot = undefined; //if there's an object in this layer, keep track of its type
 
+list_objEnums = undefined; //ordered list of objEnums in a layer
 
 
 
