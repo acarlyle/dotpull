@@ -1,4 +1,4 @@
-///move_key(obj_key key)
+///move_key(obj_layer layer, obj_key key)
 
 /*
     This code used to be in move_pullPushables, but it should

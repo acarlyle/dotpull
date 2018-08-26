@@ -14,7 +14,6 @@
 
 print("Entering " + room_get_name(room));
 
-
 var initPos = "0,0";
 
 if (instance_number(obj_player) == 0) { //spawning in directly from this level

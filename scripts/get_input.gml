@@ -1,5 +1,7 @@
 ///get_input
 
+//TODO deal with hardcoded obj_player (this might be ok)
+
 global.key_left = keyboard_check_released(vk_left) || keyboard_check_released(ord('A')) || keyboard_check_released(vk_numpad4);
 global.key_right = keyboard_check_released(vk_right) || keyboard_check_released(ord('D')) || keyboard_check_released(ord('6')) || keyboard_check_released(vk_numpad6);
 global.key_up = keyboard_check_released(vk_up) || keyboard_check_released(ord('W')) || keyboard_check_released(vk_numpad8);
@@ -21,10 +23,10 @@ else{
         global.key_upleft + global.key_upright + global.key_downleft + 
         global.key_downright + global.key_space >= 2){
         
-        move = false;
+        obj_player.move = false;
     }
     else if (global.key_left || global.key_right || global.key_up || global.key_down ||
         global.key_upleft || global.key_upright || global.key_downleft || global.key_downright ||
-        global.key_space) move = true;
+        global.key_space) obj_player.move = true;
     else if (global.key_r) undo = true;
 }

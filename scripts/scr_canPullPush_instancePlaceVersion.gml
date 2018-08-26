@@ -6,6 +6,8 @@
     in the current room
 */
 
+/*
+
 print("-> scr_canPullPush(" + string(argument0) + ", " + string(argument1) + ")");
 
 var posX = argument0;
@@ -102,7 +104,7 @@ print("scr_canPullPush: oldRobotX, oldRobotY: " + string(robot.oldPlayerX) + ", 
     xDiff is zero regardless.  The logic doesn't catch this edge case.  The result of this bobo is fine
     but there might be a time when it's a problem.    
 */
-
+/*
 if (!diagonalMovement && (canPull || canPush) && !(canPull && canPush)){ //this checks left/right only
     if (yDiff == 0 || (!mirptrVt && mirptrHz)){ //player is moving left/right; check for objects towards the player
         print("scr_canPullPush: Robot moving left/right");
@@ -570,7 +572,7 @@ if (instance_place(posX, posY, par_fallingPlatform)){
         return false; //do not pull this object
     }
 }*/
-
+/*
 if (instance_place(posX, posY, obj_spike)){
     //print("Spike in the way!");
     return false;
@@ -612,4 +614,4 @@ if (!instance_place(posX, posY, par_platform)){
 }
 
 
-return true;
+return true;*/

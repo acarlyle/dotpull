@@ -75,28 +75,30 @@ var layer = self;
 
 //used for cutscene triggers
 if (global.playerCanMove){
-    with (par_robot){
-        get_input();
-        if (!isDead){
-            if (move){
-                if (global.playerMoved || object_get_name(object_index) == "obj_player"){
-                    handle_layerRobots(self); //move is true if movement key is pressed
-                }
+    //with (par_robot){ // TODO Need similar functionality for Roberta
+    get_input();
+    robot = self.robot;
+    
+    if (!robot.isDead){
+        if (robot.move){
+            if (global.playerMoved || object_get_name(layer.robot) == "obj_player"){
+                handle_layerRobots(self, robot); //move is true if movement key is pressed
             }
         }
-        if (undo){
-            //print("undo");
-            //print("numKeys pre undo: " + string(obj_player.numKeys));
-            handle_undoMove(self); //undo is true if player wants to undo their latest move}
-            //print("numKeys after undo: " + string(obj_player.numKeys));
-        }
     }
-    with (par_robot){
-        if (moved) {
+    if (robot.undo){
+        //print("undo");
+        //print("numKeys pre undo: " + string(obj_player.numKeys));
+        handle_undoMove(self); //undo is true if player wants to undo their latest move}
+        //print("numKeys after undo: " + string(obj_player.numKeys));
+    }
+    //}
+    if (robot){
+        if (robot.moved) {
             print("player moved totes");
             //print("Robot at " + string(obj_player.x) + "," + string(obj_player.y));
             //handle_pushOntoStack(self, false); //push previous turn's items onto stack before moving them
-            handle_layerObjects(self, layer);  //moved is true if player successfully moved
+            handle_layerObjects(self);  //moved is true if player successfully moved
         }
     }
     //save state

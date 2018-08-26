@@ -1,4 +1,4 @@
-///move_pusher(par_robot robot, par_object object)
+///move_pusher(obj_layer layer, par_robot robot, par_object object)
 
 /*
     Initial object passed to this function is a pusher.
@@ -7,8 +7,9 @@
 
 print("-> movePusher(");
 
-var robot = argument0;
-var object = argument1;
+var layer = argument0;
+var robot = argument1;
+var object = argument2;
 
 var posX = object.x;
 var posY = object.y;
@@ -44,11 +45,11 @@ else if (global.key_downright){
 
 //print("PosX, PosY: " + string(posX) + ", " + string(posY));
 
-if (scr_tileContains(posX, posY, array(par_obstacle))){
+if (scr_tileContains(layer, posX, posY, array(par_obstacle))){
     var obs = instance_place(posX, posY, par_obstacle);
     if (obs){
         if (obs.canPull || obs.canPush){
-            if (move_pusher(robot, obs)){
+            if (move_pusher(layer, robot, obs)){
                 obs = object;
                 obs.x = posX;
                 obs.y = posY;

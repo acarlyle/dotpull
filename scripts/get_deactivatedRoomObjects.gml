@@ -24,7 +24,7 @@ var objName;
 with (all){ 
     //print(object_get_name(object_index));
     if (instance_place(global.DEACTIVATED_X, global.DEACTIVATED_Y, object_index) || //this checks for instances of tiles
-        scr_tileContains(global.DEACTIVATED_X, global.DEACTIVATED_Y, array(object_index))){ //this checks for objects on a tile
+        scr_tileContains(layer, global.DEACTIVATED_X, global.DEACTIVATED_Y, array(object_index))){ //this checks for objects on a tile
         
         objName = object_get_name(self.object_index);
         if (string_pos(objName, posStr) == 0){ //returns 0 if substr not found (do we already have this obj check)

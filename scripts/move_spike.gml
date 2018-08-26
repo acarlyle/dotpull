@@ -1,13 +1,13 @@
-///move_spike(par_layer thisLayer, enum spikeObj)
+///move_spike(obj_layer layer, par_layer layer, enum spikeObj)
 
 /*
     This function handles:
     obj_spike
 */
 
-thisLayer = argument0;
-spike = argument1;
-var robot = thisLayer.robot;
+var layer = argument0;
+var spike = argument1;
+var robot = layer.robot;
 
 var mirptrExt = false; //TODO -> haven't implemented spike logic w/ mirptrs yet
 
@@ -19,7 +19,7 @@ if (!spike.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
         switch (targetDirection){
             case "up": 
                 print("up"); 
-                if (scr_canPullPush(spike[| OBJECT.X], spike[| OBJECT.Y]-global.TILE_SIZE, false, spike, robot, mirptrExt, thisLayer)){
+                if (scr_canPullPush(spike[| OBJECT.X], spike[| OBJECT.Y]-global.TILE_SIZE, false, spike, robot, mirptrExt, layer)){
                     spike[| OBJECT.Y]-=global.TILE_SIZE;
                 }
                 else{
@@ -32,7 +32,7 @@ if (!spike.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                 break;
             case "down": 
                 print("down"); 
-                if (scr_canPullPush(spike[| OBJECT.X], spike[| OBJECT.Y]+global.TILE_SIZE, false, spike, robot, mirptrExt, thisLayer)){
+                if (scr_canPullPush(spike[| OBJECT.X], spike[| OBJECT.Y]+global.TILE_SIZE, false, spike, robot, mirptrExt, layer)){
                     y+=global.TILE_SIZE;
                 }
                 else{
@@ -45,7 +45,7 @@ if (!spike.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                 break;
             case "left": 
                 print("left"); 
-                if (scr_canPullPush(spike[| OBJECT.X]-global.TILE_SIZE, spike[| OBJECT.Y], false, spike, robot, mirptrExt, thisLayer)){
+                if (scr_canPullPush(spike[| OBJECT.X]-global.TILE_SIZE, spike[| OBJECT.Y], false, spike, robot, mirptrExt, layer)){
                     spike[| OBJECT.X]-=global.TILE_SIZE;
                 }
                 else{
@@ -58,7 +58,7 @@ if (!spike.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                 break;
             case "right": 
                 print("right"); 
-                if (scr_canPullPush(spike[| OBJECT.X]+global.TILE_SIZE, spike[| OBJECT.Y], false, spike, robot, mirptrExt, thisLayer)){
+                if (scr_canPullPush(spike[| OBJECT.X]+global.TILE_SIZE, spike[| OBJECT.Y], false, spike, robot, mirptrExt, layer)){
                     spike[| OBJECT.X]+=global.TILE_SIZE;
                 }
                 else{
@@ -71,7 +71,7 @@ if (!spike.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                 break;
             case "upright": 
                 print("upright"); 
-                if (scr_canPullPush(spike[| OBJECT.X]+global.TILE_SIZE, spike[| OBJECT.Y]-global.TILE_SIZE, true, spike, robot, mirptrExt, thisLayer)){
+                if (scr_canPullPush(spike[| OBJECT.X]+global.TILE_SIZE, spike[| OBJECT.Y]-global.TILE_SIZE, true, spike, robot, mirptrExt, layer)){
                     spike[| OBJECT.X]+=global.TILE_SIZE;
                     spike[| OBJECT.Y]-=global.TILE_SIZE;
                 }
@@ -85,7 +85,7 @@ if (!spike.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                 break;
             case "upleft": 
                 print("upleft"); 
-                if (scr_canPullPush(spike[| OBJECT.X]-global.TILE_SIZE, spike[| OBJECT.Y]-global.TILE_SIZE, true, spike, robot, mirptrExt, thisLayer)){
+                if (scr_canPullPush(spike[| OBJECT.X]-global.TILE_SIZE, spike[| OBJECT.Y]-global.TILE_SIZE, true, spike, robot, mirptrExt, layer)){
                     spike[| OBJECT.X]-=global.TILE_SIZE;
                     spike[| OBJECT.Y]-=global.TILE_SIZE;
                 }
@@ -100,7 +100,7 @@ if (!spike.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                 break;
             case "downright": 
                 print("downright"); 
-                if (scr_canPullPush(spike[| OBJECT.X]+global.TILE_SIZE, spike[| OBJECT.Y]+global.TILE_SIZE, true, spike, robot, mirptrExt, thisLayer)){
+                if (scr_canPullPush(spike[| OBJECT.X]+global.TILE_SIZE, spike[| OBJECT.Y]+global.TILE_SIZE, true, spike, robot, mirptrExt, layer)){
                     spike[| OBJECT.X]+=global.TILE_SIZE;
                     spike[| OBJECT.Y]+=global.TILE_SIZE;
                 }
@@ -114,7 +114,7 @@ if (!spike.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                 break;
             case "downleft": 
                 print("downleft"); 
-                if (scr_canPullPush(x-global.TILE_SIZE, y+global.TILE_SIZE, true, spike, robot, mirptrExt, thisLayer)){
+                if (scr_canPullPush(x-global.TILE_SIZE, y+global.TILE_SIZE, true, spike, robot, mirptrExt, layer)){
                     spike[| OBJECT.X]-=global.TILE_SIZE;
                     spike[| OBJECT.Y]+=global.TILE_SIZE;
                 }
@@ -132,7 +132,7 @@ if (!spike.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
         spike[| OBJECT.STATE] = "idle";
         print("check for player lock");
         if (robot.y == spike[| OBJECT.Y]){
-            if (robot.x < spike[| OBJECT.X] && (scr_canPullPush(spike[| OBJECT.X] - global.TILE_SIZE, spike[| OBJECT.Y], false, spike, robot, mirptrExt, thisLayer)
+            if (robot.x < spike[| OBJECT.X] && (scr_canPullPush(spike[| OBJECT.X] - global.TILE_SIZE, spike[| OBJECT.Y], false, spike, robot, mirptrExt, layer)
                              || scr_objectsAdjacent(robot, spike))) {
                 spike[| OBJECT.STATE] = "active";
                 targetDirection = "left"; 
@@ -140,7 +140,7 @@ if (!spike.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                 sprite_index = spr_spikeActive;
                 spike.spikeMoved = true;
             }
-            else if (robot.x > spike[| OBJECT.X] && (scr_canPullPush(x + global.TILE_SIZE, spike[| OBJECT.Y], false, spike, robot, mirptrExt, thisLayer)
+            else if (robot.x > spike[| OBJECT.X] && (scr_canPullPush(x + global.TILE_SIZE, spike[| OBJECT.Y], false, spike, robot, mirptrExt, layer)
                                   || scr_objectsAdjacent(robot, spike))) {
                 spike[| OBJECT.STATE] = "active";
                 targetDirection = "right"; 
@@ -150,7 +150,7 @@ if (!spike.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
             }
         }
         else if (robot.x == spike[| OBJECT.X]){
-            if (robot.y < spike[| OBJECT.Y] && (scr_canPullPush(spike[| OBJECT.X], spike[| OBJECT.Y] - global.TILE_SIZE, false, spike, robot, mirptrExt, thisLayer)
+            if (robot.y < spike[| OBJECT.Y] && (scr_canPullPush(spike[| OBJECT.X], spike[| OBJECT.Y] - global.TILE_SIZE, false, spike, robot, mirptrExt, layer)
                              || scr_objectsAdjacent(robot, spike))) {
                 spike[| OBJECT.STATE] = "active";
                 targetDirection = "up"; 
@@ -158,7 +158,7 @@ if (!spike.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                 spike.spikeMoved = true;
                 sprite_index = spr_spikeActive;
             }
-            else if (robot.y > spike[| OBJECT.Y] && (scr_canPullPush(spike[| OBJECT.X], spike[| OBJECT.Y] + global.TILE_SIZE, false, spike, robot, mirptrExt, thisLayer)
+            else if (robot.y > spike[| OBJECT.Y] && (scr_canPullPush(spike[| OBJECT.X], spike[| OBJECT.Y] + global.TILE_SIZE, false, spike, robot, mirptrExt, layer)
                                   || scr_objectsAdjacent(robot, spike))) {
                 spike[| OBJECT.STATE] = "active";
                 targetDirection = "down"; 
@@ -194,7 +194,7 @@ if (!spike.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
                 newObjPosY = spike[| OBJECT.Y] - global.TILE_SIZE;
             }
         
-            if (scr_canPullPush(newObjPosX, newObjPosY, true, spike, robot, mirptrExt, thisLayer)
+            if (scr_canPullPush(newObjPosX, newObjPosY, true, spike, robot, mirptrExt, layer)
             && abs((robot.y - spike[| OBJECT.Y]) / (robot.x - spike[| OBJECT.X])) == 1){
                 
                 print("diag lockon baby");
@@ -236,7 +236,7 @@ if (!spike.spikeMoved || object_get_name(robot.object_index) == "obj_player"){
     print("spike_state: " + string(obj_spike.state));
     
     //dead check
-    if (scr_tileContains(x, y, array(par_robot)) && objectStr(self) == "obj_spike"){
+    if (scr_tileContains(layer, x, y, array(par_robot)) && objectStr(self) == "obj_spike"){
         print("ded player");
         robot.isDead = true;
         robot.sprite_index = spr_playerDead;

@@ -42,7 +42,7 @@ if (global.key_space && robot.hasBaby){
                 break;
         }
         print("Baby potential x,y: " + string(posX) + ", " + string(posY));
-        if (!scr_tileContains(posX, posY, array(par_obstacle)) && scr_tileIsOpen(posX, posY)){
+        if (!scr_tileContains(layer, posX, posY, array(par_obstacle)) && scr_tileIsOpen(posX, posY)){
             baby.x = posX;
             baby.y = posY;
             baby.currentState = "ground";

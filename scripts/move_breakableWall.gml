@@ -1,4 +1,4 @@
-///move_breakableWall(par_breakableWall breakableWall)
+///move_breakableWall(obj_layer layer, par_breakableWall breakableWall)
 
 /*
     This function handles:
@@ -9,5 +9,6 @@
 
 
 //print("Moving breakableWall");
-breakableWall = argument0;
+var layer = argument0;
+var breakableWall = argument1;
 //ds_stack_push(breakableWall.stateHistory, breakableWall.hitsLeft);

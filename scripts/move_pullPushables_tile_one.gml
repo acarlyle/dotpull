@@ -38,7 +38,7 @@ if ((robot.oldPlayerY == object[| OBJECT.Y] && robot.y == object[| OBJECT.Y]) ||
     if (robot.x < object[| OBJECT.X] && scr_canPullPush(object[| OBJECT.X] - (global.TILE_SIZE*pushPull), object[| OBJECT.Y], false, object, robot, mirptrExt, thisLayer)) {//player on left side of object 
         newPosX -= (global.TILE_SIZE*pushPull);
         print("push/pull left");
-        if (scr_mirptrTele(object, robot, pushPull, object[| OBJECT.X], object[| OBJECT.Y])){
+        if (scr_mirptrTele(thisLayer, object, robot, pushPull)){
             print("Moved to: " + string(newPosX) + " " + string(newPosY));
             object[| OBJECT.MOVEDDIR] = "left";
             object[| OBJECT.MOVED] = true;
@@ -50,7 +50,7 @@ if ((robot.oldPlayerY == object[| OBJECT.Y] && robot.y == object[| OBJECT.Y]) ||
     else if (robot.x > object[| OBJECT.X] && scr_canPullPush(object[| OBJECT.X] + (global.TILE_SIZE*pushPull), object[| OBJECT.Y], false, object, robot, mirptrExt, thisLayer)){//player on right side of object
         newPosX += (global.TILE_SIZE*pushPull);
         print("push/pull right");
-        if (scr_mirptrTele(object, robot, pushPull, object[| OBJECT.X], object[| OBJECT.Y])){
+        if (scr_mirptrTele(thisLayer, object, robot, pushPull)){
             print("Moved to: " + string(newPosX) + " " + string(newPosY));
             object[| OBJECT.MOVEDDIR] = "right";
             object[| OBJECT.MOVED] = true;
@@ -66,7 +66,7 @@ if ((robot.oldPlayerX == object[| OBJECT.X] && robot.x == object[| OBJECT.X]) ||
     print("push/pull up/down");
     if (robot.y < object[| OBJECT.Y] && scr_canPullPush(object[| OBJECT.X], object[| OBJECT.Y] - (global.TILE_SIZE*pushPull), false, object, robot, mirptrExt, thisLayer)){ //player above object 
         newPosY -= (global.TILE_SIZE*pushPull);
-        if (scr_mirptrTele(object, robot, pushPull, object[| OBJECT.X], object[| OBJECT.Y])){
+        if (scr_mirptrTele(thisLayer, object, robot, pushPull)){
             print("Moved to: " + string(newPosX) + " " + string(newPosY));
             object[| OBJECT.MOVEDDIR] = "up";
             object[| OBJECT.MOVED] = true;
@@ -78,7 +78,7 @@ if ((robot.oldPlayerX == object[| OBJECT.X] && robot.x == object[| OBJECT.X]) ||
     else if (robot.y > object[| OBJECT.Y] && scr_canPullPush(object[| OBJECT.X], object[| OBJECT.Y] + (global.TILE_SIZE*pushPull), false, object, robot, mirptrExt, thisLayer)){//player below object 
         print("push/pull updown");
         newPosY += (global.TILE_SIZE*pushPull);
-        if (scr_mirptrTele(object, robot, pushPull, object[| OBJECT.X], object[| OBJECT.Y])){
+        if (scr_mirptrTele(thisLayer, object, robot, pushPull)){
             print("Moved to: " + string(newPosX) + " " + string(newPosY));
             object[| OBJECT.MOVEDDIR] = "down";
             object[| OBJECT.MOVED] = true;
@@ -99,7 +99,7 @@ var yDiff = robot.y - robot.oldPlayerY;
 var newObjPosX = 0; 
 var newObjPosY = 0;
 
-if (canPull && canPush){
+if (object[| OBJECT.CANPULL] && object[| OBJECT.CANPUSH]){
     if (robot.y < object[| OBJECT.Y] && robot.x > object[| OBJECT.X]){ //player is above the obj and to the right
         //print("up and to the right");
         if (xDiff < 0) pushPull *= -1;

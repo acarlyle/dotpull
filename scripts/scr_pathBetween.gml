@@ -18,7 +18,7 @@ var badObjList = array(par_obstacle, par_robot);
 while(instance_place(posX, posY, par_platform)){
     posY -= global.TILE_SIZE;
     
-    if (scr_tileContains(posX, posY, obj_mirptr)){
+    if (scr_tileContains(layer, posX, posY, obj_mirptr)){
         var mirptr = instance_place(posX, posY, obj_mirptr);
         posX = mirptrPtr.x;
         posY = mirptrPtr.y;
@@ -27,7 +27,7 @@ while(instance_place(posX, posY, par_platform)){
         print("omg is object !");
         return true;
     }
-    if (scr_tileContains(posX, posY, badObjList)){
+    if (scr_tileContains(layer, posX, posY, badObjList)){
         break;
     }
 }
@@ -37,7 +37,7 @@ posY = oFrom.y;
 while(instance_place(posX, posY, par_platform)){
     posY += global.TILE_SIZE;
     
-    if (scr_tileContains(posX, posY, obj_mirptr)){
+    if (scr_tileContains(layer, posX, posY, obj_mirptr)){
         var mirptr = instance_place(posX, posY, obj_mirptr);
         posX = mirptrPtr.x;
         posY = mirptrPtr.y;
@@ -46,7 +46,7 @@ while(instance_place(posX, posY, par_platform)){
         print("omg is object !");
         return true;
     }
-    if (scr_tileContains(posX, posY, badObjList)){
+    if (scr_tileContains(layer, posX, posY, badObjList)){
         break;
     }
 }
@@ -56,7 +56,7 @@ posY = oFrom.y;
 while(instance_place(posX, posY, par_platform)){
     posX += global.TILE_SIZE;
     
-    if (scr_tileContains(posX, posY, obj_mirptr)){
+    if (scr_tileContains(layer, posX, posY, obj_mirptr)){
         var mirptr = instance_place(posX, posY, obj_mirptr);
         posX = mirptrPtr.x;
         posY = mirptrPtr.y;
@@ -65,7 +65,7 @@ while(instance_place(posX, posY, par_platform)){
         print("omg is object !");
         return true;
     }
-    if (scr_tileContains(posX, posY, badObjList)){
+    if (scr_tileContains(layer, posX, posY, badObjList)){
         break;
     }
 }
@@ -75,7 +75,7 @@ posY = oFrom.y;
 while(instance_place(posX, posY, par_platform)){
     posX -= global.TILE_SIZE;
     
-    if (scr_tileContains(posX, posY, obj_mirptr)){
+    if (scr_tileContains(layer, posX, posY, obj_mirptr)){
         var mirptr = instance_place(posX, posY, obj_mirptr);
         posX = mirptrPtr.x;
         posY = mirptrPtr.y;
@@ -84,7 +84,7 @@ while(instance_place(posX, posY, par_platform)){
         print("omg is object !");
         return true;
     }
-    if (scr_tileContains(posX, posY, badObjList)){
+    if (scr_tileContains(layer, posX, posY, badObjList)){
         break;
     }
 }
@@ -95,7 +95,7 @@ while(instance_place(posX, posY, par_platform)){
     posX -= global.TILE_SIZE;
     posY -= global.TILE_SIZE;
     
-    if (scr_tileContains(posX, posY, obj_mirptr)){
+    if (scr_tileContains(layer, posX, posY, obj_mirptr)){
         var mirptr = instance_place(posX, posY, obj_mirptr);
         posX = mirptrPtr.x;
         posY = mirptrPtr.y;
@@ -104,7 +104,7 @@ while(instance_place(posX, posY, par_platform)){
         print("omg is object !");
         return true;
     }
-    if (scr_tileContains(posX, posY, badObjList)){
+    if (scr_tileContains(layer, posX, posY, badObjList)){
         break;
     }
 }
@@ -115,7 +115,7 @@ while(instance_place(posX, posY, par_platform)){
     posX += global.TILE_SIZE;
     posY -= global.TILE_SIZE;
     
-    if (scr_tileContains(posX, posY, obj_mirptr)){
+    if (scr_tileContains(layer, posX, posY, obj_mirptr)){
         var mirptr = instance_place(posX, posY, obj_mirptr);
         posX = mirptrPtr.x;
         posY = mirptrPtr.y;
@@ -124,7 +124,7 @@ while(instance_place(posX, posY, par_platform)){
         print("omg is object !");
         return true;
     }
-    if (scr_tileContains(posX, posY, badObjList)){
+    if (scr_tileContains(layer, posX, posY, badObjList)){
         break;
     }
 }
@@ -135,7 +135,7 @@ while(instance_place(posX, posY, par_platform)){
     posX -= global.TILE_SIZE;
     posY += global.TILE_SIZE;
     
-    if (scr_tileContains(posX, posY, obj_mirptr)){
+    if (scr_tileContains(layer, posX, posY, obj_mirptr)){
         var mirptr = instance_place(posX, posY, obj_mirptr);
         posX = mirptrPtr.x;
         posY = mirptrPtr.y;
@@ -144,7 +144,7 @@ while(instance_place(posX, posY, par_platform)){
         print("omg is object !");
         return true;
     }
-    if (scr_tileContains(posX, posY, badObjList)){
+    if (scr_tileContains(layer, posX, posY, badObjList)){
         break;
     }
 }
@@ -155,7 +155,7 @@ while(instance_place(posX, posY, par_platform)){
     posX += global.TILE_SIZE;
     posY += global.TILE_SIZE;
     
-    if (scr_tileContains(posX, posY, obj_mirptr)){
+    if (scr_tileContains(layer, posX, posY, obj_mirptr)){
         var mirptr = instance_place(posX, posY, obj_mirptr);
         posX = mirptrPtr.x;
         posY = mirptrPtr.y;
@@ -164,7 +164,7 @@ while(instance_place(posX, posY, par_platform)){
         print("omg is object !");
         return true;
     }
-    if (scr_tileContains(posX, posY, badObjList)){
+    if (scr_tileContains(layer, posX, posY, badObjList)){
         break;
     }
 }

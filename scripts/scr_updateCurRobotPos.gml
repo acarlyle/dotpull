@@ -4,7 +4,8 @@
     This script updates the robots's current position without affecting the stack.
 */
 
-var obj = argument0;
+var layer = argument0;
+var obj = argument1;
 
 print(" -> scr_updateCurRobotPos(" + string(object_get_name(obj.object_index) + ")"));
 
@@ -14,7 +15,7 @@ if (get_parent(obj) == "par_robot"){
     obj.playerX = x;
     obj.playerY = y;
     print("ye");
-    if (scr_tileContains(obj.playerX, obj.playerY, array(obj_blackHole))){
+    if (scr_tileContains(layer, obj.playerX, obj.playerY, array(obj_blackHole))){
         scr_killRobot(obj);
     }
 }

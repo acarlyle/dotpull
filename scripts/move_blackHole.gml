@@ -1,4 +1,4 @@
-///move_blackHole(par_object object)
+///move_blackHole(obj_layer layer, par_object object)
 
 /*
     This function handles:
@@ -9,7 +9,8 @@
     it will be torn apart.  
 */
 
-var blackHole = argument0;
+var layer = argument0;
+var blackHole = argument1;
 
 print("-> move_blackHole(" + object_get_name(object.object_index) + ")");
 
@@ -58,7 +59,7 @@ with(par_object){
                 print("Mirptr time ?");
             }
             //robot needs his current pos local variables updated to his new position
-            if (get_parent(self) == "par_robot") scr_updateCurRobotPos(self);
+            if (get_parent(self) == "par_robot") scr_updateCurRobotPos(layer, self);
         }
         else{
             print("PATH does not exist for " + string(object_get_name(self.object_index)))
@@ -68,10 +69,10 @@ with(par_object){
         
         print(string(self.x) + ", " + string(self.y));
         
-        if(scr_tileContains(blackHole.x, blackHole.y, array(self))){
-            print("should disable obj");
-            scr_disableObj(self);
-        }
+        //if(scr_tileContains(blackHole.x, blackHole.y, array(self))){
+        //    print("should disable obj");
+        //    scr_disableObj(self);
+        //}
         
     }
 }

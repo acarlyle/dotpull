@@ -1,6 +1,7 @@
 ///handle_layerRobots(par_robot robot);
 
-var robot = argument0;
+var layer = argument0;
+var robot = argument1;
 
 handle_deployBaby(robot);  //this handles baby placement if player pressed space and has a Baby on Board
 
@@ -15,10 +16,10 @@ var pushYOntoStack = robot.playerY;
 
 switch(robot.state){
     case "tile_one": //normal state; robot moves one tile at a time
-        handle_robotMove_tile_one(robot);
+        handle_robotMove_tile_one(layer, robot);
         break;
     case "tile_slide": //robot is sliding across some ice, cannot control direction
-        handle_robotMove_tile_slide(robot);
+        handle_robotMove_tile_slide(layer, robot);
         break;
 }
 

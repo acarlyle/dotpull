@@ -1,12 +1,12 @@
- ///move_pullPushables(obj_layer thisLayer, obj_enum)
+ ///move_pullPushables(obj_layer thisLayer, obj_enum object)
 
 /*
     This function handles:
-    obj_block
-    obj_blockPush
-    obj_blockPushPull
-    obj_key
-    obj_magneticSnare
+        obj_block
+        obj_blockPush
+        obj_blockPushPull
+        obj_key
+        obj_magneticSnare
 */
 
 var thisLayer = argument0;
@@ -62,6 +62,6 @@ switch(object_state){
         break;
 }
 
-if (object.moved){
+if (object[| OBJECT.MOVED]){
     audio_play_sound(snd_blockDrag, 10, false);
 }

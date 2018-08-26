@@ -1,4 +1,4 @@
-///scr_getArrOfRoom(str roomName)
+///scr_getArrOfRoom(obj_layer layer, str roomName)
 
 
 
@@ -13,7 +13,8 @@
     " "            - nothing 
 */
 
-var roomStr = argument0;
+var layer = argument0;
+var roomStr = argument1;
 
 print(" -> scr_getArrOfRoom(" + string(roomStr) + ")");
 
@@ -30,7 +31,7 @@ for (yPos = 0; yPos < room_height; yPos += global.TILE_SIZE){
         with (all){ 
             //print(object_get_name(object_index));
             if (instance_place(xPos, yPos, object_index) || //this checks for instances of tiles
-                scr_tileContains(xPos, yPos, array(object_index))){ //this checks for objects on a tile
+                scr_tileContains(layer, xPos, yPos, array(object_index))){ //this checks for objects on a tile
                 
                 objName = object_get_name(self.object_index);
                 if (string_pos(objName, posStr) == 0){ //returns 0 if substr not found

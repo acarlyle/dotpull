@@ -3,7 +3,7 @@
 var posX = argument0;
 var posY = argument1;
 
-if (scr_tileContains(posX, posY, array(par_obstacle))){
+if (scr_tileContains(layer, posX, posY, array(par_obstacle))){
     var obstacle = instance_place(argument0, argument1, par_obstacle);
     if (!obstacle.isDeactivated) return false; //obstacle will block your path
 }

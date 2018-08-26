@@ -1,4 +1,4 @@
-///move_cannon(par_cannon cannon, par_robot robot)
+///move_cannon(obj_layer layer, par_cannon cannon, par_robot robot)
 
 /*
     This function handles:
@@ -6,8 +6,9 @@
         obj_cannon_horz
 */
 
-cannon = argument0;
-robot = argument1;
+var layer = argument0;
+var cannon = argument1;
+var robot = argument2;
 
 //switch(cannon.state){
     

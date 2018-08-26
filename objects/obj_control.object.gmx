@@ -70,7 +70,8 @@ enum OBJECT { //default vals 0, 1, 2...
     MOVEDDIR = 4,
     STATE = 5,
     CANPULL = 6,
-    CANPUSH = 7   
+    CANPUSH = 7,   
+    ISACTIVE = 8
 }
 
 scr_applyScreenRes();

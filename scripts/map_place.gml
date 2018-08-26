@@ -35,7 +35,7 @@ for (var i = 0; i < array_length_1d(thisRowObjs); i++){
     if (!instance_exists(object)) instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, object);
     if (!instance_exists(objFromStr)) instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, objFromStr);
     
-    if ((objFromStr.id == object.id)) return true;
+    if ((objFromStr.id == object.id)) return objFromStr; //maybe return objEnum ?
 }
 
 return false;

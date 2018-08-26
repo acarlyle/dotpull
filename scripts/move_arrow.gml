@@ -1,4 +1,4 @@
-///move_arrow(par_arrow arrow, par_robot robot)
+///move_arrow(obj_layer layer, par_arrow arrow, par_robot robot)
 
 /*
     This function handles:
@@ -12,7 +12,8 @@
         obj_arrow_right_static
 */
 
-arrow = argument0;
+var layer = argument0;
+var arrow = argument1;
 
 if (arrow.isRotating){
    switch(arrow.dir){
