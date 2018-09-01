@@ -1,4 +1,4 @@
-///handle_layerRobots(par_robot robot);
+///handle_layerRobots(obj_layer layer, par_robot robot);
 
 var layer = argument0;
 var robot = argument1;
@@ -6,7 +6,7 @@ var robot = argument1;
 handle_deployBaby(robot);  //this handles baby placement if player pressed space and has a Baby on Board
 
 //if on a slideTile, disable player input keys
-if (instance_place(robot.x, robot.y, obj_slideTile)){
+if (map_place(layer, obj_slideTile, robot.x, robot.y)){
     robot.state = "tile_slide";
 }
 

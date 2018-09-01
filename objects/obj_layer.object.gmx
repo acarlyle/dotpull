@@ -71,8 +71,6 @@ list_objEnums = undefined; //ordered list of objEnums in a layer
 
 //if (get_objectFromString((objectStr(obj_player))).id == par_robot.id) print("tydadasasd");
 
-var layer = self;
-
 //used for cutscene triggers
 if (global.playerCanMove){
     //with (par_robot){ // TODO Need similar functionality for Roberta
@@ -81,7 +79,7 @@ if (global.playerCanMove){
     
     if (!robot.isDead){
         if (robot.move){
-            if (global.playerMoved || object_get_name(layer.robot) == "obj_player"){
+            if (global.playerMoved || object_get_name(robot) == "obj_player"){
                 handle_layerRobots(self, robot); //move is true if movement key is pressed
             }
         }

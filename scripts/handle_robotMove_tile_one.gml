@@ -10,10 +10,9 @@ print("Robot X: " + string(robot.x));
 print("Robot Y: " + string(robot.y));
 
 //handle arrow logic
-if (instance_place(x, y, par_arrow)){
-    var arrow = instance_place(x, y, par_arrow);
-    with (arrow){
-        switch(dir){
+if (map_place(layer, par_arrow, robot.x, robot.y)){
+    var arrow = map_place(layer, par_arrow, robot.x, robot.y);
+        switch(arrow.dir){
             case "up":
                 if (!global.key_up && !global.key_upleft && !global.key_upright) robot.canMove = false;
                 break; 
@@ -27,7 +26,6 @@ if (instance_place(x, y, par_arrow)){
                 if (!global.key_down && !global.key_downleft && !global.key_downright) robot.canMove = false;
                 break; 
         }
-    }
 }
 
 if (robot.canMove){

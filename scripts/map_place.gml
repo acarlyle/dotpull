@@ -1,4 +1,4 @@
-///map_place(obj_layer thisLayer, par_object object, int posX, int posY)
+///map_place(obj_layer layer, par_object object, int posX, int posY)
 
 /*
     Functions as GameMaker's instance_place, but for the virtual 2D array of this 
@@ -11,12 +11,16 @@
     with simply a parent and then it is met with a string compare which it fails obviously
 */
 
-thisLayer = argument0;
+layer = argument0;
 object = argument1;
 posX = argument2;
 posY = argument3;
 
-var thisRow = thisLayer.roomMapArr[(real(posY))/global.TILE_SIZE, (real(posX))/global.TILE_SIZE]
+print(string((layer.roomName)));
+
+print(layer.roomMapArr[0,0]);
+
+var thisRow = layer.roomMapArr[(real(posY))/global.TILE_SIZE, (real(posX))/global.TILE_SIZE]
 print("THISROW: " + string(thisRow));
 var thisRowObjs = scr_split(thisRow, ";");
 print("array length: " + string(array_length_1d(thisRowObjs)));
@@ -43,8 +47,8 @@ return false;
 /*switch (object){
     case par_robot:
         if (string_count("obj_player", 
-                 thisLayer.roomMapArr[(real(posY))/global.TILE_SIZE, (real(posX))/global.TILE_SIZE])) return true;
+                 layer.roomMapArr[(real(posY))/global.TILE_SIZE, (real(posX))/global.TILE_SIZE])) return true;
         if (string_count("obj_roberta", 
-                 thisLayer.roomMapArr[(real(posY))/global.TILE_SIZE, (real(posX))/global.TILE_SIZE])) return true;
+                 layer.roomMapArr[(real(posY))/global.TILE_SIZE, (real(posX))/global.TILE_SIZE])) return true;
         break;
 }*/
