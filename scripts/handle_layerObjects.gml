@@ -9,7 +9,9 @@ handle_cleanUpElementEffects();
 for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
 {
     var object = layer.list_objEnums[| enumI];
-     
+
+    print("Layer size list: " + string(ds_list_size(layer.list_objEnums)));
+         
     print(" -> handle_layerObjects: Handling  " + object[| OBJECT.NAME]);
     
     /*

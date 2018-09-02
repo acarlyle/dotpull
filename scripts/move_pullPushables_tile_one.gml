@@ -12,6 +12,8 @@ var robot = thisLayer.robot; //TODO hardcoded to be obj_player
 var newPosX = object[| OBJECT.X];
 var newPosY = object[| OBJECT.Y];
 
+print("-> move_pullPushables_tile_one: " + string(object[| OBJECT.NAME]));
+
 //print("move_pullPushables_tile_one object[| OBJECT.X]/Y: " + string(object[| OBJECT.X]) + ", " + string(object[| OBJECT.Y]));
 
 //figure out which way to push/pull

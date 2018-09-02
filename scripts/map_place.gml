@@ -16,9 +16,7 @@ object = argument1;
 posX = argument2;
 posY = argument3;
 
-print(string((layer.roomName)));
-
-print(layer.roomMapArr[0,0]);
+print(" -> map_place(" + string(object[| OBJECT.NAME]) +")");
 
 var thisRow = layer.roomMapArr[(real(posY))/global.TILE_SIZE, (real(posX))/global.TILE_SIZE]
 print("THISROW: " + string(thisRow));
