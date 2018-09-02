@@ -1,4 +1,4 @@
-///scr_tileContains(var objPosX, var objPosY, array objectList[])
+///scr_tileContains(obj_layer layer, var objPosX, var objPosY, array objectList[])
 
 /*
     Script returns true if the tile specified by the args objPosX and objPosY

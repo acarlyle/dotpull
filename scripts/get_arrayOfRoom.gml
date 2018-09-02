@@ -6,4 +6,11 @@ print(" -> get_arrayOfRoom(" + string(roomName) + ")");
 
 var fileName = roomName + ".sav";
 
-return get_arrayOfRoomFromFile(fileName);
+var roomArr = get_arrayOfRoomFromFile(fileName);
+
+if (!roomArr){
+    handle_roomSave(true); //save room Rob is in
+    roomArr = get_arrayOfRoomFromFile(fileName);
+}
+
+return roomArr;

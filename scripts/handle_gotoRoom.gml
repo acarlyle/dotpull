@@ -18,7 +18,7 @@ room_goto(rm);
 
 print("---------------------------");
 print("----------ROOM TRANSITION------------");
-handle_roomSave();
+handle_roomSave(false);
     
 print("----------------------------------------------");
 print("");

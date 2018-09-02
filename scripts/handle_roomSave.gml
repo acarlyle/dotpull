@@ -1,9 +1,14 @@
-///handle_roomSave()
+///handle_roomSave(bool curRoom)
 
-print("-> handle_roomSave()");
+print("-> handle_roomSave(bool curRoom)");
+
+var saveCurRoom = argument0;
+
 
 var xPos = 0;
 var yPos = 0;
+
+var activeRoomObjectsArr;
 
 /*
     This shit saves the room's current object positions along with all of the dynamic 
@@ -45,12 +50,18 @@ file_text_writeln(roomSaveFile);
 file_text_write_string(roomSaveFile, "---");
 file_text_writeln(roomSaveFile);
 
-// write room's active object positions
-var activeRoomObjectsArr = get_activeRoomObjects(roomName); 
+
+if (saveCurRoom)
+    activeRoomObjectsArr = get_curRoomObjects(); //grabs objs from the room Rob is in
+else
+    //activeRoomObjectsArr = get_activeRoomObjects(roomName); 
+    activeRoomObjectsArr = get_curRoomObjects();
+    
 //print("arr height: " + string(array_height_2d(activeRoomObjectsArr)));
 //print("arr length: " + string(array_length_2d(activeRoomObjectsArr, 0)));
 for (yPos = 0; yPos < array_height_2d(activeRoomObjectsArr); yPos++){
     for (xPos = 0; xPos < array_length_2d(activeRoomObjectsArr, yPos); xPos++){
+        print("WRITING: " + string(activeRoomObjectsArr[yPos, xPos]));
         file_text_write_string(roomSaveFile, activeRoomObjectsArr[yPos, xPos]);
     }
     file_text_writeln(roomSaveFile);
@@ -58,7 +69,7 @@ for (yPos = 0; yPos < array_height_2d(activeRoomObjectsArr); yPos++){
 file_text_write_string(roomSaveFile, "---");
 
 // write room's deactivated object positions
-var deactivatedRoomObjectsArr = get_deactivatedRoomObjects(roomName); // TODO ?  maybe
+//var deactivatedRoomObjectsArr = get_deactivatedRoomObjects(roomName); // TODO ?  maybe
 
 file_text_writeln(roomSaveFile);
 

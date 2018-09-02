@@ -1,22 +1,8 @@
-///get_activeRoomObjects(obj_layer layer)
+///get_curRoomObjects();
 
+var roomStr = room_get_name(room);
 
-
-/*
-    *** NOTE ***
-
-    should save this room's state (obj pos and stacks) to a file
-        
-    *** END NOTE ***
-    
-    " "            - nothing 
-*/
-
-//var layer = argument0;
-
-var roomStr = argument0;
-
-print(" -> get_activeRoomObjects(" + string(roomStr) + ")");
+print(" -> get_curRoomObjects()");
 
 var xPos = 0;
 var yPos = 0;
@@ -36,7 +22,7 @@ for (yPos = 0; yPos < room_height; yPos += global.TILE_SIZE){
         with (all){ 
             //print(object_get_name(object_index));
             if (instance_place(xPos, yPos, object_index) || //this checks for instances of tiles
-                scr_tileContains(layer, xPos, yPos, array(object_index))){ //this checks for objects on a tile
+                scr_tileContains_curRoom(xPos, yPos, array(object_index))){ //this checks for objects on a tile
                 
                 objName = object_get_name(self.object_index);
                 if (string_pos(objName, posStr) == 0){ //returns 0 if substr not found (do we already have this obj check)

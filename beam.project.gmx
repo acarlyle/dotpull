@@ -153,6 +153,7 @@
       <script>scripts\get_activeRoomObjects.gml</script>
       <script>scripts\get_arrayOfRoom.gml</script>
       <script>scripts\get_arrayOfRoomFromFile.gml</script>
+      <script>scripts\get_curRoomObjects.gml</script>
       <script>scripts\get_deactivatedRoomObjects.gml</script>
       <script>scripts\get_input.gml</script>
       <script>scripts\get_lowerRoomName.gml</script>
@@ -173,6 +174,7 @@
       <script>scripts\scr_objectsAdjacent.gml</script>
       <script>scripts\scr_roomFromString.gml</script>
       <script>scripts\scr_tileContains.gml</script>
+      <script>scripts\scr_tileContains_curRoom.gml</script>
       <script>scripts\scr_tileIsOpen.gml</script>
       <scripts name="Movement">
         <script>scripts\scr_mirptrTele.gml</script>
@@ -229,7 +231,6 @@
     <scripts name="Virtual Mapping">
       <script>scripts\draw_lowerRooms.gml</script>
       <script>scripts\map_place.gml</script>
-      <script>scripts\scr_arrTileContains.gml</script>
       <script>scripts\scr_getArrOfRoom.gml</script>
     </scripts>
   </scripts>
