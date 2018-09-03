@@ -16,6 +16,8 @@ print("-> move_pullPushables_tile_one: " + string(object[| OBJECT.NAME]));
 
 //print("move_pullPushables_tile_one object[| OBJECT.X]/Y: " + string(object[| OBJECT.X]) + ", " + string(object[| OBJECT.Y]));
 
+print("Old Player Y: " + string(robot.oldPlayerY));
+
 //figure out which way to push/pull
 if (object[| OBJECT.CANPUSH] && object[| OBJECT.CANPULL]){
     if (robot.y - robot.oldPlayerY > 0){ //player moved down

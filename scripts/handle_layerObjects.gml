@@ -12,7 +12,7 @@ for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
 
     print("Layer size list: " + string(ds_list_size(layer.list_objEnums)));
          
-    print(" -> handle_layerObjects: Handling  " + object[| OBJECT.NAME]);
+    print("-> handle_layerObjects: Handling  " + object[| OBJECT.NAME]);
     
     /*
         HANDLE DIFFERENT TYPES OF OBJECT MOVEMENTS
@@ -77,4 +77,4 @@ for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
 
 handle_prioritizeItems();
 
-moved = false;
+robot.moved = false;

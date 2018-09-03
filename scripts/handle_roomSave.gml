@@ -61,7 +61,7 @@ else
 //print("arr length: " + string(array_length_2d(activeRoomObjectsArr, 0)));
 for (yPos = 0; yPos < array_height_2d(activeRoomObjectsArr); yPos++){
     for (xPos = 0; xPos < array_length_2d(activeRoomObjectsArr, yPos); xPos++){
-        print("WRITING: " + string(activeRoomObjectsArr[yPos, xPos]));
+        //print("WRITING: " + string(activeRoomObjectsArr[yPos, xPos]));
         file_text_write_string(roomSaveFile, activeRoomObjectsArr[yPos, xPos]);
     }
     file_text_writeln(roomSaveFile);

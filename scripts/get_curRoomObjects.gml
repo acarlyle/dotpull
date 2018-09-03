@@ -2,7 +2,7 @@
 
 var roomStr = room_get_name(room);
 
-print(" -> get_curRoomObjects()");
+print("-> get_curRoomObjects()");
 
 var xPos = 0;
 var yPos = 0;

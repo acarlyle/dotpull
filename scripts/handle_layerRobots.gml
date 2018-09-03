@@ -1,7 +1,8 @@
 ///handle_layerRobots(obj_layer layer, par_robot robot);
 
 var layer = argument0;
-var robot = argument1;
+
+var robot = layer.robot;
 
 handle_deployBaby(robot);  //this handles baby placement if player pressed space and has a Baby on Board
 
