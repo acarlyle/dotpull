@@ -14,8 +14,8 @@ ds_stack_push(robot.itemHistory, array(robot.numKeys, robot.hasBaby));
 ds_stack_push(robot.movedDirHistory, robot.movedDir);
 print("robo-pushed " + string(pushXOntoStack) + ", " + string(pushYOntoStack)); 
 
-robot.oldPlayerX = x;
-robot.oldPlayerY = y;
+robot.oldPlayerX = robot.x;
+robot.oldPlayerY = robot.y;
 robot.x = robot.playerX; 
 robot.y = robot.playerY;
 

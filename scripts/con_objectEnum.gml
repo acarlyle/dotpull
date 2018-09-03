@@ -23,6 +23,7 @@ switch(get_objectFromString(objName)){
     case obj_block:
         objectEnum[| OBJECT.CANPULL] = true;
         objectEnum[| OBJECT.CANPUSH] = false;
+        objectEnum[| OBJECT.ISACTIVE] = true;
         break;
 }
 

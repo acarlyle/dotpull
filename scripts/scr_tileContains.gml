@@ -11,7 +11,7 @@ var objPosX = argument1;
 var objPosY = argument2;
 var objectList = argument3; //objects we want to see if the Tile contains
 
-var objsAtTile = thisLayer.roomMapArr[(real(objPosY))/global.TILE_SIZE, (real(objPosX))/global.TILE_SIZE]
+var objsAtTile = layer.roomMapArr[(real(objPosY))/global.TILE_SIZE, (real(objPosX))/global.TILE_SIZE]
 //print("THIS_TILE: " + string(objsAtTile));
 
 for (var i = 0; i < array_length_1d(objectList); i++){

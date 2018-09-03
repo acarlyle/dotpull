@@ -40,6 +40,7 @@ if (mirptr){
 }
 
 print("UPDATED scr_canPullPush posX, posY: " + string(posX) + ", " + string(posY));
+print("isActive: " + string(object[| OBJECT.ISACTIVE]));
 
 
 if (!(object[| OBJECT.CANPULL] || object[| OBJECT.CANPUSH])) return false;
@@ -93,7 +94,7 @@ print("scr_canPullPush: oldRobotX, oldRobotY: " + string(robot.oldPlayerX) + ", 
     but there might be a time when it's a problem.    
 */
 
-if (!diagonalMovement && (canPull || canPush) && !(canPull && canPush)){ //this checks left/right only
+if (!diagonalMovement && (object[| OBJECT.CANPULL] || object[| OBJECT.CANPUSH]) && !(object[| OBJECT.CANPULL] && object[| OBJECT.CANPUSH])){ //this checks left/right only
     if (yDiff == 0 || (!mirptrVt && mirptrHz)){ //player is moving left/right; check for objects towards the player
         print("scr_canPullPush: Robot moving left/right");
         if (xDiff > 0){ //player is to the right of the obj
@@ -209,7 +210,7 @@ if (!diagonalMovement && (canPull || canPush) && !(canPull && canPush)){ //this 
 }
 
 //diagonal movement
-if (diagonalMovement == true && (canPull || canPush) && !(canPull && canPush)){
+if (diagonalMovement == true && (object[| OBJECT.CANPULL] || object[| OBJECT.CANPUSH]) && !(object[| OBJECT.CANPULL] && object[| OBJECT.CANPUSH])){
     print("scr_canPullPush: Diag checking");
     if (robot.y < y && robot.x > x){ //player is above the obj and to the right; pull object upright
         var objX = x+global.TILE_SIZE; var objY = y-global.TILE_SIZE;
@@ -309,7 +310,7 @@ if (diagonalMovement == true && (canPull || canPush) && !(canPull && canPush)){
     }   
 } //end diag movement for push or pull
 
-if (canPull && canPush){
+if (object[| OBJECT.CANPULL] && object[| OBJECT.CANPUSH]){
     print("scr_canPullPush: obj can be pushed and pulled");
     
     var xDiff = robot.x - x;
