@@ -5,6 +5,7 @@
   </Configs>
   <NewExtensions>
     <extension index="0">extensions\Color Coding Files</extension>
+    <extension index="1">extensions\GML Regular Expressions</extension>
   </NewExtensions>
   <sounds name="sound">
     <sounds name="Menu">
@@ -141,6 +142,7 @@
       <script>scripts\handle_layerObjects.gml</script>
       <script>scripts\handle_layerRobots.gml</script>
       <script>scripts\handle_undoMove.gml</script>
+      <script>scripts\handle_updateLayer.gml</script>
     </scripts>
     <scripts name="Game State Controllers">
       <script>scripts\handle_freeRoomMemory.gml</script>

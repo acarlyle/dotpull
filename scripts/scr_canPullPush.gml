@@ -113,7 +113,7 @@ if (!diagonalMovement && (object[| OBJECT.CANPULL] || object[| OBJECT.CANPUSH]) 
             }
             // checking for this specific robot at this position; we don't want to move it for rob + roberta
             // if she's next to Rob 
-            if (map_place(layer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
+            if (map_place(layer, par_robot, objX, objY) == robot){ return true; }
             
             if (!map_place(layer, par_robot, objX, objY)){
                 print("scr_canPullPush: No robot here! :(" + " " + string(objX) + " " + string(objY));
@@ -137,7 +137,7 @@ if (!diagonalMovement && (object[| OBJECT.CANPULL] || object[| OBJECT.CANPUSH]) 
             
             // checking for this specific robot at this position; we don't want to move it for rob + roberta
             // if she's next to Rob 
-            if (map_place(layer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
+            if (map_place(layer, par_robot, objX, objY) == robot){ return true; }
             
             if (!map_place(layer, par_robot, objX, objY)){
                 print("x,y: " + string (objX) + "," + string(objY));
@@ -168,7 +168,7 @@ if (!diagonalMovement && (object[| OBJECT.CANPULL] || object[| OBJECT.CANPUSH]) 
             
             // checking for this specific robot at this position; we don't want to move it for rob + roberta
             // if she's next to Rob 
-            if (map_place(layer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
+            if (map_place(layer, par_robot, objX, objY) == robot){ return true; }
             
             if (!map_place(layer, par_robot, objX, objY)){
                 print("No robot here! :(" + " " + string(objX) + " " + string(objY));
@@ -198,7 +198,7 @@ if (!diagonalMovement && (object[| OBJECT.CANPULL] || object[| OBJECT.CANPUSH]) 
             
             // checking for this specific robot at this position; we don't want to move it for rob + roberta
             // if she's next to Rob 
-            if (map_place(layer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
+            if (map_place(layer, par_robot, objX, objY) == robot){ return true; }
             
             if (!map_place(layer, par_robot, objX, objY)){
                 print("No robot here! :(" + " " + string(objX) + " " + string(objY));
@@ -229,7 +229,7 @@ if (diagonalMovement == true && (object[| OBJECT.CANPULL] || object[| OBJECT.CAN
         
         // checking for this specific robot at this position; we don't want to move it for rob + roberta
         // if she's next to Rob 
-        if (map_place(layer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
+        if (map_place(layer, par_robot, objX, objY) == robot){ return true; }
             
         if (!map_place(layer, par_robot, objX, objY)){
             print("scr_canPullPush: No robot here! :(" + " " + string(objX) + " " + string(objY));
@@ -253,7 +253,7 @@ if (diagonalMovement == true && (object[| OBJECT.CANPULL] || object[| OBJECT.CAN
         
         // checking for this specific robot at this position; we don't want to move it for rob + roberta
         // if she's next to Rob 
-        if (map_place(layer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
+        if (map_place(layer, par_robot, objX, objY) == robot){ return true; }
         
         if (!map_place(layer, par_robot, objX, objY)){
             print("scr_canPullPush: No robot here! :(" + " " + string(objX) + " " + string(objY));
@@ -277,7 +277,7 @@ if (diagonalMovement == true && (object[| OBJECT.CANPULL] || object[| OBJECT.CAN
         
         // checking for this specific robot at this position; we don't want to move it for rob + roberta
         // if she's next to Rob 
-        if (map_place(layer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
+        if (map_place(layer, par_robot, objX, objY) == robot){ return true; }
         
         if (!map_place(layer, par_robot, objX, objY)){
             print("scr_canPullPush: No robot here! :(" + " " + string(objX) + " " + string(objY));
@@ -301,7 +301,7 @@ if (diagonalMovement == true && (object[| OBJECT.CANPULL] || object[| OBJECT.CAN
         
         // checking for this specific robot at this position; we don't want to move it for rob + roberta
         // if she's next to Rob 
-        if (map_place(layer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
+        if (map_place(layer, par_robot, objX, objY) == robot){ return true; }
         
         if (!map_place(layer, par_robot, objX, objY)){
             print("scr_canPullPush: No robot here! :(" + " " + string(objX) + " " + string(objY));
@@ -335,7 +335,7 @@ if (object[| OBJECT.CANPULL] && object[| OBJECT.CANPUSH]){
                 
                 // checking for this specific robot at this position; we don't want to move it for rob + roberta
                 // if she's next to Rob 
-                if (map_place(layer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
+                if (map_place(layer, par_robot, objX, objY) == robot){ return true; }
         
                 if (!map_place(layer, par_robot, objX, objY)){
                     print("No robot here! :(" + " " + string(objX) + " " + string(objY));
@@ -359,7 +359,7 @@ if (object[| OBJECT.CANPULL] && object[| OBJECT.CANPUSH]){
                 
                 // checking for this specific robot at this position; we don't want to move it for rob + roberta
                 // if she's next to Rob 
-                if (map_place(layer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
+                if (map_place(layer, par_robot, objX, objY) == robot){ return true; }
                 
                 if (!map_place(layer, par_robot, objX, objY)){
                     print("No robot here! :(" + " " + string(objX) + " " + string(objY));
@@ -384,7 +384,7 @@ if (object[| OBJECT.CANPULL] && object[| OBJECT.CANPUSH]){
                 
                 // checking for this specific robot at this position; we don't want to move it for rob + roberta
                 // if she's next to Rob 
-                if (map_place(layer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
+                if (map_place(layer, par_robot, objX, objY) == robot){ return true; }
                 
                 if (!map_place(layer, par_robot, objX, objY)){
                     print("No robot here! :(" + " " + string(objX) + " " + string(objY));
@@ -407,7 +407,7 @@ if (object[| OBJECT.CANPULL] && object[| OBJECT.CANPUSH]){
                 
                 // checking for this specific robot at this position; we don't want to move it for rob + roberta
                 // if she's next to Rob 
-                if (map_place(layer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
+                if (map_place(layer, par_robot, objX, objY) == robot){ return true; }
                 
                 if (!map_place(layer, par_robot, objX, objY)){
                     print("No robot here! :(" + " " + string(objX) + " " + string(objY));
@@ -438,7 +438,7 @@ if (object[| OBJECT.CANPULL] && object[| OBJECT.CANPUSH]){
             
             // checking for this specific robot at this position; we don't want to move it for rob + roberta
             // if she's next to Rob 
-            if (map_place(layer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
+            if (map_place(layer, par_robot, objX, objY) == robot){ return true; }
                 
             if (!map_place(layer, par_robot, objX, objY)){
                 print("No robot here! :(" + " " + string(objX) + " " + string(objY));
@@ -463,7 +463,7 @@ if (object[| OBJECT.CANPULL] && object[| OBJECT.CANPUSH]){
             
             // checking for this specific robot at this position; we don't want to move it for rob + roberta
             // if she's next to Rob 
-            if (map_place(layer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
+            if (map_place(layer, par_robot, objX, objY) == robot){ return true; }
             
             if (!map_place(layer, par_robot, objX, objY)){
                 print("No robot here! :(" + " " + string(objX) + " " + string(objY));
@@ -488,7 +488,7 @@ if (object[| OBJECT.CANPULL] && object[| OBJECT.CANPUSH]){
             
             // checking for this specific robot at this position; we don't want to move it for rob + roberta
             // if she's next to Rob 
-            if (map_place(layer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
+            if (map_place(layer, par_robot, objX, objY) == robot){ return true; }
             
             if (!map_place(layer, par_robot, objX, objY)){
                 print("No robot here! :(" + " " + string(objX) + " " + string(objY));
@@ -513,7 +513,7 @@ if (object[| OBJECT.CANPULL] && object[| OBJECT.CANPUSH]){
             
             // checking for this specific robot at this position; we don't want to move it for rob + roberta
             // if she's next to Rob 
-            if (map_place(layer, par_robot, objX, objY) == robot && canMoveIntoRobot){ return true; }
+            if (map_place(layer, par_robot, objX, objY) == robot){ return true; }
             
             if (!map_place(layer, par_robot, objX, objY)){
                 print("No robot here! :(" + " " + string(objX) + " " + string(objY));

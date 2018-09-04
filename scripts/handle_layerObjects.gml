@@ -9,6 +9,8 @@ handle_cleanUpElementEffects();
 for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
 {
     var object = layer.list_objEnums[| enumI];
+    var oldObjX = object[| OBJECT.X];
+    var oldObjY = object[| OBJECT.Y];
 
     print("Layer size list: " + string(ds_list_size(layer.list_objEnums)));
          
@@ -69,11 +71,54 @@ for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
         on the ObjectEnum.    
     */
     
-    //update 
-    
     if (object[| OBJECT.NAME] == "obj_block")
         print("BLOCK: " + string(object[| OBJECT.X]) + "," + string(object[| OBJECT.Y]));
-}
+        
+        
+        
+    /*
+      #######################
+      #######################
+      #######################
+    */  
+    
+    
+        
+    //update layer's arrMap if object moved
+    //TODO need to update obj stacks insteading of copying over the previous turn's stack
+    if (object[| OBJECT.MOVED]){
+    
+        //print("BEFORE: " + string(layer.roomMapArr[object[| OBJECT.Y] / global.TILE_SIZE, object[| OBJECT.X] / global.TILE_SIZE]));
+        //print("BEFORE_OLD: " + string(layer.roomMapArr[oldObjY / global.TILE_SIZE, oldObjX / global.TILE_SIZE]));
+        
+        var thisTile = layer.roomMapArr[oldObjY / global.TILE_SIZE, oldObjX / global.TILE_SIZE];
+        var tileObjs = scr_split(thisTile, ";"); //arr of every obj in this tile
+        for (var objAt = 0; objAt < array_length_1d(tileObjs); objAt++){ //find matching obj at tile position and remove it
+            if(strcontains(tileObjs[objAt], object[| OBJECT.NAME])){
+            
+                // Remove obj from its old position
+                layer.roomMapArr[oldObjY / global.TILE_SIZE, oldObjX / global.TILE_SIZE] = 
+                    trim(string_replace(layer.roomMapArr[oldObjY / global.TILE_SIZE, oldObjX / global.TILE_SIZE], 
+                    tileObjs[objAt], 
+                    ""));
+                               
+                // Add obj to its new position
+                layer.roomMapArr[object[| OBJECT.Y] / global.TILE_SIZE, object[| OBJECT.X] / global.TILE_SIZE] =
+                    string_insert(tileObjs[objAt],
+                    layer.roomMapArr[object[| OBJECT.Y] / global.TILE_SIZE, object[| OBJECT.X] / global.TILE_SIZE],
+                    strlen(layer.roomMapArr[object[| OBJECT.Y] / global.TILE_SIZE, object[| OBJECT.X] / global.TILE_SIZE]) + 1)
+                    + ";";
+                
+                break;
+            } 
+        } 
+        //print("AFTER: " + string(layer.roomMapArr[object[| OBJECT.Y] / global.TILE_SIZE, object[| OBJECT.X] / global.TILE_SIZE]));
+        //print("AFTER_OLD: " + string(layer.roomMapArr[oldObjY / global.TILE_SIZE, oldObjX / global.TILE_SIZE]));   
+        
+        layer.updateLayer = true; //draw new position to the screen
+        
+    } // if object moved   
+} // foreach objEnum in this layer
 
 handle_prioritizeItems();
 

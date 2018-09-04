@@ -18,12 +18,12 @@ posY = argument3;
 
 //print(" -> map_place(" + string(object[| OBJECT.NAME]) +")");
 
-var thisRow = layer.roomMapArr[(real(posY))/global.TILE_SIZE, (real(posX))/global.TILE_SIZE]
-//print("THISROW: " + string(thisRow));
-var thisRowObjs = scr_split(thisRow, ";");
-//print("array length: " + string(array_length_1d(thisRowObjs)));
-for (var i = 0; i < array_length_1d(thisRowObjs); i++){
-    var objStr = scr_split(thisRowObjs[i], "[");
+var thisTile = layer.roomMapArr[(real(posY))/global.TILE_SIZE, (real(posX))/global.TILE_SIZE]
+//print("THISROW: " + string(thisTile));
+var thisTileObjs = scr_split(thisTile, ";");
+//print("array length: " + string(array_length_1d(thisTileObjs)));
+for (var i = 0; i < array_length_1d(thisTileObjs); i++){
+    var objStr = scr_split(thisTileObjs[i], "[");
     //print("objStr: " + string(objStr[0]));
     //print("obj: " + string(object_get_name(object)));
     

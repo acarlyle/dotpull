@@ -35,14 +35,9 @@ objPosToNameMap = undefined; //maps x.y -&gt; "objName" for each puzzle element 
 mapKeyPriorityList = undefined; //priority queue of the keys from the objPosToNameMap sorted by parsing order
 robot = undefined; //if there's an object in this layer, keep track of its type
 
-list_objEnums = undefined; //ordered list of objEnums in a layer
+list_objEnums = undefined; //ordered ds_list of objEnums in a layer
 
-
-
-
-/*
-    
-*/
+updateLayer = false; //update when an objectEnum has moved
 </string>
           </argument>
         </arguments>
@@ -101,6 +96,10 @@ if (global.playerCanMove){
             handle_layerObjects(self);  //moved is true if player successfully moved
         }
     }
+    
+    //TODO -&gt; Correctly update the Layer if an object has moved (current stuff is hardcoded)
+    if (updateLayer) handle_updateLayer(layer);
+    
     //save state
     if global.playerMoved handle_gameSave(obj_player);
     //cleanup memory before switch rooms
