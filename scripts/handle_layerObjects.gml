@@ -138,6 +138,8 @@ for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
                             object);
         }
         
+        object[| OBJECT.MOVED] = false;
+        
     } // if object moved   
 } // foreach objEnum in this layer
 

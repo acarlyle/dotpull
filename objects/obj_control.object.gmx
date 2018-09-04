@@ -73,6 +73,15 @@ enum OBJECT { //default vals 0, 1, 2...
     CANPUSH = 7,   
     ISACTIVE = 8
 }
+enum ROBOT {
+    CANMOVE = 0,
+    OLDPOSX = 1,
+    OLDPOSY = 2,
+    ISDEAD = 3,
+    NUMKEYS = 4,
+    HASBABY = 5,
+    MOVE = 6
+}
 
 scr_applyScreenRes();
 

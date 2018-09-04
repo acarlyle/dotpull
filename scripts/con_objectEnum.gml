@@ -25,6 +25,19 @@ switch(get_objectFromString(objName)){
         objectEnum[| OBJECT.CANPUSH] = false;
         objectEnum[| OBJECT.ISACTIVE] = true;
         break;
+    case obj_player:
+        objectEnum[| OBJECT.CANPULL] = false;
+        objectEnum[| OBJECT.CANPUSH] = false;
+        objectEnum[| OBJECT.ISACTIVE] = true;
+        
+        objectEnum[| ROBOT.CANMOVE] = true;
+        objectEnum[| ROBOT.OLDPOSX] = global.DEACTIVATED_X;
+        objectEnum[| ROBOT.OLDPOSY] = global.DEACTIVATED_Y;
+        objectEnum[| ROBOT.ISDEAD] = false;
+        objectEnum[| ROBOT.NUMKEYS] = 0;
+        objectEnum[| ROBOT.HASBABY] = false;
+        objectEnum[| ROBOT.MOVE] = false;
+        break;
 }
 
 return objectEnum;

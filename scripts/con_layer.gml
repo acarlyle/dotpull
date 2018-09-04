@@ -8,9 +8,11 @@ print(" -> con_layer of room " + string(roomName));
 var layer = instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, obj_layer);
 layer.roomName = roomName;
 layer.roomMapArr = get_arrayOfRoom(layer.roomName);
-layer.robot = obj_player;  //this is wrong, TODO.  it's hard because what if multiple robots..?
 
-//print("ROBOT X: " + string(layer.robot.x));
+//TODO Need actual parser to determine robots in this layer and not just hardcode player
+layer.list_robots = ds_list_create();
+if (layer.list_robots)
+    ds_list_add(layer.list_robots, con_objectEnum("obj_player", obj_player.x, obj_player.y));
 
 //now set the layer's objPosToNameMap and associated mapKeyPriorityKey
 con_priorityObjPosMap(layer, sortedObjPriorityList);
