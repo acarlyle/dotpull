@@ -25,7 +25,7 @@ switch(robot.state){
 }
 
 if (!robot.moved && !robot.isDead){ //if we didn't move and we aren't dead
-    handle_checkForStairs(robot);
+    handle_checkForStairs(layer);
     if (!global.switchRooms) { //we aren't switching rooms
         handle_checkLowerRoom(robot);
     }
@@ -38,15 +38,21 @@ if (robot.moved){
     if (object_get_name(robot.object_index) == "obj_player" && robot.moved){
         global.playerMoved = true;
         print("PLAYER MOVED");
-        print("Robot at " + string(robot.x) + "," + string(robot.y));
     }
     
     if (global.playerMoved){ 
         push_robotState(robot, false, pushXOntoStack, pushYOntoStack);
+        print("Robot at " + string(robot.x) + "," + string(robot.y));
     }
     else{
         robot.movedDir = "";
     }
+    
+    // Now update this layer's position with moved Robot
+    
+    // TODO -> Refactor Layer Robot into enum so I can use only one layer_updateObj script instead of 2
+    layer_updateRobotAtTile(layer, pushXOntoStack, pushYOntoStack); //pass old positions
+    
 }
 
 robot.move = false;

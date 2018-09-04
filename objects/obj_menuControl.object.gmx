@@ -40,6 +40,16 @@ selectedOption = obj_continueAdventure;
 selectedOption.isSelected = true;
 selectedOption.image_index++;
 //draw_sprite(spr_player, 0, selectedOption.x + 10, selectedOption.y);
+
+var roomName = "rm_spikestairs_b_1"
+var roomSaveFileName = roomName + ".sav"; // TODO -&gt; should have a bkp file in case of failure to save/load
+if (file_exists(roomSaveFileName)) {
+    file_delete(roomSaveFileName);
+    print("###############################");
+    print("###############################");
+    print("###############################");
+    print("Warning: " + string(roomSaveFileName) + " has been deleted!");
+}
 </string>
           </argument>
         </arguments>

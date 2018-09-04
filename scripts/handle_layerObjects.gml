@@ -117,6 +117,27 @@ for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
         
         layer.updateLayer = true; //draw new position to the screen
         
+        /* 
+            TODO needs better implemenation rather than this hackish workaround 
+            Handle updating fake layer
+            If obj_player is this layer's robot, this is the fake layer (real objects are in the room) 
+        */
+        if (object_get_name(layer.robot) == "obj_player"){
+            var objInst = instance_place(oldObjX, oldObjY, get_objectFromString(object[| OBJECT.NAME]));
+            objInst.x = object[| OBJECT.X];
+            objInst.y = object[| OBJECT.Y];
+        }
+        
+        // Update Layer's object position to obj enum Map
+        if (layer.objNameAndPosToEnumMap){
+            ds_map_delete(layer.objNameAndPosToEnumMap, 
+                            object[| OBJECT.NAME] + ":" + string(oldObjX) + "," + string(oldObjY));
+                            
+            ds_map_add(layer.objNameAndPosToEnumMap, 
+                            object[| OBJECT.NAME] + ":" + string(object[| OBJECT.X]) + "," + string(object[| OBJECT.Y]), 
+                            object);
+        }
+        
     } // if object moved   
 } // foreach objEnum in this layer
 

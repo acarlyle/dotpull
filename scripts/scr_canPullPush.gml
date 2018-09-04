@@ -123,6 +123,8 @@ if (!diagonalMovement && (object[| OBJECT.CANPULL] || object[| OBJECT.CANPUSH]) 
         else{ //player is to the left of the obj
             var objX = object[| OBJECT.X] - global.TILE_SIZE;
             var objY = object[| OBJECT.Y];
+            print("Starting Object X: " + string(objX));
+            print("Rob is at: " + string(robot.x));
             while(!scr_tileContains(layer, objX, objY, badArgList)){
                 print("scr_canPullPush: player left: x, y: " + string(objX) + ", " + string(objY));
                 if (map_place(layer, obj_mirptr, objX, objY)){

@@ -32,6 +32,7 @@ isPuzzleElement = false;
 roomName = "";
 roomMapArr = undefined; //2d array of each tile for move_object logic
 objPosToNameMap = undefined; //maps x.y -&gt; "objName" for each puzzle element in the room
+objNameAndPosToEnumMap = undefined; //maps "obj_name:x.y" -&gt; obj_enum for each puzzle element in the layer
 mapKeyPriorityList = undefined; //priority queue of the keys from the objPosToNameMap sorted by parsing order
 robot = undefined; //if there's an object in this layer, keep track of its type
 
@@ -98,7 +99,7 @@ if (global.playerCanMove){
     }
     
     //TODO -&gt; Correctly update the Layer if an object has moved (current stuff is hardcoded)
-    if (updateLayer) handle_updateLayer(layer);
+    if (updateLayer) handle_updateLayer(self);
     
     //save state
     if global.playerMoved handle_gameSave(obj_player);

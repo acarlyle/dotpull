@@ -3,6 +3,9 @@
 /*
     Functions as GameMaker's instance_place, but for the virtual 2D array of this 
     room's map.
+    
+    Returns objenum if this object in the layer's enum list.
+    Otherwise returns the object asset if it found it or false.
 */
 
 /* 
@@ -11,12 +14,12 @@
     with simply a parent and then it is met with a string compare which it fails obviously
 */
 
-layer = argument0;
-object = argument1;
-posX = argument2;
-posY = argument3;
+var layer = argument0;
+var object = argument1;
+var posX = argument2;
+var posY = argument3;
 
-//print(" -> map_place(" + string(object[| OBJECT.NAME]) +")");
+print(" -> map_place(" + string(object_get_name(object)) +")");
 
 var thisTile = layer.roomMapArr[(real(posY))/global.TILE_SIZE, (real(posX))/global.TILE_SIZE]
 //print("THISROW: " + string(thisTile));
@@ -37,7 +40,14 @@ for (var i = 0; i < array_length_1d(thisTileObjs); i++){
     if (!instance_exists(object)) instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, object);
     if (!instance_exists(objFromStr)) instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, objFromStr);
     
-    if ((objFromStr.id == object.id)) return objFromStr; //maybe return objEnum ?
+    if ((objFromStr.id == object.id)){
+        //return objFromStr; //maybe return objEnum ?
+        //return objEnum
+        var enumRef = ds_map_find_value(layer.objNameAndPosToEnumMap, objStr[0] + ":" + string(posX) + "," + string(posY));
+        if (!enumRef) return objFromStr;
+        
+        return enumRef; //return enum if it's in the layer's enum List
+    }
 }
 
 return false;

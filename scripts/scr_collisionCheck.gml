@@ -5,6 +5,8 @@ var posX = argument1;
 var posY = argument2;
 var robot = argument3; 
 
+print("-> scr_collisionCheck(" + string(posX) + "," + string(posY) + ")");
+
 if (map_place(layer, obj_spike, posX, posY)){
     print("ded player");
     obj_player.isDead = true;
@@ -18,7 +20,7 @@ if (map_place(layer, par_pusher, posX, posY)){
     move_pusher(layer, robot, map_place(layer, par_pusher, posX, posY));
 }
 
-if (map_place(layer, posX, posY, par_pickupable)){
+if (map_place(layer, par_pickupable, posX, posY)){
     scr_pickupObject(map_place(layer, par_pickupable, posX, posY));
 }
 
@@ -45,7 +47,8 @@ if (map_place(layer, obj_mirptr, posX, posY)){
 
 if (map_place(layer, par_obstacle, posX, posY)){
     var obstacle = map_place(layer, par_obstacle, posX, posY);
-    if (!obstacle.isDeactivated) return true; //obstacle will block your path
+    print("Obstacle detected");
+    if (obstacle[| OBJECT.ISACTIVE]) return true; //obstacle will block your path
 }
 
 //print("numkeys");
@@ -126,8 +129,9 @@ if (map_place(layer, par_wall, posX, posY)){
         return true; //there's a wall here
     }
 }
+// TODO -> Reimplement falling platform logic
 if (map_place(layer, par_platform, posX, posY)){
-    var platform = map_place(layer, par_platform, posX, posY);
+    /*var platform = map_place(layer, par_platform, posX, posY);
     if (platform.isFallingPlatform){
         if (platform.stepsLeft <= 0){
             return true; //you can't walk here, the platform has fallen and the city is lost
@@ -136,7 +140,8 @@ if (map_place(layer, par_platform, posX, posY)){
     if (map_place(layer, obj_dialogueTrigger, posX, posY)){
         var dialogueTrigger = map_place(layer, obj_dialogueTrigger, posX, posY);
         dialogueTrigger.activated = true;
-    }
+    }*/
+    print("Platform here!  You may pass");
     return false; //there's a platform here, good to take a stroll on
 }
 if (map_place(layer, par_fallingPlatform, posX, posY)){

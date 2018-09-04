@@ -6,12 +6,3 @@
 */
 
 var layer = argument0;
-
-// This is a fake layer; we need to update the object's actual X and Y positions 
-if (object_get_name(layer.robot) == "obj_player"){
-    with(all){
-        if (!isDeactivated && isPuzzleElement){
-            
-        }
-    } 
-}

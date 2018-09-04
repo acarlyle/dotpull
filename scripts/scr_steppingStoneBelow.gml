@@ -8,6 +8,8 @@ var posX = argument0;
 var posY = argument1;
 var roomBelowName = argument2;
 
+if (!roomBelowName) return false;
+
 var roomBelowFile = roomBelowName + ".sav";
 
 if (file_exists(roomBelowFile)){  // TODO - creating an object for checking for stepping stones below SUCKS, fix it, too spaghetti/hackish

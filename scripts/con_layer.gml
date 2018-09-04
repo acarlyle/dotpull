@@ -36,7 +36,11 @@ for (var i = 0; i < ds_list_size(layer.mapKeyPriorityList); i++){
     if (!layer.list_objEnums){ //shouldn't have this logic every loop TODO
         layer.list_objEnums = ds_list_create();
     }
+    if (!layer.objNameAndPosToEnumMap){ 
+        layer.objNameAndPosToEnumMap = ds_map_create();
+    }
     ds_list_add(layer.list_objEnums, objEnum);
+    ds_map_add(layer.objNameAndPosToEnumMap, string(objectString) + ":" + string(objPosX) + "," + string(objPosY), objEnum);
 }
 
 
