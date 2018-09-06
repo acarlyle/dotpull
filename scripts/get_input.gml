@@ -1,4 +1,6 @@
-///get_input
+///get_input(var layer layer)
+
+var layer = argument0;
 
 //TODO deal with hardcoded obj_player (this might be ok)
 
@@ -23,10 +25,10 @@ else{
         global.key_upleft + global.key_upright + global.key_downleft + 
         global.key_downright + global.key_space >= 2){
         
-        obj_player.move = false;
+        layer.move = false;
     }
     else if (global.key_left || global.key_right || global.key_up || global.key_down ||
         global.key_upleft || global.key_upright || global.key_downleft || global.key_downright ||
-        global.key_space) obj_player.move = true;
+        global.key_space) layer.move = true;
     else if (global.key_r) undo = true;
 }

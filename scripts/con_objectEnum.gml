@@ -11,6 +11,7 @@ print(" -> con_objectEnum of object " + string(objName));
 objectEnum[| OBJECT.NAME] = objName;
 objectEnum[| OBJECT.X] = real(objPosX);
 objectEnum[| OBJECT.Y] = real(objPosY);
+objectEnum[| OBJECT.STATE] = "";
 
 /*  
     Probably best not to store every possible variable in a text file.
@@ -31,12 +32,11 @@ switch(get_objectFromString(objName)){
         objectEnum[| OBJECT.ISACTIVE] = true;
         
         objectEnum[| ROBOT.CANMOVE] = true;
-        objectEnum[| ROBOT.OLDPOSX] = global.DEACTIVATED_X;
-        objectEnum[| ROBOT.OLDPOSY] = global.DEACTIVATED_Y;
+        objectEnum[| ROBOT.OLDPOSX] = real(objPosX);
+        objectEnum[| ROBOT.OLDPOSY] = real(objPosY);
         objectEnum[| ROBOT.ISDEAD] = false;
         objectEnum[| ROBOT.NUMKEYS] = 0;
         objectEnum[| ROBOT.HASBABY] = false;
-        objectEnum[| ROBOT.MOVE] = false;
         break;
 }
 

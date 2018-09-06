@@ -1,14 +1,13 @@
-///handle_checkForStairs(par_robot robot)
+///handle_checkForStairs(obj_layer layer, par_robot robot)
 
 var layer = argument0;
+var robot = argument1;
 
-var robot = layer.robot;
-
-print(" -> handle_checkForStairs(Robot)");
+print(" -> handle_checkForStairs()");
 
 //MOVE UP/DOWN A FLOOR
-if (map_place(layer, par_stairs, robot.playerX, robot.playerY)){
-    var thisRoomName = room_get_name(room);
+if (map_place(layer, par_stairs, robot[| ROBOT.OLDPOSX], robot[| ROBOT.OLDPOSY])){
+    var thisRoomName = layer.roomName;
     print(thisRoomName);
     thisRoomNameArr = scr_split(thisRoomName, "_");
     
@@ -17,7 +16,7 @@ if (map_place(layer, par_stairs, robot.playerX, robot.playerY)){
     var floorType = thisRoomNameArr[2];
     var floorNumber = thisRoomNameArr[3];
     
-    if (map_place(layer, obj_stairsAsc, robot.playerX, robot.playerY)){
+    if (map_place(layer, obj_stairsAsc, robot[| ROBOT.OLDPOSX], robot[| ROBOT.OLDPOSY])){
         switch(floorType){
             case "b": //basement
                 print("asc_basement");
@@ -30,7 +29,7 @@ if (map_place(layer, par_stairs, robot.playerX, robot.playerY)){
                 break;
         }
     }
-    else if map_place(layer, obj_stairsDesc, robot.playerX, robot.playerY){
+    else if map_place(layer, obj_stairsDesc, robot[| ROBOT.OLDPOSX], robot[| ROBOT.OLDPOSY]){
         switch(floorType){
             case "b": //basement
                 print("desc_basement");

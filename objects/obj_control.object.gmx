@@ -43,8 +43,6 @@ global.set_scaleRes = 1;
 global.set_phoneRes = 3; //act phone value is 5 (960 * 640)
 global.WINDOW_WIDTH = 128;
 global.WINDOW_HEIGHT = 192;
-//player vars
-move = false;
 
 global.TILE_SIZE = 16;
 global.DEACTIVATED_X = -16;
@@ -62,7 +60,7 @@ global.DEACTIVATED_Y = -16;
     Where NAME and ID are defined in the ENUM ITEM.  
 */
 
-enum OBJECT { //default vals 0, 1, 2...
+enum OBJECT { // 0-19
     NAME = 0, 
     X = 1,    
     Y = 2,
@@ -71,16 +69,16 @@ enum OBJECT { //default vals 0, 1, 2...
     STATE = 5,
     CANPULL = 6,
     CANPUSH = 7,   
-    ISACTIVE = 8
+    ISACTIVE = 8,
+    STATE = 9
 }
 enum ROBOT {
-    CANMOVE = 0,
-    OLDPOSX = 1,
-    OLDPOSY = 2,
-    ISDEAD = 3,
-    NUMKEYS = 4,
-    HASBABY = 5,
-    MOVE = 6
+    CANMOVE = 20,
+    OLDPOSX = 21,
+    OLDPOSY = 22,
+    ISDEAD = 23,
+    NUMKEYS = 24,
+    HASBABY = 25
 }
 
 scr_applyScreenRes();

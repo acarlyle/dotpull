@@ -34,6 +34,7 @@ roomMapArr = undefined; //2d array of each tile for move_object logic
 objPosToNameMap = undefined; //maps x.y -&gt; "objName" for each puzzle element in the room
 objNameAndPosToEnumMap = undefined; //maps "obj_name:x.y" -&gt; obj_enum for each puzzle element in the layer
 mapKeyPriorityList = undefined; //priority queue of the keys from the objPosToNameMap sorted by parsing order
+move = false; //if move is true, move the robot
 
 list_robots = undefined; //ds list of robots in this layer
 list_objEnums = undefined; //ordered ds_list of objEnums in a layer
@@ -70,15 +71,18 @@ updateLayer = false; //update when an objectEnum has moved
 //print(robot.oldPlayerX);
 
 //used for cutscene triggers
-if (global.playerCanMove &amp;&amp; layer.list_robots){
-    for (var r = 0; r &lt; ds_list_size(layer.list_robots); r++) //foreach robot in this layer
+if (global.playerCanMove &amp;&amp; self.list_robots){
+    for (var r = 0; r &lt; ds_list_size(self.list_robots); r++) //foreach robot in this layer
     {
-        var robot = layer.list_robots[| r]; //robot enum
-        get_input();
+        var robot = self.list_robots[| r]; //robot enum
+        get_input(self);
         
         if (!robot[| ROBOT.ISDEAD]){
-            if (robot.move){
-                if (global.playerMoved || object_get_name(robot) == "obj_player"){
+            if (self.move){
+                //print("ya");
+                print(robot[| OBJECT.NAME]);
+                if (global.playerMoved || robot[| OBJECT.NAME] == "obj_player"){
+                    //print("ya^2");
                     handle_layerRobots(self, robot); //move is true if movement key is pressed
                 }
             }
@@ -91,11 +95,9 @@ if (global.playerCanMove &amp;&amp; layer.list_robots){
         }*/
         //}
         if (robot){
-            if (robot.moved) {
+            if (robot[| OBJECT.MOVED]) {
                 print("player moved totes");
-                //print("Robot at " + string(obj_player.x) + "," + string(obj_player.y));
-                //handle_pushOntoStack(self, false); //push previous turn's items onto stack before moving them
-                handle_layerObjects(self);  //moved is true if player successfully moved
+                handle_layerObjects(self, robot);  //moved is true if player successfully moved
             }
         }
         

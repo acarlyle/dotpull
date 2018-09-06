@@ -4,7 +4,7 @@ var layer = argument0;
 var robot = argument1;
 
 print("");
-print("HANDLE_ROBOTMOVE_TILE_ONE FOR " + object_get_name(robot.object_index));
+print("HANDLE_ROBOTMOVE_TILE_ONE FOR " + robot[| OBJECT.NAME]);
 
 print("Robot X: " + string(robot.x));
 print("Robot Y: " + string(robot.y));

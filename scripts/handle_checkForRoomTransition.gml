@@ -1,6 +1,7 @@
-///handle_checkForRoomTransition(par_robot robot)
+///handle_checkForRoomTransition(obj_layer layer, par_robot robot)
 
-var robot = argument0;
+var layer = argument0;
+var robot = argument1;
  
 //GOTO ROOM
 if (instance_place(robot.playerX, robot.playerY, obj_gotoRoom)){

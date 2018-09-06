@@ -1,55 +1,56 @@
-///handle_checkLowerRoom(var robot)
+///handle_checkLowerRoom(obj_layer layer, var robot)
 
 /*
     Check if there's an object on the floor below that Robot can move to.  
 */
 
-var robot = argument0;
+var layer = argument0;
+var robot = argument1;
 
 
-if (robot.canMove){
-    if ((global.key_left && scr_steppingStoneBelow(robot.playerX - global.TILE_SIZE, robot.playerY, get_lowerRoomName(room_get_name(room))))){
-        robot.playerX -= global.TILE_SIZE;
-        robot.movedDir = "left";
-        robot.moved = true;
+if (robot[| ROBOT.CANMOVE]){
+    if ((global.key_left && scr_steppingStoneBelow(robot[| ROBOT.OLDPOSX] - global.TILE_SIZE, robot[| ROBOT.OLDPOSY], get_lowerRoomName(room_get_name(room))))){
+        robot[| ROBOT.OLDPOSX] -= global.TILE_SIZE;
+        robot[| OBJECT.MOVEDDIR] = "left";
+        robot[| OBJECT.MOVED] = true;
     }
-    if ((global.key_right && scr_steppingStoneBelow(robot.playerX + global.TILE_SIZE, robot.playerY, get_lowerRoomName(room_get_name(room))))){
-        robot.playerX += global.TILE_SIZE;
-        robot.movedDir = "right";
-        robot.moved = true;
+    if ((global.key_right && scr_steppingStoneBelow(robot[| ROBOT.OLDPOSX] + global.TILE_SIZE, robot[| ROBOT.OLDPOSY], get_lowerRoomName(room_get_name(room))))){
+        robot[| ROBOT.OLDPOSX] += global.TILE_SIZE;
+        robot[| OBJECT.MOVEDDIR] = "right";
+        robot[| OBJECT.MOVED] = true;
     }
-    if ((global.key_up && scr_steppingStoneBelow(robot.playerX, robot.playerY - global.TILE_SIZE, get_lowerRoomName(room_get_name(room))))){
-        robot.playerY -= global.TILE_SIZE;
-        robot.movedDir = "up";
-        robot.moved = true;
+    if ((global.key_up && scr_steppingStoneBelow(robot[| ROBOT.OLDPOSX], robot[| ROBOT.OLDPOSY] - global.TILE_SIZE, get_lowerRoomName(room_get_name(room))))){
+        robot[| ROBOT.OLDPOSY] -= global.TILE_SIZE;
+        robot[| OBJECT.MOVEDDIR] = "up";
+        robot[| OBJECT.MOVED] = true;
     }
-    if ((global.key_down && scr_steppingStoneBelow(robot.playerX, robot.playerY + global.TILE_SIZE, get_lowerRoomName(room_get_name(room))))){
-        robot.playerY += global.TILE_SIZE;
-        robot.movedDir = "down";
-        robot.moved = true;
+    if ((global.key_down && scr_steppingStoneBelow(robot[| ROBOT.OLDPOSX], robot[| ROBOT.OLDPOSY] + global.TILE_SIZE, get_lowerRoomName(room_get_name(room))))){
+        robot[| ROBOT.OLDPOSY] += global.TILE_SIZE;
+        robot[| OBJECT.MOVEDDIR] = "down";
+        robot[| OBJECT.MOVED] = true;
     }
-    if ((global.key_upleft && scr_steppingStoneBelow(robot.playerX - global.TILE_SIZE, robot.playerY - global.TILE_SIZE, get_lowerRoomName(room_get_name(room))))){
-        robot.playerX -= global.TILE_SIZE;
-        robot.playerY -= global.TILE_SIZE;
-        robot.movedDir = "upleft";
-        robot.moved = true;
+    if ((global.key_upleft && scr_steppingStoneBelow(robot[| ROBOT.OLDPOSX] - global.TILE_SIZE, robot[| ROBOT.OLDPOSY] - global.TILE_SIZE, get_lowerRoomName(room_get_name(room))))){
+        robot[| ROBOT.OLDPOSX] -= global.TILE_SIZE;
+        robot[| ROBOT.OLDPOSY] -= global.TILE_SIZE;
+        robot[| OBJECT.MOVEDDIR] = "upleft";
+        robot[| OBJECT.MOVED] = true;
     }
-    if ((global.key_upright && scr_steppingStoneBelow(robot.playerX + global.TILE_SIZE, robot.playerY - global.TILE_SIZE, get_lowerRoomName(room_get_name(room))))){
-        robot.playerX += global.TILE_SIZE;
-        robot.playerY -= global.TILE_SIZE;
-        robot.movedDir = "upright";
-        robot.moved = true;
+    if ((global.key_upright && scr_steppingStoneBelow(robot[| ROBOT.OLDPOSX] + global.TILE_SIZE, robot[| ROBOT.OLDPOSY] - global.TILE_SIZE, get_lowerRoomName(room_get_name(room))))){
+        robot[| ROBOT.OLDPOSX] += global.TILE_SIZE;
+        robot[| ROBOT.OLDPOSY] -= global.TILE_SIZE;
+        robot[| OBJECT.MOVEDDIR] = "upright";
+        robot[| OBJECT.MOVED] = true;
     }
-    if ((global.key_downleft && scr_steppingStoneBelow(robot.playerX - global.TILE_SIZE, robot.playerY + global.TILE_SIZE, get_lowerRoomName(room_get_name(room))))){
-        robot.playerX -= global.TILE_SIZE;
-        robot.playerY += global.TILE_SIZE;
-        robot.movedDir = "downleft";
-        robot.moved = true;
+    if ((global.key_downleft && scr_steppingStoneBelow(robot[| ROBOT.OLDPOSX] - global.TILE_SIZE, robot[| ROBOT.OLDPOSY] + global.TILE_SIZE, get_lowerRoomName(room_get_name(room))))){
+        robot[| ROBOT.OLDPOSX] -= global.TILE_SIZE;
+        robot[| ROBOT.OLDPOSY] += global.TILE_SIZE;
+        robot[| OBJECT.MOVEDDIR] = "downleft";
+        robot[| OBJECT.MOVED] = true;
     }
-    if ((global.key_downright && scr_steppingStoneBelow(robot.playerX - global.TILE_SIZE, robot.playerY + global.TILE_SIZE, get_lowerRoomName(room_get_name(room))))){
-        robot.playerX += global.TILE_SIZE;
-        robot.playerY += global.TILE_SIZE;
-        robot.movedDir = "downright";
-        robot.moved = true;
+    if ((global.key_downright && scr_steppingStoneBelow(robot[| ROBOT.OLDPOSX] - global.TILE_SIZE, robot[| ROBOT.OLDPOSY] + global.TILE_SIZE, get_lowerRoomName(room_get_name(room))))){
+        robot[| ROBOT.OLDPOSX] += global.TILE_SIZE;
+        robot[| ROBOT.OLDPOSY] += global.TILE_SIZE;
+        robot[| OBJECT.MOVEDDIR] = "downright";
+        robot[| OBJECT.MOVED] = true;
     }
 }

@@ -1,8 +1,7 @@
 ///handle_layerObjects(obj_layer layer);
 
 var layer = argument0;
-
-var robot = layer.robot;
+var robot = argument1;
 
 handle_cleanUpElementEffects();
 
