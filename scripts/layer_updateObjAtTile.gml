@@ -1,4 +1,9 @@
-///layer_updateRobotAtTile(obj_layer layer, par_robot robot)
+///layer_updateObjAtTile(obj_layer layer, objEnum object, var oldObjX, var oldObjY)
+
+var layer = argument0;
+var object = argument1;
+var oldObjX = argument2;
+var oldObjY = argument3;
 
 var thisTile = layer.roomMapArr[oldObjY / global.TILE_SIZE, oldObjX / global.TILE_SIZE];
 var tileObjs = scr_split(thisTile, ";"); //arr of every obj in this tile

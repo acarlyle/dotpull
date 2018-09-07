@@ -1,4 +1,4 @@
- ///move_pullPushables(obj_layer thisLayer, obj_enum object)
+ ///move_pullPushables(obj_layer layer, obj_enum object)
 
 /*
     This function handles:
@@ -9,8 +9,10 @@
         obj_magneticSnare
 */
 
-var thisLayer = argument0;
+var layer = argument0;
 var object = argument1;
+
+
 
 var pushPull = 1;
 
@@ -49,16 +51,16 @@ var object_state = "tile_one"; //default movement, TODO should read from file
     }
 }*/
 
-if (map_place(thisLayer, obj_slideTile, object[| OBJECT.X], object[| OBJECT.Y])){
+if (map_place(layer, obj_slideTile, object[| OBJECT.X], object[| OBJECT.Y])){
     object_state = "tile_slide";
 }
 
 switch(object_state){
     case "tile_one":
-        move_pullPushables_tile_one(thisLayer, object, mirptrExt, mirptrHz, mirptrVt, pushPull); //default one tile grid movement
+        move_pullPushables_tile_one(layer, object, mirptrExt, mirptrHz, mirptrVt, pushPull); //default one tile grid movement
         break;
     case "tile_slide":
-        move_pullPushables_tile_slide(thisLayer, object, mirptrExt, mirptrHz, mirptrVt, pushPull); //if an object is sliding (on ice or something)
+        move_pullPushables_tile_slide(layer, object, mirptrExt, mirptrHz, mirptrVt, pushPull); //if an object is sliding (on ice or something)
         break;
 }
 

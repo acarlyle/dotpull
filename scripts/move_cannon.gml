@@ -1,4 +1,4 @@
-///move_cannon(obj_layer layer, par_cannon cannon, par_robot robot)
+///move_cannon(obj_layer layer, par_cannon cannon)
 
 /*
     This function handles:
@@ -8,7 +8,8 @@
 
 var layer = argument0;
 var cannon = argument1;
-var robot = argument2;
+
+var robot = layer.robot;
 
 //switch(cannon.state){
     

@@ -1,7 +1,8 @@
 ///handle_layerRobots(obj_layer layer, par_robot robot);
 
 var layer = argument0;
-var robot = argument1;
+
+var robot = layer.robot;
 
 handle_deployBaby(layer, robot);  //this handles baby placement if player pressed space and has a Baby on Board
 
@@ -36,10 +37,10 @@ if (robot[| OBJECT.MOVED]){
     
     if (robot[| OBJECT.NAME] == "obj_player" && robot[| OBJECT.MOVED]){
         global.playerMoved = true;
-        print("PLAYER MOVED");
+        print("PLAYER MOVED TO " + string(robot[| OBJECT.Y]));
     }
     
-    if (global.playerMoved){ 
+    if (global.playerMoved){ //TODO add stack functionaly with layers
         push_robotState(robot, false, pushXOntoStack, pushYOntoStack);
     }
     else{
@@ -48,8 +49,15 @@ if (robot[| OBJECT.MOVED]){
     
     // Now update this layer's position with moved Robot
     
-    // TODO -> Refactor Layer Robot into enum so I can use only one layer_updateObj script instead of 2
-    layer_updateRobotAtTile(layer, pushXOntoStack, pushYOntoStack); //pass old positions
+    layer_updateObjAtTile(layer, robot, pushXOntoStack, pushYOntoStack); //pass old positions
+    
+    //TODO need better method of main layer checking 
+    if (robot[| OBJECT.NAME] == "obj_player"){
+        //var objInst = instance_place(robot[| ROBOT.OLDPOSX], robot[| ROBOT.OLDPOSY], get_objectFromString(robot[| OBJECT.NAME]));
+        var objInst = instance_place(48, 128, obj_player);
+        objInst.x = robot[| OBJECT.X];
+        objInst.y = robot[| OBJECT.Y];
+    }
     
 }
 

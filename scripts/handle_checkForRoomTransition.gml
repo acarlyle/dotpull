@@ -1,13 +1,13 @@
-///handle_checkForRoomTransition(obj_layer layer, par_robot robot)
+///handle_checkForRoomTransition(obj_layer layer, objEnum robot)
 
 var layer = argument0;
 var robot = argument1;
  
 //GOTO ROOM
-if (instance_place(robot.playerX, robot.playerY, obj_gotoRoom)){
-    robot.x = robot.playerX;
-    robot.y = robot.playerY;
-    robot.movedDir = "";
-    robot.moved = false;
+if (map_place(layer, obj_gotoRoom, robot[| ROBOT.OLDPOSX], robot[| ROBOT.OLDPOSX])){
+    robot[| OBJECT.X] = robot[| ROBOT.OLDPOSX];
+    robot[| OBJECT.Y] = robot[| ROBOT.OLDPOSY];
+    robot[| OBJECT.MOVEDDIR] = "";
+    robot[| OBJECT.MOVED] = false;
     handle_freeRoomMemory();
 }

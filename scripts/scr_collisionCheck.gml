@@ -1,4 +1,4 @@
-///scr_collisionCheck(obj_layer layer, int posX, int posY, par_robot robot)
+///scr_collisionCheck(obj_layer layer, int posX, int posY, objEnum robot)
 
 var layer = argument0;
 var posX = argument1;
@@ -26,21 +26,21 @@ if (map_place(layer, par_pickupable, posX, posY)){
 
 if (map_place(layer, obj_mirptr, posX, posY)){
     var mirptr = map_place(layer, obj_mirptr, posX, posY);
-    print("old robo x: " + string(robot.x));
-    var roboXDiff = posX - robot.playerX; 
-    var roboYDiff = posY - robot.playerY; 
+    print("old robo x: " + string(robot[| OBJECT.X]));
+    var roboXDiff = posX - robot[| ROBOT.OLDPOSX]; 
+    var roboYDiff = posY - robot[| ROBOT.OLDPOSY]; 
     if !scr_collisionCheck(layer, mirptr.mirptrPtr.x + roboXDiff, mirptr.mirptrPtr.y + roboYDiff, robot){
-        robot.playerX += (mirptr.mirptrPtr.x + roboXDiff) - mirptr.x;
-        robot.playerY += (mirptr.mirptrPtr.y + roboYDiff) - mirptr.y;
-        print("PROBLEM: Recursive call, new robot x, y: " + string(robot.playerX) + " " + string(robot.playerY));
+        robot[| ROBOT.OLDPOSX] += (mirptr.mirptrPtr.x + roboXDiff) - mirptr.x;
+        robot[| ROBOT.OLDPOSY] += (mirptr.mirptrPtr.y + roboYDiff) - mirptr.y;
+        print("PROBLEM: Recursive call, new robot x, y: " + string(robot[| ROBOT.OLDPOSX]) + " " + string(robot[| ROBOT.OLDPOSY]));
     }
     else{
         return true;
     }
     
     
-    robot.playerX = mirptr.mirptrPtr.x;
-    robot.playerY = mirptr.mirptrPtr.y;
+    robot[| ROBOT.OLDPOSX] = mirptr.mirptrPtr.x;
+    robot[| ROBOT.OLDPOSY] = mirptr.mirptrPtr.y;
     print("mirptr collision in player move");
     print(mirptr.mirptrPtr.x);
 }
@@ -54,7 +54,7 @@ if (map_place(layer, par_obstacle, posX, posY)){
 //print("numkeys");
 //print(obj_player.numKeys);
 if (map_place(layer, obj_door, posX, posY)){
-    if (numKeys > 0){ //there's a DOOR here, try to unlock
+    if (robot[| ROBOT.NUMKEYS] > 0){ //there's a DOOR here, try to unlock
         door = map_place(layer, obj_door, posX, posY);
         with (door){
             //instance_destroy(); //unlock door by removing it woah

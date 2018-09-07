@@ -233,7 +233,6 @@
     <scripts name="Virtual Mapping">
       <script>scripts\draw_lowerRooms.gml</script>
       <script>scripts\layer_updateObjAtTile.gml</script>
-      <script>scripts\layer_updateRobotAtTile.gml</script>
       <script>scripts\map_place.gml</script>
       <script>scripts\scr_getArrOfRoom.gml</script>
     </scripts>
