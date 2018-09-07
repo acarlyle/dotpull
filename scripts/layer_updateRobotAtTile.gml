@@ -1,5 +1,7 @@
 ///layer_updateRobotAtTile(obj_layer layer, var oldPosX, var oldPosY)
 
+//!!! DEPRECIATED
+
 var layer = argument0;
 var oldObjX = argument1;
 var oldObjY = argument2;

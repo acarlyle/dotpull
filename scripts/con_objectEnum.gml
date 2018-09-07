@@ -30,6 +30,7 @@ switch(get_objectFromString(objName)){
         objectEnum[| OBJECT.CANPULL] = false;
         objectEnum[| OBJECT.CANPUSH] = false;
         objectEnum[| OBJECT.ISACTIVE] = true;
+        objectEnum[| OBJECT.STATE] = "tile_one";
         
         objectEnum[| ROBOT.CANMOVE] = true;
         objectEnum[| ROBOT.OLDPOSX] = real(objPosX);

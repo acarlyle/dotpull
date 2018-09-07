@@ -1,4 +1,4 @@
-///move_fallingPlatform(obj_layer layer, par_fallingPlatform fallingPlatform, par_robot robot)
+///move_fallingPlatform(obj_layer layer, par_fallingPlatform fallingPlatform)
 
 /*
     This function handles:
@@ -9,7 +9,8 @@
 
 var layer = argument0;
 var fallingPlatform = argument1;
-var robot = argument2;
+
+var robot = layer.robot;
 
 ds_stack_push(fallingPlatform.stateHistory, fallingPlatform.stepsLeft);
 if (robot.oldPlayerX == fallingPlatform.x && robot.oldPlayerY == fallingPlatform.y){

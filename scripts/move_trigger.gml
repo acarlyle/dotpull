@@ -1,4 +1,4 @@
-///move_trigger(obj_layer layer, obj_trigger trigger, par_robot robot)
+///move_trigger(obj_layer layer, obj_trigger trigger)
 
 /*
     This function handles:
@@ -8,7 +8,8 @@
 
 var layer = argument0;
 var trigger = argument1;
-var robot = argument2;
+
+var robot = layer.robot;
 
 //this is a trigger being pressed
 //if ((instance_place(trigger.x, trigger.y, par_pullable) || instance_place(trigger.x, trigger.y, par_robot)) && trigger.triggerDoorPtr != undefined){

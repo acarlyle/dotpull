@@ -35,6 +35,7 @@ objPosToNameMap = undefined; //maps x.y -&gt; "objName" for each puzzle element 
 objNameAndPosToEnumMap = undefined; //maps "obj_name:x.y" -&gt; obj_enum for each puzzle element in the layer
 mapKeyPriorityList = undefined; //priority queue of the keys from the objPosToNameMap sorted by parsing order
 move = false; //if move is true, move the robot
+robot = undefined; //cur robot this layer is handling
 
 list_robots = undefined; //ds list of robots in this layer
 list_objEnums = undefined; //ordered ds_list of objEnums in a layer
@@ -64,40 +65,28 @@ updateLayer = false; //update when an objectEnum has moved
             <kind>1</kind>
             <string>scr_clearStepGlobals();
 
-//print("Ya know, ya know !");
-
-//if (get_objectFromString((objectStr(obj_player))).id == par_robot.id) print("tydadasasd");
-
-//print(robot.oldPlayerX);
-
 //used for cutscene triggers
 if (global.playerCanMove &amp;&amp; self.list_robots){
     for (var r = 0; r &lt; ds_list_size(self.list_robots); r++) //foreach robot in this layer
     {
-        var robot = self.list_robots[| r]; //robot enum
+        self.robot = self.list_robots[| r]; //robot enum
         get_input(self);
         
-        if (!robot[| ROBOT.ISDEAD]){
+        if (!self.robot[| ROBOT.ISDEAD]){
             if (self.move){
                 //print("ya");
-                print(robot[| OBJECT.NAME]);
-                if (global.playerMoved || robot[| OBJECT.NAME] == "obj_player"){
+                print(self.robot[| OBJECT.NAME]);
+                if (global.playerMoved || self.robot[| OBJECT.NAME] == "obj_player"){
                     //print("ya^2");
-                    handle_layerRobots(self, robot); //move is true if movement key is pressed
+                    handle_layerRobots(self); //move is true if movement key is pressed
                 }
             }
         }
-        /*if (robot.undo){
-            //print("undo");
-            //print("numKeys pre undo: " + string(obj_player.numKeys));
-            handle_undoMove(self); //undo is true if player wants to undo their latest move}
-            //print("numKeys after undo: " + string(obj_player.numKeys));
-        }*/
-        //}
-        if (robot){
-            if (robot[| OBJECT.MOVED]) {
+        
+        if (self.robot){
+            if (self.robot[| OBJECT.MOVED]) {
                 print("player moved totes");
-                handle_layerObjects(self, robot);  //moved is true if player successfully moved
+                handle_layerObjects(self);  //moved is true if player successfully moved
             }
         }
         

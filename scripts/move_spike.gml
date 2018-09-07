@@ -7,6 +7,7 @@
 
 var layer = argument0;
 var spike = argument1;
+
 var robot = layer.robot;
 
 var mirptrExt = false; //TODO -> haven't implemented spike logic w/ mirptrs yet
