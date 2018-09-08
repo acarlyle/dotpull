@@ -22,13 +22,13 @@ var posY = argument3;
 print(" -> map_place(" + string(object_get_name(object)) +")");
 
 var thisTile = layer.roomMapArr[(real(posY))/global.TILE_SIZE, (real(posX))/global.TILE_SIZE]
-//print("THISROW: " + string(thisTile));
+print("THISROW: " + string(thisTile));
 var thisTileObjs = scr_split(thisTile, ";");
-//print("array length: " + string(array_length_1d(thisTileObjs)));
+print("array length: " + string(array_length_1d(thisTileObjs)));
 for (var i = 0; i < array_length_1d(thisTileObjs); i++){
     var objStr = scr_split(thisTileObjs[i], "[");
-    //print("objStr: " + string(objStr[0]));
-    //print("obj: " + string(object_get_name(object)));
+    print("objStr: " + string(objStr[0]));
+    print("obj: " + string(object_get_name(object)));
     
     /*
         The following is ONLY to see what instance the id is assigned.  

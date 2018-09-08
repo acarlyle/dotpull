@@ -37,11 +37,19 @@ if (robot[| OBJECT.MOVED]){
     
     if (robot[| OBJECT.NAME] == "obj_player" && robot[| OBJECT.MOVED]){
         global.playerMoved = true;
-        print("PLAYER MOVED TO " + string(robot[| OBJECT.Y]));
     }
     
     if (global.playerMoved){ //TODO add stack functionaly with layers
         push_robotState(robot, false, pushXOntoStack, pushYOntoStack);
+        
+        //update Robot position vars
+        robot[| ROBOT.OLDPOSX] = robot[| OBJECT.X];
+        robot[| ROBOT.OLDPOSY] = robot[| OBJECT.Y];
+        robot[| OBJECT.X] = robot[| ROBOT.NEWX]; 
+        robot[| OBJECT.Y] = robot[| ROBOT.NEWY];
+        
+        print("handle_layerRobots: PLAYER MOVED TO: " + string(robot[| OBJECT.X]) +"," + string(robot[| OBJECT.Y]));
+        
     }
     else{
         robot[| OBJECT.MOVEDDIR] = "";
@@ -53,8 +61,8 @@ if (robot[| OBJECT.MOVED]){
     
     //TODO need better method of main layer checking 
     if (robot[| OBJECT.NAME] == "obj_player"){
-        //var objInst = instance_place(robot[| ROBOT.OLDPOSX], robot[| ROBOT.OLDPOSY], get_objectFromString(robot[| OBJECT.NAME]));
-        var objInst = instance_place(48, 128, obj_player);
+        var objInst = instance_place(robot[| ROBOT.OLDPOSX], robot[| ROBOT.OLDPOSY], get_objectFromString(robot[| OBJECT.NAME]));
+        //var objInst = instance_place(48, 128, obj_player);
         objInst.x = robot[| OBJECT.X];
         objInst.y = robot[| OBJECT.Y];
     }
