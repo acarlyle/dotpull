@@ -78,7 +78,9 @@ enum ROBOT {
     OLDPOSY = 22,
     ISDEAD = 23,
     NUMKEYS = 24,
-    HASBABY = 25
+    HASBABY = 25,
+    NEWX = 26,
+    NEWY = 27
 }
 
 scr_applyScreenRes();

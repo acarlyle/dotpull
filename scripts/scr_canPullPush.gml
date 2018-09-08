@@ -13,8 +13,8 @@ var layer = argument6;
 var badArgList = undefined;
 var mirptrHz = false;
 var mirptrVt = false;
-var xDiff = robot.x - posX;
-var yDiff = robot.y - posY;
+var xDiff = robot[| OBJECT.X] - posX;
+var yDiff = robot[| OBJECT.Y] - posY;
 
 if (diagonalMovement) print("scr_canPullPush diag checking");
 
@@ -23,19 +23,19 @@ var badArgList = array(par_robot, par_obstacle);
 //if there's a mirptr in the path of the object, reset object position back to where it should be
 // +/- diff to spot to pull to
 if (mirptr){
-    if (object[| OBJECT.X] == mirptr.x){
+    if (object[| OBJECT.X] == mirptr[| OBJECT.X]){
         mirptrVt = true;
     }
-    if (object[| OBJECT.Y] == mirptr.y){ 
+    if (object[| OBJECT.Y] == mirptr[| OBJECT.Y]){ 
         mirptrHz = true;
     }
-    posX = object[| OBJECT.X] + (posX - mirptr.x);
-    posY = object[| OBJECT.Y] + (posY - mirptr.y);
-    xDiff = robot.oldPlayerX - posX;
-    yDiff = robot.oldPlayerY - posY; 
+    posX = object[| OBJECT.X] + (posX - mirptr[| OBJECT.X]);
+    posY = object[| OBJECT.Y] + (posY - mirptr[| OBJECT.Y]);
+    xDiff = robot[| ROBOT.OLDPOSX] - posX;
+    yDiff = robot[| ROBOT.OLDPOSY] - posY; 
     if (xDiff == 0 && yDiff == 0){
-        xDiff = robot.x - posX;
-        yDiff = robot.y - posY;
+        xDiff = robot[| OBJECT.X] - posX;
+        yDiff = robot[| OBJECT.Y] - posY;
     }
 }
 
@@ -82,7 +82,7 @@ if (object[| OBJECT.NAME] == "obj_spike"){
 
 print("scr_canPullPush: posX, posY: " + string(posX) + ", " + string(posY));
 print("scr_canPullPush: xDiff, yDiff: " + string(xDiff) + ", " + string(yDiff));
-print("scr_canPullPush: oldRobotX, oldRobotY: " + string(robot.oldPlayerX) + ", " + string(robot.oldPlayerY));
+print("scr_canPullPush: oldRobotX, oldRobotY: " + string(robot[| ROBOT.OLDPOSX]) + ", " + string(robot[| ROBOT.OLDPOSY]));
 
 /*
     TODO
@@ -124,7 +124,7 @@ if (!diagonalMovement && (object[| OBJECT.CANPULL] || object[| OBJECT.CANPUSH]) 
             var objX = object[| OBJECT.X] - global.TILE_SIZE;
             var objY = object[| OBJECT.Y];
             print("Starting Object X: " + string(objX));
-            print("Rob is at: " + string(robot.x));
+            print("Rob is at: " + string(robot[| OBJECT.X]));
             while(!scr_tileContains(layer, objX, objY, badArgList)){
                 print("scr_canPullPush: player left: x, y: " + string(objX) + ", " + string(objY));
                 if (map_place(layer, obj_mirptr, objX, objY)){
@@ -154,8 +154,8 @@ if (!diagonalMovement && (object[| OBJECT.CANPULL] || object[| OBJECT.CANPUSH]) 
         print("scr_canPullPush: Robot moving up/down, moveDir: " + string(robot.movedDir));
         if (yDiff < 0){ //player is above the obj
             var objX = object[| OBJECT.X];
-            var objY = y - global.TILE_SIZE
-            //for (var objY = y - global.TILE_SIZE; (objY > endPosY) || (objY > robot.y); objY -= global.TILE_SIZE){
+            var objY = object[| OBJECT.Y] - global.TILE_SIZE
+            //for (var objY = y - global.TILE_SIZE; (objY > endPosY) || (objY > robot[| OBJECT.Y]); objY -= global.TILE_SIZE){
             while(!scr_tileContains(layer, objX, objY, badArgList)){
                 print("player above: x, y: " + string(objX) + ", " + string(objY));
                 if (map_place(layer, obj_mirptr, objX, objY)){
@@ -180,9 +180,9 @@ if (!diagonalMovement && (object[| OBJECT.CANPULL] || object[| OBJECT.CANPUSH]) 
         else{
             print("below object");
             var objX = object[| OBJECT.X];
-            var objY = y + global.TILE_SIZE;
+            var objY = object[| OBJECT.Y] + global.TILE_SIZE;
             //print("objY: " + string(objY));
-            //for (var objY = y + global.TILE_SIZE; (objY < endPosY) || (objY < robot.y); objY += global.TILE_SIZE){
+            //for (var objY = y + global.TILE_SIZE; (objY < endPosY) || (objY < robot[| OBJECT.Y]); objY += global.TILE_SIZE){
             while(!scr_tileContains(layer, objX, objY, badArgList)){
                 print("player below: x, y: " + string(objX) + ", " + string(objY));
                 //var yakuza = "ya";
@@ -204,7 +204,7 @@ if (!diagonalMovement && (object[| OBJECT.CANPULL] || object[| OBJECT.CANPUSH]) 
             
             if (!map_place(layer, par_robot, objX, objY)){
                 print("No robot here! :(" + " " + string(objX) + " " + string(objY));
-                print("Robot at: " + string(robot.x) + " " + string(robot.y));
+                print("Robot at: " + string(robot[| OBJECT.X]) + " " + string(robot[| OBJECT.Y]));
                 return false;
             }
         }
@@ -214,8 +214,8 @@ if (!diagonalMovement && (object[| OBJECT.CANPULL] || object[| OBJECT.CANPUSH]) 
 //diagonal movement
 if (diagonalMovement == true && (object[| OBJECT.CANPULL] || object[| OBJECT.CANPUSH]) && !(object[| OBJECT.CANPULL] && object[| OBJECT.CANPUSH])){
     print("scr_canPullPush: Diag checking");
-    if (robot.y < y && robot.x > x){ //player is above the obj and to the right; pull object upright
-        var objX = x+global.TILE_SIZE; var objY = y-global.TILE_SIZE;
+    if (robot[| OBJECT.Y] < object[| OBJECT.Y] && robot[| OBJECT.X] > object[| OBJECT.X]){ //player is above the obj and to the right; pull object upright
+        var objX = object[| OBJECT.X] +global.TILE_SIZE; var objY = object[| OBJECT.Y]-global.TILE_SIZE;
         while(!scr_tileContains(layer, objX, objY, badArgList)){
             print("scr_canPullPush: robot upright: x, y: " + string(objX) + ", " + string(objY));
             if (map_place(layer, obj_mirptr, objX, objY)){
@@ -238,8 +238,8 @@ if (diagonalMovement == true && (object[| OBJECT.CANPULL] || object[| OBJECT.CAN
             return false;
         }
     }
-    if (robot.y < y && robot.x < x){ //player is above the obj and to the left; pull object upleft
-        var objX = x-global.TILE_SIZE; var objY = y-global.TILE_SIZE;
+    if (robot[| OBJECT.Y] < object[| OBJECT.Y] && robot[| OBJECT.X] < object[| OBJECT.X]){ //player is above the obj and to the left; pull object upleft
+        var objX = object[| OBJECT.X]-global.TILE_SIZE; var objY = object[| OBJECT.Y]-global.TILE_SIZE;
         while(!scr_tileContains(layer, objX, objY, badArgList)){
             print("scr_canPullPush: robot upleft: x, y: " + string(objX) + ", " + string(objY));
             if (map_place(layer, obj_mirptr, objX, objY)){
@@ -262,8 +262,8 @@ if (diagonalMovement == true && (object[| OBJECT.CANPULL] || object[| OBJECT.CAN
             return false;
         }
     }
-    if (robot.y > y && robot.x > x){ //player is below the obj and to the right; pull object downright
-        var objX = x + global.TILE_SIZE; var objY = y + global.TILE_SIZE;
+    if (robot[| OBJECT.Y] > object[| OBJECT.Y] && robot[| OBJECT.X] > object[| OBJECT.X]){ //player is below the obj and to the right; pull object downright
+        var objX = object[| OBJECT.X] + global.TILE_SIZE; var objY = object[| OBJECT.Y] + global.TILE_SIZE;
         while(!scr_tileContains(layer, objX, objY, badArgList)){
             print("scr_canPullPush: robot downright: x, y: " + string(objX) + ", " + string(objY));
             if (map_place(layer, obj_mirptr, objX, objY)){
@@ -286,8 +286,8 @@ if (diagonalMovement == true && (object[| OBJECT.CANPULL] || object[| OBJECT.CAN
             return false;
         }       
     }
-    if (robot.y > y && robot.x < x){ //player is below the obj and to the left; pull object downleft
-        var objX = x-global.TILE_SIZE; var objY = y+ global.TILE_SIZE;
+    if (robot[| OBJECT.Y] > object[| OBJECT.Y] && robot[| OBJECT.X] < object[| OBJECT.X]){ //player is below the obj and to the left; pull object downleft
+        var objX = object[| OBJECT.X]-global.TILE_SIZE; var objY = object[| OBJECT.Y]+ global.TILE_SIZE;
         while(!scr_tileContains(layer, objX, objY, badArgList)){
             print("scr_canPullPush: robot downleft: x, y: " + string(objX) + ", " + string(objY));
             if (map_place(layer, obj_mirptr, objX, objY)){
@@ -315,8 +315,8 @@ if (diagonalMovement == true && (object[| OBJECT.CANPULL] || object[| OBJECT.CAN
 if (object[| OBJECT.CANPULL] && object[| OBJECT.CANPUSH]){
     print("scr_canPullPush: obj can be pushed and pulled");
     
-    var xDiff = robot.x - x;
-    var yDiff = robot.y - y;
+    var xDiff = robot[| OBJECT.X] - object[| OBJECT.X];
+    var yDiff = robot[| OBJECT.Y] - object[| OBJECT.Y];
     
     if (!diagonalMovement){ //this checks left/right only
     
@@ -422,9 +422,9 @@ if (object[| OBJECT.CANPULL] && object[| OBJECT.CANPUSH]){
     //diagonal movement
     if (diagonalMovement == true){
         //print("Diag checking in scr_canPull");
-        if (robot.y < y && robot.x > x){ //player is above the obj and to the right; pull object upright
+        if (robot[| OBJECT.Y] < object[| OBJECT.Y] && robot[| OBJECT.X] > object[| OBJECT.X]){ //player is above the obj and to the right; pull object upright
             //print("pull object up right");
-            var objX = x+global.TILE_SIZE; var objY = y-global.TILE_SIZE;
+            var objX = object[| OBJECT.X]+global.TILE_SIZE; var objY = y-global.TILE_SIZE;
             while(!scr_tileContains(layer, objX, objY, badArgList)){
                 print("robot upright pull&push: x, y: " + string(objX) + ", " + string(objY));
                 if (map_place(layer, obj_mirptr, objX, objY)){
@@ -447,8 +447,8 @@ if (object[| OBJECT.CANPULL] && object[| OBJECT.CANPUSH]){
                 return false;
             }
         }
-        if (robot.y < y && robot.x < x){ //player is above the obj and to the left; pull object upleft
-            var objX = x-global.TILE_SIZE; var objY = y-global.TILE_SIZE;
+        if (robot[| OBJECT.Y] < object[| OBJECT.Y] && robot[| OBJECT.X] < object[| OBJECT.X]){ //player is above the obj and to the left; pull object upleft
+            var objX = object[| OBJECT.X]-global.TILE_SIZE; var objY = object[| OBJECT.Y]-global.TILE_SIZE;
             //for (objX = x - global.TILE_SIZE; objX > endPosX; objX -= global.TILE_SIZE){
             while(!scr_tileContains(layer, objX, objY, badArgList)){
                 print("robot upleft pull&push: x, y: " + string(objX) + ", " + string(objY));
@@ -472,8 +472,8 @@ if (object[| OBJECT.CANPULL] && object[| OBJECT.CANPUSH]){
                 return false;
             }
         }
-        if (robot.y > y && robot.x > x){ //player is below the obj and to the right; pull object downright
-            var objX = x + global.TILE_SIZE; var objY = y + global.TILE_SIZE;
+        if (robot[| OBJECT.Y] > object[| OBJECT.Y] && robot[| OBJECT.X] > object[| OBJECT.X]){ //player is below the obj and to the right; pull object downright
+            var objX = object[| OBJECT.X] + global.TILE_SIZE; var objY = object[| OBJECT.Y] + global.TILE_SIZE;
             //for (objX = x + global.TILE_SIZE; objX < endPosX; objX += global.TILE_SIZE){
             while(!scr_tileContains(layer, objX, objY, badArgList)){
                 print("robot downright pull&push: x, y: " + string(objX) + ", " + string(objY));
@@ -497,8 +497,8 @@ if (object[| OBJECT.CANPULL] && object[| OBJECT.CANPUSH]){
                 return false;
             }        
         }
-        if (robot.y > y && robot.x < x){ //player is below the obj and to the left; pull object downleft
-            var objX = x-global.TILE_SIZE; var objY = y+ global.TILE_SIZE;
+        if (robot[| OBJECT.Y] > object[| OBJECT.Y] && robot[| OBJECT.X] < object[| OBJECT.X]){ //player is below the obj and to the left; pull object downleft
+            var objX = object[| OBJECT.X]-global.TILE_SIZE; var objY = object[| OBJECT.Y]+ global.TILE_SIZE;
             //for (objX = x - global.TILE_SIZE; objX > endPosX; objX -= global.TILE_SIZE){
             while(!scr_tileContains(layer, objX, objY, badArgList)){
                 print("robot downleft pull&push: x, y: " + string(objX) + ", " + string(objY));
@@ -525,7 +525,7 @@ if (object[| OBJECT.CANPULL] && object[| OBJECT.CANPUSH]){
     }
 }
 
-if (map_place(layer, x, y, obj_triggerDoor) && !map_place(layer, obj_wall, posX, posY)){
+if (map_place(layer, obj_triggerDoor, object[| OBJECT.X], object[| OBJECT.Y]) && !map_place(layer, obj_wall, posX, posY)){
     if (isActivated(map_place(layer, obj_triggerDoor, objX, objY))){
         print("scr_canPullPush: obj trapped above");
         return false; //can't move if above    

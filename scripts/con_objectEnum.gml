@@ -38,6 +38,8 @@ switch(get_objectFromString(objName)){
         objectEnum[| ROBOT.ISDEAD] = false;
         objectEnum[| ROBOT.NUMKEYS] = 0;
         objectEnum[| ROBOT.HASBABY] = false;
+        objectEnum[| ROBOT.NEWX] = real(objPosX);
+        objectEnum[| ROBOT.NEWY] = real(objPosY);
         break;
 }
 

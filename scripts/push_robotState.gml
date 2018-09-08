@@ -14,10 +14,15 @@ print("-> DISABLED push_robotState(" + string(pushXOntoStack) + "," + string(pus
 //ds_stack_push(robot.movedDirHistory, robot.movedDir);
 print("DID NOT PUSH (currently) " + string(pushXOntoStack) + ", " + string(pushYOntoStack)); 
 
-//robot[| ROBOT.OLDPOSX] = robot[| OBJECT.X];
-//robot[| ROBOT.OLDPOSX] = robot[| OBJECT.Y];
-//robot[| OBJECT.X] = robot.playerX; 
-//robot[| OBJECT.Y] = robot.playerY;
+//robot.oldPlayerX = x;
+//robot.oldPlayerY = y;
+//robot.x = robot.playerX; 
+//robot.y = robot.playerY;
+
+robot[| ROBOT.OLDPOSX] = robot[| OBJECT.X];
+robot[| ROBOT.OLDPOSY] = robot[| OBJECT.Y];
+robot[| OBJECT.X] = robot[| ROBOT.NEWX]; 
+robot[| OBJECT.Y] = robot[| ROBOT.NEWY];
 
 if (map_place(self, obj_slideTile, robot[| OBJECT.X], robot[| OBJECT.Y])){
     robot[| ROBOT.CANMOVE] = false;
