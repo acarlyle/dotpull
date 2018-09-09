@@ -45,7 +45,6 @@
 //local vars
 
     //member vars
-    spikeMoved = false;
     targetLocked = false;
 </string>
           </argument>

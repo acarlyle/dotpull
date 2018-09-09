@@ -31,6 +31,7 @@ layer.mapKeyPriorityList = ds_list_create();
 for (var i = 0; i < ds_list_size(sortedObjPriorityList); i++){
     objInst = ds_list_find_value(sortedObjPriorityList, i);
     objAt = 0;
+    if (!objInst.moveHistory) continue; //objs with no move history are skipped
     priorityListValue = ds_stack_top(objInst.moveHistory); //obj posstr like "x,y"
     print("priorityQueueKey: " + string(priorityListValue));
     print("objStr: " + string(objectStr(objInst)));

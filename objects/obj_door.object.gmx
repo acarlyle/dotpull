@@ -43,7 +43,7 @@
 //local vars
 
     //member vars
-    currentState = "locked";
+    state = "locked";
     isLocked = true;
 </string>
           </argument>

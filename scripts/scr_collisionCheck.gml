@@ -27,20 +27,20 @@ if (map_place(layer, par_pickupable, posX, posY)){
 if (map_place(layer, obj_mirptr, posX, posY)){
     var mirptr = map_place(layer, obj_mirptr, posX, posY);
     print("old robo x: " + string(robot[| OBJECT.X]));
-    var roboXDiff = posX - robot[| ROBOT.OLDPOSX]; 
-    var roboYDiff = posY - robot[| ROBOT.OLDPOSY]; 
+    var roboXDiff = posX - robot[| OBJECT.OLDPOSX]; 
+    var roboYDiff = posY - robot[| OBJECT.OLDPOSY]; 
     if !scr_collisionCheck(layer, mirptr.mirptrPtr.x + roboXDiff, mirptr.mirptrPtr.y + roboYDiff, robot){
-        robot[| ROBOT.OLDPOSX] += (mirptr.mirptrPtr.x + roboXDiff) - mirptr.x;
-        robot[| ROBOT.OLDPOSY] += (mirptr.mirptrPtr.y + roboYDiff) - mirptr.y;
-        print("PROBLEM: Recursive call, new robot x, y: " + string(robot[| ROBOT.OLDPOSX]) + " " + string(robot[| ROBOT.OLDPOSY]));
+        robot[| OBJECT.OLDPOSX] += (mirptr.mirptrPtr.x + roboXDiff) - mirptr.x;
+        robot[| OBJECT.OLDPOSY] += (mirptr.mirptrPtr.y + roboYDiff) - mirptr.y;
+        print("PROBLEM: Recursive call, new robot x, y: " + string(robot[| OBJECT.OLDPOSX]) + " " + string(robot[| OBJECT.OLDPOSY]));
     }
     else{
         return true;
     }
     
     
-    robot[| ROBOT.OLDPOSX] = mirptr.mirptrPtr.x;
-    robot[| ROBOT.OLDPOSY] = mirptr.mirptrPtr.y;
+    robot[| OBJECT.OLDPOSX] = mirptr.mirptrPtr.x;
+    robot[| OBJECT.OLDPOSY] = mirptr.mirptrPtr.y;
     print("mirptr collision in player move");
     print(mirptr.mirptrPtr.x);
 }

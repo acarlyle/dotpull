@@ -31,8 +31,8 @@
 
     //stack
     stateHistory = ds_stack_create(); //either inventory or ground
-    ds_stack_push(stateHistory, "ground");
-    currentState = "ground";
+    state = "ground";
+    ds_stack_push(stateHistory, state);
 
     //member vars
     canPull = true;

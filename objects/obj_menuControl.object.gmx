@@ -36,7 +36,7 @@ global.WINDOW_HEIGHT = 192;
 global.saveRoomLoaded = undefined;
 
 //selectedOption = obj_continueAdventure;
-selectedOption = obj_continueAdventure;
+selectedOption = obj_newAdventure;
 selectedOption.isSelected = true;
 selectedOption.image_index++;
 //draw_sprite(spr_player, 0, selectedOption.x + 10, selectedOption.y);

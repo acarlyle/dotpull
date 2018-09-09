@@ -70,17 +70,35 @@ enum OBJECT { // 0-19
     CANPULL = 6,
     CANPUSH = 7,   
     ISACTIVE = 8,
-    STATE = 9
+    STATE = 9,
+    FOODCHAIN = 10, //high food chain level can move into other object, same level does nothing
+    ISSTEPPINGSTONE = 11,
+    OLDPOSX = 12,
+    OLDPOSY = 13
 }
-enum ROBOT {
+enum ROBOT { // 20-39
     CANMOVE = 20,
-    OLDPOSX = 21,
-    OLDPOSY = 22,
     ISDEAD = 23,
     NUMKEYS = 24,
     HASBABY = 25,
     NEWX = 26,
     NEWY = 27
+}
+enum DOOR {
+    ISLOCKED = 40
+}
+enum TRIGGER {
+    TRIGGERPTR = 41,
+    TRIGGERDOORPTR = 42
+}
+enum AI {
+    TARGETLOCKED = 43
+}
+enum MIRPTR {
+    MIRPTRPTR = 50
+}
+enum PLATFORM {
+    STEPSLEFT = 51,
 }
 
 scr_applyScreenRes();

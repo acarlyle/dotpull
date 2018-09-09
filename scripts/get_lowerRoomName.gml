@@ -12,6 +12,9 @@ var upperRoomName = argument0;
 if upperRoomName == noone return undefined;
 
 thisRoomNameArr = scr_split(upperRoomName, "_");
+
+//does not follow multi-floor room naming convention
+if (array_length_1d(thisRoomNameArr) < 3) return undefined;
     
 var roomPrefix = thisRoomNameArr[0];
 var roomName = thisRoomNameArr[1];

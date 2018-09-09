@@ -31,8 +31,8 @@ if (mirptr){
     }
     posX = object[| OBJECT.X] + (posX - mirptr[| OBJECT.X]);
     posY = object[| OBJECT.Y] + (posY - mirptr[| OBJECT.Y]);
-    xDiff = robot[| ROBOT.OLDPOSX] - posX;
-    yDiff = robot[| ROBOT.OLDPOSY] - posY; 
+    xDiff = robot[| OBJECT.OLDPOSX] - posX;
+    yDiff = robot[| OBJECT.OLDPOSY] - posY; 
     if (xDiff == 0 && yDiff == 0){
         xDiff = robot[| OBJECT.X] - posX;
         yDiff = robot[| OBJECT.Y] - posY;
@@ -82,7 +82,7 @@ if (object[| OBJECT.NAME] == "obj_spike"){
 
 print("scr_canPullPush: posX, posY: " + string(posX) + ", " + string(posY));
 print("scr_canPullPush: xDiff, yDiff: " + string(xDiff) + ", " + string(yDiff));
-print("scr_canPullPush: oldRobotX, oldRobotY: " + string(robot[| ROBOT.OLDPOSX]) + ", " + string(robot[| ROBOT.OLDPOSY]));
+print("scr_canPullPush: oldRobotX, oldRobotY: " + string(robot[| OBJECT.OLDPOSX]) + ", " + string(robot[| OBJECT.OLDPOSY]));
 
 /*
     TODO

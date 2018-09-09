@@ -9,7 +9,7 @@ print(" -> handle_activeRooms() ");
 
 var curRoomName = room_get_name(room);
 var lowerRoomName = "";
-var alphaVal = 1; //halved each lower surface
+var alphaVal = 1; //halved each lower surface (for drawing the surface to the screen)
 
 while (get_lowerRoomName(curRoomName) != undefined){
     alphaVal /= 2;       
