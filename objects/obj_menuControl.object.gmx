@@ -126,7 +126,7 @@ else if (key_enter){
     //audio_play_sound(song_terrorTram, 10, true);
     switch(object_get_name(selectedOption)){
         case "obj_newAdventure":
-            var roomGoto = rm_level1;
+            var roomGoto = rm_level2;
             var roomName = room_get_name(roomGoto);
             var roomSaveFileName = roomName + ".sav"; // TODO -&gt; should have a bkp file in case of failure to save/load
             if (file_exists(roomSaveFileName)) {

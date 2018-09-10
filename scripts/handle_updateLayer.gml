@@ -23,9 +23,13 @@ for (var o = 0; o < ds_list_size(layer.list_objEnums); o++){
     if (robot[| OBJECT.NAME] == "obj_player"){
     
         var objInst = instance_place(object[| OBJECT.OLDPOSX], object[| OBJECT.OLDPOSY], get_objectFromString(object[| OBJECT.NAME]));
+        if (!objInst) continue;
         
         if (object[| OBJECT.X] == global.DEACTIVATED_X || object[| OBJECT.Y] == global.DEACTIVATED_Y){
             print(object[| OBJECT.NAME] + " is disabled, cannot map_place deactivated tilePos.");
+            
+            print(objInst.x);
+            print(objInst.y);
             objInst.x = global.DEACTIVATED_X;
             objInst.y = global.DEACTIVATED_Y;
             continue;

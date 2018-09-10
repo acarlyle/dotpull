@@ -15,7 +15,7 @@ var objMove = false;
 //now obj should teleport to its mirptrPtr (already confirmed can push/pull past its mirptrPtr)
 if (map_place(layer, obj_mirptr, object[| OBJECT.X], object[| OBJECT.Y])){ 
     var mirptr = map_place(layer, obj_mirptr, object[| OBJECT.X], object[| OBJECT.Y]);
-    if (robot.oldPlayerY == objPosY && robot[| OBJECT.Y] == objPosY){ //player moved left/right
+    if (robot[| OBJECT.OLDPOSY] == objPosY && robot[| OBJECT.Y] == objPosY){ //player moved left/right
         object[| OBJECT.X] = mirptr.mirptrPtr.x;
         object[| OBJECT.Y] = mirptr.mirptrPtr.y;
         if (robot[| OBJECT.X] < objPosX) {//player on left side of object 
@@ -39,7 +39,7 @@ if (map_place(layer, obj_mirptr, object[| OBJECT.X], object[| OBJECT.Y])){
             }
         }
     }
-    if (robot.oldPlayerX == objPosX && robot[| OBJECT.X] == objPosX){ //player moved up/down
+    if (robot[| OBJECT.OLDPOSX] == objPosX && robot[| OBJECT.X] == objPosX){ //player moved up/down
         object[| OBJECT.X] = mirptr.mirptrPtr.x;
         object[| OBJECT.Y] = mirptr.mirptrPtr.y;
         if (robot[| OBJECT.Y] < objPosY){ //player above object

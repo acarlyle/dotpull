@@ -9,17 +9,18 @@ handle_cleanUpElementEffects();
 for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
 {
     var object = layer.list_objEnums[| enumI];
+    
+    if (object[| OBJECT.X] == global.DEACTIVATED_X || object[| OBJECT.Y] == global.DEACTIVATED_Y){
+        print(object[| OBJECT.NAME] + " is disabled, cannot map_place deactivated tilePos.");
+        continue;
+    }
+    
     object[| OBJECT.OLDPOSX] = object[| OBJECT.X];
     object[| OBJECT.OLDPOSY] = object[| OBJECT.Y];
 
     //print("Layer size list: " + string(ds_list_size(layer.list_objEnums)));
          
     print("-> handle_layerObjects: Handling  " + object[| OBJECT.NAME]);
-    
-    if (object[| OBJECT.X] == global.DEACTIVATED_X || object[| OBJECT.Y] == global.DEACTIVATED_Y){
-        print(object[| OBJECT.NAME] + " is disabled, cannot map_place deactivated tilePos.");
-        continue;
-    }
     
     /*
         HANDLE DIFFERENT TYPES OF OBJECT MOVEMENTS

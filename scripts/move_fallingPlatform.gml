@@ -12,11 +12,11 @@ var fallingPlatform = argument1;
 
 var robot = layer.robot;
 
-ds_stack_push(fallingPlatform.stateHistory, fallingPlatform.stepsLeft);
-if (robot.oldPlayerX == fallingPlatform.x && robot.oldPlayerY == fallingPlatform.y){
-    fallingPlatform.stepsLeft--;
-    image_index++;
-    if (fallingPlatform.stepsLeft == 0){
-        fallingPlatform.isDeactivated = true;
+//ds_stack_push(fallingPlatform.stateHistory, fallingPlatform.stepsLeft);
+if (robot[| OBJECT.OLDPOSX] == fallingPlatform[| OBJECT.X] && robot[| OBJECT.OLDPOSY] == fallingPlatform[| OBJECT.Y]){
+    fallingPlatform[| PLATFORM.STEPSLEFT] -= 1;
+    fallingPlatform[| OBJECT.IMGIND] += 1;
+    if (fallingPlatform[| PLATFORM.STEPSLEFT] == 0){
+        fallingPlatform[| OBJECT.ISACTIVE] = false;
     }
 }

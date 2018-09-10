@@ -31,8 +31,8 @@ var object_state = "tile_one"; //default movement, TODO should read from file
     
     var mirptr = self;
     var mirptrPtr = self.mirptrPtr;
-    if ((mirptr.x == object.x && (robot.oldPlayerX == mirptrPtr.x || robot[| OBJECT.X] == mirptrPtr.x)) &&
-        (robot[| OBJECT.Y] - robot.oldPlayerY != 0)){ //checks to see if player actually moved up/down
+    if ((mirptr.x == object.x && (robot[| OBJECT.OLDPOSX] == mirptrPtr.x || robot[| OBJECT.X] == mirptrPtr.x)) &&
+        (robot[| OBJECT.Y] - robot[| OBJECT.OLDPOSY] != 0)){ //checks to see if player actually moved up/down
         //print("NSYNC!!!! VT");
         object_posX = mirptrPtr.x;
         object_posY = mirptrPtr.y;
@@ -40,8 +40,8 @@ var object_state = "tile_one"; //default movement, TODO should read from file
         mirptrExt = mirptr;
         mirptrVt = true;
     }
-    if ((mirptr.y == object.y && (robot.oldPlayerY == mirptrPtr.y || robot[| OBJECT.Y] == mirptrPtr.y)) &&
-        (robot[| OBJECT.X] - robot.oldPlayerX != 0)){ //checks to see if player actually moved left/right
+    if ((mirptr.y == object.y && (robot[| OBJECT.OLDPOSY] == mirptrPtr.y || robot[| OBJECT.Y] == mirptrPtr.y)) &&
+        (robot[| OBJECT.X] - robot[| OBJECT.OLDPOSX] != 0)){ //checks to see if player actually moved left/right
         //print("NSYNC!!!! HZ");
         object_posX = mirptrPtr.x;
         object_posY = mirptrPtr.y;

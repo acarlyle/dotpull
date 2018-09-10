@@ -52,24 +52,28 @@ if (map_place(layer, par_obstacle, posX, posY)){
 }
 
 if (map_place(layer, obj_door, posX, posY)){
-    if (robot[| ROBOT.NUMKEYS] > 0){ //there's a DOOR here, try to unlock
-        door = map_place(layer, obj_door, posX, posY);
+    door = map_place(layer, obj_door, posX, posY);
+    
+    if (door[| OBJECT.ISACTIVE]){
+        if (robot[| ROBOT.NUMKEYS] > 0){ //there's a DOOR here, try to unlock
         
-        robot[| ROBOT.NUMKEYS] -= 1;
-        door[| OBJECT.ISACTIVE] = false;
-        door[| OBJECT.OLDPOSX] = door[| OBJECT.X];
-        door[| OBJECT.OLDPOSY] = door[| OBJECT.Y];
-        //ds_stack_push(moveHistory, string(door[| OBJECT.X]) + "," + string(door[| OBJECT.Y]));
-        //ds_stack_push(stateHistory, "locked");
-        door[| OBJECT.X] = global.DEACTIVATED_X;
-        door[| OBJECT.Y] = global.DEACTIVATED_Y;
-        door[| OBJECT.STATE] = "unlocked";
-        
-        return false;
-    }
-    else{
-        door[| OBJECT.STATE] = "locked";
-        return true;
+            robot[| ROBOT.NUMKEYS] -= 1;
+            door[| OBJECT.ISACTIVE] = false;
+            door[| OBJECT.OLDPOSX] = door[| OBJECT.X];
+            door[| OBJECT.OLDPOSY] = door[| OBJECT.Y];
+            //ds_stack_push(moveHistory, string(door[| OBJECT.X]) + "," + string(door[| OBJECT.Y]));
+            //ds_stack_push(stateHistory, "locked");
+            door[| OBJECT.X] = global.DEACTIVATED_X;
+            door[| OBJECT.Y] = global.DEACTIVATED_Y;
+            door[| OBJECT.STATE] = "unlocked";
+            door[| OBJECT.ISACTIVE] = false;
+            
+            return false;
+        }
+        else{
+            door[| OBJECT.STATE] = "locked";
+            return true;
+        }
     }
 }
 

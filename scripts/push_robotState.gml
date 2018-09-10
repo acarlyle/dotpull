@@ -14,8 +14,8 @@ print("-> DISABLED push_robotState(" + string(pushXOntoStack) + "," + string(pus
 //ds_stack_push(robot.movedDirHistory, robot[| OBJECT.MOVEDDIR);
 print("DID NOT PUSH (currently) " + string(pushXOntoStack) + ", " + string(pushYOntoStack)); 
 
-//robot.oldPlayerX = x;
-//robot.oldPlayerY = y;
+//robot[| OBJECT.OLDPOSX] = x;
+//robot[| OBJECT.OLDPOSY] = y;
 //robot[| OBJECT.X] = robot[| ROBOT.NEWX]; 
 //robot[| OBJECT.Y] = robot[| ROBOT.NEWY];
 
