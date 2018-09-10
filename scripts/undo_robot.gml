@@ -20,7 +20,7 @@ if (items != undefined){
     robot.hasBaby = items[1];
 }
     
-robot.movedDir = ds_stack_pop(robot.movedDirHistory);
+robot[| OBJECT.MOVEDDIR] = ds_stack_pop(robot.movedDirHistory);
 if (movementStr != undefined){
     var moveArrComponents = scr_split(movementStr, ";");
     var objPosArr = scr_split(moveArrComponents[1], ",");
@@ -31,9 +31,9 @@ if (movementStr != undefined){
         return false; //switch to other room 
     }
     
-    robot.x = objPosArr[0];
-    robot.y = objPosArr[1];
-    robot.playerX = robot.x;
-    robot.playerY = robot.y;
+    robot[| OBJECT.X] = objPosArr[0];
+    robot[| OBJECT.Y] = objPosArr[1];
+    robot[| ROBOT.NEWX] = robot[| OBJECT.X];
+    robot[| ROBOT.NEWY] = robot[| OBJECT.Y];
 }
 return true; //continue to undo objects

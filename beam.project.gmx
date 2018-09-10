@@ -158,6 +158,7 @@
       <script>scripts\get_curRoomObjects.gml</script>
       <script>scripts\get_deactivatedRoomObjects.gml</script>
       <script>scripts\get_input.gml</script>
+      <script>scripts\get_layerFromRoomStr.gml</script>
       <script>scripts\get_lowerRoomName.gml</script>
       <script>scripts\get_objectFromString.gml</script>
       <script>scripts\get_objectLocalVarsStr.gml</script>
@@ -167,12 +168,11 @@
     </scripts>
     <scripts name="Helpers">
       <script>scripts\array.gml</script>
-      <script>scripts\isActivated.gml</script>
+      <script>scripts\isEnum.gml</script>
       <script>scripts\objectStr.gml</script>
       <script>scripts\print.gml</script>
       <script>scripts\print2dArray.gml</script>
       <script>scripts\scr_clearStepGlobals.gml</script>
-      <script>scripts\scr_disableObj.gml</script>
       <script>scripts\scr_objectsAdjacent.gml</script>
       <script>scripts\scr_roomFromString.gml</script>
       <script>scripts\scr_tileContains.gml</script>
@@ -189,9 +189,6 @@
         <script>scripts\strlen.gml</script>
         <script>scripts\strcontains.gml</script>
       </scripts>
-    </scripts>
-    <scripts name="Legacy">
-      <script>scripts\scr_canPullPush_instancePlaceVersion.gml</script>
     </scripts>
     <scripts name="Movement">
       <scripts name="Robot">

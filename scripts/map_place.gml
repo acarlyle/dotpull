@@ -19,32 +19,34 @@ var object = argument1;
 var posX = argument2;
 var posY = argument3;
 
-print(" -> map_place(" + string(object_get_name(object)) +")");
+//print(" -> map_place(" + string(object_get_name(object)) + ", " + string(posX) + "," + string(posY) + ")");
 
 var thisTile = layer.roomMapArr[(real(posY))/global.TILE_SIZE, (real(posX))/global.TILE_SIZE]
-print("THISROW: " + string(thisTile));
+//print("map_place: THISROW: " + string(thisTile));
 var thisTileObjs = scr_split(thisTile, ";");
-print("array length: " + string(array_length_1d(thisTileObjs)));
+//print("map_place: array length: " + string(array_length_1d(thisTileObjs)));
 for (var i = 0; i < array_length_1d(thisTileObjs); i++){
     var objStr = scr_split(thisTileObjs[i], "[");
-    print("objStr: " + string(objStr[0]));
-    print("obj: " + string(object_get_name(object)));
+    //print("map_place: Tile object: " + string(objStr[0]));
+    //print("map_place: Object to find: " + string(object_get_name(object)));
     
     /*
-        The following is ONLY to see what instance the id is assigned.  
+        The following is inst create ONLY to see what instance the id is assigned.  
         TODO find a better way to do this than this shit.  
     */
     
     var objFromStr = get_objectFromString(objStr[0]);
     
+    //print("ObjFromStr as an object: " + string(objectStr(objFromStr)));
+    
+    
     if (!instance_exists(object)) instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, object);
     if (!instance_exists(objFromStr)) instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, objFromStr);
     
     if ((objFromStr.id == object.id)){
-        //return objFromStr; //maybe return objEnum ?
-        //return objEnum
         var enumRef = ds_map_find_value(layer.objNameAndPosToEnumMap, objStr[0] + ":" + string(posX) + "," + string(posY));
-        if (!enumRef) return objFromStr;
+        if (enumRef) print("map_place: ObjEnum found: " + enumRef[| OBJECT.NAME]);
+        if (!enumRef){ print("map_place Returning " + string(objectStr(objFromStr))); return objFromStr; }
         
         return enumRef; //return enum if it's in the layer's enum List
     }

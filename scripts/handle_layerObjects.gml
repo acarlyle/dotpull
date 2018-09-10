@@ -9,12 +9,17 @@ handle_cleanUpElementEffects();
 for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
 {
     var object = layer.list_objEnums[| enumI];
-    var oldObjX = object[| OBJECT.X];
-    var oldObjY = object[| OBJECT.Y];
+    object[| OBJECT.OLDPOSX] = object[| OBJECT.X];
+    object[| OBJECT.OLDPOSY] = object[| OBJECT.Y];
 
-    print("Layer size list: " + string(ds_list_size(layer.list_objEnums)));
+    //print("Layer size list: " + string(ds_list_size(layer.list_objEnums)));
          
     print("-> handle_layerObjects: Handling  " + object[| OBJECT.NAME]);
+    
+    if (object[| OBJECT.X] == global.DEACTIVATED_X || object[| OBJECT.Y] == global.DEACTIVATED_Y){
+        print(object[| OBJECT.NAME] + " is disabled, cannot map_place deactivated tilePos.");
+        continue;
+    }
     
     /*
         HANDLE DIFFERENT TYPES OF OBJECT MOVEMENTS
@@ -32,7 +37,7 @@ for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
     }
     
     //If object is on top of a snare, don't do anything with it
-    if (map_place(layer, par_snare, object[| OBJECT.X], object[| OBJECT.Y])) { continue; }
+    if (map_place(layer, par_snare, object[| OBJECT.X], object[| OBJECT.Y])) { print("Snare here!  Cannot move"); continue; }
     
     //Handles: obj_trigger, obj_triggerDoor
     else if (object[| OBJECT.NAME] == "obj_trigger" || object[| OBJECT.NAME] == "obj_triggerDoor"){
@@ -88,25 +93,14 @@ for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
     //TODO need to update obj stacks insteading of copying over the previous turn's stack
     if (object[| OBJECT.MOVED]){
     
-        layer_updateObjAtTile(layer, object, oldObjX, oldObjY);
+        layer_updateObjAtTile(layer, object, object[| OBJECT.OLDPOSX], object[| OBJECT.OLDPOSY]);
         
-        layer.updateLayer = true; //flag to draw new position to the screen
-        
-        /* 
-            TODO needs better implemenation rather than this hackish workaround 
-            Handle updating fake layer
-            If obj_player is this layer's robot, this is the fake layer (real objects are in the room) 
-        */
-        if (robot[| OBJECT.NAME] == "obj_player"){
-            var objInst = instance_place(oldObjX, oldObjY, get_objectFromString(object[| OBJECT.NAME]));
-            objInst.x = object[| OBJECT.X];
-            objInst.y = object[| OBJECT.Y];
-        }
+        layer.updateLayer = true; // TODO not used (I think)
         
         // Update Layer's object position to obj enum Map
         if (layer.objNameAndPosToEnumMap){
             ds_map_delete(layer.objNameAndPosToEnumMap, 
-                            object[| OBJECT.NAME] + ":" + string(oldObjX) + "," + string(oldObjY));
+                            object[| OBJECT.NAME] + ":" + string(object[| OBJECT.OLDPOSX]) + "," + string(object[| OBJECT.OLDPOSY]));
                             
             ds_map_add(layer.objNameAndPosToEnumMap, 
                             object[| OBJECT.NAME] + ":" + string(object[| OBJECT.X]) + "," + string(object[| OBJECT.Y]), 

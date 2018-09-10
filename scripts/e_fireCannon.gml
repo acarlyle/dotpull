@@ -4,8 +4,8 @@ cannon = argument0;
 var isVert = argument1;
 var isHorz = argument2;
 
-//var xDiff = robot.x - cannon.x;
-//var yDiff = robot.y - cannon.y;
+//var xDiff = robot[| OBJECT.X] - cannon.x;
+//var yDiff = robot[| OBJECT.Y] - cannon.y;
 
 var endOfTheLine = false;
 var createEnergy = false;

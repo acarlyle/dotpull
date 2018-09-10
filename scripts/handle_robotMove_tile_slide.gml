@@ -9,54 +9,54 @@ var layer = argument0;
 var robot = argument1;
 
 scr_disableMovementKeys();
-robot.canMove = false;
+robot[| ROBOT.CANMOVE] = false;
 
 print("");
 print("HANDLE_ROBOTMOVE_TILE_SLIDE FOR " + object_get_name(robot.object_index));
 
-if (!robot.canMove){
-    if ((robot.movedDir == "left") && !scr_collisionCheck(layer, robot.playerX - global.TILE_SIZE, robot.playerY, robot)){
-        robot.playerX -= global.TILE_SIZE;
-        robot.movedDir = "left";
+if (!robot[| ROBOT.CANMOVE]){
+    if ((robot[| OBJECT.MOVEDDIR] == "left") && !scr_collisionCheck(layer, robot[| ROBOT.NEWX] - global.TILE_SIZE, robot[| ROBOT.NEWY], robot)){
+        robot[| ROBOT.NEWX] -= global.TILE_SIZE;
+        robot[| OBJECT.MOVEDDIR] = "left";
         robot.moved = true;
     }
-    if ((robot.movedDir == "right") && !scr_collisionCheck(layer, robot.playerX + global.TILE_SIZE, robot.playerY, robot)){
-        robot.playerX += global.TILE_SIZE;
-        robot.movedDir = "right";
+    if ((robot[| OBJECT.MOVEDDIR] == "right") && !scr_collisionCheck(layer, robot[| ROBOT.NEWX] + global.TILE_SIZE, robot[| ROBOT.NEWY], robot)){
+        robot[| ROBOT.NEWX] += global.TILE_SIZE;
+        robot[| OBJECT.MOVEDDIR] = "right";
         robot.moved = true;
     }
-    if ((robot.movedDir == "up") && !scr_collisionCheck(layer, robot.playerX, robot.playerY - global.TILE_SIZE, robot)){
-        robot.playerY -= global.TILE_SIZE;
-        robot.movedDir = "up";
+    if ((robot[| OBJECT.MOVEDDIR] == "up") && !scr_collisionCheck(layer, robot[| ROBOT.NEWX], robot[| ROBOT.NEWY] - global.TILE_SIZE, robot)){
+        robot[| ROBOT.NEWY] -= global.TILE_SIZE;
+        robot[| OBJECT.MOVEDDIR] = "up";
         robot.moved = true;
     }
-    if ((robot.movedDir == "down") && !scr_collisionCheck(layer, robot.playerX, robot.playerY + global.TILE_SIZE, robot)){
-        robot.playerY += global.TILE_SIZE;
-        robot.movedDir = "down";
+    if ((robot[| OBJECT.MOVEDDIR] == "down") && !scr_collisionCheck(layer, robot[| ROBOT.NEWX], robot[| ROBOT.NEWY] + global.TILE_SIZE, robot)){
+        robot[| ROBOT.NEWY] += global.TILE_SIZE;
+        robot[| OBJECT.MOVEDDIR] = "down";
         robot.moved = true;
     }
-    if ((robot.movedDir == "upleft") && !scr_collisionCheck(layer, robot.playerX - global.TILE_SIZE, robot.playerY - global.TILE_SIZE, robot)){
-        robot.playerX -= global.TILE_SIZE;
-        robot.playerY -= global.TILE_SIZE;
-        robot.movedDir = "upleft";
+    if ((robot[| OBJECT.MOVEDDIR] == "upleft") && !scr_collisionCheck(layer, robot[| ROBOT.NEWX] - global.TILE_SIZE, robot[| ROBOT.NEWY] - global.TILE_SIZE, robot)){
+        robot[| ROBOT.NEWX] -= global.TILE_SIZE;
+        robot[| ROBOT.NEWY] -= global.TILE_SIZE;
+        robot[| OBJECT.MOVEDDIR] = "upleft";
         robot.moved = true;
     }
-    if ((robot.movedDir == "upright") && !scr_collisionCheck(layer, robot.playerX + global.TILE_SIZE, robot.playerY - global.TILE_SIZE, robot)){
-        robot.playerX += global.TILE_SIZE;
-        robot.playerY -= global.TILE_SIZE;
-        robot.movedDir = "upright";
+    if ((robot[| OBJECT.MOVEDDIR] == "upright") && !scr_collisionCheck(layer, robot[| ROBOT.NEWX] + global.TILE_SIZE, robot[| ROBOT.NEWY] - global.TILE_SIZE, robot)){
+        robot[| ROBOT.NEWX] += global.TILE_SIZE;
+        robot[| ROBOT.NEWY] -= global.TILE_SIZE;
+        robot[| OBJECT.MOVEDDIR] = "upright";
         robot.moved = true;
     }
-    if ((robot.movedDir == "downleft") && !scr_collisionCheck(layer, robot.playerX - global.TILE_SIZE, robot.playerY + global.TILE_SIZE, robot)){
-        robot.playerX -= global.TILE_SIZE;
-        robot.playerY += global.TILE_SIZE;
-        robot.movedDir = "downleft";
+    if ((robot[| OBJECT.MOVEDDIR] == "downleft") && !scr_collisionCheck(layer, robot[| ROBOT.NEWX] - global.TILE_SIZE, robot[| ROBOT.NEWY] + global.TILE_SIZE, robot)){
+        robot[| ROBOT.NEWX] -= global.TILE_SIZE;
+        robot[| ROBOT.NEWY] += global.TILE_SIZE;
+        robot[| OBJECT.MOVEDDIR] = "downleft";
         robot.moved = true;
     }
-    if ((robot.movedDir == "downright") && !scr_collisionCheck(layer, robot.playerX + global.TILE_SIZE, robot.playerY + global.TILE_SIZE, robot)){
-        robot.playerX += global.TILE_SIZE;
-        robot.playerY += global.TILE_SIZE;
-        robot.movedDir = "downright";
+    if ((robot[| OBJECT.MOVEDDIR] == "downright") && !scr_collisionCheck(layer, robot[| ROBOT.NEWX] + global.TILE_SIZE, robot[| ROBOT.NEWY] + global.TILE_SIZE, robot)){
+        robot[| ROBOT.NEWX] += global.TILE_SIZE;
+        robot[| ROBOT.NEWY] += global.TILE_SIZE;
+        robot[| OBJECT.MOVEDDIR] = "downright";
         robot.moved = true;
     }
 }

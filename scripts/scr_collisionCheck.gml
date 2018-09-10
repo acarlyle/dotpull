@@ -51,107 +51,89 @@ if (map_place(layer, par_obstacle, posX, posY)){
     if (obstacle[| OBJECT.ISACTIVE]) return true; //obstacle will block your path
 }
 
-//print("numkeys");
-//print(obj_player.numKeys);
 if (map_place(layer, obj_door, posX, posY)){
     if (robot[| ROBOT.NUMKEYS] > 0){ //there's a DOOR here, try to unlock
         door = map_place(layer, obj_door, posX, posY);
-        with (door){
-            //instance_destroy(); //unlock door by removing it woah
-            obj_player.numKeys--;
-            //print(obj_player.numKeys);
-            isDeactivated = true;
-            justDeactivated = true;
-            deactivatedX = x;
-            deactivatedY = y;
-            ds_stack_push(moveHistory, string(x) + "," + string(y));
-            ds_stack_push(stateHistory, "locked");
-            x = global.DEACTIVATED_X;
-            y = global.DEACTIVATED_Y;
-            currentState = "unlocked";
-        }
+        
+        robot[| ROBOT.NUMKEYS] -= 1;
+        door[| OBJECT.ISACTIVE] = false;
+        door[| OBJECT.OLDPOSX] = door[| OBJECT.X];
+        door[| OBJECT.OLDPOSY] = door[| OBJECT.Y];
+        //ds_stack_push(moveHistory, string(door[| OBJECT.X]) + "," + string(door[| OBJECT.Y]));
+        //ds_stack_push(stateHistory, "locked");
+        door[| OBJECT.X] = global.DEACTIVATED_X;
+        door[| OBJECT.Y] = global.DEACTIVATED_Y;
+        door[| OBJECT.STATE] = "unlocked";
+        
         return false;
     }
     else{
-        currentState = "locked";
-        print("No keys: " + string(obj_player.numKeys));
+        door[| OBJECT.STATE] = "locked";
         return true;
     }
 }
-//print("numnkeys end");
+
 if (map_place(layer, obj_key, posX, posY)){
     key = map_place(layer, obj_key, posX, posY);
-    with (key){
-        audio_play_sound(snd_keyPickup, 10, false);
-        obj_player.numKeys++;
-        currentState = "inventory";
-        isDeactivated = true;
-        justDeactivated = true;
-        deactivatedX = x;
-        deactivatedY = y;
-        ds_stack_push(moveHistory, string(x) + "," + string(y));
-        ds_stack_push(stateHistory, "ground");
-        //ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys - 1));
-        x = global.DEACTIVATED_X;
-        y = global.DEACTIVATED_Y;
-        //image_index = 1;
-        //ds_stack_pop(moveHistory);
-        //ds_stack_pop(moveHistory);
-    }
+    
+    audio_play_sound(snd_keyPickup, 10, false);
+    robot[| ROBOT.NUMKEYS] += 1;
+    key[| OBJECT.STATE] = "inventory";
+    key[| OBJECT.ISACTIVE] = false;
+    key[| OBJECT.OLDPOSX] = key[| OBJECT.X];
+    key[| OBJECT.OLDPOSY] = key[| OBJECT.Y];
+    //ds_stack_push(moveHistory, string(x) + "," + string(y));
+    //ds_stack_push(stateHistory, "ground");
+    key[| OBJECT.X] = global.DEACTIVATED_X;
+    key[| OBJECT.Y] = global.DEACTIVATED_Y;
+    
+    print("scr_collisionCheck: Robot keys now " + string(robot[| ROBOT.NUMKEYS]));
+    
     return false;
 }
 
-print("numkeys: " + string(obj_player.numKeys));
 if (map_place(layer, par_block, posX, posY)){
     print("There's a block here");
     return true; //there's a block here
 }
-if (map_place(layer, obj_hole, posX, posY)){
-    //print("There's a hole here");
-    return true; //there's a block here
-}
+
 if (map_place(layer, obj_trigger, posX, posY)){
     //print("There's a trigger here");
-    return false; //there's a block here
+    return false;
 }
+
 if (map_place(layer, obj_triggerDoor, posX, posY)){
     //print("There's a triggerDoor here");
     var door = map_place(layer, obj_triggerDoor, posX, posY);
-    if (!door.isDeactivated) return true; //triggerDoor will block your path
-    return false; //there's a block here
+    if (door[| OBJECT.ISACTIVE]) return true; //triggerDoor will block your path
+    return false;
 }
+
 if (map_place(layer, par_wall, posX, posY)){
     wall = map_place(layer, par_wall, posX, posY);
-    if (wall.isDeactivated){
+    if (wall[| OBJECT.ISACTIVE]){
         return false; //there's a wall here but it's deactivated, you may walk
     }
     else{
         return true; //there's a wall here
     }
 }
-// TODO -> Reimplement falling platform logic
+
 if (map_place(layer, par_platform, posX, posY)){
-    /*var platform = map_place(layer, par_platform, posX, posY);
-    if (platform.isFallingPlatform){
-        if (platform.stepsLeft <= 0){
-            return true; //you can't walk here, the platform has fallen and the city is lost
+    var platform = map_place(layer, par_platform, posX, posY);
+    //print("OBJ: " + objectStr(platform));
+    if (isEnum(platform)){
+        if (get_parent(get_objectFromString(platform[| OBJECT.NAME])) == par_fallingPlatform){
+            if (platform[| PLATFORM.STEPSLEFT] <= 0){
+                return true; //you can't walk here, the platform has fallen and the city is lost
+            }
+            if (!platform[| OBJECT.ISACTIVE]){
+                return false;
+            }
         }
     }
-    if (map_place(layer, obj_dialogueTrigger, posX, posY)){
-        var dialogueTrigger = map_place(layer, obj_dialogueTrigger, posX, posY);
-        dialogueTrigger.activated = true;
-    }*/
-    print("Platform here!  You may pass");
-    return false; //there's a platform here, good to take a stroll on
-}
-if (map_place(layer, par_fallingPlatform, posX, posY)){
-    var platform = map_place(layer, par_fallingPlatform, posX, posY);
-    if (platform.stepsLeft <= 0){
-        return true; //you can't walk here, the platform has fallen and the city is lost
-    }
-    if (platform.isDeactivated){
-        return false;
-    }
+    if (platform)
+        return false; //you may walk on this platform
 }
 
 print("scr_collisionCheck: cannot move to: " + string(posX) +","+string(posY));

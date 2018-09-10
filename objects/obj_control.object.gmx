@@ -37,6 +37,7 @@ global.switchRooms = false;
 
 //init vars
 global.roomContents = ds_stack_create(); //rewindable objects
+global.layerMap = ds_map_create();
 
 //game settings
 global.set_scaleRes = 1;
@@ -74,7 +75,8 @@ enum OBJECT { // 0-19
     FOODCHAIN = 10, //high food chain level can move into other object, same level does nothing
     ISSTEPPINGSTONE = 11,
     OLDPOSX = 12,
-    OLDPOSY = 13
+    OLDPOSY = 13,
+    IMGIND = 14 //image index var
 }
 enum ROBOT { // 20-39
     CANMOVE = 20,
@@ -89,7 +91,7 @@ enum DOOR {
 }
 enum TRIGGER {
     TRIGGERPTR = 41,
-    TRIGGERDOORPTR = 42
+    DOORPTR = 42
 }
 enum AI {
     TARGETLOCKED = 43

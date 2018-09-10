@@ -40,16 +40,6 @@ selectedOption = obj_newAdventure;
 selectedOption.isSelected = true;
 selectedOption.image_index++;
 //draw_sprite(spr_player, 0, selectedOption.x + 10, selectedOption.y);
-
-var roomName = "rm_spikestairs_b_1"
-var roomSaveFileName = roomName + ".sav"; // TODO -&gt; should have a bkp file in case of failure to save/load
-if (file_exists(roomSaveFileName)) {
-    file_delete(roomSaveFileName);
-    print("###############################");
-    print("###############################");
-    print("###############################");
-    print("Warning: " + string(roomSaveFileName) + " has been deleted!");
-}
 </string>
           </argument>
         </arguments>
@@ -136,7 +126,17 @@ else if (key_enter){
     //audio_play_sound(song_terrorTram, 10, true);
     switch(object_get_name(selectedOption)){
         case "obj_newAdventure":
-            room_goto(rm_level1);
+            var roomGoto = rm_level1;
+            var roomName = room_get_name(roomGoto);
+            var roomSaveFileName = roomName + ".sav"; // TODO -&gt; should have a bkp file in case of failure to save/load
+            if (file_exists(roomSaveFileName)) {
+                file_delete(roomSaveFileName);
+                print("###############################");
+                print("###############################");
+                print("###############################");
+                print("obj_menuControl: Warning: " + string(roomSaveFileName) + " has been deleted!");
+            }
+            room_goto(roomGoto);
             break;
         case "obj_continueAdventure":
             //room_goto(rm_level11);      //ffs18 levels

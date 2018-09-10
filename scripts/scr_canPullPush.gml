@@ -67,7 +67,7 @@ if (object[| OBJECT.NAME] == "obj_spike"){
            !map_place(layer, obj_baby, posX, posY)){
             var obs = map_place(layer, par_obstacle, posX, posY);
             print(obs.isDeactivated);
-            if (isActivated(obs)){
+            if (obs[| OBJECT.ISACTIVE]){
                 print("SPIKE STOPPED BY OBSTACLE!!!!");
                 return false;
             }
@@ -151,7 +151,7 @@ if (!diagonalMovement && (object[| OBJECT.CANPULL] || object[| OBJECT.CANPUSH]) 
     //print("xDIFF: " + string(xDiff));
     //print("yDIFF: " + string(yDiff));
     if (xDiff == 0 || (!mirptrHz && mirptrVt)){ //player is moving up/down; check for objects towards the player
-        print("scr_canPullPush: Robot moving up/down, moveDir: " + string(robot.movedDir));
+        print("scr_canPullPush: Robot moving up/down, moveDir: " + string(robot[| OBJECT.MOVEDDIR]));
         if (yDiff < 0){ //player is above the obj
             var objX = object[| OBJECT.X];
             var objY = object[| OBJECT.Y] - global.TILE_SIZE
@@ -526,9 +526,12 @@ if (object[| OBJECT.CANPULL] && object[| OBJECT.CANPUSH]){
 }
 
 if (map_place(layer, obj_triggerDoor, object[| OBJECT.X], object[| OBJECT.Y]) && !map_place(layer, obj_wall, posX, posY)){
-    if (isActivated(map_place(layer, obj_triggerDoor, objX, objY))){
-        print("scr_canPullPush: obj trapped above");
-        return false; //can't move if above    
+    if (map_place(layer, obj_triggerDoor, objX, objY)){
+        var triggerDoor = map_place(layer, obj_triggerDoor, objX, objY)
+        if (triggerDoor[| OBJECT.ISACTIVE]){
+            print("scr_canPullPush: obj trapped above");
+            return false; //can't move if above
+        }    
     }
 }
 
@@ -552,13 +555,13 @@ if (map_place(layer, par_fallingPlatform, posX, posY)){
 if (map_place(layer, obj_triggerDoor, posX, posY)){
     //print("There's a triggerDoor here.");
     var triggerDoor = map_place(layer, obj_triggerDoor, posX, posY);
-    if (triggerDoor.isDeactivated) return true;
+    if (!triggerDoor[| OBJECT.ISACTIVE]) return true;
     return false;
 }
 
 if(map_place(layer, par_obstacle, posX, posY)){
     var obs = map_place(layer, par_obstacle, posX, posY);
-    if (isActivated(obs)) {
+    if (obs[| OBJECT.ISACTIVE]) {
         print("scr_canPullPush: Oh no an obstacle is here and it's activated !!!");
         return false;    
     }

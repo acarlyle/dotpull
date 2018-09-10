@@ -91,10 +91,12 @@ if (global.playerCanMove &amp;&amp; self.list_robots){
         }
         
         //TODO -&gt; Correctly update the Layer if an object has moved (current stuff is hardcoded)
-        if (updateLayer) handle_updateLayer(self);
         
         //save state
-        if global.playerMoved handle_gameSave(obj_player);
+        if global.playerMoved{
+            handle_gameSave(obj_player);
+            handle_updateLayer(self);
+        }
         //cleanup memory before switch rooms
         if global.switchRooms handle_freeMemory();
     }

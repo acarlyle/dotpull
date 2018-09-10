@@ -3,26 +3,26 @@
 cannon = argument0;
 robot = argument1;
 
-var xDiff = robot.x - cannon.x;
-var yDiff = robot.y - cannon.y;
+var xDiff = robot[| OBJECT.X] - cannon.x;
+var yDiff = robot[| OBJECT.Y] - cannon.y;
 
 
 if (yDiff == 0){ //robot is moving left/right; check for objects towards the player
     if (xDiff > 0){ //robot is to the right of the obj
-        for (var objX = cannon.x + global.TILE_SIZE; objX < robot.x; objX += global.TILE_SIZE){
+        for (var objX = cannon.x + global.TILE_SIZE; objX < robot[| OBJECT.X]; objX += global.TILE_SIZE){
             if (instance_place(objX, cannon.y, par_obstacle)){
                 var obs = instance_place(objX, cannon.y, par_obstacle);
-                if (isActivated(obs)){
+                if (obs[| OBJECT.ISACTIVE]){
                     return false; //don't pull if anything is in the way
                 }
             }
         }
     }
     else{ //robot is to the left of the obj
-        for (var objX = cannon.x - global.TILE_SIZE; objX > robot.x; objX -= global.TILE_SIZE){
+        for (var objX = cannon.x - global.TILE_SIZE; objX > robot[| OBJECT.X]; objX -= global.TILE_SIZE){
             if (instance_place(objX, cannon.y, par_obstacle)){
                 var obs = instance_place(objX, cannon.y, par_obstacle);
-                if (isActivated(obs) && !instance_place(objX, cannon.y, obj_snare)){
+                if (obs[| OBJECT.ISACTIVE] && !instance_place(objX, cannon.y, obj_snare)){
                     //print(objX);
                     //print("something i nthe way");
                     //print(cannon.isDeactivated);
@@ -37,11 +37,11 @@ if (yDiff == 0){ //robot is moving left/right; check for objects towards the pla
 if (xDiff == 0){ //robot is moving up/down; check for objects towards the player
     //print("xdiff zero, robot up/down");
     if (yDiff < 0){ //robot is above the obj
-        for (var objY = cannon.y - global.TILE_SIZE; objY > robot.y; objY -= global.TILE_SIZE){
+        for (var objY = cannon.y - global.TILE_SIZE; objY > robot[| OBJECT.Y]; objY -= global.TILE_SIZE){
             if (instance_place(cannon.x, objY, par_obstacle)){
                 var obs = instance_place(cannon.x, objY, par_obstacle);
                 //print("isDeactived?");
-                if (isActivated(obs)){
+                if (obs[| OBJECT.ISACTIVE]){
                     //print("don't pull something in the way: " + string(objY));
                     return false; //don't pull if anything is in the way
                 }
@@ -49,7 +49,7 @@ if (xDiff == 0){ //robot is moving up/down; check for objects towards the player
         }
     }
     else{ //robot is below the obj
-        for (var objY = cannon.y + global.TILE_SIZE; objY < robot.y; objY += global.TILE_SIZE){
+        for (var objY = cannon.y + global.TILE_SIZE; objY < robot[| OBJECT.Y]; objY += global.TILE_SIZE){
             if (instance_place(cannon.x, objY, par_obstacle)){
                 //print(objY);
                 var obs = instance_place(cannon.x, objY, par_obstacle);

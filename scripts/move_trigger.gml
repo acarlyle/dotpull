@@ -9,47 +9,49 @@
 var layer = argument0;
 var trigger = argument1;
 
-if (!trigger[| TRIGGER.TRIGGERDOORPTR]) return false;
+if (!trigger[| TRIGGER.DOORPTR]) return false;
 
-var triggerDoorPtr = trigger[| TRIGGER.TRIGGERDOORPTR];
+var triggerDoorPtr = trigger[| TRIGGER.DOORPTR];
+
+print("move_trigger: TiggerDoorPtr of: " + string(triggerDoorPtr[| OBJECT.NAME]));
+print("move_trigger: TriggerDoor X: " + string(triggerDoorPtr[| OBJECT.X]));
+print("move_trigger: TriggerDoor Y: " + string(triggerDoorPtr[| OBJECT.Y]));
 
 //this is a trigger being pressed
 //if ((instance_place(trigger[| OBJECT.X], trigger[| OBJECT.Y], par_pullable) || instance_place(trigger[| OBJECT.X], trigger[| OBJECT.Y], par_robot)) && triggerDoorPtr != undefined){
 if (scr_tileContains(layer, trigger[| OBJECT.X], trigger[| OBJECT.Y], array(par_obstacle, par_robot, par_pullable)) && triggerDoorPtr != undefined){    
     //object.triggerDoorPtr.image_index = 1;
-    if (triggerDoorPtr.deactivatedX == undefined &&
-        triggerDoorPtr.deactivatedY == undefined)
+    if (triggerDoorPtr[| OBJECT.OLDPOSX] == undefined &&
+        triggerDoorPtr[| OBJECT.OLDPOSY] == undefined)
     {
         //print("Yeah it's undefined duh");
-        triggerDoorPtr.deactivatedX = triggerDoorPtr.x;
-        triggerDoorPtr.deactivatedY = triggerDoorPtr.y;
-        triggerDoorPtr.x = global.DEACTIVATED_X;
-        triggerDoorPtr.y = global.DEACTIVATED_Y;
+        triggerDoorPtr[| OBJECT.OLDPOSX] = triggerDoorPtr[| OBJECT.X];
+        triggerDoorPtr[| OBJECT.OLDPOSY] = triggerDoorPtr[| OBJECT.Y];
+        triggerDoorPtr[| OBJECT.X] = global.DEACTIVATED_X;
+        triggerDoorPtr[| OBJECT.Y] = global.DEACTIVATED_Y;
     } 
     
-    triggerDoorPtr.isDeactivated = true;
-    //print("TRIGGERDOOR IS DEACTIVATED VALUE: " + string(object.triggerDoorPtr.isDeactivated));
-    print("trigger pressed; trigger door is deactivated");
+    triggerDoorPtr[| OBJECT.ISACTIVE] = false;
+    print("move_trigger: trigger pressed; trigger door is deactivated");
     
-    triggerDoorPtr.image_index = 1;
+    triggerDoorPtr[| OBJECT.IMGIND] = 1;
 }
 else{
-    print("Nothing is being detected as pressed");
+    print("move_trigger: Nothing is being detected as pressed");
 }
 
 //this is a trigger not being pressed
 //if ((!instance_place(trigger[| OBJECT.X], trigger[| OBJECT.Y], par_pullable) && !instance_place(trigger[| OBJECT.X], trigger[| OBJECT.Y], par_robot)) && triggerDoorPtr != undefined){
 if (!scr_tileContains(layer, trigger[| OBJECT.X], trigger[| OBJECT.Y], array(par_obstacle, par_robot, par_pullable)) && triggerDoorPtr != undefined){ 
-    triggerDoorPtr.isDeactivated = false;
-    print("TRIGGERDOOR IS DEACTIVATED VALUE: " + string(object.triggerDoorPtr.isDeactivated));
-    if (triggerDoorPtr.x == global.DEACTIVATED_X && 
-        triggerDoorPtr.y == global.DEACTIVATED_Y)
+    triggerDoorPtr[| OBJECT.ISACTIVE] = true;
+    if (triggerDoorPtr[| OBJECT.X] == global.DEACTIVATED_X && 
+        triggerDoorPtr[| OBJECT.Y] == global.DEACTIVATED_X)
     {
-        triggerDoorPtr.x = triggerDoorPtr.deactivatedX;
-        triggerDoorPtr.y = triggerDoorPtr.deactivatedY;
-        triggerDoorPtr.deactivatedX = undefined;
-        triggerDoorPtr.deactivatedY = undefined;
+        triggerDoorPtr[| OBJECT.X] = triggerDoorPtr[| OBJECT.OLDPOSX];
+        triggerDoorPtr[| OBJECT.Y] = triggerDoorPtr[| OBJECT.OLDPOSY];
+        triggerDoorPtr[| OBJECT.OLDPOSX] = undefined;
+        triggerDoorPtr[| OBJECT.OLDPOSY] = undefined;
     }
-    print("TRIGGER DOOR NOT BEING PRESSED,  TRIGGER DOOR ACTIVATED");
-    triggerDoorPtr.image_index = 0;
+    print("move_trigger: TRIGGER NOT BEING PRESSED,  TRIGGER DOOR is ACTIVATED");
+    triggerDoorPtr[| OBJECT.IMGIND] = 0;
 }

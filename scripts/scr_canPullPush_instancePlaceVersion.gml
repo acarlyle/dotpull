@@ -20,8 +20,8 @@ var mirptr = argument5;
 var badArgList = undefined;
 var mirptrHz = false;
 var mirptrVt = false;
-var xDiff = robot.x - posX;
-var yDiff = robot.y - posY;
+var xDiff = robot[| OBJECT.X] - posX;
+var yDiff = robot[| OBJECT.Y] - posY;
 
 if (diagonalMovement) print("scr_canPullPush diag checking");
 
@@ -46,8 +46,8 @@ if (mirptr){
     xDiff = robot.oldPlayerX - posX;
     yDiff = robot.oldPlayerY - posY; 
     if (xDiff == 0 && yDiff == 0){
-        xDiff = robot.x - posX;
-        yDiff = robot.y - posY;
+        xDiff = robot[| OBJECT.X] - posX;
+        yDiff = robot[| OBJECT.Y] - posY;
     }
 }
 
@@ -159,11 +159,11 @@ if (!diagonalMovement && (canPull || canPush) && !(canPull && canPush)){ //this 
     //print("xDIFF: " + string(xDiff));
     //print("yDIFF: " + string(yDiff));
     if (xDiff == 0 || (!mirptrHz && mirptrVt)){ //player is moving up/down; check for objects towards the player
-        print("scr_canPullPush: Robot moving up/down, moveDir: " + string(robot.movedDir));
+        print("scr_canPullPush: Robot moving up/down, moveDir: " + string(robot[| OBJECT.MOVEDDIR));
         if (yDiff < 0){ //player is above the obj
             var objX = object.x;
             var objY = y - global.TILE_SIZE
-            //for (var objY = y - global.TILE_SIZE; (objY > endPosY) || (objY > robot.y); objY -= global.TILE_SIZE){
+            //for (var objY = y - global.TILE_SIZE; (objY > endPosY) || (objY > robot[| OBJECT.Y]); objY -= global.TILE_SIZE){
             while(!scr_tileContains(objX, objY, badArgList)){
                 print("player above: x, y: " + string(objX) + ", " + string(objY));
                 if (instance_place(objX, objY, obj_mirptr)){
@@ -190,7 +190,7 @@ if (!diagonalMovement && (canPull || canPush) && !(canPull && canPush)){ //this 
             var objX = object.x;
             var objY = y + global.TILE_SIZE;
             //print("objY: " + string(objY));
-            //for (var objY = y + global.TILE_SIZE; (objY < endPosY) || (objY < robot.y); objY += global.TILE_SIZE){
+            //for (var objY = y + global.TILE_SIZE; (objY < endPosY) || (objY < robot[| OBJECT.Y]); objY += global.TILE_SIZE){
             while(!scr_tileContains(objX, objY, badArgList)){
                 print("player below: x, y: " + string(objX) + ", " + string(objY));
                 //var yakuza = "ya";
@@ -212,7 +212,7 @@ if (!diagonalMovement && (canPull || canPush) && !(canPull && canPush)){ //this 
             
             if (!instance_place(objX, objY, par_robot)){
                 print("No robot here! :(" + " " + string(objX) + " " + string(objY));
-                print("Robot at: " + string(robot.x) + " " + string(robot.y));
+                print("Robot at: " + string(robot[| OBJECT.X]) + " " + string(robot[| OBJECT.Y]));
                 return false;
             }
         }
@@ -222,7 +222,7 @@ if (!diagonalMovement && (canPull || canPush) && !(canPull && canPush)){ //this 
 //diagonal movement
 if (diagonalMovement == true && (canPull || canPush) && !(canPull && canPush)){
     print("scr_canPullPush: Diag checking");
-    if (robot.y < y && robot.x > x){ //player is above the obj and to the right; pull object upright
+    if (robot[| OBJECT.Y] < y && robot[| OBJECT.X] > x){ //player is above the obj and to the right; pull object upright
         var objX = x+global.TILE_SIZE; var objY = y-global.TILE_SIZE;
         while(!scr_tileContains(objX, objY, badArgList)){
             print("scr_canPullPush: robot upright: x, y: " + string(objX) + ", " + string(objY));
@@ -246,7 +246,7 @@ if (diagonalMovement == true && (canPull || canPush) && !(canPull && canPush)){
             return false;
         }
     }
-    if (robot.y < y && robot.x < x){ //player is above the obj and to the left; pull object upleft
+    if (robot[| OBJECT.Y] < y && robot[| OBJECT.X] < x){ //player is above the obj and to the left; pull object upleft
         var objX = x-global.TILE_SIZE; var objY = y-global.TILE_SIZE;
         while(!scr_tileContains(objX, objY, badArgList)){
             print("scr_canPullPush: robot upleft: x, y: " + string(objX) + ", " + string(objY));
@@ -270,7 +270,7 @@ if (diagonalMovement == true && (canPull || canPush) && !(canPull && canPush)){
             return false;
         }
     }
-    if (robot.y > y && robot.x > x){ //player is below the obj and to the right; pull object downright
+    if (robot[| OBJECT.Y] > y && robot[| OBJECT.X] > x){ //player is below the obj and to the right; pull object downright
         var objX = x + global.TILE_SIZE; var objY = y + global.TILE_SIZE;
         while(!scr_tileContains(objX, objY, badArgList)){
             print("scr_canPullPush: robot downright: x, y: " + string(objX) + ", " + string(objY));
@@ -294,7 +294,7 @@ if (diagonalMovement == true && (canPull || canPush) && !(canPull && canPush)){
             return false;
         }       
     }
-    if (robot.y > y && robot.x < x){ //player is below the obj and to the left; pull object downleft
+    if (robot[| OBJECT.Y] > y && robot[| OBJECT.X] < x){ //player is below the obj and to the left; pull object downleft
         var objX = x-global.TILE_SIZE; var objY = y+ global.TILE_SIZE;
         while(!scr_tileContains(objX, objY, badArgList)){
             print("scr_canPullPush: robot downleft: x, y: " + string(objX) + ", " + string(objY));
@@ -323,8 +323,8 @@ if (diagonalMovement == true && (canPull || canPush) && !(canPull && canPush)){
 if (canPull && canPush){
     print("scr_canPullPush: obj can be pushed and pulled");
     
-    var xDiff = robot.x - x;
-    var yDiff = robot.y - y;
+    var xDiff = robot[| OBJECT.X] - x;
+    var yDiff = robot[| OBJECT.Y] - y;
     
     if (!diagonalMovement){ //this checks left/right only
     
@@ -430,7 +430,7 @@ if (canPull && canPush){
     //diagonal movement
     if (diagonalMovement == true){
         //print("Diag checking in scr_canPull");
-        if (robot.y < y && robot.x > x){ //player is above the obj and to the right; pull object upright
+        if (robot[| OBJECT.Y] < y && robot[| OBJECT.X] > x){ //player is above the obj and to the right; pull object upright
             //print("pull object up right");
             var objX = x+global.TILE_SIZE; var objY = y-global.TILE_SIZE;
             while(!scr_tileContains(objX, objY, badArgList)){
@@ -455,7 +455,7 @@ if (canPull && canPush){
                 return false;
             }
         }
-        if (robot.y < y && robot.x < x){ //player is above the obj and to the left; pull object upleft
+        if (robot[| OBJECT.Y] < y && robot[| OBJECT.X] < x){ //player is above the obj and to the left; pull object upleft
             var objX = x-global.TILE_SIZE; var objY = y-global.TILE_SIZE;
             //for (objX = x - global.TILE_SIZE; objX > endPosX; objX -= global.TILE_SIZE){
             while(!scr_tileContains(objX, objY, badArgList)){
@@ -480,7 +480,7 @@ if (canPull && canPush){
                 return false;
             }
         }
-        if (robot.y > y && robot.x > x){ //player is below the obj and to the right; pull object downright
+        if (robot[| OBJECT.Y] > y && robot[| OBJECT.X] > x){ //player is below the obj and to the right; pull object downright
             var objX = x + global.TILE_SIZE; var objY = y + global.TILE_SIZE;
             //for (objX = x + global.TILE_SIZE; objX < endPosX; objX += global.TILE_SIZE){
             while(!scr_tileContains(objX, objY, badArgList)){
@@ -505,7 +505,7 @@ if (canPull && canPush){
                 return false;
             }        
         }
-        if (robot.y > y && robot.x < x){ //player is below the obj and to the left; pull object downleft
+        if (robot[| OBJECT.Y] > y && robot[| OBJECT.X] < x){ //player is below the obj and to the left; pull object downleft
             var objX = x-global.TILE_SIZE; var objY = y+ global.TILE_SIZE;
             //for (objX = x - global.TILE_SIZE; objX > endPosX; objX -= global.TILE_SIZE){
             while(!scr_tileContains(objX, objY, badArgList)){

@@ -11,8 +11,8 @@ if (map_place(layer, obj_slideTile, robot[| OBJECT.X], robot[| OBJECT.X])){
     baby[| OBJECT.STATE] = "tile_slide";
 }
 
-var pushXOntoStack = robot[| OBJECT.OLDPOSX];
-var pushYOntoStack = robot[| OBJECT.OLDPOSY];
+robot[| OBJECT.OLDPOSX] = robot[| OBJECT.X];
+robot[| OBJECT.OLDPOSY] = robot[| OBJECT.Y];
 
 
 switch(robot[| OBJECT.STATE]){
@@ -40,7 +40,7 @@ if (robot[| OBJECT.MOVED]){
     }
     
     if (global.playerMoved){ //TODO add stack functionaly with layers
-        push_robotState(robot, false, pushXOntoStack, pushYOntoStack);
+        push_robotState(robot, false, robot[| OBJECT.OLDPOSX], robot[| OBJECT.OLDPOSY]);
         
         //update Robot position vars
         robot[| OBJECT.OLDPOSX] = robot[| OBJECT.X];
@@ -57,7 +57,7 @@ if (robot[| OBJECT.MOVED]){
     
     // Now update this layer's position with moved Robot
     
-    layer_updateObjAtTile(layer, robot, pushXOntoStack, pushYOntoStack); //pass old positions
+    layer_updateObjAtTile(layer, robot, robot[| OBJECT.OLDPOSX], robot[| OBJECT.OLDPOSY]); //pass old positions
     
     //TODO need better method of main layer checking 
     if (robot[| OBJECT.NAME] == "obj_player"){

@@ -20,10 +20,10 @@ for (var objAt = 0; objAt < array_length_1d(tileObjs); objAt++){ //find matching
             ""));
                        
         // Add obj to its new position
-        layer.roomMapArr[robot.y / global.TILE_SIZE, robot.x / global.TILE_SIZE] =
+        layer.roomMapArr[robot[| OBJECT.Y] / global.TILE_SIZE, robot[| OBJECT.X] / global.TILE_SIZE] =
             string_insert(tileObjs[objAt],
-            layer.roomMapArr[robot.y / global.TILE_SIZE, robot.x / global.TILE_SIZE],
-            strlen(layer.roomMapArr[robot.y / global.TILE_SIZE, robot.x / global.TILE_SIZE]) + 1)
+            layer.roomMapArr[robot[| OBJECT.Y] / global.TILE_SIZE, robot[| OBJECT.X] / global.TILE_SIZE],
+            strlen(layer.roomMapArr[robot[| OBJECT.Y] / global.TILE_SIZE, robot[| OBJECT.X] / global.TILE_SIZE]) + 1)
             + ";";
         
         break;

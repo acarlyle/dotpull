@@ -25,10 +25,10 @@ print("pushed cannon stateHistory: " + string(cannon.state) + "," + string(canno
 var xDiff = -1;
 var yDiff = -1;
 
-if (robot.x - cannon.x > 0){
+if (robot[| OBJECT.X] - cannon.x > 0){
     xDiff *= -1;
 }
-if (robot.y - cannon.y > 0){
+if (robot[| OBJECT.Y] - cannon.y > 0){
     yDiff *= -1;
 }
 
@@ -68,7 +68,7 @@ switch (cannon.state){
         //check if player is in up down line for a blasting
         print("state is idling, checking for player");
         if (isVert){
-            if ((robot.x == cannon.x) && scr_canBlastRobot(cannon, robot)){
+            if ((robot[| OBJECT.X] == cannon.x) && scr_canBlastRobot(cannon, robot)){
                 cannon.state = "charging";
                 if (yDiff > 0){
                     cannon.shotDirection = "down";
@@ -82,7 +82,7 @@ switch (cannon.state){
             } 
         }
         if (isHorz){
-            if ((robot.y == cannon.y) && scr_canBlastRobot(cannon, robot)){
+            if ((robot[| OBJECT.Y] == cannon.y) && scr_canBlastRobot(cannon, robot)){
                 cannon.state = "charging";
                 if (xDiff > 0){
                     cannon.shotDirection = "right";

@@ -45,6 +45,9 @@ for (var i = 0; i < ds_list_size(layer.mapKeyPriorityList); i++){
     ds_map_add(layer.objNameAndPosToEnumMap, string(objectString) + ":" + string(objPosX) + "," + string(objPosY), objEnum);
 }
 
+// Map the roomname to the layer (obj_control map)
+ds_map_add(global.layerMap, layer.roomName, layer);
+
 
 
 return layer;
