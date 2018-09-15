@@ -20,9 +20,11 @@ con_priorityObjPosMap(layer, sortedObjPriorityList);
 
 for (var i = 0; i < ds_list_size(layer.mapKeyPriorityList); i++){
     var mapKey = ds_list_find_value(layer.mapKeyPriorityList, i);
+    print("map key: " + string(mapKey));
     var mapKeyArr = scr_split(mapKey, ":"); // "mapPos(int):x,y"
     var objPosAt = mapKeyArr[0]; // "mapPos(int)"
     var objPosStr = mapKeyArr[1]; // "x,y" -> functions as the key for the priorityMap 
+    print("objPosStr: " + string(objPosStr));
     var objectString = ds_map_find_value(layer.objPosToNameMap, objPosStr);
     //we can have multiple objects stored at each position in the map, so split them
     var objectArr = scr_split(objectString, ";");

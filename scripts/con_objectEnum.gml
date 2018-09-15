@@ -6,7 +6,7 @@ var objPosY = argument2;
 
 var objectEnum = ds_list_create();
 
-print(" -> con_objectEnum of object " + string(objName));
+print(" -> con_objectEnum of: " + string(objName));
 
 objectEnum[| OBJECT.NAME] = objName;
 objectEnum[| OBJECT.MOVED] = false;
@@ -95,8 +95,8 @@ switch(get_objectFromString(objName)){
         objectEnum[| TRIGGER.DOORPTR] = undefined;
         objectEnum[| OBJECT.OLDPOSX] = undefined;
         objectEnum[| OBJECT.OLDPOSY] = undefined;
-        print("Con_triggerDoor X: " + string(objectEnum[| OBJECT.X]));
-        print("Con_triggerDoor Y: " + string(objectEnum[| OBJECT.Y]));
+        //print("Con_triggerDoor X: " + string(objectEnum[| OBJECT.X]));
+        //print("Con_triggerDoor Y: " + string(objectEnum[| OBJECT.Y]));
         break;
 }
 

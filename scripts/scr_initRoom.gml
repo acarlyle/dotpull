@@ -82,7 +82,7 @@ for (var i = 0; i < ds_list_size(list); i++){
 //old way of doing this was ds_list -> 
 //var sortedObjArrList = con_roomObjectArrList(list);
 
-handle_activeRooms();
+handle_activeRooms(); //just draws layer
 
 var layer = con_layer(room_get_name(room), list);
 ds_list_destroy(list);

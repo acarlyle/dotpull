@@ -123,22 +123,26 @@ if (map_place(layer, par_wall, posX, posY)){
     }
 }
 
+//falling platform logic only
+if (map_place(layer, par_fallingPlatform, posX, posY)){
+    var platform = map_place(layer, par_fallingPlatform, posX, posY);
+    print("Trying to move to: " + string(platform[| OBJECT.NAME]));
+    if (platform[| PLATFORM.STEPSLEFT] <= 0){
+        return true; //you can't walk here, the platform has fallen and the city is lost
+    }
+    if (platform[| OBJECT.ISACTIVE]){
+        return false;
+    }
+}
+
+
+
+
+//NORMAL PLATFORM CHECL
 if (map_place(layer, par_platform, posX, posY)){
     var platform = map_place(layer, par_platform, posX, posY);
-    //print("OBJ: " + objectStr(platform));
-    if (isEnum(platform)){
-        if (get_parent(get_objectFromString(platform[| OBJECT.NAME])) == par_fallingPlatform){
-            if (platform[| PLATFORM.STEPSLEFT] <= 0){
-                return true; //you can't walk here, the platform has fallen and the city is lost
-            }
-            if (!platform[| OBJECT.ISACTIVE]){
-                return false;
-            }
-        }
-    }
-    if (platform)
-        return false; //you may walk on this platform
-}
+    if (platform) return false;
+}   
 
 print("scr_collisionCheck: cannot move to: " + string(posX) +","+string(posY));
 
