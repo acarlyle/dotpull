@@ -12,9 +12,13 @@
 */
 
 var object = argument0;
+
+if (object.isPuzzleElement == false) 
+    return "";
+
 var rtnStr = "[state=" + string(object.state); // tile_slide, static, etc
 
-switch (object_get_name(object)){
+/*switch (object_get_name(object)){
     case "obj_trigger":
         var triggerDoor = object.triggerDoorPtr;
         var doorX = triggerDoor.x;
@@ -27,7 +31,7 @@ switch (object_get_name(object)){
                                              
         //print("triggerDoorPtr: " + string(object.triggerDoorPtr));
         break;
-}
+}*/
 
 rtnStr = rtnStr + "]";
 

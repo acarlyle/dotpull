@@ -5,6 +5,8 @@ var object = argument1;
 var oldObjX = argument2;
 var oldObjY = argument3;
 
+print("-> layer_updateObjectAtTile: oldPosX: " + string(oldObjX) + ", oldPosY: " + string(oldObjY));
+
 //print("Old Old Spot: " + string(layer.roomMapArr[oldObjY / global.TILE_SIZE, oldObjX / global.TILE_SIZE]));
 
 var thisTile = layer.roomMapArr[oldObjY / global.TILE_SIZE, oldObjX / global.TILE_SIZE];
@@ -28,7 +30,7 @@ for (var objAt = 0; objAt < array_length_1d(tileObjs); objAt++){ //find matching
             + ";";
             
         //print("Updated Old Spot: " + string(layer.roomMapArr[oldObjY / global.TILE_SIZE, oldObjX / global.TILE_SIZE]));
-        //print("Updated New Spot: " + string(layer.roomMapArr[object[| OBJECT.Y] / global.TILE_SIZE, object[| OBJECT.X] / global.TILE_SIZE]));
+        print("Updated New Spot: " + string(layer.roomMapArr[object[| OBJECT.Y] / global.TILE_SIZE, object[| OBJECT.X] / global.TILE_SIZE]));
         
         break;
     } 

@@ -5,7 +5,7 @@
   <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>par_control</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,9 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited(); //no parent -- yet
-
-isPuzzleElement = false;
+            <string>event_inherited();
 
 roomName = "";
 roomMapArr = undefined; //2d array of each tile for move_object logic

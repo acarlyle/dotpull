@@ -152,7 +152,6 @@
       <script>scripts\handle_roomSave.gml</script>
     </scripts>
     <scripts name="Getters">
-      <script>scripts\get_activeRoomObjects.gml</script>
       <script>scripts\get_arrayOfRoom.gml</script>
       <script>scripts\get_arrayOfRoomFromFile.gml</script>
       <script>scripts\get_curRoomObjects.gml</script>
@@ -239,23 +238,24 @@
   </shaders>
   <objects name="objects">
     <objects name="Parents">
-      <object>objects\par_obstacle</object>
-      <object>objects\par_robot</object>
-      <object>objects\par_pusher</object>
-      <object>objects\par_breakableWall</object>
-      <object>objects\par_fallingPlatform</object>
-      <object>objects\par_pickupable</object>
-      <object>objects\par_block</object>
-      <object>objects\par_snare</object>
-      <object>objects\par_pullable</object>
-      <object>objects\par_wall</object>
-      <object>objects\par_menu</object>
-      <object>objects\par_cannon</object>
-      <object>objects\par_platform</object>
       <object>objects\par_arrow</object>
+      <object>objects\par_block</object>
+      <object>objects\par_breakableWall</object>
+      <object>objects\par_cannon</object>
+      <object>objects\par_control</object>
+      <object>objects\par_fallingPlatform</object>
+      <object>objects\par_menu</object>
       <object>objects\par_object</object>
+      <object>objects\par_obstacle</object>
+      <object>objects\par_pickupable</object>
+      <object>objects\par_platform</object>
+      <object>objects\par_pullable</object>
+      <object>objects\par_pusher</object>
+      <object>objects\par_robot</object>
+      <object>objects\par_snare</object>
       <object>objects\par_stairs</object>
       <object>objects\par_surface</object>
+      <object>objects\par_wall</object>
     </objects>
     <objects name="Element Effects">
       <object>objects\obj_cannonEnergy</object>
