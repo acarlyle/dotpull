@@ -87,14 +87,12 @@ switch(get_objectFromString(objName)){
     case obj_trigger:
         objectEnum[| TRIGGER.TRIGGERPTR] = undefined;
         objectEnum[| TRIGGER.DOORPTR] = undefined;
-        objectEnum[| OBJECT.OLDPOSX] = undefined;
-        objectEnum[| OBJECT.OLDPOSY] = undefined;
         break;
     case obj_triggerDoor:
         objectEnum[| TRIGGER.TRIGGERPTR] = undefined;
         objectEnum[| TRIGGER.DOORPTR] = undefined;
-        objectEnum[| OBJECT.OLDPOSX] = undefined;
-        objectEnum[| OBJECT.OLDPOSY] = undefined;
+        //objectEnum[| OBJECT.OLDPOSX] = undefined;
+        //objectEnum[| OBJECT.OLDPOSY] = undefined;
         //print("Con_triggerDoor X: " + string(objectEnum[| OBJECT.X]));
         //print("Con_triggerDoor Y: " + string(objectEnum[| OBJECT.Y]));
         break;

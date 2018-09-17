@@ -90,9 +90,16 @@ if (global.playerCanMove &amp;&amp; self.list_robots){
         
         //TODO -&gt; Correctly update the Layer if an object has moved (current stuff is hardcoded)
         
+        var stoopidTrigger = instance_place(16, 112, obj_trigger);
+        if (stoopidTrigger) print("STOOOOPID STOOPID!!!");
+        
         //save state
         if global.playerMoved{
             handle_gameSave(obj_player);
+            
+            var stoopidTrigger = instance_place(16, 112, obj_trigger);
+            if (stoopidTrigger) print("STOOOOPID STOOPID 2!!!");
+            
             handle_updateLayer(self);
         }
         //cleanup memory before switch rooms

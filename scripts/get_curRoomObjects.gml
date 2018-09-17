@@ -25,14 +25,14 @@ for (yPos = 0; yPos < room_height; yPos += global.TILE_SIZE){
             
             //if (self.object_index == obj_player.object_index) print("yoooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
             
-            if (xPos == 112 && yPos == 176)
-                print("get_curRoomObjects: Handling " + string(object_get_name(self.object_index))); 
+            //if (xPos == 112 && yPos == 176)
+                //print("get_curRoomObjects: Handling " + string(object_get_name(self.object_index))); 
            
             if (instance_place(xPos, yPos, self.object_index) || //this checks for instances of tiles
                 scr_tileContains_curRoom(xPos, yPos, array(self.object_index))){ //this checks for objects on a tile
                 
-                if (xPos == 112 && yPos == 176)
-                    print("get_curRoomObjects: post instance place check " + string(object_get_name(self.object_index))); 
+                //if (xPos == 112 && yPos == 176)
+                    //print("get_curRoomObjects: post instance place check " + string(object_get_name(self.object_index))); 
                 
                 objName = object_get_name(self.object_index);
                 

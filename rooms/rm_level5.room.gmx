@@ -40,9 +40,7 @@ print("initPos:" + initPos);
 
 //roberta = instance_create(96, 0, obj_roberta);
 
-global.roomContents = scr_initRoom();
-
-handle_restartRoom(); //fully pop the fresh stacks</code>
+global.roomContents = scr_initRoom();</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

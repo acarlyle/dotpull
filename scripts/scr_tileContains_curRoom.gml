@@ -55,8 +55,8 @@ for (var i = 0; i < array_length_1d(objectList); i++){
         //print(object.object_index);
         //print(obj_block);
         
-        if (objPosX == 112 && objPosY == 176)
-            print("get_curRoomObjects: scr_tileContains" + string(object_get_name(object)));
+        //if (objPosX == 112 && objPosY == 176)
+            //print("scr_tileContains_curRoom" + string(object_get_name(object)));
 
         
         //if (place_meeting(objPosX, objPosY, object) || instance_place(objPosX, objPosY, object)){
