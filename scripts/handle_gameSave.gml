@@ -10,6 +10,8 @@ file_text_write_real(saveFile, saveRoom);
 
 file_text_close(saveFile); 
 
-handle_roomSave(false);
+var layer = get_layerFromRoomStr(room_get_name(saveRoom));
+
+handle_roomSave(false, layer);
 
 print("Game saved!");

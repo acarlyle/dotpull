@@ -31,9 +31,7 @@
     
     //stack
     stepsLeft = 3; //idle or active
-    print("init state: ");
-    print(stepsLeft);
-    ds_stack_push(stateHistory, stepsLeft);
+    //ds_stack_push(stateHistory, stepsLeft);
 </string>
           </argument>
         </arguments>

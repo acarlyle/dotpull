@@ -28,10 +28,9 @@
             <string>event_inherited(); //calls parent's create code
 
 //overwritten par vars
-    moveHistory = ds_stack_create();
-    var initPos = string(x) + "," + (string(y));
-    print(initPos);
-    ds_stack_push(moveHistory, initPos);
+    //moveHistory = ds_stack_create();
+    //var initPos = string(x) + "," + (string(y));
+    //ds_stack_push(moveHistory, initPos);
     isSteppingStone = true;
     isPuzzleElement = true;
 

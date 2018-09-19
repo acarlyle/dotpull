@@ -5,7 +5,7 @@ var object = argument1;
 var oldObjX = argument2;
 var oldObjY = argument3;
 
-print("-> layer_updateObjectAtTile: oldPosX: " + string(oldObjX) + ", oldPosY: " + string(oldObjY));
+print("-> layer_updateObjectAtTile " + string(object[| OBJECT.NAME]) + ":oldPosX: " + string(oldObjX) + ", oldPosY: " + string(oldObjY));
 
 //print("Old Old Spot: " + string(layer.roomMapArr[oldObjY / global.TILE_SIZE, oldObjX / global.TILE_SIZE]));
 

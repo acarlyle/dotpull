@@ -28,13 +28,12 @@
             <string>event_inherited();
 
 //overwrriten parent vars
-    moveHistory = ds_stack_create();
-    var initPos = string(x) + "," + (string(y));
-    print(initPos);
-    ds_stack_push(moveHistory, initPos);
+    //moveHistory = ds_stack_create();
+    //var initPos = string(x) + "," + (string(y));
+    //ds_stack_push(moveHistory, initPos);
     //either inventory or ground
-    stateHistory = ds_stack_create();
-    ds_stack_push(stateHistory, "ground");
+    //stateHistory = ds_stack_create();
+    //ds_stack_push(stateHistory, "ground");
     currentState = "ground";
     deactivatedX = undefined;
     deactivatedY = undefined;

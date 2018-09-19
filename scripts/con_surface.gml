@@ -10,7 +10,7 @@ var m_rot = argument6;
 var m_color = argument7;
 var m_alpha = argument8;
 
-//print(" -> con_surface of " + string(m_room));
+print(" -> con_surface of " + string(m_room));
 
 var surfaceInf = instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, surface);
 surfaceInf.m_room = m_room;

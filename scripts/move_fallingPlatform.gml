@@ -1,4 +1,4 @@
-///move_fallingPlatform(obj_layer layer, par_fallingPlatform fallingPlatform)
+///move_fallingPlatform(obj_layer layer, obj_enum fallingPlatform)
 
 /*
     This function handles:

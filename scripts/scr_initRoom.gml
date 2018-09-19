@@ -11,7 +11,7 @@ if (scr_hasVisitedRoom(obj_player, room_get_name(room))){
 }
 else ds_list_add(obj_player.roomsVisited, room_get_name(room));
 
-with(obj_roberta){
+/*with(obj_roberta){
     print("init roberta");
     playerX = x; //set player x and y position
     playerY = y; 
@@ -24,7 +24,7 @@ with(obj_roberta){
     ds_stack_push(moveHistory, initPos);
     ds_stack_push(itemHistory, array(numKeys));
     
-}
+}*/
 
 var list = ds_list_create();
 
@@ -82,10 +82,16 @@ for (var i = 0; i < ds_list_size(list); i++){
 //old way of doing this was ds_list -> 
 //var sortedObjArrList = con_roomObjectArrList(list);
 
-handle_activeRooms(); //just draws layer
+//handle_activeRooms(); //just draws layer (con_surface) TODO
 
 var layer = con_layer(room_get_name(room), list);
 ds_list_destroy(list);
+
+with (par_object){
+    if object_index == obj_player continue;
+    
+    instance_destroy();
+}
 
 /*//set the state of the object in the list
 for (var i = 0; i < ds_list_size(list); i++){
@@ -95,4 +101,4 @@ for (var i = 0; i < ds_list_size(list); i++){
 
 ds_list_destroy(list);*/
 
-return layer;
+//return layer;

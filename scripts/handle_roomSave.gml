@@ -1,8 +1,9 @@
-///handle_roomSave(bool curRoom)
+///handle_roomSave(bool curRoom, obj_layer layer)
 
-print("-> handle_roomSave(bool curRoom)");
+print("-> handle_roomSave(bool curRoom, obj_layer layer)");
 
 var saveCurRoom = argument0;
+var layer = argument1;
 
 
 var xPos = 0;
@@ -51,12 +52,13 @@ file_text_write_string(roomSaveFile, "---");
 file_text_writeln(roomSaveFile);
 
 
-if (saveCurRoom)
+if (saveCurRoom){
     activeRoomObjectsArr = get_curRoomObjects(); //grabs objs from the room Rob is in
-else
-    //activeRoomObjectsArr = get_activeRoomObjects(roomName); 
-    activeRoomObjectsArr = get_curRoomObjects();
-    
+    //now clear all items, if they exist
+}
+else{
+    activeRoomObjectsArr = layer.roomMapArr;
+}
 //print("arr height: " + string(array_height_2d(activeRoomObjectsArr)));
 //print("arr length: " + string(array_length_2d(activeRoomObjectsArr, 0)));
 for (yPos = 0; yPos < array_height_2d(activeRoomObjectsArr); yPos++){

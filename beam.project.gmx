@@ -336,7 +336,7 @@
       <object>objects\obj_robertaEnd</object>
     </objects>
     <objects name="Surfaces">
-      <object>objects\surf_lowerRooms</object>
+      <object>objects\surf_layerRoom</object>
     </objects>
   </objects>
   <rooms name="rooms">

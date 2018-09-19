@@ -19,10 +19,10 @@ print("Entering level two");
 var initPos = "0,0";
 
 if (instance_number(obj_player) == 0) { //spawning in directly from this level
-    playerX = 16; //set player x and y position
-    playerY = 64; 
+    var playerX = 16; //set player x and y position
+    var playerY = 64; 
     
-    player = instance_create(playerX, playerY, obj_player);
+    var player = instance_create(playerX, playerY, obj_player);
     obj_player.playerX = playerX;
     obj_player.playerY = playerY;
     initPos = string(obj_player.x) + "," + (string(obj_player.y));
@@ -36,9 +36,9 @@ else{
 var initPos = string(obj_player.x) + "," + (string(obj_player.y));
 //ds_stack_push(obj_player.moveHistory, initPos);
 //ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys));
-print("initPos:" + initPos);
+print("Player initPos:" + initPos);
 
-global.roomContents = scr_initRoom();
+scr_initRoom();
 
 /*var layer = get_layerFromRoomStr(room_get_name(room));
 

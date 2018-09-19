@@ -30,12 +30,11 @@
 //overwrriten par vars
 
     //stacks
-    moveHistory = ds_stack_create();
-    var initPos = string(x) + "," + (string(y));
-    print(initPos);
-    ds_stack_push(moveHistory, initPos);
-    stateHistory = ds_stack_create(); //either locked or unlocked
-    ds_stack_push(stateHistory, "locked");
+    //moveHistory = ds_stack_create();
+    //var initPos = string(x) + "," + (string(y));
+    //ds_stack_push(moveHistory, initPos);
+    //stateHistory = ds_stack_create(); //either locked or unlocked
+    //ds_stack_push(stateHistory, "locked");
 
     //member vars
     isPuzzleElement = true;

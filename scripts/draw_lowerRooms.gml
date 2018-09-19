@@ -8,7 +8,7 @@ var m_surface = argument0;
 var upperRoomName = argument1;
 //print(upperRoomName);
 
-print(" -> draw_lowerRooms(" + string(m_surface) + ", " + string(upperRoomName));
+print(" -> draw_lowerRooms(" + string(m_surface) + ", " + string(upperRoomName) + ")");
 
 if (!surface_exists(m_surface)){ m_surface = surface_create(room_width, room_height); }
 if (surface_exists(m_surface)){ 

@@ -36,7 +36,7 @@ var initPos = string(obj_player.x) + "," + (string(obj_player.y));
 //ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys));
 print("initPos:" + initPos);
 
-global.roomContents = scr_initRoom();
+scr_initRoom();
 
 var layer = get_layerFromRoomStr(room_get_name(room));
 

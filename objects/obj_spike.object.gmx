@@ -30,13 +30,11 @@
 //overwritten par vars
 
     //stack
-    stateHistory = ds_stack_create();
+    //stateHistory = ds_stack_create();
     state = "idle"; //idle or active
     targetDirection = "idling"; //left, upleft...
-    var initState = state + "," + targetDirection;
-    print("init state: ");
-    print(initState);
-    ds_stack_push(stateHistory, initState);
+    //var initState = state + "," + targetDirection;
+    //ds_stack_push(stateHistory, initState);
 
     //member vars
     canPull = true;

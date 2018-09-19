@@ -31,10 +31,9 @@
 //overwritten par vars
 
     //stack
-    moveHistory = ds_stack_create();
-    var initPos = string(x) + "," + (string(y));
-    print(initPos);
-    ds_stack_push(moveHistory, initPos);
+    //moveHistory = ds_stack_create();
+    //var initPos = string(x) + "," + (string(y));
+    //ds_stack_push(moveHistory, initPos);
 
     //member vars
     isPuzzleElement = true;
