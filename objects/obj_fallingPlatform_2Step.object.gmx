@@ -31,7 +31,7 @@
     
     //stack
     stepsLeft = 2; //idle or active
-    //ds_stack_push(stateHistory, stepsLeft);
+    ds_stack_push(stateHistory, stepsLeft);
 </string>
           </argument>
         </arguments>

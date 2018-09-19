@@ -9,8 +9,8 @@ var layer = instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, obj_laye
 layer.roomName = roomName;
 layer.roomMapArr = get_arrayOfRoom(layer.roomName);
 
-//print("#####");
-//print(layer.roomMapArr[128/16, 64/16]);
+print("con_layer: #####");
+print("con_layer: " + layer.roomMapArr[64/16, 16/16]);
 
 //TODO Need actual parser to determine robots in this layer and not just hardcode player
 layer.list_robots = ds_list_create();
@@ -45,6 +45,7 @@ for (var i = 0; i < ds_list_size(layer.mapKeyPriorityList); i++){
     }
     if (!layer.objNameAndPosToEnumMap){ 
         layer.objNameAndPosToEnumMap = ds_map_create();
+        print("con_layer: CREATED objNameAndPosToEnumMap");
     }
     ds_list_add(layer.list_objEnums, objEnum);
     ds_map_add(layer.objNameAndPosToEnumMap, string(objectString) + ":" + string(objPosX) + "," + string(objPosY), objEnum);
@@ -57,5 +58,7 @@ ds_map_add(global.layerMap, layer.roomName, layer);
 
 var alphaVal = 1; //halved each lower surface (for drawing the surface to the screen)
 con_surface(surf_layerRoom, roomName, 0, 0, 1, 1, 0, c_white, alphaVal);
+
+print("con_layer: Finished constructing obj_layer!");
 
 return layer;

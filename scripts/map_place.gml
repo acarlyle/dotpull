@@ -19,32 +19,55 @@ var object = argument1;
 var posX = argument2;
 var posY = argument3;
 
-print("-> map_place(" + string(object_get_name(object)) + ", " + string(posX) + "," + string(posY) + ")");
+print("-> map_place(" + string(object_get_name(object)) + ", " + string(posX) + ", " + string(posY) + ")");
 
-var thisTile = layer.roomMapArr[(real(posY))/global.TILE_SIZE, (real(posX))/global.TILE_SIZE]
-//print("map_place: THISROW: " + string(thisTile));
+var thisTile = layer.roomMapArr[floor(posY / global.TILE_SIZE), floor(posX / global.TILE_SIZE)];
+print("map_place: THISROW: " + string(thisTile));
 var thisTileObjs = scr_split(thisTile, ";");
-//print("map_place: array length: " + string(array_length_1d(thisTileObjs)));
+print("map_place: array length: " + string(array_length_1d(thisTileObjs)));
 for (var i = 0; i < array_length_1d(thisTileObjs); i++){
-    var objStr = scr_split(thisTileObjs[i], "[");
-    //print("map_place: Tile object: " + string(objStr[0]));
-    //print("map_place: Object to find: " + string(object_get_name(object)));
+    print(thisTileObjs[i]);
+    var objStr = thisTileObjs[i];
+    print("map_place: objStr here: " + string(objStr));
+    if (strcontains(objStr, "[")){ //some objects may not have local vars 
+        var newObjStr = scr_split(objStr, "[");
+        objStr = newObjStr[0];
+        print("map_place: objStr has been split!!: " + string(objStr));
+    }
+    
+    print("map_place: Tile object: " + string(objStr));
+    print("map_place: Object to find: " + string(object_get_name(object)));
     
     /*
         The following is inst create ONLY to see what instance the id is assigned.  
         TODO find a better way to do this than this shit.  
     */
     
-    var objFromStr = get_objectFromString(objStr[0]);
     
-    //print("ObjFromStr as an object: " + string(objectStr(objFromStr)));
+    
+    var objFromStr = get_objectFromString(objStr);
     
     
     if (!instance_exists(object)) instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, object);
     if (!instance_exists(objFromStr)) instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, objFromStr);
     
-    if ((objFromStr.id == object.id)){
-        var enumRef = ds_map_find_value(layer.objNameAndPosToEnumMap, objStr[0] + ":" + string(posX) + "," + string(posY));
+    //print("map_place: objFromStr id: " + string(objFromStr.id));
+    //print("map_place: obj id: " + string(object.id));
+    
+    print("ObjFromStr as an object: " + string(objectStr(objFromStr)))
+    
+    //if ((objFromStr.id == object.id || 
+    if ((objFromStr.object_index == object.object_index || 
+         object_is_ancestor(objFromStr, object) || 
+         object_is_ancestor(object, objFromStr))) 
+    {
+         
+        if (!layer.objNameAndPosToEnumMap){
+            print("the fuck it's undefined???");
+            continue;
+        }
+        
+        var enumRef = ds_map_find_value(layer.objNameAndPosToEnumMap, objStr + ":" + string(posX) + "," + string(posY));
         if (enumRef) print("map_place: ObjEnum found: " + enumRef[| OBJECT.NAME]);
         if (!enumRef){ print("map_place Returning " + string(objectStr(objFromStr))); return objFromStr; }
         

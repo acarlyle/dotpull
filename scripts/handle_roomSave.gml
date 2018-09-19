@@ -1,15 +1,14 @@
 ///handle_roomSave(bool curRoom, obj_layer layer)
 
-print("-> handle_roomSave(bool curRoom, obj_layer layer)");
-
 var saveCurRoom = argument0;
 var layer = argument1;
 
+print("-> handle_roomSave(" + string(saveCurRoom) + ", obj_layer layer)");
 
 var xPos = 0;
 var yPos = 0;
 
-var activeRoomObjectsArr;
+var activeRoomObjectsArr = undefined;
 
 /*
     This shit saves the room's current object positions along with all of the dynamic 

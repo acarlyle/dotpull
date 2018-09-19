@@ -62,6 +62,4 @@ for (yPos = 0; yPos < room_height; yPos += global.TILE_SIZE){
 
 //Save deactivated objects
 
-print("end saveRoomState");
-
 return arrMap;

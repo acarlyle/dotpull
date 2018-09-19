@@ -27,10 +27,10 @@
             <kind>1</kind>
             <string>event_inherited();
 
-//moveHistory = ds_stack_create();
-//var initPos = string(x) + "," + (string(y));
-//ds_stack_push(moveHistory, initPos);
-//movedDirHistory = ds_stack_create();
+moveHistory = ds_stack_create();
+var initPos = string(x) + "," + (string(y));
+ds_stack_push(moveHistory, initPos);
+movedDirHistory = ds_stack_create();
 
 isPuzzleElement = true;
 isMovePriority = true;

@@ -66,6 +66,9 @@ updateLayer = false; //update when an objectEnum has moved
 //used for cutscene triggers
 if (global.playerCanMove &amp;&amp; self.list_robots){
 
+    //if (object_is_ancestor(obj_platform, par_object)) print("YES");
+
+
     //print("48: " + self.roomMapArr[112 / 16, 48/16]);
     //print("32: " + self.roomMapArr[112 / 16, 32/16]);
     //print("16: " + self.roomMapArr[112 / 16, 16/16]);

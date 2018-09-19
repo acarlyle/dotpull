@@ -31,9 +31,12 @@ for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
           * Object position in the map  -> objPosStr
     */ 
     
+    if (get_parent(get_objectFromString(object[| OBJECT.NAME])) == "par_fallingPlatform"){
+        move_fallingPlatform(layer, object);
+    }
+    
     //Handles: par_cannon
     if (get_parent(get_objectFromString(object[| OBJECT.NAME])) == "par_cannon"){
-        //print("handling cannon move");
         move_cannon(layer, object);
     }
     
@@ -51,10 +54,6 @@ for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
     //Handles: par_arrow
     else if (get_parent(get_objectFromString(object[| OBJECT.NAME])) == "par_arrow"){
         move_arrow(layer, object);
-    }
-    //Handles: par_fallingPlatform
-    else if (get_parent(get_objectFromString(object[| OBJECT.NAME])) == "par_fallingPlatform"){
-        move_fallingPlatform(layer, object);
     }
     //Handles: obj_spike
     else if (object[| OBJECT.NAME] == "obj_spike"){
@@ -84,7 +83,7 @@ for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
     */  
     
     //UPDATE PLAYER LAYER ACTUAL POSITIONS
-    if (robot[| OBJECT.NAME] == "obj_player"){
+    /*if (robot[| OBJECT.NAME] == "obj_player"){
     
         print("old enum objectX: " + string(object[| OBJECT.OLDPOSX]));
         print("old enum objectY: " + string(object[| OBJECT.OLDPOSY]));
@@ -128,14 +127,14 @@ for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
             continue;
         }*/
         
-        objInst.x = real(object[| OBJECT.X]);
+        /*objInst.x = real(object[| OBJECT.X]);
         objInst.y = real(object[| OBJECT.Y]);
         objInst.image_index = real(object[| OBJECT.IMGIND]);
         
         with(obj_trigger) {
             print("AFTER: woo it's a trigger at: " + string(x) + "," + string(y));
         }
-    }
+    }*/
         
     //update layer's arrMap if object moved
     //TODO need to update obj stacks insteading of copying over the previous turn's stack

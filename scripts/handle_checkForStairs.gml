@@ -3,7 +3,7 @@
 var layer = argument0;
 var robot = argument1;
 
-print(" -> handle_checkForStairs()");
+print("-> handle_checkForStairs()");
 
 //MOVE UP/DOWN A FLOOR
 if (map_place(layer, par_stairs, robot[| ROBOT.NEWX], robot[| ROBOT.NEWY])){

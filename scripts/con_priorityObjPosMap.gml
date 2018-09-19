@@ -21,6 +21,8 @@ var curObjStr = "";
 layer.objPosToNameMap = ds_map_create();
 layer.mapKeyPriorityList = ds_list_create();
 
+print("con_priorityObjPosMap: sortedPriorityList size: " + string(ds_list_size(sortedObjPriorityList)));
+
 /*
     Loop through ds_list of ordered-by-move-priority puzzle elements in this layer object.  
     m_objPosToNameMap maps the position of the element to its name.  The position acts as a key.  
@@ -31,10 +33,13 @@ layer.mapKeyPriorityList = ds_list_create();
 for (var i = 0; i < ds_list_size(sortedObjPriorityList); i++){
     objInst = ds_list_find_value(sortedObjPriorityList, i);
     objAt = 0;
-    if (!objInst.moveHistory) continue; //objs with no move history are skipped
+    if (!objInst.moveHistory) {
+        print("con_priorityObjPosMap: CRITICAL warning!  obj has no move history.  skipping for the priorityList");
+        continue; //objs with no move history are skipped
+    }
     priorityListValue = ds_stack_top(objInst.moveHistory); //obj posstr like "x,y"
-    print("priorityQueueKey: " + string(priorityListValue));
-    print("objStr: " + string(objectStr(objInst)));
+    print("con_priorityObjPosMap: priorityQueueKey: " + string(priorityListValue));
+    print("con_priorityObjPosMap: objStr: " + string(objectStr(objInst)));
     //if the key already exists in the map, append obj to the same position as that key
     if (ds_map_find_value(layer.objPosToNameMap, priorityListValue)){
         curObjStr = string(ds_map_find_value(layer.objPosToNameMap, priorityListValue));
