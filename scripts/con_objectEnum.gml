@@ -57,6 +57,8 @@ switch(get_objectFromString(objName)){
         break;  
     case obj_fallingPlatform_3Step:
         objectEnum[| PLATFORM.STEPSLEFT] = 3;
+        //print("con_objectEnum oldPosX: " + string(objectEnum[| OBJECT.OLDPOSX]));
+        //print("con_objectEnum oldPosY: " + string(objectEnum[| OBJECT.OLDPOSY]));
         break;    
     case obj_key:
         objectEnum[| OBJECT.CANPULL] = true;
@@ -87,6 +89,11 @@ switch(get_objectFromString(objName)){
     case obj_trigger:
         objectEnum[| TRIGGER.TRIGGERPTR] = undefined;
         objectEnum[| TRIGGER.DOORPTR] = undefined;
+        
+        //for (var o = 0; o <= ds_list_size(objectEnum); o++){
+        //    print("Yaar: " + string(objectEnum[| o]));
+        //} 
+        
         break;
     case obj_triggerDoor:
         objectEnum[| TRIGGER.TRIGGERPTR] = undefined;

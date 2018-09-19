@@ -76,11 +76,6 @@ for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
         Now we need to update the Layer's object position data based
         on the ObjectEnum.    
     */
-    
-    if (object[| OBJECT.NAME] == "obj_block")
-        print("BLOCK: " + string(object[| OBJECT.X]) + "," + string(object[| OBJECT.Y]));
-        
-        
         
     /*
       #######################
@@ -88,7 +83,59 @@ for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
       #######################
     */  
     
+    //UPDATE PLAYER LAYER ACTUAL POSITIONS
+    if (robot[| OBJECT.NAME] == "obj_player"){
     
+        print("old enum objectX: " + string(object[| OBJECT.OLDPOSX]));
+        print("old enum objectY: " + string(object[| OBJECT.OLDPOSY]));
+        print("cur enum objectX: " + string(object[| OBJECT.X]));
+        print("cur enum objectY: " + string(object[| OBJECT.Y]));
+        
+        with(obj_trigger) {
+            print("BEFORE: woo it's a trigger at: " + string(x) + "," + string(y));
+        }
+    
+        var objInst = instance_place(object[| OBJECT.OLDPOSX], object[| OBJECT.OLDPOSY], get_objectFromString(object[| OBJECT.NAME]));
+        if (!objInst){
+            //print("This instance doesn't exist.  Continuing...."); 
+            continue;
+        }
+        
+        //it should be, so why the fuck isn't it??
+        //if (objInst.x != object[| OBJECT.OLDPOSX] || objInst.y != object[| OBJECT.OLDPOSY]){
+        //    continue;
+        //}
+        
+        print("old enum objectX: " + string(object[| OBJECT.OLDPOSX]));
+        print("old enum objectY: " + string(object[| OBJECT.OLDPOSY]));
+        print("cur enum objectX: " + string(object[| OBJECT.X]));
+        print("cur enum objectY: " + string(object[| OBJECT.Y]));
+        
+        print("inst Obj: " + string(object_get_name(objInst.object_index)));
+        print("inst objX: " + string(objInst.x));
+        print("inst objY: " + string(objInst.y));
+        
+        //var stoopidTrigger = instance_place(16, 112, obj_trigger);
+        //if (stoopidTrigger) print("STOOOOPID STOOPID 5!!!");
+        
+        /*if (object[| OBJECT.X] == global.DEACTIVATED_X || object[| OBJECT.Y] == global.DEACTIVATED_Y){
+            print(object[| OBJECT.NAME] + " is disabled, cannot map_place deactivated tilePos.");
+            
+            print(objInst.x);
+            print(objInst.y);
+            objInst.x = global.DEACTIVATED_X;
+            objInst.y = global.DEACTIVATED_Y;
+            continue;
+        }*/
+        
+        objInst.x = real(object[| OBJECT.X]);
+        objInst.y = real(object[| OBJECT.Y]);
+        objInst.image_index = real(object[| OBJECT.IMGIND]);
+        
+        with(obj_trigger) {
+            print("AFTER: woo it's a trigger at: " + string(x) + "," + string(y));
+        }
+    }
         
     //update layer's arrMap if object moved
     //TODO need to update obj stacks insteading of copying over the previous turn's stack
@@ -111,8 +158,10 @@ for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
         object[| OBJECT.MOVED] = false;
         
     } // if object moved   
+    
+    
 } // foreach objEnum in this layer
 
-handle_prioritizeItems();
+//handle_prioritizeItems(); TODO
 
 robot[| OBJECT.MOVED] = false;
