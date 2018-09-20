@@ -9,8 +9,8 @@ var layer = instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, obj_laye
 layer.roomName = roomName;
 layer.roomMapArr = get_arrayOfRoom(layer.roomName);
 
-print("con_layer: #####");
-print("con_layer: " + layer.roomMapArr[64/16, 16/16]);
+//print("con_layer: #####");
+//print("con_layer: " + layer.roomMapArr[64/16, 16/16]);
 
 //TODO Need actual parser to determine robots in this layer and not just hardcode player
 layer.list_robots = ds_list_create();
@@ -23,11 +23,11 @@ con_priorityObjPosMap(layer, sortedObjPriorityList);
 
 for (var i = 0; i < ds_list_size(layer.mapKeyPriorityList); i++){
     var mapKey = ds_list_find_value(layer.mapKeyPriorityList, i);
-    print("con_layer: map key: " + string(mapKey));
+    //print("con_layer: map key: " + string(mapKey));
     var mapKeyArr = scr_split(mapKey, ":"); // "mapPos(int):x,y"
     var objPosAt = mapKeyArr[0]; // "mapPos(int)"
     var objPosStr = mapKeyArr[1]; // "x,y" -> functions as the key for the priorityMap 
-    print("con_layer: objPosStr: " + string(objPosStr));
+    //print("con_layer: objPosStr: " + string(objPosStr));
     var objectString = ds_map_find_value(layer.objPosToNameMap, objPosStr);
     //we can have multiple objects stored at each position in the map, so split them
     var objectArr = scr_split(objectString, ";");
@@ -45,7 +45,7 @@ for (var i = 0; i < ds_list_size(layer.mapKeyPriorityList); i++){
     }
     if (!layer.objNameAndPosToEnumMap){ 
         layer.objNameAndPosToEnumMap = ds_map_create();
-        print("con_layer: CREATED objNameAndPosToEnumMap");
+        //print("con_layer: CREATED objNameAndPosToEnumMap");
     }
     ds_list_add(layer.list_objEnums, objEnum);
     ds_map_add(layer.objNameAndPosToEnumMap, string(objectString) + ":" + string(objPosX) + "," + string(objPosY), objEnum);
@@ -57,7 +57,7 @@ ds_map_add(global.layerMap, layer.roomName, layer);
 //con surface of this layer
 
 var alphaVal = 1; //halved each lower surface (for drawing the surface to the screen)
-con_surface(surf_layerRoom, roomName, 0, 0, 1, 1, 0, c_white, alphaVal);
+layer.surfaceInf = con_surface(surf_layerRoom, layer, 0, 0, 1, 1, 0, c_white, alphaVal);
 
 print("con_layer: Finished constructing obj_layer!");
 

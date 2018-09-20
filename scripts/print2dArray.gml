@@ -2,7 +2,8 @@
 
 var arr = argument0;
 
-print(" -> print2dArray()");
+print(" ");
+print("-> print2dArray() [Note: the '|' are added in this script; they are not in the array]");
 
 var printLine = "";
 for (var i = 0; i < array_height_2d(arr); i++;){
@@ -13,4 +14,5 @@ for (var i = 0; i < array_height_2d(arr); i++;){
     print(string(printLine));   
 }
 
-print(" <- print2dArray()");
+print("print2dArray: Done printing!");
+print(" ");

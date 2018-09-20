@@ -59,13 +59,13 @@ if (robot[| OBJECT.MOVED]){
     
     layer_updateObjAtTile(layer, robot, robot[| OBJECT.OLDPOSX], robot[| OBJECT.OLDPOSY]); //pass old positions
     
-    //TODO need better method of main layer checking 
+    /*//TODO need better method of main layer checking 
     if (robot[| OBJECT.NAME] == "obj_player"){
         var objInst = instance_place(robot[| OBJECT.OLDPOSX], robot[| OBJECT.OLDPOSY], get_objectFromString(robot[| OBJECT.NAME]));
         //var objInst = instance_place(48, 128, obj_player);
         objInst.x = robot[| OBJECT.X];
         objInst.y = robot[| OBJECT.Y];
-    }
+    }*/
     
 }
 

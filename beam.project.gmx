@@ -39,25 +39,25 @@
       <sprite>sprites\spr_cannonEnergy</sprite>
     </sprites>
     <sprites name="Elements">
-      <sprite>sprites\spr_arrow_down</sprite>
-      <sprite>sprites\spr_arrow_left</sprite>
-      <sprite>sprites\spr_arrow_right</sprite>
-      <sprite>sprites\spr_arrow_up</sprite>
+      <sprite>sprites\spr_arrowDown</sprite>
+      <sprite>sprites\spr_arrowLeft</sprite>
+      <sprite>sprites\spr_arrowRight</sprite>
+      <sprite>sprites\spr_arrowUp</sprite>
       <sprite>sprites\spr_baby</sprite>
       <sprite>sprites\spr_blackHole</sprite>
       <sprite>sprites\spr_block</sprite>
       <sprite>sprites\spr_blockPush</sprite>
       <sprite>sprites\spr_blockPushPull</sprite>
-      <sprite>sprites\spr_breakableWall_1Hit</sprite>
-      <sprite>sprites\spr_breakableWall_2Hit</sprite>
-      <sprite>sprites\spr_breakableWall_3Hit</sprite>
-      <sprite>sprites\spr_cannon_horz</sprite>
-      <sprite>sprites\spr_cannon_vert</sprite>
+      <sprite>sprites\spr_breakableWall1Hit</sprite>
+      <sprite>sprites\spr_breakableWall2Hit</sprite>
+      <sprite>sprites\spr_breakableWall3Hit</sprite>
+      <sprite>sprites\spr_cannonHorz</sprite>
+      <sprite>sprites\spr_cannonVert</sprite>
       <sprite>sprites\spr_door</sprite>
       <sprite>sprites\spr_eviscerator</sprite>
-      <sprite>sprites\spr_fallingPlatform_1Step</sprite>
-      <sprite>sprites\spr_fallingPlatform_2Step</sprite>
-      <sprite>sprites\spr_fallingPlatform_3Step</sprite>
+      <sprite>sprites\spr_fallingPlatform1Step</sprite>
+      <sprite>sprites\spr_fallingPlatform2Step</sprite>
+      <sprite>sprites\spr_fallingPlatform3Step</sprite>
       <sprite>sprites\spr_key</sprite>
       <sprite>sprites\spr_keyFloating</sprite>
       <sprite>sprites\spr_magneticSnare</sprite>
@@ -227,6 +227,7 @@
       <script>scripts\scr_surfaceActive.gml</script>
     </scripts>
     <scripts name="Virtual Mapping">
+      <script>scripts\update_layerSurface.gml</script>
       <script>scripts\draw_lowerRooms.gml</script>
       <script>scripts\layer_updateObjAtTile.gml</script>
       <script>scripts\map_place.gml</script>

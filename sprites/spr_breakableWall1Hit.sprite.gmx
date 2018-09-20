@@ -20,8 +20,7 @@
   <width>16</width>
   <height>16</height>
   <frames>
-    <frame index="0">images\spr_breakableWall_2Hit_0.png</frame>
-    <frame index="1">images\spr_breakableWall_2Hit_1.png</frame>
-    <frame index="2">images\spr_breakableWall_2Hit_2.png</frame>
+    <frame index="0">images\spr_breakableWall1Hit_0.png</frame>
+    <frame index="1">images\spr_breakableWall1Hit_1.png</frame>
   </frames>
 </sprite>

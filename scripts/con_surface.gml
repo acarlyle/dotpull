@@ -1,23 +1,27 @@
-///con_surface(var surface, var m_room, var m_xPos = 0, var m_yPos = 0, var m_xScale = 1, var m_yScale = 1, var m_rot = 0, var m_color = c_white, var m_alpha = .5)
+///con_surface(var surface, obj_layer, var xPos = 0, var yPos = 0, var xScale = 1, var yScale = 1, var rot = 0, var color = c_white, var alpha = .5)
 
 var surface = argument0;
-var m_room = argument1;
-var m_xPos = argument2;
-var m_yPos = argument3;
-var m_xScale = argument4;
-var m_yScale = argument5;
-var m_rot = argument6;
-var m_color = argument7;
-var m_alpha = argument8;
+var layer = argument1;
+var xPos = argument2;
+var yPos = argument3;
+var xScale = argument4;
+var yScale = argument5;
+var rot = argument6;
+var color = argument7;
+var alpha = argument8;
 
-print(" -> con_surface of " + string(m_room));
+var roomName = layer.roomName;
+
+print(" -> con_surface of " + string(roomName));
 
 var surfaceInf = instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, surface);
-surfaceInf.m_room = m_room;
-surfaceInf.m_xPos = m_xPos;
-surfaceInf.m_yPos = m_yPos;
-surfaceInf.m_xScale = m_xScale;
-surfaceInf.m_yScale = m_yScale;
-surfaceInf.m_rot = m_rot;
-surfaceInf.m_color = m_color;
-surfaceInf.m_alpha = m_alpha;
+surfaceInf.layer = layer;
+surfaceInf.xPos = xPos;
+surfaceInf.yPos = yPos;
+surfaceInf.xScale = xScale;
+surfaceInf.yScale = yScale;
+surfaceInf.rot = rot;
+surfaceInf.color = color;
+surfaceInf.alpha = alpha;
+
+return surfaceInf;

@@ -2,10 +2,12 @@
 
 var objStr = argument0;
 
-print("draw_spriteFromObjStr(" + string(objStr) + ")");
+//print("-> get_spriteFromObjStr(" + string(objStr) + ")");
 
-var objStrSplitBy_ = scr_split(objStr, "_");
-var spriteStr = "spr_" + string(objStrSplitBy_[1]);
+//var objStrSplitBy_ = scr_split(objStr, "_");
+//var spriteStr = "spr_" + string(objStrSplitBy_[1]);
 //print(spriteStr);
 //print(asset_get_index(spriteStr));
-return asset_get_index(spriteStr);
+//return asset_get_index(spriteStr);
+
+return object_get_sprite(get_objectFromString(objStr));

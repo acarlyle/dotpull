@@ -22,21 +22,21 @@ var posY = argument3;
 print("-> map_place(" + string(object_get_name(object)) + ", " + string(posX) + ", " + string(posY) + ")");
 
 var thisTile = layer.roomMapArr[floor(posY / global.TILE_SIZE), floor(posX / global.TILE_SIZE)];
-print("map_place: THISROW: " + string(thisTile));
+//print("map_place: THISROW: " + string(thisTile));
 var thisTileObjs = scr_split(thisTile, ";");
-print("map_place: array length: " + string(array_length_1d(thisTileObjs)));
+//print("map_place: array length: " + string(array_length_1d(thisTileObjs)));
 for (var i = 0; i < array_length_1d(thisTileObjs); i++){
-    print(thisTileObjs[i]);
+    //print(thisTileObjs[i]);
     var objStr = thisTileObjs[i];
-    print("map_place: objStr here: " + string(objStr));
+    //print("map_place: objStr here: " + string(objStr));
     if (strcontains(objStr, "[")){ //some objects may not have local vars 
         var newObjStr = scr_split(objStr, "[");
         objStr = newObjStr[0];
-        print("map_place: objStr has been split!!: " + string(objStr));
+        //print("map_place: objStr has been split!!: " + string(objStr));
     }
     
-    print("map_place: Tile object: " + string(objStr));
-    print("map_place: Object to find: " + string(object_get_name(object)));
+    //print("map_place: Tile object: " + string(objStr));
+    //print("map_place: Object to find: " + string(object_get_name(object)));
     
     /*
         The following is inst create ONLY to see what instance the id is assigned.  
@@ -54,7 +54,7 @@ for (var i = 0; i < array_length_1d(thisTileObjs); i++){
     //print("map_place: objFromStr id: " + string(objFromStr.id));
     //print("map_place: obj id: " + string(object.id));
     
-    print("ObjFromStr as an object: " + string(objectStr(objFromStr)))
+    //print("ObjFromStr as an object: " + string(objectStr(objFromStr)))
     
     //if ((objFromStr.id == object.id || 
     if ((objFromStr.object_index == object.object_index || 
@@ -63,7 +63,7 @@ for (var i = 0; i < array_length_1d(thisTileObjs); i++){
     {
          
         if (!layer.objNameAndPosToEnumMap){
-            print("the fuck it's undefined???");
+            print("########   ERROR      ############# the fuck it's undefined???");
             continue;
         }
         

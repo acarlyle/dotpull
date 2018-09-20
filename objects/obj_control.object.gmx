@@ -34,6 +34,7 @@ event_inherited();
 //cutscene trigger, logic in player step
 global.playerCanMove = true;
 global.switchRooms = false;
+global.playerMoved = false;
 
 //init vars
 //global.roomContents = ds_stack_create(); //rewindable objects
@@ -48,6 +49,20 @@ global.WINDOW_HEIGHT = 192;
 global.TILE_SIZE = 16;
 global.DEACTIVATED_X = -16;
 global.DEACTIVATED_Y = -16;
+
+roomsVisited = ds_list_create();
+
+//defining controls
+global.key_left = false;
+global.key_right = false;
+global.key_up = false;
+global.key_down = false;
+global.key_upleft = false;
+global.key_upright = false;
+global.key_downleft = false;
+global.key_downright = false;
+global.key_r = false;
+global.key_esc = false;
 
 /*
     ENUMS

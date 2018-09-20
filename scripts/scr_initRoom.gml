@@ -6,10 +6,10 @@
 
 print (" -> scr_initRoom()");
 
-if (scr_hasVisitedRoom(obj_player, room_get_name(room))){  
-    if (file_exists(room_get_name(room) + ".sav")){ scr_initRoomFromFile(room_get_name(room));}
-}
-else ds_list_add(obj_player.roomsVisited, room_get_name(room));
+//if (scr_hasVisitedRoom(obj_player, room_get_name(room))){  
+//    if (file_exists(room_get_name(room) + ".sav")){ scr_initRoomFromFile(room_get_name(room));}
+//}
+//else ds_list_add(obj_player.roomsVisited, room_get_name(room));
 
 /*with(obj_roberta){
     print("init roberta");
@@ -89,7 +89,7 @@ print("scr_initRoom: priorityElementList size: " + string(ds_list_size(priorityE
 var layer = con_layer(room_get_name(room), priorityElementList);
 
 with (par_object){
-    if object_index == obj_player continue;
+    //if object_index == obj_player continue;
     
     instance_destroy();
 }
