@@ -19,8 +19,8 @@ print("Entering level two");
 var initPos = "0,0";
 
 if (instance_number(obj_player) == 0) { //spawning in directly from this level
-    var playerX = 16; //set player x and y position
-    var playerY = 64; 
+    var playerX = 112; //set player x and y position
+    var playerY = 176; 
     
     var player = instance_create(playerX, playerY, obj_player);
     obj_player.playerX = playerX;
@@ -40,7 +40,7 @@ print("Player initPos:" + initPos);
 
 scr_initRoom();
 
-/*var layer = get_layerFromRoomStr(room_get_name(room));
+var layer = get_layerFromRoomStr(room_get_name(room));
 
 var trigger1 = map_place(layer, obj_trigger, 16, 112); 
 var triggerDoor1 = map_place(layer, obj_triggerDoor, 16, 160); 
@@ -55,7 +55,7 @@ triggerDoor2[| TRIGGER.TRIGGERPTR] = trigger2;
 var trigger3 = map_place(layer, obj_trigger, 48, 112); 
 var triggerDoor3 = map_place(layer, obj_triggerDoor, 48, 160); 
 trigger3[| TRIGGER.DOORPTR] = triggerDoor3;
-triggerDoor3[| TRIGGER.TRIGGERPTR] = trigger3;*/</code>
+triggerDoor3[| TRIGGER.TRIGGERPTR] = trigger3;</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -122,9 +122,42 @@ triggerDoor3[| TRIGGER.TRIGGERPTR] = trigger3;*/</code>
     <instance objName="obj_platform" x="0" y="160" name="inst_277C9A41" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="112" y="176" name="inst_6CB45524" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="16" y="64" name="inst_60A8F4B5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_fallingPlatform_3Step" x="16" y="112" name="inst_85C15B45" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_fallingPlatform_3Step" x="32" y="112" name="inst_C2BD8303" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_fallingPlatform_3Step" x="48" y="112" name="inst_6DCF020F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="16" y="112" name="inst_8A779D8A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="32" y="112" name="inst_25585C34" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="48" y="112" name="inst_31FBFFD6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_triggerDoor" x="16" y="160" name="inst_FEC88E3C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_triggerDoor" x="32" y="160" name="inst_6EC5CEDF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_triggerDoor" x="48" y="160" name="inst_BABBC652" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_trigger" x="16" y="112" name="inst_CD358F98" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_trigger" x="32" y="112" name="inst_186FCA77" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_trigger" x="48" y="112" name="inst_BD99C58C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="80" y="144" name="inst_5C47099F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="112" y="112" name="inst_3017CA09" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="16" y="64" name="inst_7F272B38" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="0" y="0" name="inst_E4A55201" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="112" y="0" name="inst_EAF79724" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_fallingPlatform_3Step" x="0" y="16" name="inst_EC3F1950" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_fallingPlatform_3Step" x="0" y="32" name="inst_25E5636A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_fallingPlatform_3Step" x="16" y="32" name="inst_FC868F7D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_fallingPlatform_3Step" x="16" y="16" name="inst_87B9882A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_fallingPlatform_3Step" x="32" y="16" name="inst_C3B40E5D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_fallingPlatform_3Step" x="32" y="32" name="inst_8D5ACC00" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_fallingPlatform_3Step" x="48" y="32" name="inst_1D5F7929" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_fallingPlatform_3Step" x="48" y="16" name="inst_84CE85CB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_fallingPlatform_3Step" x="64" y="16" name="inst_D053A3F0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_fallingPlatform_3Step" x="64" y="32" name="inst_9755CFAB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_fallingPlatform_3Step" x="80" y="32" name="inst_E259698A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_fallingPlatform_3Step" x="80" y="16" name="inst_B5BA0A14" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_fallingPlatform_3Step" x="96" y="16" name="inst_9AEA1722" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_fallingPlatform_3Step" x="96" y="32" name="inst_3F1C38C3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_fallingPlatform_3Step" x="112" y="32" name="inst_73B1521F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_fallingPlatform_3Step" x="112" y="16" name="inst_A7245D72" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="112" y="32" name="inst_95C5DB82" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="112" y="16" name="inst_D8A06FF7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="96" y="32" name="inst_98BA9DA1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="96" y="16" name="inst_25267304" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="80" y="32" name="inst_F8FB2167" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="80" y="16" name="inst_3D57F0B8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

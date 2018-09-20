@@ -227,11 +227,11 @@
       <script>scripts\scr_surfaceActive.gml</script>
     </scripts>
     <scripts name="Virtual Mapping">
-      <script>scripts\update_layerSurface.gml</script>
       <script>scripts\draw_lowerRooms.gml</script>
       <script>scripts\layer_updateObjAtTile.gml</script>
       <script>scripts\map_place.gml</script>
       <script>scripts\scr_getArrOfRoom.gml</script>
+      <script>scripts\update_layerSurface.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">

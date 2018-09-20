@@ -30,7 +30,7 @@
 roomName = "";
 roomMapArr = undefined; //2d array of each tile for move_object logic
 objPosToNameMap = undefined; //maps x.y -&gt; "objName" for each puzzle element in the room
-objNameAndPosToEnumMap = undefined; //maps "obj_name:x.y" -&gt; obj_enum for each puzzle element in the layer
+objNameAndPosToEnumMap = undefined; //maps "obj_name:x,y" -&gt; (that's a comma!!) obj_enum for each puzzle element in the layer
 mapKeyPriorityList = undefined; //priority queue of the keys from the objPosToNameMap sorted by parsing order
 move = false; //if move is true, move the robot
 robot = undefined; //cur robot this layer is handling

@@ -41,10 +41,26 @@ if (surface_exists(surface)){
                         //objName = objNameAndVars[0];
                     //print("New obj name: " + string(objName));
                 }
+                
+                //grab the updated sprite index from the objEnum
+                var objEnum = ds_map_find_value(layer.objNameAndPosToEnumMap, 
+                                                objName + 
+                                                ":" + 
+                                                string(xPos * global.TILE_SIZE) + 
+                                                "," + 
+                                                string(yPos * global.TILE_SIZE));
+                var sprIndex = 0;
+                //print(ds_map_size(layer.objNameAndPosToEnumMap));
+                //print("Attempted: " + string(objName) + ":" + string(xPos * global.TILE_SIZE) + "," + string(yPos * global.TILE_SIZE));
+                if (objEnum){ 
+                    sprIndex = objEnum[| OBJECT.IMGIND]; //set sprite to use updated sprite_index
+                    print("update_layerSurface: Using sprite index of " + string(sprIndex) + " for " + objEnum[| OBJECT.NAME]);
+                }
+                
                 //}
                 //print("surExisted_drawing: " + string(objName) + " at " + string(xPos * global.TILE_SIZE) + ", " + string(yPos * global.TILE_SIZE));
                 surface_set_target(surface);
-                draw_sprite(get_spriteFromObjStr(objName), 0, xPos * global.TILE_SIZE, yPos * global.TILE_SIZE);
+                draw_sprite(get_spriteFromObjStr(objName), sprIndex, xPos * global.TILE_SIZE, yPos * global.TILE_SIZE);
                 surface_reset_target();
             }
         } 
