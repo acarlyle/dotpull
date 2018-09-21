@@ -68,7 +68,7 @@ if ((robot[| OBJECT.OLDPOSY] == object[| OBJECT.Y] && robot[| OBJECT.Y] == objec
     }
 }
 print("OldplYaerX: " + string(robot[| OBJECT.OLDPOSX]) + "; Robot.x: " + string(robot[| OBJECT.X]) + "; object[| OBJECT.X]: " + string(object[| OBJECT.X]));
-//puling up/down
+//pulling up/down
 if ((robot[| OBJECT.OLDPOSX] == object[| OBJECT.X] && robot[| OBJECT.X] == object[| OBJECT.X]) || (mirptrVt && !mirptrHz)){ //player moved up/down
     if (robot[| OBJECT.Y] < object[| OBJECT.Y] && scr_canPullPush(object[| OBJECT.X], object[| OBJECT.Y] - (global.TILE_SIZE*pushPull), false, object, robot, mirptrExt, layer)){ //player above object 
         print("move_pullPushables_tile_one: CAN push/pull up/down");

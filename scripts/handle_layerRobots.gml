@@ -4,6 +4,9 @@ var layer = argument0;
 
 var robot = layer.robot;
 
+print("handle_layerRobots I: room map height: " + string(array_height_2d(layer.roomMapArr)));
+print("handle_layerRobots I: room map length: " + string(array_length_2d(layer.roomMapArr, 0)));
+
 handle_deployBaby(layer, robot);  //this handles baby placement if player pressed space and has a Baby on Board
 
 //if on a slideTile, disable player input keys
@@ -68,6 +71,9 @@ if (robot[| OBJECT.MOVED]){
     }*/
     
 }
+
+print("handle_layerRobots II: room map height: " + string(array_height_2d(layer.roomMapArr)));
+print("handle_layerRobots II: room map length: " + string(array_length_2d(layer.roomMapArr, 0)));
 
 layer.move = false;
 robot[| ROBOT.CANMOVE] = true;

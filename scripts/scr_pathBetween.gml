@@ -1,171 +1,47 @@
-///scr_pathBetween(par_obect objectFrom, par_object objectTo)
+///scr_pathBetween(obj_layer layer, obj_enum objectFrom, obj_enum objectTo)
 
 /*
-    This script returns true if there's a pullable path between 2 objects.
+    This script returns true if there's a open, unobstructed path between 2 objects.
 */
 
-var oFrom = argument0;
-var oTo = argument1;
+var layer = argument0;
+var oEnumFrom = argument1;
+var oEnumTo = argument2;
 
-var posX = oFrom.x;
-var posY = oFrom.y;
-var toPosX = oTo.x;
-var toPosY = oTo.y;
+var badObjList = array(par_obstacle, par_robot); //objects that could be in the way (would return false)
 
-var badObjList = array(par_obstacle, par_robot); 
+var xSign = sign(oEnumTo[| OBJECT.X] - oEnumFrom[| OBJECT.X]); //for movement direction(left || right)
+var ySign = sign(oEnumTo[| OBJECT.Y] + oEnumFrom[| OBJECT.Y]); //for movement direction(up || down)
+var mapPosX = oEnumFrom[| OBJECT.X];
+var mapPosY = oEnumFrom[| OBJECT.Y];
+var pathIsClear = true;
 
-//check above objectFrom for objectTo
-while(instance_place(posX, posY, par_platform)){
-    posY -= global.TILE_SIZE;
+while(pathIsClear){ //not checking for platforms because you can pull over gaps
+    if (mapPosX == oEnumTo[| OBJECT.X]) xSign = 0;
+    if (mapPosY == oEnumTo[| OBJECT.Y]) ySign = 0;
     
-    if (scr_tileContains(layer, posX, posY, obj_mirptr)){
-        var mirptr = instance_place(posX, posY, obj_mirptr);
-        posX = mirptrPtr.x;
-        posY = mirptrPtr.y;
+    print("scr_pathBetween: Checking at: " + string(mapPosX) + "," + string(mapPosY));
+    
+    if (xSign == 0 && ySign == 0){
+        print("scr_pathBetween: Path found between " + string(oEnumFrom[| OBJECT.NAME]) + " to " + string(oEnumTo[| OBJECT.NAME]) + "!  Returning true.");
+        return true; // objectTo reached!   
     }
-    if ((posX == toPosX && posY == toPosY)){
-        print("omg is object !");
-        return true;
-    }
-    if (scr_tileContains(layer, posX, posY, badObjList)){
-        break;
+    
+    mapPosX += (global.TILE_SIZE * xSign);
+    mapPosY += (global.TILE_SIZE * ySign);
+    
+    // TODO -> mirptr pathing
+    /*if (scr_tileContains(layer, mapPosX, mapPosY, obj_mirptr)){
+        var mirptr = map_place(layer, obj_mirptr, mapPosX, mapPosY);
+        mapPosX = mirptrPtr.x;
+        mapPosY = mirptrPtr.y;
+    }*/
+    
+    if (scr_tileContains(layer, mapPosX, mapPosY, badObjList)){
+        pathIsClear = false; //oh no (a) blockage
     }
 }
-posX = oFrom.x;
-posY = oFrom.y;
-//check below objectFrom for objectTo
-while(instance_place(posX, posY, par_platform)){
-    posY += global.TILE_SIZE;
-    
-    if (scr_tileContains(layer, posX, posY, obj_mirptr)){
-        var mirptr = instance_place(posX, posY, obj_mirptr);
-        posX = mirptrPtr.x;
-        posY = mirptrPtr.y;
-    }
-    if ((posX == toPosX && posY == toPosY)){
-        print("omg is object !");
-        return true;
-    }
-    if (scr_tileContains(layer, posX, posY, badObjList)){
-        break;
-    }
-}
-posX = oFrom.x;
-posY = oFrom.y;
-//check right objectFrom for objectTo
-while(instance_place(posX, posY, par_platform)){
-    posX += global.TILE_SIZE;
-    
-    if (scr_tileContains(layer, posX, posY, obj_mirptr)){
-        var mirptr = instance_place(posX, posY, obj_mirptr);
-        posX = mirptrPtr.x;
-        posY = mirptrPtr.y;
-    }
-    if ((posX == toPosX && posY == toPosY)){
-        print("omg is object !");
-        return true;
-    }
-    if (scr_tileContains(layer, posX, posY, badObjList)){
-        break;
-    }
-}
-posX = oFrom.x;
-posY = oFrom.y;
-//check left objectFrom for objectTo
-while(instance_place(posX, posY, par_platform)){
-    posX -= global.TILE_SIZE;
-    
-    if (scr_tileContains(layer, posX, posY, obj_mirptr)){
-        var mirptr = instance_place(posX, posY, obj_mirptr);
-        posX = mirptrPtr.x;
-        posY = mirptrPtr.y;
-    }
-    if ((posX == toPosX && posY == toPosY)){
-        print("omg is object !");
-        return true;
-    }
-    if (scr_tileContains(layer, posX, posY, badObjList)){
-        break;
-    }
-}
-posX = oFrom.x;
-posY = oFrom.y;
-//check upleft objectFrom for objectTo
-while(instance_place(posX, posY, par_platform)){
-    posX -= global.TILE_SIZE;
-    posY -= global.TILE_SIZE;
-    
-    if (scr_tileContains(layer, posX, posY, obj_mirptr)){
-        var mirptr = instance_place(posX, posY, obj_mirptr);
-        posX = mirptrPtr.x;
-        posY = mirptrPtr.y;
-    }
-    if ((posX == toPosX && posY == toPosY)){
-        print("omg is object !");
-        return true;
-    }
-    if (scr_tileContains(layer, posX, posY, badObjList)){
-        break;
-    }
-}
-posX = oFrom.x;
-posY = oFrom.y;
-//check upright objectFrom for objectTo
-while(instance_place(posX, posY, par_platform)){
-    posX += global.TILE_SIZE;
-    posY -= global.TILE_SIZE;
-    
-    if (scr_tileContains(layer, posX, posY, obj_mirptr)){
-        var mirptr = instance_place(posX, posY, obj_mirptr);
-        posX = mirptrPtr.x;
-        posY = mirptrPtr.y;
-    }
-    if ((posX == toPosX && posY == toPosY)){
-        print("omg is object !");
-        return true;
-    }
-    if (scr_tileContains(layer, posX, posY, badObjList)){
-        break;
-    }
-}
-posX = oFrom.x;
-posY = oFrom.y;
-//check downleft objectFrom for objectTo
-while(instance_place(posX, posY, par_platform)){
-    posX -= global.TILE_SIZE;
-    posY += global.TILE_SIZE;
-    
-    if (scr_tileContains(layer, posX, posY, obj_mirptr)){
-        var mirptr = instance_place(posX, posY, obj_mirptr);
-        posX = mirptrPtr.x;
-        posY = mirptrPtr.y;
-    }
-    if ((posX == toPosX && posY == toPosY)){
-        print("omg is object !");
-        return true;
-    }
-    if (scr_tileContains(layer, posX, posY, badObjList)){
-        break;
-    }
-}
-posX = oFrom.x;
-posY = oFrom.y;
-//check downright objectFrom for objectTo
-while(instance_place(posX, posY, par_platform)){
-    posX += global.TILE_SIZE;
-    posY += global.TILE_SIZE;
-    
-    if (scr_tileContains(layer, posX, posY, obj_mirptr)){
-        var mirptr = instance_place(posX, posY, obj_mirptr);
-        posX = mirptrPtr.x;
-        posY = mirptrPtr.y;
-    }
-    if ((posX == toPosX && posY == toPosY)){
-        print("omg is object !");
-        return true;
-    }
-    if (scr_tileContains(layer, posX, posY, badObjList)){
-        break;
-    }
-}
-return false;
+
+print("scr_pathBetween: No path found between " + string(oEnumFrom[| OBJECT.NAME]) + " to " + string(oEnumTo[| OBJECT.NAME]) + "!  Returning false.");
+
+return false; // darn!  a likely blockage !

@@ -6,7 +6,7 @@ var objPosY = argument2;
 
 var objectEnum = ds_list_create();
 
-print(" -> con_objectEnum of: " + string(objName));
+print("-> con_objectEnum of: " + string(objName));
 
 objectEnum[| OBJECT.NAME] = objName;
 objectEnum[| OBJECT.MOVED] = false;

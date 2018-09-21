@@ -29,18 +29,19 @@ curLine = file_text_readln(saveFile); // ---
 */
 
 curLine = file_text_readln(saveFile); //beging room parsing here
-var lineNum = -1;
+var lineNum = 0;
 
 while(!strcontains(curLine, "---")){
-    lineNum++;
     var tileArr = scr_split(curLine, "|"); //array of each tile's contents
-    for (var tile = 0; tile < array_length_1d(tileArr); tile++){
+    //print("get_arrayOfRoomFromFile: tileArr len: " + string(array_length_1d(tileArr)));
+    for (var tile = 0; tile < array_length_1d(tileArr) - 1; tile++){
         var posStr = "";
         posStr = tileArr[tile];
-        arr[lineNum, tile] = posStr;
+        arr[lineNum, tile] = posStr; //y,x
         //print("posStr: " + string(arr[lineNum, tile]));
     }
-    curLine = file_text_readln(saveFile); //read at the end of the loop
+    curLine = file_text_readln(saveFile); //read at the end of the loop\
+    lineNum++;
     //print(curLine);
 }
 file_text_close(saveFile);

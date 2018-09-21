@@ -174,7 +174,6 @@
       <script>scripts\scr_clearStepGlobals.gml</script>
       <script>scripts\scr_objectsAdjacent.gml</script>
       <script>scripts\scr_roomFromString.gml</script>
-      <script>scripts\scr_tileContains.gml</script>
       <script>scripts\scr_tileContains_curRoom.gml</script>
       <script>scripts\scr_tileIsOpen.gml</script>
       <scripts name="Movement">
@@ -231,6 +230,7 @@
       <script>scripts\layer_updateObjAtTile.gml</script>
       <script>scripts\map_place.gml</script>
       <script>scripts\scr_getArrOfRoom.gml</script>
+      <script>scripts\scr_tileContains.gml</script>
       <script>scripts\update_layerSurface.gml</script>
     </scripts>
   </scripts>
@@ -347,6 +347,7 @@
     <rooms name="block.Pull">
       <room>rooms\rm_level1</room>
       <room>rooms\rm_level2</room>
+      <room>rooms\rm_level2DEBUG</room>
       <room>rooms\rm_level3</room>
       <room>rooms\rm_level4</room>
       <room>rooms\rm_level5</room>

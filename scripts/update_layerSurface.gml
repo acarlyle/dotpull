@@ -22,8 +22,8 @@ if (surface_exists(surface)){
     //print2dArray(roomArr);
     
     //iterate through lower floor array and compare it to the one above it
-    for (var yPos = 0; yPos < array_height_2d(roomArr) - 1; yPos++){
-        for (var xPos = 0; xPos < array_length_2d(roomArr, yPos) - 1; xPos++){
+    for (var yPos = 0; yPos < array_height_2d(roomArr); yPos++){
+        for (var xPos = 0; xPos < array_length_2d(roomArr, yPos); xPos++){
             //print("Tile position at " + string(yPos) + "," + string(xPos) + ": "  + roomArr[yPos, xPos]);
             if (roomArr[yPos, xPos] == " ") continue; //nothing in tile -> continue
             
@@ -54,7 +54,7 @@ if (surface_exists(surface)){
                 //print("Attempted: " + string(objName) + ":" + string(xPos * global.TILE_SIZE) + "," + string(yPos * global.TILE_SIZE));
                 if (objEnum){ 
                     sprIndex = objEnum[| OBJECT.IMGIND]; //set sprite to use updated sprite_index
-                    print("update_layerSurface: Using sprite index of " + string(sprIndex) + " for " + objEnum[| OBJECT.NAME]);
+                    //print("update_layerSurface: Using sprite index of " + string(sprIndex) + " for " + objEnum[| OBJECT.NAME]);
                 }
                 
                 //}

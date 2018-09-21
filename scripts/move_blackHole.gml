@@ -14,7 +14,7 @@ var blackHole = argument1;
 
 print("-> move_blackHole(" + object_get_name(object.object_index) + ")");
 
-
+/*
 
 //handle pulling pullable objects towards the hole
 with(par_object){
@@ -76,3 +76,4 @@ with(par_object){
         
     }
 }
+*/

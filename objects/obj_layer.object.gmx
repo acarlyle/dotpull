@@ -35,6 +35,8 @@ mapKeyPriorityList = undefined; //priority queue of the keys from the objPosToNa
 move = false; //if move is true, move the robot
 robot = undefined; //cur robot this layer is handling
 surfaceInf = undefined;
+xBound = global.DEACTIVATED_X; //boundary of the roomMapArray
+yBound = global.DEACTIVATED_Y; //boundary of the roomMapArray
 
 list_robots = undefined; //ds list of robots in this layer
 list_objEnums = undefined; //ordered ds_list of objEnums in a layer
