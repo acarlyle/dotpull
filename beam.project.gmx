@@ -179,7 +179,6 @@
       <scripts name="Movement">
         <script>scripts\scr_mirptrTele.gml</script>
         <script>scripts\scr_disableMovementKeys.gml</script>
-        <script>scripts\scr_pathBetween.gml</script>
       </scripts>
       <scripts name="Strings">
         <script>scripts\scr_split.gml</script>
@@ -196,7 +195,6 @@
         <script>scripts\scr_steppingStoneBelow.gml</script>
       </scripts>
       <script>scripts\scr_canBlastRobot.gml</script>
-      <script>scripts\scr_canPullPush.gml</script>
       <script>scripts\scr_collisionCheck.gml</script>
       <script>scripts\scr_platformIsWalkable.gml</script>
     </scripts>
@@ -229,7 +227,9 @@
       <script>scripts\draw_lowerRooms.gml</script>
       <script>scripts\layer_updateObjAtTile.gml</script>
       <script>scripts\map_place.gml</script>
+      <script>scripts\scr_canPullPush.gml</script>
       <script>scripts\scr_getArrOfRoom.gml</script>
+      <script>scripts\scr_pathBetween.gml</script>
       <script>scripts\scr_tileContains.gml</script>
       <script>scripts\update_layerSurface.gml</script>
     </scripts>

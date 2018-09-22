@@ -11,7 +11,7 @@ var oEnumTo = argument2;
 var badObjList = array(par_obstacle, par_robot); //objects that could be in the way (would return false)
 
 var xSign = sign(oEnumTo[| OBJECT.X] - oEnumFrom[| OBJECT.X]); //for movement direction(left || right)
-var ySign = sign(oEnumTo[| OBJECT.Y] + oEnumFrom[| OBJECT.Y]); //for movement direction(up || down)
+var ySign = sign(oEnumTo[| OBJECT.Y] - oEnumFrom[| OBJECT.Y]); //for movement direction(up || down)
 var mapPosX = oEnumFrom[| OBJECT.X];
 var mapPosY = oEnumFrom[| OBJECT.Y];
 var pathIsClear = true;

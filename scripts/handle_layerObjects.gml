@@ -6,6 +6,9 @@ var robot = layer.robot;
 
 handle_cleanUpElementEffects();
 
+print(" ");
+print("-> handle_layerObjects()");
+
 for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
 {
     var object = layer.list_objEnums[| enumI];
