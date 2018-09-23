@@ -7,48 +7,28 @@ var robot = argument3;
 
 print("-> scr_collisionCheck(" + string(posX) + "," + string(posY) + ")");
 
-if (map_place(layer, obj_spike, posX, posY)){
-    print("ded player");
-    obj_player.isDead = true;
-    obj_player.sprite_index = spr_playerDead;
-    return true;
-}
-
-if (map_place(layer, par_stairs, posX, posY)){ return false; }
-
-if (map_place(layer, par_pusher, posX, posY)){
-    move_pusher(layer, robot, map_place(layer, par_pusher, posX, posY));
-}
-
-if (map_place(layer, par_pickupable, posX, posY)){
-    scr_pickupObject(map_place(layer, par_pickupable, posX, posY));
-}
-
-if (map_place(layer, obj_mirptr, posX, posY)){
-    var mirptr = map_place(layer, obj_mirptr, posX, posY);
-    print("old robo x: " + string(robot[| OBJECT.X]));
-    var roboXDiff = posX - robot[| OBJECT.OLDPOSX]; 
-    var roboYDiff = posY - robot[| OBJECT.OLDPOSY]; 
-    if !scr_collisionCheck(layer, mirptr.mirptrPtr.x + roboXDiff, mirptr.mirptrPtr.y + roboYDiff, robot){
-        robot[| OBJECT.OLDPOSX] += (mirptr.mirptrPtr.x + roboXDiff) - mirptr.x;
-        robot[| OBJECT.OLDPOSY] += (mirptr.mirptrPtr.y + roboYDiff) - mirptr.y;
-        print("PROBLEM: Recursive call, new robot x, y: " + string(robot[| OBJECT.OLDPOSX]) + " " + string(robot[| OBJECT.OLDPOSY]));
-    }
-    else{
-        return true;
-    }
+if (map_place(layer, obj_key, posX, posY)){
+    key = map_place(layer, obj_key, posX, posY);
     
-    
-    robot[| OBJECT.OLDPOSX] = mirptr.mirptrPtr.x;
-    robot[| OBJECT.OLDPOSY] = mirptr.mirptrPtr.y;
-    print("mirptr collision in player move");
-    print(mirptr.mirptrPtr.x);
-}
-
-if (map_place(layer, par_obstacle, posX, posY)){
-    var obstacle = map_place(layer, par_obstacle, posX, posY);
-    print("Obstacle detected");
-    if (obstacle[| OBJECT.ISACTIVE]) return true; //obstacle will block your path
+    if key[| OBJECT.ISACTIVE] {
+        
+        audio_play_sound(snd_keyPickup, 10, false);
+        robot[| ROBOT.NUMKEYS] += 1;
+        //key[| OBJECT.STATE] = "inventory";
+        key[| OBJECT.ISACTIVE] = false;
+        //key[| OBJECT.OLDPOSX] = key[| OBJECT.X];
+        //key[| OBJECT.OLDPOSY] = key[| OBJECT.Y];
+        //ds_stack_push(moveHistory, string(x) + "," + string(y));
+        //ds_stack_push(stateHistory, "ground");
+        //key[| OBJECT.X] = global.DEACTIVATED_X;
+        //key[| OBJECT.Y] = global.DEACTIVATED_Y;
+        
+        key[| OBJECT.IMGIND] = 1;
+        
+        print("scr_collisionCheck: Robot keys now " + string(robot[| ROBOT.NUMKEYS]));
+        
+        return false;
+    }
 }
 
 if (map_place(layer, obj_door, posX, posY)){
@@ -77,23 +57,48 @@ if (map_place(layer, obj_door, posX, posY)){
     }
 }
 
-if (map_place(layer, obj_key, posX, posY)){
-    key = map_place(layer, obj_key, posX, posY);
+if (map_place(layer, obj_spike, posX, posY)){
+    print("ded player");
+    obj_player.isDead = true;
+    obj_player.sprite_index = spr_playerDead;
+    return true;
+}
+
+if (map_place(layer, par_stairs, posX, posY)){ return false; }
+
+if (map_place(layer, par_pusher, posX, posY)){
+    move_pusher(layer, robot, map_place(layer, par_pusher, posX, posY));
+}
+
+if (map_place(layer, par_pickupable, posX, posY)){
+    scr_pickupObject(map_place(layer, par_pickupable, posX, posY));
+}
+
+/*if (map_place(layer, obj_mirptr, posX, posY)){
+    var mirptr = map_place(layer, obj_mirptr, posX, posY);
+    print("old robo x: " + string(robot[| OBJECT.X]));
+    var roboXDiff = posX - robot[| OBJECT.OLDPOSX]; 
+    var roboYDiff = posY - robot[| OBJECT.OLDPOSY]; 
+    if !scr_collisionCheck(layer, mirptr.mirptrPtr.x + roboXDiff, mirptr.mirptrPtr.y + roboYDiff, robot){
+        robot[| OBJECT.OLDPOSX] += (mirptr.mirptrPtr.x + roboXDiff) - mirptr.x;
+        robot[| OBJECT.OLDPOSY] += (mirptr.mirptrPtr.y + roboYDiff) - mirptr.y;
+        print("PROBLEM: Recursive call, new robot x, y: " + string(robot[| OBJECT.OLDPOSX]) + " " + string(robot[| OBJECT.OLDPOSY]));
+    }
+    else{
+        return true;
+    }
     
-    audio_play_sound(snd_keyPickup, 10, false);
-    robot[| ROBOT.NUMKEYS] += 1;
-    key[| OBJECT.STATE] = "inventory";
-    key[| OBJECT.ISACTIVE] = false;
-    key[| OBJECT.OLDPOSX] = key[| OBJECT.X];
-    key[| OBJECT.OLDPOSY] = key[| OBJECT.Y];
-    //ds_stack_push(moveHistory, string(x) + "," + string(y));
-    //ds_stack_push(stateHistory, "ground");
-    key[| OBJECT.X] = global.DEACTIVATED_X;
-    key[| OBJECT.Y] = global.DEACTIVATED_Y;
     
-    print("scr_collisionCheck: Robot keys now " + string(robot[| ROBOT.NUMKEYS]));
-    
-    return false;
+    robot[| OBJECT.OLDPOSX] = mirptr.mirptrPtr.x;
+    robot[| OBJECT.OLDPOSY] = mirptr.mirptrPtr.y;
+    print("mirptr collision in player move");
+    print(mirptr.mirptrPtr.x);
+}*/
+
+if (map_place(layer, par_obstacle, posX, posY)){
+    var obstacle = map_place(layer, par_obstacle, posX, posY);
+    print("Obstacle detected");
+    if (obstacle[| OBJECT.ISACTIVE]) return true; //obstacle will block your path
 }
 
 if (map_place(layer, par_block, posX, posY)){

@@ -14,7 +14,7 @@
 
 print("Entering level five");
 
-
+handle_freeMemory();
 
 if (instance_number(obj_player) == 0) { //spawning in directly from this level
     playerX = 16; //set player x and y position
@@ -149,14 +149,13 @@ trigger.triggerDoorPtr = triggerDoor;</code>
     <instance objName="obj_platform" x="80" y="96" name="inst_B7F567C6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="96" y="96" name="inst_E4E06789" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_snare" x="96" y="96" name="inst_C4717484" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="112" y="160" name="inst_0B8A1852" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_snare" x="64" y="128" name="inst_B53625CC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block" x="112" y="0" name="inst_519EB80E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="96" y="32" name="inst_CEBBE942" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="80" y="32" name="inst_7A17B383" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="16" y="0" name="inst_00C6B3AB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="112" y="176" name="inst_E2209C7F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_gotoRoom" x="112" y="176" name="inst_7B82EDDA" locked="0" code="target_x = 112;&#xA;target_y = 0;&#xA;&#xA;target_r = rm_level9;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_stairsAsc" x="112" y="160" name="inst_9E93E502" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="112" y="160" name="inst_AFCF088D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

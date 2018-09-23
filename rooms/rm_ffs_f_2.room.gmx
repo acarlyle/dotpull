@@ -14,7 +14,7 @@
 
 print("Entering level two");
 
-
+handle_freeMemory();
 
 var initPos = "0,0";
 
@@ -26,6 +26,7 @@ if (instance_number(obj_player) == 0) { //spawning in directly from this level
     obj_player.playerX = playerX;
     obj_player.playerY = playerY;
     initPos = string(obj_player.x) + "," + (string(obj_player.y));
+    print("obj_player created");
 }
 else{
     obj_player.x = obj_player.playerX;
@@ -118,8 +119,6 @@ triggerDoor3[| TRIGGER.TRIGGERPTR] = trigger3;</code>
     <instance objName="obj_platform" x="16" y="128" name="inst_A01FA1F6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="16" y="96" name="inst_E997838F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="16" y="80" name="inst_64CC0468" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_gotoRoom" x="16" y="176" name="inst_C5DBD938" locked="0" code="target_x = 112;&#xA;target_y = 160;&#xA;&#xA;target_r = rm_level3;&#xA;&#xA;image_angle = 180;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="0" y="160" name="inst_277C9A41" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="112" y="176" name="inst_6CB45524" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="16" y="64" name="inst_60A8F4B5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="16" y="112" name="inst_8A779D8A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -158,6 +157,8 @@ triggerDoor3[| TRIGGER.TRIGGERPTR] = trigger3;</code>
     <instance objName="obj_block" x="96" y="16" name="inst_25267304" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block" x="80" y="32" name="inst_F8FB2167" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block" x="80" y="16" name="inst_3D57F0B8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_stairsAsc" x="0" y="160" name="inst_35E7D618" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="0" y="160" name="inst_1F9AEABE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

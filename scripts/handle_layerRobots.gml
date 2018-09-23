@@ -28,15 +28,14 @@ switch(robot[| OBJECT.STATE]){
 }
 
 if (!robot[| OBJECT.MOVED] && !robot[| ROBOT.ISDEAD]){ //if we didn't move and we aren't dead
-    handle_checkForStairs(layer, robot);
-    if (!global.switchRooms) { //we aren't switching rooms
-        handle_checkLowerRoom(layer, robot);
-    }
+    handle_checkLowerRoom(layer, robot);
 }
+
+//if (!robot[| OBJECT.MOVED]) handle_checkLowerRoom(layer, robot); //stepping stone check
 
 if (robot[| OBJECT.MOVED]){
     
-    handle_checkForRoomTransition(layer, robot);
+    handle_checkForStairs(layer, robot);
     
     if (robot[| OBJECT.NAME] == "obj_player" && robot[| OBJECT.MOVED]){
         global.playerMoved = true;

@@ -14,7 +14,7 @@
 
 print("Entering level five");
 
-
+handle_freeMemory();
 
 var initPos = "0,0";
 
@@ -122,7 +122,6 @@ global.roomContents = scr_initRoom();</code>
     <instance objName="obj_platform" x="96" y="160" name="inst_8B4183C5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="112" y="160" name="inst_392333B8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="16" y="160" name="inst_A6E1B832" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_gotoRoom" x="112" y="144" name="inst_B67169D5" locked="0" code="target_x = 0;&#xA;target_y = 144;&#xA;&#xA;target_r = rm_level6;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block" x="32" y="144" name="inst_6009F6CF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block" x="16" y="160" name="inst_476A9F05" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block" x="48" y="160" name="inst_D44ABBEB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -131,7 +130,8 @@ global.roomContents = scr_initRoom();</code>
     <instance objName="obj_wall" x="80" y="128" name="inst_F9212407" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="96" y="144" name="inst_7759ADAA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="0" y="0" name="inst_FA1431F7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="112" y="144" name="inst_793D5203" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_stairsAsc" x="112" y="144" name="inst_11633FA5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="112" y="144" name="inst_F67D7450" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

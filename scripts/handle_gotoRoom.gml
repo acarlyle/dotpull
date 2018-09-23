@@ -18,9 +18,11 @@ room_goto(rm);
 
 print("---------------------------");
 print("----------ROOM TRANSITION------------");
-handle_roomSave(false, false);
+//handle_roomSave(false, layer); //TODO
     
 print("----------------------------------------------");
 print("");
+
+//handle_freeMemory(); NOT HERE
 
 return true; //successful gotoRoom

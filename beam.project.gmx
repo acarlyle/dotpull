@@ -172,7 +172,6 @@
       <script>scripts\print.gml</script>
       <script>scripts\print2dArray.gml</script>
       <script>scripts\scr_clearStepGlobals.gml</script>
-      <script>scripts\scr_objectsAdjacent.gml</script>
       <script>scripts\scr_roomFromString.gml</script>
       <script>scripts\scr_tileContains_curRoom.gml</script>
       <script>scripts\scr_tileIsOpen.gml</script>
@@ -229,6 +228,7 @@
       <script>scripts\map_place.gml</script>
       <script>scripts\scr_canPullPush.gml</script>
       <script>scripts\scr_getArrOfRoom.gml</script>
+      <script>scripts\scr_objectsAdjacent.gml</script>
       <script>scripts\scr_pathBetween.gml</script>
       <script>scripts\scr_tileContains.gml</script>
       <script>scripts\update_layerSurface.gml</script>
@@ -345,19 +345,18 @@
     <room>rooms\init</room>
     <room>rooms\rm_baseRoom</room>
     <rooms name="block.Pull">
-      <room>rooms\rm_level1</room>
-      <room>rooms\rm_level2</room>
-      <room>rooms\rm_level2DEBUG</room>
-      <room>rooms\rm_level3</room>
-      <room>rooms\rm_level4</room>
-      <room>rooms\rm_level5</room>
-      <room>rooms\rm_level6</room>
-      <room>rooms\rm_level7</room>
-      <room>rooms\rm_level8</room>
-      <room>rooms\rm_level9</room>
-      <room>rooms\rm_level10</room>
-      <room>rooms\rm_level11</room>
-      <room>rooms\rm_end</room>
+      <room>rooms\rm_ffs_f_1</room>
+      <room>rooms\rm_ffs_f_2</room>
+      <room>rooms\rm_ffs_f_3</room>
+      <room>rooms\rm_ffs_f_4</room>
+      <room>rooms\rm_ffs_f_5</room>
+      <room>rooms\rm_ffs_f_6</room>
+      <room>rooms\rm_ffs_f_7</room>
+      <room>rooms\rm_ffs_f_8</room>
+      <room>rooms\rm_ffs_f_9</room>
+      <room>rooms\rm_ffs_f_10</room>
+      <room>rooms\rm_ffs_f_11</room>
+      <room>rooms\rm_ffs_f_12</room>
     </rooms>
     <rooms name="block.Pull MasterQuest">
       <room>rooms\mq_level3</room>

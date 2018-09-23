@@ -14,7 +14,7 @@
 
 print("Entering level five");
 
-
+handle_freeMemory();
 
 var initPos = "0,0";
 
@@ -121,13 +121,13 @@ global.roomContents = scr_initRoom();</code>
     <instance objName="obj_platform" x="112" y="48" name="inst_29A257F4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="112" y="32" name="inst_7C206F42" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="112" y="16" name="inst_A5824F9C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bridge" x="112" y="0" name="inst_F842CA66" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="112" y="80" name="inst_68C530BE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_door" x="112" y="64" name="inst_F956B1E6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_door" x="112" y="32" name="inst_A15DA11F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_gotoRoom" x="112" y="0" name="inst_DDA1E568" locked="0" code="target_x = 0;&#xA;target_y = 0;&#xA;&#xA;target_r = rm_level4;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_snare" x="112" y="160" name="inst_43726193" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="112" y="160" name="inst_F8226887" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_stairsAsc" x="112" y="0" name="inst_80C47007" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_platform" x="112" y="0" name="inst_D6F6950A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

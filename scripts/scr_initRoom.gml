@@ -26,6 +26,16 @@ print (" -> scr_initRoom()");
     
 }*/
 
+var roomSaveFileName = string(room_get_name(room)) + ".sav";
+
+if (file_exists(roomSaveFileName)) {
+    file_delete(roomSaveFileName);
+    print("###############################");
+    print("###############################");
+    print("###############################");
+    print("scr_initRoom: Warning: " + string(roomSaveFileName) + " has been deleted!");
+}
+
 var priorityElementList = ds_list_create();
 
 

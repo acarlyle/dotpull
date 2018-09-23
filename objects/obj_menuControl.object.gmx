@@ -31,6 +31,8 @@ global.set_phoneRes = 3; //act phone value is 5 (960 * 640)
 global.WINDOW_WIDTH = 128;
 global.WINDOW_HEIGHT = 192;
 
+roomBegin = rm_ffs_f_3;
+
 
 //scr_applyScreenRes();
 global.saveRoomLoaded = undefined;
@@ -126,16 +128,16 @@ else if (key_enter){
     //audio_play_sound(song_terrorTram, 10, true);
     switch(object_get_name(selectedOption)){
         case "obj_newAdventure":
-            var roomGoto = rm_level2DEBUG;
+            var roomGoto = roomBegin;
             var roomName = room_get_name(roomGoto);
-            var roomSaveFileName = roomName + ".sav"; // TODO -&gt; should have a bkp file in case of failure to save/load
-            if (file_exists(roomSaveFileName)) {
-                file_delete(roomSaveFileName);
-                print("###############################");
-                print("###############################");
-                print("###############################");
-                print("obj_menuControl: Warning: " + string(roomSaveFileName) + " has been deleted!");
-            }
+            //var roomSaveFileName = roomName + ".sav"; // TODO -&gt; should have a bkp file in case of failure to save/load
+            //if (file_exists(roomSaveFileName)) {
+            //    file_delete(roomSaveFileName);
+            //    print("###############################");
+            //    print("###############################");
+            //    print("###############################");
+            //    print("obj_menuControl: Warning: " + string(roomSaveFileName) + " has been deleted!");
+            //}
             room_goto(roomGoto);
             break;
         case "obj_continueAdventure":

@@ -11,13 +11,11 @@ var objPosX = argument1;
 var objPosY = argument2;
 var objectList = argument3; //objects we want to see if the Tile contains
 
-print(objPosX);
-print(objPosY);
+print("scr_tileContains: xPos " + string(objPosX));
+print("scr_tileContains: YPos " + string(objPosY));
 
 print("scr_tileContains: layer x bound: " + string(layer.xBound));
 print("scr_tileContains: layer y bound: " + string(layer.yBound));
-
-print("scr_tileContains: objPosX / 16: " + string((objPosX / global.DEACTIVATED_X)));
 
 //if ((objPosY > 200 || objPosY <= 0) || (objPosX > 200 || objPosX <= 0)){
 //    print("WARNING WAY THE FUCK OUT OF WHILE LOOP BOUNDS in (par script, now in scr_tileContains)");
