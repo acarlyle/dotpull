@@ -131,6 +131,7 @@ if (map_place(layer, obj_triggerDoor, posX, posY)){
 
 if(map_place(layer, par_obstacle, posX, posY)){
     var obs = map_place(layer, par_obstacle, posX, posY);
+    if (!isEnum(obs)) return false; //it's a wall prob. can't check ISACTIVE on nonenum
     if (obs[| OBJECT.ISACTIVE]) {
         print("scr_canPullPush: Oh no an obstacle is here and it's activated !!!");
         return false;    

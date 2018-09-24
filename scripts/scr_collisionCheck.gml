@@ -100,6 +100,7 @@ if (map_place(layer, par_pickupable, posX, posY)){
 if (map_place(layer, par_obstacle, posX, posY)){
     var obstacle = map_place(layer, par_obstacle, posX, posY);
     print("Obstacle detected");
+    if (!isEnum(obstacle)) return true;
     if (obstacle[| OBJECT.ISACTIVE]) return true; //obstacle will block your path
 }
 
