@@ -23,7 +23,7 @@ for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
 
     //print("Layer size list: " + string(ds_list_size(layer.list_objEnums)));
          
-    print("-> handle_layerObjects: Handling  " + object[| OBJECT.NAME]);
+    print("-> handle_layerObjects: Handling  " + string(object[| OBJECT.NAME]) + " at: " + string(object[| OBJECT.X]) + "," + string(object[| OBJECT.Y]));
     
     /*
         HANDLE DIFFERENT TYPES OF OBJECT MOVEMENTS

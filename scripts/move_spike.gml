@@ -195,7 +195,7 @@ if (!spike[| OBJECT.MOVED] || robot[| OBJECT.NAME] == "obj_player"){
                 newObjPosY = spike[| OBJECT.Y] - global.TILE_SIZE;
             }
         
-            if (scr_canPullPush(newObjPosX, newObjPosY, true, spike, robot, mirptrExt, layer)
+            if ((scr_canPullPush(newObjPosX, newObjPosY, true, spike, robot, mirptrExt, layer) || scr_objectsAdjacent(robot, spike))
             && abs((robot[| OBJECT.Y] - spike[| OBJECT.Y]) / (robot[| OBJECT.X] - spike[| OBJECT.X])) == 1){
                 
                 print("diag lockon baby");

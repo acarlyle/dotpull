@@ -8,8 +8,8 @@ print(" -> con_layer of room " + string(roomName));
 var layer = instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, obj_layer);
 layer.roomName = roomName;
 layer.roomMapArr = get_arrayOfRoom(layer.roomName);
-layer.yBound = array_height_2d(layer.roomMapArr); 
-layer.xBound = array_length_2d(layer.roomMapArr, 0);
+layer.yBound = array_height_2d(layer.roomMapArr) * global.TILE_SIZE; 
+layer.xBound = array_length_2d(layer.roomMapArr, 0) * global.TILE_SIZE;
 
 print("con_layer I: room map height: " + string(array_height_2d(layer.roomMapArr)));
 print("con_layer I: room map length: " + string(array_length_2d(layer.roomMapArr, 0)));

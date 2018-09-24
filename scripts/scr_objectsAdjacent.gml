@@ -10,6 +10,11 @@ var obj2 = argument1;
 var xDiff = abs(obj1[| OBJECT.X] - obj2[| OBJECT.X]);
 var yDiff = abs(obj1[| OBJECT.Y] - obj2[| OBJECT.Y]);
 
-if (xDiff <= global.TILE_SIZE && yDiff <= global.TILE_SIZE) return true;
+print("scr_objectsAdjacent: xDiff, yDiff: " + string(xDiff) + "," + string(yDiff));
+
+if (xDiff <= global.TILE_SIZE && yDiff <= global.TILE_SIZE){
+    print("scr_objectsAdjacent: Returning true!");
+    return true;
+}
 
 return false;

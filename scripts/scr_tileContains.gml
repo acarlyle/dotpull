@@ -30,7 +30,12 @@ for (var i = 0; i < array_length_1d(objectList); i++){
     //    print("scr_tileContains: Warning!!  Out of bounds check.");
     //    return true; //HARDCODED to prevent out of bounds check in mapArr
     //}
-    if (map_place(layer, object, objPosX, objPosY)) return true;
+    if (map_place(layer, object, objPosX, objPosY)){
+        var obj = map_place(layer, object, objPosX, objPosY);
+        if obj[| OBJECT.ISACTIVE]{ //if object is actively in place
+            return true;
+        }
+    }
 }
 
 return false;

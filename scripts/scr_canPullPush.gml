@@ -79,10 +79,6 @@ if (object[| OBJECT.NAME] == "obj_spike"){
     }
 }
 
-print("scr_canPullPush: posX, posY: " + string(posX) + ", " + string(posY));
-print("scr_canPullPush: xDiff, yDiff: " + string(xDiff) + ", " + string(yDiff));
-print("scr_canPullPush: oldRobotX, oldRobotY: " + string(robot[| OBJECT.OLDPOSX]) + ", " + string(robot[| OBJECT.OLDPOSY]));
-
 /*
     TODO
     
@@ -145,6 +141,5 @@ if (!map_place(layer, par_platform, posX, posY)){
     print("scr_canPullPush: No platform to push/pull to");
     return false;
 }
-
 
 return true;
