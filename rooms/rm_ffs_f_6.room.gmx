@@ -40,19 +40,21 @@ print("initPos:" + initPos);
 
 scr_initRoom();
 
-//triggers
-var triggerDoor = instance_place(96, 144, obj_triggerDoor);
-var triggerDoor2 = instance_place(96, 160, obj_triggerDoor);
-var trigger = instance_place(64, 112, obj_trigger);
-var trigger2 = instance_place(64, 144, obj_trigger);
-triggerDoor.triggerPtr = trigger;
-trigger.triggerDoorPtr = triggerDoor;
-triggerDoor2.triggerPtr = trigger2;
-trigger2.triggerDoorPtr = triggerDoor2;
-trigger.image_index = 0;
-triggerDoor.image_index = 1;
-trigger2.image_index = 0;
-triggerDoor2.image_index = 1;</code>
+var layer = get_layerFromRoomStr(room_get_name(room));
+
+if (layer == undefined) print("room create: WARNING: Layer undefined!!");
+
+var trigger1 = map_place(layer, obj_trigger, 64, 112); 
+var triggerDoor1 = map_place(layer, obj_triggerDoor, 96, 144); 
+trigger1[| TRIGGER.DOORPTR] = triggerDoor1;
+triggerDoor1[| TRIGGER.TRIGGERPTR] = trigger1;
+triggerDoor1[| OBJECT.IMGIND] = 1; //pressed
+
+var trigger2 = map_place(layer, obj_trigger, 64, 144); 
+var triggerDoor2 = map_place(layer, obj_triggerDoor, 96, 160); 
+trigger2[| TRIGGER.DOORPTR] = triggerDoor2;
+triggerDoor2[| TRIGGER.TRIGGERPTR] = trigger2;
+triggerDoor2[| OBJECT.IMGIND] = 1;</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -126,7 +128,7 @@ triggerDoor2.image_index = 1;</code>
     <instance objName="obj_platform" x="16" y="16" name="inst_1719F49C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="96" y="160" name="inst_535E2752" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="96" y="144" name="inst_EE9D07D0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_key" x="64" y="16" name="inst_E7CDA7A8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_key" x="80" y="128" name="inst_E7CDA7A8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="0" y="32" name="inst_FB726285" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="0" y="48" name="inst_BE8790E5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="0" y="16" name="inst_A34638E6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -162,8 +164,8 @@ triggerDoor2.image_index = 1;</code>
     <instance objName="obj_platform" x="80" y="128" name="inst_8CAEA4A3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="48" y="128" name="inst_B73C7496" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_block" x="64" y="112" name="inst_14BC00BA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block" x="64" y="144" name="inst_60BB4162" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_block" x="96" y="0" name="inst_7F93D4CA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="96" y="96" name="inst_60BB4162" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_block" x="64" y="144" name="inst_7F93D4CA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="16" y="0" name="inst_91867CEC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="0" y="144" name="inst_58E57682" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_stairsAsc" x="96" y="176" name="inst_4037098E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

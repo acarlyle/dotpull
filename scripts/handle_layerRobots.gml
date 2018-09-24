@@ -84,3 +84,5 @@ print("handle_layerRobots II: room map length: " + string(array_length_2d(layer.
 layer.move = false;
 robot[| ROBOT.CANMOVE] = true;
 robot[| OBJECT.STATE] = "tile_one"; //reset state to default movement 
+
+if (global.switchRooms == true) robot[| OBJECT.MOVED] = false; //don't let objects move if we switch rooms

@@ -66,6 +66,7 @@ if (object[| OBJECT.NAME] == "obj_spike"){
         if (map_place(layer, par_obstacle, posX, posY) &&
            !map_place(layer, obj_baby, posX, posY)){
             var obs = map_place(layer, par_obstacle, posX, posY);
+            if (!isEnum(obs)) return false;
             if (obs[| OBJECT.ISACTIVE]){
                 print("SPIKE STOPPED BY OBSTACLE!!!!");
                 return false;
@@ -106,7 +107,12 @@ if (map_place(layer, obj_triggerDoor, object[| OBJECT.X], object[| OBJECT.Y]) &&
 }
 
 if (map_place(layer, par_pullable, posX, posY)){
-    return false;
+    var pullable = map_place(layer, par_pullable, posX, posY);
+    if (isEnum(pullable)){
+        if (pullable[| OBJECT.ISACTIVE]){
+            return false;
+        }
+    }
 }
 
 if (map_place(layer, par_fallingPlatform, posX, posY)){

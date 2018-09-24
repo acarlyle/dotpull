@@ -64,7 +64,8 @@ updateLayer = false; //update when an objectEnum has moved
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>print("instance_destroy for " + object_get_name(self));
+            <string>print("instance_destroy for obj_layer " + string(roomName));
+print("#################################################################################");
 
 if(objPosToNameMap) ds_map_destroy(objPosToNameMap);
 if(objNameAndPosToEnumMap) ds_map_destroy(objNameAndPosToEnumMap);
@@ -81,6 +82,11 @@ if(list_robots) ds_list_destroy(list_robots);
 if(list_objEnums) ds_list_destroy(list_objEnums);
 
 if(surfaceInf) instance_destroy(surfaceInf);
+
+if (!ds_map_empty(global.layerMap)){ //delete this layer from obj_control's name -&gt; layer map
+    ds_map_delete(global.layerMap, roomName);
+    print("obj_layer instance_destroy: removed this layer from layer map!");  
+}
 </string>
           </argument>
         </arguments>
@@ -127,7 +133,7 @@ if (global.playerCanMove &amp;&amp; self.list_robots){
                 //print("ya");
                 print(self.robot[| OBJECT.NAME]);
                 if (global.playerMoved || self.robot[| OBJECT.NAME] == "obj_player"){
-                    //print("ya^2");
+                    print("ya^2");
                     handle_layerRobots(self); //move is true if movement key is pressed
                 }
             }

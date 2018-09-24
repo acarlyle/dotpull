@@ -15,6 +15,8 @@ if (robot[| OBJECT.NAME] == "obj_player" &&
     
     var gotoRoom = instance_place(robot[| ROBOT.NEWX], robot[| ROBOT.NEWY], obj_gotoRoom);
     
+    global.switchRooms = true;
+    
     handle_gotoRoom(gotoRoom.target_r, "gotoRoom");
     
 }

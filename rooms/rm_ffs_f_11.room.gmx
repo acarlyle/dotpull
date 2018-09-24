@@ -42,20 +42,22 @@ print("initPos:" + initPos);
 
 scr_initRoom();
 
-var triggerDoor = instance_place(96, 32, obj_triggerDoor);
-var trigger = instance_place(80, 144, obj_trigger);
-triggerDoor.triggerPtr = trigger;
-trigger.triggerDoorPtr = triggerDoor;
+var layer = get_layerFromRoomStr(room_get_name(room));
 
-var triggerDoor2 = instance_place(80, 32, obj_triggerDoor);
-var trigger2 = instance_place(80, 80, obj_trigger);
-triggerDoor2.triggerPtr = trigger2;
-trigger2.triggerDoorPtr = triggerDoor2;
+var trigger1 = map_place(layer, obj_trigger, 80, 144); 
+var triggerDoor1 = map_place(layer, obj_triggerDoor, 96, 32); 
+trigger1[| TRIGGER.DOORPTR] = triggerDoor1;
+triggerDoor1[| TRIGGER.TRIGGERPTR] = trigger1;
 
-var triggerDoor3 = instance_place(64, 32, obj_triggerDoor);
-var trigger3 = instance_place(32, 16, obj_trigger);
-triggerDoor3.triggerPtr = trigger3;
-trigger3.triggerDoorPtr = triggerDoor3;</code>
+var trigger2 = map_place(layer, obj_trigger, 80, 80); 
+var triggerDoor2 = map_place(layer, obj_triggerDoor, 80, 32); 
+trigger2[| TRIGGER.DOORPTR] = triggerDoor2;
+triggerDoor2[| TRIGGER.TRIGGERPTR] = trigger2;
+
+var trigger3 = map_place(layer, obj_trigger, 32, 16); 
+var triggerDoor3 = map_place(layer, obj_triggerDoor, 64, 32); 
+trigger3[| TRIGGER.DOORPTR] = triggerDoor3;
+triggerDoor3[| TRIGGER.TRIGGERPTR] = trigger3;</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
