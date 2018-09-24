@@ -31,7 +31,7 @@ global.set_phoneRes = 3; //act phone value is 5 (960 * 640)
 global.WINDOW_WIDTH = 128;
 global.WINDOW_HEIGHT = 192;
 
-roomBegin = rm_ffs_f_4;
+roomBegin = rm_ffs_f_5;
 
 
 //scr_applyScreenRes();

@@ -22,6 +22,10 @@ for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
     object[| OBJECT.OLDPOSY] = object[| OBJECT.Y];
 
     //print("Layer size list: " + string(ds_list_size(layer.list_objEnums)));
+    
+    if (get_parent(get_objectFromString(object[| OBJECT.NAME])) == "par_fallingPlatform"){
+        continue;
+    }
          
     print("-> handle_layerObjects: Handling  " + string(object[| OBJECT.NAME]) + " at: " + string(object[| OBJECT.X]) + "," + string(object[| OBJECT.Y]));
     
@@ -33,10 +37,6 @@ for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
           * Object asset                -> object
           * Object position in the map  -> objPosStr
     */ 
-    
-    if (get_parent(get_objectFromString(object[| OBJECT.NAME])) == "par_fallingPlatform"){
-        move_fallingPlatform(layer, object);
-    }
     
     //Handles: par_cannon
     if (get_parent(get_objectFromString(object[| OBJECT.NAME])) == "par_cannon"){
@@ -159,11 +159,7 @@ for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
         
         object[| OBJECT.MOVED] = false;
         
-        if (map_place(layer, obj_spike, robot[| OBJECT.X], robot[| OBJECT.Y])){
-            print("handle_layerObjects: player ded");
-            robot[| ROBOT.ISDEAD] = true;
-            robot[| OBJECT.IMGIND] = 1; //ded player index
-        } 
+        handle_checkForFallingPlatform(layer, object); //if moved off a falling platform
         
     } // if object moved   
     

@@ -111,14 +111,14 @@ if (map_place(layer, par_pullable, posX, posY)){
 
 if (map_place(layer, par_fallingPlatform, posX, posY)){
     var fallingPlat = map_place(layer, par_fallingPlatform, posX, posY);
-    if (fallingPlat.isDeactivated){
-        print("scr_canPullPush: Falling platform is deactivated; can't pull");
-        return false;
-    }
-    else{
-        print("scr_canPullPush: yeah it's deactivated i guess");
-        print(fallingPlat.isDeactivated);
-        return true;
+    if (fallingPlat){
+        if (!fallingPlat[| OBJECT.ISACTIVE]){
+            print("scr_canPullPush: Falling platform is inactive; can't pull");
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 }
 

@@ -108,7 +108,6 @@
         <script>scripts\move_breakableWall.gml</script>
         <script>scripts\move_cannon.gml</script>
         <script>scripts\move_eviscerator.gml</script>
-        <script>scripts\move_fallingPlatform.gml</script>
         <script>scripts\move_key.gml</script>
         <script>scripts\move_pullPushables.gml</script>
         <script>scripts\move_pullPushables_tile_one.gml</script>
@@ -132,6 +131,7 @@
         <script>scripts\undo_triggerDoor.gml</script>
       </scripts>
       <script>scripts\handle_activeRooms.gml</script>
+      <script>scripts\handle_checkForFallingPlatform.gml</script>
       <script>scripts\handle_checkForRoomTransition.gml</script>
       <script>scripts\handle_checkForStairs.gml</script>
       <script>scripts\handle_cleanUpElementEffects.gml</script>

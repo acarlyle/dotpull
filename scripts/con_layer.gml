@@ -29,13 +29,16 @@ print("con_layer: mapKeyPriorityList size: " + string(ds_list_size(layer.mapKeyP
 
 for (var i = 0; i < ds_list_size(layer.mapKeyPriorityList); i++){
     var mapKey = ds_list_find_value(layer.mapKeyPriorityList, i);
-    print("con_layer: map key: " + string(mapKey));
+    print("con_layer: map key: " + string(mapKey) + "at for loop index " + string(i));
     var mapKeyArr = scr_split(mapKey, ":"); // "mapPos(int):x,y"
     var objPosAt = mapKeyArr[0]; // "mapPos(int)"
     var objPosStr = mapKeyArr[1]; // "x,y" -> functions as the key for the priorityMap 
     print("con_layer: objPosStr: " + string(objPosStr));
     var objectString = ds_map_find_value(layer.objPosToNameMap, objPosStr);
     //we can have multiple objects stored at each position in the map, so split them
+    
+    print("con_layer: objectString: " + string(objectString));
+    
     var objectArr = scr_split(objectString, ";");
     var objectString = objectArr[objPosAt]; //we want the ith item at this index....
     var object = get_objectFromString(objectString);
