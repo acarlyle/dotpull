@@ -25,14 +25,15 @@ if (layer.list_robots)
 //now set the layer's objPosToNameMap and associated mapKeyPriorityKey
 con_priorityObjPosMap(layer, sortedObjPriorityList);
 
+print("con_layer: mapKeyPriorityList size: " + string(ds_list_size(layer.mapKeyPriorityList)));
 
 for (var i = 0; i < ds_list_size(layer.mapKeyPriorityList); i++){
     var mapKey = ds_list_find_value(layer.mapKeyPriorityList, i);
-    //print("con_layer: map key: " + string(mapKey));
+    print("con_layer: map key: " + string(mapKey));
     var mapKeyArr = scr_split(mapKey, ":"); // "mapPos(int):x,y"
     var objPosAt = mapKeyArr[0]; // "mapPos(int)"
     var objPosStr = mapKeyArr[1]; // "x,y" -> functions as the key for the priorityMap 
-    //print("con_layer: objPosStr: " + string(objPosStr));
+    print("con_layer: objPosStr: " + string(objPosStr));
     var objectString = ds_map_find_value(layer.objPosToNameMap, objPosStr);
     //we can have multiple objects stored at each position in the map, so split them
     var objectArr = scr_split(objectString, ";");
