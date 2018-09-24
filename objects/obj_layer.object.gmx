@@ -31,7 +31,7 @@ roomName = "";
 roomMapArr = undefined; //2d array of each tile for move_object logic
 objPosToNameMap = undefined; //maps x.y -&gt; "objName" for each puzzle element in the room
 objNameAndPosToEnumMap = undefined; //maps "obj_name:x,y" -&gt; (that's a comma!!) obj_enum for each puzzle element in the layer
-mapKeyPriorityList = undefined; //priority queue of the keys from the objPosToNameMap sorted by parsing order
+mapKeyPriorityList = undefined; //priority queue (act. list) of the keys from the objPosToNameMap sorted by parsing order
 move = false; //if move is true, move the robot
 robot = undefined; //cur robot this layer is handling
 surfaceInf = undefined;
@@ -42,6 +42,45 @@ list_robots = undefined; //ds list of robots in this layer
 list_objEnums = undefined; //ordered ds_list of objEnums in a layer
 
 updateLayer = false; //update when an objectEnum has moved
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>print("instance_destroy for " + object_get_name(self));
+
+if(objPosToNameMap) ds_map_destroy(objPosToNameMap);
+if(objNameAndPosToEnumMap) ds_map_destroy(objNameAndPosToEnumMap);
+if(mapKeyPriorityList) ds_list_destroy(mapKeyPriorityList);
+
+for (var i = 0; i &lt; ds_list_size(list_robots); i++){
+    ds_list_destroy(list_robots[| i]);
+}
+for (var i = 0; i &lt; ds_list_size(list_objEnums); i++){
+    ds_list_destroy(list_objEnums[| i]);
+}
+
+if(list_robots) ds_list_destroy(list_robots);
+if(list_objEnums) ds_list_destroy(list_objEnums);
+
+if(surfaceInf) instance_destroy(surfaceInf);
 </string>
           </argument>
         </arguments>
@@ -81,6 +120,8 @@ if (global.playerCanMove &amp;&amp; self.list_robots){
         self.robot = self.list_robots[| r]; //robot enum
         get_input(self);
         
+        if (global.restartRoom) break;
+        
         if (!self.robot[| ROBOT.ISDEAD]){
             if (self.move){
                 //print("ya");
@@ -105,7 +146,7 @@ if (global.playerCanMove &amp;&amp; self.list_robots){
         //if (stoopidTrigger) print("STOOOOPID STOOPID!!!");
         
         //save state
-        if global.playerMoved{
+        if (global.playerMoved){
             handle_gameSave(obj_player);
             handle_updateLayer(self);
         }

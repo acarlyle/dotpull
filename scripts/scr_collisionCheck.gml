@@ -46,7 +46,9 @@ if (map_place(layer, obj_door, posX, posY)){
             door[| OBJECT.X] = global.DEACTIVATED_X;
             door[| OBJECT.Y] = global.DEACTIVATED_Y;
             door[| OBJECT.STATE] = "unlocked";
+            
             door[| OBJECT.ISACTIVE] = false;
+            door[| OBJECT.IMGIND] = 1;
             
             return false;
         }
@@ -58,9 +60,9 @@ if (map_place(layer, obj_door, posX, posY)){
 }
 
 if (map_place(layer, obj_spike, posX, posY)){
-    print("ded player");
-    obj_player.isDead = true;
-    obj_player.sprite_index = spr_playerDead;
+    print("player ded");
+    robot[| ROBOT.ISDEAD] = true;
+    robot[| OBJECT.IMGIND] = 1; //ded player index
     return true;
 }
 

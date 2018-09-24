@@ -159,6 +159,12 @@ for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
         
         object[| OBJECT.MOVED] = false;
         
+        if (map_place(layer, obj_spike, robot[| OBJECT.X], robot[| OBJECT.Y])){
+            print("handle_layerObjects: player ded");
+            robot[| ROBOT.ISDEAD] = true;
+            robot[| OBJECT.IMGIND] = 1; //ded player index
+        } 
+        
     } // if object moved   
     
     

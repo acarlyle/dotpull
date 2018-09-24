@@ -88,6 +88,13 @@ for (var i = 0; i < ds_list_size(priorityElementList); i++){
         ds_list_insert(priorityElementList, 0, inst);
     }
 }
+for (var i = 0; i < ds_list_size(priorityElementList); i++){
+    var inst = ds_list_find_value(priorityElementList, i);
+    if (object_get_name(inst.object_index) == "obj_key"){
+        ds_list_delete(priorityElementList, i);
+        ds_list_insert(priorityElementList, 0, inst);
+    }
+}
 
 //old way of doing this was ds_list -> 
 //var sortedObjArrList = con_roomObjectArrList(priorityElementList);
@@ -139,5 +146,3 @@ for (var i = 0; i < ds_list_size(priorityElementList); i++){
 }
 
 ds_list_destroy(priorityElementList);*/
-
-//return layer;

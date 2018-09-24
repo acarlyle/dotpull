@@ -35,6 +35,7 @@ event_inherited();
 global.playerCanMove = true;
 global.switchRooms = false;
 global.playerMoved = false;
+global.restartRoom = false;
 
 //init vars
 //global.roomContents = ds_stack_create(); //rewindable objects

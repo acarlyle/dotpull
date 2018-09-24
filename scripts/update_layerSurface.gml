@@ -49,18 +49,18 @@ if (surface_exists(surface)){
                                                 string(xPos * global.TILE_SIZE) + 
                                                 "," + 
                                                 string(yPos * global.TILE_SIZE));
-                var sprIndex = 0;
+                var imgIndex = 0;
                 //print(ds_map_size(layer.objNameAndPosToEnumMap));
                 //print("Attempted: " + string(objName) + ":" + string(xPos * global.TILE_SIZE) + "," + string(yPos * global.TILE_SIZE));
                 if (objEnum){ 
-                    sprIndex = objEnum[| OBJECT.IMGIND]; //set sprite to use updated sprite_index
+                    imgIndex = objEnum[| OBJECT.IMGIND]; //set sprite to use updated sprite_index
                     //print("update_layerSurface: Using sprite index of " + string(sprIndex) + " for " + objEnum[| OBJECT.NAME]);
                 }
                 
                 //}
-                //print("surExisted_drawing: " + string(objName) + " at " + string(xPos * global.TILE_SIZE) + ", " + string(yPos * global.TILE_SIZE));
+                //print("update_layerSurface: drawing " + string(objName) + " at " + string(xPos * global.TILE_SIZE) + ", " + string(yPos * global.TILE_SIZE) + " with image index of " + string(imgIndex));
                 surface_set_target(surface);
-                draw_sprite(get_spriteFromObjStr(objName), sprIndex, xPos * global.TILE_SIZE, yPos * global.TILE_SIZE);
+                draw_sprite(get_spriteFromObjStr(objName), imgIndex, xPos * global.TILE_SIZE, yPos * global.TILE_SIZE);
                 surface_reset_target();
             }
         } 

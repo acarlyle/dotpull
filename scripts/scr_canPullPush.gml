@@ -22,7 +22,7 @@ badArgList = array(par_robot, par_obstacle);
 
 //if there's a mirptr in the path of the object, reset object position back to where it should be
 // +/- diff to spot to pull to
-if (mirptr){
+/*if (mirptr){
     if (object[| OBJECT.X] == mirptr[| OBJECT.X]){
         mirptrVt = true;
     }
@@ -37,7 +37,7 @@ if (mirptr){
         xDiff = robot[| OBJECT.X] - posX;
         yDiff = robot[| OBJECT.Y] - posY;
     }
-}
+}*/
 
 print("scr_canPullPush UPDATED posX, posY: " + string(posX) + ", " + string(posY));
 print("scr_canPullPush isActive: " + string(object[| OBJECT.ISACTIVE]));
@@ -48,25 +48,24 @@ if (!object[| OBJECT.ISACTIVE]) return false; //if it's not pullable, return
 
 //Handle state change from active, targetLocked spike
 if (object[| OBJECT.NAME] == "obj_spike"){
-    if (targetLocked){
+    if (object[| AI.TARGETLOCKED]){
         if (map_place(layer, par_fallingPlatform, posX, posY)){
             var fallingPlat = map_place(layer, par_fallingPlatform, posX, posY);
-            if (fallingPlat.isDeactivated){
-                print("Falling platform is deactivated; can't pull");
+            if (!fallingPlat[| OBJECT.ISACTIVE]){
+                print("Falling platform is deactivated; can't pull for spike");
                 return false;
             }
         }
         if (map_place(layer, par_breakableWall, posX, posY)){
             breakableWall = map_place(layer, par_breakableWall, posX, posY);
             e_damageBreakableWall(breakableWall);
-            if (breakableWall.isDeactivated){
+            if (!breakableWall[| OBJECT.ISACTIVE]){
                 return true;
             }
         }
         if (map_place(layer, par_obstacle, posX, posY) &&
            !map_place(layer, obj_baby, posX, posY)){
             var obs = map_place(layer, par_obstacle, posX, posY);
-            print(obs.isDeactivated);
             if (obs[| OBJECT.ISACTIVE]){
                 print("SPIKE STOPPED BY OBSTACLE!!!!");
                 return false;

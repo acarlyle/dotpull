@@ -12,6 +12,6 @@ file_text_close(saveFile);
 
 var layer = get_layerFromRoomStr(room_get_name(saveRoom));
 
-handle_roomSave(false, layer);
+//handle_roomSave(false, layer);
 
 print("Game saved!");

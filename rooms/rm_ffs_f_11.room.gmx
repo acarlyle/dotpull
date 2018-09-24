@@ -40,7 +40,7 @@ var initPos = string(obj_player.x) + "," + (string(obj_player.y));
 //ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys));
 print("initPos:" + initPos);
 
-global.roomContents = scr_initRoom();
+scr_initRoom();
 
 var triggerDoor = instance_place(96, 32, obj_triggerDoor);
 var trigger = instance_place(80, 144, obj_trigger);
