@@ -36,7 +36,6 @@ if (!robot[| OBJECT.MOVED] && !robot[| ROBOT.ISDEAD]){ //if we didn't move and w
 if (robot[| OBJECT.MOVED]){
     
     handle_checkForStairs(layer, robot);
-    handle_checkForFallingPlatform(layer, robot); //if moved off a falling platform
     
     if (robot[| OBJECT.NAME] == "obj_player" && robot[| OBJECT.MOVED]){
         global.playerMoved = true;
@@ -67,6 +66,7 @@ if (robot[| OBJECT.MOVED]){
     } 
     
     layer_updateObjAtTile(layer, robot, robot[| OBJECT.OLDPOSX], robot[| OBJECT.OLDPOSY]); //pass old positions
+    handle_checkForFallingPlatform(layer, robot); //if moved off a falling platform
     
     /*//TODO need better method of main layer checking 
     if (robot[| OBJECT.NAME] == "obj_player"){
