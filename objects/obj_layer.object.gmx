@@ -28,7 +28,7 @@
             <string>event_inherited();
 
 roomName = "";
-roomMapArr = undefined; //2d array of each tile for move_object logic
+roomMapArr = undefined; //2d array of each tile for move_object logic of y,x format
 objPosToNameMap = undefined; //maps x.y -&gt; "objName" for each puzzle element in the room
 objNameAndPosToEnumMap = undefined; //maps "obj_name:x,y" -&gt; (that's a comma!!) obj_enum for each puzzle element in the layer
 mapKeyPriorityList = undefined; //priority queue (act. list) of the keys from the objPosToNameMap sorted by parsing order

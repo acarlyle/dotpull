@@ -42,7 +42,7 @@
       <sprite>sprites\spr_arrowDown</sprite>
       <sprite>sprites\spr_arrowLeft</sprite>
       <sprite>sprites\spr_arrowRight</sprite>
-      <sprite>sprites\spr_arrowUp</sprite>
+      <sprite>sprites\spr_arrow</sprite>
       <sprite>sprites\spr_baby</sprite>
       <sprite>sprites\spr_blackHole</sprite>
       <sprite>sprites\spr_block</sprite>
@@ -348,6 +348,7 @@
       <room>rooms\rm_ffs_f_2</room>
       <room>rooms\rm_ffs_f_3</room>
       <room>rooms\rm_ffs_f_4</room>
+      <room>rooms\rm_ffs_f_4DEBUG</room>
       <room>rooms\rm_ffs_f_5</room>
       <room>rooms\rm_ffs_f_6</room>
       <room>rooms\rm_ffs_f_7</room>
@@ -359,6 +360,7 @@
     </rooms>
     <rooms name="block.Pull MasterQuest">
       <room>rooms\mq_level3</room>
+      <room>rooms\rm_mq_f_7</room>
     </rooms>
     <rooms name="Cool Levels for Cool People">
       <room>rooms\rm_x1</room>

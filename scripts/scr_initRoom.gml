@@ -121,9 +121,13 @@ for (var i = 0; i < ds_list_size(layer.list_objEnums); i++){
     var objEnum = layer.list_objEnums[| i];
     if (!instance_exists(get_objectFromString(objEnum[| OBJECT.NAME]))){ 
         instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, get_objectFromString(objEnum[| OBJECT.NAME]));
-        print("scr_initRoom: Created a deactivated " + string(objEnum[| OBJECT.NAME]) + " at " + string(global.DEACTIVATED_X) + "," + string(global.DEACTIVATED_X));
+        print("scr_initRoom: Created a deactivated " + string(objEnum[| OBJECT.NAME]) + " at " + string(global.DEACTIVATED_X) + "," + string(global.DEACTIVATED_Y));
+        print(objEnum[| OBJECT.X]);
+        print(objEnum[| OBJECT.Y]);
+        print(layer.roomMapArr[16/16, 64/16]);
     }
 }
+
 with (all){
     if object_index == obj_player continue; //don't fuck with player's stacks (((yet)))
     
@@ -136,7 +140,8 @@ with (all){
 ds_list_destroy(priorityElementList);
 
 
-
+print("scr_initRoom: END ");
+print( "" );
 
 
 /*//set the state of the object in the list

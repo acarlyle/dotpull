@@ -69,7 +69,10 @@ for (var i = 0; i < array_length_1d(thisTileObjs); i++){
     {
          
         if (!layer.objNameAndPosToEnumMap){
-            print("########   ERROR      ############# the fuck it's undefined???");
+            print(" ");
+            print("########   ERROR      #############");
+            print("why the fuck is objNameAndPosToMap undefined???");
+            print(" ");
             continue;
         }
         

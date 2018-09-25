@@ -58,7 +58,6 @@ if (saveCurRoom){ //save from current room (not via layer)
 
 else{ //write to file using layer's map
     activeRoomObjectsArr = layer.roomMapArr;
-    tileSeparator = "|";
 }
     
     print("handle_roomSave: room map height: " + string(array_height_2d(activeRoomObjectsArr)));
@@ -67,27 +66,14 @@ else{ //write to file using layer's map
     for (yPos = 0; yPos < array_height_2d(activeRoomObjectsArr); yPos++){
         for (xPos = 0; xPos < array_length_2d(activeRoomObjectsArr, yPos); xPos++){
             //print("handle_roomSave: WRITING at " + string(xPos) + "," + string(yPos) + ": " + string(activeRoomObjectsArr[yPos, xPos]));
-            file_text_write_string(roomSaveFile, activeRoomObjectsArr[yPos, xPos] + tileSeparator);
+            file_text_write_string(roomSaveFile, activeRoomObjectsArr[yPos, xPos]);
         }
         file_text_writeln(roomSaveFile);
     }
 
 file_text_write_string(roomSaveFile, "---");
 
-// write room's deactivated object positions
-//var deactivatedRoomObjectsArr = get_deactivatedRoomObjects(roomName); // TODO ?  maybe
-
 file_text_writeln(roomSaveFile);
 
 // close file
 file_text_close(roomSaveFile);
-
-
-// read save file
-//roomSaveFile = file_text_open_read(roomSaveFileName);
-//var something = file_text_read_real(roomSaveFile);
-//file_text_close(roomSaveFile);
-
-//print(ds_stack_top(something));  
-//print("Room saved!");
-

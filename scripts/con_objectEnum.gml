@@ -30,6 +30,46 @@ objectEnum[| OBJECT.IMGIND] = 0;
 */
 
 switch(get_objectFromString(objName)){
+    case obj_arrow_down_rotate:
+        objectEnum[| ARROW.DIR] = "down";
+        objectEnum[| ARROW.ISROTATING] = true;
+        objectEnum[| OBJECT.IMGIND] = 2;
+        break;
+    case obj_arrow_down_static:
+        objectEnum[| ARROW.DIR] = "down";
+        objectEnum[| ARROW.ISROTATING] = false;
+        objectEnum[| OBJECT.IMGIND] = 2;
+        break;
+    case obj_arrow_left_rotate:
+        objectEnum[| ARROW.DIR] = "left";
+        objectEnum[| ARROW.ISROTATING] = true;
+        objectEnum[| OBJECT.IMGIND] = 3;
+        break;
+    case obj_arrow_left_static:
+        objectEnum[| ARROW.DIR] = "left";
+        objectEnum[| ARROW.ISROTATING] = false;
+        objectEnum[| OBJECT.IMGIND] = 3;
+        break;
+    case obj_arrow_right_rotate:
+        objectEnum[| ARROW.DIR] = "right";
+        objectEnum[| ARROW.ISROTATING] = true;
+        objectEnum[| OBJECT.IMGIND] = 1;
+        break;
+    case obj_arrow_right_static:
+        objectEnum[| ARROW.DIR] = "right";
+        objectEnum[| ARROW.ISROTATING] = false;
+        objectEnum[| OBJECT.IMGIND] = 1;
+        break;
+    case obj_arrow_up_rotate:
+        objectEnum[| ARROW.DIR] = "up";
+        objectEnum[| ARROW.ISROTATING] = false;
+        objectEnum[| OBJECT.IMGIND] = 0;
+        break;
+    case obj_arrow_up_static:
+        objectEnum[| ARROW.DIR] = "up";
+        objectEnum[| ARROW.ISROTATING] = false;
+        objectEnum[| OBJECT.IMGIND] = 0;
+        break;
     case obj_block:
         objectEnum[| OBJECT.CANPULL] = true;
         objectEnum[| OBJECT.CANPUSH] = false;
@@ -57,8 +97,6 @@ switch(get_objectFromString(objName)){
         break;  
     case obj_fallingPlatform_3Step:
         objectEnum[| PLATFORM.STEPSLEFT] = 3;
-        //print("con_objectEnum oldPosX: " + string(objectEnum[| OBJECT.OLDPOSX]));
-        //print("con_objectEnum oldPosY: " + string(objectEnum[| OBJECT.OLDPOSY]));
         break;    
     case obj_key:
         objectEnum[| OBJECT.CANPULL] = true;

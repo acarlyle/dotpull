@@ -118,6 +118,10 @@ enum MIRPTR {
 enum PLATFORM {
     STEPSLEFT = 51
 }
+enum ARROW {
+    DIR = 55,
+    ISROTATING = 56
+}
 
 scr_applyScreenRes();
 

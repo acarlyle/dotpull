@@ -9,7 +9,10 @@ var layer = instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, obj_laye
 layer.roomName = roomName;
 layer.roomMapArr = get_arrayOfRoom(layer.roomName);
 layer.yBound = array_height_2d(layer.roomMapArr) * global.TILE_SIZE; 
-layer.xBound = array_length_2d(layer.roomMapArr, 0) * global.TILE_SIZE;
+layer.xBound = array_length_2d(layer.roomMapArr, 0) * global.TILE_SIZE; 
+
+var plat = map_place(layer, obj_fallingPlatform_3Step, 64, 16);
+print(plat[| OBJECT.NAME]);
 
 print("con_layer I: room map height: " + string(array_height_2d(layer.roomMapArr)));
 print("con_layer I: room map length: " + string(array_length_2d(layer.roomMapArr, 0)));
@@ -29,15 +32,15 @@ print("con_layer: mapKeyPriorityList size: " + string(ds_list_size(layer.mapKeyP
 
 for (var i = 0; i < ds_list_size(layer.mapKeyPriorityList); i++){
     var mapKey = ds_list_find_value(layer.mapKeyPriorityList, i);
-    print("con_layer: map key: " + string(mapKey) + "at for loop index " + string(i));
+    //print("con_layer: map key: " + string(mapKey) + "at for loop index " + string(i));
     var mapKeyArr = scr_split(mapKey, ":"); // "mapPos(int):x,y"
     var objPosAt = mapKeyArr[0]; // "mapPos(int)"
     var objPosStr = mapKeyArr[1]; // "x,y" -> functions as the key for the priorityMap 
-    print("con_layer: objPosStr: " + string(objPosStr));
+    //print("con_layer: objPosStr: " + string(objPosStr));
     var objectString = ds_map_find_value(layer.objPosToNameMap, objPosStr);
     //we can have multiple objects stored at each position in the map, so split them
     
-    print("con_layer: objectString: " + string(objectString));
+    //print("con_layer: objectString: " + string(objectString));
     
     var objectArr = scr_split(objectString, ";");
     var objectString = objectArr[objPosAt]; //we want the ith item at this index....
@@ -64,6 +67,7 @@ for (var i = 0; i < ds_list_size(layer.mapKeyPriorityList); i++){
 ds_map_add(global.layerMap, layer.roomName, layer);
 
 //con surface of this layer
+
 
 var alphaVal = 1; //halved each lower surface (for drawing the surface to the screen)
 layer.surfaceInf = con_surface(surf_layerRoom, layer, 0, 0, 1, 1, 0, c_white, alphaVal);

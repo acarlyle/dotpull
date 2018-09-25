@@ -12,7 +12,7 @@ print("Robot Y: " + string(robot[| OBJECT.X]));
 //handle arrow logic
 if (map_place(layer, par_arrow, robot[| OBJECT.X], robot[| OBJECT.Y])){
     var arrow = map_place(layer, par_arrow, robot[| OBJECT.X], robot[| OBJECT.Y]);
-        switch(arrow.dir){
+        switch(arrow[| ARROW.DIR]){
             case "up":
                 if (!global.key_up && !global.key_upleft && !global.key_upright) robot[| ROBOT.CANMOVE] = false;
                 break; 

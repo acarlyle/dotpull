@@ -15,21 +15,21 @@
 var layer = argument0;
 var arrow = argument1;
 
-if (arrow.isRotating){
-   switch(arrow.dir){
+if (arrow[| ARROW.ISROTATING]){
+   switch(arrow[| ARROW.DIR]){
        case "up":
-           arrow.dir = "right";
+           arrow[| ARROW.DIR] = "right";
            break;
        case "right":
-           arrow.dir = "down";
+           arrow[| ARROW.DIR] = "down";
            break;
        case "down":
-           arrow.dir = "left";
+           arrow[| ARROW.DIR] = "left";
            break;
        case "left":
-           arrow.dir = "up";
+           arrow[| ARROW.DIR] = "up";
            break;
    }
-   sprite_index = asset_get_index("spr_arrow_" + arrow.dir);
-   print("done rotate");
+   arrow[| OBJECT.IMGIND] = arrow[| OBJECT.IMGIND] + 1;
+   print("move_arrow: done rotate");
 }
