@@ -31,7 +31,7 @@ global.set_phoneRes = 3; //act phone value is 5 (960 * 640)
 global.WINDOW_WIDTH = 128;
 global.WINDOW_HEIGHT = 192;
 
-roomBegin = rm_ffs_f_11;
+roomBegin = rm_spikestairs_b_1;
 
 
 //scr_applyScreenRes();
@@ -77,7 +77,7 @@ key_enter = keyboard_check_released(vk_enter);
     }
 }*/
 
-key_enter = true;
+key_enter = true; //skip main menu
 
 if (key_up){
     audio_play_sound(snd_menuSelect, 10, false);

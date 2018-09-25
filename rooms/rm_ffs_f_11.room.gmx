@@ -14,15 +14,13 @@
 
 print("Entering level five");
 
-handle_freeMemory();
-
 var initPos = "0,0";
 
 if (instance_number(obj_player) == 0) { //spawning in directly from this level
     //playerX = 112; //set player x and y position
     //playerY = 112; 
-    playerX = 96; //set player x and y position
-    playerY = 32; 
+    playerX = 112; //set player x and y position
+    playerY = 112; 
     
     player = instance_create(playerX, playerY, obj_player);
     obj_player.playerX = playerX;

@@ -1,14 +1,23 @@
 ///handle_freeMemory()
 
-print(" -> handle_freeMemory()");
+/*
+    gets rid of objects construced at deactivated pos (for map_place checking, the object index
+    needs to exist, which is why they are drawn into the game)
+*/
+
+print(" -> handle_freeMemory() [doesn't do anything currently]");
 
 //Destroy 
 with (all){
-    if object_index == obj_layer continue;
-    if object_index == obj_control continue;
+    if (object_get_parent(object_index) == par_control) continue; //Don't delete control objs
+    
+    //print("handle_freeMemory:  parent is : " + string(object_get_name(object_get_parent(object_index))));
     
     if (x == global.DEACTIVATED_X || y == global.DEACTIVATED_Y){
-        instance_destroy();
+    
+        print("handle_freeMemory: destroying " + string(object_get_name(object_index)) + " at: " + string(x) + "," +  string(y));
+        
+        //instance_destroy();
     }
 }
 

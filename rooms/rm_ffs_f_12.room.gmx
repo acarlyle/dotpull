@@ -14,8 +14,6 @@
 
 print("Entering level five");
 
-handle_freeMemory();
-
 var initPos = "0,0";
 
 if (instance_number(obj_player) == 0) { //spawning in directly from this level

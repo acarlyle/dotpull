@@ -1,4 +1,4 @@
-///handle_restartRoom()
+///handle_restartRoom(obj_layer layer)
 
 var layer = argument0;
 
@@ -10,7 +10,5 @@ print(" -> handle_restartRoom() ");
 
 instance_destroy(layer);
 room_goto(room);
-
-global.restartRoom = true;
 
 print("Stacks have been fully popped my liege");

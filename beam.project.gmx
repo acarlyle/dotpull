@@ -130,6 +130,7 @@
         <script>scripts\undo_trigger.gml</script>
         <script>scripts\undo_triggerDoor.gml</script>
       </scripts>
+      <script>scripts\handle_activeLayers.gml</script>
       <script>scripts\handle_activeRooms.gml</script>
       <script>scripts\handle_checkForFallingPlatform.gml</script>
       <script>scripts\handle_checkForRoomTransition.gml</script>
@@ -144,7 +145,6 @@
       <script>scripts\handle_updateLayer.gml</script>
     </scripts>
     <scripts name="Game State Controllers">
-      <script>scripts\handle_freeRoomMemory.gml</script>
       <script>scripts\handle_gameLoad.gml</script>
       <script>scripts\handle_gameSave.gml</script>
       <script>scripts\handle_restartRoom.gml</script>
@@ -231,6 +231,7 @@
       <script>scripts\scr_pathBetween.gml</script>
       <script>scripts\scr_tileContains.gml</script>
       <script>scripts\update_layerSurface.gml</script>
+      <script>scripts\script109.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -321,6 +322,7 @@
       <object>objects\obj_dialogueTrigger</object>
       <object>objects\obj_gotoRoom</object>
       <object>objects\obj_layer</object>
+      <object>objects\obj_layerManager</object>
       <object>objects\obj_menuControl</object>
       <object>objects\obj_stairsAsc</object>
       <object>objects\obj_stairsDesc</object>

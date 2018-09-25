@@ -42,7 +42,7 @@ if (robot[| OBJECT.MOVED]){
     }
     
     if (global.playerMoved){ //TODO add stack functionaly with layers
-        push_robotState(robot, false, robot[| OBJECT.OLDPOSX], robot[| OBJECT.OLDPOSY]);
+        //push_robotState(robot, false, robot[| OBJECT.OLDPOSX], robot[| OBJECT.OLDPOSY]);
         
         //update Robot position vars
         robot[| OBJECT.OLDPOSX] = robot[| OBJECT.X];
@@ -81,7 +81,6 @@ if (robot[| OBJECT.MOVED]){
 print("handle_layerRobots II: room map height: " + string(array_height_2d(layer.roomMapArr)));
 print("handle_layerRobots II: room map length: " + string(array_length_2d(layer.roomMapArr, 0)));
 
-layer.move = false;
 robot[| ROBOT.CANMOVE] = true;
 robot[| OBJECT.STATE] = "tile_one"; //reset state to default movement 
 

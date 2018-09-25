@@ -37,10 +37,6 @@ global.switchRooms = false;
 global.playerMoved = false;
 global.restartRoom = false;
 
-//init vars
-//global.roomContents = ds_stack_create(); //rewindable objects
-global.layerMap = ds_map_create();
-
 //game settings
 global.set_scaleRes = 1;
 global.set_phoneRes = 3; //act phone value is 5 (960 * 640)

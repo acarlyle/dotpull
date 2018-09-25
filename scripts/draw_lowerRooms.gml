@@ -4,20 +4,20 @@
     Draws the rooms lower than the passed upperRoom.
 */
 
-var m_surface = argument0;
+var surface = argument0;
 var upperRoomName = argument1;
 //print(upperRoomName);
 
-print(" -> draw_lowerRooms(" + string(m_surface) + ", " + string(upperRoomName) + ")");
+print(" -> draw_lowerRooms(" + string(surface) + ", " + string(upperRoomName) + ")");
 
-if (!surface_exists(m_surface)){ m_surface = surface_create(room_width, room_height); }
-if (surface_exists(m_surface)){ 
+if (!surface_exists(surface)){ surface = surface_create(room_width, room_height); }
+if (surface_exists(surface)){ 
 
     //print("surfe exists now");
     //print(upperRoomName);
 
     //clear surface
-    surface_set_target(m_surface);
+    surface_set_target(surface);
     draw_clear_alpha(c_black, 0);
     surface_reset_target();
     
@@ -58,7 +58,7 @@ if (surface_exists(m_surface)){
                         }
                     //}
                     //print("surExisted_drawing: " + string(objName) + " at " + string(xPos * global.TILE_SIZE) + ", " + string(yPos * global.TILE_SIZE));
-                    surface_set_target(m_surface);
+                    surface_set_target(surface);
                     draw_sprite(get_spriteFromObjStr(objName), 0, xPos * global.TILE_SIZE, yPos * global.TILE_SIZE);
                     surface_reset_target();
                 }
@@ -68,4 +68,4 @@ if (surface_exists(m_surface)){
 }
 
 
-return m_surface;
+return surface;

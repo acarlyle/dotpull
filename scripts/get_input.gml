@@ -1,6 +1,4 @@
-///get_input(var layer layer)
-
-var layer = argument0;
+///get_input()
 
 //TODO deal with hardcoded obj_player (this might be ok)
 
@@ -17,7 +15,7 @@ global.key_esc = keyboard_check_released(vk_escape);
 global.key_space = keyboard_check_released(vk_space);
 
 if (global.key_esc){
-    handle_restartRoom(layer);
+    return "restart";
 }
 else{
     //disable multiple turns in one move
@@ -25,10 +23,10 @@ else{
         global.key_upleft + global.key_upright + global.key_downleft + 
         global.key_downright + global.key_space >= 2){
         
-        layer.move = false;
+        return false; //do nothing, movement disabled
     }
     else if (global.key_left || global.key_right || global.key_up || global.key_down ||
         global.key_upleft || global.key_upright || global.key_downleft || global.key_downright ||
-        global.key_space) layer.move = true;
-    else if (global.key_r) undo = true;
+        global.key_space) return "move";
+    //else if (global.key_r) return "undo";
 }

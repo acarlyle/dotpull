@@ -6,6 +6,8 @@
 
 print (" -> scr_initRoom()");
 
+if (!instance_exists(obj_layerManager)) instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, obj_layerManager);
+
 //if (scr_hasVisitedRoom(obj_player, room_get_name(room))){  
 //    if (file_exists(room_get_name(room) + ".sav")){ scr_initRoomFromFile(room_get_name(room));}
 //}
@@ -104,6 +106,8 @@ for (var i = 0; i < ds_list_size(priorityElementList); i++){
 print("scr_initRoom: priorityElementList size: " + string(ds_list_size(priorityElementList)));
 
 var layer = con_layer(room_get_name(room), priorityElementList);
+ds_list_add(global.list_activeLayers, layer); //add layer to layer manager
+print("scr_initRoom: added layer of room " + string(layer.roomName) + " to the global.activeLayers ds list in the layerManager.");
 
 with (par_object){
     //if object_index == obj_player continue;

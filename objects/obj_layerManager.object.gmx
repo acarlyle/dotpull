@@ -27,21 +27,8 @@
             <kind>1</kind>
             <string>event_inherited();
 
-roomName = "";
-isActive = true; //whether or not objects are undergoing movement
-roomMapArr = undefined; //2d array of each tile for move_object logic of y,x format
-objPosToNameMap = undefined; //maps x.y -&gt; "objName" for each puzzle element in the room
-objNameAndPosToEnumMap = undefined; //maps "obj_name:x,y" -&gt; (that's a comma!!) obj_enum for each puzzle element in the layer
-mapKeyPriorityList = undefined; //priority queue (act. list) of the keys from the objPosToNameMap sorted by parsing order
-robot = undefined; //cur robot this layer is handling
-surfaceInf = undefined;
-xBound = global.DEACTIVATED_X; //boundary of the roomMapArray
-yBound = global.DEACTIVATED_Y; //boundary of the roomMapArray
-
-list_robots = undefined; //ds list of robots in this layer
-list_objEnums = undefined; //ordered ds_list of objEnums in a layer
-
-updateLayer = false; //update when an objectEnum has moved
+global.layerMap = ds_map_create(); //map of roomName to its obj_layer
+global.list_activeLayers = ds_list_create(); //list (in priority order) of every layer currently active in game
 </string>
           </argument>
         </arguments>
@@ -64,29 +51,15 @@ updateLayer = false; //update when an objectEnum has moved
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>print("instance_destroy for obj_layer " + string(roomName));
-print("#################################################################################");
+            <string>print("instance_destroy for obj_layerManager");
 
-if(objPosToNameMap) ds_map_destroy(objPosToNameMap);
-if(objNameAndPosToEnumMap) ds_map_destroy(objNameAndPosToEnumMap);
-if(mapKeyPriorityList) ds_list_destroy(mapKeyPriorityList);
-
-for (var i = 0; i &lt; ds_list_size(list_robots); i++){
-    ds_list_destroy(list_robots[| i]);
-}
-for (var i = 0; i &lt; ds_list_size(list_objEnums); i++){
-    ds_list_destroy(list_objEnums[| i]);
+for (var i = 0; i &lt; ds_list_size(global.list_activeLayers); i++){
+    ds_list_destroy(global.list_activeLayers[| i]);
 }
 
-if(list_robots) ds_list_destroy(list_robots);
-if(list_objEnums) ds_list_destroy(list_objEnums);
+if (global.list_activeLayers != undefined) ds_list_destroy(global.list_activeLayers);
 
-if(surfaceInf) instance_destroy(surfaceInf);
-
-if (!ds_map_empty(global.layerMap)){ //delete this layer from obj_control's name -&gt; layer map
-    ds_map_delete(global.layerMap, roomName);
-    print("obj_layer instance_destroy: removed this layer from layer map!");  
-}
+if (global.layerMap != undefined) ds_map_destroy(global.layerMap); 
 </string>
           </argument>
         </arguments>
@@ -109,7 +82,8 @@ if (!ds_map_empty(global.layerMap)){ //delete this layer from obj_control's name
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>handle_activeLayers(global.list_activeLayers);
+</string>
           </argument>
         </arguments>
       </action>
