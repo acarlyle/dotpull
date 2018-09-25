@@ -21,8 +21,8 @@ var initPos = "0,0";
 if (instance_number(obj_player) == 0) { //spawning in directly from this level
     //playerX = 112; //set player x and y position
     //playerY = 112; 
-    playerX = 96; //set player x and y position
-    playerY = 32; 
+    playerX = 112; //set player x and y position
+    playerY = 112; 
     
     player = instance_create(playerX, playerY, obj_player);
     obj_player.playerX = playerX;
@@ -120,9 +120,7 @@ triggerDoor3[| TRIGGER.TRIGGERPTR] = trigger3;</code>
     <instance objName="obj_platform" x="32" y="64" name="inst_4EC3A51C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="32" y="48" name="inst_78282AAF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="32" y="32" name="inst_0A81BAA6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_blockPushPull" x="48" y="80" name="inst_6C742EBA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_blockPushPull" x="32" y="80" name="inst_27D9D0C5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_blockPushPull" x="16" y="80" name="inst_7D3D1CD4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_blockPushPull" x="16" y="80" name="inst_6C742EBA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_snare" x="64" y="64" name="inst_94B1213C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_snare" x="96" y="64" name="inst_FD3D6426" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_snare" x="64" y="160" name="inst_F1BE2656" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -141,6 +139,7 @@ triggerDoor3[| TRIGGER.TRIGGERPTR] = trigger3;</code>
     <instance objName="obj_platform" x="112" y="112" name="inst_A8AB328D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_stairsAsc" x="112" y="32" name="inst_A2EF5DFD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="112" y="32" name="inst_59AF6850" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_blockPushPull" x="32" y="80" name="inst_8FC2EEC6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

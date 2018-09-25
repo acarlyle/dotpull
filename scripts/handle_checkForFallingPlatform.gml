@@ -14,8 +14,11 @@ if (object[| OBJECT.X] == object[| OBJECT.OLDPOSX]) &&
 
 if (map_place(layer, par_fallingPlatform, object[| OBJECT.OLDPOSX], object[| OBJECT.OLDPOSY])){
     var fallingPlatform = map_place(layer, par_fallingPlatform, object[| OBJECT.OLDPOSX], object[| OBJECT.OLDPOSY]);
+    
     fallingPlatform[| PLATFORM.STEPSLEFT] -= 1;
-    fallingPlatform[| OBJECT.IMGIND] += 1;
+    if (fallingPlatform[| OBJECT.IMGIND] != 0){
+        fallingPlatform[| OBJECT.IMGIND] -= 1;
+    }
     
     //print("handle_checkForFallingPlatform: Falling platform steps left now: " + string(fallingPlatform[| PLATFORM.STEPSLEFT]));
     

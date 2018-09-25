@@ -91,12 +91,15 @@ switch(get_objectFromString(objName)){
         break; 
     case obj_fallingPlatform_1Step:
         objectEnum[| PLATFORM.STEPSLEFT] = 1;
+        objectEnum[| OBJECT.IMGIND] = 1;
         break;
     case obj_fallingPlatform_2Step:
         objectEnum[| PLATFORM.STEPSLEFT] = 2;
+        objectEnum[| OBJECT.IMGIND] = 2;
         break;  
     case obj_fallingPlatform_3Step:
         objectEnum[| PLATFORM.STEPSLEFT] = 3;
+        objectEnum[| OBJECT.IMGIND] = 3;
         break;    
     case obj_key:
         objectEnum[| OBJECT.CANPULL] = true;

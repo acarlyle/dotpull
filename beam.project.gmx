@@ -356,6 +356,7 @@
       <room>rooms\rm_ffs_f_9</room>
       <room>rooms\rm_ffs_f_10</room>
       <room>rooms\rm_ffs_f_11</room>
+      <room>rooms\rm_ffs_f_11DEBUG</room>
       <room>rooms\rm_ffs_f_12</room>
     </rooms>
     <rooms name="block.Pull MasterQuest">

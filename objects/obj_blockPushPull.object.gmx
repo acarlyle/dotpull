@@ -77,8 +77,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>print("DESTROYED " + string(object_get_name(object_index)));
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>

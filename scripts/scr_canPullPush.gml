@@ -90,10 +90,15 @@ if (object[| OBJECT.NAME] == "obj_spike"){
     but there might be a time when it's a problem.    
 */
 
-if ((object[| OBJECT.CANPULL] ^^ object[| OBJECT.CANPUSH])){  //xor
+if ((object[| OBJECT.CANPULL] && object[| OBJECT.CANPUSH])){
+    if (!(scr_pathBetween(layer, robot, object) || scr_objectsAdjacent(robot, object))){
+        print("scr_canPullPush: Returning false.  No path between or objects adjacent for pull and push object.");
+        return false;
+    }
+}
 
-   if (!scr_pathBetween(layer, robot, object)) return false;
-   
+if ((object[| OBJECT.CANPULL] ^^ object[| OBJECT.CANPUSH])){  //handles pull or push ONLY
+    if (!scr_pathBetween(layer, robot, object)) return false;
 }
 
 if (map_place(layer, obj_triggerDoor, object[| OBJECT.X], object[| OBJECT.Y]) && !map_place(layer, obj_wall, posX, posY)){
