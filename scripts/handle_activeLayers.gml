@@ -77,7 +77,7 @@ if (inputString != false)
                 //cleanup memory before switch rooms.  need to remove robot stuff from this layer
                 if global.switchRooms{
                     handle_freeMemory();
-                    handle_removeFromLayer(layer, layer.robot);
+                    handle_removeRobotFromLayer(layer, layer.robot);
                 }
             }
         }

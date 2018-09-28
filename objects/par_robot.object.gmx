@@ -46,8 +46,8 @@
     canMove = true;
     oldPlayerX = 0;
     oldPlayerY = 0;
-    playerX = 0;
-    playerY = 0;
+    playerX = x;
+    playerY = y;
     canPull = true;
     move = false;
     undo = false;

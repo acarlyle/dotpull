@@ -14,9 +14,7 @@
 
 print("Entering " + room_get_name(room));
 
-
-
-var initPos = "0,0";
+print("number of obj_players: " + string(instance_number(obj_player)));
 
 if (instance_number(obj_player) == 0) { //spawning in directly from this level
     playerX = 48; //set player x and y position
@@ -26,6 +24,9 @@ if (instance_number(obj_player) == 0) { //spawning in directly from this level
     obj_player.playerX = playerX;
     obj_player.playerY = playerY;
     initPos = string(obj_player.x) + "," + (string(obj_player.y));
+    
+    print("Creation code for rm_spikestairs_f_1: Spawned in object player at: " + string(initPos));
+    
 }
 else{
     obj_player.x = obj_player.playerX;
@@ -36,7 +37,6 @@ else{
 var initPos = string(obj_player.x) + "," + (string(obj_player.y));
 //ds_stack_push(obj_player.moveHistory, initPos);
 //ds_stack_push(obj_player.itemHistory, array(obj_player.numKeys));
-print("initPos:" + initPos);
 
 scr_initRoom();</code>
   <enableViews>0</enableViews>
