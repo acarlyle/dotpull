@@ -1,6 +1,5 @@
 ///handle_activeLayers(ds_list activeLayers)
 
-var 
 var activeLayers = argument0;
 
 scr_clearStepGlobals();
@@ -32,7 +31,10 @@ if (inputString != false)
         print("#####################");
         print("");
         
-        if (global.restartRoom) handle_restartRoom(layer);
+        if (global.restartRoom){
+            handle_restartRoom(layer);
+            continue;
+        }
     
         //used for cutscene triggers
         if (global.playerCanMove && layer.list_robots){
@@ -75,8 +77,10 @@ if (inputString != false)
                     handle_updateLayer(layer);
                 }
                 //cleanup memory before switch rooms.  need to remove robot stuff from this layer
-                if global.switchRooms{
-                    handle_freeMemory();
+                if (obj_layerManager.switchMainLayer){
+                    //Add Robot to new Player Layer
+                    handle_addRobotToLayer(layer.robot, obj_layerManager.playerLayer);
+                    //Remove Robot from current layer
                     handle_removeRobotFromLayer(layer, layer.robot);
                 }
             }

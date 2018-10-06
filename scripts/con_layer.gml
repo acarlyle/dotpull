@@ -65,7 +65,7 @@ for (var i = 0; i < ds_list_size(layer.mapKeyPriorityList); i++){
 }
 
 // Map the roomname to the layer (obj_control map)
-ds_map_add(global.layerMap, layer.roomName, layer);
+ds_map_add(obj_layerManager.layerMap, layer.roomName, layer);
 
 //con surface of this layer
 

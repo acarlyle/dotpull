@@ -4,9 +4,13 @@
     Called in every room's creation code  
 */
 
-print (" -> scr_initRoom()");
+print ("-> scr_initRoom()");
 
-if (!instance_exists(obj_layerManager)) instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, obj_layerManager);
+var layer;
+
+if (!instance_exists(obj_layerManager)){
+    con_layerManager();
+}
 
 //if (scr_hasVisitedRoom(obj_player, room_get_name(room))){  
 //    if (file_exists(room_get_name(room) + ".sav")){ scr_initRoomFromFile(room_get_name(room));}
@@ -35,7 +39,7 @@ if (file_exists(roomSaveFileName)) {
     print("###############################");
     print("###############################");
     print("###############################");
-    print("scr_initRoom: Warning: " + string(roomSaveFileName) + " has been deleted!");
+    print(" -> scr_initRoom: Warning: " + string(roomSaveFileName) + " has been deleted!");
 }
 
 var priorityElementList = ds_list_create();
@@ -103,16 +107,39 @@ for (var i = 0; i < ds_list_size(priorityElementList); i++){
 
 //handle_activeRooms(); //just draws layer (con_surface) TODO
 
-print("scr_initRoom: priorityElementList size: " + string(ds_list_size(priorityElementList)));
+print(" -> scr_initRoom: priorityElementList size: " + string(ds_list_size(priorityElementList)));
 
-var layer = con_layer(room_get_name(room), priorityElementList);
-ds_list_add(global.list_activeLayers, layer); //add layer to layer manager
-print("scr_initRoom: added layer of room " + string(layer.roomName) + " to the global.activeLayers ds list in the layerManager.");
+
+//add layer to layer manager's active layer list if it's not there
+if (!ds_map_find_value(obj_layerManager.layerMap, room_get_name(room))){
+    layer = con_layer(room_get_name(room), priorityElementList);
+
+    ds_list_add(obj_layerManager.list_activeLayers, layer);
+    print(" -> scr_initRoom: added layer of room " + string(layer.roomName) + " to the global.activeLayers ds list in the layerManager.");
+}
+//get the layer of this room and update the surface
+else{
+    layer = ds_map_find_value(obj_layerManager.layerMap, room_get_name(room));
+    layer.surfaceInf = con_surface(surf_layerRoom, layer, 0, 0, 1, 1, 0, c_white, 1);
+}
+
+obj_layerManager.playerLayer = layer;
+print(" -> scr_initRoom: !!!!!!!!!!!!!!!!PLAYER LAYER: " + string(obj_layerManager.playerLayer.roomName));
 
 with (par_object){
-    //if object_index == obj_player continue;
-    
     instance_destroy();
+}
+
+var platform = instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, obj_platform);
+for (var i = 0; i < ds_list_size(layer.list_objEnums); i++){
+    var objEnum = layer.list_objEnums[| i];
+    if (!instance_exists(get_objectFromString(objEnum[| OBJECT.NAME]))){ 
+        instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, get_objectFromString(objEnum[| OBJECT.NAME]));
+        print(" -> scr_initRoom: Created a deactivated " + string(objEnum[| OBJECT.NAME]) + " at " + string(global.DEACTIVATED_X) + "," + string(global.DEACTIVATED_Y));
+        print(objEnum[| OBJECT.X]);
+        print(objEnum[| OBJECT.Y]);
+        print(layer.roomMapArr[16/16, 64/16]);
+    }
 }
 
 /*
@@ -120,17 +147,6 @@ with (par_object){
     for object_index checks.
 */
 
-var platform = instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, obj_platform);
-for (var i = 0; i < ds_list_size(layer.list_objEnums); i++){
-    var objEnum = layer.list_objEnums[| i];
-    if (!instance_exists(get_objectFromString(objEnum[| OBJECT.NAME]))){ 
-        instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, get_objectFromString(objEnum[| OBJECT.NAME]));
-        print("scr_initRoom: Created a deactivated " + string(objEnum[| OBJECT.NAME]) + " at " + string(global.DEACTIVATED_X) + "," + string(global.DEACTIVATED_Y));
-        print(objEnum[| OBJECT.X]);
-        print(objEnum[| OBJECT.Y]);
-        print(layer.roomMapArr[16/16, 64/16]);
-    }
-}
 
 with (all){
     if object_index == obj_player continue; //don't fuck with player's stacks (((yet)))
@@ -144,7 +160,7 @@ with (all){
 ds_list_destroy(priorityElementList);
 
 
-print("scr_initRoom: END ");
+print(" -> scr_initRoom: END ");
 print( "" );
 
 

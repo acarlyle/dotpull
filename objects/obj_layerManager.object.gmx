@@ -27,8 +27,10 @@
             <kind>1</kind>
             <string>event_inherited();
 
-global.layerMap = ds_map_create(); //map of roomName to its obj_layer
-global.list_activeLayers = ds_list_create(); //list (in priority order) of every layer currently active in game
+layerMap = ds_map_create(); //map of roomName to its obj_layer
+list_activeLayers = ds_list_create(); //list (in priority order) of every layer currently active in game
+playerLayer = undefined;
+switchMainLayer = false; //if player character is switching rooms
 </string>
           </argument>
         </arguments>
@@ -53,13 +55,13 @@ global.list_activeLayers = ds_list_create(); //list (in priority order) of every
             <kind>1</kind>
             <string>print("instance_destroy for obj_layerManager");
 
-for (var i = 0; i &lt; ds_list_size(global.list_activeLayers); i++){
-    ds_list_destroy(global.list_activeLayers[| i]);
+for (var i = 0; i &lt; ds_list_size(list_activeLayers); i++){
+    ds_list_destroy(list_activeLayers[| i]);
 }
 
-if (global.list_activeLayers != undefined) ds_list_destroy(global.list_activeLayers);
+if (list_activeLayers != undefined) ds_list_destroy(list_activeLayers);
 
-if (global.layerMap != undefined) ds_map_destroy(global.layerMap); 
+if (layerMap != undefined) ds_map_destroy(layerMap); 
 </string>
           </argument>
         </arguments>
@@ -82,7 +84,9 @@ if (global.layerMap != undefined) ds_map_destroy(global.layerMap);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>handle_activeLayers(global.list_activeLayers);
+            <string>handle_activeLayers(list_activeLayers);
+
+//print("# active layers: " + string(ds_list_size(global.list_activeLayers)));
 </string>
           </argument>
         </arguments>

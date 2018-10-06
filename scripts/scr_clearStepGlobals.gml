@@ -1,7 +1,7 @@
 ///scr_clearStepGlobals
 
 global.playerMoved = false;
-global.switchRooms = false;
+obj_layerManager.switchMainLayer = false;
 global.restartRoom = false;
 
 self.updateLayer = false;

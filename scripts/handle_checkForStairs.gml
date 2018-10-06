@@ -6,7 +6,7 @@ var robot = argument1;
 print("-> handle_checkForStairs()");
 
 //MOVE UP/DOWN A FLOOR
-if (map_place(layer, par_stairs, robot[| ROBOT.NEWX], robot[| ROBOT.NEWY])){
+if (map_place(layer, par_stairs, robot[| OBJECT.OLDPOSX], robot[| OBJECT.OLDPOSY])){
     var thisRoomName = layer.roomName;
     print(thisRoomName);
     thisRoomNameArr = scr_split(thisRoomName, "_");
@@ -16,7 +16,7 @@ if (map_place(layer, par_stairs, robot[| ROBOT.NEWX], robot[| ROBOT.NEWY])){
     var floorType = thisRoomNameArr[2];
     var floorNumber = thisRoomNameArr[3];
     
-    if (map_place(layer, obj_stairsAsc, robot[| ROBOT.NEWX], robot[| ROBOT.NEWY])){
+    if (map_place(layer, obj_stairsAsc, robot[| OBJECT.OLDPOSX], robot[| OBJECT.OLDPOSY])){
         switch(floorType){
             case "b": //basement
                 print("asc_basement");
@@ -29,7 +29,7 @@ if (map_place(layer, par_stairs, robot[| ROBOT.NEWX], robot[| ROBOT.NEWY])){
                 break;
         }
     }
-    else if map_place(layer, obj_stairsDesc, robot[| ROBOT.NEWX], robot[| ROBOT.NEWY]){
+    else if map_place(layer, obj_stairsDesc, robot[| OBJECT.OLDPOSX], robot[| OBJECT.OLDPOSY]){
         switch(floorType){
             case "b": //basement
                 print("desc_basement");
@@ -53,6 +53,7 @@ if (map_place(layer, par_stairs, robot[| ROBOT.NEWX], robot[| ROBOT.NEWY])){
     
     if handle_gotoRoom(scr_roomFromString(newRoomName), "gotoRoom"){ 
         //robot.moved = true; //this allows for objects to move before the room transitions
-        global.switchRooms = true;
+        obj_layerManager.switchMainLayer = true;
+        obj_layerManager.playerLayer = get_layerFromRoomStr(newRoomName); //set player layer to new layer
     }
 }

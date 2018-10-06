@@ -15,10 +15,11 @@
 print("Entering " + room_get_name(room));
 
 print("number of obj_players: " + string(instance_number(obj_player)));
+//with(obj_player) instance_destroy();
 
 if (instance_number(obj_player) == 0) { //spawning in directly from this level
     playerX = 48; //set player x and y position
-    playerY = 64; 
+    playerY = 80; 
     
     player = instance_create(playerX, playerY, obj_player);
     obj_player.playerX = playerX;

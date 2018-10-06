@@ -20,7 +20,7 @@ print("---------------------------");
 print("----------ROOM TRANSITION------------");
 //handle_roomSave(false, layer); //TODO
     
-print("----------------------------------------------");
+print("---------------------------");
 print("");
 
 //handle_freeMemory(); NOT HERE

@@ -6,4 +6,9 @@
 
 var roomName = argument0;
 
-return ds_map_find_value(global.layerMap, roomName);
+layer = ds_map_find_value(obj_layerManager.layerMap, roomName);
+
+//if layer doesn't exist, creare a basic version of it
+if (!layer) layer = con_layer(roomName, false);
+
+return layer;

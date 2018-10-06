@@ -88,6 +88,7 @@
   <scripts name="scripts">
     <scripts name="Constructors">
       <script>scripts\con_layer.gml</script>
+      <script>scripts\con_layerManager.gml</script>
       <script>scripts\con_objectEnum.gml</script>
       <script>scripts\con_priorityObjPosMap.gml</script>
       <script>scripts\con_roomObjectArrList.gml</script>
@@ -132,8 +133,8 @@
       </scripts>
       <script>scripts\handle_activeLayers.gml</script>
       <script>scripts\handle_activeRooms.gml</script>
+      <script>scripts\handle_addRobotToLayer.gml</script>
       <script>scripts\handle_checkForFallingPlatform.gml</script>
-      <script>scripts\handle_checkForRoomTransition.gml</script>
       <script>scripts\handle_checkForStairs.gml</script>
       <script>scripts\handle_cleanUpElementEffects.gml</script>
       <script>scripts\handle_deployBaby.gml</script>

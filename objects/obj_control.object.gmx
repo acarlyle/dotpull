@@ -33,7 +33,6 @@ event_inherited();
 
 //cutscene trigger, logic in player step
 global.playerCanMove = true;
-global.switchRooms = false;
 global.playerMoved = false;
 global.restartRoom = false;
 

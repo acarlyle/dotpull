@@ -19,11 +19,11 @@ var object = argument1;
 var posX = argument2;
 var posY = argument3;
 
-print("-> map_place(" + string(object_get_name(object)) + ", " + string(posX) + ", " + string(posY) + ")");
+//print("-> map_place(" + string(object_get_name(object)) + ", " + string(posX) + ", " + string(posY) + ")");
 
 //out of bounds check
 if (((posX >= layer.xBound) || posX < 0) || ((posY >= layer.yBound) || posY < 0)){
-    print("map_place: Warning!  Out of array map bounds.  returning false");
+    //print("map_place: Warning!  Out of array map bounds.  returning false");
     return false;
 }
 
