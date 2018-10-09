@@ -90,6 +90,7 @@
       <script>scripts\con_layer.gml</script>
       <script>scripts\con_layerManager.gml</script>
       <script>scripts\con_objectEnum.gml</script>
+      <script>scripts\con_priorityObjectList.gml</script>
       <script>scripts\con_priorityObjPosMap.gml</script>
       <script>scripts\con_roomObjectArrList.gml</script>
       <script>scripts\con_surface.gml</script>
@@ -160,10 +161,12 @@
       <script>scripts\get_input.gml</script>
       <script>scripts\get_layerFromRoomStr.gml</script>
       <script>scripts\get_lowerRoomName.gml</script>
+      <script>scripts\get_lowestRoomInLayer.gml</script>
       <script>scripts\get_objectFromString.gml</script>
       <script>scripts\get_objectLocalVarsStr.gml</script>
       <script>scripts\get_objectsFromRoomArrayTile.gml</script>
       <script>scripts\get_parent.gml</script>
+      <script>scripts\get_roomFromString.gml</script>
       <script>scripts\get_spriteFromObjStr.gml</script>
     </scripts>
     <scripts name="Helpers">

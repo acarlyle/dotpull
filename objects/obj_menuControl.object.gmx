@@ -77,7 +77,7 @@ key_enter = keyboard_check_released(vk_enter);
     }
 }*/
 
-key_enter = true; //skip main menu
+//key_enter = true; //skip main menu
 
 if (key_up){
     audio_play_sound(snd_menuSelect, 10, false);
