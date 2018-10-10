@@ -158,6 +158,7 @@
       <script>scripts\get_arrayOfRoomFromFile.gml</script>
       <script>scripts\get_curRoomObjects.gml</script>
       <script>scripts\get_deactivatedRoomObjects.gml</script>
+      <script>scripts\get_higherRoomName.gml</script>
       <script>scripts\get_input.gml</script>
       <script>scripts\get_layerFromRoomStr.gml</script>
       <script>scripts\get_lowerRoomName.gml</script>

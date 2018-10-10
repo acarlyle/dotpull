@@ -4,7 +4,7 @@
     Called in every room's creation code  
 */
 
-print ("-> scr_initRoom()");
+print ("-> scr_initRoom for " + string(room_get_name(room)));
 
 var layer;
 
@@ -19,7 +19,7 @@ if (!instance_exists(obj_layerManager)){
     Init every layer in this room and hand them off to the LayerManager.  This is done
     for every rm_ in this layer.  
 */
-if (global.loadingRoom){
+if (global.loadingRoom && !global.loadedRoom){
 
     var roomSaveFileName = string(room_get_name(room)) + ".sav";
     
@@ -31,8 +31,14 @@ if (global.loadingRoom){
         print(" -> scr_initRoom: Warning: " + string(roomSaveFileName) + " has been deleted!");
     }
     
-    //var priorityElementList = con_priorityObjectList(); //gets a list of every object in this room sorted by movement priority 
-    //ds_list_destroy(priorityElementList);
+    var priorityElementList = con_priorityObjectList(); //gets a list of every object in this room sorted by movement priority 
+    
+    //add layer to layer manager's active layer list if it's not there
+    layer = con_layer(room_get_name(room), priorityElementList);
+    ds_list_add(obj_layerManager.list_activeLayers, layer);
+    print(" -> scr_initRoom: added layer of room " + string(layer.roomName) + " to the global.activeLayers ds list in the layerManager.");
+    
+    if (obj_layerManager.playerRoom == room) obj_layerManager.playerLayer = layer; //set the correct player layer
     
     var platform = instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, obj_platform);
     for (var i = 0; i < ds_list_size(layer.list_objEnums); i++){
@@ -45,37 +51,24 @@ if (global.loadingRoom){
             print(layer.roomMapArr[16/16, 64/16]);
         }
     }
-}
-
-else{
     
-    //add layer to layer manager's active layer list if it's not there
-    //if (!ds_map_find_value(obj_layerManager.layerMap, room_get_name(room))){
-    //layer = con_layer(room_get_name(room), priorityElementList);
-    //ds_list_add(obj_layerManager.list_activeLayers, layer);
-    //    print(" -> scr_initRoom: added layer of room " + string(layer.roomName) + " to the global.activeLayers ds list in the layerManager.");
-    //}
-    //get the layer of this room and update the surface
-    //else{
-    //    layer = ds_map_find_value(obj_layerManager.layerMap, room_get_name(room));
-    //    layer.surfaceInf = con_surface(surf_layerRoom, layer, 0, 0, 1, 1, 0, c_white, 1);
-    //}
+    ds_list_destroy(priorityElementList);
     
-    //obj_layerManager.playerLayer = layer;
-    //print(" -> scr_initRoom: !!!!!!!!!!!!!!!!PLAYER LAYER: " + string(obj_layerManager.playerLayer.roomName));
-    
-    
-    /*//set the state of the object in the list
-    for (var i = 0; i < ds_list_size(priorityElementList); i++){
-        var inst = ds_list_find_value(priorityElementList, i);
-        set_objectState(inst);
+    /*
+        If thehere's a room above us, continue initing each layer.  Otherwise, head to the PlayerLayer and load in the real level.  
+    */
+    var higherRoomName = get_higherRoomName(room_get_name(room));
+    if (higherRoomName != undefined){
+        room_goto(get_roomFromString(higherRoomName));
+        print("hmm ?");
+    }
+    else{
+        room_goto(obj_layerManager.playerRoom);
+        global.loadedRoom = true;
+        global.loadingRoom = false;
     }
     
-    ds_list_destroy(priorityElementList);*/
-
 }
-
-/*
-    Load in every rm_ in this layer to give to the LayerManager.  
-*/
-if (global.loadedRoom == false) global.loadingRoom = true;
+else if (global.loadingRoom == false && global.loadedRoom == false){
+    global.loadingRoom = true;
+}

@@ -6,7 +6,8 @@
 */
 
 instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, obj_layerManager);
-
+obj_layerManager.playerRoom = room; //we can return here after we've finished initing the layer
+obj_layerManager.list_activeLayers = ds_list_create();
 //now create every layer in this rm_ starting at the lowest floor
 
 var lowestRoom = get_lowestRoomInLayer(room);
