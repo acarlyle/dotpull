@@ -4,6 +4,8 @@
     Called in every room's creation code  
 */
 
+print(" ####################################### ");
+print("");
 print ("-> scr_initRoom for " + string(room_get_name(room)));
 
 var layer;

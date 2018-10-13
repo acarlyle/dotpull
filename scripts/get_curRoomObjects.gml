@@ -16,8 +16,8 @@ for (var yy = 0; yy < room_height / global.TILE_SIZE; yy++){
     }
 }
 
-print("get_curRoomObjects: room array length: " + string(array_length_2d(arrMap, 0)));
-print("get_curRoomObjects: room array height: " + string(array_height_2d(arrMap)));
+//print("get_curRoomObjects: room array length: " + string(array_length_2d(arrMap, 0)));
+//print("get_curRoomObjects: room array height: " + string(array_height_2d(arrMap)));
 
 /*
 
@@ -72,7 +72,7 @@ for (var yy = 0; yy < room_height / global.TILE_SIZE; yy++){
     }
 }
 
-print("get_curRoomObjects: print array of this thing before returning it: ");
-print2dArray(arrMap, false);
+//print("get_curRoomObjects: print array of this thing before returning it: ");
+//print2dArray(arrMap, false);
 
 return arrMap;

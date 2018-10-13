@@ -8,7 +8,6 @@ var inputString = get_input();
 
 switch(inputString){
     case "move":
-        print("handle_activeLayers: movement input detected.  will process");
         break;
     case "restart":
         global.restartRoom = true;
@@ -19,17 +18,15 @@ switch(inputString){
 //handle move, restart room
 if (inputString != false)
 {
-
     //handle each active layer
     for (var l = 0; l < ds_list_size(activeLayers); l++){
     
         var layer = activeLayers[| l];
         
         print("");
-        print("#####################");
-        print("handle_activeLayers: handling layer for room " + string(layer.roomName));
-        print("#####################");
+        print(" ####################################### ");
         print("");
+        print("handle_activeLayers: handling layer for room " + string(layer.roomName));
         
         if (global.restartRoom){
             handle_restartRoom(layer);
