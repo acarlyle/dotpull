@@ -6,7 +6,7 @@
 
 print(" ####################################### ");
 print("");
-print ("-> scr_initRoom for " + string(room_get_name(room)));
+print ("-> scr_initRoom() for " + string(room_get_name(room)));
 
 var layer;
 
@@ -73,4 +73,17 @@ if (global.loadingRoom && !global.loadedRoom){
 }
 else if (global.loadingRoom == false && global.loadedRoom == false){
     global.loadingRoom = true;
+    print(" -> scr_initRoom() loadingRoom is a go!");
+}
+else if (global.loadedRoom) { 
+
+    /*
+        Surfaces are not persistent objects.  they will need to be constructed again after the loading phase 
+        switches between several rooms.
+    */
+    
+    layer = get_layerFromRoomStr(room_get_name(room));
+    layer.surfaceInf = con_surface(surf_layerRoom, layer, 0, 0, 1, 1, 0, c_white, 1);
+    
+    print(" -> scr_initRoom: room Loaded."); 
 }

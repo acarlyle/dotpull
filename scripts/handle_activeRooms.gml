@@ -5,7 +5,7 @@
     floor.
 */
 
-print(" -> handle_activeRooms() ");  
+/*print(" -> handle_activeRooms() ");  
 
 var curRoomName = room_get_name(room);
 var lowerRoomName = "";
@@ -17,4 +17,4 @@ while (get_lowerRoomName(curRoomName) != undefined){
     lowerRoomName = get_lowerRoomName(curRoomName); 
     curRoomName = lowerRoomName;
     //print("alphaVal: " + string(alphaVal));
-}
+}*/

@@ -12,9 +12,6 @@ layer.roomMapArr = get_arrayOfRoom(layer.roomName);
 layer.yBound = array_height_2d(layer.roomMapArr) * global.TILE_SIZE; 
 layer.xBound = array_length_2d(layer.roomMapArr, 0) * global.TILE_SIZE; 
 
-var plat = map_place(layer, obj_fallingPlatform_3Step, 64, 16);
-print(plat[| OBJECT.NAME]);
-
 print("con_layer I: room map height: " + string(array_height_2d(layer.roomMapArr)));
 print("con_layer I: room map length: " + string(array_length_2d(layer.roomMapArr, 0)));
 
@@ -68,8 +65,6 @@ for (var i = 0; i < ds_list_size(layer.mapKeyPriorityList); i++){
 ds_map_add(obj_layerManager.layerMap, layer.roomName, layer);
 
 //con surface of this layer
-
-
 var alphaVal = 1; //halved each lower surface (for drawing the surface to the screen)
 layer.surfaceInf = con_surface(surf_layerRoom, layer, 0, 0, 1, 1, 0, c_white, alphaVal);
 

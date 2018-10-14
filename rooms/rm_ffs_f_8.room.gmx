@@ -40,10 +40,14 @@ scr_initRoom();
 
 var layer = get_layerFromRoomStr(room_get_name(room));
 
-var trigger1 = map_place(layer, obj_trigger, 64, 48); 
-var triggerDoor1 = map_place(layer, obj_triggerDoor, 80, 160); 
-trigger1[| TRIGGER.DOORPTR] = triggerDoor1;
-triggerDoor1[| TRIGGER.TRIGGERPTR] = trigger1;</code>
+if (layer != undefined){
+
+    var trigger1 = map_place(layer, obj_trigger, 64, 48); 
+    var triggerDoor1 = map_place(layer, obj_triggerDoor, 80, 160); 
+    trigger1[| TRIGGER.DOORPTR] = triggerDoor1;
+    triggerDoor1[| TRIGGER.TRIGGERPTR] = trigger1;
+    
+}</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

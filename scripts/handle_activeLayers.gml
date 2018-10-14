@@ -71,7 +71,10 @@ if (inputString != false)
                 //save state
                 if (global.playerMoved){
                     handle_gameSave(obj_player);
-                    handle_updateLayer(layer);
+                    print("");
+                    if (obj_layerManager.playerLayer == layer){
+                        handle_updateLayer(layer);
+                    }
                 }
                 //cleanup memory before switch rooms.  need to remove robot stuff from this layer
                 if (obj_layerManager.switchMainLayer){

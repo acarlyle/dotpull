@@ -29,8 +29,8 @@
 
 layerMap = ds_map_create(); //map of roomName to its obj_layer
 list_activeLayers = ds_list_create(); //list (in priority order) of every layer currently active in game
-playerLayer = undefined;
-playerRoom = undefined;
+playerLayer = undefined; //obj_layer
+playerRoom = undefined; //actual room asset
 switchMainLayer = false; //if player character is switching rooms
 </string>
           </argument>
