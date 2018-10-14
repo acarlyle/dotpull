@@ -64,9 +64,9 @@ for (var i = 0; i < ds_list_size(layer.mapKeyPriorityList); i++){
 // Map the roomname to the layer (obj_control map)
 ds_map_add(obj_layerManager.layerMap, layer.roomName, layer);
 
-//con surface of this layer
-var alphaVal = 1; //halved each lower surface (for drawing the surface to the screen)
-layer.surfaceInf = con_surface(surf_layerRoom, layer, 0, 0, 1, 1, 0, c_white, alphaVal);
+//con surface of this layer.  I don't think it should be constructed here?
+//var alphaVal = 1; //halved each lower surface (for drawing the surface to the screen)
+//layer.surfaceInf = con_surface(surf_layerRoom, layer, 0, 0, 1, 1, 0, c_white, alphaVal);
 
 print("con_layer: Finished constructing obj_layer!");
 

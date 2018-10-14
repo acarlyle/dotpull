@@ -42,15 +42,22 @@ if (global.loadingRoom && !global.loadedRoom){
     
     if (obj_layerManager.playerRoom == room) obj_layerManager.playerLayer = layer; //set the correct player layer
     
+    /*
+        Create a persistent asset (persistent only affects this instance!) 
+        reference at deactivated tile so that every layer has calling access 
+        to every active object.  
+    */
     var platform = instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, obj_platform);
+    platform.persistent = true;
+    
+    print(" -> scr_initRoom: list_objEnums size: " + string(ds_list_size(layer.list_objEnums)));
+    
     for (var i = 0; i < ds_list_size(layer.list_objEnums); i++){
         var objEnum = layer.list_objEnums[| i];
-        if (!instance_exists(get_objectFromString(objEnum[| OBJECT.NAME]))){ 
-            instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, get_objectFromString(objEnum[| OBJECT.NAME]));
+        if (!instance_place(global.DEACTIVATED_X, global.DEACTIVATED_Y, get_objectFromString(objEnum[| OBJECT.NAME]))){ 
+            var inst = instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, get_objectFromString(objEnum[| OBJECT.NAME]));
+            inst.persistent = true;
             print(" -> scr_initRoom: Created a deactivated " + string(objEnum[| OBJECT.NAME]) + " at " + string(global.DEACTIVATED_X) + "," + string(global.DEACTIVATED_Y));
-            print(objEnum[| OBJECT.X]);
-            print(objEnum[| OBJECT.Y]);
-            print(layer.roomMapArr[16/16, 64/16]);
         }
     }
     
@@ -82,8 +89,23 @@ else if (global.loadedRoom) {
         switches between several rooms.
     */
     
+    
+    
     layer = get_layerFromRoomStr(room_get_name(room));
     layer.surfaceInf = con_surface(surf_layerRoom, layer, 0, 0, 1, 1, 0, c_white, 1);
+    
+    /*
+        Free up real objects in the room (does not clear obj_controls or objects hanging around 
+        as asset references). 
+    */
+    with (par_object)
+    {
+        if (x != global.DEACTIVATED_X && y != global.DEACTIVATED_Y)
+        {
+            instance_destroy();
+            print(" -> scr_initRoom: Destroyed real obj " + string(object_get_name(object_index)) + " at x,y: " + string(x) + "," + string(y));
+        }
+    }
     
     print(" -> scr_initRoom: room Loaded."); 
 }

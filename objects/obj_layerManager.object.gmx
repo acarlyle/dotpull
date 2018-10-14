@@ -88,6 +88,8 @@ if (layerMap != undefined) ds_map_destroy(layerMap);
             <string>handle_activeLayers(list_activeLayers);
 
 //print("# active layers: " + string(ds_list_size(global.list_activeLayers)));
+
+//with(obj_platform) print(x);
 </string>
           </argument>
         </arguments>
