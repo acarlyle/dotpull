@@ -95,7 +95,7 @@ if (inputString != false)
                         handle_addRobotToLayer(layer.robot, obj_layerManager.playerLayer);
                     }
                     //Remove Robot from current layer
-                    handle_removeRobotFromLayer(layer, layer.robot);
+                    handle_switchPlayerLayer(layer, layer.robot);
                     
                     obj_layerManager.loadedRoom = false;
                     obj_layerManager.loadingRoom = true;
@@ -111,9 +111,11 @@ if (inputString != false)
         }
     }
     
-    if (global.playerMoved || obj_layerManager.switchMainLayer){
+    if (global.playerMoved || obj_layerManager.switchMainLayer)
+    {
         obj_layerManager.turnNum++; //increment turn counter
     }
+    
     print("");
     print("----------------------------------------------");
     print(" -> handle_activeLayers: END of LayerManager Turn " + string(obj_layerManager.turnNum));

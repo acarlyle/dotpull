@@ -88,23 +88,33 @@ if (obj_layerManager.loadingRoom && !obj_layerManager.loadedRoom)
     if (higherRoomName != undefined && !layer_isActive(get_layerFromRoomStr(higherRoomName)))
     {
         room_goto(get_roomFromString(higherRoomName));
-        print(" -> scr_initRoom: roomGoto(" + string(higherRoomName) + ")");
+        print(" -> scr_initRoom: higher room detected.  roomGoto(" + string(higherRoomName) + ")");
     }
     else
     {
-        room_goto(obj_layerManager.playerRoom);
-        print(" -> scr_initRoom: roomGoto(" + string(room_get_name(obj_layerManager.playerRoom)) + ")");
-        obj_layerManager.loadedRoom = true;
-        obj_layerManager.loadingRoom = false;
+        /*
+            For some reason a simple room_goto isn't working when we're scr_initRooming from one floor to another.
+            This forces GameMaker to actually load in the surface and purge all the real objs.
+        */
+        
+        if ((room) == obj_layerManager.playerRoom)
+        {
+            obj_layerManager.loadedRoom = true;
+            obj_layerManager.loadingRoom = false;
+        }
+        
+        //room_goto(obj_layerManager.playerRoom);
+        
     }
     
 }
 else if (obj_layerManager.loadingRoom == false && obj_layerManager.loadedRoom == false)
 {
     obj_layerManager.loadingRoom = true;
-    print(" -> scr_initRoom() loadingRoom is a go!");
+    print(" -> scr_initRoom() loadingRoom is a go!  loadingRoom is true.");
 }
-else if (obj_layerManager.loadedRoom) 
+
+if (obj_layerManager.loadedRoom) 
 { 
 
     /*
@@ -131,4 +141,5 @@ else if (obj_layerManager.loadedRoom)
     }
     
     print(" -> scr_initRoom: " + string(room_get_name(room)) + " loaded."); 
+    
 }

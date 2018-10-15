@@ -26,8 +26,8 @@ if (instance_number(obj_player) == 0) { //spawning in directly from this level
     initPos = string(obj_player.x) + "," + (string(obj_player.y));
 }
 else{
-    obj_player.x = obj_player.playerX;
-    obj_player.y = obj_player.playerY;
+    obj_player.x = 0;
+    obj_player.y = 32;
 }
 
 

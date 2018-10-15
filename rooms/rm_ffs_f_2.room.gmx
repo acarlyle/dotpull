@@ -19,8 +19,8 @@ handle_freeMemory();
 var initPos = "0,0";
 
 if (instance_number(obj_player) == 0) { //spawning in directly from this level
-    var playerX = 112; //set player x and y position
-    var playerY = 176; 
+    playerX = 112; //set player x and y position
+    playerY = 176; 
     
     var player = instance_create(playerX, playerY, obj_player);
     obj_player.playerX = playerX;
@@ -29,8 +29,8 @@ if (instance_number(obj_player) == 0) { //spawning in directly from this level
     print("obj_player created");
 }
 else{
-    obj_player.x = obj_player.playerX;
-    obj_player.y = obj_player.playerY;
+    obj_player.x = 112;
+    obj_player.y = 176;
 }
 
 

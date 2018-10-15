@@ -15,3 +15,5 @@ var lowestRoom = get_lowestRoomInLayer(room);
 print("-> con_layerManager: lowestRoomName in layer: " + string(room_get_name(lowestRoom)));
 
 room_goto(lowestRoom); //begin constructing each layer by loading in each room; work continues in scr_initRoom
+
+print(" -> con_layerManager: roomGoto(" + string(room_get_name(lowestRoom)) + ")");

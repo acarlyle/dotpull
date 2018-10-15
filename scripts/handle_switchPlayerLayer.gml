@@ -5,7 +5,9 @@ var robot = argument1;
 
 /*
     Removes all physical and virtual references of this object from this layer.
-    Creates a new robot at its current virtual position and uses that when the room transitions for its initial placement in the room.  
+    Creates a new robot at its current virtual position and uses that when the room transitions for its initial placement in the room. 
+    
+    TODO -> need to set the temp real player to have the number of keys that the robot enum has 
 */
 
 print("-> handle_switchPlayerLayer()");
