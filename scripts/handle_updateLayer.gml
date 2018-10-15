@@ -17,6 +17,6 @@ print("-> handle_updateLayer() for " + layer.roomName);
 
 if (surface_exists(layer.surfaceInf.surface)){
     print("handle_updateLayer: Updating layer...");
-    layer.surfaceInf.surface =  update_layerSurface(layer.surfaceInf.surface, layer);
+    layer.surfaceInf.surface =  update_mainSurface(layer.surfaceInf.surface, layer);
     print("handle_updateLayer: Finished updating the layer for room " + layer.roomName);
 }

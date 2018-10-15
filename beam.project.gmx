@@ -228,7 +228,6 @@
       <script>scripts\scr_surfaceActive.gml</script>
     </scripts>
     <scripts name="Virtual Mapping">
-      <script>scripts\draw_lowerRooms.gml</script>
       <script>scripts\layer_updateObjAtTile.gml</script>
       <script>scripts\map_place.gml</script>
       <script>scripts\scr_canPullPush.gml</script>
@@ -237,8 +236,8 @@
       <script>scripts\scr_objectsAdjacent.gml</script>
       <script>scripts\scr_pathBetween.gml</script>
       <script>scripts\scr_tileContains.gml</script>
-      <script>scripts\update_layerSurface.gml</script>
-      <script>scripts\script109.gml</script>
+      <script>scripts\update_lowerSurface.gml</script>
+      <script>scripts\update_mainSurface.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">

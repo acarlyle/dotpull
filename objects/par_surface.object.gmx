@@ -25,8 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>surface = noone;
+            <string>isPuzzleElement = false;
+
 layer = noone;
+surface = noone;
+isMainSurface = false;
+isActive = false;
 </string>
           </argument>
         </arguments>

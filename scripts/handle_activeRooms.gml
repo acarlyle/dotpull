@@ -1,8 +1,7 @@
 ///handle_activeRooms();
 
 /*
-    Handle room's objects from rooms other than the current
-    floor.
+    Draw rooms on a floor other than playerLayer
 */
 
 /*print(" -> handle_activeRooms() ");  

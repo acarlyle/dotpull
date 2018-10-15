@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>par_surface</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,13 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*
-    These instance variables are used to draw the surface in this
-    object's draw event
-*/
-
-event_inherited(); //sets surface and layer to none
-
+            <string>event_inherited();
 
 xPos = 0;
 yPos = 0;
@@ -41,9 +35,10 @@ rot = 0;
 color = c_white;
 alpha = .5;
 
-isPuzzleElement = false;
+isMainSurface = true;
+isActive = true;
 
-print("* constructed an object of " + string(object_get_name(object_index))); 
+print("*** constructed an object of " + string(object_get_name(object_index)));
 </string>
           </argument>
         </arguments>
@@ -141,11 +136,31 @@ instance_destroy();
             <kind>1</kind>
             <string>///Draw this surface
 
-if (surface_exists(surface)){
-    draw_surface_ext(surface, xPos, yPos, xScale, yScale, rot, color, alpha);
+if (isActive)
+{
+    if (isMainSurface)
+    {
+        if (surface_exists(surface))
+        {
+            draw_surface_ext(surface, xPos, yPos, xScale, yScale, rot, color, alpha);
+        }
+        else 
+        { 
+            surface = update_mainSurface(surface, layer); 
+        }
+    } 
+    else
+    {
+        if (surface_exists(surface))
+        {
+            draw_surface_ext(surface, xPos, yPos, xScale, yScale, rot, color, alpha);
+        }
+        else 
+        { 
+            surface = update_lowerSurface(surface, get_higherRoomName(layer.roomName)); 
+        }
+    }
 }
-else { surface = update_layerSurface(surface, layer); }
-     //{  m_surface = draw_lowerRooms(m_surface, m_room);}
 </string>
           </argument>
         </arguments>

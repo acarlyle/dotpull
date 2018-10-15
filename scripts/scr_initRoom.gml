@@ -85,7 +85,9 @@ if (obj_layerManager.loadingRoom && !obj_layerManager.loadedRoom)
     */
     
     var higherRoomName = get_higherRoomName(room_get_name(room));
-    if (higherRoomName != undefined && !layer_isActive(get_layerFromRoomStr(higherRoomName)))
+    if (higherRoomName != undefined && 
+        !layer_isActive(get_layerFromRoomStr(higherRoomName)) &&
+        room != obj_layerManager.playerRoom)
     {
         room_goto(get_roomFromString(higherRoomName));
         print(" -> scr_initRoom: higher room detected.  roomGoto(" + string(higherRoomName) + ")");

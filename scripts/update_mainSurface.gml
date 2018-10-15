@@ -1,4 +1,4 @@
-///update_layerSurface(obj_surface surface, var upperRoomName)
+///update_mainSurface(obj_surface surface, var upperRoomName)
 
 /*
     Draws layer owned by this surface.
@@ -7,7 +7,7 @@
 var surface = argument0;
 var layer = argument1;
 
-//print(" -> update_layerSurface()");
+//print(" -> update_mainSurface()");
 
 if (!surface_exists(surface)){ surface = surface_create(room_width, room_height); }
 
@@ -54,11 +54,11 @@ if (surface_exists(surface)){
                 //print("Attempted: " + string(objName) + ":" + string(xPos * global.TILE_SIZE) + "," + string(yPos * global.TILE_SIZE));
                 if (objEnum){ 
                     imgIndex = objEnum[| OBJECT.IMGIND]; //set sprite to use updated sprite_index
-                    //print("update_layerSurface: Using sprite index of " + string(sprIndex) + " for " + objEnum[| OBJECT.NAME]);
+                    //print(" -> update_mainSurface: Using sprite index of " + string(sprIndex) + " for " + objEnum[| OBJECT.NAME]);
                 }
                 
                 //}
-                //print("update_layerSurface: drawing " + string(objName) + " at " + string(xPos * global.TILE_SIZE) + ", " + string(yPos * global.TILE_SIZE) + " with image index of " + string(imgIndex));
+                //print(" -> update_mainSurface: drawing " + string(objName) + " at " + string(xPos * global.TILE_SIZE) + ", " + string(yPos * global.TILE_SIZE) + " with image index of " + string(imgIndex));
                 surface_set_target(surface);
                 draw_sprite(get_spriteFromObjStr(objName), imgIndex, xPos * global.TILE_SIZE, yPos * global.TILE_SIZE);
                 surface_reset_target();

@@ -37,7 +37,7 @@ if (inputString != false)
         }
     
         //used for cutscene triggers
-        if (global.playerCanMove && layer.list_robots)
+        if (global.playerCanMove)
         {
         
             //if (object_is_ancestor(obj_platform, par_object)) print("YES");
@@ -100,11 +100,8 @@ if (inputString != false)
                     obj_layerManager.loadedRoom = false;
                     obj_layerManager.loadingRoom = true;
                     
-                    //free the surface being used by this layer
-                    with(par_surface)
-                    {
-                        instance_destroy();
-                    }
+                    layer.surfaceInf.isMainSurface = false;
+                    layer.surfaceInf.alpha /= 2;
                     
                 }
             }

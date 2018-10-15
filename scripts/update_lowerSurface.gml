@@ -1,4 +1,4 @@
-///draw_lowerRooms(var m_surf, var upperRoomName)
+///update_lowerSurface(var m_surf, var upperRoomName)
 
 /*
     Draws the rooms lower than the passed upperRoom.
@@ -6,15 +6,11 @@
 
 var surface = argument0;
 var upperRoomName = argument1;
-//print(upperRoomName);
 
-print(" -> draw_lowerRooms(" + string(surface) + ", " + string(upperRoomName) + ")");
+print(" -> draw_lowerSurface(" + string(surface) + ", " + string(upperRoomName) + ")");
 
-if (!surface_exists(surface)){ surface = surface_create(room_width, room_height); }
+//if (!surface_exists(surface)){ surface = surface_create(room_width, room_height); }
 if (surface_exists(surface)){ 
-
-    //print("surfe exists now");
-    //print(upperRoomName);
 
     //clear surface
     surface_set_target(surface);
