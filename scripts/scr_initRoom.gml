@@ -7,13 +7,16 @@
 print(" ####################################### ");
 print("");
 print ("-> scr_initRoom() for " + string(room_get_name(room)));
+print("");
 
 var layer;
 
 /*
-    This is the first room loaded in.
+    If this is the first room loaded in, construct a layermanager.
 */
-if (!instance_exists(obj_layerManager)){
+
+if (!instance_exists(obj_layerManager))
+{
     con_layerManager();
 }
 
@@ -21,11 +24,14 @@ if (!instance_exists(obj_layerManager)){
     Init every layer in this room and hand them off to the LayerManager.  This is done
     for every rm_ in this layer.  
 */
-if (global.loadingRoom && !global.loadedRoom){
+
+if (obj_layerManager.loadingRoom && !obj_layerManager.loadedRoom)
+{
 
     var roomSaveFileName = string(room_get_name(room)) + ".sav";
     
-    if (file_exists(roomSaveFileName)) {
+    if (file_exists(roomSaveFileName)) 
+    {
         file_delete(roomSaveFileName);
         print("###############################");
         print("###############################");
@@ -40,21 +46,31 @@ if (global.loadingRoom && !global.loadedRoom){
     ds_list_add(obj_layerManager.list_activeLayers, layer);
     print(" -> scr_initRoom: added layer of room " + string(layer.roomName) + " to the global.activeLayers ds list in the layerManager.");
     
-    if (obj_layerManager.playerRoom == room) obj_layerManager.playerLayer = layer; //set the correct player layer
+    if (obj_layerManager.playerRoom == room) 
+    {
+        obj_layerManager.playerLayer = layer; //set the correct player layer
+        print(" -> scr_initRoom: obj_layerManager playerLayer set to: " + string(room_get_name(room)));
+    }
     
     /*
         Create a persistent asset (persistent only affects this instance!) 
         reference at deactivated tile so that every layer has calling access 
         to every active object.  
     */
-    var platform = instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, obj_platform);
-    platform.persistent = true;
+    
+    if (!instance_place(global.DEACTIVATED_X, global.DEACTIVATED_Y, obj_platform))
+    {
+        var platform = instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, obj_platform);
+        platform.persistent = true;
+    }
     
     print(" -> scr_initRoom: list_objEnums size: " + string(ds_list_size(layer.list_objEnums)));
     
-    for (var i = 0; i < ds_list_size(layer.list_objEnums); i++){
+    for (var i = 0; i < ds_list_size(layer.list_objEnums); i++)
+    {
         var objEnum = layer.list_objEnums[| i];
-        if (!instance_place(global.DEACTIVATED_X, global.DEACTIVATED_Y, get_objectFromString(objEnum[| OBJECT.NAME]))){ 
+        if (!instance_place(global.DEACTIVATED_X, global.DEACTIVATED_Y, get_objectFromString(objEnum[| OBJECT.NAME])))
+        { 
             var inst = instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, get_objectFromString(objEnum[| OBJECT.NAME]));
             inst.persistent = true;
             print(" -> scr_initRoom: Created a deactivated " + string(objEnum[| OBJECT.NAME]) + " at " + string(global.DEACTIVATED_X) + "," + string(global.DEACTIVATED_Y));
@@ -64,31 +80,37 @@ if (global.loadingRoom && !global.loadedRoom){
     ds_list_destroy(priorityElementList);
     
     /*
-        If thehere's a room above us, continue initing each layer.  Otherwise, head to the PlayerLayer and load in the real level.  
+        Layer initialization happens from the lowest possible layer all the way up to the room where scr_initRoom was initially called.
+        If there's a room above us, continue initing each layer.  Otherwise, head to the PlayerLayer and load in the real level.  
     */
+    
     var higherRoomName = get_higherRoomName(room_get_name(room));
-    if (higherRoomName != undefined){
+    if (higherRoomName != undefined && !layer_isActive(get_layerFromRoomStr(higherRoomName)))
+    {
         room_goto(get_roomFromString(higherRoomName));
-        print("hmm ?");
+        print(" -> scr_initRoom: roomGoto(" + string(higherRoomName) + ")");
     }
-    else{
+    else
+    {
         room_goto(obj_layerManager.playerRoom);
-        global.loadedRoom = true;
-        global.loadingRoom = false;
+        print(" -> scr_initRoom: roomGoto(" + string(room_get_name(obj_layerManager.playerRoom)) + ")");
+        obj_layerManager.loadedRoom = true;
+        obj_layerManager.loadingRoom = false;
     }
     
 }
-else if (global.loadingRoom == false && global.loadedRoom == false){
-    global.loadingRoom = true;
+else if (obj_layerManager.loadingRoom == false && obj_layerManager.loadedRoom == false)
+{
+    obj_layerManager.loadingRoom = true;
     print(" -> scr_initRoom() loadingRoom is a go!");
 }
-else if (global.loadedRoom) { 
+else if (obj_layerManager.loadedRoom) 
+{ 
 
     /*
         Surfaces are not persistent objects.  they will need to be constructed again after the loading phase 
         switches between several rooms.
     */
-    
     
     
     layer = get_layerFromRoomStr(room_get_name(room));
@@ -98,6 +120,7 @@ else if (global.loadedRoom) {
         Free up real objects in the room (does not clear obj_controls or objects hanging around 
         as asset references). 
     */
+    
     with (par_object)
     {
         if (x != global.DEACTIVATED_X && y != global.DEACTIVATED_Y)
@@ -107,5 +130,5 @@ else if (global.loadedRoom) {
         }
     }
     
-    print(" -> scr_initRoom: room Loaded."); 
+    print(" -> scr_initRoom: " + string(room_get_name(room)) + " loaded."); 
 }

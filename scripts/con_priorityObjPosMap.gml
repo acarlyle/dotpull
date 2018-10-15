@@ -33,26 +33,26 @@ layer.mapKeyPriorityList = ds_list_create();
 for (var i = 0; i < ds_list_size(sortedObjPriorityList); i++){
     objInst = ds_list_find_value(sortedObjPriorityList, i);
     objAt = 0;
-    print("con_priorityObjPosMap: looking at objInst: " + string(objectStr(objInst)));
+    //print("con_priorityObjPosMap: looking at objInst: " + string(objectStr(objInst)));
     if (!objInst.moveHistory) {
         print("con_priorityObjPosMap: CRITICAL warning!  obj has no move history.  skipping for the priorityList");
         continue; //objs with no move history are skipped
     }
     priorityListValue = ds_stack_top(objInst.moveHistory); //obj posstr like "x,y"
-    print("con_priorityObjPosMap: priorityQueueKey: " + string(priorityListValue));
-    print("con_priorityObjPosMap: ds_map_find_value: " + string(ds_map_find_value(layer.objPosToNameMap, priorityListValue)));
+    //print("con_priorityObjPosMap: priorityQueueKey: " + string(priorityListValue));
+    //print("con_priorityObjPosMap: ds_map_find_value: " + string(ds_map_find_value(layer.objPosToNameMap, priorityListValue)));
     //if the key already exists in the map, append obj to the same position as that key
     if (ds_map_find_value(layer.objPosToNameMap, priorityListValue) != undefined){ // priorityListValue = "x,y"
         curObjStr = string(ds_map_find_value(layer.objPosToNameMap, priorityListValue));
         objAt = string_count(";", curObjStr); //if 0 ';'s then this objAt will be one and the obj will be added after the zeroth ';'
-        print("con_priorityObjPosMap objAt val: " + string(objAt));
+        //print("con_priorityObjPosMap objAt val: " + string(objAt));
         mapValue = curObjStr + objectStr(objInst) + ";";
         ds_map_replace(layer.objPosToNameMap, priorityListValue, mapValue);
     }
     else{
         ds_map_add(layer.objPosToNameMap, priorityListValue, objectStr(objInst) + ";"); 
-        print("con_priorityObjPosMap: added value to objPosToNameMap: " + objectStr(objInst) + ";" + " at map key " + string(priorityListValue));
-        print("con_priorityObjPosMap: why couldn't you find this: ???? " + string(ds_map_find_value(layer.objPosToNameMap, priorityListValue)));
+        //print("con_priorityObjPosMap: added value to objPosToNameMap: " + objectStr(objInst) + ";" + " at map key " + string(priorityListValue));
+        //print("con_priorityObjPosMap: why couldn't you find this: ???? " + string(ds_map_find_value(layer.objPosToNameMap, priorityListValue)));
     }
     ds_list_add(layer.mapKeyPriorityList, string(objAt) + ":" + string(priorityListValue));
 }

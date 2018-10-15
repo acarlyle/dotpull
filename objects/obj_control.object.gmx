@@ -35,8 +35,6 @@ event_inherited();
 global.playerCanMove = true;
 global.playerMoved = false;
 global.restartRoom = false;
-global.loadingRoom = false;
-global.loadedRoom = false;
 
 //game settings
 global.set_scaleRes = 1;

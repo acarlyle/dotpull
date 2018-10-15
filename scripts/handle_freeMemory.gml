@@ -15,7 +15,7 @@ with (all){
     
     if (x == global.DEACTIVATED_X || y == global.DEACTIVATED_Y){
     
-        print("handle_freeMemory: destroying " + string(object_get_name(object_index)) + " at: " + string(x) + "," +  string(y));
+        //print("handle_freeMemory: destroying " + string(object_get_name(object_index)) + " at: " + string(x) + "," +  string(y));
         
         //instance_destroy();
     }

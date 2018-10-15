@@ -173,6 +173,7 @@
     <scripts name="Helpers">
       <script>scripts\array.gml</script>
       <script>scripts\isEnum.gml</script>
+      <script>scripts\layer_isActive.gml</script>
       <script>scripts\objectStr.gml</script>
       <script>scripts\print.gml</script>
       <script>scripts\print2dArray.gml</script>

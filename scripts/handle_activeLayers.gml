@@ -6,7 +6,8 @@ scr_clearStepGlobals();
 
 var inputString = get_input();
 
-switch(inputString){
+switch(inputString)
+{
     case "move":
         break;
     case "restart":
@@ -19,7 +20,8 @@ switch(inputString){
 if (inputString != false)
 {
     //handle each active layer
-    for (var l = 0; l < ds_list_size(activeLayers); l++){
+    for (var l = 0; l < ds_list_size(activeLayers); l++)
+    {
     
         var layer = activeLayers[| l];
         
@@ -28,13 +30,15 @@ if (inputString != false)
         print("");
         print("handle_activeLayers: handling layer for room " + string(layer.roomName));
         
-        if (global.restartRoom){
+        if (global.restartRoom)
+        {
             handle_restartRoom(layer);
             continue;
         }
     
         //used for cutscene triggers
-        if (global.playerCanMove && layer.list_robots){
+        if (global.playerCanMove && layer.list_robots)
+        {
         
             //if (object_is_ancestor(obj_platform, par_object)) print("YES");
         
@@ -49,15 +53,19 @@ if (inputString != false)
                 
                 if (global.restartRoom) break;
                 
-                if (!layer.robot[| ROBOT.ISDEAD]){
+                if (!layer.robot[| ROBOT.ISDEAD])
+                {
                     print("handle_activeLayers: robot " + string(layer.robot[| OBJECT.NAME]));
-                    if (global.playerMoved || layer.robot[| OBJECT.NAME] == "obj_player"){
+                    if (global.playerMoved || layer.robot[| OBJECT.NAME] == "obj_player")
+                    {
                         handle_layerRobots(layer); //move is true if movement key is pressed
                     }
                 }
                 
-                if (layer.robot){
-                    if (layer.robot[| OBJECT.MOVED]) {
+                if (layer.robot)
+                {
+                    if (layer.robot[| OBJECT.MOVED]) 
+                    {
                         print("player moved totes");
                         handle_layerObjects(layer);  //moved is true if player successfully moved
                     }
@@ -69,21 +77,46 @@ if (inputString != false)
                 //if (stoopidTrigger) print("STOOOOPID STOOPID!!!");
                 
                 //save state
-                if (global.playerMoved){
+                if (global.playerMoved)
+                {
                     handle_gameSave(obj_player);
                     print("");
-                    if (obj_layerManager.playerLayer == layer){
+                    if (obj_layerManager.playerLayer == layer)
+                    {
                         handle_updateLayer(layer);
                     }
                 }
                 //cleanup memory before switch rooms.  need to remove robot stuff from this layer
-                if (obj_layerManager.switchMainLayer){
-                    //Add Robot to new Player Layer
-                    handle_addRobotToLayer(layer.robot, obj_layerManager.playerLayer);
+                if (obj_layerManager.switchMainLayer)
+                {
+                    //Add Robot to new Player Layer if the layer exists
+                    if (layer_isActive(obj_layerManager.playerLayer))
+                    {
+                        handle_addRobotToLayer(layer.robot, obj_layerManager.playerLayer);
+                    }
                     //Remove Robot from current layer
                     handle_removeRobotFromLayer(layer, layer.robot);
+                    
+                    obj_layerManager.loadedRoom = false;
+                    obj_layerManager.loadingRoom = true;
+                    
+                    //free the surface being used by this layer
+                    with(par_surface)
+                    {
+                        instance_destroy();
+                    }
+                    
                 }
             }
         }
     }
+    
+    if (global.playerMoved || obj_layerManager.switchMainLayer){
+        obj_layerManager.turnNum++; //increment turn counter
+    }
+    print("");
+    print("----------------------------------------------");
+    print(" -> handle_activeLayers: END of LayerManager Turn " + string(obj_layerManager.turnNum));
+    print("");
+    
 }
