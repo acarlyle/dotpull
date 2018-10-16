@@ -12,15 +12,23 @@ var robot = layer.robot;
 
 var mirptrExt = false; //TODO -> haven't implemented spike logic w/ mirptrs yet
 
+/*
+    This is not the active layer, but a spike still needs to move.
+    TODO need better logix than creating an enum...this is spaghetti  
+*/
+
 //check if spike has already during player's turn and not roberta's
-if (!spike[| OBJECT.MOVED] || robot[| OBJECT.NAME] == "obj_player"){
-    if (spike[| AI.TARGETLOCKED]){
+if (!spike[| OBJECT.MOVED])
+{
+    if (spike[| AI.TARGETLOCKED])
+    {
         //print("TARGET IS LOCKED AT " + string(spike[| OBJECT.MOVEDDIR]));
         spike[| OBJECT.STATE] = "active";
-        switch (spike[| OBJECT.MOVEDDIR]){
+        switch (spike[| OBJECT.MOVEDDIR])
+        {
             case "up": 
                 print("up"); 
-                if (scr_canPullPush(spike[| OBJECT.X], spike[| OBJECT.Y]-global.TILE_SIZE, false, spike, robot, mirptrExt, layer)){
+                if (scr_tileIsOpen(layer, spike[| OBJECT.X], spike[| OBJECT.Y] - global.TILE_SIZE)){
                     spike[| OBJECT.Y] -= global.TILE_SIZE;
                 }
                 else{
@@ -33,7 +41,7 @@ if (!spike[| OBJECT.MOVED] || robot[| OBJECT.NAME] == "obj_player"){
                 break;
             case "down": 
                 print("down"); 
-                if (scr_canPullPush(spike[| OBJECT.X], spike[| OBJECT.Y]+global.TILE_SIZE, false, spike, robot, mirptrExt, layer)){
+                if (scr_tileIsOpen(layer, spike[| OBJECT.X], spike[| OBJECT.Y] + global.TILE_SIZE)){
                     spike[| OBJECT.Y]+=global.TILE_SIZE;
                 }
                 else{
@@ -46,7 +54,7 @@ if (!spike[| OBJECT.MOVED] || robot[| OBJECT.NAME] == "obj_player"){
                 break;
             case "left": 
                 print("left"); 
-                if (scr_canPullPush(spike[| OBJECT.X]-global.TILE_SIZE, spike[| OBJECT.Y], false, spike, robot, mirptrExt, layer)){
+                if (scr_tileIsOpen(layer, spike[| OBJECT.X] - global.TILE_SIZE, spike[| OBJECT.Y])){
                     spike[| OBJECT.X]-=global.TILE_SIZE;
                 }
                 else{
@@ -59,7 +67,7 @@ if (!spike[| OBJECT.MOVED] || robot[| OBJECT.NAME] == "obj_player"){
                 break;
             case "right": 
                 print("right"); 
-                if (scr_canPullPush(spike[| OBJECT.X]+global.TILE_SIZE, spike[| OBJECT.Y], false, spike, robot, mirptrExt, layer)){
+                if (scr_tileIsOpen(layer, spike[| OBJECT.X] + global.TILE_SIZE, spike[| OBJECT.Y])){
                     spike[| OBJECT.X]+=global.TILE_SIZE;
                 }
                 else{
@@ -72,7 +80,7 @@ if (!spike[| OBJECT.MOVED] || robot[| OBJECT.NAME] == "obj_player"){
                 break;
             case "upright": 
                 print("upright"); 
-                if (scr_canPullPush(spike[| OBJECT.X]+global.TILE_SIZE, spike[| OBJECT.Y]-global.TILE_SIZE, true, spike, robot, mirptrExt, layer)){
+                if (scr_tileIsOpen(layer, spike[| OBJECT.X] + global.TILE_SIZE, spike[| OBJECT.Y] - global.TILE_SIZE)){
                     spike[| OBJECT.X]+=global.TILE_SIZE;
                     spike[| OBJECT.Y]-=global.TILE_SIZE;
                 }
@@ -86,7 +94,7 @@ if (!spike[| OBJECT.MOVED] || robot[| OBJECT.NAME] == "obj_player"){
                 break;
             case "upleft": 
                 print("upleft"); 
-                if (scr_canPullPush(spike[| OBJECT.X]-global.TILE_SIZE, spike[| OBJECT.Y]-global.TILE_SIZE, true, spike, robot, mirptrExt, layer)){
+                if (scr_tileIsOpen(layer, spike[| OBJECT.X] - global.TILE_SIZE, spike[| OBJECT.Y] - global.TILE_SIZE)){
                     spike[| OBJECT.X]-=global.TILE_SIZE;
                     spike[| OBJECT.Y]-=global.TILE_SIZE;
                 }
@@ -101,7 +109,7 @@ if (!spike[| OBJECT.MOVED] || robot[| OBJECT.NAME] == "obj_player"){
                 break;
             case "downright": 
                 print("downright"); 
-                if (scr_canPullPush(spike[| OBJECT.X]+global.TILE_SIZE, spike[| OBJECT.Y]+global.TILE_SIZE, true, spike, robot, mirptrExt, layer)){
+                if (scr_tileIsOpen(layer, spike[| OBJECT.X] + global.TILE_SIZE, spike[| OBJECT.Y] + global.TILE_SIZE)){
                     spike[| OBJECT.X]+=global.TILE_SIZE;
                     spike[| OBJECT.Y]+=global.TILE_SIZE;
                 }
@@ -115,7 +123,7 @@ if (!spike[| OBJECT.MOVED] || robot[| OBJECT.NAME] == "obj_player"){
                 break;
             case "downleft": 
                 print("downleft"); 
-                if (scr_canPullPush(spike[| OBJECT.X]-global.TILE_SIZE, spike[| OBJECT.Y]+global.TILE_SIZE, true, spike, robot, mirptrExt, layer)){
+                if (scr_tileIsOpen(layer, spike[| OBJECT.X] - global.TILE_SIZE, spike[| OBJECT.Y] + global.TILE_SIZE)){
                     spike[| OBJECT.X]-=global.TILE_SIZE;
                     spike[| OBJECT.Y]+=global.TILE_SIZE;
                 }

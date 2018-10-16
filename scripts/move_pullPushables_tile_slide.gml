@@ -1,5 +1,7 @@
 ///move_pullPushables_tile_slide(obj_layer thisLayer, par_object object, var objPosX, var objPosY, obj_mirptr mirptrExt, bool mirptrHz, bool mirptrVt, var pushPull)
 
+/*
+
 var thisLayer = argument0;
 var object = argument1;
 var mirptrExt = argument2;
@@ -79,3 +81,5 @@ if (!object.moved){
         object.y = newObjPosY;
     }
 }
+
+*/

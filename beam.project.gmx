@@ -145,7 +145,7 @@
       <script>scripts\handle_layerRobots.gml</script>
       <script>scripts\handle_switchPlayerLayer.gml</script>
       <script>scripts\handle_undoMove.gml</script>
-      <script>scripts\handle_updateLayer.gml</script>
+      <script>scripts\handle_updateSurface.gml</script>
     </scripts>
     <scripts name="Game State Controllers">
       <script>scripts\handle_gameLoad.gml</script>
@@ -180,7 +180,6 @@
       <script>scripts\scr_clearStepGlobals.gml</script>
       <script>scripts\scr_roomFromString.gml</script>
       <script>scripts\scr_tileContains_curRoom.gml</script>
-      <script>scripts\scr_tileIsOpen.gml</script>
       <scripts name="Movement">
         <script>scripts\scr_mirptrTele.gml</script>
         <script>scripts\scr_disableMovementKeys.gml</script>
@@ -236,6 +235,7 @@
       <script>scripts\scr_objectsAdjacent.gml</script>
       <script>scripts\scr_pathBetween.gml</script>
       <script>scripts\scr_tileContains.gml</script>
+      <script>scripts\scr_tileIsOpen.gml</script>
       <script>scripts\update_lowerSurface.gml</script>
       <script>scripts\update_mainSurface.gml</script>
     </scripts>

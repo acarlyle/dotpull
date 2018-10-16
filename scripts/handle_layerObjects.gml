@@ -11,10 +11,13 @@ print("-> handle_layerObjects()");
 
 for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
 {
+
+    print(" -> handle_layerObjects: list_objEnums size: " + string(ds_list_size(layer.list_objEnums)));    
+
     var object = layer.list_objEnums[| enumI];
     
     if (object[| OBJECT.X] == global.DEACTIVATED_X || object[| OBJECT.Y] == global.DEACTIVATED_Y){
-        print(object[| OBJECT.NAME] + " is disabled, cannot map_place deactivated tilePos.");
+        print(" -> handle_layerObjects: " + string(object[| OBJECT.NAME]) + " is disabled, cannot map_place deactivated tilePos.");
         continue;
     }
     
@@ -145,7 +148,7 @@ for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
     
         layer_updateObjAtTile(layer, object, object[| OBJECT.OLDPOSX], object[| OBJECT.OLDPOSY]);
         
-        layer.updateLayer = true; // TODO not used (I think)
+        layer.isActive = true; // TODO not used (I think)
         
         // Update Layer's object position to obj enum Map
         if (layer.objNameAndPosToEnumMap){
@@ -167,5 +170,3 @@ for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
 } // foreach objEnum in this layer
 
 //handle_prioritizeItems(); TODO
-
-robot[| OBJECT.MOVED] = false;

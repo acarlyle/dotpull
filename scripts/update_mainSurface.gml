@@ -1,4 +1,4 @@
-///update_mainSurface(obj_surface surface, var upperRoomName)
+///update_mainSurface(par_surface surface, obj_layer layer)
 
 /*
     Draws layer owned by this surface.

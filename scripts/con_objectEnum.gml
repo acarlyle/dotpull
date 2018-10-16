@@ -1,4 +1,4 @@
-///con_objectEnum(str objName, int objPosX, int objPosY, bool canPull, bool canPush)
+///con_objectEnum(str objName, int objPosX, int objPosY)
 
 var objName = argument0;
 var objPosX = argument1;

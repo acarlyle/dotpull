@@ -86,8 +86,7 @@ print("!DESTROYED " + string(object_get_name(object_index)) + "'s surfaces");
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//print("? ? ? PLS DRAW");
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>

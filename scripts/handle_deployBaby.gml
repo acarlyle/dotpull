@@ -43,12 +43,12 @@ if (global.key_space && robot[| ROBOT.HASBABY]){
                 break;
         }
         print("Baby potential x,y: " + string(posX) + ", " + string(posY));
-        if (!scr_tileContains(layer, posX, posY, array(par_obstacle)) && scr_tileIsOpen(posX, posY)){
+        /*if (!scr_tileContains(layer, posX, posY, array(par_obstacle)) && scr_tileIsOpen(posX, posY)){
             baby[| OBJECT.X] = posX;
             baby[| OBJECT.Y] = posY;
             //baby.currentState = "ground"; //TODO
             robot[| ROBOT.HASBABY] = false;
             robot[| OBJECT.MOVED] = true;
-        }
+        }*/
     }
 }

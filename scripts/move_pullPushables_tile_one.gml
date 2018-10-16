@@ -9,6 +9,12 @@ var pushPull = argument5;
 
 var robot = layer.robot;
 
+/*
+    If robot is not a part of this layer, don't do anything.
+*/
+
+if (robot == undefined) return false;
+
 print("-> move_pullPushables_tile_one: " + string(object[| OBJECT.NAME]));
 
 //print("move_pullPushables_tile_one object[| OBJECT.X]/Y: " + string(object[| OBJECT.X]) + ", " + string(object[| OBJECT.Y]));
