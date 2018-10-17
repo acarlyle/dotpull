@@ -41,6 +41,8 @@ if (obj_layerManager.loadingRoom && !obj_layerManager.loadedRoom)
     
     var priorityElementList = con_priorityObjectList(); //gets a list of every object in this room sorted by movement priority 
     
+    print(" -> scr_initRoom: priorityElementList size: " + string(ds_list_size(priorityElementList)));
+    
     //add layer to layer manager's active layer list if it's not there
     layer = con_layer(room_get_name(room), priorityElementList);
     ds_list_add(obj_layerManager.list_activeLayers, layer);

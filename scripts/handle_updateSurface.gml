@@ -22,6 +22,6 @@ if (surfaceInf.isActive)
     }
     else
     {
-        surfaceInf.surface = update_lowerSurface(surfaceInf, get_higherRoomName(surfaceInf.layer.roomName)); 
+        surfaceInf.surface = update_lowerSurface(surfaceInf.surface, get_higherRoomName(surfaceInf.layer.roomName)); 
     }
 }

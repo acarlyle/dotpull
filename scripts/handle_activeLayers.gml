@@ -28,7 +28,7 @@ if (inputString != false)
         print("");
         print(" ####################################### ");
         print("");
-        print("handle_activeLayers: handling layer for room " + string(layer.roomName));
+        print("-> handle_activeLayers: handling layer for room " + string(layer.roomName));
         
         if (global.restartRoom)
         {
@@ -63,7 +63,7 @@ if (inputString != false)
                     
                     if (!layer.robot[| ROBOT.ISDEAD])
                     {
-                        print("handle_activeLayers: robot " + string(layer.robot[| OBJECT.NAME]));
+                        print(" -> handle_activeLayers: robot " + string(layer.robot[| OBJECT.NAME]));
                         if (global.playerMoved || layer.robot[| OBJECT.NAME] == "obj_player")
                         {
                             handle_layerRobots(layer); //move is true if movement key is pressed
@@ -94,11 +94,6 @@ if (inputString != false)
                     //cleanup memory before switch rooms.  need to remove robot stuff from this layer
                     if (obj_layerManager.switchMainLayer)
                     {
-                        //Add Robot to new Player Layer if the layer exists
-                        if (layer_isActive(obj_layerManager.playerLayer))
-                        {
-                            handle_addRobotToLayer(layer.robot, obj_layerManager.playerLayer);
-                        }
                         //Remove Robot from current layer
                         handle_switchPlayerLayer(layer, layer.robot);
                         
@@ -113,8 +108,20 @@ if (inputString != false)
             }
             else if (layer.isActive) //No robot present, but layer has active objects to move
             {
-                handle_layerObjects(layer); 
-                handle_updateSurface(layer.surfaceInf);  
+                /*
+                    If the player layer's room is below this layer's, then do not draw the surface to the screen,
+                    as it is above the player.  
+                */
+                if (scr_room1IsBelowRoom2(room_get_name(obj_layerManager.playerRoom), layer.roomName))
+                {
+                    layer.surfaceInf.isActive = false;
+                    print(" -> handle_activeLayers: " + string(layer.roomName) + "'s surface is no longer active because it's above the player layer.");  
+                }
+                else
+                {
+                    handle_layerObjects(layer); 
+                    handle_updateSurface(layer.surfaceInf); 
+                } 
             }
         }
     }

@@ -4,6 +4,8 @@ var priorityElementList = ds_list_create();
 
 //EXTREMELY IMPORTANT THAT OBJ BLOCKS ARE AT THE BEGINING OF THE LIST!!!!!!!  SAME WITH FALLING PLATS!!!
 with (all) {
+    if (x == global.DEACTIVATED_X || y == global.DEACTIVATED_Y) continue; //don't construct objects based on asset reference objects
+    
     if (isPuzzleElement){
         //if (instance_place(x, y, obj_block)){
         if (isMovePriority){ 

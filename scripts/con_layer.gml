@@ -23,10 +23,15 @@ layer.list_robots = ds_list_create();
 if (layer.list_robots)
     ds_list_add(layer.list_robots, con_objectEnum("obj_player", obj_player.x, obj_player.y));
 
+if (layer.mapKeyPriorityList) 
+{
+    print(" -> con_layer: BEFORE mapKeyPriorityList size: " + string(ds_list_size(layer.mapKeyPriorityList)));
+}
+    
 //now set the layer's objPosToNameMap and associated mapKeyPriorityKey
 con_priorityObjPosMap(layer, sortedObjPriorityList);
 
-print("con_layer: mapKeyPriorityList size: " + string(ds_list_size(layer.mapKeyPriorityList)));
+print(" -> con_layer: AFTER mapKeyPriorityList size: " + string(ds_list_size(layer.mapKeyPriorityList)));
 
 for (var i = 0; i < ds_list_size(layer.mapKeyPriorityList); i++){
     var mapKey = ds_list_find_value(layer.mapKeyPriorityList, i);
@@ -38,7 +43,7 @@ for (var i = 0; i < ds_list_size(layer.mapKeyPriorityList); i++){
     var objectString = ds_map_find_value(layer.objPosToNameMap, objPosStr);
     //we can have multiple objects stored at each position in the map, so split them
     
-    //print("con_layer: objectString: " + string(objectString));
+    print(" -> con_layer: objectString: " + string(objectString));
     
     var objectArr = scr_split(objectString, ";");
     var objectString = objectArr[objPosAt]; //we want the ith item at this index....

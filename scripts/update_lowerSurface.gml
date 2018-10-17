@@ -1,4 +1,4 @@
-///update_lowerSurface(var m_surf, var upperRoomName)
+///update_lowerSurface(par_surface obj_surfInf, var upperRoomName)
 
 /*
     Draws the rooms lower than the passed upperRoom.
@@ -7,7 +7,7 @@
 var surface = argument0;
 var upperRoomName = argument1;
 
-print(" -> draw_lowerSurface(" + string(surface) + ", " + string(upperRoomName) + ")");
+print("-> update_lowerSurface(" + string(surface) + ", " + string(upperRoomName) + ")");
 
 if (!surface_exists(surface)){ surface = surface_create(room_width, room_height); }
 if (surface_exists(surface)){ 
@@ -19,13 +19,15 @@ if (surface_exists(surface)){
     
     // get below room's name
     var lowerRoomName = get_lowerRoomName(upperRoomName);
+    var lowerLayer = get_layerFromRoomStr(lowerRoomName);
+    var upperLayer = get_layerFromRoomStr(upperRoomName);
     //print(lowerRoomName);
     if (lowerRoomName != undefined && room_exists(lowerRoomName)){
         //print("lowerRoomName: " + string(lowerRoomName));
         var fileName = lowerRoomName + ".sav";
         //print("Filename: " + fileName);
-        var lowerRoomArray = get_arrayOfRoomFromFile(fileName);
-        var upperRoomArray = get_arrayOfRoomFromFile(upperRoomName + ".sav");
+        var lowerRoomArray = lowerLayer.roomMapArr;
+        var upperRoomArray = upperLayer.roomMapArr;
         //print2dArray(lowerRoomArray);
         //print2dArray(upperRoomArray);
         
@@ -53,9 +55,21 @@ if (surface_exists(surface)){
                             print("New obj name: " + string(objName));
                         }
                     //}
-                    //print("surExisted_drawing: " + string(objName) + " at " + string(xPos * global.TILE_SIZE) + ", " + string(yPos * global.TILE_SIZE));
+                    var imgInd = 0;
+                    
+                    print("update_lowerSurface: " + string(objName) + " at " + string(xPos * global.TILE_SIZE) + ", " + string(yPos * global.TILE_SIZE));
+                    var objAsset = get_objectFromString(objName);
+                    if (objAsset != undefined)
+                    {
+                        if (objAsset.isPuzzleElement)
+                        {
+                            var enumRef = map_place(lowerLayer, get_objectFromString(objName), xPos * global.TILE_SIZE, yPos * global.TILE_SIZE);
+                            imgInd = enumRef[| OBJECT.IMGIND];
+                        }   
+                    }
+                    
                     surface_set_target(surface);
-                    draw_sprite(get_spriteFromObjStr(objName), 0, xPos * global.TILE_SIZE, yPos * global.TILE_SIZE);
+                    draw_sprite(get_spriteFromObjStr(objName), imgInd, xPos * global.TILE_SIZE, yPos * global.TILE_SIZE);
                     surface_reset_target();
                 }
             } 

@@ -178,6 +178,7 @@
       <script>scripts\print.gml</script>
       <script>scripts\print2dArray.gml</script>
       <script>scripts\scr_clearStepGlobals.gml</script>
+      <script>scripts\scr_room1IsBelowRoom2.gml</script>
       <script>scripts\scr_roomFromString.gml</script>
       <script>scripts\scr_tileContains_curRoom.gml</script>
       <scripts name="Movement">

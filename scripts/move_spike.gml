@@ -137,7 +137,8 @@ if (!spike[| OBJECT.MOVED])
                 break;
         }
     }
-    else{ //check if player in line for target lock
+    else if (robot != undefined) //check if player in line for target lock
+    { 
         spike[| OBJECT.STATE] = "idle";
         print("check for player lock");
         if (robot[| OBJECT.Y] == spike[| OBJECT.Y]){
@@ -176,7 +177,8 @@ if (!spike[| OBJECT.MOVED])
                 spike[| OBJECT.IMGIND] = 1;
             }
         }
-        if (spike[| OBJECT.CANPULL]){
+        if (spike[| OBJECT.CANPULL])
+        {
             //diag checking
             var objRelYPos = 1;
             var objRelXPos = -1;
