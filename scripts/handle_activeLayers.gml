@@ -26,7 +26,7 @@ if (inputString != false)
         var layer = activeLayers[| l];
         
         print("");
-        print(" ####################################### ");
+        print("----------------------------------------------");
         print("");
         print("-> handle_activeLayers: handling layer for room " + string(layer.roomName));
         
@@ -51,8 +51,7 @@ if (inputString != false)
                 player).  
             */
             
-            //print(" -> handle_activeLayers list_robots size: " + string(ds_list_size(layer.list_robots)));
-            
+            print(" -> handle_activeLayers list_robots size: " + string(ds_list_size(layer.list_robots)));
             if (ds_list_size(layer.list_robots) > 0)
             {
                 for (var r = 0; r < ds_list_size(layer.list_robots); r++) //foreach robot in this layer
@@ -91,18 +90,14 @@ if (inputString != false)
                         handle_gameSave(obj_player);
                         handle_updateSurface(layer.surfaceInf);
                     }
-                    //cleanup memory before switch rooms.  need to remove robot stuff from this layer
+                    
+                    /*
+                        if switchMainLayer is true, the LayerManager needs to handle a main layer switch here.
+                    */
+                    
                     if (obj_layerManager.switchMainLayer)
                     {
-                        //Remove Robot from current layer
-                        handle_switchPlayerLayer(layer, layer.robot);
-                        
-                        obj_layerManager.loadedRoom = false;
-                        obj_layerManager.loadingRoom = true;
-                        
-                        layer.surfaceInf.isMainSurface = false;
-                        layer.surfaceInf.alpha /= 2;
-                        
+                        handle_switchPlayerLayer(layer, layer.robot);   
                     }
                 }
             }
@@ -124,6 +119,7 @@ if (inputString != false)
                 } 
             }
         }
+        print("-> handle_activeLayers: FINISHED handling layer for room " + string(layer.roomName));
     }
     
     if (global.playerMoved || obj_layerManager.switchMainLayer)
@@ -133,6 +129,7 @@ if (inputString != false)
     
     print("");
     print("----------------------------------------------");
+    print("");
     print(" -> handle_activeLayers: END of LayerManager Turn " + string(obj_layerManager.turnNum));
     print("");
     

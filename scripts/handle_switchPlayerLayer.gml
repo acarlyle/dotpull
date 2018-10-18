@@ -21,10 +21,35 @@ for (var r = 0; r < ds_list_size(layer.list_robots); r++){
         with(get_objectFromString(robot[| OBJECT.NAME])) instance_destroy();
         var robotInst = instance_create(robot[| OBJECT.X], robot[| OBJECT.Y], get_objectFromString(robot[| OBJECT.NAME]));
         //print(" -> handle_switchPlayerLayer: obj_player instances now: " + string(instance_number(obj_player)));
+        
+        /*
+            IF the layer exists, add this robot to the new layer.  The new layer should have been set in
+            obj_layerManager.playerLayer has already been updated to the new layer.  
+        */
+        
+        if (obj_layerManager.playerLayer != undefined)
+        {
+            var movingRobotEnum = ds_list_create();
+            ds_list_copy(movingRobotEnum, robot); //copies robot enum to a new list to add to the new layer
+            ds_list_add(obj_layerManager.playerLayer.list_robots, movingRobotEnum); 
+            print(" -> handle_switchPlayerLayer: ADDED robot " + string(robot[| OBJECT.NAME]) + " to new layer " + string(obj_layerManager.playerRoom));
+        }
+        
         ds_list_delete(layer.list_robots, r);
         ds_list_destroy(robot);
         layer.robot = undefined;
     } 
+}
+
+obj_layerManager.loadedRoom = false;
+obj_layerManager.loadingRoom = true;
+
+layer.surfaceInf.isMainSurface = false;
+layer.surfaceInf.alpha /= 2;
+
+if (scr_room1IsBelowRoom2(room_get_name(obj_layerManager.playerRoom), layer.roomName))
+{
+    layer.surfaceInf.isActive = false;
 }
 
 print(" -> handle_switchPlayerLayer list_robots size post-delete: " + string(ds_list_size(layer.list_robots)));

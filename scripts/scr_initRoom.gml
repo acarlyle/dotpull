@@ -44,9 +44,15 @@ if (obj_layerManager.loadingRoom && !obj_layerManager.loadedRoom)
     print(" -> scr_initRoom: priorityElementList size: " + string(ds_list_size(priorityElementList)));
     
     //add layer to layer manager's active layer list if it's not there
-    layer = con_layer(room_get_name(room), priorityElementList);
-    ds_list_add(obj_layerManager.list_activeLayers, layer);
-    print(" -> scr_initRoom: added layer of room " + string(layer.roomName) + " to the global.activeLayers ds list in the layerManager.");
+    
+    layer = ds_map_find_value(obj_layerManager.layerMap, room_get_name(room));
+    
+    if (layer == undefined)
+    {
+        layer = con_layer(room_get_name(room), priorityElementList);
+        ds_list_add(obj_layerManager.list_activeLayers, layer);
+        print(" -> scr_initRoom: added layer of room " + string(layer.roomName) + " to the global.activeLayers ds list in the layerManager.");
+    }
     
     if (obj_layerManager.playerRoom == room) 
     {
@@ -118,6 +124,11 @@ else if (obj_layerManager.loadingRoom == false && obj_layerManager.loadedRoom ==
     print(" -> scr_initRoom() loadingRoom is a go!  loadingRoom is true.");
 }
 
+/*
+    Room has been fully loaded.  If there's no SurfaceInf, construct one and remove all real object instances from the 
+    room.
+*/
+
 if (obj_layerManager.loadedRoom) 
 { 
 
@@ -128,7 +139,24 @@ if (obj_layerManager.loadedRoom)
     
     
     layer = get_layerFromRoomStr(room_get_name(room));
-    layer.surfaceInf = con_surface(surf_layerRoom, layer, 0, 0, 1, 1, 0, c_white, 1);
+    
+    /*
+        If the surface already exists, free it so that it can be updated.
+    */
+    
+    if (layer.surfaceInf != undefined)
+    {
+        surface_free(layer.surfaceInf.surface);
+        layer.surfaceInf.isActive = true;
+        layer.surfaceInf.alpha = 1;
+    }
+    
+    else
+    {
+        layer.surfaceInf = con_surface(surf_layerRoom, layer, 0, 0, 1, 1, 0, c_white, 1);
+    }
+    
+    layer.surfaceInf.isMainSurface = true;
     
     /*
         Free up real objects in the room (does not clear obj_controls or objects hanging around 
