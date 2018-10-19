@@ -92,6 +92,8 @@ if (layerMap != undefined) ds_map_destroy(layerMap);
 
 //print("# active layers: " + string(ds_list_size(global.list_activeLayers)));
 
+//print("num obj_player: " + string(instance_number(obj_player)));
+
 //with(obj_platform) print(x);
 </string>
           </argument>

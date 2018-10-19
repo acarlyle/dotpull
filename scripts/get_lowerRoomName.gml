@@ -36,6 +36,6 @@ var newRoomName = roomPrefix + "_"
                 + string(floorType) + "_" 
                 + string(floorNumber);
                 
-//print("newRoomName: " + string(newRoomName)); 
+print(" -> get_lowerRoomName: returning: " + string(newRoomName)); 
 if (room_exists(scr_roomFromString(newRoomName))) return newRoomName;
 else return undefined;  

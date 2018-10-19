@@ -58,6 +58,8 @@ if (inputString != false)
                 {
                     layer.robot = layer.list_robots[| r]; //robot enum
                     
+                    print("!!!!!!!!!!!!! " + string(strlen(layer.robot[| OBJECT.NAME]))); 
+                    
                     if (global.restartRoom) break;
                     
                     if (!layer.robot[| ROBOT.ISDEAD])

@@ -28,7 +28,15 @@ if (((posX >= layer.xBound) || posX < 0) || ((posY >= layer.yBound) || posY < 0)
 }
 
 var thisTile = layer.roomMapArr[floor(posY / global.TILE_SIZE), floor(posX / global.TILE_SIZE)];
-//print("map_place: THISROW: " + string(thisTile));
+print("map_place: THISROW: " + string(thisTile));
+
+if thisTile == "" return false; // nothing there
+
+//if (!strcontains(thisTile, ";"))
+//{
+//    return false;
+//} 
+
 var thisTileObjs = scr_split(thisTile, ";");
 //print("map_place: array length: " + string(array_length_1d(thisTileObjs)));
 for (var i = 0; i < array_length_1d(thisTileObjs); i++){

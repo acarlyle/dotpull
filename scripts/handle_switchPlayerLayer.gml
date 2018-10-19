@@ -31,6 +31,7 @@ for (var r = 0; r < ds_list_size(layer.list_robots); r++){
         {
             var movingRobotEnum = ds_list_create();
             ds_list_copy(movingRobotEnum, robot); //copies robot enum to a new list to add to the new layer
+            //movingRobotEnum[| OBJECT.MOVED] = true;
             ds_list_add(obj_layerManager.playerLayer.list_robots, movingRobotEnum); 
             print(" -> handle_switchPlayerLayer: ADDED robot " + string(robot[| OBJECT.NAME]) + " to new layer " + string(obj_layerManager.playerRoom));
         }

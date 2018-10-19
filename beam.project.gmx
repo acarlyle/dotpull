@@ -136,6 +136,7 @@
       <script>scripts\handle_addRobotToLayer.gml</script>
       <script>scripts\handle_checkForFallingPlatform.gml</script>
       <script>scripts\handle_checkForStairs.gml</script>
+      <script>scripts\handle_checkLowerRoom.gml</script>
       <script>scripts\handle_cleanUpElementEffects.gml</script>
       <script>scripts\handle_deployBaby.gml</script>
       <script>scripts\handle_freeMemory.gml</script>
@@ -189,14 +190,13 @@
         <script>scripts\trim.gml</script>
         <script>scripts\strlen.gml</script>
         <script>scripts\strcontains.gml</script>
+        <script>scripts\str_trimPROP.gml</script>
       </scripts>
     </scripts>
     <scripts name="Movement">
       <scripts name="Robot">
-        <script>scripts\handle_checkLowerRoom.gml</script>
         <script>scripts\handle_robotMove_tile_one.gml</script>
         <script>scripts\handle_robotMove_tile_slide.gml</script>
-        <script>scripts\scr_steppingStoneBelow.gml</script>
       </scripts>
       <script>scripts\scr_canBlastRobot.gml</script>
       <script>scripts\scr_platformIsWalkable.gml</script>
@@ -236,6 +236,7 @@
       <script>scripts\scr_pathBetween.gml</script>
       <script>scripts\scr_tileContains.gml</script>
       <script>scripts\scr_tileIsOpen.gml</script>
+      <script>scripts\scr_steppingStoneBelow.gml</script>
       <script>scripts\update_lowerSurface.gml</script>
       <script>scripts\update_mainSurface.gml</script>
     </scripts>

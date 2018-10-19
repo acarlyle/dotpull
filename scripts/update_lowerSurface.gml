@@ -57,7 +57,7 @@ if (surface_exists(surface)){
                     //}
                     var imgInd = 0;
                     
-                    print("update_lowerSurface: " + string(objName) + " at " + string(xPos * global.TILE_SIZE) + ", " + string(yPos * global.TILE_SIZE));
+                    //print("update_lowerSurface: " + string(objName) + " at " + string(xPos * global.TILE_SIZE) + ", " + string(yPos * global.TILE_SIZE));
                     var objAsset = get_objectFromString(objName);
                     if (objAsset != undefined)
                     {

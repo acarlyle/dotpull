@@ -61,6 +61,7 @@ if (surface_exists(surface)){
                 //print(" -> update_mainSurface: drawing " + string(objName) + " at " + string(xPos * global.TILE_SIZE) + ", " + string(yPos * global.TILE_SIZE) + " with image index of " + string(imgIndex));
                 surface_set_target(surface);
                 draw_sprite(get_spriteFromObjStr(objName), imgIndex, xPos * global.TILE_SIZE, yPos * global.TILE_SIZE);
+                //print("-> update_mainSurface:" + string(objName) + " sprite drawn");
                 surface_reset_target();
             }
         } 

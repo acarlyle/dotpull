@@ -21,16 +21,36 @@ for (var objAt = 0; objAt < array_length_1d(tileObjs); objAt++){ //find matching
             string_replace(layer.roomMapArr[oldObjY / global.TILE_SIZE, oldObjX / global.TILE_SIZE], 
             tileObjs[objAt] + ";", 
             "");
+            
+        if (layer.roomMapArr[oldObjY / global.TILE_SIZE, oldObjX / global.TILE_SIZE] == "")
+        {
+            layer.roomMapArr[oldObjY / global.TILE_SIZE, oldObjX / global.TILE_SIZE] = " ";
+        }
                        
-        // Add obj to its new position
+        // Add obj to its new position.  If there's no object at that position, add it at str pos 0.  Otherwise, it will be added at pos strlen+1. [padding variable]
+        //print("-> ????????????????????? layer_updateObjectAtTile: pre New Spot STRLEN:" + string(strlen(string(layer.roomMapArr[object[| OBJECT.Y] / global.TILE_SIZE, object[| OBJECT.X] / global.TILE_SIZE]))));
+        
+        /*
+            If it's a tile position with no objects, set the string from the getgo.  Otherwise, use string_insert to append the object.
+        */
+        
+        if (layer.roomMapArr[object[| OBJECT.Y] / global.TILE_SIZE, object[| OBJECT.X] / global.TILE_SIZE] == " ")
+        {
+            layer.roomMapArr[object[| OBJECT.Y] / global.TILE_SIZE, object[| OBJECT.X] / global.TILE_SIZE] =
+                tileObjs[objAt] + ";";
+        }
+        else
+        {
         layer.roomMapArr[object[| OBJECT.Y] / global.TILE_SIZE, object[| OBJECT.X] / global.TILE_SIZE] =
             string_insert(tileObjs[objAt],
             layer.roomMapArr[object[| OBJECT.Y] / global.TILE_SIZE, object[| OBJECT.X] / global.TILE_SIZE],
             strlen(layer.roomMapArr[object[| OBJECT.Y] / global.TILE_SIZE, object[| OBJECT.X] / global.TILE_SIZE]) + 1)
             + ";";
-            
+         
+        }   
         //print("Updated Old Spot: " + string(layer.roomMapArr[oldObjY / global.TILE_SIZE, oldObjX / global.TILE_SIZE]));
-        print("Updated New Spot: " + string(layer.roomMapArr[object[| OBJECT.Y] / global.TILE_SIZE, object[| OBJECT.X] / global.TILE_SIZE]));
+        //print("-> l???????????????????? ayer_updateObjectAtTile: Updated New Spot:" + string(layer.roomMapArr[object[| OBJECT.Y] / global.TILE_SIZE, object[| OBJECT.X] / global.TILE_SIZE]));
+        //print("-> ????????????????????? layer_updateObjectAtTile: Updated New Spot STRLEN:" + string(strlen(string(layer.roomMapArr[object[| OBJECT.Y] / global.TILE_SIZE, object[| OBJECT.X] / global.TILE_SIZE]))));
         
         break;
     } 
