@@ -19,6 +19,14 @@ switch(inputString)
 //handle move, restart room
 if (inputString != false)
 {
+
+    print("");
+    print("----------------------------------------------");
+    print("");
+    print(" -> handle_activeLayers: END of LayerManager Turn " + string(obj_layerManager.turnNum));
+    print("");
+    
+
     //handle each active layer
     for (var l = 0; l < ds_list_size(activeLayers); l++)
     {
@@ -88,7 +96,7 @@ if (inputString != false)
                     
                     //save state
                     if (global.playerMoved)
-                    {
+                    {  
                         handle_gameSave(obj_player);
                         handle_updateSurface(layer.surfaceInf);
                     }
@@ -128,11 +136,4 @@ if (inputString != false)
     {
         obj_layerManager.turnNum++; //increment turn counter
     }
-    
-    print("");
-    print("----------------------------------------------");
-    print("");
-    print(" -> handle_activeLayers: END of LayerManager Turn " + string(obj_layerManager.turnNum));
-    print("");
-    
 }
