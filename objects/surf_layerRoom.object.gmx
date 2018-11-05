@@ -156,7 +156,7 @@ if (isActive)
         }
         else 
         { 
-            surface = update_lowerSurface(surface, get_higherRoomName(layer.roomName)); 
+            surface = update_lowerSurface(surface, layer); 
         }
     }
 }

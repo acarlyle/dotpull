@@ -34,8 +34,8 @@ if (!robot[| OBJECT.MOVED] && !robot[| ROBOT.ISDEAD]){ //if we didn't move and w
 //if (!robot[| OBJECT.MOVED]) handle_checkLowerRoom(layer, robot); //stepping stone check
 if (!robot[| OBJECT.MOVED]) handle_checkForStairs(layer, robot); //stepping stone check
 
-if (robot[| OBJECT.MOVED]){
-    
+if (robot[| OBJECT.MOVED])
+{
     if (robot[| OBJECT.NAME] == "obj_player" && robot[| OBJECT.MOVED]){
         global.playerMoved = true;
     }

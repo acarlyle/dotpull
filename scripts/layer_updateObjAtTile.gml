@@ -1,5 +1,10 @@
 ///layer_updateObjAtTile(obj_layer layer, objEnum object, var oldObjX, var oldObjY)
 
+/*
+    Script is designed to work with removing an obj's old position in the RoomMap Array and 
+    adding that obj to its new spot in the room Map Arr.
+*/
+
 var layer = argument0;
 var object = argument1;
 var oldObjX = argument2;
@@ -48,8 +53,8 @@ for (var objAt = 0; objAt < array_length_1d(tileObjs); objAt++){ //find matching
             + ";";
          
         }   
-        //print("Updated Old Spot: " + string(layer.roomMapArr[oldObjY / global.TILE_SIZE, oldObjX / global.TILE_SIZE]));
-        //print("-> l???????????????????? ayer_updateObjectAtTile: Updated New Spot:" + string(layer.roomMapArr[object[| OBJECT.Y] / global.TILE_SIZE, object[| OBJECT.X] / global.TILE_SIZE]));
+        //print(" -> layer_updateObjectAtTile: Updated Old Spot: " + string(layer.roomMapArr[oldObjY / global.TILE_SIZE, oldObjX / global.TILE_SIZE]));
+        //print(" -> layer_updateObjectAtTile: Updated New Spot:" + string(layer.roomMapArr[object[| OBJECT.Y] / global.TILE_SIZE, object[| OBJECT.X] / global.TILE_SIZE]));
         //print("-> ????????????????????? layer_updateObjectAtTile: Updated New Spot STRLEN:" + string(strlen(string(layer.roomMapArr[object[| OBJECT.Y] / global.TILE_SIZE, object[| OBJECT.X] / global.TILE_SIZE]))));
         
         break;

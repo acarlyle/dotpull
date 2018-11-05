@@ -1,13 +1,15 @@
-///update_lowerSurface(par_surface obj_surfInf, var upperRoomName)
+///update_lowerSurface(par_surface obj_surfInf, obj_layer layerToUpdate)
 
 /*
     Draws the rooms lower than the passed upperRoom.
 */
 
 var surface = argument0;
-var upperRoomName = argument1;
+var layer = argument1;
 
-print("-> update_lowerSurface(" + string(surface) + ", " + string(upperRoomName) + ")");
+var upperRoomName = get_higherRoomName(layer.roomName);
+
+print("-> update_lowerSurface surfaceRoomName: " + string(layer.roomName) + "; upperRoomName: " + string(upperRoomName));
 
 if (!surface_exists(surface)){ surface = surface_create(room_width, room_height); }
 if (surface_exists(surface)){ 
@@ -17,14 +19,10 @@ if (surface_exists(surface)){
     draw_clear_alpha(c_black, 0);
     surface_reset_target();
     
-    // get below room's name
-    var lowerRoomName = get_lowerRoomName(upperRoomName);
-    var lowerLayer = get_layerFromRoomStr(lowerRoomName);
+    var lowerLayer = layer;
     var upperLayer = get_layerFromRoomStr(upperRoomName);
-    //print(lowerRoomName);
-    if (lowerRoomName != undefined && room_exists(lowerRoomName)){
-        //print("lowerRoomName: " + string(lowerRoomName));
-        var fileName = lowerRoomName + ".sav";
+    if (room_exists(lowerLayer.roomName)){
+        var fileName = lowerLayer.roomName + ".sav";
         //print("Filename: " + fileName);
         var lowerRoomArray = lowerLayer.roomMapArr;
         var upperRoomArray = upperLayer.roomMapArr;

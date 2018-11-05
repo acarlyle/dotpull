@@ -172,6 +172,16 @@ if (obj_layerManager.loadedRoom)
         }
     }
     
+    /* Allow robot movement if it was disabled due to room switching. */
+    for (var r = 0; r < ds_list_size(layer.list_robots); r++)
+    {
+        var robotEnum = layer.list_robots[| r];
+        robotEnum[| ROBOT.CANMOVE] = true; 
+    }
+    
     print(" -> scr_initRoom: " + string(room_get_name(room)) + " loaded."); 
     
+    
 }
+
+

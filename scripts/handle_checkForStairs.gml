@@ -56,6 +56,7 @@ if (map_place(layer, par_stairs, robot[| OBJECT.OLDPOSX], robot[| OBJECT.OLDPOSY
         obj_layerManager.switchMainLayer = true;
         obj_layerManager.playerLayer = get_layerFromRoomStr(newRoomName); //set player layer to new layer
         obj_layerManager.playerRoom = get_roomFromString(newRoomName);
-        robot[| OBJECT.MOVED] = true;
+        
+        //robot[| OBJECT.MOVED] = true;
     }
 }

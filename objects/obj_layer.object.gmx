@@ -109,7 +109,8 @@ if (!ds_map_empty(global.layerMap)){ //delete this layer from obj_control's name
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>//print("Layer for room: " + roomName + " has num robots: " + string(ds_list_size(list_robots)));
+</string>
           </argument>
         </arguments>
       </action>

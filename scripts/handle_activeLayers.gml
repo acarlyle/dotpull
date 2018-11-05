@@ -23,7 +23,7 @@ if (inputString != false)
     print("");
     print("----------------------------------------------");
     print("");
-    print(" -> handle_activeLayers: END of LayerManager Turn " + string(obj_layerManager.turnNum));
+    print(" -> handle_activeLayers: START of LayerManager Turn " + string(obj_layerManager.turnNum));
     print("");
     
 
@@ -33,8 +33,8 @@ if (inputString != false)
     
         var layer = activeLayers[| l];
         
-        print("");
-        print("----------------------------------------------");
+        //print("");
+        //print("----------------------------------------------");
         print("");
         print("-> handle_activeLayers: handling layer for room " + string(layer.roomName));
         
@@ -131,6 +131,10 @@ if (inputString != false)
         }
         print("-> handle_activeLayers: FINISHED handling layer for room " + string(layer.roomName));
     }
+    
+    print("");
+    print(" -> handle_activeLayers: END of LayerManager Turn " + string(obj_layerManager.turnNum));
+    print("");
     
     if (global.playerMoved || obj_layerManager.switchMainLayer)
     {

@@ -32,15 +32,27 @@ for (var r = 0; r < ds_list_size(layer.list_robots); r++){
             var movingRobotEnum = ds_list_create();
             ds_list_copy(movingRobotEnum, robot); //copies robot enum to a new list to add to the new layer
             //movingRobotEnum[| OBJECT.MOVED] = true;
+            movingRobotEnum[| ROBOT.CANMOVE] = false;
             ds_list_add(obj_layerManager.playerLayer.list_robots, movingRobotEnum); 
-            print(" -> handle_switchPlayerLayer: ADDED robot " + string(robot[| OBJECT.NAME]) + " to new layer " + string(obj_layerManager.playerRoom));
+         
+            /* Now, add the newly copied robot to its new layer's map. */
+            layer_addObjToArrMap(obj_layerManager.playerLayer , layer.robot);
+               
+            print(" -> handle_switchPlayerLayer: ADDED robot " + string(robot[| OBJECT.NAME]) + " to new layer room " + string(room_get_name(obj_layerManager.playerRoom)));
         }
         
+        /* Remove obj from its current position in this layer's Map. */
+        layer_removeObjFromArrMap(layer, layer.robot);
+        
+        /* Now free the object from its position in this layer. */
         ds_list_delete(layer.list_robots, r);
         ds_list_destroy(robot);
         layer.robot = undefined;
+        
     } 
 }
+
+
 
 obj_layerManager.loadedRoom = false;
 obj_layerManager.loadingRoom = true;
