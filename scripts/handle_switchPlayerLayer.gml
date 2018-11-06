@@ -32,7 +32,7 @@ for (var r = 0; r < ds_list_size(layer.list_robots); r++){
             var movingRobotEnum = ds_list_create();
             ds_list_copy(movingRobotEnum, robot); //copies robot enum to a new list to add to the new layer
             //movingRobotEnum[| OBJECT.MOVED] = true;
-            movingRobotEnum[| ROBOT.CANMOVE] = false;
+            //movingRobotEnum[| ROBOT.CANMOVE] = false;
             ds_list_add(obj_layerManager.playerLayer.list_robots, movingRobotEnum); 
          
             /* Now, add the newly copied robot to its new layer's map. */

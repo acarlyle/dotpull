@@ -37,7 +37,16 @@ if (surface_exists(surface)){
         for (var yPos = 0; yPos < array_height_2d(lowerRoomArray); yPos++;){
             for (var xPos = 0; xPos < array_length_2d(lowerRoomArray, yPos); xPos++;){
                 if (lowerRoomArray[yPos, xPos] == " ") continue; //nothing in lowerRoom tile -> continue
-                if (upperRoomArray[yPos, xPos] != " ") continue; //something in upperRoom tile -> continue
+                if (upperRoomArray[yPos, xPos] != " "){
+                    if scr_tileContains(upperLayer, xPos, yPos, array(obj_player)) 
+                    {
+                        print("-> update_lowerSurface there's a robot above this spot!");
+                    } //continue drawing, could be over a stepping stone
+                    else
+                    {
+                        continue; //something in upperRoom tile -> continue
+                    }
+                }
                 
                 var objsHere = scr_split(lowerRoomArray[yPos, xPos], ";");
                 for (obj = 0; obj < array_length_1d(objsHere); obj++){

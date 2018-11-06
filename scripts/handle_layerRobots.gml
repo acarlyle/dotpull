@@ -32,7 +32,6 @@ if (!robot[| OBJECT.MOVED] && !robot[| ROBOT.ISDEAD]){ //if we didn't move and w
 }
 
 //if (!robot[| OBJECT.MOVED]) handle_checkLowerRoom(layer, robot); //stepping stone check
-if (!robot[| OBJECT.MOVED]) handle_checkForStairs(layer, robot); //stepping stone check
 
 if (robot[| OBJECT.MOVED])
 {
@@ -76,6 +75,8 @@ if (robot[| OBJECT.MOVED])
     }*/
     
 }
+
+if (!robot[| OBJECT.MOVED]) handle_checkForStairs(layer, robot); 
 
 print("handle_layerRobots II: room map height: " + string(array_height_2d(layer.roomMapArr)));
 print("handle_layerRobots II: room map length: " + string(array_length_2d(layer.roomMapArr, 0)));

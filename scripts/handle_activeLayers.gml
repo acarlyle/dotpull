@@ -65,7 +65,7 @@ if (inputString != false)
                 for (var r = 0; r < ds_list_size(layer.list_robots); r++) //foreach robot in this layer
                 {
                     layer.robot = layer.list_robots[| r]; //robot enum
-                    
+                                        
                     print("!!!!!!!!!!!!! " + string(strlen(layer.robot[| OBJECT.NAME]))); 
                     
                     if (global.restartRoom) break;
@@ -95,7 +95,7 @@ if (inputString != false)
                     //if (stoopidTrigger) print("STOOOOPID STOOPID!!!");
                     
                     //save state
-                    if (global.playerMoved)
+                    if (global.playerMoved || layer.isActive)
                     {  
                         handle_gameSave(obj_player);
                         handle_updateSurface(layer.surfaceInf);
@@ -105,10 +105,10 @@ if (inputString != false)
                         if switchMainLayer is true, the LayerManager needs to handle a main layer switch here.
                     */
                     
-                    if (obj_layerManager.switchMainLayer)
+                    /*if (obj_layerManager.switchMainLayer)
                     {
                         handle_switchPlayerLayer(layer, layer.robot);   
-                    }
+                    }*/
                 }
             }
             else if (layer.isActive) //No robot present, but layer has active objects to move
@@ -130,6 +130,15 @@ if (inputString != false)
             }
         }
         print("-> handle_activeLayers: FINISHED handling layer for room " + string(layer.roomName));
+    }
+    
+    /*
+        if switchMainLayer is true, the LayerManager needs to handle a main layer switch here.
+    */
+    
+    if (obj_layerManager.switchMainLayer)
+    {
+        handle_switchPlayerLayer(obj_layerManager.oldPlayerLayer, obj_layerManager.oldPlayerLayerRobot);   
     }
     
     print("");
