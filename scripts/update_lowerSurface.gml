@@ -7,6 +7,8 @@
 var surface = argument0;
 var layer = argument1;
 
+print("layer room name: " + string(layer.roomName));
+
 var upperRoomName = get_higherRoomName(layer.roomName);
 
 print("-> update_lowerSurface surfaceRoomName: " + string(layer.roomName) + "; upperRoomName: " + string(upperRoomName));
@@ -38,14 +40,8 @@ if (surface_exists(surface)){
             for (var xPos = 0; xPos < array_length_2d(lowerRoomArray, yPos); xPos++;){
                 if (lowerRoomArray[yPos, xPos] == " ") continue; //nothing in lowerRoom tile -> continue
                 if (upperRoomArray[yPos, xPos] != " "){
-                    if scr_tileContains(upperLayer, xPos, yPos, array(obj_player)) 
-                    {
-                        print("-> update_lowerSurface there's a robot above this spot!");
-                    } //continue drawing, could be over a stepping stone
-                    else
-                    {
-                        continue; //something in upperRoom tile -> continue
-                    }
+                    print(" -> update_lowerSurface: skipping pos x,y: " + string(xPos * global.TILE_SIZE) + "," + string(yPos * global.TILE_SIZE));
+                    continue; //something in upperRoom tile -> continue 
                 }
                 
                 var objsHere = scr_split(lowerRoomArray[yPos, xPos], ";");

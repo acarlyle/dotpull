@@ -32,9 +32,7 @@ if (inputString != false)
     {
     
         var layer = activeLayers[| l];
-        
-        //print("");
-        //print("----------------------------------------------");
+ 
         print("");
         print("-> handle_activeLayers: handling layer for room " + string(layer.roomName));
         
@@ -98,7 +96,8 @@ if (inputString != false)
                     if (global.playerMoved || layer.isActive)
                     {  
                         handle_gameSave(obj_player);
-                        handle_updateSurface(layer.surfaceInf);
+                        layer.surfaceInf.updateSurface = true;
+                        //handle_updateSurface(layer.surfaceInf);
                     }
                     
                     /*
@@ -125,7 +124,8 @@ if (inputString != false)
                 else
                 {
                     handle_layerObjects(layer); 
-                    handle_updateSurface(layer.surfaceInf); 
+                    //handle_updateSurface(layer.surfaceInf); 
+                    layer.surfaceInf.updateSurface = true;
                 } 
             }
         }
@@ -141,6 +141,7 @@ if (inputString != false)
         handle_switchPlayerLayer(obj_layerManager.oldPlayerLayer, obj_layerManager.oldPlayerLayerRobot);   
     }
     
+    
     print("");
     print(" -> handle_activeLayers: END of LayerManager Turn " + string(obj_layerManager.turnNum));
     print("");
@@ -149,4 +150,7 @@ if (inputString != false)
     {
         obj_layerManager.turnNum++; //increment turn counter
     }
+    
+    handle_activeSurfaces(list_activeLayers); /* handle updating Display of Room Elements. */
+    
 }

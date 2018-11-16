@@ -90,7 +90,7 @@ if (layerMap != undefined) ds_map_destroy(layerMap);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>handle_activeLayers(list_activeLayers);
+            <string>handle_activeLayers(list_activeLayers); /* handle logical movement. */
 
 //print("# active layers: " + string(ds_list_size(list_activeLayers)));
 

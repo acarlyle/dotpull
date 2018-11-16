@@ -25,3 +25,5 @@ if (surfaceInf.isActive)
         surfaceInf.surface = update_lowerSurface(surfaceInf.surface, surfaceInf.layer); 
     }
 }
+
+surfaceInf.updateSurface = false; //finished updating surface

@@ -133,6 +133,7 @@
         <script>scripts\undo_triggerDoor.gml</script>
       </scripts>
       <script>scripts\handle_activeLayers.gml</script>
+      <script>scripts\handle_activeSurfaces.gml</script>
       <script>scripts\handle_addRobotToLayer.gml</script>
       <script>scripts\handle_checkForFallingPlatform.gml</script>
       <script>scripts\handle_checkForStairs.gml</script>

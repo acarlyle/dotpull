@@ -37,6 +37,7 @@ alpha = .5;
 
 isMainSurface = true;
 isActive = true;
+updateSurface = true; // true when we need to update the surface
 
 print("*** constructed an object of " + string(object_get_name(object_index)));
 </string>
@@ -133,31 +134,15 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Draw this surface
-
-if (isActive)
+            <string>if (isActive)
 {
-    if (isMainSurface)
+    if (updateSurface)
     {
-        if (surface_exists(surface))
-        {
-            draw_surface_ext(surface, xPos, yPos, xScale, yScale, rot, color, alpha);
-        }
-        else 
-        { 
-            surface = update_mainSurface(surface, layer); 
-        }
+        handle_updateSurface(self);
     } 
-    else
+    if (surface_exists(surface))
     {
-        if (surface_exists(surface))
-        {
-            draw_surface_ext(surface, xPos, yPos, xScale, yScale, rot, color, alpha);
-        }
-        else 
-        { 
-            surface = update_lowerSurface(surface, layer); 
-        }
+         draw_surface_ext(surface, xPos, yPos, xScale, yScale, rot, color, alpha);
     }
 }
 </string>
