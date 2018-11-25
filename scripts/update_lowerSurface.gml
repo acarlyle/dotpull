@@ -1,12 +1,10 @@
-///update_lowerSurface(par_surface obj_surfInf, obj_layer layerToUpdate)
+///update_lowerSurface()
 
 /*
-    Draws the rooms lower than the passed upperRoom.
+    Draws the rooms lower than the surface above this one.  
 */
 
-var surface = argument0;
-var layer = argument1;
-
+print("");
 print("layer room name: " + string(layer.roomName));
 
 var upperRoomName = get_higherRoomName(layer.roomName);
@@ -21,12 +19,12 @@ if (surface_exists(surface)){
     draw_clear_alpha(c_black, 0);
     surface_reset_target();
     
-    var lowerLayer = layer;
     var upperLayer = get_layerFromRoomStr(upperRoomName);
-    if (room_exists(lowerLayer.roomName)){
-        var fileName = lowerLayer.roomName + ".sav";
+    print("-> update_lowerSurface upperLayer surfaceRoomName: " + string(upperLayer.roomName));
+    if (room_exists(layer.roomName)){
+        //var fileName = layer.roomName + ".sav";
         //print("Filename: " + fileName);
-        var lowerRoomArray = lowerLayer.roomMapArr;
+        var lowerRoomArray = layer.roomMapArr;
         var upperRoomArray = upperLayer.roomMapArr;
         //print2dArray(lowerRoomArray);
         //print2dArray(upperRoomArray);
@@ -66,7 +64,7 @@ if (surface_exists(surface)){
                     {
                         if (objAsset.isPuzzleElement)
                         {
-                            var enumRef = map_place(lowerLayer, get_objectFromString(objName), xPos * global.TILE_SIZE, yPos * global.TILE_SIZE);
+                            var enumRef = map_place(layer, get_objectFromString(objName), xPos * global.TILE_SIZE, yPos * global.TILE_SIZE);
                             imgInd = enumRef[| OBJECT.IMGIND];
                         }   
                     }
@@ -80,5 +78,6 @@ if (surface_exists(surface)){
     }
 }
 
+print("-> update_lowerSurface surfaceRoomName: " + string(layer.roomName));
 
 return surface;

@@ -1,4 +1,4 @@
-///handle_updateSurface(par_surface surfaceInf)
+///handle_updateSurface()
 
 /*
 
@@ -10,20 +10,22 @@
     
 */
 
-var surfaceInf = argument0;
+print("-> handle_updateSurface() for " + layer.roomName);
 
-print("-> handle_updateSurface() for " + surfaceInf.layer.roomName);
-
-if (surfaceInf.isActive)
+if (isActive)
 {
-    if (surfaceInf.isMainSurface)
+    if (isMainSurface)
     {
-        surfaceInf.surface = update_mainSurface(surfaceInf.surface, surfaceInf.layer); 
+        update_mainSurface(); // updates gamemaker surface owned by this SurfaceInf
     }
     else
     {
-        surfaceInf.surface = update_lowerSurface(surfaceInf.surface, surfaceInf.layer); 
+        //print("-> handle_updateSurface() PRE roomname: " + layer.roomName);
+        update_lowerSurface(); // updates gamemaker surface owned by this SurfaceInf
+        //print("-> handle_updateSurface() POST roomname: " + layer.roomName);
     }
 }
 
-surfaceInf.updateSurface = false; //finished updating surface
+updateSurface = false; //finished updating surface
+
+//print("-> handle_updateSurface() POST roomname: " + surfaceInf.layer.roomName);

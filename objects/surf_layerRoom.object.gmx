@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>event_inherited(); //inherits layer ptr
 
 xPos = 0;
 yPos = 0;
@@ -87,7 +87,8 @@ print("!DESTROYED " + string(object_get_name(object_index)) + "'s surfaces");
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>//print(string(isMainSurface) + " " + string(layer.roomName));
+</string>
           </argument>
         </arguments>
       </action>
@@ -138,11 +139,11 @@ instance_destroy();
 {
     if (updateSurface)
     {
-        handle_updateSurface(self);
+        handle_updateSurface();
     } 
     if (surface_exists(surface))
     {
-         draw_surface_ext(surface, xPos, yPos, xScale, yScale, rot, color, alpha);
+        draw_surface_ext(surface, xPos, yPos, xScale, yScale, rot, color, alpha);
     }
 }
 </string>

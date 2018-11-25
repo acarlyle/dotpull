@@ -14,6 +14,7 @@ for (var l = 0; l < ds_list_size(activeLayers); l++)
     if (layer.isActive)
     {
         layer.surfaceInf.updateSurface = true;
+        print(" -> handle_activeSurfaces(): layerName " + string(layer.roomName) + " will be updated.");
         /*if (surface_exists(layer.surfaceInf.surface))
         {
             surface_free(layer.surfaceInf.surface);

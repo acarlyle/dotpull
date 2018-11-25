@@ -4,9 +4,6 @@
     Draws layer owned by this surface.
 */
 
-var surface = argument0;
-var layer = argument1;
-
 print("-> update_mainSurface()");
 
 if (!surface_exists(surface)){ surface = surface_create(room_width, room_height); }
@@ -68,5 +65,4 @@ if (surface_exists(surface)){
     }   
 }
 
-
-return surface;
+print(" -> update_mainSurface: finished updating main surface");

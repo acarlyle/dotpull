@@ -130,7 +130,14 @@ if (inputString != false)
             }
         }
         print("-> handle_activeLayers: FINISHED handling layer for room " + string(layer.roomName));
-    }
+        
+        /*for (var l2 = 0; l2 < ds_list_size(activeLayers); l2++)
+        {
+            var layerish = activeLayers[| l2];
+            print(" -> handle_activeLayers: layer room name: " + string(layerish.roomName)); 
+        }*/
+        
+    } //foreach active layer
     
     /*
         if switchMainLayer is true, the LayerManager needs to handle a main layer switch here.
@@ -146,11 +153,13 @@ if (inputString != false)
     print(" -> handle_activeLayers: END of LayerManager Turn " + string(obj_layerManager.turnNum));
     print("");
     
+            
     if (global.playerMoved || obj_layerManager.switchMainLayer)
     {
         obj_layerManager.turnNum++; //increment turn counter
     }
     
-    handle_activeSurfaces(list_activeLayers); /* handle updating Display of Room Elements. */
+    //handle_activeSurfaces(list_activeLayers); /* handle updating Display of Room Elements. */
+    handle_activeSurfaces(activeLayers); /* handle updating Display of Room Elements. */
     
 }

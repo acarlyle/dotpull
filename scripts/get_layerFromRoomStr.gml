@@ -6,6 +6,4 @@
 
 var roomName = argument0;
 
-layer = ds_map_find_value(obj_layerManager.layerMap, roomName);
-
-return layer;
+return ds_map_find_value(obj_layerManager.layerMap, roomName);
