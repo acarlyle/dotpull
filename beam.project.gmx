@@ -23,6 +23,7 @@
     <sprites name="Characters">
       <sprite>sprites\spr_player</sprite>
       <sprite>sprites\spr_playerDead</sprite>
+      <sprite>sprites\spr_playerMenu</sprite>
       <sprite>sprites\spr_playerOld</sprite>
       <sprite>sprites\spr_roberta</sprite>
       <sprite>sprites\spr_robertaEnd</sprite>

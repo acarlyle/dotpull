@@ -58,7 +58,8 @@ obj_layerManager.loadedRoom = false;
 obj_layerManager.loadingRoom = true;
 
 layer.surfaceInf.isMainSurface = false;
-layer.surfaceInf.alpha /= 2;
+//layer.surfaceInf.alpha /= 2;
+layer.surfaceInf.alpha = .1;
 
 if (scr_room1IsBelowRoom2(room_get_name(obj_layerManager.playerRoom), layer.roomName))
 {

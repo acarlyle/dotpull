@@ -38,8 +38,8 @@ if (surface_exists(surface)){
             for (var xPos = 0; xPos < array_length_2d(lowerRoomArray, yPos); xPos++;){
                 if (lowerRoomArray[yPos, xPos] == " ") continue; //nothing in lowerRoom tile -> continue
                 if (upperRoomArray[yPos, xPos] != " "){
-                    print(" -> update_lowerSurface: skipping pos x,y: " + string(xPos * global.TILE_SIZE) + "," + string(yPos * global.TILE_SIZE));
-                    continue; //something in upperRoom tile -> continue 
+                    //print(" -> update_lowerSurface: skipping pos x,y: " + string(xPos * global.TILE_SIZE) + "," + string(yPos * global.TILE_SIZE));
+                    //continue; //something in upperRoom tile -> continue 
                 }
                 
                 var objsHere = scr_split(lowerRoomArray[yPos, xPos], ";");
@@ -60,7 +60,7 @@ if (surface_exists(surface)){
                     
                     //print("update_lowerSurface: " + string(objName) + " at " + string(xPos * global.TILE_SIZE) + ", " + string(yPos * global.TILE_SIZE));
                     var objAsset = get_objectFromString(objName);
-                    if (objAsset != undefined)
+                    if ((objAsset != undefined) && instance_exists(objAsset))
                     {
                         if (objAsset.isPuzzleElement)
                         {
