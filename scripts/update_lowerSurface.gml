@@ -36,6 +36,7 @@ if (surface_exists(surface)){
         //iterate through lower floor array and compare it to the one above it
         for (var yPos = 0; yPos < array_height_2d(lowerRoomArray); yPos++;){
             for (var xPos = 0; xPos < array_length_2d(lowerRoomArray, yPos); xPos++;){
+                print(" -> update_lowerSurface at pos: " + string(xPos * global.TILE_SIZE) + "," + string(yPos * global.TILE_SIZE));
                 if (lowerRoomArray[yPos, xPos] == " ") continue; //nothing in lowerRoom tile -> continue
                 if (upperRoomArray[yPos, xPos] != " "){
                     //print(" -> update_lowerSurface: skipping pos x,y: " + string(xPos * global.TILE_SIZE) + "," + string(yPos * global.TILE_SIZE));

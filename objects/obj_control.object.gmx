@@ -38,7 +38,7 @@ global.restartRoom = false;
 
 //game settings
 global.set_scaleRes = 1;
-global.set_phoneRes = 3; //act phone value is 5 (960 * 640)
+global.set_phoneRes = 4; //act phone value is 5 (960 * 640)
 global.WINDOW_WIDTH = 128;
 global.WINDOW_HEIGHT = 192;
 
@@ -119,6 +119,7 @@ enum ARROW {
 }
 
 scr_applyScreenRes();
+alarm[0] = room_speed; // center the screen
 
 //room_goto(rm_level_Ian_4);
 //if (!global.saveRoomLoaded) room_goto(rm_level1);
@@ -126,6 +127,34 @@ scr_applyScreenRes();
 //    room_goto(global.saveRoomLoaded);
 //}
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// center game to center of display
+
+if (!window_get_fullscreen())
+{
+    window_center();
+}
 </string>
           </argument>
         </arguments>
