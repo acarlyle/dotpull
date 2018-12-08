@@ -57,13 +57,10 @@ with(obj_fallingPlatform_1Step) image_index = 1;</code>
   <instances>
     <instance objName="obj_newAdventure" x="0" y="160" name="inst_CDB396BC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_continueAdventure" x="0" y="144" name="inst_F4CB370B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_menuControl" x="64" y="256" name="inst_49B6E88E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_menuRob" x="96" y="240" name="inst_4A1A708E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_menuRoberta" x="128" y="240" name="inst_B9613F98" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_fallingPlatform_1Step" x="128" y="176" name="inst_D9EE6FE9" locked="0" code="//image_yscale *= -1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_fallingPlatform_1Step" x="128" y="176" name="inst_CB6DEEE9" locked="0" code="image_xscale *= -1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_control" x="80" y="256" name="inst_8C659A35" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_platform" x="64" y="112" name="inst_A8A549CF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_menuControl" x="16" y="0" name="inst_49B6E88E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_menuRob" x="48" y="112" name="inst_4A1A708E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_menuRoberta" x="64" y="112" name="inst_B9613F98" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_control" x="0" y="0" name="inst_8C659A35" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

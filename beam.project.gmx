@@ -75,8 +75,9 @@
       <sprite>sprites\spr_blackTile</sprite>
       <sprite>sprites\spr_bridge</sprite>
       <sprite>sprites\spr_hole</sprite>
-      <sprite>sprites\spr_platform</sprite>
+      <sprite>sprites\spr_platform_16x16</sprite>
       <sprite>sprites\spr_wall</sprite>
+      <sprite>sprites\spr_platform</sprite>
     </sprites>
     <sprites name="Menu">
       <sprite>sprites\spr_continueAdventure</sprite>
@@ -326,6 +327,7 @@
       <object>objects\obj_hole</object>
       <object>objects\obj_platform</object>
       <object>objects\obj_wall</object>
+      <object>objects\obj_platform_16x16</object>
     </objects>
     <objects name="Controllers">
       <object>objects\obj_control</object>
