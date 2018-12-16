@@ -30,6 +30,7 @@
       <sprite>sprites\spr_robertaMenu</sprite>
     </sprites>
     <sprites name="Controllers">
+      <sprite>sprites\spr_camera</sprite>
       <sprite>sprites\spr_dialogueTrigger</sprite>
       <sprite>sprites\spr_gotoRoom</sprite>
       <sprite>sprites\spr_layer</sprite>
@@ -326,10 +327,12 @@
       <object>objects\obj_bridge</object>
       <object>objects\obj_hole</object>
       <object>objects\obj_platform</object>
+      <object>objects\obj_tile</object>
       <object>objects\obj_wall</object>
       <object>objects\obj_platform_16x16</object>
     </objects>
     <objects name="Controllers">
+      <object>objects\obj_camera</object>
       <object>objects\obj_control</object>
       <object>objects\obj_cutsceneTrigger</object>
       <object>objects\obj_dialogueTrigger</object>
@@ -356,8 +359,8 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>
+    <room>rooms\DEFAULT_ROOM</room>
     <room>rooms\init</room>
-    <room>rooms\rm_baseRoom</room>
     <rooms name="block.Pull">
       <room>rooms\rm_ffs_f_1</room>
       <room>rooms\rm_ffs_f_2</room>
@@ -382,6 +385,9 @@
       <room>rooms\rm_x1</room>
       <room>rooms\rm_x2</room>
     </rooms>
+    <rooms name="City of Machines">
+      <room>rooms\com_entrybridge_f_1</room>
+    </rooms>
     <rooms name="Ian Levels">
       <room>rooms\rm_level_Ian_1</room>
       <room>rooms\rm_level_Ian_2</room>
@@ -399,7 +405,6 @@
     </rooms>
     <rooms name="Puzzle Element Tests">
       <room>rooms\rm_baby</room>
-      <room>rooms\DEFAULT_ROOM</room>
       <room>rooms\rm_everyElement</room>
       <room>rooms\rm_magneticSnare</room>
       <room>rooms\rm_objPusher</room>

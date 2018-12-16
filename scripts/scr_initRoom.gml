@@ -66,10 +66,10 @@ if (obj_layerManager.loadingRoom && !obj_layerManager.loadedRoom)
         to every active object.  
     */
     
-    if (!instance_place(global.DEACTIVATED_X, global.DEACTIVATED_Y, obj_platform))
+    if (!instance_place(global.DEACTIVATED_X, global.DEACTIVATED_Y, obj_tile))
     {
-        var platform = instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, obj_platform);
-        platform.persistent = true;
+        var tile = instance_create(global.DEACTIVATED_X, global.DEACTIVATED_Y, obj_tile);
+        tile.persistent = true;
     }
     
     print(" -> scr_initRoom: list_objEnums size: " + string(ds_list_size(layer.list_objEnums)));

@@ -16,7 +16,7 @@ print("con_layer I: room map height: " + string(array_height_2d(layer.roomMapArr
 print("con_layer I: room map length: " + string(array_length_2d(layer.roomMapArr, 0)));
 
 //print("con_layer: #####");
-//print("con_layer: " + layer.roomMapArr[64/16, 16/16]);
+//print("con_layer: " + layer.roomMapArr[64/global.TILE_SIZE, 16/global.TILE_SIZE]);
 
 //TODO Need actual parser to determine robots in this layer and not just hardcode player
 layer.list_robots = ds_list_create();
