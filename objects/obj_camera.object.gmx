@@ -2,7 +2,7 @@
 <object>
   <spriteName>spr_camera</spriteName>
   <solid>-1</solid>
-  <visible>0</visible>
+  <visible>-1</visible>
   <depth>0</depth>
   <persistent>-1</persistent>
   <parentName>par_control</parentName>

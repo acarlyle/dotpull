@@ -84,6 +84,15 @@ if (inputString != false)
                             print("player moved totes");
                             handle_layerObjects(layer);  //moved is true if player successfully moved
                             layer.robot[| OBJECT.MOVED] = false;
+                            
+                            //update camera position if this is the player
+                            if (obj_layerManager.playerLayer == layer)
+                            {
+                                var layerPlayer = layer.robot;
+                                obj_camera.x = layerPlayer[| OBJECT.X];
+                                obj_camera.y = layerPlayer[| OBJECT.Y];
+                            }
+                            
                         }
                     }
                     

@@ -3,6 +3,7 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
+  <datafiles number="1" name="datafiles"/>
   <NewExtensions>
     <extension index="0">extensions\Color Coding Files</extension>
     <extension index="1">extensions\GML Regular Expressions</extension>
@@ -358,9 +359,9 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\dot_init</room>
     <room>rooms\rm_menu</room>
     <room>rooms\DEFAULT_ROOM</room>
-    <room>rooms\init</room>
     <rooms name="block.Pull">
       <room>rooms\rm_ffs_f_1</room>
       <room>rooms\rm_ffs_f_2</room>

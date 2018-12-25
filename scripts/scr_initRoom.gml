@@ -126,7 +126,7 @@ else if (obj_layerManager.loadingRoom == false && obj_layerManager.loadedRoom ==
 
 /*
     Room has been fully loaded.  If there's no SurfaceInf, construct one and remove all real object instances from the 
-    room.
+    room.  Setup the camera to work with the current player position.
 */
 
 if (obj_layerManager.loadedRoom) 
@@ -157,6 +157,13 @@ if (obj_layerManager.loadedRoom)
     }
     
     layer.surfaceInf.isMainSurface = true;
+    
+    /*
+        Set the camera to the player's current position based on room transition before obj_player is deleted. 
+    */
+    
+    obj_camera.x = obj_player.x;
+    obj_camera.y = obj_player.y;
     
     /*
         Free up real objects in the room (does not clear obj_controls or objects hanging around 
