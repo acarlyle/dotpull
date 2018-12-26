@@ -31,6 +31,8 @@
 
 event_inherited();
 
+global.platform = "pc";
+
 //cutscene trigger, logic in player step
 global.playerCanMove = true;
 global.playerMoved = false;
@@ -38,7 +40,7 @@ global.restartRoom = false;
 
 //game settings
 global.set_scaleRes = 1;
-global.set_phoneRes = 4; //act phone value is 5 (960 * 640)
+global.set_phoneRes = 5; //act phone value is 5 (960 * 640)
 global.WINDOW_WIDTH = 128;
 global.WINDOW_HEIGHT = 192;
 
