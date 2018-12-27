@@ -14,9 +14,11 @@ switch(inputString)
         global.restartRoom = true;
         //global.playerCanMove = false;
         break;
+    case "undo":
+        global.undoRoom = true;
 }   
 
-//handle move, restart room
+//handle move, undo move
 if (inputString != false)
 {
 
@@ -39,6 +41,12 @@ if (inputString != false)
         if (global.restartRoom)
         {
             handle_restartRoom(layer);
+            continue;
+        }
+        
+        if (global.undoRoom)
+        {
+            handle_undoLayer(layer);
             continue;
         }
     

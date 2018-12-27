@@ -2,15 +2,17 @@
 
 robot = argument0;
 
-switch(string(object_get_name(robot.object_index))){
+switch(robot[| OBJECT.NAME])
+{
     case "obj_player":
         print("objPlayer sprite");
-        sprite_index = spr_player;
+        robot[| OBJECT.IMGIND] = 0; //TODO -> Death sprites
         break;
+    
     case "obj_roberta":
         print("roberta spr");
-        sprite_index = spr_roberta;
+        robot[| OBJECT.IMGIND] = 0; //TODO -> Death sprites
         break;
 }
 
-robot.isDead = false;
+robot[| ROBOT.ISDEAD] = false;

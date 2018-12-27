@@ -28,5 +28,5 @@ else{
     else if (global.key_left || global.key_right || global.key_up || global.key_down ||
         global.key_upleft || global.key_upright || global.key_downleft || global.key_downright ||
         global.key_space) return "move";
-    //else if (global.key_r) return "undo";
+    else if (global.key_r) return "undo";
 }

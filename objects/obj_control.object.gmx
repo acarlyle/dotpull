@@ -47,6 +47,7 @@ scr_initPlatform();
 global.playerCanMove = true;
 global.playerMoved = false;
 global.restartRoom = false;
+global.undoRoom = false;
 
 global.TILE_SIZE = 32;
 global.DEACTIVATED_X = global.TILE_SIZE * -1;
@@ -93,7 +94,10 @@ enum OBJECT { // 0-19
     ISSTEPPINGSTONE = 11,
     OLDPOSX = 12,
     OLDPOSY = 13,
-    IMGIND = 14 //image index var
+    IMGIND = 14, //image index var
+    MOVEHISTORY = 15, // STACK TODO -&gt; optimise
+    MOVEDIRHISTORY = 16, // STACK TODO -&gt; optimise.  likely unneeded, mostly used (from what I remember) for deactivated objs.  needs investigation
+    STATEHISTORY = 17 // STACK TODO -&gt; optimise.  not needed to store position every turn.  only store turns when shit changed.  likely can store into one stack if ur smart enuf
 }
 enum ROBOT { // 20-39
     CANMOVE = 20,

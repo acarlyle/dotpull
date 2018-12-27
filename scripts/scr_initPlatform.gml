@@ -14,7 +14,7 @@ print("-> scr_initPlatform");
 switch (global.platform)
 {
     case "peecee":
-        global.set_scaleRes = 5;        
+        global.set_scaleRes = 3;        
         global.set_phoneRes = 1; //act phone value is 5 (960 * 640)
         global.WINDOW_WIDTH = 192;
         global.WINDOW_HEIGHT = 128;
