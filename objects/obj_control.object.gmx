@@ -31,18 +31,22 @@
 
 event_inherited();
 
-global.platform = "pc";
+global.platform = "peecee"; // hardcoded to peecee
+
+/*
+    The following settings are platform dependent and are set in the scr_initPlatform script.
+*/
+global.set_scaleRes = 1;
+global.set_phoneRes = 1; //act phone value is 5 (960 * 640)
+global.WINDOW_WIDTH = 0;
+global.WINDOW_HEIGHT = 0;
+
+scr_initPlatform();
 
 //cutscene trigger, logic in player step
 global.playerCanMove = true;
 global.playerMoved = false;
 global.restartRoom = false;
-
-//game settings
-global.set_scaleRes = 1;
-global.set_phoneRes = 5; //act phone value is 5 (960 * 640)
-global.WINDOW_WIDTH = 128;
-global.WINDOW_HEIGHT = 192;
 
 global.TILE_SIZE = 32;
 global.DEACTIVATED_X = global.TILE_SIZE * -1;
@@ -121,7 +125,6 @@ enum ARROW {
 }
 
 scr_applyScreenRes();
-alarm[0] = 1; // center the game's screen window; equal to one frame
 
 //room_goto(rm_level_Ian_4);
 //if (!global.saveRoomLoaded) room_goto(rm_level1);

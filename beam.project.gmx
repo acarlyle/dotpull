@@ -218,10 +218,10 @@
     <scripts name="Settings">
       <script>scripts\scr_applyScreenRes.gml</script>
       <script>scripts\scr_hasVisitedRoom.gml</script>
+      <script>scripts\scr_initPlatform.gml</script>
       <script>scripts\scr_initPlayerPosition.gml</script>
       <script>scripts\scr_initRoom.gml</script>
       <script>scripts\scr_initRoomFromFile.gml</script>
-      <script>scripts\script119.gml</script>
     </scripts>
     <scripts name="Stack">
       <script>scripts\handle_destroyThisObjectStacks.gml</script>
