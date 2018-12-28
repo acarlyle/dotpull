@@ -21,6 +21,13 @@ objectEnum[| OBJECT.OLDPOSX] = real(objPosX);
 objectEnum[| OBJECT.OLDPOSY] = real(objPosY);
 objectEnum[| OBJECT.IMGIND] = 0;
 
+/*
+    Now the stacks (TODO Optimize...)
+*/
+
+objectEnum[| OBJECT.MOVEHISTORY] = ds_stack_create();
+objectEnum[| OBJECT.MOVEDDIRHISTORY] = undefined;
+objectEnum[| OBJECT.STATEHISTORY] = undefined;
 
 /*  
     Probably best not to store every possible variable in a text file.
@@ -74,36 +81,47 @@ switch(get_objectFromString(objName)){
         objectEnum[| OBJECT.CANPULL] = true;
         objectEnum[| OBJECT.CANPUSH] = false;
         objectEnum[| OBJECT.ISSTEPPINGSTONE] = true;
+        objectEnum[| OBJECT.MOVEDDIRHISTORY] = ds_stack_create();
+        objectEnum[| OBJECT.STATEHISTORY] = ds_stack_create();
         break;
     case obj_blockPush:
         objectEnum[| OBJECT.CANPULL] = false;
         objectEnum[| OBJECT.CANPUSH] = true;
         objectEnum[| OBJECT.ISSTEPPINGSTONE] = true;
+        objectEnum[| OBJECT.MOVEDDIRHISTORY] = ds_stack_create();
+        objectEnum[| OBJECT.STATEHISTORY] = ds_stack_create();
         break;
     case obj_blockPushPull:
         objectEnum[| OBJECT.CANPULL] = true;
         objectEnum[| OBJECT.CANPUSH] = true;
         objectEnum[| OBJECT.ISSTEPPINGSTONE] = true;
+        objectEnum[| OBJECT.MOVEDDIRHISTORY] = ds_stack_create();
+        objectEnum[| OBJECT.STATEHISTORY] = ds_stack_create();
         break;
     case obj_door:
         objectEnum[| DOOR.ISLOCKED] = true;
         objectEnum[| OBJECT.ISSTEPPINGSTONE] = true;
+        objectEnum[| OBJECT.STATEHISTORY] = ds_stack_create();
         break; 
     case obj_fallingPlatform_1Step:
         objectEnum[| PLATFORM.STEPSLEFT] = 1;
         objectEnum[| OBJECT.IMGIND] = 1;
+        objectEnum[| OBJECT.STATEHISTORY] = ds_stack_create();
         break;
     case obj_fallingPlatform_2Step:
         objectEnum[| PLATFORM.STEPSLEFT] = 2;
         objectEnum[| OBJECT.IMGIND] = 2;
+        objectEnum[| OBJECT.STATEHISTORY] = ds_stack_create();
         break;  
     case obj_fallingPlatform_3Step:
         objectEnum[| PLATFORM.STEPSLEFT] = 3;
         objectEnum[| OBJECT.IMGIND] = 3;
+        objectEnum[| OBJECT.STATEHISTORY] = ds_stack_create();
         break;    
     case obj_key:
         objectEnum[| OBJECT.CANPULL] = true;
         objectEnum[| OBJECT.STATE] = "grounded";
+        objectEnum[| OBJECT.STATEHISTORY] = ds_stack_create();
         break;
     case obj_magneticSnare:
         objectEnum[| OBJECT.CANPULL] = true;
@@ -120,6 +138,9 @@ switch(get_objectFromString(objName)){
         objectEnum[| ROBOT.NEWX] = real(objPosX);
         objectEnum[| ROBOT.NEWY] = real(objPosY);
         objectEnum[| OBJECT.ISSTEPPINGSTONE] = true;
+        objectEnum[| OBJECT.MOVEDDIRHISTORY] = ds_stack_create();
+        objectEnum[| OBJECT.STATEHISTORY] = ds_stack_create();
+        objectEnum[| OBJECT.ITEMHISTORY] = ds_stack_create();
         break;
     case obj_spike:
         objectEnum[| OBJECT.CANPULL] = true;
