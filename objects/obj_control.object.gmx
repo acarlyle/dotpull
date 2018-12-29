@@ -96,7 +96,7 @@ enum OBJECT { // 0-19
     OLDPOSY = 13,
     IMGIND = 14, //image index var
     MOVEHISTORY = 15, // STACK TODO -&gt; optimize
-    MOVEDIRHISTORY = 16, // STACK TODO -&gt; optimize.  likely unneeded, mostly used (from what I remember) for deactivated objs.  needs investigation
+    MOVEDDIRHISTORY = 16, // STACK TODO -&gt; optimize.  likely unneeded, mostly used (from what I remember) for deactivated objs.  needs investigation
     STATEHISTORY = 17 // STACK TODO -&gt; optimize.  not needed to store position every turn.  only store turns when shit changed.  likely can store into one stack if ur smart enuf
 }
 enum ROBOT { // 20-39

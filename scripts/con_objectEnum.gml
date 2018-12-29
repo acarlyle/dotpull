@@ -140,7 +140,7 @@ switch(get_objectFromString(objName)){
         objectEnum[| OBJECT.ISSTEPPINGSTONE] = true;
         objectEnum[| OBJECT.MOVEDDIRHISTORY] = ds_stack_create();
         objectEnum[| OBJECT.STATEHISTORY] = ds_stack_create();
-        objectEnum[| OBJECT.ITEMHISTORY] = ds_stack_create();
+        objectEnum[| ROBOT.ITEMHISTORY] = ds_stack_create();
         break;
     case obj_spike:
         objectEnum[| OBJECT.CANPULL] = true;
