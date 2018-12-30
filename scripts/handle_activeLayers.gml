@@ -145,7 +145,7 @@ if (inputString != false)
                     layer.surfaceInf.updateSurface = true;
                 } 
             }
-        }
+        } //global.playerCanMove
         print("-> handle_activeLayers: FINISHED handling layer for room " + string(layer.roomName));
         
         /*for (var l2 = 0; l2 < ds_list_size(activeLayers); l2++)

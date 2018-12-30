@@ -1,23 +1,24 @@
-///undo_spike(par_robot robot)
+///undo_spike(obj_enum spike)
 
 /*
     Handles undo for this spike obj
 */
 
-spike = argument0;
+var spike = argument0;
 
-var spikeStateStr = ds_stack_pop(spike.stateHistory);
+var spikeStateStr = ds_stack_pop(spike[| OBJECT.STATEHISTORY]);
 if (spikeStateStr != undefined){
     print ("UNDOING SPIK");
     print(spikeStateStr);
     var stateArr = scr_split(spikeStateStr, ",");
     var stateStr = stateArr[0];
     var stateDir = stateArr[1];
-    if (stateStr == "idle"){
-        spike.targetLocked = false;
-        spike.state = stateStr;
-        spike.targetDirection = "idling";
-        sprite_index = spr_spike;
+    if (stateStr == "idle")
+    {
+        spike[| OBJECT.STATE] = stateStr;
+        spike[| AI.TARGETLOCKED] = false;
+        spike[| AI.TARGETDIR] = "idling";
+        spike[| OBJECT.IMGIND] = 0;
     }
     else if (stateStr == "active"){
         print("Statestr was active ... ??");

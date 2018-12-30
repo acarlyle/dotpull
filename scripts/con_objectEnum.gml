@@ -147,6 +147,7 @@ switch(get_objectFromString(objName)){
         objectEnum[| OBJECT.STATE] = "idling";
         objectEnum[| OBJECT.FOODCHAIN] = 1;
         objectEnum[| AI.TARGETLOCKED] = false;
+        objectEnum[| OBJECT.STATEHISTORY] = ds_stack_create();
         break;
     case obj_trigger:
         objectEnum[| TRIGGER.TRIGGERPTR] = undefined;

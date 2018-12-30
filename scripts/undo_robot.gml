@@ -9,16 +9,18 @@
 
 robot = argument0;
 
+print("-> undo_robot");
+
 //handle this robot's undo
 var movementStr = ds_stack_pop(robot[| OBJECT.MOVEHISTORY]); //string e.g. "64,64"
 //print(movementStr);
-
+    
 //handle this robot's items on undo
-var items = ds_stack_pop(robot.itemHistory);
+var items = ds_stack_pop(robot[| ROBOT.ITEMHISTORY]);
 if (items != undefined)
 {
-    robot.numKeys = items[0];
-    robot.hasBaby = items[1];
+    robot[| ROBOT.NUMKEYS] = items[0];
+    robot[| ROBOT.HASBABY] = items[1];
 }
     
 robot[| OBJECT.MOVEDDIR] = ds_stack_pop(robot[| OBJECT.MOVEDDIRHISTORY]);

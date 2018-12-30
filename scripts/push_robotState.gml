@@ -1,24 +1,22 @@
 ///push_robotState(var robot, bool pushCurState, var pushXVal, var PushYVal)
 
-var robot = argument0;
-var pushCurState = argument1; //push previous turn or this current one
-var pushXOntoStack = argument2; //default to robot's previous turn
-var pushYOntoStack = argument3; //default to robot's previous turn
+var layer = argument0;
+var robot = argument1;
+var pushCurState = argument2; //push previous turn or this current one
+var pushXOntoStack = argument3; //default to robot's previous turn
+var pushYOntoStack = argument4; //default to robot's previous turn
 
 if (pushCurState){ pushXOntoStack = robot[| OBJECT.X]; pushYOntoStack = robot[| OBJECT.Y]; }
 
 print("-> DISABLED push_robotState(" + string(pushXOntoStack) + "," + string(pushYOntoStack) + ")");
 
-//ds_stack_push(robot.moveHistory, string(room_get_name(room)) + ";" + string(pushXOntoStack) + "," + string(pushYOntoStack));
-//ds_stack_push(robot.itemHistory, array(robot.numKeys, robot.hasBaby));
-//ds_stack_push(robot.movedDirHistory, robot[| OBJECT.MOVEDDIR);
-print("DID NOT PUSH (currently) " + string(pushXOntoStack) + ", " + string(pushYOntoStack)); 
+ds_stack_push(robot[| OBJECT.MOVEHISTORY], string(layer.roomName) + ";" + string(pushXOntoStack) + "," + string(pushYOntoStack));
+ds_stack_push(robot[| OBJECT.MOVEDDIRHISTORY], robot[| OBJECT.MOVEDDIR]);
+ds_stack_push(robot[| ROBOT.ITEMHISTORY], array(robot[| ROBOT.NUMKEYS], robot[| ROBOT.HASBABY]));
 
-//robot[| OBJECT.OLDPOSX] = x;
-//robot[| OBJECT.OLDPOSY] = y;
 //robot[| OBJECT.X] = robot[| ROBOT.NEWX]; 
 //robot[| OBJECT.Y] = robot[| ROBOT.NEWY];
 
-if (map_place(self, obj_slideTile, robot[| OBJECT.X], robot[| OBJECT.Y])){
+if (map_place(layer, obj_slideTile, robot[| OBJECT.X], robot[| OBJECT.Y])){
     robot[| ROBOT.CANMOVE] = false;
 }

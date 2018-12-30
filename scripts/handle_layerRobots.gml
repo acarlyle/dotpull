@@ -40,7 +40,7 @@ if (robot[| OBJECT.MOVED])
     }
     
     if (global.playerMoved){ //TODO add stack functionaly with layers
-        //push_robotState(robot, false, robot[| OBJECT.OLDPOSX], robot[| OBJECT.OLDPOSY]);
+        push_robotState(layer, robot, false, robot[| OBJECT.OLDPOSX], robot[| OBJECT.OLDPOSY]);
         
         //update Robot position vars
         robot[| OBJECT.OLDPOSX] = robot[| OBJECT.X];

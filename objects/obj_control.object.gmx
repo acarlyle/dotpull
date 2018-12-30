@@ -116,7 +116,8 @@ enum TRIGGER {
     DOORPTR = 42
 }
 enum AI {
-    TARGETLOCKED = 43
+    TARGETLOCKED = 43,
+    TARGETDIR = 44
 }
 enum MIRPTR {
     MIRPTRPTR = 50

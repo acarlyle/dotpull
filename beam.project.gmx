@@ -172,6 +172,7 @@
       <script>scripts\get_objectLocalVarsStr.gml</script>
       <script>scripts\get_objectsFromRoomArrayTile.gml</script>
       <script>scripts\get_parent.gml</script>
+      <script>scripts\get_parentOfEnum.gml</script>
       <script>scripts\get_roomFromString.gml</script>
       <script>scripts\get_spriteFromObjStr.gml</script>
     </scripts>
