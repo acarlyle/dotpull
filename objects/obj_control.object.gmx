@@ -117,7 +117,9 @@ enum TRIGGER {
 }
 enum AI {
     TARGETLOCKED = 43,
-    TARGETDIR = 44
+    TARGETDIR = 44,
+    HP = 45,
+    HPMAX = 46
 }
 enum MIRPTR {
     MIRPTRPTR = 50

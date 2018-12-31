@@ -8,8 +8,6 @@ var spike = argument0;
 
 var spikeStateStr = ds_stack_pop(spike[| OBJECT.STATEHISTORY]);
 if (spikeStateStr != undefined){
-    print ("UNDOING SPIK");
-    print(spikeStateStr);
     var stateArr = scr_split(spikeStateStr, ",");
     var stateStr = stateArr[0];
     var stateDir = stateArr[1];
@@ -20,15 +18,11 @@ if (spikeStateStr != undefined){
         spike[| AI.TARGETDIR] = "idling";
         spike[| OBJECT.IMGIND] = 0;
     }
-    else if (stateStr == "active"){
-        print("Statestr was active ... ??");
-        spike.targetLocked = true;
-        spike.state = "active";
-        spike.targetDirection = stateDir;
-        sprite_index = spr_spikeActive;
+    else if (stateStr == "active")
+    {
+        spike[| AI.TARGETLOCKED] = true;
+        spike[| OBJECT.STATE] = "active";
+        spike[| AI.TARGETDIR]  = stateDir;
+        spike[| OBJECT.IMGIND] = 1;
     }
 }
-//print("self state: " + string(self.state));
-//print("obj state: " + string(obj.state));
-//print("self direction: " + string(self.targetDirection));
-//print("obj direction: " + string(obj.targetDirection));

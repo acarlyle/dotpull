@@ -1,23 +1,17 @@
-///undo_door(obj_triggerDoor triggerDoor)
+///undo_door(obj_layer layer, obj_enum triggerDoor)
 
 /*
     Handles undo for this triggerDoor obj
 */
 
-triggerDoor = argument0;
+var layer = argument0;
+var triggerDoor = argument1;
 
-// if door is deactivated and nothing is on the trigger, activate door
-//print(deactivatedX);
-//print(deactivatedY);
-if (triggerDoor.deactivatedX != undefined && triggerDoor.deactivatedY != undefined){
-    if (triggerDoor.x == global.DEACTIVATED_X && triggerDoor.y == global.DEACTIVATED_Y && 
-       !instance_place(triggerDoor.x, triggerDoor.y, par_pullable) && 
-       !instance_place(triggerDoor.deactivatedX, triggerDoor.deactivatedY, par_robot)){
-       
-        triggerDoor.x = triggerDoor.deactivatedX;
-        triggerDoor.y = triggerDoor.deactivatedY;
-        triggerDoor.deactivatedX = undefined;
-        triggerDoor.deactivatedY = undefined;
-        print("setting deactivated door back to undefined");
+// Door is not activated; something is on the switch
+if (!triggerDoor[| OBJECT.ISACTIVE])
+{
+    if (!scr_tileContains(layer, triggerDoor[| OBJECT.X], triggerDoor[! OBJECT.Y], array(par_pullable, par_robot)))
+    {  
+        triggerDoor[| OBJECT.ISACTIVE] = true;
     }
 }

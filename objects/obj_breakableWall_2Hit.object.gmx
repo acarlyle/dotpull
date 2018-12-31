@@ -28,8 +28,8 @@
             <string>event_inherited(); //calls parent's create code
 
 //local vars
-    hitsLeft = 2; //idle or active
-    numFrames = 3;
+    hp = 2; //idle or active
+    hpmax = 3;
     ds_stack_push(stateHistory, hitsLeft);
 </string>
           </argument>

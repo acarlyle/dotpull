@@ -91,7 +91,7 @@ if (ds_list_size(layer.list_robots) > 0)
                         }
                         if (object[| OBJECT.NAME]== "obj_triggerDoor")
                         {
-                            undo_triggerDoor(object);
+                            undo_triggerDoor(layer, object);
                         }
                         if (object[| OBJECT.NAME] == "obj_key")
                         {
@@ -99,7 +99,7 @@ if (ds_list_size(layer.list_robots) > 0)
                         }
                         if (object[| OBJECT.NAME] == "obj_baby")
                         {
-                            undo_baby(object);
+                            undo_baby(robot, object);
                         }
                         if (object[| OBJECT.NAME] == "obj_door")
                         {
@@ -107,7 +107,7 @@ if (ds_list_size(layer.list_robots) > 0)
                         }
                         if (get_parentOfEnum(object) == "par_cannon")
                         {
-                            undo_cannon(object);
+                            undo_cannon(layer, object);
                         }
                         
                         if (object[| OBJECT.MOVEDDIR] != "")

@@ -111,7 +111,6 @@
         <script>scripts\move_arrow.gml</script>
         <script>scripts\move_baby.gml</script>
         <script>scripts\move_blackHole.gml</script>
-        <script>scripts\move_breakableWall.gml</script>
         <script>scripts\move_cannon.gml</script>
         <script>scripts\move_eviscerator.gml</script>
         <script>scripts\move_key.gml</script>

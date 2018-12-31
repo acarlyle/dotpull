@@ -1,25 +1,28 @@
-///undo_arrow(par_arrow arrow)
+///undo_arrow(obj_enum arrow)
 
 /*
     Handles undo for this arrow obj
 */
 
-arrow = argument0;
+var arrow = argument0;
 
-if (arrow.isRotating){
-    switch(arrow.dir){
+if (arrow[| ARROW.ISROTATING]){
+    switch(arrow[| ARROW.DIR]){
         case "up":
-            arrow.dir = "left";
+            arrow[| ARROW.DIR] = "left";
+            arrow[| OBJECT.IMGIND] = 3;
             break;
         case "right":
-            arrow.dir = "up";
+            arrow[| ARROW.DIR] = "up";
+            arrow[| OBJECT.IMGIND] = 0;
             break;
         case "down":
-            arrow.dir = "right";
+            arrow[| ARROW.DIR] = "right";
+            arrow[| OBJECT.IMGIND] = 1;
             break;
         case "left":
-            arrow.dir = "down";
+            arrow[| ARROW.DIR] = "down";
+            arrow[| OBJECT.IMGIND] = 2;
             break;
     }
-    arrow.sprite_index = asset_get_index("spr_arrow_" + arrow.dir);
 }

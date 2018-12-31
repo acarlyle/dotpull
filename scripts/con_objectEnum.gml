@@ -98,22 +98,44 @@ switch(get_objectFromString(objName)){
         objectEnum[| OBJECT.MOVEDDIRHISTORY] = ds_stack_create();
         objectEnum[| OBJECT.STATEHISTORY] = ds_stack_create();
         break;
+    case obj_breakableWall_1Hit:
+        objectEnum[| AI.HP] = 1;
+        objectEnum[| AI.HPMAX] = 1;
+        objectEnum[| OBJECT.STATEHISTORY] = ds_stack_create();
+        break;
+    case obj_breakableWall_2Hit:
+        objectEnum[| AI.HP] = 2;
+        objectEnum[| AI.HPMAP] = 2;
+        objectEnum[| OBJECT.STATEHISTORY] = ds_stack_create();
+        break;
+    case obj_breakableWall_3Hit:
+        objectEnum[| AI.HP] = 3;
+        objectEnum[| AI.HPMAX] = 3;
+        objectEnum[| OBJECT.STATEHISTORY] = ds_stack_create();
+        break;
+    case obj_cannon_horz:
+        objectEnum[| OBJECT.STATEHISTORY] = ds_stack_create();
+        objectEnum[| AI.TARGETDIR] = "";
+        break;
+    case obj_cannon_vert:
+        objectEnum[| OBJECT.STATEHISTORY] = ds_stack_create();
+        break;
     case obj_door:
         objectEnum[| DOOR.ISLOCKED] = true;
         objectEnum[| OBJECT.ISSTEPPINGSTONE] = true;
         objectEnum[| OBJECT.STATEHISTORY] = ds_stack_create();
         break; 
-    case obj_fallingPlatform_1Step:
+    case obj_fallingPlatform_1Step: // TODO these should just use HP
         objectEnum[| PLATFORM.STEPSLEFT] = 1;
         objectEnum[| OBJECT.IMGIND] = 1;
         objectEnum[| OBJECT.STATEHISTORY] = ds_stack_create();
         break;
-    case obj_fallingPlatform_2Step:
+    case obj_fallingPlatform_2Step: // TODO these should just use HP
         objectEnum[| PLATFORM.STEPSLEFT] = 2;
         objectEnum[| OBJECT.IMGIND] = 2;
         objectEnum[| OBJECT.STATEHISTORY] = ds_stack_create();
         break;  
-    case obj_fallingPlatform_3Step:
+    case obj_fallingPlatform_3Step: // TODO these should just use HP
         objectEnum[| PLATFORM.STEPSLEFT] = 3;
         objectEnum[| OBJECT.IMGIND] = 3;
         objectEnum[| OBJECT.STATEHISTORY] = ds_stack_create();
@@ -153,18 +175,10 @@ switch(get_objectFromString(objName)){
         objectEnum[| TRIGGER.TRIGGERPTR] = undefined;
         objectEnum[| TRIGGER.DOORPTR] = undefined;
         
-        //for (var o = 0; o <= ds_list_size(objectEnum); o++){
-        //    print("Yaar: " + string(objectEnum[| o]));
-        //} 
-        
         break;
     case obj_triggerDoor:
         objectEnum[| TRIGGER.TRIGGERPTR] = undefined;
         objectEnum[| TRIGGER.DOORPTR] = undefined;
-        //objectEnum[| OBJECT.OLDPOSX] = undefined;
-        //objectEnum[| OBJECT.OLDPOSY] = undefined;
-        //print("Con_triggerDoor X: " + string(objectEnum[| OBJECT.X]));
-        //print("Con_triggerDoor Y: " + string(objectEnum[| OBJECT.Y]));
         break;
 }
 

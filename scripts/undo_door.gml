@@ -1,25 +1,21 @@
-///undo_door(obj_door door)
+///undo_door(obj_enum door)
 
 /*
     Handles undo for this door obj
 */
 
-door = argument0;
+var door = argument0;
 
-var state = ds_stack_pop(door.stateHistory);
-if (state == "locked" && door.currentState == "locked"){
-    door.isDeactivated = false;
-    door.currentState = "locked";
+var state = ds_stack_pop(door[| OBJECT.STATEHISTORY]);
+if (state == "locked" && door[| OBJECT.STATE] == "locked"){
+    door[| OBJECT.ISACTIVE] = true;
+    door[| OBJECT.STATE] = "locked";
 }
-else if (state == "locked" && door.currentState == "unlocked"){
-    door.currentState = "locked";
-    obj_player.numKeys++;
-    door.isDeactivated = false;
-    //print("Door deactivated");
+else if (state == "locked" && door[| OBJECT.STATE] == "unlocked"){
+    door[| OBJECT.STATE] = "locked";
+    obj_player.numKeys++; // TODO -> How to do this correctly? tricky...
+    door[| OBJECT.ISACTIVE] = true;
 }
-else if (state == "unlocked" && door.currentState == "unlocked"){
-    door.currentState = "unlocked";
+else if (state == "unlocked" && door[| OBJECT.STATE] == "unlocked"){
+    door[| OBJECT.STATE] = "unlocked";
 }
-
-//print("Door current state: " + currentState)
-//print("Door popped state: " + state);

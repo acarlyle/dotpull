@@ -11,84 +11,74 @@ var cannon = argument1;
 
 var robot = layer.robot;
 
-//switch(cannon.state){
-    
-//}
+print("-> move_cannon: cannon state " + string(cannon[| OBJECT.STATE]));
 
-print("CANNON_MOVE: " + string(cannon.state));
-
-print(cannon.state);
-print(cannon.shotDirection);
-ds_stack_push(cannon.stateHistory, cannon.state + "," + cannon.shotDirection);
-print("pushed cannon stateHistory: " + string(cannon.state) + "," + string(cannon.shotDirection));
+ds_stack_push(cannon[| OBJECT.STATEHISTORY], cannon[| OBJECT.STATE] + "," + cannon[| AI.TARGETDIR]);
 
 var xDiff = -1;
 var yDiff = -1;
 
-if (robot[| OBJECT.X] - cannon.x > 0){
+if (robot[| OBJECT.X] - cannon[| OBJECT.X] > 0){
     xDiff *= -1;
 }
-if (robot[| OBJECT.Y] - cannon.y > 0){
+if (robot[| OBJECT.Y] - cannon[| OBJECT.Y] > 0){
     yDiff *= -1;
 }
 
-print("handling" + object_get_name(cannon.object_index));
-
 var isVert = false;
 var isHorz = false;
-if (object_get_name(cannon.object_index) == "obj_cannon_vert"){
+
+if (cannon[| OBJECT.NAME] == "obj_cannon_vert")
+{
     isVert = true;
-    print("isVert");
 }
-else if (object_get_name(cannon.object_index) == "obj_cannon_horz"){
+else if (cannon[| OBJECT.NAME] == "obj_cannon_horz")
+{
     isHorz = true;
-    print("isHorz");
 }
 
-if (cannon.state == "fired") cannon.state = "idling";
+if (cannon[| OBJECT.STATE] == "fired") cannon[| OBJECT.STATE] = "idling";
 
-switch (cannon.state){
+switch (cannon[| OBJECT.STATE]){
     case "fired":
-        cannon.state = "idling";
+        cannon[| OBJECT.STATE] = "idling";
         break;
 
     case "firing":
         print("firing away");
         e_fireCannon(cannon, isVert, isHorz);
-        cannon.state = "fired";
+        cannon[| OBJECT.STATE] = "fired";
         print("CANNON state now: " + string(cannon.state));
         break;
         
     case "charging":
         print("cannon is now in firing state");
-        cannon.state = "firing";
+        cannon[| OBJECT.STATE] = "firing";
         break;
         
     case "idling":
         //check if player is in up down line for a blasting
         print("state is idling, checking for player");
         if (isVert){
-            if ((robot[| OBJECT.X] == cannon.x) && scr_canBlastRobot(cannon, robot)){
-                cannon.state = "charging";
+            if ((robot[| OBJECT.X] == cannon[| OBJECT.X]) && scr_canBlastRobot(cannon, robot)){
+                cannon[| OBJECT.STATE] = "charging";
                 if (yDiff > 0){
-                    cannon.shotDirection = "down";
-                    print("down");
+                    cannot[| AI.TARGETDIR] = "down";
                 }
                 else{
-                    cannon.shotDirection = "up";
-                    print("up");
+                    cannot[| AI.TARGETDIR] = "up";
                 }
                 print("cannon is now charging: blast that little shitter");
             } 
         }
         if (isHorz){
-            if ((robot[| OBJECT.Y] == cannon.y) && scr_canBlastRobot(cannon, robot)){
-                cannon.state = "charging";
+            if ((robot[| OBJECT.Y] == cannon[| OBJECT.Y]) && scr_canBlastRobot(cannon, robot)){
+                cannon[| OBJECT.STATE] = "charging";
                 if (xDiff > 0){
-                    cannon.shotDirection = "right";
+                    cannot[| AI.TARGETDIR] = "right";
                 }
                 else{
-                    cannon.shotDirection = "left";
+                    cannot[| AI.TARGETDIR] = "left";
                 }
                 print("blast that little shitter");
             } 

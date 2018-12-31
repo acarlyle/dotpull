@@ -1,26 +1,25 @@
-///undo_baby(obj_baby baby)
+///undo_baby(obj_enum robotPlayer, obj_enum baby)
 
 /*
     Handles undo for this baby obj
 */
 
-var baby = argument0;
+var robot = argument0;
+var baby = argument1;
 
-print("UNDO BABY currentState before: " + string(baby.currentState));
+print("UNDO BABY currentState before: " + string(baby[| OBJECT.STATE]));
 
-var state = ds_stack_pop(baby.stateHistory);
-if (state == "ground" && baby.currentState == "ground"){
-    baby.isDeactivated = false;
-    baby.currentState = "ground";
+var state = ds_stack_pop(baby[| OBJECT.STATEHISTORY]);
+if (state == "ground" && baby[| OBJECT.STATE] == "ground"){
+    baby[| OBJECT.ISACTIVE] = true;
+    baby[| OBJECT.STATE] = "ground";
 }
 else if (state == "ground" && baby.currentState == "inventory"){
-    baby.currentState = "ground";
-    obj_player.hasBaby = false;
-    baby.isDeactivated = false;
+    baby[| OBJECT.STATE] = "ground";
+    robot[| ROBOT.HASBABY] = false;
+    baby[| OBJECT.ISACTIVE] = true;
 }
 else if (state == "inventory" && baby.currentState == "inventory"){
-    baby.currentState = "inventory";
-    baby.isDeactivated = true;
+    baby[| OBJECT.STATE] = "inventory";
+    baby[| OBJECT.ISACTIVE] = false;
 }
-
-print("UNDO BABY currentState now: " + string(baby.currentState));

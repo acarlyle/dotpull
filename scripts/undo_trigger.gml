@@ -1,39 +1,24 @@
-///undo_trigger(obj_trigger door)
+///undo_trigger(obj_enum trigger)
 
 /*
     Handles undo for this trigger obj
 */
 
-trigger = argument0;
+var trigger = argument0;
 
 //this is a trigger being pressed
-if ((instance_place(trigger.x, trigger.y, par_pullable) || instance_place(trigger.x, trigger.y, par_robot)) && trigger.triggerDoorPtr != undefined){
-    self.triggerDoorPtr.image_index = 1;
-    self.triggerDoorPtr.isDeactivated = true;
-    
-    if (trigger.triggerDoorPtr.deactivatedX == undefined &&
-        trigger.triggerDoorPtr.deactivatedY == undefined)
-    {
-        print("Yeah it's undefined duh");
-        trigger.triggerDoorPtr.deactivatedX = trigger.triggerDoorPtr.x;
-        trigger.triggerDoorPtr.deactivatedY = trigger.triggerDoorPtr.y;
-        trigger.triggerDoorPtr.x = global.DEACTIVATED_X;
-        trigger.triggerDoorPtr.y = global.DEACTIVATED_Y;
-    }
+if ((map_place(layer, par_pullable, trigger[| OBJECT.X], trigger[| OBJECT.Y]) || map_place(layer, par_robot, trigger[| OBJECT.X], trigger[| OBJECT.Y])) && 
+    trigger[| TRIGGER.DOORPTR] != undefined)
+{
+    var doorPtr = trigger[| DOORPTR];
+    doorPtr[| OBJECT.IMGIND] = 1;
+    doorPtr[| OBJECT.ISACTIVE] = false;
 }
 //this is a trigger not being pressed
-if ((!instance_place(trigger.x, trigger.y, par_pullable) && !instance_place(trigger.x, trigger.y, par_robot)) && trigger.triggerDoorPtr != undefined){ 
-    if (trigger.triggerDoorPtr.x == global.DEACTIVATED_X && 
-        trigger.triggerDoorPtr.y == global.DEACTIVATED_Y)
-    {
-        print("where we should be");
-        //triggerDoorPtr.x = triggerDoorPtr.deactivatedX;
-        //triggerDoorPtr.y = triggerDoorPtr.deactivatedY;
-        //triggerDoorPtr.deactivatedX = undefined;
-        //triggerDoorPtr.deactivatedY = undefined;
-        print("x value: " + string(trigger.triggerDoorPtr.x))
-        print("y value: " + string(trigger.triggerDoorPtr.y))
-    }
-    trigger.triggerDoorPtr.image_index = 0;
-    trigger.triggerDoorPtr.isDeactivated = false;
+if ((!map_place(layer, par_pullable, trigger[| OBJECT.X], trigger[| OBJECT.Y]) && !map_place(layer, par_robot, trigger[| OBJECT.X], trigger[| OBJECT.Y])) && 
+    trigger[| TRIGGER.DOORPTR] != undefined)
+    { 
+    var doorPtr = trigger[| DOORPTR];
+    doorPtr[| OBJECT.IMGIND] = 0;
+    doorPtr[| OBJECT.ISACTIVE] = true;
 }

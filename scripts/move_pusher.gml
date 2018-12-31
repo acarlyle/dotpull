@@ -1,70 +1,80 @@
-///move_pusher(obj_layer layer, par_robot robot, par_object object)
+///move_pusher(obj_layer layer, par_robot robot, obj_enum object)
 
 /*
+    Recursive function. 
     Initial object passed to this function is a pusher.
-    After this, it's every object lined up to be pushed with the pusher. 
+    After this, it's every object lined up to be pushed with the pusher.  
 */
 
-print("-> movePusher(");
+print("->move_pusher()");
 
 var layer = argument0;
 var robot = argument1;
 var object = argument2;
 
-var posX = object.x;
-var posY = object.y;
+var posX = object[| OBJECT.X];
+var posY = object[| OBJECT.Y];
 
-if (global.key_left){
+if (global.key_left)
+{
     posX = posX - global.TILE_SIZE;
 }
-else if (global.key_right){
+else if (global.key_right)
+{
     posX = posX + global.TILE_SIZE;
 }
-else if (global.key_up){
+else if (global.key_up)
+{
     posY = posY - global.TILE_SIZE;
 }
-else if (global.key_down){
+else if (global.key_down)
+{
     posY = posY + global.TILE_SIZE;
 }
-else if (global.key_upleft){
+else if (global.key_upleft)
+{
     posX = posX - global.TILE_SIZE;
     posY = posY - global.TILE_SIZE;
 }
-else if (global.key_downleft){
+else if (global.key_downleft)
+{
     posX = posX - global.TILE_SIZE;
     posY = posY + global.TILE_SIZE;
 }
-else if (global.key_upright){
+else if (global.key_upright
+){
     posX = posX + global.TILE_SIZE;
     posY = posY - global.TILE_SIZE;
 }
-else if (global.key_downright){
+else if (global.key_downright)
+{
     posX = posX + global.TILE_SIZE;
     posY = posY + global.TILE_SIZE;
 }
-
-//print("PosX, PosY: " + string(posX) + ", " + string(posY));
 
 if (scr_tileContains(layer, posX, posY, array(par_obstacle))){
-    var obs = instance_place(posX, posY, par_obstacle);
+    var obs = map_place(layer, par_obstacle, posX, posY);
     if (obs){
-        if (obs.canPull || obs.canPush){
-            if (move_pusher(layer, robot, obs)){
+        if (obs[| OBJECT.PULL] || obs[| OBJECT.CANPUSH]){
+            if (move_pusher(layer, robot, obs))
+            {
                 obs = object;
-                obs.x = posX;
-                obs.y = posY;
-                //print("1: " + string(object_get_name(obs.object_index) + " now at: " + string(posX) + " " + string(posY)));
+                obs[| OBJECT.X] = posX;
+                obs[| OBJECT.Y] = posY;
                 return true;
             }
-            else{
+            else
+            {
                 return false;
             }
         }
-        else{
+        else
+        {
            return false; 
         }
     }
-    else if (scr_platformIsWalkable(posX, posY)){
+    else if (scr_platformIsWalkable(layer, posX, posY))
+    {
         return true;
     }
 }

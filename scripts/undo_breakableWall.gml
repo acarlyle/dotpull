@@ -1,46 +1,37 @@
-///undo_fallingPlatform(par_fallingPlatform fallingPlatform)
+///undo_breakableWall(obj_enum breakableWall)
 
 /*
-    Handles undo for this fallingPlatform obj
+    Handles undo for this breakableWall obj
 */
 
-breakableWall = argument0;
-print("Undoing breakableWall 1(preUndoHitsLeft): " + string(breakableWall.hitsLeft));
+var breakableWall = argument0;
+print("Undoing breakableWall 1(preUndoHitsLeft): " + string(breakableWall[| AI.HP]));
 
-var breakableWallStr = ds_stack_pop(breakableWall.stateHistory);
-//print("hitsLeftFromStack: " + string(breakableWallStr)); 
+var breakableWallStr = ds_stack_pop(breakableWall[| OBJECT.STATEHISTORY]); 
 if (breakableWallStr != undefined){
     //print ("UNDOING breakable wall");
     var imgIndex = 0;
-    breakableWall.hitsLeft = breakableWallStr;
+    breakableWall[| AI.HP] = breakableWallStr;
     switch(breakableWallStr){
         case 3:
             imgIndex = 0;
-            //print('img index set to 0 from 3');
             break;
         case 2:
-            //imgIndex = max(breakableWall.numFrames+1, 1);
             imgIndex = 1;
             break;
         case 1:
-            //imgIndex = max(breakableWall.numFrames+1, 2);
             imgIndex = 2;
             break;
         case 0:
-            //imgIndex = max(breakableWall.numFrames+1, 3);
             imgIndex = 3;
             break;
     }
-    //print ("img index is now: " + string(imgIndex));
-    if (imgIndex > breakableWall.numFrames){
-        imgIndex = breakableWall.numFrames; 
-        //print ("img index updated to: " + string(imgIndex));
+    if (imgIndex > breakableWall[| AI.HPMAX]){
+        imgIndex = breakableWall[| AI.HPMAX]; 
+
     }
-    //print("breakwall image index is " + string(breakableWall.image_index));
-    breakableWall.image_index = min(breakableWall.numFrames+1, imgIndex);
-    //print("breakwall image index is now " + string(breakableWall.image_index)); 
-    if (breakableWall.hitsLeft != 0){
-        breakableWall.isDeactivated = false;
+    breakableWall[| OBJECT.IMGIND] = min(breakableWall[| AI.HPMAX]+1, imgIndex);
+    if (breakableWall[| AI.HP] != 0){
+        breakableWall[| OBJECT.ISACTIVE] = true;
     }
 }
-print("Undoing breakableWall 2(postUndoHitsLeft): " + string(breakableWall.hitsLeft));
