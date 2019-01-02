@@ -55,7 +55,7 @@ else if (global.key_downright)
 if (scr_tileContains(layer, posX, posY, array(par_obstacle))){
     var obs = map_place(layer, par_obstacle, posX, posY);
     if (obs){
-        if (obs[| OBJECT.PULL] || obs[| OBJECT.CANPUSH]){
+        if (obs[| OBJECT.CANPULL] || obs[| OBJECT.CANPUSH]){
             if (move_pusher(layer, robot, obs))
             {
                 obs = object;
@@ -78,7 +78,7 @@ if (scr_tileContains(layer, posX, posY, array(par_obstacle))){
         return true;
     }
 }
-else if (scr_platformIsWalkable(posX, posY)){
+else if (scr_platformIsWalkable(layer, posX, posY)){
     object.x = posX;
     object.y = posY;
     //print("2: " + string(object_get_name(object.object_index) + " now at: " + string(posX) + " " + string(posY)));

@@ -107,7 +107,7 @@ if (ds_list_size(layer.list_robots) > 0)
                         }
                         if (get_parentOfEnum(object) == "par_cannon")
                         {
-                            undo_cannon(layer, object);
+                            undo_cannon(object);
                         }
                         
                         if (object[| OBJECT.MOVEDDIR] != "")

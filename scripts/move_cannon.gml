@@ -46,7 +46,7 @@ switch (cannon[| OBJECT.STATE]){
 
     case "firing":
         print("firing away");
-        e_fireCannon(cannon, isVert, isHorz);
+        e_fireCannon(layer, cannon, isVert, isHorz);
         cannon[| OBJECT.STATE] = "fired";
         print("CANNON state now: " + string(cannon.state));
         break;

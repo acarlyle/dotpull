@@ -24,7 +24,7 @@ if (isHorz){ //robot is moving left/right; check for objects towards the player
     var objX = cannon[| OBJECT.X];
     while(!endOfTheLine){
         objX += global.TILE_SIZE * CANNON_DIRECTION;
-        if (map_place(objX, cannon[| OBJECT.Y], par_obstacle)){
+        if (map_place(layer, par_obstacle, objX, cannon[| OBJECT.Y])){
             var obs = map_place(layer, par_obstacle, objX, cannon[| OBJECT.Y]);
             if (obs[| OBJECT.ISACTIVE]){
                 if (get_parentOfEnum(obs) == "par_breakableWall"){

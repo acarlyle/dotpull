@@ -9,7 +9,7 @@ var layer = argument0;
 var posX = argument1;
 var posY = argument2;
 
-if (map_place(par_fallingPlatform, posX, posY))
+if (map_place(layer, par_fallingPlatform, posX, posY))
 {
     var platform = map_place(layer, par_fallingPlatform, posX, posY);
     if (platform[| PLATFORM.STEPSLEFT] == 0)

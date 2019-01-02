@@ -105,7 +105,7 @@ switch(get_objectFromString(objName)){
         break;
     case obj_breakableWall_2Hit:
         objectEnum[| AI.HP] = 2;
-        objectEnum[| AI.HPMAP] = 2;
+        objectEnum[| AI.HPMAX] = 2;
         objectEnum[| OBJECT.STATEHISTORY] = ds_stack_create();
         break;
     case obj_breakableWall_3Hit:
