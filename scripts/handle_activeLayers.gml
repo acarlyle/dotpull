@@ -125,7 +125,7 @@ if (inputString != false)
                     {
                         handle_switchPlayerLayer(layer, layer.robot);   
                     }*/
-                }
+                } //foreach layer robot
             }
             else if (layer.isActive) //No robot present, but layer has active objects to move
             {

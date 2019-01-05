@@ -32,7 +32,7 @@ if (ds_list_size(layer.list_robots) > 0)
         if (!ds_stack_empty(robot[| OBJECT.MOVEHISTORY]))
         {
             var continueUndo = undo_robot(robot); //don't undo these objects if we're switching rooms
-            if (!continueUndo) handle_pushOntoStack(robot, true); //push every objects' state, even if undoing
+            //if (!continueUndo) handle_pushOntoStack(robot, true); //push every objects' state, even if undoing
             if (continueUndo)
             {
                 //handle every puzzle element's stack in this room
@@ -112,7 +112,7 @@ if (ds_list_size(layer.list_robots) > 0)
                         
                         if (object[| OBJECT.MOVEDDIR] != "")
                         {
-                            object[| MOVEDDIR] = ds_stack_pop(object[| OBJECT.MOVEDDIRHISTORY]); //object last moved in this dir
+                            object[| OBJECT.MOVEDDIR] = ds_stack_pop(object[| OBJECT.MOVEDDIRHISTORY]); //object last moved in this dir
                         }
                     }
                 }

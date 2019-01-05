@@ -226,7 +226,7 @@
     <scripts name="Stack">
       <script>scripts\handle_destroyThisObjectStacks.gml</script>
       <script>scripts\handle_prioritizeItems.gml</script>
-      <script>scripts\handle_pushOntoStack.gml</script>
+      <script>scripts\push_objectState.gml</script>
       <script>scripts\push_robotState.gml</script>
     </scripts>
     <scripts name="Surfaces">

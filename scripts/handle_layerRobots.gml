@@ -10,7 +10,8 @@ print("handle_layerRobots I: room map length: " + string(array_length_2d(layer.r
 handle_deployBaby(layer, robot);  //this handles baby placement if player pressed space and has a Baby on Board
 
 //if on a slideTile, disable player input keys
-if (map_place(layer, obj_slideTile, robot[| OBJECT.X], robot[| OBJECT.X])){
+if (map_place(layer, obj_slideTile, robot[| OBJECT.X], robot[| OBJECT.Y]))
+{
     baby[| OBJECT.STATE] = "tile_slide";
 }
 

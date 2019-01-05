@@ -1,7 +1,11 @@
 ///handle_layerObjects(obj_layer layer);
 
-var layer = argument0;
+/*
+    If this script is called, it means that the player has moved somewhere so this object is free to move/push
+    its state onto a stack.  
+*/
 
+var layer = argument0;
 var robot = layer.robot;
 
 handle_cleanUpElementEffects();
@@ -15,11 +19,9 @@ for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
     print(" -> handle_layerObjects: list_objEnums size: " + string(ds_list_size(layer.list_objEnums)));    
 
     var object = layer.list_objEnums[| enumI];
-    
-    if (object[| OBJECT.X] == global.DEACTIVATED_X || object[| OBJECT.Y] == global.DEACTIVATED_Y){
-        print(" -> handle_layerObjects: " + string(object[| OBJECT.NAME]) + " is disabled, cannot map_place deactivated tilePos.");
-        continue;
-    }
+
+    /* Push previous object's state before new turn happens. */ 
+    push_objectState(object, true);  
     
     object[| OBJECT.OLDPOSX] = object[| OBJECT.X];
     object[| OBJECT.OLDPOSY] = object[| OBJECT.Y];
