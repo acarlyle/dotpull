@@ -156,6 +156,7 @@
       <script>scripts\handle_gameSave.gml</script>
       <script>scripts\handle_restartRoom.gml</script>
       <script>scripts\handle_roomSave.gml</script>
+      <script>scripts\state_centerCamera.gml</script>
     </scripts>
     <scripts name="Getters">
       <script>scripts\get_arrayOfRoom.gml</script>
@@ -185,6 +186,7 @@
       <script>scripts\scr_clearStepGlobals.gml</script>
       <script>scripts\scr_room1IsBelowRoom2.gml</script>
       <script>scripts\scr_roomFromString.gml</script>
+      <script>scripts\scr_surfaceActive.gml</script>
       <script>scripts\scr_tileContains_curRoom.gml</script>
       <scripts name="Movement">
         <script>scripts\scr_mirptrTele.gml</script>
@@ -228,9 +230,6 @@
       <script>scripts\handle_prioritizeItems.gml</script>
       <script>scripts\push_objectState.gml</script>
       <script>scripts\push_robotState.gml</script>
-    </scripts>
-    <scripts name="Surfaces">
-      <script>scripts\scr_surfaceActive.gml</script>
     </scripts>
     <scripts name="Virtual Mapping">
       <script>scripts\layer_addObjToArrMap.gml</script>

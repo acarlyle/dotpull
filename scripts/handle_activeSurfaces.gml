@@ -10,15 +10,14 @@ print("-> handle_activeSurfaces()");
 */
 for (var l = 0; l < ds_list_size(activeLayers); l++)
 {
-    var layer = activeLayers[| l];
-    if (layer.isActive)
+    if (array_length_1d(activeLayers) > 0)
     {
-        layer.surfaceInf.updateSurface = true;
-        print(" -> handle_activeSurfaces(): layerName " + string(layer.roomName) + " will be updated.");
-        /*if (surface_exists(layer.surfaceInf.surface))
+        var layer = activeLayers[| l];
+        if (layer.isActive)
         {
-            surface_free(layer.surfaceInf.surface);
-        }*/
+            layer.surfaceInf.updateSurface = true;
+            print(" -> handle_activeSurfaces(): layerName " + string(layer.roomName) + " will be updated.");
+        }
     }
 }
 

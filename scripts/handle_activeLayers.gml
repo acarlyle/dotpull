@@ -97,8 +97,7 @@ if (inputString != false)
                             if (obj_layerManager.playerLayer == layer)
                             {
                                 var layerPlayer = layer.robot;
-                                obj_camera.x = layerPlayer[| OBJECT.X];
-                                obj_camera.y = layerPlayer[| OBJECT.Y];
+                                state_centerCamera(layerPlayer[| OBJECT.X], layerPlayer[| OBJECT.Y]);
                             }
                             
                         }
@@ -176,7 +175,6 @@ if (inputString != false)
         obj_layerManager.turnNum++; //increment turn counter
     }
     
-    //handle_activeSurfaces(list_activeLayers); /* handle updating Display of Room Elements. */
     handle_activeSurfaces(activeLayers); /* handle updating Display of Room Elements. */
     
 }

@@ -65,16 +65,18 @@ updateLayer = false; //update when an objectEnum has moved
           <argument>
             <kind>1</kind>
             <string>print("instance_destroy for obj_layer " + string(roomName));
-print("#################################################################################");
+print("############################");
 
 if(objPosToNameMap) ds_map_destroy(objPosToNameMap);
 if(objNameAndPosToEnumMap) ds_map_destroy(objNameAndPosToEnumMap);
 if(mapKeyPriorityList) ds_list_destroy(mapKeyPriorityList);
 
-for (var i = 0; i &lt; ds_list_size(list_robots); i++){
+for (var i = 0; i &lt; ds_list_size(list_robots); i++)
+{
     ds_list_destroy(list_robots[| i]);
 }
-for (var i = 0; i &lt; ds_list_size(list_objEnums); i++){
+for (var i = 0; i &lt; ds_list_size(list_objEnums); i++)
+{
     ds_list_destroy(list_objEnums[| i]);
 }
 
@@ -83,8 +85,9 @@ if(list_objEnums) ds_list_destroy(list_objEnums);
 
 if(surfaceInf) instance_destroy(surfaceInf);
 
-if (!ds_map_empty(global.layerMap)){ //delete this layer from obj_control's name -&gt; layer map
-    ds_map_delete(global.layerMap, roomName);
+//delete this layer from obj_control's name -&gt; layer map
+if (!ds_map_empty(obj_layerManager.layerMap)){
+    ds_map_delete(obj_layerManager.layerMap, roomName);
     print("obj_layer instance_destroy: removed this layer from layer map!");  
 }
 </string>

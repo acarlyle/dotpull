@@ -146,7 +146,8 @@ for (var enumI = 0; enumI < ds_list_size(layer.list_objEnums); enumI++)
         
     //update layer's arrMap if object moved
     //TODO need to update obj stacks insteading of copying over the previous turn's stack
-    if (object[| OBJECT.MOVED]){
+    if (object[| OBJECT.MOVED])
+    {
     
         layer_updateObjAtTile(layer, object, object[| OBJECT.OLDPOSX], object[| OBJECT.OLDPOSY]);
         

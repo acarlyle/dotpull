@@ -7,8 +7,8 @@
 
 var layer = argument0;
 var object = argument1;
-var oldObjX = argument2;
-var oldObjY = argument3;
+var oldObjX = real(argument2);
+var oldObjY = real(argument3);
 
 print("-> layer_updateObjectAtTile " + string(object[| OBJECT.NAME]) + ":oldPosX: " + string(oldObjX) + ", oldPosY: " + string(oldObjY));
 

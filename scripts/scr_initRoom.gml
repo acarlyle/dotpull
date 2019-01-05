@@ -162,8 +162,7 @@ if (obj_layerManager.loadedRoom)
         Set the camera to the player's current position based on room transition before obj_player is deleted. 
     */
     
-    obj_camera.x = obj_player.x;
-    obj_camera.y = obj_player.y;
+    state_centerCamera(obj_player.x, obj_player.y);
     
     /*
         Free up real objects in the room (does not clear obj_controls or objects hanging around 

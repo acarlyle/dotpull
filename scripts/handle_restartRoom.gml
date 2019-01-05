@@ -2,6 +2,8 @@
 
 var layer = argument0;
 
+print("-> handle_restartRoom for " + string(layer.roomName));
+
 /*
     Restarts the stacks to the begining of the current room.  
 */
