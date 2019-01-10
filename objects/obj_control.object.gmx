@@ -33,14 +33,6 @@ event_inherited();
 
 global.platform = "peecee"; // hardcoded to peecee
 
-/*
-    The following settings are platform dependent and are set in the scr_initPlatform script.
-*/
-global.set_scaleRes = 1;
-global.set_phoneRes = 1; //act phone value is 5 (960 * 640)
-global.WINDOW_WIDTH = 0;
-global.WINDOW_HEIGHT = 0;
-
 scr_initPlatform();
 
 //cutscene trigger, logic in player step
@@ -131,8 +123,6 @@ enum ARROW {
     DIR = 55,
     ISROTATING = 56
 }
-
-scr_applyScreenRes();
 
 //room_goto(rm_level_Ian_4);
 //if (!global.saveRoomLoaded) room_goto(rm_level1);

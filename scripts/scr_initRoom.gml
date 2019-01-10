@@ -9,6 +9,8 @@ print("");
 print ("-> scr_initRoom() for " + string(room_get_name(room)));
 print("");
 
+scr_setRoomView(); // uses rm's view/port settings to set room size / viewport size
+
 var layer;
 
 /*

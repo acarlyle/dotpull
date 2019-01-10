@@ -27,7 +27,6 @@
             <kind>1</kind>
             <string>roomBegin = com_entrybridge_f_1;
 
-//scr_applyScreenRes();
 global.saveRoomLoaded = undefined;
 
 //selectedOption = obj_continueAdventure;

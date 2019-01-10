@@ -37,7 +37,7 @@ alpha = .5;
 
 isMainSurface = true;
 isActive = true;
-updateSurface = true; // true when we need to update the surface
+updateSurface = false; // true when we need to update or create the surface
 
 print("*** constructed an object of " + string(object_get_name(object_index)));
 </string>
@@ -87,7 +87,17 @@ print("!DESTROYED " + string(object_get_name(object_index)) + "'s surfaces");
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//print(string(isMainSurface) + " " + string(layer.roomName));
+            <string>print(string(isMainSurface) + " " + string(layer.roomName));
+
+/*
+    Surfaces should be created here in the step event of the surface object, not the 
+    draw event.  
+*/
+
+if (updateSurface)
+{
+    handle_updateSurface();
+} 
 </string>
           </argument>
         </arguments>
@@ -137,13 +147,13 @@ instance_destroy();
             <kind>1</kind>
             <string>if (isActive)
 {
-    if (updateSurface)
-    {
-        handle_updateSurface();
-    } 
     if (surface_exists(surface))
     {
         draw_surface_ext(surface, xPos, yPos, xScale, yScale, rot, color, alpha);
+    }
+    else
+    {
+        updateSurface = true;
     }
 }
 </string>
