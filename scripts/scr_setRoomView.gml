@@ -2,6 +2,11 @@
 
 /*
     Game is scaled Width x Height. set_scaleRes and set_phoneRes are OBE. 
+    The view needs to be a pixel-perfect scalable number that works with
+    the view port.  so if the view port is *6, the view needs to be *1, *2,
+    *3, or *6.  The max size of the port is set from the view in the first room
+    in the game, dot_init.  The view port needs to be less than or equal to
+    dot_init's view port.  Zoom in functionality can be added with this system.
 */
 
 switch (global.platform)
@@ -10,8 +15,10 @@ switch (global.platform)
     
         view_wview[0] = 192*3; //view width (view is drawn to the view port)
         view_hview[0] = 128*3; //view height (view is drawn to the view port)
-        view_wport[0] = 192*9; //port width (view port is portion of screen)
-        view_hport[0] = 128*9; //port height (view port is portion of screen)
+        view_wport[0] = 192*6; //port width (view port is portion of screen)
+        view_hport[0] = 128*6; //port height (view port is portion of screen)
+        
+        //1536 x 1024 -> dot_init view port
         
         //window_set_size(global.WINDOW_WIDTH * global.set_phoneRes * global.set_scaleRes, 
         //                global.WINDOW_HEIGHT * global.set_phoneRes * global.set_scaleRes);
