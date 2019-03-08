@@ -87,7 +87,7 @@ print("!DESTROYED " + string(object_get_name(object_index)) + "'s surfaces");
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>print(string(isMainSurface) + " " + string(layer.roomName));
+            <string>//print("-&gt; surf_layerRoom::step - " + string(isMainSurface) + " " + string(layer.roomName));
 
 /*
     Surfaces should be created here in the step event of the surface object, not the 

@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>roomBegin = com_entrybridge_f_1;
+            <string>roomBegin = com_shop_f_1;
 
 global.saveRoomLoaded = undefined;
 

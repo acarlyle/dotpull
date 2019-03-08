@@ -388,6 +388,7 @@
     </rooms>
     <rooms name="City of Machines">
       <room>rooms\com_entrybridge_f_1</room>
+      <room>rooms\com_shop_f_1</room>
     </rooms>
     <rooms name="Ian Levels">
       <room>rooms\rm_level_Ian_1</room>
