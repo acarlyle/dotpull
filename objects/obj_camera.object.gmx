@@ -27,7 +27,16 @@
             <kind>1</kind>
             <string>event_inherited();
 
+/** The following are set in a room's creation code. 
+    They are used to scale how a room fits within the 
+    overall game's view/window. See the scr_setRoomView function for more.  */  
+wScale = 1; // multiplied by base game resolution to set the room's width view
+hScale = 1; // multiplied by base game resolution to set the room's width view
 
+minWidth = 192;
+minHeight = 128;
+windowWidthScale = 6;
+windowHeightScale = 6;
 </string>
           </argument>
         </arguments>

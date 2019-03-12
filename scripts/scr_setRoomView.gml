@@ -13,10 +13,10 @@ switch (global.platform)
 {
     case "peecee":
     
-        view_wview[0] = 192 * 2; //view width (view is drawn to the view port)
-        view_hview[0] = 128 * 2; //view height (view is drawn to the view port)
-        view_wport[0] = 192 * 6; //port width (view port is portion of screen)
-        view_hport[0] = 128 * 6; //port height (view port is portion of screen)
+        view_wview[0] = obj_camera.minWidth * obj_camera.wScale; //view width (view is drawn to the view port) -> SET IN ROOM CREATE CODE
+        view_hview[0] = obj_camera.minHeight * obj_camera.hScale; //view height (view is drawn to the view port) -> SET IN ROOM CREATE CODE
+        view_wport[0] = obj_camera.minWidth * obj_camera.windowWidthScale; //port width (view port is portion of screen)
+        view_hport[0] = obj_camera.minHeight * obj_camera.windowHeightScale; //port height (view port is portion of screen)
         
         //1536 x 1024 -> dot_init view port
         
