@@ -22,6 +22,9 @@
   </sounds>
   <sprites name="sprites">
     <sprites name="Characters">
+      <sprites name="CoM">
+        <sprite>sprites\spr_denizen</sprite>
+      </sprites>
       <sprite>sprites\spr_player</sprite>
       <sprite>sprites\spr_playerDead</sprite>
       <sprite>sprites\spr_playerMenu</sprite>
@@ -252,12 +255,49 @@
     <shader type="GLSLES">shaders\shader0.shader</shader>
   </shaders>
   <objects name="objects">
+    <objects name="Controllers">
+      <object>objects\obj_camera</object>
+      <object>objects\obj_control</object>
+      <object>objects\obj_cutsceneTrigger</object>
+      <object>objects\obj_dialogueTrigger</object>
+      <object>objects\obj_gotoRoom</object>
+      <object>objects\obj_layer</object>
+      <object>objects\obj_layerManager</object>
+      <object>objects\obj_menuControl</object>
+      <object>objects\obj_stairsAsc</object>
+      <object>objects\obj_stairsDesc</object>
+    </objects>
+    <objects name="Element Effects">
+      <object>objects\obj_cannonEnergy</object>
+    </objects>
+    <objects name="Environment">
+      <object>objects\obj_bridge</object>
+      <object>objects\obj_hole</object>
+      <object>objects\obj_platform</object>
+      <object>objects\obj_tile</object>
+      <object>objects\obj_wall</object>
+      <object>objects\obj_platform_16x16</object>
+    </objects>
+    <objects name="Menu">
+      <object>objects\obj_blackTile</object>
+      <object>objects\obj_continueAdventure</object>
+      <object>objects\obj_exitGame</object>
+      <object>objects\obj_menuCursor</object>
+      <object>objects\obj_menuRob</object>
+      <object>objects\obj_menuRoberta</object>
+      <object>objects\obj_newAdventure</object>
+      <object>objects\obj_robertaEnd</object>
+    </objects>
+    <objects name="NPC">
+      <object>objects\obj_denizen</object>
+    </objects>
     <objects name="Parents">
       <object>objects\par_arrow</object>
       <object>objects\par_block</object>
       <object>objects\par_breakableWall</object>
       <object>objects\par_cannon</object>
       <object>objects\par_control</object>
+      <object>objects\par_denizen</object>
       <object>objects\par_fallingPlatform</object>
       <object>objects\par_menu</object>
       <object>objects\par_object</object>
@@ -271,9 +311,6 @@
       <object>objects\par_stairs</object>
       <object>objects\par_surface</object>
       <object>objects\par_wall</object>
-    </objects>
-    <objects name="Element Effects">
-      <object>objects\obj_cannonEnergy</object>
     </objects>
     <objects name="Puzzle Elements">
       <objects name="not_even_fucking_used">
@@ -323,36 +360,6 @@
         <object>objects\obj_player</object>
         <object>objects\obj_roberta</object>
       </objects>
-    </objects>
-    <objects name="Environment">
-      <object>objects\obj_bridge</object>
-      <object>objects\obj_hole</object>
-      <object>objects\obj_platform</object>
-      <object>objects\obj_tile</object>
-      <object>objects\obj_wall</object>
-      <object>objects\obj_platform_16x16</object>
-    </objects>
-    <objects name="Controllers">
-      <object>objects\obj_camera</object>
-      <object>objects\obj_control</object>
-      <object>objects\obj_cutsceneTrigger</object>
-      <object>objects\obj_dialogueTrigger</object>
-      <object>objects\obj_gotoRoom</object>
-      <object>objects\obj_layer</object>
-      <object>objects\obj_layerManager</object>
-      <object>objects\obj_menuControl</object>
-      <object>objects\obj_stairsAsc</object>
-      <object>objects\obj_stairsDesc</object>
-    </objects>
-    <objects name="Menu">
-      <object>objects\obj_blackTile</object>
-      <object>objects\obj_continueAdventure</object>
-      <object>objects\obj_exitGame</object>
-      <object>objects\obj_menuCursor</object>
-      <object>objects\obj_menuRob</object>
-      <object>objects\obj_menuRoberta</object>
-      <object>objects\obj_newAdventure</object>
-      <object>objects\obj_robertaEnd</object>
     </objects>
     <objects name="Surfaces">
       <object>objects\surf_layerRoom</object>
