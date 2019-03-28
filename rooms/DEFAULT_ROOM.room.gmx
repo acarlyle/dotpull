@@ -14,7 +14,8 @@
 
 print("Entering " + room_get_name(room));
 
-
+obj_camera.wScale = 2;
+obj_camera.hScale = 2;
 
 var initPos = "0,0";
 

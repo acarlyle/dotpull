@@ -367,8 +367,8 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\dot_init</room>
-    <room>rooms\rm_menu</room>
     <room>rooms\DEFAULT_ROOM</room>
+    <room>rooms\rm_menu</room>
     <rooms name="block.Pull">
       <room>rooms\rm_ffs_f_1</room>
       <room>rooms\rm_ffs_f_2</room>
@@ -426,6 +426,9 @@
         <room>rooms\rm_stairs_b_1</room>
         <room>rooms\rm_stairs_b_2</room>
       </rooms>
+    </rooms>
+    <rooms name="Random Rooms">
+      <room>rooms\rnd_pull</room>
     </rooms>
     <rooms name="Unused">
       <room>rooms\rm_cell</room>

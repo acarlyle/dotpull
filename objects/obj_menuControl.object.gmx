@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>roomBegin = com_shop_f_1;
+            <string>//roomBegin = com_shop_f_1;
+//roomBegin = rnd_pull;
 
 global.saveRoomLoaded = undefined;
 
