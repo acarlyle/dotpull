@@ -300,6 +300,7 @@
       <object>objects\par_denizen</object>
       <object>objects\par_fallingPlatform</object>
       <object>objects\par_menu</object>
+      <object>objects\par_npc</object>
       <object>objects\par_object</object>
       <object>objects\par_obstacle</object>
       <object>objects\par_pickupable</object>
