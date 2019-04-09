@@ -34,12 +34,13 @@
 voice             = -1; // snd_
 portrait          = -1; // spr_ [base portrait for dialogue interaction]
 font              = -1; // fnt_
-name              = "None"; //  [displayed in dialogue interaction]
+name              = ""; //  [displayed in dialogue interaction]
  
-portraitTalk         = -1; // spr_ [animation pieces for portrait while talking]
+spr_portraitTalk         = -1; // spr_ [animation pieces for portrait while talking]
 portraitTalk_posX    = -1;
 portraitTalk_posY    = -1;
-portraitIdle         = -1; // spr_ [animation pieces for non-talking character portrait]
+
+spr_portraitIdle         = -1; // spr_ [animation pieces for non-talking character portrait]
 portraitIdle_posX    = -1;
 portraitIdle_posY    = -1; 
 

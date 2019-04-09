@@ -1,0 +1,23 @@
+// 2019-04-07 20:08:31
+#event create
+event_inherited();
+
+//playerobject = obj_player;
+//interact_key = ord("E");
+//detection_radius = 32;
+ 
+voice             = -1; // snd_
+portrait          = -1; // spr_ [base portrait for dialogue interaction]
+font              = -1; // fnt_
+name              = ""; //  [displayed in dialogue interaction]
+ 
+spr_portraitTalk         = -1; // spr_ [animation pieces for portrait while talking]
+portraitTalk_posX    = -1;
+portraitTalk_posY    = -1;
+
+spr_portraitIdle         = -1; // spr_ [animation pieces for non-talking character portrait]
+portraitIdle_posX    = -1;
+portraitIdle_posY    = -1; 
+
+portraitIdle_imgSpd = 4/room_speed; //frames per second
+portraitTalk_imgSpd = 12/room_speed; //frames per second
