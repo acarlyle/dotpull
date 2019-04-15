@@ -27,6 +27,8 @@ switch (global.platform)
         
         window_set_size(view_wport[0], view_hport[0]);
         display_set_gui_size(view_wport[0], view_hport[0]);
+        window_set_caption("dotpull | view WxH: " + string(view_wview[0]) + "x" + string(view_hview[0]) + 
+                           " | viewport WxH (physical screen): " + string(view_wport[0]) + "x" + string(view_hport[0])); 
         break;
 }
 

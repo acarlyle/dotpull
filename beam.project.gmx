@@ -40,6 +40,7 @@
       <sprite>sprites\spr_layer</sprite>
       <sprite>sprites\spr_stairsAsc</sprite>
       <sprite>sprites\spr_stairsDesc</sprite>
+      <sprite>sprites\spr_textBox</sprite>
     </sprites>
     <sprites name="Element Effects">
       <sprite>sprites\spr_cannonEnergy</sprite>
@@ -266,6 +267,7 @@
       <object>objects\obj_menuControl</object>
       <object>objects\obj_stairsAsc</object>
       <object>objects\obj_stairsDesc</object>
+      <object>objects\obj_textBox</object>
     </objects>
     <objects name="Element Effects">
       <object>objects\obj_cannonEnergy</object>
